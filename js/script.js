@@ -18,3 +18,6 @@ $('.apply').click(function(){
   $('.button1:active').css("background-color",$('#hex').val());
     $(".box").toggleClass("box-show");
 })
+function  click2(){
+window.location.href = "https://modman276.github.io/ZeroTwo/index.html";
+}
