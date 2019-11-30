@@ -55,6 +55,21 @@
   box-shadow: 0 5px #333;
   transform: translateY(4px);
 }
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
 
 .button:hover span {
   padding-right: 25px;
@@ -117,7 +132,7 @@
   font-family: "montserrat";
 }
 body{
-  background: #333;
+  background: #000;
 }
 
 .btn{
