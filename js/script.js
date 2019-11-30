@@ -2,6 +2,10 @@ function  click1(){
 alert("S U C C");
 window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 }
+function  click2(){
+alert("S U C C");
+window.location.href = "https://modman276.github.io/ZeroTwo/index.html";
+}
 $('.btn').click(function(){
   $(".box").toggleClass("box-show");
 });
@@ -18,6 +22,3 @@ $('.apply').click(function(){
   $('.button1:active').css("background-color",$('#hex').val());
     $(".box").toggleClass("box-show");
 })
-function  click2(){
-window.location.href = "https://modman276.github.io/ZeroTwo/index.html";
-}
