@@ -1,4 +1,60 @@
 <html>
-<p align=center>To bedzie kosztowac 10 000 000 $ 
-</p>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+.container{
+  text-align: center;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+}
+.container span{
+  text-transform: uppercase;
+  display: block;
+}
+.text1{
+  color: white;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+  background: #000;
+  position: relative;
+  animation: text 3s 1;
+}
+.text2{
+  font-size: 30px;
+  color: #6ab04c;
+}
+
+@keyframes text {
+  0%{
+    color: black;
+    margin-bottom: -40px;
+  }
+  30%{
+    letter-spacing: 25px;
+    margin-bottom: -40px;
+  }
+  85%{
+    letter-spacing: 8px;
+    margin-bottom: -40px;
+  }
+}
+*{
+  margin: 0;
+  padding: 0;
+  font-family: "montserrat";
+}
+body{
+  background: #000;
+}
+
+  </style>
+  <div class="container">
+  <span class="text1">KOSZT:</span>
+  <span class="text2">10 000 000$</span>
+</div>	
 </html>
