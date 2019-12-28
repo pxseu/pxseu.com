@@ -153,7 +153,7 @@ body{
   top: -50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  background: #f1f1f1;
+  background: #333;
   width: 400px;
   transition: 1s;
 }
@@ -161,7 +161,7 @@ body{
   top: 50%;
 }
 .box h2{
-  background: #2c3e50;
+  background: #5a5e66;
   padding: 20px;
   font-size: 18px;
   color: white;
@@ -191,7 +191,7 @@ body{
 .apply{
   float: right;
   border: none;
-  background: #2c3e50;
+  background: #5a5e66;
   text-transform: uppercase;
   padding: 6px 30px;
   color: white;
