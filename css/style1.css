@@ -210,7 +210,7 @@ ul {
   background-color: #f1f1f1;
   position: -webkit-sticky; /* Safari */
   position: sticky;
-  top: 0;
+  top: 20%;
 }
 
 li a {
