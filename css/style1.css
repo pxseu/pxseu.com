@@ -1,3 +1,6 @@
+a {
+  font-size: 95%; letter-spacing: 1px; cursor: pointer;
+}
 .button {
   background-color: #4CAF50;
   border: none;
