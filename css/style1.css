@@ -106,12 +106,12 @@
   background: #000;
   position: relative;
   animation: text 3s 1;
-   z-index:-1;
+  z-index:-1;
 }
 .text2{
   font-size: 30px;
   color: #6ab04c;
-  z-index: -2;
+  z-index: -1;
 }
 
 @keyframes text {
