@@ -1,10 +1,7 @@
-a {
-  font-size: 95%; letter-spacing: 1px; cursor: pointer;
-}
 .button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
+  background-color: white;
+  color: gray;
+  border: 2px solid #000000;
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
@@ -14,16 +11,13 @@ a {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
+  width: 11%;
+  left: 44%;
 
 }
 .button1 {
-  background-color: white;
-  color: gray;
-  border: 2px solid #000000; /* Green */
   position: absolute;
   top: 20%;
-  left: 44%;
-  width: 11%;
 }
 .button1:hover {
   background-color: #333;
@@ -36,14 +30,9 @@ a {
   transform: translateY(4px);
 }
 .button2 {
-  background-color: white;
-  color: gray;
-  border: 2px solid #000000; /* Green */
   position: absolute;
   top: 28%;
-  left: 44%;
   opacity: 0.3;
-  width: 11%;
 }
 .button2:hover {
 /*
@@ -84,11 +73,8 @@ a {
   right: 0;
 }
 
-*{
-  padding: 0;
-  margin: 0;
-  font-family: sans-serif;
-}
+
+
 .container{
   text-align: center;
   position: absolute;
@@ -130,11 +116,13 @@ a {
     margin-bottom: -40px;
   }
 }
+
+
 *{
   margin: 0;
   padding: 0;
-  font-family: "montserrat";
-}
+  font-family: sans-serif;
+  }
 body{
   background: #000;
 }
@@ -201,6 +189,8 @@ body{
   color: white;
   cursor: pointer;
 }
+
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -225,4 +215,7 @@ li a:hover {
   border-radius: 28px;
   font-size: 130%;
   transition-duration: 0.2s;
+}
+a {
+  font-size: 95%; letter-spacing: 1px; cursor: pointer;
 }
