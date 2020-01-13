@@ -1,0 +1,18 @@
+$('.btn').click(function(){
+  $(".box").toggleClass("box-show");
+});
+
+//to have a preview of color
+$('#hex').keyup(function(){
+  $('.prev').css("background",$('#hex').val());
+});
+
+//to apply color
+$('.apply').click(function(){
+  $('html').css("background",$('#hex').val());
+  $('li a:hover').css("background-color",$('#hex').val());
+    $(".box").toggleClass("box-show");
+})
+function click1(){
+  alert("My discord: modman#6944");
+}

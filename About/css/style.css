@@ -1,0 +1,134 @@
+.textbox {
+  text-align: center;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+  text-align: center;
+}
+.text1 {
+  color: #6ab04c;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+  background: #000;
+  position: relative;
+}
+.aboutme {
+  transform: translate(-50%,-50%);
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+
+*{
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+html{
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.btn{
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  color: white;
+  font-size: 36px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.btn:hover{
+  transform: rotate(90deg);
+}
+
+.box{
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #3e4145;
+  width: 400px;
+  transition: 1s;
+}
+.box-show{
+  top: 50%;
+}
+.box h2{
+  background: #2c3e50;
+  padding: 20px;
+  font-size: 18px;
+  color: white;
+  text-transform: uppercase;
+}
+.box-c{
+  padding: 20px 40px;
+  overflow: hidden;
+}
+.txtb{
+  position: relative;
+  margin-bottom: 10px;
+}
+#hex{
+  width: 100%;
+  padding: 0 60px;
+  height: 40px;
+  border: 1px solid #2c3e50;
+}
+.prev{
+  width: 50px;
+  height: 30px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.apply{
+  float: right;
+  border: none;
+  background: #2c3e50;
+  text-transform: uppercase;
+  padding: 6px 30px;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 105px;
+  background-color: #797c82;
+  position: sticky;
+  top: 20%;
+  z-index: 2;
+  border-radius: 25px;
+  justify-content: center;
+  opacity: 0.85;
+}
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+li a:hover {
+  background-color: #6ab04c;
+  border-radius: 28px;
+  font-size: 130%;
+  transition-duration: 0.2s;
+}
+a {
+  font-size: 95%; letter-spacing: 1px; cursor: pointer;
+}
