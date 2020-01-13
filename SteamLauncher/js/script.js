@@ -9,9 +9,7 @@ $('#hex').keyup(function(){
 
 //to apply color
 $('.apply').click(function(){
-  $('body').css("background",$('#hex').val());
-  $('.text1').css("background",$('#hex').val());
-  $('.button1:active').css("background-color",$('#hex').val());
+  $('html').css("background",$('#hex').val());
   $('li a:hover').css("background-color",$('#hex').val());
     $(".box").toggleClass("box-show");
 })
