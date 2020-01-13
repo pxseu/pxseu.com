@@ -11,10 +11,9 @@
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
   cursor: pointer;
-  left: 43%;
+  left: 44%;
   width: 12%;
   height: 9%;
-  opacity: 0.9;
   background-size:cover;
 
 }
@@ -22,7 +21,7 @@
   background-color: #333;
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-  opacity: 0.7;
+  opacity: 0.85;
 }
 .button:active {
   background-color: #000000;
@@ -32,32 +31,32 @@
 
 .button1 {
   position: absolute;
-  top: 3%;
+  top: 1%;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/730/header.jpg");
 }
 .button2 {
   position: absolute;
-  top: 13%;
+  top: 11%;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/271590/header.jpg");
 }
 .button3 {
   position: absolute;
-  top: 23%;
+  top: 21%;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/359550/header.jpg");
 }
 .button4 {
   position: absolute;
-  top: 33%;
+  top: 31%;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/431960/header.jpg");
 }
 .button5 {
   position: absolute;
-  top: 43%;
+  top: 41%;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/218620/header.jpg");
 }
 .button6 {
   position: absolute;
-  top: 53%;
+  top: 51%;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/365670/header.jpg");
 }
 
@@ -72,8 +71,11 @@
   margin: 0;
   font-family: sans-serif;
 }
-body{
-  background: #000;
+html{
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 .btn{
@@ -157,7 +159,7 @@ ul {
   z-index: 2;
   border-radius: 25px;
   justify-content: center;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 li a {
   display: block;
