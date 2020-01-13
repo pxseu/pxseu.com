@@ -59,7 +59,11 @@
   top: 51%;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/365670/header.jpg");
 }
-
+.button7 {
+  position: absolute;
+  top: 61%;
+  background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/92/header.jpg");
+}
 
 
 
