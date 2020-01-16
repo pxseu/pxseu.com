@@ -229,6 +229,7 @@ body.konami {
   left: 50%;
   background-position: top center;
   background-repeat:no-repeat;
+  background-size: cover;
 }
 body.darling {
   background-image: url('https://i.ytimg.com/vi/0sLaYGjGIDo/maxresdefault.jpg');
