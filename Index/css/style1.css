@@ -125,6 +125,7 @@
   }
 body{
   background: #000;
+  min-width: 980px;
 }
 
 .btn{
@@ -218,4 +219,22 @@ li a:hover {
 }
 a {
   font-size: 95%; letter-spacing: 1px; cursor: pointer;
+}
+.text1.transparent {
+    background-color: rgba(0, 0, 0, 0);
+}
+body.konami {
+  background-image: url('https://images7.alphacoders.com/742/thumb-1920-742760.jpg');
+  justify-content: center;
+  left: 50%;
+  background-position: top center;
+  background-repeat:no-repeat;
+}
+body.darling {
+  background-image: url('https://i.ytimg.com/vi/0sLaYGjGIDo/maxresdefault.jpg');
+  justify-content: center;
+  left: 50%;
+  background-position: top center;
+  background-repeat:no-repeat;
+  background-size: cover;
 }
