@@ -33,6 +33,7 @@ function darlingCodePassed() {
 
   audio2.onended=function(){
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.toggle("darling"));
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami"));    
     Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
  }
 }
