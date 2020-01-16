@@ -28,12 +28,13 @@ document.addEventListener('keydown', function(e) {
 });
 
 function darlingCodePassed() {
-  var audio2 = new Audio('Index/media/darling.ogg');
+  var audio2 = new Audio('Index/media/darling.mp3');
   audio2.play();
 
   audio2.onended=function(){
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.toggle("darling"));
-    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami"));    
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami"));
     Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
+    alert("Darling I found you!");
  }
 }
