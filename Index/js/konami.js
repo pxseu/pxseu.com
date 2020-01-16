@@ -31,8 +31,8 @@ function konamiCodePassed() {
   audio.play();
 
   audio.onended=function(){
-    alert("cheats activated");
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("konami"));
     Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
+    alert("cheats activated");
  }
 }
