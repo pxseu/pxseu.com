@@ -13,3 +13,6 @@ $('.apply').click(function(){
   $('li a:hover').css("background-color",$('#hex').val());
     $(".box").toggleClass("box-show");
 })
+function menubtn(){
+    Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.toggle("show"));
+}

@@ -16,3 +16,6 @@ $('.apply').click(function(){
 function click1(){
   alert("My discord: modman#6944");
 }
+function menubtn(){
+    Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.toggle("show"));
+}
