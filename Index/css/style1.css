@@ -25,7 +25,7 @@
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 .button1:active {
-  box-shadow: 0 6px 16px 0 #6ab04c,0 17px 50px 0 #6ab04c;
+  box-shadow: 0 2px 16px 0 #6ab04c,0 0px 50px 0 #6ab04c;
 }
 .button2 {
   position: absolute;
@@ -240,7 +240,7 @@ a {
   background-color: pink;
 }
 .button1.pink:active {
-  box-shadow: 0 6px 16px 0 pink,0 17px 50px 0 pink;
+  box-shadow: 0 2px 16px 0 pink,0 0px 50px 0 pink;
 }
 .btn.pink {
   color: pink;
