@@ -198,7 +198,7 @@ ul {
   margin: 0;
   padding: 0;
   width: 105px;
-  background-color: #797c82;
+  background-color: #f9f6f6;
   position: absolute;
   top: 80px;
   left: -150px;
@@ -240,8 +240,17 @@ a {
 .button1.pink:active {
   box-shadow: 0 6px 16px 0 pink,0 17px 50px 0 pink;
 }
+.btn.pink {
+  color: pink;
+}
+.menubtn.pink {
+  color: pink;
+}
+li a.pink:hover {
+  background-color: pink;
+}
 body.konami {
-  background-image: url('https://www.pixel4k.com/wp-content/uploads/2019/09/dva-overwatch-reading-book_1568057367.jpg');
+  background-image: url('https://a-static.besthdwallpaper.com/d-va-fran-overwatch-tapet-2560x1600-1069_7.jpg');
   justify-content: center;
   left: 50%;
   background-position: top center;
