@@ -28,9 +28,9 @@ $('.apply').click(function(){
     $(".box").toggleClass("box-show");
   }
 })
-function click1(){
-  alert("My discord: modman#6944");
-}
 function menubtn(){
     Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.toggle("show"));
+}
+function click1(){
+  alert("My discord: modman#6944");
 }
