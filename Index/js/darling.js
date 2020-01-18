@@ -40,6 +40,8 @@ function darlingCodePassed() {
     Array.from(document.querySelectorAll(".btn")).forEach(el => el.classList.add("pink"));
     Array.from(document.querySelectorAll(".menubtn")).forEach(el => el.classList.add("pink"));
     Array.from(document.querySelectorAll("li a")).forEach(el => el.classList.add("pink"));
+    Array.from(document.querySelectorAll(".box h2")).forEach(el => el.classList.add("pink"));
+    Array.from(document.querySelectorAll(".apply")).forEach(el => el.classList.add("pink"));
     alert("Darling I found you!");
  }
 }
