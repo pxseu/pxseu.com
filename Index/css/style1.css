@@ -11,13 +11,13 @@
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
-  width: 11%;
-  left: 44%;
-
+  width: 200px;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .button1 {
   position: absolute;
-  top: 20%;
+  top: 260px;
 }
 .button1:hover {
   background-color: #6ab04c;
@@ -25,13 +25,11 @@
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 .button1:active {
-  background-color: #000000;
-  box-shadow: 0 5px #333;
-  transform: translateY(4px);
+  box-shadow: 0 6px 16px 0 #6ab04c,0 17px 50px 0 #6ab04c;
 }
 .button2 {
   position: absolute;
-  top: 28%;
+  top: 330px;
   opacity: 0.3;
 }
 .button2:hover {
@@ -78,7 +76,7 @@
 .container{
   text-align: center;
   position: absolute;
-  top: 10%;
+  top: 100px;
   left: 50%;
   transform: translate(-50%,-50%);
   width: 100%;
@@ -231,10 +229,19 @@ a {
  cursor: pointer;
 }
 .text1.transparent {
-    background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+}
+.text2.pink {
+  color: pink;
+}
+.button1.pink:hover {
+  background-color: pink;
+}
+.button1.pink:active {
+  box-shadow: 0 6px 16px 0 pink,0 17px 50px 0 pink;
 }
 body.konami {
-  background-image: url('https://images7.alphacoders.com/742/thumb-1920-742760.jpg');
+  background-image: url('https://www.pixel4k.com/wp-content/uploads/2019/09/dva-overwatch-reading-book_1568057367.jpg');
   justify-content: center;
   left: 50%;
   background-position: top center;
@@ -242,7 +249,7 @@ body.konami {
   background-size: cover;
 }
 body.darling {
-  background-image: url('https://i.ytimg.com/vi/0sLaYGjGIDo/maxresdefault.jpg');
+  background-image: url('https://images.hdqwalls.com/download/4k-zero-two-darling-in-the-franxx-w4-1400x900.jpg');
   justify-content: center;
   left: 50%;
   background-position: top center;
