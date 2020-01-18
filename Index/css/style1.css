@@ -149,7 +149,7 @@ body{
   top: -50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  background: #3e4145;
+  background: #c0c6c0;
   width: 400px;
   transition: 1s;
 }
@@ -157,11 +157,12 @@ body{
   top: 50%;
 }
 .box h2{
-  background: #2c3e50;
+  background: #6ab04c;
   padding: 20px;
-  font-size: 18px;
+  font-size: 26px;
   color: white;
   text-transform: uppercase;
+  -webkit-text-stroke: 0.5px black;
 }
 .box-c{
   padding: 20px 40px;
@@ -187,11 +188,13 @@ body{
 .apply{
   float: right;
   border: none;
-  background: #2c3e50;
+  background: #6ab04c;
   text-transform: uppercase;
   padding: 6px 30px;
   color: white;
   cursor: pointer;
+  -webkit-text-stroke: 0.5px black;
+  font-size: 22px;
 }
 
 
@@ -251,8 +254,19 @@ a {
 li a.pink:hover {
   background-color: pink;
 }
+.box h2.pink {
+  background-color: pink;
+}
+.apply.pink {
+  background-color: pink;
+}
 body.konami {
-  background-image: url('https://a-static.besthdwallpaper.com/d-va-fran-overwatch-tapet-2560x1600-1069_7.jpg');
+  background-image: url('https://img9.uhdpixel.com/wp/a/1/dva-overwatch-a113.jpg');
+  /*
+  https://img9.uhdpixel.com/wp/a/1/dva-overwatch-a113.jpg
+  https://a-static.besthdwallpaper.com/d-va-fran-overwatch-tapet-2560x1600-1069_7.jpg
+  https://img5.uhdpixel.com/wp/5z/5/dva-school-girl-overwatch-z5527.jpg
+  */
   justify-content: center;
   left: 50%;
   background-position: top center;
