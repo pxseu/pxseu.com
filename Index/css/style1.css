@@ -162,7 +162,6 @@ body{
   font-size: 26px;
   color: white;
   text-transform: uppercase;
-  -webkit-text-stroke: 0.5px black;
 }
 .box-c{
   padding: 20px 40px;
@@ -193,8 +192,6 @@ body{
   padding: 6px 30px;
   color: white;
   cursor: pointer;
-  -webkit-text-stroke: 0.5px black;
-  font-size: 22px;
 }
 
 
