@@ -25,7 +25,7 @@
   opacity: 0.85;
 }
 .button:active {
-  box-shadow: 0 6px 16px 0 white,0 17px 50px 0 white;
+  box-shadow: 0 0px 16px 0 white,0 6px 50px 0 white;
   opacity: 0.7;
 }
 
