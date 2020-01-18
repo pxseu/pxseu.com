@@ -64,6 +64,16 @@
   top: 710px;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/92/header.jpg");
 }
+.button8 {
+  position: absolute;
+  top: 820px;
+  background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/236870/header.jpg");
+}
+.button9 {
+  position: absolute;
+  top: 930px;
+  background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/707680/header.jpg");
+}
 
 
 
