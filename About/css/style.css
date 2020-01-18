@@ -120,7 +120,7 @@ ul {
   z-index: 1;
   border-radius: 25px;
   justify-content: center;
-  opacity: 0.8;
+  opacity: 0.9;
   transition-duration: 0.5s;
 }
 li a {
