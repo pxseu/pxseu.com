@@ -34,6 +34,8 @@ function konamiCodePassed() {
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.toggle("konami"));
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling"));
     Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
+    Array.from(document.querySelectorAll(".text2")).forEach(el => el.classList.add("pink"));
+    Array.from(document.querySelectorAll(".button1")).forEach(el => el.classList.add("pink"));
     alert("Cheats Activated");
  }
 }
