@@ -229,7 +229,7 @@ li a:active {
 a {
   font-size: 115%;
   letter-spacing: 1px;
- cursor: pointer;
+  cursor: pointer;
 }
 .text1.transparent {
   background-color: rgba(0, 0, 0, 0);
