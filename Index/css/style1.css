@@ -130,11 +130,12 @@ body{
 .btn{
   position: absolute;
   top: 20px;
-  right: 37.5px;
+  right: 40.5px;
   color: white;
   font-size: 40px;
   cursor: pointer;
   transition: 0.4s;
+  z-index: 9999;
 }
 .btn:hover{
   transform: rotate(90deg);
@@ -151,6 +152,7 @@ body{
   background: #c0c6c0;
   width: 400px;
   transition: 1s;
+  z-index: 9999;
 }
 .box-show{
   top: 50%;
@@ -198,7 +200,7 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 105px;
+  width: 116px;
   background-color: #f9f6f6;
   position: absolute;
   top: 80px;
@@ -218,14 +220,14 @@ li a {
 li a:hover {
   background-color: #6ab04c;
   border-radius: 28px;
-  font-size: 130%;
+  font-size: 140%;
   transition-duration: 0.2s;
 }
 li a:active {
   transform: translateY(4px);
 }
 a {
-  font-size: 95%;
+  font-size: 115%;
   letter-spacing: 1px;
  cursor: pointer;
 }
@@ -281,7 +283,7 @@ body.darling {
 .menubtn {
   position: absolute;
   top: 20px;
-  left: 40px;
+  left: 43px;
   color: white;
   font-size: 40px;
   cursor: pointer;
@@ -295,7 +297,8 @@ body.darling {
 }
 .show {
   position: absolute;
-  left: 5px;
+  left: 3px;
+  filter: none;
 }
 
 ::-webkit-scrollbar {
