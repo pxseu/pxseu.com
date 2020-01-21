@@ -4,7 +4,6 @@
   top: 140px;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: 100%;
   text-align: center;
 }
 .text1 {
@@ -27,7 +26,7 @@
   background-color: rgba( 0,0,0,0.2 )
 }
 .text1.transparent {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.2);
   color: pink;
 }
 p a strong.pink{
