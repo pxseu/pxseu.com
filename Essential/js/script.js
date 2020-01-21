@@ -28,3 +28,6 @@ $('.apply').click(function(){
   $(".box").toggleClass("box-show");
   }
 })
+function menubtn(){
+    Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.toggle("show"));
+}
