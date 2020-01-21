@@ -121,6 +121,7 @@
 }
 .text2.pink {
   color: pink;
+  background-color: rgba(0, 0, 0, 0.2);  
 }
 .button1.pink:hover {
   background-color: pink;
