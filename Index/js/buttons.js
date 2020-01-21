@@ -4,6 +4,3 @@ function click1(){
 function click2(){
     window.location.href = "https://modman276.github.io/ZeroTwo/index.html";
 }
-function menubtn(){
-    Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.toggle("show"));
-}

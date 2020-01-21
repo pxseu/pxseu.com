@@ -1,39 +1,38 @@
-var darlingKeys = {
-  68: 'd',
+var konamiKeys = {
+  37: 'left',
+  38: 'up',
+  39: 'right',
+  40: 'down',
   65: 'a',
-  82: 'r',
-  76: 'l',
-  73: 'i',
-  78: 'n',
-  71: 'g'
+  66: 'b'
 };
-var darlingCode = ['d', 'a', 'r', 'l', 'i', 'n', 'g'];
-var darlingCodePosition = 0;
+var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+var konamiCodePosition = 0;
 
 document.addEventListener('keydown', function(e) {
-  var key = darlingKeys[e.keyCode];
-  var requiredKey = darlingCode[darlingCodePosition];
+  var key = konamiKeys[e.keyCode];
+  var requiredKey = konamiCode[konamiCodePosition];
 
   if (key == requiredKey) {
 
-    darlingCodePosition++;
+    konamiCodePosition++;
 
-    if (darlingCodePosition == darlingCode.length) {
-      darlingCodePassed();
-      darlingCodePosition = 0;
+    if (konamiCodePosition == konamiCode.length) {
+      konamiCodePassed();
+      konamiCodePosition = 0;
     }
   } else {
-    darlingCodePosition = 0;
+    konamiCodePosition = 0;
   }
 });
 
-function darlingCodePassed() {
-  var audio2 = new Audio('Index/media/darling.mp3');
-  audio2.play();
+function konamiCodePassed() {
+  var audio = new Audio('Essential/media/cheats.mp3');
+  audio.play();
 
-  audio2.onended=function(){
-    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("darling"));
-    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami"));
+  audio.onended=function(){
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("konami"));
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling"));
     Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
     Array.from(document.querySelectorAll(".text2")).forEach(el => el.classList.add("pink"));
     Array.from(document.querySelectorAll(".button1")).forEach(el => el.classList.add("pink"));
@@ -42,6 +41,6 @@ function darlingCodePassed() {
     Array.from(document.querySelectorAll("li a")).forEach(el => el.classList.add("pink"));
     Array.from(document.querySelectorAll(".box h2")).forEach(el => el.classList.add("pink"));
     Array.from(document.querySelectorAll(".apply")).forEach(el => el.classList.add("pink"));
-    alert("Darling I found you!");
+    alert("Cheats Activated");
  }
 }
