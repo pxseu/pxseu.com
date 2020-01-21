@@ -36,7 +36,9 @@ function darlingCodePassed() {
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami"));
     Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
     Array.from(document.querySelectorAll(".text2")).forEach(el => el.classList.add("pink"));
-    Array.from(document.querySelectorAll(".button1")).forEach(el => el.classList.add("pink"));
+    Array.from(document.querySelectorAll("p a strong")).forEach(el => el.classList.add("pink"));
+    Array.from(document.querySelectorAll(".text2 strong")).forEach(el => el.classList.add("pink"));
+    Array.from(document.querySelectorAll("button")).forEach(el => el.classList.add("pink"));
     Array.from(document.querySelectorAll(".btn")).forEach(el => el.classList.add("pink"));
     Array.from(document.querySelectorAll(".menubtn")).forEach(el => el.classList.add("pink"));
     Array.from(document.querySelectorAll("li a")).forEach(el => el.classList.add("pink"));
