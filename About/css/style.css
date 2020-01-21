@@ -24,4 +24,12 @@
   justify-content: center;
   text-align: center;
   color: white;
+  background-color: rgba( 0,0,0,0.2 )
+}
+.text1.transparent {
+  background-color: rgba(0, 0, 0, 0);
+  color: pink;
+}
+p a strong.pink{
+  color: pink;
 }
