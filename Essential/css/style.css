@@ -27,7 +27,7 @@ body{
 }
 .box{
   position: absolute;
-  top: -50%;
+  top: -500px;
   left: 50%;
   transform: translate(-50%,-50%);
   background: #c0c6c0;
@@ -182,3 +182,18 @@ body.darling {
   background-repeat:no-repeat;
   background-size: cover;
 }
+body.monika {
+  background-image: url('https://images3.alphacoders.com/887/887715.png');
+  justify-content: center;
+  left: 50%;
+  background-position: top center;
+  background-repeat:no-repeat;
+  background-size: cover;
+  transition-duratio: 4s;
+}
+.video {position: absolute; top: -300%; left: 0%; width: 100%; height: 100%;}
+.videoshow {top: 0;}
+.videoplay {background-color: black;}
+.hideall {position: absolute; top: -100px;}
+.slowmoshow {transition-duration: 2s;}
+.button1.monikabtn {top: calc(100vh - 50px);}
