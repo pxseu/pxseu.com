@@ -29,7 +29,7 @@ var monikaAudio = new Audio("Essential/media/monika.mp3");
 function monikaCodePassed() { 
   Array.from(document.querySelectorAll(".video")).forEach(el => el.classList.add("videoshow"));
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("videoplay"));
-  setTimeout(function(){document.getElementById("video").play();},170);
+  setTimeout(function(){document.getElementById("video").play();},150);
   document.getElementById("video").muted = true;
   monikaAudio.volume = 0.5;  
   monikaAudio.play();
@@ -64,3 +64,7 @@ function monikamusicstop() {
   monikaAudio.pause();
   document.getElementById( "clickmebtn" ).setAttribute( "onClick", "monikamusicplay()" );
 }
+document.querySelectorAll(".video").addEventListener("progress", function() {
+ if (Math.round(document.querySelectorAll(".video").buffered.end(0)) / Math.round(document.querySelectorAll(".video").seekable.end(0)) === 1) {
+ }
+}, false);
