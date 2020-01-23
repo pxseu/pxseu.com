@@ -66,3 +66,4 @@ function monikamusicstop() {
   monikaAudio.pause();
   document.getElementById( "clickmebtn" ).setAttribute( "onClick", "monikamusicplay()" );
 }
+video.addEventListener("progress", function() {if (Math.round(video.buffered.end(0)) / Math.round(video.seekable.end(0)) === 1) {}}, false);
