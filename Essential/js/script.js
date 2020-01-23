@@ -33,3 +33,8 @@ $('.apply').click(function(){
 function menubtn(){
     Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.toggle("show"));
 }
+function hidden() {
+  setTimeout(function(){Array.from(document.querySelectorAll(".hidden")).forEach(el => el.classList.remove("hidden")); },200);
+  setTimeout(function(){Array.from(document.querySelectorAll(".slowmoshow")).forEach(el => el.classList.remove("slowmoshow")); },1300);
+}
+hidden();
