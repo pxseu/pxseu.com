@@ -38,7 +38,7 @@ function monikaCodePassed() {
 
   document.getElementById("video").onended = function(){
     alert("Just Monika.");
-    pinker();
+    pinker2();
     document.getElementById( "clickmebtn" ).innerHTML = "Just Monika.";  
     Array.from(document.querySelectorAll(".button1")).forEach(el => el.classList.add("monikabtn"));
     Array.from(document.querySelectorAll(".btn , .menubtn , .apply , .container , body")).forEach(el => el.classList.remove("hideall"));
@@ -49,7 +49,7 @@ function monikaCodePassed() {
     },2300);
   }
 }
-function pinker() {
+function pinker2() {
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami"));
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("monika"));
   Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
