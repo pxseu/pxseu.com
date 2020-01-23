@@ -86,7 +86,7 @@ ul {
   position: absolute;
   top: 80px;
   left: -300px;
-  z-index: 1;
+  z-index: 4;
   border-radius: 25px;
   justify-content: center;
   opacity: 0.9;
