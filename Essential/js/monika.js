@@ -66,4 +66,13 @@ function monikamusicstop() {
   monikaAudio.pause();
   document.getElementById( "clickmebtn" ).setAttribute( "onClick", "monikamusicplay()" );
 }
-video.addEventListener("progress", function() {if (Math.round(video.buffered.end(0)) / Math.round(video.seekable.end(0)) === 1) {}}, false);
+
+//proba wczytania pliku video
+document.onload = function(){ 
+  document.getElementById("video").muted = true;
+  document.getElementById("video").play();
+  setTimeout(function(){
+    document.getElementById("video").pause(); 
+    document.getElementById("video").currentTime=0;
+    },230);
+}
