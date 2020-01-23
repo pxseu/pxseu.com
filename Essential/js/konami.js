@@ -33,16 +33,9 @@ function konamiCodePassed() {
   audio.onended=function(){
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("konami"));
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling"));
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("monika"));
     Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
-    Array.from(document.querySelectorAll(".text2")).forEach(el => el.classList.add("pink"));
-    Array.from(document.querySelectorAll("p a strong")).forEach(el => el.classList.add("pink"));
-    Array.from(document.querySelectorAll("h1 strong")).forEach(el => el.classList.add("pink"));
-    Array.from(document.querySelectorAll("button")).forEach(el => el.classList.add("pink"));        
-    Array.from(document.querySelectorAll(".btn")).forEach(el => el.classList.add("pink"));
-    Array.from(document.querySelectorAll(".menubtn")).forEach(el => el.classList.add("pink"));
-    Array.from(document.querySelectorAll("li a")).forEach(el => el.classList.add("pink"));
-    Array.from(document.querySelectorAll(".box h2")).forEach(el => el.classList.add("pink"));
-    Array.from(document.querySelectorAll(".apply")).forEach(el => el.classList.add("pink"));
+    Array.from(document.querySelectorAll(".text2, p a strong, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply")).forEach(el => el.classList.add("pink"));
     alert("Cheats Activated");
  }
 }
