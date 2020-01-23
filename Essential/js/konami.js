@@ -1,3 +1,4 @@
+//copyright@modman276.github.io  all rights reserved
 var konamiKeys = {
   37: 'left',
   38: 'up',
