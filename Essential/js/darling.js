@@ -32,32 +32,27 @@ function darlingCodePassed() {
   audio2.play();
   audio2.onended=function(){
   alert("Darling I found you!");
+  pinker1();
   document.getElementById( "clickmebtn" ).innerHTML = "Darling!";  
-  pinker();
  }
 }
 
 
 var audioditfx = new Audio('Essential/media/ditfx.mp3');
 
-function ditfx(){
-    audioditfx.play();
-    audioditfx.volume = 0.3;
-    document.getElementById( "clickmebtn" ).setAttribute( "onClick", "ditfxpause()" );
-}
 function ditfxpause(){
     audioditfx.pause();
     document.getElementById( "clickmebtn" ).setAttribute( "onClick", "ditfxunpause()" );
 }
 function ditfxunpause(){
+    audioditfx.volume = 0.1;
     audioditfx.play();
     document.getElementById( "clickmebtn" ).setAttribute( "onClick", "ditfxpause()" );
 }
-function pinker(){
+function pinker1(){
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("darling"));
-  Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami"));
-  Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("monika"));
+  Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami","monika"));
   Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
   Array.from(document.querySelectorAll(".text2, p a strong, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply")).forEach(el => el.classList.add("pink"));
-  document.getElementById( "clickmebtn" ).setAttribute( "onClick", "ditfx()" );
+  document.getElementById( "clickmebtn" ).setAttribute( "onClick", "ditfxunpause()" );
 }
