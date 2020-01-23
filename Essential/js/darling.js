@@ -1,3 +1,5 @@
+//copyright@modman276.github.io  all rights reserved
+
 var darlingKeys = {
   68: 'd',
   65: 'a',

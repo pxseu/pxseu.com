@@ -1,3 +1,5 @@
+//copyright@modman276.github.io  all rights reserved
+
 var monikaKeys = {
   77: 'm',
   79: 'o',
