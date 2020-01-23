@@ -1,5 +1,5 @@
 // copyright@modman276.github.io  all rights reserved
-
+hidden();
 $('.btn').click(function(){
   $(".box").toggleClass("box-show");
 });
@@ -37,4 +37,3 @@ function hidden() {
   setTimeout(function(){Array.from(document.querySelectorAll(".hidden")).forEach(el => el.classList.remove("hidden")); },200);
   setTimeout(function(){Array.from(document.querySelectorAll(".slowmoshow")).forEach(el => el.classList.remove("slowmoshow")); },1300);
 }
-hidden();
