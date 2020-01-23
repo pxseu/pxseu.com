@@ -31,8 +31,8 @@ function darlingCodePassed() {
   var audio2 = new Audio('Essential/media/darling.mp3');
   audio2.play();
   audio2.onended=function(){
-    pinker();
-    alert("Darling I found you!");
+  alert("Darling I found you!");    
+  pinker();
  }
 }
 
