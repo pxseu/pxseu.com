@@ -1,3 +1,5 @@
+// copyright@modman276.github.io  all rights reserved
+
 $('.btn').click(function(){
   $(".box").toggleClass("box-show");
 });
