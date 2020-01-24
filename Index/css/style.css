@@ -80,7 +80,6 @@
   left: 50%;
   transform: translate(-50%,-50%);
   width: 100%;
-  z-index: 2;
 }
 .container span{
   text-transform: uppercase;
@@ -88,13 +87,13 @@
 }
 .text1{
   color: white;
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 700;
-  letter-spacing: 8px;
+  letter-spacing: 6px;
   margin-bottom: 20px;
   background: #000;
   position: relative;
-  animation: text 3s 1;
+  animation: text 2s 1;
 }
 .text2{
   font-size: 30px;
@@ -108,11 +107,11 @@
     margin-bottom: -40px;
   }
   30%{
-    letter-spacing: 25px;
+    letter-spacing: 19.3px;
     margin-bottom: -40px;
   }
   85%{
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     margin-bottom: -40px;
   }
 }
