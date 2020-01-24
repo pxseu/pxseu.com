@@ -33,6 +33,7 @@
   opacity: 0.3;
 }
 .button2:hover {
+  cursor:not-allowed;
 /*
   background-color: #333;
   color: white;
