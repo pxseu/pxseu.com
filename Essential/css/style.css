@@ -6,6 +6,7 @@
 body{
   background: #000;
   min-width: 980px;
+  cursor: context-menu;
 }
 
 .btn{
@@ -193,7 +194,7 @@ body.monika {
 }
 .video {position: absolute; top: -300%; left: 0%; width: 100%; height: 100%;}
 .videoshow {top: 0;}
-.videoplay {background-color: black;}
+.videoplay {background-color: black; cursor: progress;}
 .hideall {position: absolute; top: -100px;}
 .slowmoshow {transition-duration: 1s;}
 .button1.monikabtn {top: calc(100vh - 50px);}
