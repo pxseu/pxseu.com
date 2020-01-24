@@ -43,5 +43,5 @@ function konamiCodePassed() {
  }
 }
 function dvabtn() {
-  window.location.replace("https://youtu.be/fDwItecEzFk");
+  window.location.replace("https://www.youtube.com/embed/fDwItecEzFk");
 }

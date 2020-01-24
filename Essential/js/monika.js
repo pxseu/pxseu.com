@@ -29,9 +29,10 @@ document.addEventListener('keydown', function(e) {
 });
 var monikaAudio = new Audio("Essential/media/monika.mp3");
 function monikaCodePassed() { 
+  Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami"));
   Array.from(document.querySelectorAll(".video")).forEach(el => el.classList.add("videoshow"));
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("videoplay"));
-  setTimeout(function(){document.getElementById("video").play();},130);
+  setTimeout(function(){document.getElementById("video").play();},120);
   document.getElementById("video").muted = true;
   monikaAudio.volume = 0.5;  
   monikaAudio.play();
