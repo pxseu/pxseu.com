@@ -34,6 +34,7 @@ function menubtn(){
     Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.toggle("show"));
 }
 function hidden() {
+  Array.from(document.querySelectorAll(".hidden")).forEach(el => el.classList.add("slowmoshow"));  
   setTimeout(function(){Array.from(document.querySelectorAll(".hidden")).forEach(el => el.classList.remove("hidden")); },200);
   setTimeout(function(){Array.from(document.querySelectorAll(".slowmoshow")).forEach(el => el.classList.remove("slowmoshow")); },1300);
 }
