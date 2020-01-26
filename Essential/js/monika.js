@@ -30,6 +30,8 @@ document.addEventListener('keydown', function(e) {
 var monikaAudio = new Audio("Essential/media/monika.mp3");
 function monikaCodePassed() { 
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami"));
+  Array.from(document.querySelectorAll(".box")).forEach(el => el.classList.remove("box-show"));
+  Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.remove("show"));
   Array.from(document.querySelectorAll(".video")).forEach(el => el.classList.add("videoshow"));
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("videoplay"));
   setTimeout(function(){document.getElementById("video").play();},120);
