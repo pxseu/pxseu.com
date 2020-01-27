@@ -36,7 +36,7 @@ function konamiCodePassed() {
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling"));
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("monika"));
     Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
-    Array.from(document.querySelectorAll(".text2, p a strong, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply")).forEach(el => el.classList.add("pink"));
+    Array.from(document.querySelectorAll(".text2, p a strong, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock")).forEach(el => el.classList.add("pink"));
     alert("Cheats Activated");
     document.getElementById( "clickmebtn" ).setAttribute( "onClick", "dvabtn()" );
     document.getElementById( "clickmebtn" ).innerHTML = "D.Va";  
