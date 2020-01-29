@@ -14,7 +14,7 @@ body{
   top: 20px;
   right: 40.5px;
   color: white;
-  font-size: 40px;
+  font-size: 46px;
   cursor: pointer;
   transition: 0.4s;
   z-index: 9999;
@@ -82,7 +82,7 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 116px;
+  width: 126px;
   background-color: #f9f6f6;
   position: absolute;
   top: 80px;
@@ -102,14 +102,14 @@ li a {
 li a:hover {
   background-color: #6ab04c;
   border-radius: 28px;
-  font-size: 140%;
+  font-size: 150%;
   transition-duration: 0.2s;
 }
 li a:active {
   transform: translateY(4px);
 }
 a {
-  font-size: 115%;
+  font-size: 125%;
   letter-spacing: 1px;
   cursor: pointer;
 }
@@ -118,7 +118,7 @@ a {
   top: 20px;
   left: 43px;
   color: white;
-  font-size: 40px;
+  font-size: 46px;
   cursor: pointer;
   transition: 0.4s;
 }
@@ -130,7 +130,7 @@ a {
 }
 .show {
   position: absolute;
-  left: 3px;
+  left: 1px;
   filter: none;
 }
 
