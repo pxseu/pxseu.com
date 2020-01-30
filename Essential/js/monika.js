@@ -39,7 +39,7 @@ function monikaCodePassed() {
   monikaAudio.volume = 0.5;  
   monikaAudio.play();
   Array.from(document.querySelectorAll(".btn , .menubtn , button , .container, .clock")).forEach(el => el.classList.add("hideall","slowmoshow"));
-
+  $('#zrtwogifbox').remove();
 
   document.getElementById("video").onended = function(){
     alert("Just Monika.");
@@ -53,7 +53,6 @@ function monikaCodePassed() {
       Array.from(document.querySelectorAll(".btn, .menubtn, button1, .container, .clock")).forEach(el => el.classList.remove("slowmoshow"));
     },2300);
   }
- document.getElementById("zrtwogifbox").remove();
 }
 function pinker2() {
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami"));

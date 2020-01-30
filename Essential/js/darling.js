@@ -57,6 +57,7 @@ function pinker1(){
   Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
   Array.from(document.querySelectorAll(".text2, p a strong, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock")).forEach(el => el.classList.add("pink"));
   document.getElementById( "clickmebtn" ).setAttribute( "onClick", "ditfxunpause()" );
+  $('#zrtwogifbox').remove();
   var zrtsugifmake = document.createElement("IMG");
   zrtsugifmake.id = "zrtwogifbox";
   zrtsugifmake.src='Essential/media/zrtsu_static.gif';
