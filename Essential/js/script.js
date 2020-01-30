@@ -20,7 +20,7 @@ $('.apply').click(function(){
   }
 
   if (error > 0) {
-      alert("Wybranie koloru białego może utrudnić prawidłowe używanie strony!")
+      alert("White Theme can brake the websites look!")
   }
   else {
   $('body').css("background",$('#hex').val());
