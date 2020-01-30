@@ -193,21 +193,21 @@ body.monika {
   background-size: cover;
   transition-duratio: 4s;
 }
-.clock {
-  text-align:center;
-  width:auto;
-  height:auto;
-  color: white;
-  background-color: rgba(0,0,0,0.3);
+.zrtwogifbox {
+  transform: translate(-50%,-50%);
   position: absolute;
-  right: 13px;
-  top: 780px;
-  font-family:sans-serif;
-  font-size:36px;
-  transition: 0.2s;
+  top: 600px;
+  left: 50%;
+  height: 250px;
+  width: 430px;
+  border-style: solid;
+  border-color: pink;
+  transition-duration: 0.5s;
+  opacity: 0.5;
 }
-.clock.pink {
-  color: pink;
+.pinkshadow {
+  box-shadow: 0 2px 16px 0 pink,0 0px 50px 0 pink;
+  opacity: 1;
 }
 .video {position: absolute; top: -300%; left: 0%; width: 100%; height: 100%;}
 .videoshow {top: 0;}
