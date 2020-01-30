@@ -40,6 +40,7 @@ function konamiCodePassed() {
     alert("Cheats Activated");
     document.getElementById( "clickmebtn" ).setAttribute( "onClick", "dvabtn()" );
     document.getElementById( "clickmebtn" ).innerHTML = "D.Va";  
+    document.getElementById("zrtwogifbox").remove();
  }
 }
 function dvabtn() {
