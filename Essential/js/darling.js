@@ -35,7 +35,7 @@ function darlingCodePassed() {
   audio2.onended=function(){
   alert("Darling I found you!");
   pinker1();
-  document.getElementById( "clickmebtn" ).innerHTML = "Darling!";  
+  $('#clickmebtn').html("Darling!");
  }
 }
 
@@ -56,14 +56,16 @@ function pinker1(){
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami","monika"));
   Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
   Array.from(document.querySelectorAll(".text2, p a strong, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock")).forEach(el => el.classList.add("pink"));
-  document.getElementById( "clickmebtn" ).setAttribute( "onClick", "ditfxunpause()" );
+  $('#clickmebtn').attr("onClick", "ditfxunpause()" );
   $('#zrtwogifbox').remove();
+  if ($('#clickmebtn').length) {
   var zrtsugifmake = document.createElement("IMG");
   zrtsugifmake.id = "zrtwogifbox";
   zrtsugifmake.src='Essential/media/zrtsu_static.gif';
   zrtsugifmake.setAttribute( "onClick", "zrtsu_change()" );
   zrtsugifmake.classList.add("zrtwogifbox");
   document.body.appendChild(zrtsugifmake);
+  }
 
 }
 function zrtsu_change(){
