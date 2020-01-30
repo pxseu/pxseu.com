@@ -53,6 +53,7 @@ function monikaCodePassed() {
       Array.from(document.querySelectorAll(".btn, .menubtn, button1, .container, .clock")).forEach(el => el.classList.remove("slowmoshow"));
     },2300);
   }
+ document.getElementById("zrtwogifbox").remove();
 }
 function pinker2() {
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami"));
