@@ -193,7 +193,7 @@ body.monika {
   background-size: cover;
   transition-duratio: 4s;
 }
-.zrtwogifbox {
+.gifbox {
   transform: translate(-50%,-50%);
   position: absolute;
   top: 600px;
@@ -209,7 +209,7 @@ body.monika {
   box-shadow: 0 2px 16px 0 pink,0 0px 50px 0 pink;
   opacity: 1;
 }
-.video {position: absolute; top: -300%; left: 0%; width: 100%; height: 100%;}
+.video {position: absolute; top: -300%; left: 0%; width: 100%; height: 100%; z-index: 999;}
 .videoshow {top: 0;}
 .videoplay {background-color: black; cursor: progress;}
 .hideall {position: absolute; top: -100px;}

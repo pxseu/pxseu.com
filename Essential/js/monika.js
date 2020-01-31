@@ -27,19 +27,21 @@ document.addEventListener('keydown', function(e) {
     monikaCodePosition = 0;
   }
 });
+
 var monikaAudio = new Audio("Essential/media/monika.mp3");
+
 function monikaCodePassed() { 
+  monikavideomake();
+  document.getElementById("video").muted = true;
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami"));
   Array.from(document.querySelectorAll(".box")).forEach(el => el.classList.remove("box-show"));
   Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.remove("show"));
-  Array.from(document.querySelectorAll(".video")).forEach(el => el.classList.add("videoshow"));
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("videoplay"));
-  setTimeout(function(){document.getElementById("video").play();},120);
-  document.getElementById("video").muted = true;
   monikaAudio.volume = 0.5;  
+  setTimeout(function(){document.getElementById("video").play();},120);
   monikaAudio.play();
   Array.from(document.querySelectorAll(".btn , .menubtn , button , .container, .clock")).forEach(el => el.classList.add("hideall","slowmoshow"));
-  $('#zrtwogifbox').remove();
+  $('#gifbox').remove();
 
   document.getElementById("video").onended = function(){
     alert("Just Monika.");
@@ -78,4 +80,11 @@ document.onload = function(){
     document.getElementById("video").pause(); 
     document.getElementById("video").currentTime=0;
     },230);
+}
+function monikavideomake() {
+  var videomake = document.createElement("VIDEO");
+  videomake.id = "video";
+  videomake.src='Essential/media/monika.mp4';
+  videomake.classList.add("video","videoshow");
+  document.body.appendChild(videomake);
 }

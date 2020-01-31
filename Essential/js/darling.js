@@ -60,16 +60,16 @@ function pinker1(){
   $('#zrtwogifbox').remove();
   if ($('#clickmebtn').length) {
   var zrtsugifmake = document.createElement("IMG");
-  zrtsugifmake.id = "zrtwogifbox";
+  zrtsugifmake.id = "gifbox";
   zrtsugifmake.src='Essential/media/zrtsu_static.gif';
   zrtsugifmake.setAttribute( "onClick", "zrtsu_change()" );
-  zrtsugifmake.classList.add("zrtwogifbox");
+  zrtsugifmake.classList.add("gifbox");
   document.body.appendChild(zrtsugifmake);
   }
 
 }
 function zrtsu_change(){
-  var zrtsugifbox = document.getElementById('zrtwogifbox');
+  var zrtsugifbox = document.getElementById('gifbox');
   zrtsugifbox.src='Essential/media/zrtsu.gif';
   zrtsugifbox.setAttribute( "onClick", "" );
   zrtsugifbox.classList.add("pinkshadow");
