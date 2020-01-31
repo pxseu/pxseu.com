@@ -34,10 +34,11 @@ body{
   background: #c0c6c0;
   width: 400px;
   transition: 1s;
-  z-index: 9999;
+  z-index: 10000;
 }
 .box-show{
   top: 50%;
+  box-shadow: 0 0px 40px 0 #6ab04c,0 0px 100px 10px #6ab04c;
 }
 .box h2{
   background: #6ab04c;
@@ -160,6 +161,9 @@ li a.pink:hover {
 }
 .apply.pink {
   background-color: pink;
+}
+.box-show.pink {
+  box-shadow: 0 0px 40px 0 pink,0 0px 100px 10px pink;
 }
 body.konami {
   background-image: url('https://w.wallhaven.cc/full/j5/wallhaven-j5qlly.jpg');
