@@ -38,3 +38,10 @@ function hidden() {
   setTimeout(function(){Array.from(document.querySelectorAll(".hidden")).forEach(el => el.classList.remove("hidden")); },200);
   setTimeout(function(){Array.from(document.querySelectorAll(".slowmoshow")).forEach(el => el.classList.remove("slowmoshow")); },1300);
 }
+/*
+document.addEventListener("keydown", event => {
+  if (event.isComposing || event.keyCode === 83) {
+    Array.from(document.querySelectorAll(".box")).forEach(el => el.classList.toggle("box-show"));   
+  } 
+});
+*/
