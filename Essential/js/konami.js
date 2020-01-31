@@ -41,8 +41,23 @@ function konamiCodePassed() {
     $('#clickmebtn').attr("onClick", "dvabtn()");
     $('#clickmebtn').innerHTML = "D.Va";  
     $('#gifbox').remove();
+    if ($('#clickmebtn').length) {
+  	var gifmake = document.createElement("IMG");
+  	gifmake.id = "gifbox";
+  	gifmake.src='Essential/media/dva_static.gif';
+  	gifmake.setAttribute( "onClick", "dva_change()" );
+  	gifmake.classList.add("gifbox");
+  	document.body.appendChild(gifmake);
+  }
  }
 }
 function dvabtn() {
   window.location.replace("https://www.youtube.com/embed/fDwItecEzFk");
 }
+function dva_change(){
+  var zrtsugifbox = document.getElementById('gifbox');
+  zrtsugifbox.src='Essential/media/dva.gif';
+  zrtsugifbox.setAttribute( "onClick", "" );
+  zrtsugifbox.classList.add("pinkshadow");
+}
+
