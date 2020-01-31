@@ -57,14 +57,14 @@ function pinker1(){
   Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
   Array.from(document.querySelectorAll(".text2, p a strong, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock")).forEach(el => el.classList.add("pink"));
   $('#clickmebtn').attr("onClick", "ditfxunpause()" );
-  $('#zrtwogifbox').remove();
+  $('#gifbox').remove();
   if ($('#clickmebtn').length) {
-  var zrtsugifmake = document.createElement("IMG");
-  zrtsugifmake.id = "gifbox";
-  zrtsugifmake.src='Essential/media/zrtsu_static.gif';
-  zrtsugifmake.setAttribute( "onClick", "zrtsu_change()" );
-  zrtsugifmake.classList.add("gifbox");
-  document.body.appendChild(zrtsugifmake);
+  	var zrtsugifmake = document.createElement("IMG");
+  	zrtsugifmake.id = "gifbox";
+  	zrtsugifmake.src='Essential/media/zrtsu_static.gif';
+  	zrtsugifmake.setAttribute( "onClick", "zrtsu_change()" );
+  	zrtsugifmake.classList.add("gifbox");
+  	document.body.appendChild(zrtsugifmake);
   }
 
 }
