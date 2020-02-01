@@ -52,6 +52,7 @@ function ditfxunpause(){
     document.getElementById( "clickmebtn" ).setAttribute( "onClick", "ditfxpause()" );
 }
 function pinker1(){
+  $('body').css("background-image", "");
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("darling"));
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami","monika"));
   Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));

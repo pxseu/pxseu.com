@@ -35,18 +35,18 @@
       <li><a href="About.html">About</a></li>
     </ul>
 
-    <div class="btn hidden"><i class="fas fa-cog"></i></div>
-
-    <div class="box">
-      <h2>Enter a color</h2>
-       <div class="box-c">
-          <div class="txtb">
-          <input type="text" placeholder="#000000" id="hex">
-            <div class="prev"></div>
-            </div>
-          <button class="apply">Apply</button>
-        </div>
-      </div>
+	<div class="btn hidden"><i class="fas fa-cog"></i></div>
+	<div class="box">
+		<h2>Enter a color</h2>
+		<div class="box-c">
+			<p class="chckboxtxt">Use Image Url:<label class="checkbox"><input type="checkbox" id="checkbox" onclick="imgchck()"><span class="checkmark"></span></label></p>
+			<div class="txtb"> 
+				<input type="text" placeholder="#000000" id="hex">
+					<div class="prev"></div>
+			</div>
+			<button class="apply" onclick="colorpicker()">Apply</button>
+		</div>
+	</div>
 
      <script src="Essential/js/script.js"></script>
 	 <script src="Essential/js/konami.js"></script>

@@ -32,6 +32,7 @@ function konamiCodePassed() {
   audio.play();
 
   audio.onended=function(){
+    $('body').css("background-image", "");
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("konami"));
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling"));
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("monika"));
