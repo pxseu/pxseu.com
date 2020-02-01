@@ -23,12 +23,9 @@ $('.apply').click(function(){
       alert("White Theme can brake the websites look!")
   }
   else {
-  $('body').css("background",$('#hex').val());
-  $('.text1').css("background",$('#hex').val());
-  $('.button1:active').css("background-color",$('#hex').val());
-  $('li a:hover').css("background-color",$('#hex').val());
-  $(".box").toggleClass("box-show");
-  }
+    $('body, .text1, .button1:active, li a:hover').css("background",$('#hex').val());
+    $(".box").toggleClass("box-show");
+}
 })
 function menubtn(){
     Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.toggle("show"));
@@ -46,7 +43,6 @@ document.addEventListener("keyup", event => {
 	else {Array.from(document.querySelectorAll(".box")).forEach(el => el.classList.toggle("box-show"));   }
   } 
 });
-
 document.addEventListener("keyup", event => {
   if (event.iscomposing || event.keyCode === 88) {
   	if ($('#video').length) {alert("Do not disturb!");}
