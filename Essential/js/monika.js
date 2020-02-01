@@ -49,7 +49,7 @@ function monikaCodePassed() {
     document.getElementById( "clickmebtn" ).innerHTML = "Just Monika.";  
     Array.from(document.querySelectorAll(".button1")).forEach(el => el.classList.add("monikabtn"));
     Array.from(document.querySelectorAll(".btn , .menubtn , .apply , .container , .clock")).forEach(el => el.classList.remove("hideall"));
-    Array.from(document.querySelectorAll(".video")).forEach(el => el.classList.remove("videoshow"));
+    $('#video').remove();
 
     setTimeout(function(){
       Array.from(document.querySelectorAll(".btn, .menubtn, button1, .container, .clock")).forEach(el => el.classList.remove("slowmoshow"));
