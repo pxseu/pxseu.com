@@ -40,8 +40,10 @@ function hidden() {
 function imgchck(){
 if (document.getElementById("checkbox").checked == true){
     $('.apply').attr("onClick", "imgshow()");
+    document.getElementById("hex").placeholder = "https://somewebsite/image.png";
   } else {
-  $('.apply').attr("onClick", "colorpicker()");
+    $('.apply').attr("onClick", "colorpicker()");
+    document.getElementById("hex").placeholder = "#000000";
   }
 }
 
