@@ -246,24 +246,18 @@ body.konami {
   justify-content: center;
   left: 50%;
   background-position: top center;
-  background-repeat:no-repeat;
-  background-size: cover;
 }
 body.darling {
   background-image: url('https://images.hdqwalls.com/download/4k-zero-two-darling-in-the-franxx-w4-1400x900.jpg');
   justify-content: center;
   left: 50%;
   background-position: top center;
-  background-repeat:no-repeat;
-  background-size: cover;
 }
 body.monika {
   background-image: url('https://images3.alphacoders.com/887/887715.png');
   justify-content: center;
   left: 50%;
   background-position: top center;
-  background-repeat:no-repeat;
-  background-size: cover;
   transition-duratio: 4s;
 }
 .gifbox {
