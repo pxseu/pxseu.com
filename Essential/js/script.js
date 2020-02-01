@@ -8,7 +8,8 @@ $('#hex').keyup(function(){
   $('.prev').css("background",$('#hex').val());
 });
 
-$('.apply').click(function(){
+function colorpicker(){
+
   var restrictedWords = new Array("white","rgb(255,255,255)","#ffffff","rgba(255,255,255,1)","rgba(0,0,0,0)");
   var txtInput = document.getElementById("hex").value;
   var error = 0;
@@ -26,7 +27,7 @@ $('.apply').click(function(){
     $('body, .text1, .button1:active, li a:hover').css("background",$('#hex').val());
     $(".box").toggleClass("box-show");
 }
-})
+}
 function menubtn(){
     Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.toggle("show"));
 }
@@ -35,6 +36,21 @@ function hidden() {
   setTimeout(function(){Array.from(document.querySelectorAll(".hidden")).forEach(el => el.classList.remove("hidden")); },200);
   setTimeout(function(){Array.from(document.querySelectorAll(".slowmoshow")).forEach(el => el.classList.remove("slowmoshow")); },1300);
 }
+
+function imgchck(){
+if (document.getElementById("checkbox").checked == true){
+    $('.apply').attr("onClick", "imgshow()");
+  } else {
+  $('.apply').attr("onClick", "colorpicker()");
+  }
+}
+
+function imgshow(){ 
+    var imgurl = 'url("' + document.getElementById("hex").value + '")';
+    $('body').css("background-image", imgurl);
+    $('.text1').css("background-color", "rgba(0,0,0,0)");
+    $(".box").toggleClass("box-show");
+}  
 
 /* seemes useless ngl
 document.addEventListener("keyup", event => {
