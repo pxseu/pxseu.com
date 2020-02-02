@@ -87,3 +87,10 @@ document.addEventListener("keyup", event => {
   } 
 });
 */
+document.addEventListener("keyup", event => {
+  if (event.iscomposing || event.keyCode === 123) {
+    console.log("%cWARNING!","color: red; font-size: 40px;");
+    console.log("%cTHIS CONSOLE CAN BE USED FOR SELF XSS.","color: BLACK; font-size: 25px;");
+    console.log("%cIF YOU DO NOT KNOW WHAT YOU ARE DOING DO NOT PASTE ANYTHING HERE!","color: BLACK; font-size: 25px;");
+  } 
+});
