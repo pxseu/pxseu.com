@@ -7,7 +7,10 @@ $('.btn').click(function(){
 $('#hex').keyup(function(){
   $('.prev').css("background",$('#hex').val());
 });
-
+function inputselect() {
+  document.getElementById('hex').focus();
+  document.getElementById('hex').select();
+}
 function colorpicker(){
 
   var restrictedWords = new Array("white","rgb(255,255,255)","#ffffff","rgba(255,255,255,1)","rgba(0,0,0,0)");
@@ -24,6 +27,7 @@ function colorpicker(){
       alert("White Theme can brake the websites look!")
   }
   else {
+    $("body").removeAttr("style");
     $('body, .text1, .button1:active, li a:hover').css("background",$('#hex').val());
     $(".box").toggleClass("box-show");
 }
@@ -41,14 +45,17 @@ function imgchck(){
 if (document.getElementById("checkbox").checked == true){
     $('.apply').attr("onClick", "imgshow()");
     document.getElementById("hex").placeholder = "https://somewebsite/image.png";
+    document.getElementById("hex").defaultValue = 'https://w.wallhaven.cc/full/39/wallhaven-39gogv.jpg';	
   } else {
     $('.apply').attr("onClick", "colorpicker()");
     document.getElementById("hex").placeholder = "#000000";
+    document.getElementById("hex").defaultValue = '';
   }
 }
 
 function imgshow(){ 
     var imgurl = 'url("' + document.getElementById("hex").value + '")';
+    $("body").removeAttr("style");
     $('body').css("background-image", imgurl);
     $('.text1').css("background-color", "rgba(0,0,0,0)");
     $(".box").toggleClass("box-show");
