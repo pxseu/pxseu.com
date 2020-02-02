@@ -9,6 +9,10 @@ body{
   cursor: context-menu;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  justify-content: center;
+  left: 50%;
+  background-position: top center;
 }
 
 .btn{
@@ -243,21 +247,12 @@ body.konami {
   https://w.wallhaven.cc/full/8x/wallhaven-8xlkv1.jpg
   https://w.wallhaven.cc/full/39/wallhaven-39g113.jpg
   */
-  justify-content: center;
-  left: 50%;
-  background-position: top center;
 }
 body.darling {
   background-image: url('https://images.hdqwalls.com/download/4k-zero-two-darling-in-the-franxx-w4-1400x900.jpg');
-  justify-content: center;
-  left: 50%;
-  background-position: top center;
 }
 body.monika {
   background-image: url('https://images3.alphacoders.com/887/887715.png');
-  justify-content: center;
-  left: 50%;
-  background-position: top center;
   transition-duratio: 4s;
 }
 .gifbox {
