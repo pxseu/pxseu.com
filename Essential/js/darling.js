@@ -53,7 +53,7 @@ function ditfxunpause(){
 }
 function pinker1(){
   $('body').css("background-image", "");
-  if ($(window).width() < 700) {
+  if ($(window).width() < 800) {
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("darlingm"));
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling"));
   }
@@ -66,7 +66,7 @@ function pinker1(){
     Array.from(document.querySelectorAll(".text2,.email, .discord, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock, .box")).forEach(el => el.classList.add("pink"));
     $('#clickmebtn').attr("onClick", "ditfxunpause()" );
     $('#gifbox').remove();
-    if (($('#clickmebtn').length)&&($(window).width() > 700)) {
+    if (($('#clickmebtn').length)&&($(window).width() > 800)) {
           var zrtsugifmake = document.createElement("IMG");
           zrtsugifmake.id = "gifbox";
           zrtsugifmake.src='Essential/media/zrtsu_static.gif';

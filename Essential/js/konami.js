@@ -33,7 +33,7 @@ function konamiCodePassed() {
 
   audio.onended=function(){
     $('body').css("background-image", "");
-    if ($(window).width() < 700) {
+    if ($(window).width() < 800) {
       Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("konamim"));
       Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami"));
     }
@@ -49,7 +49,7 @@ function konamiCodePassed() {
     $('#clickmebtn').attr("onClick", "dvabtn()");
     $('#clickmebtn').innerHTML = "D.Va";  
     $('#gifbox').remove();
-    if (($('#clickmebtn').length)&&($(window).width() > 700)) {
+    if (($('#clickmebtn').length)&&($(window).width() > 800)) {
   	var gifmake = document.createElement("IMG");
   	gifmake.id = "gifbox";
   	gifmake.src='Essential/media/dva_static.gif';
