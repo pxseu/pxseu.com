@@ -63,7 +63,6 @@ function update(){
         $(this).css('backgroundPosition', '50% ' + Math.round((height - pos) * velocity) + 'px'); 
     }); 
 };
-
 $(window).bind('scroll', update); 
 
 
