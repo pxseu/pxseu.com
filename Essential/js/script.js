@@ -52,7 +52,20 @@ function imgshow(){
     $('body').css("background-image", imgurl);
     $('.text1').css("background-color", "rgba(0,0,0,0)");
     $(".box").toggleClass("box-show");
-}  
+} 
+
+var velocity = 0.2;
+function update(){ 
+    var pos = $(window).scrollTop(); 
+    $('body').each(function() { 
+        var $element = $(this);
+        var height = $element.height()-18;
+        $(this).css('backgroundPosition', '50% ' + Math.round((height - pos) * velocity) + 'px'); 
+    }); 
+};
+
+$(window).bind('scroll', update); 
+
 
 /* seemes useless ngl
 document.addEventListener("keyup", event => {
