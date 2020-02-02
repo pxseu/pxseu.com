@@ -34,7 +34,7 @@ function monikaCodePassed() {
   $('body').css("background-image", ""); 
   monikavideomake();
   document.getElementById("video").muted = true;
-  Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami"));
+  Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami","darlingm","konamim"));
   Array.from(document.querySelectorAll(".box")).forEach(el => el.classList.remove("box-show"));
   Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.remove("show"));
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("videoplay"));

@@ -53,21 +53,28 @@ function ditfxunpause(){
 }
 function pinker1(){
   $('body').css("background-image", "");
-  Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("darling"));
-  Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami","monika"));
-  Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
-  Array.from(document.querySelectorAll(".text2,.email, .discord, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock, .box")).forEach(el => el.classList.add("pink"));
-  $('#clickmebtn').attr("onClick", "ditfxunpause()" );
-  $('#gifbox').remove();
-  if ($('#clickmebtn').length) {
-  	var zrtsugifmake = document.createElement("IMG");
-  	zrtsugifmake.id = "gifbox";
-  	zrtsugifmake.src='Essential/media/zrtsu_static.gif';
-  	zrtsugifmake.setAttribute( "onClick", "zrtsu_change()" );
-  	zrtsugifmake.classList.add("gifbox");
-  	document.body.appendChild(zrtsugifmake);
+  if ($(window).width() < 700) {
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("darlingm"));
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling"));
   }
-
+  else { 
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("darling"));
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darlingm"));
+  }
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami","monika"));
+    Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
+    Array.from(document.querySelectorAll(".text2,.email, .discord, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock, .box")).forEach(el => el.classList.add("pink"));
+    $('#clickmebtn').attr("onClick", "ditfxunpause()" );
+    $('#gifbox').remove();
+    if (($('#clickmebtn').length)&&($(window).width() > 600)) {
+          var zrtsugifmake = document.createElement("IMG");
+          zrtsugifmake.id = "gifbox";
+          zrtsugifmake.src='Essential/media/zrtsu_static.gif';
+          zrtsugifmake.setAttribute( "onClick", "zrtsu_change()" );
+          zrtsugifmake.classList.add("gifbox");
+          document.body.appendChild(zrtsugifmake);
+  
+ } 
 }
 function zrtsu_change(){
   var zrtsugifbox = document.getElementById('gifbox');
