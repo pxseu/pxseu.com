@@ -45,7 +45,7 @@ function imgchck(){
 if (document.getElementById("checkbox").checked == true){
     $('.apply').attr("onClick", "imgshow()");
     document.getElementById("hex").placeholder = "https://somewebsite/image.png";
-    document.getElementById("hex").defaultValue = 'https://w.wallhaven.cc/full/39/wallhaven-39gogv.jpg';	
+    document.getElementById("hex").defaultValue = 'https://w.wallhaven.cc/full/lm/wallhaven-lm9oqy.jpg';	
   } else {
     $('.apply').attr("onClick", "colorpicker()");
     document.getElementById("hex").placeholder = "#000000";
@@ -57,7 +57,7 @@ function imgshow(){
     var imgurl = 'url("' + document.getElementById("hex").value + '")';
     $("body").removeAttr("style");
     $('body').css("background-image", imgurl);
-    $('.text1').css("background-color", "rgba(0,0,0,0)");
+    $('.text1, .text2').css("background-color", "rgba(0,0,0,0.4)");
     $(".box").toggleClass("box-show");
 } 
 
