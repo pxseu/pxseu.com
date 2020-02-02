@@ -33,8 +33,15 @@ function konamiCodePassed() {
 
   audio.onended=function(){
     $('body').css("background-image", "");
-    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("konami"));
-    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling"));
+    if ($(window).width() < 700) {
+      Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("konamim"));
+      Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami"));
+    }
+    else { 
+      Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("konami"));
+      Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konamim"));
+    }
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","darlingm","monika"));
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("monika"));
     Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
     Array.from(document.querySelectorAll(".text2, .email, .discord, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock, .box")).forEach(el => el.classList.add("pink"));
@@ -42,7 +49,7 @@ function konamiCodePassed() {
     $('#clickmebtn').attr("onClick", "dvabtn()");
     $('#clickmebtn').innerHTML = "D.Va";  
     $('#gifbox').remove();
-    if ($('#clickmebtn').length) {
+    if (($('#clickmebtn').length)&&($(window).width() > 600)) {
   	var gifmake = document.createElement("IMG");
   	gifmake.id = "gifbox";
   	gifmake.src='Essential/media/dva_static.gif';
