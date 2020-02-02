@@ -57,7 +57,8 @@ function imgshow(){
     var imgurl = 'url("' + document.getElementById("hex").value + '")';
     $("body").removeAttr("style");
     $('body').css("background-image", imgurl);
-    $('.text1, .text2').css("background-color", "rgba(0,0,0,0.4)");
+    $('.text1, .text2').css("background-color", "rgba(0,0,0,0.2)");
+    $('.container').css("width", "auto");
     $(".box").toggleClass("box-show");
 } 
 
