@@ -49,7 +49,7 @@ function konamiCodePassed() {
     $('#clickmebtn').attr("onClick", "dvabtn()");
     $('#clickmebtn').innerHTML = "D.Va";  
     $('#gifbox').remove();
-    if (($('#clickmebtn').length)&&($(window).width() > 600)) {
+    if (($('#clickmebtn').length)&&($(window).width() > 700)) {
   	var gifmake = document.createElement("IMG");
   	gifmake.id = "gifbox";
   	gifmake.src='Essential/media/dva_static.gif';
