@@ -142,7 +142,6 @@
 .text1.transparent {	background-color: rgba(0, 0, 0, 0);}
 .text2.pink {	color: pink;	background-color: rgba(0, 0, 0, 0.2);  }
 .button1.pink {	color: pink;}
-.button1.pink:hover {	background-color: pink;}
+.button1.pink:hover {	background-color: pink;	color: white;}
 .button1.pink:active {	box-shadow: 0 2px 16px 0 pink,0 0px 50px 0 pink;}
 .button1.pink::before{	background: pink;}
-.button1.pink:hover {	color: white;}
