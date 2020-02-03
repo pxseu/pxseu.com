@@ -49,6 +49,58 @@
   background-color: rgba(0, 0, 0, 0.2);
   color: pink;
 }
+.playlist {
+  background-color: white;
+  color: grey;
+  border: 2.3px solid #000000;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  width: 200px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: "montserrat";
+  position: relative;
+  overflow: hidden;
+  top: 700px;
+}
+.playlist::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: #6ab04c;
+  z-index: -1;
+  transition: 0.8s;
+}
+.playlist {
+  position: absolute;
+  color: #6ab04c;
+}
+.playlist::before {
+  top: 0;
+  border-radius: 0 0 50% 50%;
+}
+.playlist:hover {
+  color: white;
+}
+.playlist:hover::before {
+  height: 180%;
+}
+.playlist:active {
+  box-shadow: 0 2px 16px 0 #6ab04c,0 0px 50px 0 #6ab04c;
+}
 
 .discord.pink {color: pink}
 .email.pink{color: pink;}
+.playlist.pink {	color: pink;}
+.playlist.pink:hover {	background-color: pink;	color: white;}
+.playlist.pink:active {	box-shadow: 0 2px 16px 0 pink,0 0px 50px 0 pink;}
+.playlist.pink::before{	background: pink;}
