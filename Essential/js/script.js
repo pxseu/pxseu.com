@@ -63,7 +63,7 @@ function imgshow(){
     localStorage.setItem("bgimgsave", document.getElementById('hex').value);
     $("body").removeAttr("style");
     $('body').css("background-image", imgurl);
-    $('.text1, .text2').css("background-color", "rgba(0,0,0,0.2)");
+    $('.text1').css("background-image", "");$('.text1, .text2').addClass("pic");   
     $('.container').css("width", "auto");
     $(".box").toggleClass("box-show");
 } 
