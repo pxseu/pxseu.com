@@ -284,5 +284,4 @@ body.monika {
 .slowmoshow {transition-duration: 1s;}
 .button1.monikabtn {top: 500px;}
 .hidden {top: -400px;}
-.text1.pic {	background-color: rgba(0, 0, 0, 0.4);}  
-.text2.pic {	background-color: rgba(0, 0, 0, 0.4);} 
+.text1.pic, .text2.pic, .aboutme.pic {	background-color: rgba(0, 0, 0, 0.4);}  
