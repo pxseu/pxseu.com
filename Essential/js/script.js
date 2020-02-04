@@ -1,4 +1,6 @@
 // copyright@modman276.github.io  all rights reserved
+
+// usfl alert(localStorage.getItem("bgimgsave"))
 hidden();
 $('.btn').click(function(){
   $(".box").toggleClass("box-show");
