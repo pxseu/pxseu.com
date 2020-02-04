@@ -107,7 +107,7 @@ function bgload() {
     var imgurl = 'url("' + localStorage.getItem("bgimgsave") + '")';
     $("body").removeAttr("style");
     $('body, .text1').css("background-image", imgurl);
-    setTimeout(function(){$('.text1').css("background-image", "");$('.text1, .text2').addClass("pink");},2000);
+    setTimeout(function(){$('.text1').css("background-image", "");$('.text1, .text2').addClass("pic");},2000);
     $('.container').css("width", "auto");
 }
    else {
