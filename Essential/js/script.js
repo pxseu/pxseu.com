@@ -30,6 +30,8 @@ function colorpicker(){
     $("body").removeAttr("style");
     $('body, .text1, .button1:active, li a:hover').css("background",$('#hex').val());
     $(".box").toggleClass("box-show");
+    localStorage.setItem("bgcolorsave", document.getElementById('hex').value);
+    localStorage.setItem("imgchecksave", "0");
 }
 }
 function menubtn(){
@@ -45,7 +47,8 @@ function imgchck(){
 if (document.getElementById("checkbox").checked == true){
     $('.apply').attr("onClick", "imgshow()");
     document.getElementById("hex").placeholder = "https://somewebsite/image.png";
-    document.getElementById("hex").defaultValue = 'https://w.wallhaven.cc/full/lm/wallhaven-lm9oqy.jpg';	
+    document.getElementById("hex").defaultValue = 'https://w.wallhaven.cc/full/lm/wallhaven-lm9oqy.jpg';
+    localStorage.setItem("imgchecksave", "1");	
   } else {
     $('.apply').attr("onClick", "colorpicker()");
     document.getElementById("hex").placeholder = "#000000";
@@ -55,6 +58,7 @@ if (document.getElementById("checkbox").checked == true){
 
 function imgshow(){ 
     var imgurl = 'url("' + document.getElementById("hex").value + '")';
+    localStorage.setItem("bgimgsave", document.getElementById('hex').value);
     $("body").removeAttr("style");
     $('body').css("background-image", imgurl);
     $('.text1, .text2').css("background-color", "rgba(0,0,0,0.2)");
@@ -95,3 +99,20 @@ document.addEventListener("keyup", event => {
     console.log("%cIF YOU DO NOT KNOW WHAT YOU ARE DOING DO NOT PASTE ANYTHING HERE!","color: BLACK; font-size: 25px;");
   } 
 });
+if (typeof(Storage) !== "undefined") {
+  bgload();
+} else {}
+function bgload() {
+  if (localStorage.getItem("imgchecksave") == 1) {
+    var imgurl = 'url("' + localStorage.getItem("bgimgsave") + '")';
+    $("body").removeAttr("style");
+    $('body, .text1').css("background-image", imgurl);
+    setTimeout(function(){$('.text1').css("background-image", "");$('.text1, .text2').addClass("pink");},2000);
+    $('.container').css("width", "auto");
+}
+   else {
+   $("body").removeAttr("style");
+   $('body, .text1, .button1:active, li a:hover').css("background", localStorage.getItem("bgcolorsave"));
+  }
+$(".box").removeClass("box-show");
+}
