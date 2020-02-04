@@ -109,7 +109,7 @@ function bgload() {
     var imgurl = 'url("' + localStorage.getItem("bgimgsave") + '")';
     $("body").removeAttr("style");
     $('body').css("background-image", imgurl);
-    $('.text1, .text2').addClass("pic");
+    $('.text1, .text2, .aboutme').addClass("pic");
     $('.container').css("width", "auto");
     }
 
