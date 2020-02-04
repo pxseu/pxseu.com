@@ -4,4 +4,4 @@ function click1(){
 function click2(){
     window.location.href = "https://modman276.github.io/ZeroTwo/index.html";
 }
-window.onload = function() {$(".text2").hide(); $('.text2').removeClass("opacity");setTimeout(function(){$(".text2").fadeIn(300);},2100);}
+window.onload = function() {$(".text2").hide(); $('.text2').removeClass("opacity"); setTimeout(function(){$(".text2").fadeIn(300);},1660);}
