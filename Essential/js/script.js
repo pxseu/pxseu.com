@@ -109,15 +109,11 @@ function bgload() {
     var imgurl = 'url("' + localStorage.getItem("bgimgsave") + '")';
     $("body").removeAttr("style");
     $('body').css("background-image", imgurl);
-    if (($('#clickmebtn').length)){
-       $('.text1').css("background-image", imgurl);
-       setTimeout(function(){$('.text1').css("background-image", "");$('.text1, .text2').addClass("pic");},1700);
-    }
-    else {
-       $('.text1, .text2').addClass("pic");
-    }
+    $('.text1, .text2').addClass("pic");
     $('.container').css("width", "auto");
-}
+    }
+
+
    else {
    $("body").removeAttr("style");
    $('body, .text1, .button1:active, li a:hover').css("background", localStorage.getItem("bgcolorsave"));
