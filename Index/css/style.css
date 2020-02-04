@@ -140,6 +140,7 @@
   }
 }
 .text1.transparent {	background-color: rgba(0, 0, 0, 0);}
+.text1.pink {	background-color: rgba(0, 0, 0, 0.2);}  
 .text2.pink {	color: pink;	background-color: rgba(0, 0, 0, 0.2);  }
 .button1.pink {	color: pink;}
 .button1.pink:hover {	background-color: pink;	color: white;}
