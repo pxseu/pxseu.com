@@ -106,8 +106,14 @@ function bgload() {
   if (localStorage.getItem("imgchecksave") == 1) {
     var imgurl = 'url("' + localStorage.getItem("bgimgsave") + '")';
     $("body").removeAttr("style");
-    $('body, .text1').css("background-image", imgurl);
-    setTimeout(function(){$('.text1').css("background-image", "");$('.text1, .text2').addClass("pic");},2000);
+    $('body').css("background-image", imgurl);
+    if (($('#clickmebtn').length)){
+       $('.text1').css("background-image", imgurl);
+       setTimeout(function(){$('.text1').css("background-image", "");$('.text1, .text2').addClass("pic");},1700);
+    }
+    else {
+       $('.text1, .text2').addClass("pic");
+    }
     $('.container').css("width", "auto");
 }
    else {
