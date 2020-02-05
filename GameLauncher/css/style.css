@@ -21,6 +21,7 @@
   height: 96px;
   background-size:cover;
   opacity: 0.87;
+  filter: grayscale(0.7);
 }
 .button:hover {
   background-color: #333;
@@ -29,6 +30,7 @@
   opacity: 0.95;
   width: 220px;
   height: 105px;
+  filter: grayscale(0);
 }
 .button:active {
   box-shadow: 0 0px 16px 0 white,0 6px 50px 0 white;
