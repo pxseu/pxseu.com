@@ -24,10 +24,11 @@ body{
   cursor: pointer;
   transition: 0.4s;
   z-index: 9999;
+  opacity: 0.7;
 }
 .btn:hover{
   transform: rotate(90deg);
-  /*opacity: 0.7;*/
+  opacity: 1;
 }
 .btn:active {
   transform: translateY(4px);
@@ -195,9 +196,10 @@ a {
   font-size: 46px;
   cursor: pointer;
   transition: 0.4s;
+  opacity: 0.7;
 }
 .menubtn:hover {
-  opacity: 0.7;
+  opacity: 1; 
 }
 .menubtn:active {
   transform: translateY(4px);

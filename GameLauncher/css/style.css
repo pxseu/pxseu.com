@@ -8,8 +8,8 @@
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
   cursor: pointer;
   left: 44%;
   width: 200px;
@@ -17,70 +17,69 @@
   transform: translate(-50%,-50%);
   height: 96px;
   background-size:cover;
+  opacity: 0.87;
 }
 .button:hover {
   background-color: #333;
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-  opacity: 0.85;
+  opacity: 0.95;
+  width: 220px;
+  height: 105px;
 }
 .button:active {
   box-shadow: 0 0px 16px 0 white,0 6px 50px 0 white;
-  opacity: 0.7;
+  opacity: 1;
 }
 .button1 {
   position: absolute;
-  top: 340px;
+  top: 330px;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/730/header.jpg");
 }
 .button2 {
   position: absolute;
-  top: 460px;
+  top: 430px;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/271590/header.jpg");
 }
 .button3 {
   position: absolute;
-  top: 580px;
+  top: 530px;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/359550/header.jpg");
 }
 .button4 {
   position: absolute;
-  top: 700px;
+  top: 630px;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/431960/header.jpg");
 }
 .button5 {
   position: absolute;
-  top: 820px;
+  top: 730px;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/218620/header.jpg");
 }
 .button6 {
   position: absolute;
-  top: 940px;
+  top: 830px;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/365670/header.jpg");
 }
 .button7 {
   position: absolute;
-  top: 1060px;
+  top: 930px;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/92/header.jpg");
 }
 .button8 {
   position: absolute;
-  top: 1180px;
+  top: 1030px;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/236870/header.jpg");
 }
 .button9 {
   position: absolute;
-  top: 1300px;
+  top: 1130px;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/707680/header.jpg");
 }
 .button10 {
   position: absolute;
-  top: 1420px;
+  top: 1230px;
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/611500/header.jpg");
-}
-.button.l {
-}
-.button.r {
 }
 h1 {
   left: 50%;
