@@ -8,10 +8,11 @@
   display: inline-block;
   font-size: 20px;
   margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.2s; /* Safari */
+  transition-duration: 0.2s;
   cursor: pointer;
   width: 200px;
+  height: 55px;
   left: 50%;
   transform: translate(-50%,-50%);
   font-family: "montserrat";
@@ -39,6 +40,8 @@
 }
 .button1:hover {
   color: white;
+  width: 210px;
+  height: 65px;
 }
 .button1:hover::before {
   height: 180%;
