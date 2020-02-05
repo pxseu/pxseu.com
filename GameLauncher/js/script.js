@@ -7,3 +7,4 @@ function click6() {window.location.href = 'steam://rungameid/365670';}
 function click7() {window.location.href = 'steam://rungameid/92';}
 function click8() {window.location.href = 'steam://rungameid/236870';}
 function click9() {window.location.href = 'steam://rungameid/707680';}
+function click10() {window.location.href = 'steam://rungameid/611500';}
