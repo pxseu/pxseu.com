@@ -80,6 +80,12 @@
   left: calc(50% - var(--dist));
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/698780/header.jpg");
 }
+.buttonl8 {
+  position: absolute;
+  top: 1030px;
+  left: calc(50% - var(--dist));
+  background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/438100/header.jpg");
+}
 
 
 
@@ -126,6 +132,12 @@
   top: 930px;
   left: calc(50% + var(--dist));
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/267530/header.jpg");
+}
+.buttonr8 {
+  position: absolute;
+  top: 1030px;
+  left: calc(50% + var(--dist));
+  background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/292030/header.jpg");
 }
 
 h1 {

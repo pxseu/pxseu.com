@@ -6,7 +6,7 @@ function clickl4() {window.location.href = 'steam://rungameid/431960';}
 function clickl5() {window.location.href = 'steam://rungameid/218620';}
 function clickl6() {window.location.href = 'steam://rungameid/255710';}
 function clickl7() {window.location.href = 'steam://rungameid/698780';}
-
+function clickl8() {window.location.href = 'steam://rungameid/438100';}
 
 
 
@@ -18,3 +18,4 @@ function clickr4() {window.location.href = 'steam://rungameid/707680';}
 function clickr5() {window.location.href = 'steam://rungameid/611500';}
 function clickr6() {window.location.href = 'steam://rungameid/440';}
 function clickr7() {window.location.href = 'steam://rungameid/267530';}
+function clickr8() {window.location.href = 'steam://rungameid/292030';}
