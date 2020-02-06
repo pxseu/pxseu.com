@@ -27,7 +27,7 @@
   height: 0%;
   background: #6ab04c;
   z-index: -1;
-  transition: 0.8s;
+  transition: color 0.6s, width 0.8s, height 0.8s ;
 }
 .button1 {
   position: absolute;
@@ -125,26 +125,21 @@
 .text2{
   font-size: 30px;
   color: #6ab04c;
+  animation: showtext 3s 1;
   opacity: 1;
 }
-.text2.opacity {
-  opacity: 0;
-}
+
 /*   -webkit-text-stroke: 0.5px black; */
 
 @keyframes text {
-  0%{
-    color: black;
-    margin-bottom: -40px;
-  }
-  30%{
-    letter-spacing: 19.3px;
-    margin-bottom: -40px;
-  }
-  85%{
-    letter-spacing: 6px;
-    margin-bottom: -40px;
-  }
+  0%{color: black;	margin-bottom: -40px;}
+  30%{letter-spacing: 19.3px;	margin-bottom: -40px;}
+  85%{letter-spacing: 6px;	margin-bottom: -40px;}
+}
+@keyframes showtext {
+  0% {opacity:0;}
+  60% {opacity:0;}
+  100% {opacity: 1;}
 }
 
 .text1.transparent {	background-color: rgba(0, 0, 0, 0);}
