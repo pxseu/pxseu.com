@@ -14,7 +14,6 @@
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
   cursor: pointer;
-  left: 44%;
   width: 200px;
   left: 50%;
   transform: translate(-50%,-50%);

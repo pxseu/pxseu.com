@@ -31,7 +31,7 @@ document.addEventListener('keydown', function(e) {
 var monikaAudio = new Audio("Essential/media/monika.mp3");
 
 function monikaCodePassed() {
-  $('body').css("background-image", ""); 
+  $("body").removeAttr("style");
   monikavideomake();
   document.getElementById("video").muted = true;
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami","darlingm","konamim"));

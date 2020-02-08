@@ -285,7 +285,7 @@ body.monika {
 }
 .video {position: absolute; top: -300%; left: 0%; width: 100%; height: 100%; z-index: 999;}
 .videoshow {top: 0;}
-.videoplay {background-color: black; cursor: progress;}
+.videoplay {cursor: progress; background-color: black;}
 .hideall {position: absolute; top: -100px;}
 .slowmoshow {transition-duration: 1s;}
 .button1.monikabtn {top: 500px;}
