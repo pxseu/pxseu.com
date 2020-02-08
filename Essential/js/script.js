@@ -115,7 +115,6 @@ function bgload() {
 
 
    else {
-   $("body").removeAttr("style");
    $('body, .text1, .button1:active, li a:hover').css("background", localStorage.getItem("bgcolorsave"));
   }
 $(".box").removeClass("box-show");
