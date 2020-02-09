@@ -40,8 +40,8 @@
 }
 .button1:hover {
   color: white;
-  width: 210px;
-  height: 65px;
+  width: 220px;
+  height: 75px;
 }
 .button1:hover::before {
   height: 180%;

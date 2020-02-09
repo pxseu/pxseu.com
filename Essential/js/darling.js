@@ -30,12 +30,17 @@ document.addEventListener('keydown', function(e) {
 });
 
 function darlingCodePassed() {
-  var audio2 = new Audio('Essential/media/darling.mp3');
-  audio2.play();
-  audio2.onended=function(){
-  alert("Darling I found you!");
-  pinker1();
-  $('#clickmebtn').html("Darling!");
+  if ($("body").hasClass("monika")){
+  	alert("Do not even try!");
+  }
+  else {
+  	var audio2 = new Audio('Essential/media/darling.mp3');
+  	audio2.play();
+  	audio2.onended=function(){
+  	alert("Darling I found you!");
+ 	pinker1();
+  	$('#clickmebtn').html("Darling!");
+ }
  }
 }
 

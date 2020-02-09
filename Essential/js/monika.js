@@ -31,30 +31,35 @@ document.addEventListener('keydown', function(e) {
 var monikaAudio = new Audio("Essential/media/monika.mp3");
 
 function monikaCodePassed() {
-  $("body").removeAttr("style");
-  monikavideomake();
-  document.getElementById("video").muted = true;
-  Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami","darlingm","konamim"));
-  Array.from(document.querySelectorAll(".box")).forEach(el => el.classList.remove("box-show"));
-  Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.remove("show"));
-  Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("videoplay"));
-  monikaAudio.volume = 0.5;  
-  setTimeout(function(){document.getElementById("video").play();},120);
-  monikaAudio.play();
-  Array.from(document.querySelectorAll(".btn , .menubtn , button , .container, .clock")).forEach(el => el.classList.add("hideall","slowmoshow"));
-  $('#gifbox').remove();
+  if ($("body").hasClass("monika")){
+    alert("Silly you can't have two of me!");
+  }
+  else {
+    $("body").removeAttr("style");
+    monikavideomake();
+    document.getElementById("video").muted = true;
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami","darlingm","konamim"));
+    Array.from(document.querySelectorAll(".box")).forEach(el => el.classList.remove("box-show"));
+    Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.remove("show"));
+    Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("videoplay"));
+    monikaAudio.volume = 0.5;  
+    setTimeout(function(){document.getElementById("video").play();},120);
+    monikaAudio.play();
+    Array.from(document.querySelectorAll(".btn , .menubtn , button , .container, .clock")).forEach(el => el.classList.add("hideall","slowmoshow"));
+    $('#gifbox').remove();
 
-  document.getElementById("video").onended = function(){
-    alert("Just Monika.");
-    pinker2();
-    document.getElementById( "clickmebtn" ).innerHTML = "Just Monika.";  
-    Array.from(document.querySelectorAll(".button1")).forEach(el => el.classList.add("monikabtn"));
-    Array.from(document.querySelectorAll(".btn , .menubtn , .apply , .container , .clock")).forEach(el => el.classList.remove("hideall"));
-    $('#video').remove();
-
-    setTimeout(function(){
-      Array.from(document.querySelectorAll(".btn, .menubtn, button1, .container, .clock")).forEach(el => el.classList.remove("slowmoshow"));
-    },2300);
+    document.getElementById("video").onended = function(){
+      alert("Just Monika.");
+      pinker2();
+      document.getElementById( "clickmebtn" ).innerHTML = "Just Monika.";  
+      Array.from(document.querySelectorAll(".button1")).forEach(el => el.classList.add("monikabtn"));
+      Array.from(document.querySelectorAll(".btn , .menubtn , .apply , .container , .clock")).forEach(el => el.classList.remove("hideall"));
+      $('#video').remove();
+      $('body').removeClass("videoplay");
+      setTimeout(function(){
+        Array.from(document.querySelectorAll(".btn, .menubtn, .button1, .container, .clock")).forEach(el => el.classList.remove("slowmoshow"));
+      },2300);
+    }
   }
 }
 function pinker2() {
@@ -88,4 +93,12 @@ function monikavideomake() {
   videomake.src='Essential/media/monika.mp4';
   videomake.classList.add("video","videoshow");
   document.body.appendChild(videomake);
+}
+
+
+window.onbeforeunload = function() {
+  if ($("body").hasClass("monika")){
+  return "please dont leave..... its lonely here";
+  }
+  else {}
 }
