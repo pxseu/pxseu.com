@@ -36,6 +36,7 @@ function konamiCodePassed() {
  	 audio.play();
 
  	 audio.onended=function(){
+	   $(".uicolor, .uicolormenu").removeClass("uicolor","uicolormenu");
  	   $('body').css("background-image", "");
   	  if ($(window).width() < 800) {
    	   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("konamim"));

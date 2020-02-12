@@ -37,6 +37,7 @@ function monikaCodePassed() {
   else {
     $("body").removeAttr("style");
     monikavideomake();
+    $(".uicolor, .uicolormenu").removeClass("uicolor","uicolormenu");
     document.getElementById("video").muted = true;
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami","darlingm","konamim"));
     Array.from(document.querySelectorAll(".box")).forEach(el => el.classList.remove("box-show"));
@@ -95,10 +96,9 @@ function monikavideomake() {
   document.body.appendChild(videomake);
 }
 
-
 window.onbeforeunload = function() {
-  if ($("body").hasClass("monika")){
-  return "please dont leave..... its lonely here";
-  }
-  else {}
+	if ($("body").hasClass("monika")) {
+        	return "please dont leave..... its lonely here";
+	}
+	else {}
 }

@@ -37,10 +37,11 @@ function darlingCodePassed() {
   	var audio2 = new Audio('Essential/media/darling.mp3');
   	audio2.play();
   	audio2.onended=function(){
-  	alert("Darling I found you!");
- 	pinker1();
-  	$('#clickmebtn').html("Darling!");
- }
+		$(".uicolor, .uicolormenu").removeClass("uicolor","uicolormenu");
+  		alert("Darling I found you!");
+ 		pinker1();
+  		$('#clickmebtn').html("Darling!");
+ 	}
  }
 }
 
