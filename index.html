@@ -41,12 +41,15 @@
 	<div class="box">
 		<h2>Enter a color</h2>
 		<div class="box-c">
-			<p class="chckboxtxt">Use Image Url:<label class="checkbox"><input type="checkbox" id="checkbox" onclick="imgchck()"><span class="checkmark"></span></label></p>
+			<p class="chckboxtxt">Background Color:<label class="checkbox checkbox3"><input type="checkbox" id="checkbox3" onclick="colorchck()"><span class="checkmark"></span></label></p>
+			<p class="chckboxtxt">Image Background Url:<label class="checkbox"><input type="checkbox" id="checkbox" onclick="imgchck()"><span class="checkmark"></span></label></p>
+			<p class="chckboxtxt">Ui Color:<label class="checkbox checkbox2"><input type="checkbox" id="checkbox2" onclick="uicolorchck()"><span class="checkmark"></span></label></p>
 			<div class="txtb"> 
 				<input type="text" placeholder="#000000" id="hex" onclick="inputselect();">
 					<div class="prev"></div>
 			</div>
-			<button class="apply" onclick="colorpicker()">Apply</button>
+			<button class="apply" onclick="alert('No option selected');">Apply</button>
+			<button class="restore">Defualt Settings</button>
 		</div>
 	</div>
 

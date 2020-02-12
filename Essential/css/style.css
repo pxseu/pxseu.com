@@ -75,7 +75,7 @@ body{
   top: 5px;
   left: 5px;
 }
-.apply{
+.apply, .restore {
   float: right;
   border: none;
   background: #6ab04c;
@@ -83,6 +83,17 @@ body{
   padding: 6px 30px;
   color: white;
   cursor: pointer;
+  margin-left: 27px;
+  transition-duration: 0.2s;
+}
+.apply:hover, .restore:hover {
+  opacity: 0.8;
+}
+.restore {
+  margin-left: 0px;
+}
+.restore:hover {
+ background-color: red;
 }
 .chckboxtxt {
   color: white;
@@ -91,7 +102,7 @@ body{
 .checkbox {
   display: block;
   position: relative;
-  left: 110px;
+  left: 165px;
   top: -23px;
   padding-left: 35px;
   margin-bottom: 12px;
@@ -102,7 +113,12 @@ body{
   -ms-user-select: none;
   user-select: none;
 }
-
+.checkbox2 {
+  left: 66px;
+}
+.checkbox3 {
+  left: 140px;
+}
 .checkbox input {
   position: absolute;
   opacity: 0;
