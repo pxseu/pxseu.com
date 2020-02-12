@@ -30,6 +30,8 @@ function colorchck() {
     document.getElementById("hex").placeholder = "#000000";
     document.getElementById("hex").defaultValue = '';
   }
+  else {alert('No option selected');}
+
 }
 function colorpicker(){
 
@@ -62,7 +64,7 @@ function hidden() {
 }
 
 function imgchck(){
-if (document.getElementById("checkbox").checked == true){
+  if (document.getElementById("checkbox").checked == true){
     $("#checkbox2").prop("checked", false);
     $("#checkbox3").prop("checked", false);
     $('.apply').attr("onClick", "imgshow()");
@@ -70,6 +72,7 @@ if (document.getElementById("checkbox").checked == true){
     document.getElementById("hex").defaultValue = 'https://w.wallhaven.cc/full/lm/wallhaven-lm9oqy.jpg';
     localStorage.setItem("imgchecksave", "1");	
   }
+  else {alert('No option selected');}
 }
 
 function imgshow(){ 
@@ -79,7 +82,7 @@ function imgshow(){
 } 
 
 function uicolorchck(){
-if (document.getElementById("checkbox2").checked == true){
+  if (document.getElementById("checkbox2").checked == true){
     $("#checkbox").prop("checked", false);
     $("#checkbox3").prop("checked", false);
     $('.apply').attr("onClick", "uichange()");
@@ -87,6 +90,7 @@ if (document.getElementById("checkbox2").checked == true){
     document.getElementById("hex").defaultValue = '';
     localStorage.setItem("uichecksave", "1");	
   }
+  else {alert('No option selected');}
 }
 
 function uichange() {
