@@ -70,7 +70,28 @@
   overflow: hidden;
   top: 700px;
 }
-.playlist::before{
+.button {
+  background-color: white;
+  color: grey;
+  border: 2.3px solid #000000;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.2s; /* Safari */
+  transition-duration: 0.2s;
+  cursor: pointer;
+  width: 200px;
+  height: 55px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: "montserrat";
+  position: relative;
+  overflow: hidden;
+}
+.button::before{
   content: "";
   position: absolute;
   left: 0;
@@ -78,10 +99,11 @@
   height: 0%;
   background: #6ab04c;
   z-index: -1;
-  transition: 0.8s;
+  transition: color 0.6s, width 0.8s, height 0.8s ;
 }
 .playlist {
   position: absolute;
+  top: 760px;
   color: #6ab04c;
 }
 .playlist::before {
@@ -90,8 +112,10 @@
 }
 .playlist:hover {
   color: white;
+  width: 220px;
+  height: 75px;
 }
-.playlist:hover::before {
+.button:hover::before {
   height: 180%;
 }
 .playlist:active {
