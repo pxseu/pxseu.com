@@ -7,3 +7,6 @@ function email(){
 function playlistgo() {
   window.location.href = "https://open.spotify.com/playlist/7LHiEoB6EeC4V124koSFFH?si=91VuHPACRPmAJeysedAkYA"
 }
+function gototwitter(){
+  window.location.href = "https://twitter.com/poseuxck";
+}

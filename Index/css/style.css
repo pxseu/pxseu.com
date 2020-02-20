@@ -141,6 +141,22 @@
   60% {opacity:0;}
   100% {opacity: 1;}
 }
+.helpforothers {
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 840px;
+  left: 50%;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.5;
+  transition-duration: 0.3s;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.helpforothers:hover {
+  opacity: 0.99;
+}
+
 
 .text1.transparent {	background-color: rgba(0, 0, 0, 0);}
 .text2.pink {	color: pink;	background-color: rgba(0, 0, 0, 0.2);  }
