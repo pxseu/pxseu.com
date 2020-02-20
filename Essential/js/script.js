@@ -174,7 +174,7 @@ function uiload() {
    sheet.insertRule(".button.uicolor:active {box-shadow: 0 0px 40px 0 " + localStorage.getItem("uicolorsave") + ",0 0px 100px 10px " + localStorage.getItem("uicolorsave") +";  }" , 0);
    sheet.insertRule(".button.uicolor:hover {color: white;}" , 0);
 
-   $('.text2, .button1, .btn, .menubtn, ul, .box h2, .box, strong, .text1, .playlist').addClass("uicolor");
+   $('.text2, .button1, .btn, .menubtn, ul, .box h2, .box, strong, .text1, .playlist, .helpforothers').addClass("uicolor");
    $('.box .apply').addClass("uicolorapply");
    $('ul a').addClass("uicolormenu");
    }
