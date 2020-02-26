@@ -1,0 +1,26 @@
+* {
+  font-family: 'Varela Round';
+}
+.topbar {
+  width: 100%;
+  height: 300px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: pink;
+}
+.logobox {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translate( -50%, -50% );
+  width: 20%;
+  height: 100px;
+  background-color: red;
+}
+.title {
+  position: absolute;
+  transform: translate( -50%, -50% );
+  left: 65%;
+  top: 30%;
+}
