@@ -3,7 +3,6 @@
 }
 body {
   background-color: white;
-
 }
 .topbar {
   width: 100%;
@@ -52,7 +51,7 @@ body {
   position: absolute;
   top: 200px;
   left: 50%;
-  width: auto;
+  width: 600px;
   height: auto;
   background-color: white;
   padding-top: 20px;
@@ -71,6 +70,10 @@ body {
   transition-duration: 0.2s;
   border-radius: 20px;
   padding: 10px;
+  /* useless
+  display: inline-block;
+  overflow: auto;
+  */
 }
 .taskbartext:hover {
   color: white;
@@ -103,10 +106,11 @@ body {
 .braker {
   font-size: 25px;
   position: absolute;
-  top: 400px;
   left: 50%;
   transform: translate( -50%, -50% );
 }
+.braker1 {top: 400px;}
+
 .products {
   position: absolute;
   top: 600px;
@@ -123,7 +127,7 @@ body {
   transform: translate( -50%, -50% );
   border-radius: 20px;
   background-color: whitesmoke;
-  width: 1500px;
+  width: 1350px;
   height: 900px;
   border-color: white;
   border-style: double;
@@ -136,8 +140,9 @@ body {
   top: 88%;
   left: 50%;
   transform: translate( -50%, -50% );
+  transition-duration: 0.2s;
 }
-
+.productdesc:hover {  font-size: 35px; }
 .product1 {
   top: 400px;
 }
@@ -152,18 +157,22 @@ body {
   transform: translate( -50%, -50% );
   top: 45%;
   border-radius: 20px;
+  transition-duration: 0.2s;
+}
+.productimg:hover {
+  width: calc(1200px * 1.05);
+  height: calc(675px * 1.05);
 }
 .midline {
   position: absolute;
-  top: 130px;
   left: 0;
   width: 100%;
   height: 10px;
   background-color: black;
   z-index: 20;
 }
-
-
+.midline1 {top: 130px;}
+.midline2 {top: 900px;}
 
 
 
@@ -175,4 +184,4 @@ body {
 
 
 .hidden {top: -50%;}
-.slow_show {transition: 0.9s;}
+.slow_show {transition-duration: 0.9s;}
