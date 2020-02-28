@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Caladea|Varela+Round&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a1314f20e4.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="index/media/logo.png">
     <title>Dragonware - All your software needs!</title>
     <link rel="stylesheet" href="index/css/main.css">
 </head>
@@ -16,12 +17,12 @@
        <h1 class="title">Dragonware</h1>
 	     <p class="slang">feel the dragon</p>
     </div>
-	  <div class="midline"></div>
+	  <div class="midline midline1"></div>
     <div class="taskbar">
-      <a class="taskbartext">Dom</a>
-      <a class="taskbartext">Programy</a>
-      <a class="taskbartext">O Nas</a>
-      <a class="taskbartext">Kontakt</a>
+      <a class="taskbartext" onclick="link1()">Dom</a>
+      <a class="taskbartext" onclick="link2()">Programy</a>
+      <a class="taskbartext" onclick="link3()">O Nas</a>
+      <a class="taskbartext" onclick="link4()">Kontakt</a>
     </div>
   </div>
 
@@ -29,12 +30,14 @@
 
   <div class="products">
     <div class="product product1">
-      <img class="productimg" src="index/media/product1.png"  />
+      <img class="productimg" src="index/media/product1.png" onclick="product1()" />
       <p class="productdesc">Nasz autorski kalkulator napisany w c++!</p>
     </div>
 
+    <div class="midline midline2"></div>
+
     <div class="product product2">
-      <img class="productimg" src="index/media/product2.png"  />
+      <img class="productimg" src="index/media/product2.png" onclick="product1()"  />
       <p class="productdesc">Prosty zegar zmodyfikowny przez nas!</p>
     </div>
   </div>
