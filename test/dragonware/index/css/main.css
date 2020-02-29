@@ -1,0 +1,100 @@
+.intro {
+  position: absolute;
+  top: 400px;
+  transform: translate( -50%, -50% );
+  left: 50%;
+  font-size: 35px;
+  color: black;
+}
+
+
+.braker {
+  font-size: 25px;
+  position: absolute;
+  left: 50%;
+  transform: translate( -50%, -50% );
+  padding: 10px;
+  width: 800px;
+  text-align: center;
+  background-color: white;
+  border-color: #935529;
+  border-style: double;
+  border-width: 6px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.braker1 {top: 400px;}
+
+.products {
+  position: absolute;
+  top: 600px;
+  left: 50%;
+  transform: translate( -50%, -50% );
+  background-color: red;
+  width: 100%;
+  height: auto;
+}
+
+.product {
+  position: absolute;
+  left: 50%;
+  transform: translate( -50%, -50% );
+  border-radius: 20px;
+  background-color: #935529;
+  width: 1350px;
+  height: 900px;
+  border-color: white;
+  border-style: double;
+  border-width: 6px;
+}
+.productdesc {
+  font-family: 'Varela Round';
+  font-size: 30px;
+  position: absolute;
+  top: 88%;
+  left: 50%;
+  transform: translate( -50%, -50% );
+  transition-duration: 0.2s;
+  background-color: white;
+  border-color: #935529;
+  border-style: double;
+  border-width: 6px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.productdesc:hover {  font-size: 33px; }
+.product1 {
+  top: 400px;
+}
+.product2 {
+  top: 1400px;
+}
+.productimg {
+  width: 1200px;
+  height: 675px;
+  position: absolute;
+  left: 50%;
+  transform: translate( -50%, -50% );
+  top: 45%;
+  border-radius: 20px;
+  transition-duration: 0.2s;
+}
+.productimg:hover {
+  width: calc(1200px * 1.03);
+  height: calc(675px * 1.03);
+}
+
+
+.midline2 {top: 900px;}
+
+
+
+
+
+
+
+
+
+
+.hidden {top: -50%;}
+.slow_show {transition-duration: 0.9s;}
