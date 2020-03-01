@@ -81,6 +81,7 @@
   top: 45%;
   border-radius: 20px;
   transition-duration: 0.2s;
+  cursor: pointer;
 }
 .productimg:hover {
   width: calc(1200px * 0.92);
@@ -136,6 +137,7 @@
   transform: translate( -50%, -50% );
   width: 270px;
   transition-duration: 0.2s;
+  cursor: pointer;
 }
 .learnmore:hover {
   background-color:  #935529;

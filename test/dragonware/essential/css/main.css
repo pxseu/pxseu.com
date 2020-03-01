@@ -74,6 +74,7 @@ body {
   display: inline-block;
   overflow: auto;
   */
+  cursor: pointer;
 }
 .taskbartext:hover {
   color: white;

@@ -29,6 +29,7 @@
   border-style: double;
   border-width: 6px;
   transition-duration: 0.2s;
+  cursor: pointer;
 }
 .product:hover {
   width: calc(700px * 1.04);
