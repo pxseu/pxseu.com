@@ -22,6 +22,7 @@
   border-width: 6px;
   border-radius: 20px;
   padding: 10px;
+  z-index: 5;
 }
 .braker1 {top: 400px;}
 
@@ -41,8 +42,8 @@
   transform: translate( -50%, -50% );
   border-radius: 20px;
   background-color: #935529;
-  width: 1350px;
-  height: 900px;
+  width: 1200px;
+  height: 800px;
   border-color: white;
   border-style: double;
   border-width: 6px;
@@ -61,17 +62,19 @@
   border-width: 6px;
   border-radius: 20px;
   padding: 10px;
+  width: 900px;
+  text-align: center;
 }
 .productdesc:hover {  font-size: 33px; }
 .product1 {
   top: 400px;
 }
 .product2 {
-  top: 1400px;
+  top: 1300px;
 }
 .productimg {
-  width: 1200px;
-  height: 675px;
+  width: calc(1200px * 0.9);
+  height: calc(675px * 0.9);
   position: absolute;
   left: 50%;
   transform: translate( -50%, -50% );
@@ -80,15 +83,65 @@
   transition-duration: 0.2s;
 }
 .productimg:hover {
-  width: calc(1200px * 1.03);
-  height: calc(675px * 1.03);
+  width: calc(1200px * 0.92);
+  height: calc(675px * 0.92);
+}
+.midline2 {top: 850px;}
+
+@keyframes hide {
+  to { z-index: 0; opacity: 0.5; }
+  from { z-index: 999;  opacity: 1; }
+}
+
+.aboutus {
+  position: absolute;
+  right: -150px;
+  top: 220px;
+  transform: translate( -50% );
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  border-color: #935529;
+  border-style: double;
+  border-width: 6px;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  font-size: 24px;
+  animation: hide 0.2s linear forwards;
+  opacity: 0.5;
+}
+
+@keyframes show {
+  from { z-index: 0; opacity: 0.5; }
+  to { z-index: 999;  opacity: 1; }
 }
 
 
-.midline2 {top: 900px;}
-
-
-
+.aboutus:hover {
+  animation: show 0.2s linear forwards;
+}
+.learnmore {
+  font-weight: bold;
+  background-color: white;
+  border-color: #935529;
+  border-style: double;
+  border-width: 6px;
+  border-radius: 20px;
+  padding: 10px;
+  position: absolute;
+  top: 122px;
+  left: 50%;
+  transform: translate( -50% );
+  width: 270px;
+  transition-duration: 0.2s;
+}
+.learnmore:hover {
+  background-color:  #935529;
+  border-color: white;
+  color: white;
+  z-index: 999;
+}
 
 
 
