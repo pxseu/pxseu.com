@@ -99,7 +99,7 @@
   top: 220px;
   transform: translate( -50% );
   width: 300px;
-  height: 200px;
+  height: 100px;
   background-color: white;
   border-color: #935529;
   border-style: double;
@@ -130,9 +130,10 @@
   border-radius: 20px;
   padding: 10px;
   position: absolute;
-  top: 122px;
+  /* top: 112px */
+  top: 50%;
   left: 50%;
-  transform: translate( -50% );
+  transform: translate( -50%, -50% );
   width: 270px;
   transition-duration: 0.2s;
 }
