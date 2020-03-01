@@ -21,7 +21,7 @@
   width: 700px;
   height: 600px;
   position: absolute;
-  transform: translate( -50%, -50% );
+  transform: translate( -50% , -50% );
   overflow: hidden;
   background-color: #935529;
   border-radius: 20px;
@@ -50,8 +50,9 @@
   border-width: 6px;
   background-color: white;
   padding: 10px;
-  font-size: 15px;
+  font-size: 17px;
   transition-duration: 0.2s;
+  font-weight: bold;
 }
 .productprice:hover {
   border-color: white;
@@ -59,9 +60,9 @@
   color: white;
 }
 .productdesc {
-  width: 60%;
+  width: 500px;
   position: absolute;
-  bottom: 18px;
+  bottom: 17px;
   left: 50%;
   transform: translate( -50%, -50% );
   border-radius: 20px;
@@ -72,6 +73,7 @@
   padding: 12px;
   transition-duration: 0.2s;
   text-align: center;
+  font-size: 22px;
 }
 .productdesc:hover {
   border-color: white;
@@ -93,4 +95,37 @@
 .product4 {
   left: 72%;
   top: 900px;
+}
+.product5 {
+  left: 28%;
+  top: 2000px;
+}
+.product6 {
+  left: 72%;
+  top: 2000px;
+}
+
+
+.howtobuy {
+  position: absolute;
+  top: 2400px;
+  left: 50%;
+  transform: translate( -50% );
+  border-radius: 20px;
+  border-color: white;
+  border-style: double;
+  border-width: 6px;
+  background-color: #935529;
+  padding: 20px;
+}
+.textbox {
+  border-radius: 20px;
+  border-color: #935529;
+  border-style: double;
+  border-width: 6px;
+  background-color: white;
+  padding: 12px;
+  font-size: 22px;
+  width: 500px;
+  text-align: center;
 }
