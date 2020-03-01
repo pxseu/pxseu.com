@@ -1,0 +1,2 @@
+function call(){window.location.href="tel:+48592413512";}
+function email(){window.location.href="mailto:kontakt@dragonware.com?cc=kontakt@dragonware.com&amp;bcc=kontakt@dragonware.com&amp;subject=Kontakt";}
