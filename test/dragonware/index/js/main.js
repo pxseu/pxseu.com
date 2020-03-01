@@ -1,0 +1,1 @@
+function moreaboutus() { window.location.href = "o_nas.html";}
