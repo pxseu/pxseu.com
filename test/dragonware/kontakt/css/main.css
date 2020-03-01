@@ -66,6 +66,7 @@
   padding: 10px;
   border-radius: 20px;
   transition-duration: 0.2s;
+  cursor: pointer;
 }
 .contactclick:hover {
   background-color: #935529;
