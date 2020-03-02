@@ -5,7 +5,7 @@ body {
   background-color: white;
 }
 .topbar {
-  width: 1650px;
+  width: 1500px;
   height: 200px;
   position: absolute;
   top: 100px;
@@ -60,6 +60,7 @@ body {
   border-color: #935529;
   border-style: double;
   border-width: 6px;
+  z-index: 999;
 }
 .taskbartext {
   font-size: 30px;
@@ -97,3 +98,43 @@ body {
 .midline1 {top: 135px;}
 #onnow {background-color: #935529; color: white;}
 #onnow:hover {color: black; background-color: white;}
+
+.fixed {
+  position: fixed;
+  top: 55px;
+}
+
+
+.taskbarbg {
+  position: absolute;
+  top: 60px;
+  transform: translate( -50% );
+  left: 50%;
+  border-color: white;
+  border-style: double;
+  border-width: 6px;
+  border-radius: 20px;
+  background-color: #935529;
+  z-index: 11;
+  opacity: 0;
+  width: 1200px;
+  padding: 40px;
+  text-align: center;
+  transition-duration: 0.4s;
+}
+.showing {
+  opacity: 1;
+  position: fixed;
+  top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
