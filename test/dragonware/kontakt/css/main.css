@@ -24,6 +24,12 @@
   left: 50%;
   border-radius: 20px;
   font-size: 25px;
+  transition-duration: 0.2s;
+}
+.officetext:hover {
+  border-color: white;
+  background-color: #935529;
+  color: white;
 }
 .officeview {
   position: absolute;
