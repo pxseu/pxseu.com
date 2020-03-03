@@ -119,6 +119,9 @@ body{
 .checkbox3 {
   left: 140px;
 }
+.checkbox4 {
+  left: 86px;
+}
 .checkbox input {
   position: absolute;
   opacity: 0;
@@ -226,6 +229,15 @@ a {
   left: 1px;
   filter: none;
 }
+.bgmusicpos {
+  transform: translate(-50%);
+  position: absolute;
+  top:0;
+  left: 50%;
+}
+
+
+
 
 ::-webkit-scrollbar {
   width: 10px;
