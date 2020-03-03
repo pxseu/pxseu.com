@@ -6,3 +6,14 @@ function link4() { window.location.href = "kontakt.html";}
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
+
+$(window).scroll(function() {    
+var scroll = $(window).scrollTop();
+if (scroll > 160) {
+    $(".taskbar").addClass("fixed");
+    $(".taskbarbg").addClass("showing");
+} else {
+    $(".taskbar").removeClass("fixed");
+    $(".taskbarbg").removeClass("showing");
+}
+})
