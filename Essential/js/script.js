@@ -26,9 +26,11 @@ function colorchck() {
   if (document.getElementById("checkbox3").checked == true){
     $("#checkbox").prop("checked", false);
     $("#checkbox2").prop("checked", false);
+    $("#checkbox4").prop("checked", false);
     $('.apply').attr("onClick", "colorpicker()");
     document.getElementById("hex").placeholder = "#000000";
     document.getElementById("hex").defaultValue = '';
+    $(".box h2").html("Enter a color");
   }
   else { $('.apply').attr("onClick", "alert('No option selected')");}
 
@@ -67,16 +69,17 @@ function imgchck(){
   if (document.getElementById("checkbox").checked == true){
     $("#checkbox2").prop("checked", false);
     $("#checkbox3").prop("checked", false);
+    $("#checkbox4").prop("checked", false);
     $('.apply').attr("onClick", "imgshow()");
     document.getElementById("hex").placeholder = "https://somewebsite/image.png";
     document.getElementById("hex").defaultValue = 'https://w.wallhaven.cc/full/lm/wallhaven-lm9oqy.jpg';
     localStorage.setItem("imgchecksave", "1");	
+    $(".box h2").html("Insert an image link");
   }
   else { $('.apply').attr("onClick", "alert('No option selected')");}
 }
 
 function imgshow(){ 
-    var imgurl = 'url("' + document.getElementById("hex").value + '")';
     localStorage.setItem("bgimgsave", document.getElementById('hex').value);
     location.reload();
 } 
@@ -85,10 +88,12 @@ function uicolorchck(){
   if (document.getElementById("checkbox2").checked == true){
     $("#checkbox").prop("checked", false);
     $("#checkbox3").prop("checked", false);
+    $("#checkbox4").prop("checked", false);
     $('.apply').attr("onClick", "uichange()");
     document.getElementById("hex").placeholder = "#000000";
     document.getElementById("hex").defaultValue = '';
-    localStorage.setItem("uichecksave", "1");	
+    localStorage.setItem("uichecksave", "1");
+    $(".box h2").html("Enter a color");	
   }
   else { $('.apply').attr("onClick", "alert('No option selected')");}
 }
@@ -150,6 +155,7 @@ document.addEventListener("keyup", event => {
 if (typeof(Storage) !== "undefined") {
   bgload();
   uiload();
+  //musicload();
 } else {}
 function bgload() {
   if (localStorage.getItem("imgchecksave") == 1) {
@@ -187,7 +193,48 @@ $('.restore').click(function(e) {
     localStorage.setItem("uicolorsave", "0");
     localStorage.setItem("bgcolorsave", "#000000");
     localStorage.setItem("uichecksave", "0");
-    localStorage.setItem("bgcolorsave", "black")
+    localStorage.setItem("bgcolorsave", "black");
+    localStorage.setItem("musicchecksave", "0");
     location.reload();
    }
   });
+
+
+/*
+function musicchck() {
+    $("#checkbox").prop("checked", false);
+    $("#checkbox2").prop("checked", false);
+    $("#checkbox3").prop("checked", false);
+    $('.apply').attr("onClick", "musicchange()");
+    document.getElementById("hex").placeholder = "https://somewebsite.com/song.mp3";
+    document.getElementById("hex").defaultValue = '';
+    localStorage.setItem("musicchecksave", "1");
+    $(".box h2").html("Insert a song link");	
+}
+
+function musicchange() {
+    localStorage.setItem("bgmusicsave", document.getElementById('hex').value);
+    location.reload();
+}
+
+
+
+function musicload() {
+  if (localStorage.getItem("musicchecksave") == 1) {
+    var bgaudio = document.createElement('audio');
+    bgaudio.id = 'bgaudio';
+    bgaudio.src = localStorage.getItem("bgmusicsave");
+    bgaudio.type = 'audio/mpeg';
+    $(".bgmusicpos").append(bgaudio);
+    bgaudio.volume = 0.1;
+    $("#bgaudio").attr("controls",1);
+    $("#bgaudio").attr("autoplay",1);
+  }
+}
+
+$('html, body').on('click hover keydown keypress keyup mousedown scroll select', function(){
+  if (localStorage.getItem("musicchecksave") == 1){
+    $('html, body').off(); bgaudio.play();
+  }
+});
+*/
