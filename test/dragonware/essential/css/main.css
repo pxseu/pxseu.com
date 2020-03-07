@@ -5,7 +5,7 @@ body {
   background-color: white;
 }
 .topbar {
-  width: 1500px;
+  width: 80%;
   height: 200px;
   position: absolute;
   top: 100px;
@@ -14,6 +14,7 @@ body {
   border-radius: 40px;
   transform: translate( -50%, -50% );
   background-color: #935529;
+  transition: 0.2s;
 }
 .logobox {
   position: absolute;
@@ -85,7 +86,7 @@ body {
 .midline {
   position: absolute;
   left: 50%;
-  width: 99%;
+  width: 90%;
   height: 7px;
   background-color: white;
   z-index: 20;
@@ -94,6 +95,7 @@ body {
   border-width: 6px;
   border-radius: 20px;
   transform: translate( -50%, -50% );
+  transition-duration: 0.2s;
 }
 .midline1 {top: 135px;}
 #onnow {background-color: #935529; color: white;}
@@ -110,14 +112,14 @@ body {
   top: 60px;
   transform: translate( -50% );
   left: 50%;
-  border-color: white;
+  border-color: black;
   border-style: double;
   border-width: 6px;
   border-radius: 20px;
-  background-color: #935529;
+  background-color: white;
   z-index: 11;
   opacity: 0;
-  width: 1200px;
+  width: 90%;
   padding: 40px;
   text-align: center;
   transition-duration: 0.4s;
@@ -126,11 +128,14 @@ body {
   opacity: 1;
   position: fixed;
   top: 0;
+  animation: load 0.5s;
 }
 
-
-
-
+@-webkit-keyframes load {
+  0%   { opacity: 0; }
+  50%   { opacity: 0; }
+  100% { opacity: 1; }
+}
 
 
 

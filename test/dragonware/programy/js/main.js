@@ -13,4 +13,16 @@ function productid5() { alert("id = 2345567"); }
 function productid6() { alert("id = 8453514"); }
 
 
+$( window ).resize(function() {widthchck();});
+$( window ).ready(function() {widthchck();});
+function widthchck() {
+	if ($( window ).width() < 1400) {
+		$(".product").css({"width":"500px"});
+		$(".product1, .product3, .product5").css({"left":"22%"});
+		$(".product2, .product4, .product6").css({"left":"78%"});
+	}
+	else {	$(".product, .softwaredispaly").removeAttr("style");}
+}
+
+
 

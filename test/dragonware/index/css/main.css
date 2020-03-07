@@ -47,6 +47,8 @@
   border-color: white;
   border-style: double;
   border-width: 6px;
+  overflow: hidden;
+  transition-duration: 0.2s;
 }
 .productdesc {
   font-family: 'Varela Round';
@@ -73,12 +75,12 @@
   top: 1300px;
 }
 .productimg {
+  transform: translate( -50%);
   width: calc(1200px * 0.9);
   height: calc(675px * 0.9);
   position: absolute;
   left: 50%;
-  transform: translate( -50%, -50% );
-  top: 45%;
+  top: 5%;
   border-radius: 20px;
   transition-duration: 0.2s;
   cursor: pointer;
