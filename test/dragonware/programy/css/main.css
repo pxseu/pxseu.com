@@ -1,6 +1,6 @@
 .softwaredispaly {
   height: 1300px;
-  width: 1700px;
+  width: 1000px;
   transform: translate( -50% , 0);
   position: absolute;
   left: 50%;
@@ -81,31 +81,29 @@
   color: white;
 }
 .product1 {
-  left: 28%;
+  left: 11%;
   top: 200px;
 }
 .product2 {
-  left: 72%;
+  left: 89%;
   top: 200px;
 }
 .product3 {
-  left: 28%;
+  left: 11%;
   top: 900px;
 }
 .product4 {
-  left: 72%;
+  left: 89%;
   top: 900px;
 }
 .product5 {
-  left: 28%;
+  left: 11%;
   top: 1600px;
 }
 .product6 {
-  left: 72%;
+  left: 89%;
   top: 1600px;
 }
-
-
 .howtobuy {
   position: absolute;
   top: 2400px;
