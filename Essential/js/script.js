@@ -2,6 +2,7 @@
 
 // usfl alert(localStorage.getItem("bgimgsave"))
 
+window.onbeforeunload = function () { window.scrollTo(0, 0);}
 var sheet = (function() {
   var style = document.createElement("style");
   style.appendChild(document.createTextNode(""));
@@ -32,7 +33,7 @@ function colorchck() {
     document.getElementById("hex").defaultValue = '';
     $(".box h2").html("Enter a color");
   }
-  else { $('.apply').attr("onClick", "alert('No option selected')");}
+  else { nooption(); }
 
 }
 function colorpicker(){
@@ -60,7 +61,7 @@ function menubtn(){
     Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.toggle("show"));
 }
 function hidden() {
- $(".hidden").addClass("slowmoshow");  
+  $(".hidden").addClass("slowmoshow");
   setTimeout(function(){$(".hidden").removeClass("hidden"); },200);
   setTimeout(function(){$(".slowmoshow").removeClass("slowmoshow"); },1300);
 }
@@ -73,16 +74,16 @@ function imgchck(){
     $('.apply').attr("onClick", "imgshow()");
     document.getElementById("hex").placeholder = "https://somewebsite/image.png";
     document.getElementById("hex").defaultValue = 'https://w.wallhaven.cc/full/lm/wallhaven-lm9oqy.jpg';
-    localStorage.setItem("imgchecksave", "1");	
     $(".box h2").html("Insert an image link");
   }
-  else { $('.apply').attr("onClick", "alert('No option selected')");}
+  else { nooption(); }
 }
 
-function imgshow(){ 
+function imgshow(){
     localStorage.setItem("bgimgsave", document.getElementById('hex').value);
+    localStorage.setItem("imgchecksave", "1");
     location.reload();
-} 
+}
 
 function uicolorchck(){
   if (document.getElementById("checkbox2").checked == true){
@@ -92,10 +93,9 @@ function uicolorchck(){
     $('.apply').attr("onClick", "uichange()");
     document.getElementById("hex").placeholder = "#000000";
     document.getElementById("hex").defaultValue = '';
-    localStorage.setItem("uichecksave", "1");
-    $(".box h2").html("Enter a color");	
+    $(".box h2").html("Enter a color");
   }
-  else { $('.apply').attr("onClick", "alert('No option selected')");}
+  else { nooption(); }
 }
 
 function uichange() {
@@ -114,21 +114,21 @@ function uichange() {
   }
   else {
    localStorage.setItem("uicolorsave", document.getElementById('hex').value);
-   $(".box").toggleClass("box-show");
+   localStorage.setItem("uichecksave", "1");
    location.reload();
   }
 }
 
 var velocity = 0.2;
-function update(){ 
-    var pos = $(window).scrollTop(); 
-    $('body').each(function() { 
+function update(){
+    var pos = $(window).scrollTop();
+    $('body').each(function() {
         var $element = $(this);
         var height = $element.height()-18;
-        $(this).css('backgroundPosition', '50% ' + Math.round((height - pos) * velocity) + 'px'); 
-    }); 
+        $(this).css('backgroundPosition', '50% ' + Math.round((height - pos) * velocity) + 'px');
+    });
 };
-$(window).bind('scroll', update); 
+$(window).bind('scroll', update);
 
 
 /* seemes useless ngl
@@ -136,13 +136,13 @@ document.addEventListener("keyup", event => {
   if (event.iscomposing || event.keyCode === 83) {
   	if ($('#video').length) {alert("Do not disturb!");}
 	else {Array.from(document.querySelectorAll(".box")).forEach(el => el.classList.toggle("box-show"));   }
-  } 
+  }
 });
 document.addEventListener("keyup", event => {
   if (event.iscomposing || event.keyCode === 88) {
   	if ($('#video').length) {alert("Do not disturb!");}
 	else {Array.from(document.querySelectorAll("ul")).forEach(el => el.classList.toggle("show"));   }
-  } 
+  }
 });
 */
 document.addEventListener("keyup", event => {
@@ -150,9 +150,10 @@ document.addEventListener("keyup", event => {
     console.log("%cWARNING!","color: red; font-size: 40px;");
     console.log("%cTHIS CONSOLE CAN BE USED FOR SELF XSS.","color: BLACK; font-size: 25px;");
     console.log("%cIF YOU DO NOT KNOW WHAT YOU ARE DOING DO NOT PASTE ANYTHING HERE!","color: BLACK; font-size: 25px;");
-  } 
+  }
 });
 if (typeof(Storage) !== "undefined") {
+
   bgload();
   uiload();
   //musicload();
@@ -173,7 +174,7 @@ function uiload() {
  if (localStorage.getItem("uichecksave") == 1) {
    sheet.insertRule(".uicolor {color:" + localStorage.getItem("uicolorsave") + "; }", 0);
    sheet.insertRule(".uicolormenu:hover {background-color:" + localStorage.getItem("uicolorsave") + "; }", 0);
-   sheet.insertRule("ul.uicolor, .box {box-shadow: 0 0px 40px 0 " + localStorage.getItem("uicolorsave") + ",0 0px 100px 10px " + localStorage.getItem("uicolorsave") +";  }", 0);
+   sheet.insertRule("ul.uicolor:hover, .box:hover {box-shadow: 0 0px 40px 0 " + localStorage.getItem("uicolorsave") + ",0 0px 100px 10px " + localStorage.getItem("uicolorsave") +";  }", 0);
    sheet.insertRule("h2.uicolor, .apply.uicolorapply {background-color:" + localStorage.getItem("uicolorsave") + "; }" , 0);
    sheet.insertRule(".button.uicolor {color:" + localStorage.getItem("uicolorsave") + "; }" , 0);
    sheet.insertRule(".button.uicolor::before {background-color:" + localStorage.getItem("uicolorsave") + "; }" , 0);
@@ -209,7 +210,7 @@ function musicchck() {
     document.getElementById("hex").placeholder = "https://somewebsite.com/song.mp3";
     document.getElementById("hex").defaultValue = '';
     localStorage.setItem("musicchecksave", "1");
-    $(".box h2").html("Insert a song link");	
+    $(".box h2").html("Insert a song link");
 }
 
 function musicchange() {
@@ -238,3 +239,14 @@ $('html, body').on('click hover keydown keypress keyup mousedown scroll select',
   }
 });
 */
+
+
+function nooption() {
+	$('.apply').attr("onClick", "alert('No option selected')");
+	$(".box h2").html("No Option Selected");
+	document.getElementById("hex").defaultValue = '';
+	document.getElementById("hex").placeholder = "";
+}
+function presets() {
+  window.open("presets");
+}
