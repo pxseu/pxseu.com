@@ -25,7 +25,7 @@
 }
 .aboutbot {
   position: absolute;
-  top: 300px;
+  top: 200px;
   left: 50%;
   transform: translate(-50%);
   color: white;
@@ -75,7 +75,7 @@
 }
 .button1 {
   position: absolute;
-  top: 600px;
+  top: 520px;
   color: #6ab04c;
 }
 .button1::before {
