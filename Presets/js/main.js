@@ -13,3 +13,6 @@ $(".text1").addClass("loaded");
 
 
 });
+function home() {
+  window.location.href = "/index"
+}
