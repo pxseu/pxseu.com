@@ -53,6 +53,14 @@
   background-color: rgba( 0,0,0,0.2 )
   cursor: pointer;
 }
+.steam {
+  transform: translate(-50%,-50%);
+  position: reletive;
+  top: 200px;
+  color: #6ab04c;
+  background-color: rgba( 0,0,0,0.2 )
+  cursor: pointer;
+}
 
 .text1.transparent {
   background-color: rgba(0, 0, 0, 0.2);
