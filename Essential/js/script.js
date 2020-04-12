@@ -248,5 +248,5 @@ function nooption() {
 	document.getElementById("hex").placeholder = "";
 }
 function presets() {
-  window.open("presets");
+  window.location.href ="presets";
 }
