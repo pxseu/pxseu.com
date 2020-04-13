@@ -173,15 +173,15 @@ function bgload() {
 function uiload() {
  if (localStorage.getItem("uichecksave") == 1) {
    sheet.insertRule(".uicolor {color:" + localStorage.getItem("uicolorsave") + "; }", 0);
-   sheet.insertRule(".uicolormenu:hover, .aboutbot a .bold{background-color:" + localStorage.getItem("uicolorsave") + "; }", 0);
+   sheet.insertRule(".uicolormenu:hover, .aboutbot a.bold{background-color:" + localStorage.getItem("uicolorsave") + "; }", 0);
    sheet.insertRule("ul.uicolor:hover, .box:hover {box-shadow: 0 0px 40px 0 " + localStorage.getItem("uicolorsave") + ",0 0px 100px 10px " + localStorage.getItem("uicolorsave") +";  }", 0);
    sheet.insertRule("h2.uicolor, .apply.uicolorapply {background-color:" + localStorage.getItem("uicolorsave") + "; }" , 0);
    sheet.insertRule(".button.uicolor {color:" + localStorage.getItem("uicolorsave") + "; }" , 0);
    sheet.insertRule(".button.uicolor::before {background-color:" + localStorage.getItem("uicolorsave") + "; }" , 0);
    sheet.insertRule(".button.uicolor:active {box-shadow: 0 0px 40px 0 " + localStorage.getItem("uicolorsave") + ",0 0px 100px 10px " + localStorage.getItem("uicolorsave") +";  }" , 0);
-   sheet.insertRule(".button.uicolor:hover {color: white;}" , 0);
+   sheet.insertRule(".button.uicolor:hover, .aboutbot a.bold {color: white;}" , 0);
 
-   $('.text2, .button1, .btn, .menubtn, ul, .box h2, .box, strong, .text1, .playlist, .helpforothers, .aboutbot a .bold').addClass("uicolor");
+   $('.text2, .button1, .btn, .menubtn, ul, .box h2, .box, strong, .text1, .playlist, .helpforothers, .aboutbot a.bold').addClass("uicolor");
    $('.box .apply').addClass("uicolorapply");
    $('ul a').addClass("uicolormenu");
    }
