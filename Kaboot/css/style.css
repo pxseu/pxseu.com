@@ -5,7 +5,7 @@ body {
 .maintitle {
   transform: translate(-50%,-50%);
   position: absolute;
-  top: 20%;
+  top: 50px;;
   left: 50%;
   text-align: center;
   color: white;
@@ -24,7 +24,7 @@ body {
 .modman276 {
   transform: translate(-50%,-50%);
   position: absolute;
-  top: 800px;
+  top: 550px;
   left: 50%;
   color: white;
   cursor: pointer;
@@ -49,7 +49,7 @@ body {
 .terminalwindow {
   background-color: rgba(100,100,100,0.2);
   position: absolute;
-  top: 55%;
+  top: 300px;
   left: 50%;
   width: 600px;
   height: 400px;
@@ -125,3 +125,7 @@ body {
   color: white;
   overflow: auto;
 /* animation: fade 1s infinite; */
+}
+.bruv {
+  top: 568px;
+}
