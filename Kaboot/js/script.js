@@ -37,6 +37,9 @@ function search() {
 function modman276(){
   window.open("https://pxseu.cc");
 }
+function ogredirect(){
+  window.open("https://www.vektrix.cc/kahoot");
+}
 setInputFilter(document.getElementById("soucetxt"), function(value) {
   return /^\d*\.?\d*$/.test(value);
 });
