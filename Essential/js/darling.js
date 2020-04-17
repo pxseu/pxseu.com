@@ -34,7 +34,7 @@ function darlingCodePassed() {
   	alert("Do not even try!");
   }
   else {
-  	var audio2 = new Audio('Essential/media/darling.mp3');
+  	var audio2 = new Audio('../Essential/media/darling.mp3');
   	audio2.play();
   	audio2.onended=function(){
 		$(".uicolor, .uicolormenu").removeClass("uicolor","uicolormenu");
@@ -46,7 +46,7 @@ function darlingCodePassed() {
 }
 
 
-var audioditfx = new Audio('Essential/media/ditfx.mp3');
+var audioditfx = new Audio('../Essential/media/ditfx.mp3');
 
 function ditfxpause(){
     audioditfx.pause();
@@ -75,7 +75,7 @@ function pinker1(){
     if (($('#clickmebtn').length)&&($(window).width() > 800)) {
           var zrtsugifmake = document.createElement("IMG");
           zrtsugifmake.id = "gifbox";
-          zrtsugifmake.src='Essential/media/zrtsu_static.gif';
+          zrtsugifmake.src='../Essential/media/zrtsu_static.gif';
           zrtsugifmake.setAttribute( "onClick", "zrtsu_change()" );
           zrtsugifmake.classList.add("gifbox");
           document.body.appendChild(zrtsugifmake);
@@ -84,7 +84,7 @@ function pinker1(){
 }
 function zrtsu_change(){
   var zrtsugifbox = document.getElementById('gifbox');
-  zrtsugifbox.src='Essential/media/zrtsu.gif';
+  zrtsugifbox.src='../Essential/media/zrtsu.gif';
   zrtsugifbox.setAttribute( "onClick", "" );
   zrtsugifbox.classList.add("pinkshadow");
 }
