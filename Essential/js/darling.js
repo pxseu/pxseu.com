@@ -69,7 +69,7 @@ function pinker1(){
   }
     Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("konami","monika"));
     Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
-    Array.from(document.querySelectorAll(".text2,.email, .discord, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock, .box, .playlist, ul")).forEach(el => el.classList.add("pink"));
+    Array.from(document.querySelectorAll(".text2,.email, .discord, .twitter, .steam, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock, .box, .playlist, ul")).forEach(el => el.classList.add("pink"));
     $('#clickmebtn').attr("onClick", "ditfxunpause()" );
     $('#gifbox').remove();
     $(".text1").css("background", "rgba(0, 0, 0, 0.4)");
