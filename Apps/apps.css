@@ -32,7 +32,6 @@ img {
   left: 50%;
   transform: translate( -50%, -50% );
   height: 300px;
-  background-color: red;
   width: 1100px;
 }
 [class*="app-"] {
@@ -45,8 +44,11 @@ img {
   border-style: solid;
   border-radius: 1px;
   border-color: #6ab04c;
+  transition-duration: 0.3s;
 }
-
+[class*="app-"]:active {
+  transform: translate( -50%, 3% );	
+}
 .app-1 {
   left: 250px;
   top: 10px;
@@ -61,10 +63,10 @@ img {
     left: 50%;
   }
   .app-1 {
-  top: 0px;
+  top: -200px;
   }
   .app-2 {
-  top: 600px;
+  top: 400px;
   }
   .boxmain {
   left: 50vw;
