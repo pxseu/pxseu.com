@@ -55,6 +55,7 @@ function konamiCodePassed() {
     	$('#clickmebtn').attr("onClick", "dvabtn()");
    	 $('#clickmebtn').innerHTML = "D.Va";  
     	$('#gifbox').remove();
+        $(".text1").css("background", "rgba(0, 0, 0, 0.4)");
    	 if (($('#clickmebtn').length)&&($(window).width() > 800)) {
   		var gifmake = document.createElement("IMG");
   		gifmake.id = "gifbox";
