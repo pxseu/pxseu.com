@@ -33,7 +33,7 @@ function konamiCodePassed() {
   	alert("Do not even try!");
   }
   else {
-  	var audio = new Audio('Essential/media/cheats.mp3');
+  	var audio = new Audio('../Essential/media/cheats.mp3');
  	 audio.play();
 
  	 audio.onended=function(){
@@ -58,7 +58,7 @@ function konamiCodePassed() {
    	 if (($('#clickmebtn').length)&&($(window).width() > 800)) {
   		var gifmake = document.createElement("IMG");
   		gifmake.id = "gifbox";
-  		gifmake.src='Essential/media/dva_static.gif';
+  		gifmake.src='../Essential/media/dva_static.gif';
   		gifmake.setAttribute( "onClick", "dva_change()" );
   		gifmake.classList.add("gifbox");
   		document.body.appendChild(gifmake);
@@ -71,7 +71,7 @@ function dvabtn() {
 }
 function dva_change(){
   var zrtsugifbox = document.getElementById('gifbox');
-  zrtsugifbox.src='Essential/media/dva.gif';
+  zrtsugifbox.src='../Essential/media/dva.gif';
   zrtsugifbox.setAttribute( "onClick", "" );
   zrtsugifbox.classList.add("pinkshadow");
 }
