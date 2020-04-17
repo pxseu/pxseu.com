@@ -190,12 +190,7 @@ function uiload() {
 $('.restore').click(function(e) {
     e.preventDefault();
     if (window.confirm("This action will restore the page to it's original state. Do you wish to proceed?")) {
-    localStorage.setItem("imgchecksave", "0");
-    localStorage.setItem("uicolorsave", "0");
-    localStorage.setItem("bgcolorsave", "#ffffff");
-    localStorage.setItem("uichecksave", "0");
-    localStorage.setItem("bgcolorsave", "black");
-    localStorage.setItem("musicchecksave", "0");
+    localStorage.clear();
     location.reload();
    }
   });
