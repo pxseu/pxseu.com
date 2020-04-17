@@ -72,6 +72,7 @@ function pinker1(){
     Array.from(document.querySelectorAll(".text2,.email, .discord, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock, .box, .playlist, ul")).forEach(el => el.classList.add("pink"));
     $('#clickmebtn').attr("onClick", "ditfxunpause()" );
     $('#gifbox').remove();
+    $(".text1").css("background", "rgba(0, 0, 0, 0.4)");
     if (($('#clickmebtn').length)&&($(window).width() > 800)) {
           var zrtsugifmake = document.createElement("IMG");
           zrtsugifmake.id = "gifbox";

@@ -48,7 +48,7 @@ function monikaCodePassed() {
     monikaAudio.play();
     Array.from(document.querySelectorAll(".btn , .menubtn , button , .container, .clock")).forEach(el => el.classList.add("hideall","slowmoshow"));
     $('#gifbox').remove();
-
+    
     document.getElementById("video").onended = function(){
       alert("Just Monika.");
       pinker2();
@@ -57,6 +57,7 @@ function monikaCodePassed() {
       Array.from(document.querySelectorAll(".btn , .menubtn , .apply , .container , .clock")).forEach(el => el.classList.remove("hideall"));
       $('#video').remove();
       $('body').removeClass("videoplay");
+      $(".text1").css("background", "rgba(0, 0, 0, 0.4)");
       setTimeout(function(){
         Array.from(document.querySelectorAll(".btn, .menubtn, .button1, .container, .clock")).forEach(el => el.classList.remove("slowmoshow"));
       },2300);
