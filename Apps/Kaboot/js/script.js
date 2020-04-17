@@ -40,24 +40,10 @@ function modman276(){
 function ogredirect(){
   window.open("https://www.vektrix.cc/kahoot");
 }
-setInputFilter(document.getElementById("soucetxt"), function(value) {
-  return /^\d*\.?\d*$/.test(value);
-});
-
- function setInputFilter(textbox, inputFilter) {
-  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-    textbox.addEventListener(event, function() {
-      if (inputFilter(this.value)) {
-        this.oldValue = this.value;
-        this.oldSelectionStart = this.selectionStart;
-        this.oldSelectionEnd = this.selectionEnd;
-      } else if (this.hasOwnProperty("oldValue")) {
-        this.value = this.oldValue;
-        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-      } else {
-        this.value = "";
-      }
-    });
-  });
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
 }
 
