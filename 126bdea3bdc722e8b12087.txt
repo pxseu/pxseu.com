@@ -1,3 +1,6 @@
 start https://www.youtube.com/watch?v=uR7URJZHhhY
 $DesktopPath = [Environment]::GetFolderPath("Desktop")
-echo Test > $DesktopPath/test.txt
+echo Hi, > $DesktopPath/Message.txt
+echo Someone had acces to this pc and executed a payload. >> $DesktopPath/Message.txt
+echo If you see this, please keep your pc secure. >> $DesktopPath/Message.txt
+echo Thanks >> $DesktopPath/Message.txt
