@@ -4,12 +4,17 @@
   "description": "",
   "main": "mainServer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=productionn PORT=6001 node .",
+    "test": "cross-env NODE_ENV=development PORT=5000 nodemon ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

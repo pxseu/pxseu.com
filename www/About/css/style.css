@@ -23,43 +23,33 @@
   justify-content: center;
   text-align: center;
   color: white;
-  background-color: rgba( 0,0,0,0.2 )
+  background-color: rgba( 0,0,0,0.2 );
 }
 .maintext {
   position: static;
   top: 80px;
 }
-.discord {
+
+.contactStuff {
   transform: translate(-50%,-50%);
   position: reletive;
-  top: 80px;
   color: #6ab04c;
-  background-color: rgba( 0,0,0,0.2 )
+  background-color: rgba( 0,0,0,0.2 );
   cursor: pointer;
+}
+
+
+.discord {
+  top: 80px;
 }
 .email {
-  transform: translate(-50%,-50%);
-  position: reletive;
   top: 120px;
-  color: #6ab04c;
-  background-color: rgba( 0,0,0,0.2 )
-  cursor: pointer;
 }
 .twitter {
-  transform: translate(-50%,-50%);
-  position: reletive;
   top: 160px;
-  color: #6ab04c;
-  background-color: rgba( 0,0,0,0.2 )
-  cursor: pointer;
 }
 .steam {
-  transform: translate(-50%,-50%);
-  position: reletive;
   top: 200px;
-  color: #6ab04c;
-  background-color: rgba( 0,0,0,0.2 )
-  cursor: pointer;
 }
 
 .text1.transparent {
@@ -67,24 +57,11 @@
   color: pink;
 }
 
-.twitterbox {
-  transform: translate(-50%,-50%);
-  position: absolute;
-  top: 650px;
-  left: 50%;
-  text-align: center;
-  border-radius: 15px;
-  transition-duration: 0.5s;
- }
-.twitterbox:hover {
-  box-shadow: 0px -15px 20px 0 #657786;
-}
-
-
 .discord.pink {color: pink}
 .email.pink{color: pink;}
 .twitter.pink{color: pink;}
 .steam.pink{color: pink;}
+.github.pink{color: pink;}
 .playlist.pink {	color: pink;}
 .playlist.pink:hover {	background-color: pink;	color: white;}
 .playlist.pink:active {	box-shadow: 0 2px 16px 0 pink,0 0px 50px 0 pink;}
