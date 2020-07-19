@@ -2,6 +2,10 @@
 
 // usfl alert(localStorage.getItem("bgimgsave"))
 
+console.log("%cWARNING!","color: red; font-size: 40px;");
+console.log("%cTHIS CONSOLE CAN BE USED FOR SELF XSS.","color: BLACK; font-size: 25px;");
+console.log("%cIF YOU DO NOT KNOW WHAT YOU ARE DOING DO NOT PASTE ANYTHING HERE!","color: BLACK; font-size: 25px;");
+
 window.onbeforeunload = function () { window.scrollTo(0, 0);}
 var sheet = (function() {
   var style = document.createElement("style");
@@ -43,7 +47,7 @@ function colorpicker(){
   var error = 0;
   for (var i = 0; i < restrictedWords.length; i++) {
       var val = restrictedWords[i];
-      if ((txtInput.toLowerCase()).indexOf(val.toString()) > -1) {
+      if ((txtInput.toLowerCase()).indexOf(val) > -1) {
           error = error + 1;
       }
   }
@@ -104,7 +108,7 @@ function uichange() {
   var error = 0;
   for (var i = 0; i < restrictedWords.length; i++) {
       var val = restrictedWords[i];
-      if ((txtInput.toLowerCase()).indexOf(val.toString()) > -1) {
+      if ((txtInput.toLowerCase()).indexOf(val) > -1) {
           error = error + 1;
       }
   }
@@ -145,13 +149,7 @@ document.addEventListener("keyup", event => {
   }
 });
 */
-document.addEventListener("keyup", event => {
-  if (event.iscomposing || event.keyCode === 123) {
-    console.log("%cWARNING!","color: red; font-size: 40px;");
-    console.log("%cTHIS CONSOLE CAN BE USED FOR SELF XSS.","color: BLACK; font-size: 25px;");
-    console.log("%cIF YOU DO NOT KNOW WHAT YOU ARE DOING DO NOT PASTE ANYTHING HERE!","color: BLACK; font-size: 25px;");
-  }
-});
+
 if (typeof(Storage) !== "undefined") {
 
   bgload();
@@ -243,5 +241,6 @@ function nooption() {
 	document.getElementById("hex").placeholder = "";
 }
 function presets() {
-  window.location.href ="presets";
+  window.location.href ="/presets";
 }
+
