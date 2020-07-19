@@ -1,5 +1,6 @@
-const port = 7000
-const errorPages = [ "404_1.html", "404_2.html" ]
+const port = process.env.PORT || 7000;
+
+console.log(`Enviroment: **${process.env.NODE_ENV}**`)
 
 const favicon = require('serve-favicon')
 const express = require('express')
@@ -16,7 +17,9 @@ app.use((req, res) => {
 
   // respond with html page
   if (req.accepts('html')) {
-    res.sendFile( __dirname + "/www/errors/" +
+    const errorPages = [ "404_1.html", "404_2.html" ]
+
+    res.sendFile( __dirname + "/errors/" +
     errorPages[Math.floor(Math.random() * errorPages.length)] )
     return;
   }
