@@ -68,7 +68,7 @@ function pinker2() {
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.remove("darling","konami"));
   Array.from(document.querySelectorAll("body")).forEach(el => el.classList.add("monika"));
   Array.from(document.querySelectorAll(".text1")).forEach(el => el.classList.add("transparent"));
-  Array.from(document.querySelectorAll(".text2, p a strong, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock, .box, ul")).forEach(el => el.classList.add("pink"));
+  Array.from(document.querySelectorAll(".text2, .contactStuff, h1 strong, button, .btn, .menubtn, li a, .box h2, .apply, .clock, .box, .playlist, ul")).forEach(el => el.classList.add("pink"));
   document.getElementById( "clickmebtn" ).setAttribute( "onClick", "monikamusicstop()" );
 }
 function monikamusicplay() {
@@ -99,7 +99,6 @@ function monikavideomake() {
 
 window.onbeforeunload = function() {
 	if ($("body").hasClass("monika")) {
-        	return "please dont leave..... its lonely here";
+    return "please dont leave..... its lonely here";
 	}
-	else {}
 }
