@@ -1,0 +1,77 @@
+<!Doctype html>
+<html>
+  <head>
+    <title>Game Luncher</title>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="/GameLauncher/css/style.css">
+    <link rel="stylesheet" href="/Essential/css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/Essential/media/favicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+	<script src="/Essential/js/script.js" defer></script>
+	<script src="/Essential/js/konami.js" defer></script>
+	<script src="/Essential/js/darling.js" defer></script>
+	<script src="/GameLauncher/js/script.js" defer></script>
+  </head>
+  <body>
+    <h1 class="text1 hidden">Game Launcher</h1>
+    <h1 class="text2 hidden"><strong>Note</strong>: Not supported on mobile</h1>
+
+	<div class="buttonspos">
+		<div class="leftbtns">
+			<button class="button buttonl1 hidden" onclick="clickl1()"></button>
+			<button class="button buttonl2 hidden" onclick="clickl2()"></button>
+			<button class="button buttonl3 hidden" onclick="clickl3()"></button>
+			<button class="button buttonl4 hidden" onclick="clickl4()"></button>
+			<button class="button buttonl5 hidden" onclick="clickl5()"></button>
+			<button class="button buttonl6 hidden" onclick="clickl6()"></button>
+			<button class="button buttonl7 hidden" onclick="clickl7()"></button>
+			<button class="button buttonl8 hidden" onclick="clickl8()"></button>
+		</div>
+		<div class="rightbtns">
+			<button class="button buttonr1 hidden" onclick="clickr1()"></button>
+			<button class="button buttonr2 hidden" onclick="clickr2()"></button>
+			<button class="button buttonr3 hidden" onclick="clickr3()"></button>
+			<button class="button buttonr4 hidden" onclick="clickr4()"></button>
+			<button class="button buttonr5 hidden" onclick="clickr5()"></button>
+			<button class="button buttonr6 hidden" onclick="clickr6()"></button>
+			<button class="button buttonr7 hidden" onclick="clickr7()"></button>
+			<button class="button buttonr8 hidden" onclick="clickr8()"></button>
+		</div>
+    </div>
+
+
+    <div class="menubtn hidden" onclick="menubtn()"><i class="fas fa-bars"></i></div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/gamelauncher">Game</a></li>
+	  <li><a href="/apps">Apps</a></li>
+      <li><a href="/about">About</a></li>
+	  <li><a href="http://dash.pxseu.cc/login">Login</a></li>
+    </ul>
+
+	<div class="btn hidden"><i class="fas fa-cog"></i></div>
+	<div class="box">
+		<h2>NO OPTION SELECTED</h2>
+		<div class="box-c">
+			<p class="chckboxtxt">Background Color:<label class="checkbox checkbox3"><input type="checkbox" id="checkbox3" onclick="colorchck()"><span class="checkmark"></span></label></p>
+			<p class="chckboxtxt">Image Background Url:<label class="checkbox"><input type="checkbox" id="checkbox" onclick="imgchck()"><span class="checkmark"></span></label></p>
+			<p class="chckboxtxt">Ui Color:<label class="checkbox checkbox2"><input type="checkbox" id="checkbox2" onclick="uicolorchck()"><span class="checkmark"></span></label></p>
+			<!---<p class="chckboxtxt">Music Link:<label class="checkbox checkbox4"><input type="checkbox" id="checkbox4" onclick="musicchck()"><span class="checkmark"></span></label></p> --->
+			<div class="txtb">
+				<input type="text" placeholder="" id="hex" onclick="inputselect();">
+					<div class="prev"></div>
+			</div>
+			<button class="apply" onclick="alert('No option selected');">Apply</button>
+			<button class="restore">Defualt Settings</button>
+			<br />
+			<br />
+			<button class="presets" onclick="presets()">Presets</button>
+		</div>
+	</div>
+
+
+  </body>
+</html>
