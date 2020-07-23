@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--- copyright@pxseu.cc  all rights reserved --->
+		<title>pxseu</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Modman276's website!">
+        <meta name="keywords" content="modman276, poseuxck">
+        <meta name="author" content="Modman276">
+		<meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="/Essential/css/style.css">
+		<link rel="stylesheet" href="/Presets/css/style.css">
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
+		<script src="/Essential/js/script.js" defer></script>
+		<script src="/Presets/js/main.js" defer></script>
+	</head>
+	<body>
+		<div>
+			<div class="btn hidden"><i class="fas fa-cog"></i></div>
+			<div class="box">
+				<h2>NO OPTION SELECTED</h2>
+				<div class="box-c">
+					<p class="chckboxtxt">Background Color:<label class="checkbox checkbox3"><input type="checkbox" id="checkbox3" onclick="colorchck()"><span class="checkmark"></span></label></p>
+					<p class="chckboxtxt">Image Background Url:<label class="checkbox"><input type="checkbox" id="checkbox" onclick="imgchck()"><span class="checkmark"></span></label></p>
+					<p class="chckboxtxt">Ui Color:<label class="checkbox checkbox2"><input type="checkbox" id="checkbox2" onclick="uicolorchck()"><span class="checkmark"></span></label></p>
+					<!---<p class="chckboxtxt">Music Link:<label class="checkbox checkbox4"><input type="checkbox" id="checkbox4" onclick="musicchck()"><span class="checkmark"></span></label></p> --->
+					<div class="txtb">
+						<input type="text" placeholder="" id="hex" onclick="inputselect();">
+							<div class="prev"></div>
+					</div>
+					<button class="apply" onclick="alert('No option selected');">Apply</button>
+					<button class="restore">Defualt Settings</button>
+					<br />
+					<br />
+					<button class="presets" onclick="alert('You are alerady here silly!')">Presets</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="menubtn hidden" onclick="home()"><i class="fas fa-home"></i></div>
+
+
+		<div class="titlebox">
+			<h2 class="text1">Website Presets</h2>
+		</div>
+
+
+		<div class="presetsbox">
+			<div class="presetbox" onclick="img(1)">
+				<img class="imagesrc img1" src="https://wallpaperaccess.com/full/869910.gif" title="#4e388d" />
+			</div>
+			<div class="presetbox" onclick="img(2)">
+				<img class="imagesrc img2" src="https://i.pinimg.com/originals/09/24/4c/09244c7f7dd4d17b0484370f32db6641.gif" title="#3e5980" />
+			</div>
+			<div class="presetbox" onclick="img(3)">
+				<img class="imagesrc img3" src="https://i.pinimg.com/originals/8e/14/55/8e145599d4847e339828787162952035.gif" title="#5275bf" />
+			</div>
+			<div class="presetbox" onclick="img(4)">
+				<img class="imagesrc img4" src="https://gifimage.net/wp-content/uploads/2018/04/pixel-art-background-gif-1.gif" title="#72675b" />
+			</div>
+			<div class="presetbox" onclick="img(5)">
+				<img class="imagesrc img5" src="https://cdn.lowgif.com/full/f5d5fedcbf0f4a84-floating-water-gif-souler-float.gif" title="#d3dfe8" />
+			</div>
+			<div class="presetbox" onclick="img(6)">
+				<img class="imagesrc img6" src="https://thumbs.gfycat.com/PossibleRigidAfricanwilddog-size_restricted.gif" title="#b2d3e4" />
+			</div>
+			<div class="presetbox" onclick="img(7)">
+				<img class="imagesrc img7" src="https://i.redd.it/prlv71olzgo11.jpg" title="pink" />
+			</div>
+		</div>
+	</body>
+</html>
