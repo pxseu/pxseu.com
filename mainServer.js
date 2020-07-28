@@ -1,14 +1,26 @@
-const port = process.env.PORT || 7000;
+require("dotenv").config()
 
+const port = process.env.PORT || 7000;
+const ipList = JSON.parse(process.env.ipList);
 console.log(`Enviroment: **${process.env.NODE_ENV}**`)
 
 const favicon = require('serve-favicon')
+const requestIp = require('request-ip')
 const express = require('express')
 const path = require('path')
 
 const app = express()
 
 app.use(favicon("./www/Essential/media/favicon.ico"));
+app.set('view-engine', 'ejs')
+
+app.get("/about", async (req, res, next) => {
+  const clientIp = requestIp.getClientIp(req);
+  if (ipList.some(ip => ip == clientIp)){
+    return res.render("about.ejs", { hiddenText: JSON.parse(process.env.HiddenData) });
+  }
+  next()
+})
 
 app.use(express.static(path.join(__dirname, 'www'),{extensions:['html']}))
 
