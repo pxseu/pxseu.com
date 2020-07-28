@@ -11,7 +11,7 @@ const path = require('path')
 
 const app = express()
 
-app.use(favicon("./www/Essential/media/favicon.ico"));
+app.use(favicon("./www/essential/media/favicon.ico"));
 app.set('view-engine', 'ejs')
 
 app.get("/about", async (req, res, next) => {
