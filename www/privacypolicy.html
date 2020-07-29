@@ -1,89 +1,37 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<!--- copyright@pxseu.cc  all rights reserved --->
-		<title>pxseu</title>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Modman276's website!">
-        <meta name="keywords" content="modman276, poseuxck">
-        <meta name="author" content="Modman276">
-		<meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no, minimal-ui">
-		<link rel="stylesheet" href="Essential/css/style.css">
-		<link rel="shortcut icon" type="image/x-icon" href="Essential/media/favicon.ico" />
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<style>
-			.container {
-			  color: white;
-			  margin: 10px;
-			  width: 90%;
-			  height: 80vh;
-			  overflow: auto;
-			  position: absolute;
-			  top: 100px;
-			  left: 50%;
-			  transform: translate(-50%);
-			  background-color: rgba(0,0,0,0.4);
-			  border-style: solid;
-  			  border-width: 1px;
-  			  border-color: white;
- 			  padding: 20px;
-			  margin: 10px;
-			}
-			p { padding: 10px;}
-            .container.hidden {color: black}
-			.link {color: blue}
-			.link.hidden {color: black;}
-		</style>
-	</head>
-	<body>
-
-
-	<div class="menubtn hidden" onclick="menubtn()"><i class="fas fa-bars"></i></div>
-	<ul>
-		<li><a href="/">Home</a></li>
-		<li><a href="gamelauncher">Game</a></li>
-		<li><a href="apps">Apps</a></li>
-		<li><a href="About">About</a></li>
-		<li><a href="http://login.pxseu.cc">Login</a></li>
-	</ul>
-
-    <div class="container hidden">
-		<h2 align=center>Privacy Policy</h2>
-		<p>Your privacy is important to us and it's our policy to respect your privacy regarding any information we may collect from you across our website, <strong class="link hidden" onclick="window.location.href ='https://pxseu.cc'">https://pxseu.cc</strong> and other sites we own and operate.</p>
-		<p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
-		<p>We only retain collected information for as long as necessary to provide you with your requested service. What data we store, we’ll protect within commercially acceptable means to prevent loss and theft, as well as unauthorized access, disclosure, copying, use or modification.</p>
-		<p>We don’t share any personally identifying information publicly or with third-parties, except when required to by law.</p>
-		<p>Our website may link to external sites that are not operated by us. Please be aware that we have no control over the content and practices of these sites, and cannot accept responsibility or liability for their respective privacy policies.</p>
-		<p>You are free to refuse our request for your personal information, with the understanding that we may be unable to provide you with some of your desired services.</p>
-		<p>Your continued use of our website will be regarded as acceptance of our practices around privacy and personal information. If you have any questions about how we handle user data and personal information, feel free to contact us.</p>
-		<p>This policy is effective as of 19 April 2020.</p>
-   </div>
-
-	<div class="btn hidden"><i class="fas fa-cog"></i></div>
-	<div class="box">
-		<h2>NO OPTION SELECTED</h2>
-		<div class="box-c">
-			<p class="chckboxtxt">Background Color:<label class="checkbox checkbox3"><input type="checkbox" id="checkbox3" onclick="colorchck()"><span class="checkmark"></span></label></p>
-			<p class="chckboxtxt">Image Background Url:<label class="checkbox"><input type="checkbox" id="checkbox" onclick="imgchck()"><span class="checkmark"></span></label></p>
-			<p class="chckboxtxt">Ui Color:<label class="checkbox checkbox2"><input type="checkbox" id="checkbox2" onclick="uicolorchck()"><span class="checkmark"></span></label></p>
-			<!---<p class="chckboxtxt">Music Link:<label class="checkbox checkbox4"><input type="checkbox" id="checkbox4" onclick="musicchck()"><span class="checkmark"></span></label></p> --->
-			<div class="txtb">
-				<input type="text" placeholder="" id="hex" onclick="inputselect();">
-					<div class="prev"></div>
-			</div>
-			<button class="apply" onclick="alert('No option selected');">Apply</button>
-			<button class="restore">Defualt Settings</button>
-			<br />
-			<br />
-			<button class="presets" onclick="presets()">Presets</button>
-		</div>
-	</div>
-
-
-  <div class="bgmusicpos"></div>
-  <script src="Essential/js/script.js"></script>
-  <script src="Essential/js/konami.js"></script>
-  <script src="Essential/js/darling.js"></script>
- </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>About Me</title>
+    <meta data-n-head="ssr" data-hid="theme-color" name="theme-color" content="#6ab04c">
+    <meta data-n-head="ssr" data-hid="og:site_name" property="og:site_name" content="pxseu.cc">
+    <meta data-n-head="ssr" data-hid="og:title" property="og:title" content="pxseu.cc">
+    <meta data-n-head="ssr" data-hid="og:description" property="og:description" content="Privacy Policy.">
+    <meta data-n-head="ssr" data-hid="og:image" property="og:image" content="https://pxseu.cc/essential/media/icon.png">
+    <link rel="shortcut icon" href="/essential/media/favicon.ico" />
+    <link rel="icon" href="/essential/media/favicon.ico" />
+    <link rel="favicon" href="/essential/media/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/essential/css/common.css">
+</head>
+<body>
+    <div class="app">
+        <h1 class="center"><a>Privacy Policy</a></h1>
+        <hr>
+        <div class="center">
+			<p>Your privacy is important to us and it's our policy to respect your privacy regarding any information we may collect from you across our website, <strong class="link hidden" onclick="window.location.href ='https://pxseu.cc'">https://pxseu.cc</strong> and other sites we own and operate.</p>
+			<p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
+			<p>We only retain collected information for as long as necessary to provide you with your requested service. What data we store, we’ll protect within commercially acceptable means to prevent loss and theft, as well as unauthorized access, disclosure, copying, use or modification.</p>
+			<p>We don’t share any personally identifying information publicly or with third-parties, except when required to by law.</p>
+			<p>Our website may link to external sites that are not operated by us. Please be aware that we have no control over the content and practices of these sites, and cannot accept responsibility or liability for their respective privacy policies.</p>
+			<p>You are free to refuse our request for your personal information, with the understanding that we may be unable to provide you with some of your desired services.</p>
+			<p>Your continued use of our website will be regarded as acceptance of our practices around privacy and personal information. If you have any questions about how we handle user data and personal information, feel free to contact us.</p>
+			<p>This policy is effective as of 19 April 2020.</p>
+        </div>
+        <div class="center back">
+            <p><a href="/">Home page</a></p>
+        </div>
+    </div>
+</body>
 </html>
