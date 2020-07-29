@@ -38,6 +38,17 @@ a:hover, p:hover {
 .back {
     padding-top: 12px;
 }
+
+.image {
+    background-image: var(--bg-image);
+    width: 500px;
+    height: 500px;
+    background-size: cover;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
 @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -46,3 +57,23 @@ a:hover, p:hover {
       opacity: 1;
     }
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
