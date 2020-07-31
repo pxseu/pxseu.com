@@ -22,4 +22,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm i
+    - run: echo -e "HiddenData = ${{secrets.HiddenData}}\nipList = ${{secrets.ipList}}" >> .env
     - run: pm2 restart server---main
