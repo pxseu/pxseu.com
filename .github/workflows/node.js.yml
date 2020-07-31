@@ -21,4 +21,4 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: pm2 restart server---main -- -ipList ${{secrets.ipList}} -HiddenData ${{secrets.HiddenData}}
+    - run: pm2 restart server---main
