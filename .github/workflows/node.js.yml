@@ -18,14 +18,17 @@ jobs:
       matrix:
         node-version: [10.x, 12.x, 14.x]
 
-    steps:
-    - env:
-        ipList: secrets.ipList,
-        HiddenData: secrets.HiddenData
+    steps:      
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm i
+    - name: Make envfile
+      uses: SpicyPizza/create-envfile@v
+      with:
+        envkey_ipList: ${{secrets.ipList}},
+        envkey_HiddenData: ${{secrets.HiddenData}},
+        file_name: .env
     - run: sudo systemctl restart node@pxseu.com.service
