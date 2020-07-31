@@ -21,10 +21,4 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1.0
-      with:
-        envkey_ipList: ${{secrets.ipList}},
-        envkey_HiddenData: ${{secrets.HiddenData}},
-        file_name: .env
-    - run: pm2 restart server---main
+    - run: pm2 restart server---main -- -ipList ${{secrets.ipList}} -HiddenData ${{secrets.HiddenData}}
