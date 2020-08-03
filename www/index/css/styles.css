@@ -25,14 +25,14 @@ body {
     opacity: 0;
 }
 
-.links p {
+p {
     display: inline;
     padding: 14px;
     cursor: default;
     text-align: center;
 }
 
-.links p a {
+a {
     color: white;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
@@ -41,7 +41,7 @@ body {
     cursor: pointer;
 }
 
-.links p a:hover {
+a:hover {
     color: #FFA9FF;
 }
 
@@ -70,6 +70,16 @@ body {
 .heartBR {
     right: 0px;
     bottom: 0px;
+}
+
+.peitho {
+    position: relative;
+    top: 170px;
+    text-align: center;
+    animation: 1.5s ease-out 1s 1 fadeIn;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    opacity: 0;
 }
 
 @media only screen and (max-width: 740px){
