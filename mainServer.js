@@ -14,6 +14,15 @@ const app = express()
 app.use(favicon("./www/essential/media/favicon.ico"));
 app.set('view-engine', 'ejs')
 
+app.all(/.*/, function(req, res, next) {
+  var host = req.header("host");
+  if (host.match(/^www\..*/i)) {
+    next();
+  } else {
+    res.redirect(301, "https://www." + host);
+  }
+});
+
 app.get("/about", async (req, res, next) => {
   const clientIp = requestIp.getClientIp(req);
 
