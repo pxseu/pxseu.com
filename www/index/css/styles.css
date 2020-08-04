@@ -104,3 +104,8 @@ a:hover {
       opacity: 1;
     }
 }
+
+@font-face {
+    font-family: 'Gang of Three';
+    src: url("/index/font/go3v2.ttf");
+  }
