@@ -1,13 +1,13 @@
 require("dotenv").config();
 
 const port = process.env.PORT || 7000;
-const ipList = JSON.parse(process.env.ipList);
 console.log(ipList)
 
 const favicon = require('serve-favicon');
-const requestIp = require('request-ip');
 const express = require('express');
 const path = require('path');
+
+const mainRoutes = require("./routes/main");
 
 const app = express()
 
@@ -23,14 +23,7 @@ app.all(/.*/, function(req, res, next) {
   }
 });
 
-app.get("/about", async (req, res, next) => {
-  const clientIp = requestIp.getClientIp(req);
-
-  //if (ipList.some(ip => ip == clientIp)){
-    return res.render("about.ejs", { hiddenText: JSON.parse(process.env.HiddenData) });
-  //};
-  //next();
-});
+app.use("/", mainRoutes)
 
 app.use(express.static(path.join(__dirname, 'www'),{extensions:['html']}))
 
