@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const port = process.env.PORT || 7000;
-console.log(ipList)
 
 const favicon = require('serve-favicon');
 const express = require('express');
