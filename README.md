@@ -1,4 +1,4 @@
-# pxseu.cc
+# pxseu.com
 
 So this is the code behind my home website.
 
