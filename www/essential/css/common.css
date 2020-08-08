@@ -49,6 +49,16 @@ a:hover, p:hover {
     transform: translate(-50%);
 }
 
+.app {
+  z-index: 2;
+}
+
+.particles-js {
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+}
+
 @keyframes fadeIn {
     0% {
       opacity: 0;
