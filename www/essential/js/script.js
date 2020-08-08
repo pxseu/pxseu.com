@@ -12,10 +12,8 @@ if(document.addEventListener){
 	});
 }
 
-function loaded(){
-	
+function loaded(){	
 	setInterval(loop, 800);
-
 }
 
 var x = 0;
@@ -23,7 +21,9 @@ var x = 0;
 var titleText = [ "I","I l", "I lo", "I lov", "I love", "I love y", "I love yo","I love you","I love you <", "I love you <3", "(⁄˘⁄ ⁄ ω⁄ ⁄ ˘⁄)"];
 
 function loop(){
-
 	document.getElementsByTagName("title")[0].innerHTML = titleText[x++%titleText.length];
-
 }
+
+particlesJS.load('particles-js', '/essential/media/particlesjs-config.json', function() {
+    console.log('particles.js loaded');
+});
