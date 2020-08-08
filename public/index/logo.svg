@@ -1,0 +1,22 @@
+<svg 
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="500px" height="200px">
+    <defs>
+    <filter filterUnits="userSpaceOnUse" id="Filter_0" x="0px" y="0px" width="500px" height="200px"  >
+        <feOffset in="SoureAlpha" dx="0" dy="3" />
+        <feGaussianBlur result="blurOut" stdDeviation="5.657" />
+        <feFlood flood-color="rgb(0, 0, 0)" result="floodOut" />
+        <feComposite operator="atop" in="floodOut" in2="blurOut" />
+        <feComponentTransfer><feFuncA type="linear" slope="1"/></feComponentTransfer>
+        <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+        </filter>
+        
+    </defs>
+    <g filter="url(#Filter_0)">
+        <text kerning="auto" font-family="Myriad Pro" fill="rgb(0, 0, 0)" font-size="150px" x="33px" y="143.101px"><tspan font-size="150px" font-family="Gang of Three" fill="#FFA9FF">pxseu</tspan></text>
+    </g>
+</svg>

@@ -1,0 +1,111 @@
+body {
+    background-color: black;
+    padding: 0;
+    margin: 0;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 220px;
+    z-index: 2;
+    animation: 1.5s ease-out 0s 1 fadeIn;
+    cursor: pointer;
+}
+
+.links {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 400px;
+    z-index: 2;
+    animation: 1.5s ease-out 1s 1 fadeIn;
+    cursor: default;
+    opacity: 0;
+}
+
+p {
+    display: inline;
+    padding: 14px;
+    cursor: default;
+    text-align: center;
+}
+
+a {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    font-size: 30px;
+    transition: color 0.1s;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #FFA9FF;
+}
+
+.heart {
+    position: absolute;
+    color: #FFA9FF;
+    display: none;
+    padding: 8px;
+}
+
+.heartTL {
+    left: 0px;
+    top: 0px;
+}
+
+.heartTR {
+    right: 0px;
+    top: 0px;
+}
+
+.heartBL {
+    left: 0px;
+    bottom: 0px;
+}
+
+.heartBR {
+    right: 0px;
+    bottom: 0px;
+}
+
+.peitho {
+    position: relative;
+    top: 170px;
+    text-align: center;
+    animation: 1.5s ease-out 1s 1 fadeIn;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    opacity: 0;
+}
+
+@media only screen and (max-width: 740px){
+    .links p {
+        display: list-item;
+        padding: 0;
+        padding-bottom: 8px;
+    }
+}
+
+@media only screen and (min-width: 1500px){
+    .heart, .heartR {
+        display: inline;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+@font-face {
+    font-family: 'Gang of Three';
+    src: url("/index/font/go3v2.ttf");
+  }
