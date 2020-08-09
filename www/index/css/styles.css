@@ -40,7 +40,7 @@ p {
     padding: 14px;
     cursor: default;
     text-align: center;
-}
+} 
 
 a {
     color: white;
@@ -49,10 +49,35 @@ a {
     font-size: 30px;
     transition: color 0.1s;
     cursor: pointer;
+    position: relative;
+    top: 0;
+    transition: top ease 0.2s, color 0.1s;
+    
+    display: inline-block;
+    padding: 15px 20px;
+    position: relative;
+}
+
+a:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+a:hover:after { 
+    width: 100%; 
+    left: 0; 
 }
 
 a:hover {
     color: #FFA9FF;
+    top: -2px;
 }
 
 .heart {
@@ -118,4 +143,21 @@ a:hover {
 @font-face {
     font-family: 'Gang of Three';
     src: url("/index/font/go3v2.ttf");
-  }
+}
+
+@keyframes in {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes out {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
