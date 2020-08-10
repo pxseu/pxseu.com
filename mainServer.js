@@ -14,11 +14,12 @@ app.use(favicon("./www/essential/media/favicon.ico"));
 app.set('view-engine', 'ejs')
 
 app.all(/.*/, function(req, res, next) {
-  var host = req.header("host");
+  let host = req.header("host");
   if (host.match(/^www\..*/i)) {
     next();
   } else {
-    res.redirect(301, "https://www." + host);
+    console.log(req.originalUrl)
+    res.redirect(301, "https://www." + host + req.originalUrl);
   }
 });
 
