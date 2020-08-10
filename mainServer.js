@@ -13,16 +13,16 @@ const app = express()
 app.use(favicon("./www/essential/media/favicon.ico"));
 app.set('view-engine', 'ejs')
 
-// app.all(/.*/, function(req, res, next) {
-// let host = req.header("host");
-//  if (host.match(/^www\..*/i)) {
-/*    next();
+app.all(/.*/, function(req, res, next) {
+  let host = req.header("host");
+  if (host.match(/^www\..*/i)) {
+    next();
   } else {
     console.log(req.originalUrl)
     res.redirect(301, "https://www." + host + req.originalUrl);
   }
 });
- */
+
 app.use("/", mainRoutes)
 
 app.use(express.static(path.join(__dirname, 'www'),{extensions:['html']}))
