@@ -39,12 +39,12 @@ export default function Home() {
         <div className="heart heartBR">
           <i className="fa fa-heart" aria-hidden="true"></i>
         </div>
-        <div className="logo">pxseu</div>
+        <div className="logo noselect">pxseu</div>
         
         <div className="links" id="links">
-          <p><a className="link" href="/about">About Me</a></p>
-          <p><a className="link" href="/projects">My Projects</a></p>
-          <p><a className="link" href="https://discord.pxseu.com">Discord Server</a></p>
+          <p><a className="link noselect" href="/about">About Me</a></p>
+          <p><a className="link noselect" href="/projects">My Projects</a></p>
+          <p><a className="link noselect" href="https://discord.pxseu.com">Discord Server</a></p>
         </div>
       </div>
       <div id="particles-js" className="particles-js"></div>
