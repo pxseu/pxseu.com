@@ -148,11 +148,6 @@ p {
     }
 }
 
-@font-face {
-    font-family: 'Gang of Three';
-    src: url("/index/font/go3v2.ttf");
-}
-
 @keyframes in {
     from {
         transform: rotate(0deg);
