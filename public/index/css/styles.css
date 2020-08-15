@@ -30,6 +30,10 @@ body {
     z-index: 2;
     animation: 1.5s ease-out 0s 1 fadeIn;
     cursor: pointer;
+    text-align: center;
+    color: #FFA9FF;
+    font-size: 150px;
+    font-family: "Gang of Three";
 }
 
 .links {
@@ -163,4 +167,9 @@ p {
     to {
         transform: rotate(0deg);
     }
+}
+
+@font-face {
+    font-family: "Gang of Three";
+    src: url("/index/font/go3v2.ttf");
 }

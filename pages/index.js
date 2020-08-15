@@ -39,7 +39,7 @@ export default function Home() {
         <div className="heart heartBR">
           <i className="fa fa-heart" aria-hidden="true"></i>
         </div>
-        <div className="logo"><img src="/index/logo.svg" /></div>
+        <div className="logo">pxseu</div>
         
         <div className="links" id="links">
           <p><a className="link" href="/about">About Me</a></p>
