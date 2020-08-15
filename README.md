@@ -1,10 +1,1 @@
-# pxseu.com
-
-
-So this is the code behind my home website.
-
-I will not upload any other part of my website because of security reasons.
-
-Copyright @ pxseu </br>
-All recreations and/or reposts are dissallowed without my (pxseu) agreement. </br>
-If you wish to contact me you can find my discord username on the about section on my website (title). </br>
+This is a starter template for [Learn Next.js](https://nextjs.org/learn).
