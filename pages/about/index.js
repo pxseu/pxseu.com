@@ -21,9 +21,9 @@ export default function About() {
                 <script src="/essential/js/script.js" defer></script>
             </Head>
             <div className="app">
-                <h1 className="center"><a>About Me</a></h1>
+                <h1 className="center noselect"><a>About Me</a></h1>
                 <hr />
-                <div className="center">
+                <div className="center noselect">
                     <p>Full Stack and Back End developer.</p>
                     <p>Javascript lover.</p>
                     <p>Always up for a new challange.</p>
@@ -32,12 +32,12 @@ export default function About() {
                     <p>and his girlfriend.</p>
                 </div>
                 <div className="center">
-                    <p><a href="https://github.com/pxseu">Github</a></p>
-                    <p><a href="https://twitter.com/pxseu">Twitter</a></p>            
-                    <p><a href="mailto:me@pxseu.com">Email</a></p>            
+                    <p><a className="noselect" href="https://github.com/pxseu">Github</a></p>
+                    <p><a className="noselect" href="https://twitter.com/pxseu">Twitter</a></p>            
+                    <p><a className="noselect" href="mailto:me@pxseu.com">Email</a></p>            
                 </div>
                 <div className="center back">
-                    <p><a href="/">Go Back</a></p>
+                    <p><a className="noselect" href="/">Go Back</a></p>
                 </div>
             </div>
             <div id="particles-js" className="particles-js"></div>           

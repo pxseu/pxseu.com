@@ -21,16 +21,16 @@ export default function Projects() {
                 <script src="/essential/js/script.js" defer></script>
             </Head>
             <div className="app">
-                <h1 className="center"><a>My Projects</a></h1>
+                <h1 className="center noselect"><a>My Projects</a></h1>
                 <hr />
                 <div className="center">
-                    <p><a href="https://premid.app/">Working in PreMiD as an Engineer.</a></p>
-                    <p><a href="https://short.pxseu.com/">Simple Url shrinker</a></p>            
-                    <p><a href="https://cdn.pxseu.com/">Simple File uploader</a></p>            
-                    <p><a href="https://github.com/pxseu/ZeroTwoBot">Discord Bot</a></p>            
+                    <p><a className="noselect" href="https://premid.app/">Working in PreMiD as an Engineer.</a></p>
+                    <p><a className="noselect" href="https://short.pxseu.com/">Simple Url shrinker</a></p>            
+                    <p><a className="noselect" href="https://cdn.pxseu.com/">Simple File uploader</a></p>            
+                    <p><a className="noselect" href="https://github.com/pxseu/ZeroTwoBot">Discord Bot</a></p>            
                 </div>
                 <div className="center back">
-                    <p><a href="/">Go Back</a></p>
+                    <p><a className="noselect" href="/">Go Back</a></p>
                 </div>
             </div>
             <div id="particles-js" className="particles-js"></div>
