@@ -4,6 +4,24 @@ body {
     margin: 0;
 }
 
+.app {
+    z-index: 2;
+}
+
+.particles-js {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    background-color: #000;
+    background-image: url('');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
 .logo {
     position: absolute;
     left: 50%;
@@ -23,6 +41,7 @@ body {
     animation: 1.5s ease-out 1s 1 fadeIn;
     cursor: default;
     opacity: 0;
+    text-align: center;
 }
 
 p {
@@ -30,19 +49,44 @@ p {
     padding: 14px;
     cursor: default;
     text-align: center;
-}
+} 
 
-a {
+.link {
     color: white;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     font-size: 30px;
     transition: color 0.1s;
     cursor: pointer;
+    position: relative;
+    top: 0;
+    transition: top ease 0.2s, color 0.1s;
+    
+    display: inline-block;
+    padding: 15px 20px;
+    position: relative;
 }
 
-a:hover {
+.link:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+.link:hover:after { 
+    width: 100%; 
+    left: 0; 
+}
+
+.link:hover {
     color: #FFA9FF;
+    top: -2px;
 }
 
 .heart {
@@ -82,13 +126,12 @@ a:hover {
     opacity: 0;
 }
 
-@media only screen and (max-width: 740px){
+@media only screen and (max-width: 740px) {
     .links p {
-        display: list-item;
-        padding: 0;
-        padding-bottom: 8px;
+      display: list-item;
+      padding: 0;
     }
-}
+  }
 
 @media only screen and (min-width: 1500px){
     .heart, .heartR {
@@ -108,4 +151,21 @@ a:hover {
 @font-face {
     font-family: 'Gang of Three';
     src: url("/index/font/go3v2.ttf");
-  }
+}
+
+@keyframes in {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes out {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}

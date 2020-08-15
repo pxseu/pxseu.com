@@ -2,14 +2,19 @@ import Head from 'next/head'
 
 export default function Custom404() {
   return (
-    <div className="app">
+    <div>
       <Head>
         <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css' />
+        <script src="/essential/js/particles.min.js" defer></script>
+        <script src="/essential/js/script.js" defer></script>
       </Head>
-      <div className="center"><h1>Not Found</h1></div>
-      <div className="bellowCenter">
-        <div className="glitch" data-text="404">404</div>
+      <div className="app">
+        <div className="center"><h1>Not Found</h1></div>
+        <div className="bellowCenter">
+            <div className="glitch" data-text="404">404</div>
+        </div>
       </div>
+      <div id="particles-js" className="particles-js"></div>
       <style jsx>{`
         .glitch {
             color: white;

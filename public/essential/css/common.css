@@ -4,6 +4,7 @@ body {
     padding: 0;
     margin: 0;
     color: white;
+    font-size: 20px;
 }
 
 .center {
@@ -35,6 +36,43 @@ a:hover, p:hover {
     color: #FFA9FF;
 }
 
+a {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  transition: color 0.1s;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  transition: top ease 0.2s, color 0.1s;
+  
+  display: inline-block;
+  padding: 0px 20px;
+  position: relative;
+}
+
+a:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+a:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+
+a:hover {
+  color: #FFA9FF;
+  top: -2px;
+}
+
 .back {
     padding-top: 12px;
 }
@@ -47,6 +85,24 @@ a:hover, p:hover {
     position: relative;
     left: 50%;
     transform: translate(-50%);
+}
+
+.app {
+  z-index: 2;
+}
+
+.particles-js {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  background-color: #000;
+  background-image: url('');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 }
 
 @keyframes fadeIn {
