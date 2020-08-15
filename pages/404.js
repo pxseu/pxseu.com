@@ -1,26 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>404 Not Found</title>
-    <meta charset="UTF-8" />
-    <meta name="description" content="File Not Found. Might have been deleted.">
-    <meta name="keywords" content="pxseu, poseuxck">
-    <meta name="author" content="pxseu">
-    <link rel="shortcut icon" href="/favicon.ico" />
-	<link rel="icon" href="/favicon.ico" />
-    <link rel="favicon" href="/favicon.ico" />
-    <meta data-n-head="ssr" data-hid="theme-color" name="theme-color" content="#6ab04c">
-    <meta data-n-head="ssr" data-hid="og:site_name" property="og:site_name" content="cdn.pxseu.cc">
-    <meta data-n-head="ssr" data-hid="og:title" property="og:title" content="404 Not Found">
-    <meta data-n-head="ssr" data-hid="og:description" property="og:description" content="File Not Found. Might have been deleted.">
-    <meta data-n-head="ssr" data-hid="og:image" property="og:image" content="/images/404_1.png">
-    <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
-    <style>
-        body {
-            background: black;
-            font-family: 'Varela', sans-serif;
-        }
+import Head from 'next/head'
 
+export default function Custom404() {
+  return (
+    <div>
+      <Head>
+        <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css' />
+        <script src="/essential/js/particles.min.js" defer></script>
+        <script src="/essential/js/script.js" defer></script>
+      </Head>
+      <div className="app">
+        <div className="center"><h1>Not Found</h1></div>
+        <div className="bellowCenter">
+            <div className="glitch" data-text="404">404</div>
+        </div>
+      </div>
+      <div id="particles-js" className="particles-js"></div>
+      <style jsx>{`
         .glitch {
             color: white;
             font-size: 100px;
@@ -199,12 +194,14 @@
             top: 150px;
             transform: translate(-50%);
         }
-    </style>
-</head>
-<body>
-    <div class="center"><h1>Not Found</h1></div>
-    <div class="bellowCenter">
-        <div class="glitch" data-text="404">404</div>
+      `}</style>
+
+      <style jsx global>{`
+      body {
+        background: black;
+        font-family: 'Varela', sans-serif;
+      }
+    `}</style>
     </div>
-</body>
-</html>
+  )
+}

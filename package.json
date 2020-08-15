@@ -1,23 +1,15 @@
 {
   "name": "server---main",
-  "version": "1.0.0",
-  "description": "",
-  "main": "mainServer.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=productionn PORT=6001 node .",
-    "test": "cross-env NODE_ENV=development PORT=5000 nodemon ."
+    "dev": "next dev -p 8080",
+    "build": "next build",
+    "start": "next start -p 6001"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "cross-env": "^7.0.2",
-    "dotenv": "^8.2.0",
-    "ejs": "^3.1.3",
-    "express": "^4.17.1",
-    "request-ip": "^2.1.3",
-    "serve-favicon": "^2.5.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
+    "next": "9.3.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   }
 }
