@@ -29,7 +29,7 @@ export default function About() {
                     <p>Always up for a new challange.</p>
                     <p>16 years old.</p>
                     <p>Loves anime</p>
-                    <p>and his girlfriend.</p>
+                    <p>and his (ex)girlfriend.</p>
                 </div>
                 <div className="center">
                     <p><a className="noselect" href="https://github.com/pxseu">Github</a></p>
