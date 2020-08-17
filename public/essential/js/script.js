@@ -23,7 +23,3 @@ var titleText = [ "I","I l", "I lo", "I lov", "I love", "I love y", "I love yo",
 function loop(){
 	document.getElementsByTagName("title")[0].innerHTML = titleText[x++%titleText.length];
 }
-
-/* particlesJS.load('particles-js', '/essential/media/particlesjs-config.json', function() {
-    console.log('particles.js loaded');
-}); */
