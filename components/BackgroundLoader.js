@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Particles from 'react-particles-js';
 
 const BackgroundLoader = (props) => (
     <div>
@@ -17,13 +18,121 @@ const BackgroundLoader = (props) => (
             <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no, minimal-ui" />
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" />
             <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-            <script src="/essential/js/particles.min.js" defer></script>
             <script src="/essential/js/script.js" defer></script>
 
             <meta name="viewport" content="width=device-width, initial-scale=0.8" />
         </Head>
         { props.children }
-        <div id="particles-js" className="particles-js"></div>
+        <Particles className="particles-js" params={{
+            "particles": {
+                "number": {
+                "value": 100,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+                },
+                "color": {
+                "value": "#ffffff"
+                },
+                "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+                "image": {
+                    "src": "img/github.svg",
+                    "width": 100,
+                    "height": 100
+                }
+                },
+                "opacity": {
+                "value": 1,
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 1,
+                    "opacity_min": 0,
+                    "sync": false
+                }
+                },
+                "size": {
+                "value": 1,
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 4.795204795204795,
+                    "size_min": 0,
+                    "sync": false
+                }
+                },
+                "line_linked": {
+                "enable": false,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+                },
+                "move": {
+                "enable": true,
+                "speed": 4.734885849793636,
+                "direction": "none",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": true,
+                    "rotateX": 600,
+                    "rotateY": 600
+                }
+                }
+            },
+            "interactivity": {
+                "detect_on": "window",
+                "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "grab"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "repulse"
+                },
+                "resize": true
+                },
+                "modes": {
+                "grab": {
+                    "distance": 100,
+                    "line_linked": {
+                    "opacity": 1
+                    }
+                },
+                "bubble": {
+                    "distance": 250,
+                    "size": 0,
+                    "duration": 2,
+                    "opacity": 0,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 400,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+                }
+            },
+            "retina_detect": true
+        }}/>
     </div>
 )
 
