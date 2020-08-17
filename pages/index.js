@@ -11,18 +11,6 @@ const Index = () => (
         {/* <link rel="stylesheet" href="/index/css/styles.css" /> */}
       </Head>
       <div className="app">
-        <div className="heart heartTL">
-          <i className="fa fa-heart" aria-hidden="true"></i>
-        </div>
-        <div className="heart heartTR">
-          <i className="fa fa-heart" aria-hidden="true"></i>
-        </div>
-        <div className="heart heartBL">
-          <i className="fa fa-heart" aria-hidden="true"></i>
-        </div>
-        <div className="heart heartBR">
-          <i className="fa fa-heart" aria-hidden="true"></i>
-        </div>
         <div className="logo noselect">pxseu</div>
         
         <div className="links" id="links">
@@ -60,7 +48,6 @@ const Index = () => (
       
       p {
           display: inline;
-          padding: 14px;
           cursor: default;
           text-align: center;
       } 
@@ -75,8 +62,6 @@ const Index = () => (
           position: relative;
           top: 0;
           transition: top ease 0.2s, color 0.1s;
-          
-          display: inline-block;
           padding: 15px 20px;
           position: relative;
       }
@@ -101,59 +86,6 @@ const Index = () => (
       .link:hover {
           color: #FFA9FF;
           top: -2px;
-      }
-      
-      .heart {
-          position: absolute;
-          color: #FFA9FF;
-          display: none;
-          padding: 8px;
-      }
-      
-      .heartTL {
-          left: 0px;
-          top: 0px;
-      }
-      
-      .heartTR {
-          right: 0px;
-          top: 0px;
-      }
-      
-      .heartBL {
-          left: 0px;
-          bottom: 0px;
-      }
-      
-      .heartBR {
-          right: 0px;
-          bottom: 0px;
-      }
-      
-      .peitho {
-          position: relative;
-          top: 170px;
-          text-align: center;
-          animation: 1.5s ease-out 1s 1 fadeIn;
-          font-family: 'Roboto', sans-serif;
-          color: white;
-          opacity: 0;
-      }
-      
-      .noselect {
-          -webkit-touch-callout: none;
-          -webkit-user-select: none;
-          -khtml-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-      }
-      
-      
-      @media only screen and (min-width: 1500px){
-          .heart, .heartR {
-              display: inline;
-          }
       }
       
       @keyframes fadeIn {
