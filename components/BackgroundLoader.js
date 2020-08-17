@@ -19,11 +19,34 @@ const BackgroundLoader = (props) => (
             <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
             <script src="/essential/js/particles.min.js" defer></script>
             <script src="/essential/js/script.js" defer></script>
-            
+
             <meta name="viewport" content="width=device-width, initial-scale=0.8" />
         </Head>
         { props.children }
         <div id="particles-js" className="particles-js"></div>
+
+        <style jsx>{`
+            body {
+                background-color: black;
+            }
+            .app {
+                z-index: 2;
+              }
+              
+            .particles-js {
+                height: 100%;
+                width: 100%;
+                z-index: 1;
+                padding: 0;
+                margin: 0;
+                position: fixed;
+                background-color: #000;
+                background-image: url('');
+                background-size: cover;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+              }
+        `}</style>
     </div>
 )
 
