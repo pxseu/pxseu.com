@@ -24,29 +24,6 @@ const BackgroundLoader = (props) => (
         </Head>
         { props.children }
         <div id="particles-js" className="particles-js"></div>
-
-        <style jsx>{`
-            body {
-                background-color: black;
-            }
-            .app {
-                z-index: 2;
-              }
-              
-            .particles-js {
-                height: 100%;
-                width: 100%;
-                z-index: 1;
-                padding: 0;
-                margin: 0;
-                position: fixed;
-                background-color: #000;
-                background-image: url('');
-                background-size: cover;
-                background-position: 50% 50%;
-                background-repeat: no-repeat;
-              }
-        `}</style>
     </div>
 )
 
