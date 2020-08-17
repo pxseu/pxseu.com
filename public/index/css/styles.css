@@ -42,9 +42,8 @@ body {
     transform: translate(-50%);
     top: 400px;
     z-index: 2;
-    animation: 1.5s ease-out 1s 1 fadeIn;
+    animation: 1.5s ease-out 0s 1 fadeIn;
     cursor: default;
-    opacity: 0;
     text-align: center;
 }
 
