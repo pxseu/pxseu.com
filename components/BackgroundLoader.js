@@ -23,10 +23,15 @@ const BackgroundLoader = (props) => (
             <meta name="viewport" content="width=device-width, initial-scale=0.8" />
         </Head>
         { props.children }
+        <style jsx global>{`
+            body {
+                background-color: black;
+            }
+        `}</style>
         <Particles className="particles-js" params={{
             "particles": {
                 "number": {
-                "value": 100,
+                "value": 80,
                 "density": {
                     "enable": true,
                     "value_area": 800
