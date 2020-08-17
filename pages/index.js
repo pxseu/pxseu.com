@@ -149,12 +149,6 @@ const Index = () => (
           user-select: none;
       }
       
-      @media only screen and (max-width: 740px) {
-          .links p {
-            display: list-item;
-            padding: 0;
-          }
-        }
       
       @media only screen and (min-width: 1500px){
           .heart, .heartR {
