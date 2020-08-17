@@ -24,6 +24,6 @@ function loop(){
 	document.getElementsByTagName("title")[0].innerHTML = titleText[x++%titleText.length];
 }
 
-particlesJS.load('particles-js', '/essential/media/particlesjs-config.json', function() {
+/* particlesJS.load('particles-js', '/essential/media/particlesjs-config.json', function() {
     console.log('particles.js loaded');
-});
+}); */
