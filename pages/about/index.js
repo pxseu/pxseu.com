@@ -11,12 +11,17 @@ const About = () => (
             <h1 className="center noselect"><a>About Me</a></h1>
             <hr />
             <div className="center noselect">
-                <p>Full Stack and Back End developer.</p>
+                <p>Web and Back End developer.</p>
                 <p>Javascript lover.</p>
                 <p>Always up for a new challange.</p>
                 <p>16 years old.</p>
-                <p>Loves anime</p>
-                <p>and his girlfriend.</p>
+                <p>Loves anime.</p>
+                <p>I use these languages:</p>
+                <p>C++, C#, TS, JS, Python</p>
+                <p>I have expreience with:</p>
+                <p>Next.js, React, Express, MongoDB, Discord.js, EJS, Passport, Browser Extensions, Cross Platform Desktop Apps</p>
+                <p>Currently learning / getting better with:</p>
+                <p>Reacts and Next.js with Express</p>
             </div>
             <div className="center">
                 <p><a className="noselect" href="https://github.com/pxseu">Github</a></p>
