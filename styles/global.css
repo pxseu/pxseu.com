@@ -151,7 +151,7 @@ a:hover {
   z-index: 3;
 }
 
-.navbar.logo {
+.logoNavbar {
   font-family: "Gang of Three";
   color: #FFA9FF;
   cursor: pointer;
