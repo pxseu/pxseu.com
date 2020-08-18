@@ -5,7 +5,7 @@ const Navbar = () => {
 
     return (
         <header className={ navbarClasses.join(" ")}>
-            <p className="logoNavbar">pxseu</p>
+            <Link href="/"><p className="logoNavbar">pxseu</p></Link>
 
             <nav className="navigation">
                 <Link href="/"><a>Home</a></Link>
