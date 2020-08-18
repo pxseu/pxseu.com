@@ -151,13 +151,12 @@ a:hover {
   z-index: 3;
 }
 
-.logo {
+.navbar.logo {
   font-family: "Gang of Three";
   color: #FFA9FF;
   cursor: pointer;
   font-size: 30px;
   margin-left: 10px;
-  width: 50px;
 }
   
 @font-face {
