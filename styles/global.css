@@ -156,10 +156,15 @@ a:hover {
   color: #FFA9FF;
   cursor: pointer;
   font-size: 30px;
-  margin-left: 10px;
+  margin-left: 20px;
 }
   
 @font-face {
   font-family: "Gang of Three";
   src: url("/index/font/go3v2.ttf");
+}
+
+#nprogress .spinner {
+  top: 11px;
+  left: 0px;
 }
