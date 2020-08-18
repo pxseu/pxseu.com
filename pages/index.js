@@ -110,11 +110,6 @@ const Index = () => (
               transform: rotate(0deg);
           }
       }
-      
-      @font-face {
-          font-family: "Gang of Three";
-          src: url("/index/font/go3v2.ttf");
-      }
     `}</style>
   </BackgroundLoader>
 )
