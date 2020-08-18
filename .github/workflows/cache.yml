@@ -1,4 +1,4 @@
-name: Caching Primes
+name: Caching NEXT.JS
 
 on:
   push:

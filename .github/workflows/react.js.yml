@@ -1,4 +1,4 @@
-name: Build epp react
+name: Build website NEXT.JS
 
 on:
   push:
