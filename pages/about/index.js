@@ -19,7 +19,7 @@ const About = () => (
                 <p>I use these languages:</p>
                 <p>C++, C#, TS, JS, Python</p>
                 <p>I have expreience with:</p>
-                <p>Next.js, React, Express, MongoDB, Discord.js, EJS, Passport, Browser Extensions, Cross Platform Desktop Apps</p>
+                <p>Next.js, React, Express, MongoDB, Discord.js, EJS, Passport, Browser Extensions, Cross Platform Apps</p>
                 <p>Currently learning / getting better with:</p>
                 <p>Reacts and Next.js with Express</p>
             </div>
