@@ -18,7 +18,7 @@ const BackgroundLoader = (props) => (
             <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no, minimal-ui" />
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" />
             <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-            <script src="/essential/js/script.js" defer />
+            <script src="/essential/js/script.js" /* defer */ />
 
             <meta name="viewport" content="width=device-width, initial-scale=0.8" />
         </Head>
