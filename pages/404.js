@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import BackgroundLoader from './BackgroundLoader'
+import BackgroundLoader from '../components/BackgroundLoader'
 
 export default function Custom404() {
   return (
