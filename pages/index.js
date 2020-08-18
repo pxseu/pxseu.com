@@ -3,22 +3,20 @@ import Link from 'next/link'
 import BackgroundLoader from '../components/BackgroundLoader'
 
 const Index = () => (
-  <div>
-    <BackgroundLoader>
-      <Head>
-        <title>pxseu</title>
-        <meta data-n-head="ssr" data-hid="og:description" property="og:description" content="Home sweet homepage." />
-      </Head>
-      <div className="app">
-        <div className="logo noselect">pxseu</div>
-        
-        <div className="links" id="links">
-          <p><Link href="/about"><a className="link noselect">About Me</a></Link></p>
-          <p><Link href="/projects"><a className="link noselect">My Projects</a></Link></p>
-          <p><a className="link noselect" href="https://discord.pxseu.com">Discord Server</a></p>
-        </div>
+  <BackgroundLoader>
+    <Head>
+      <title>pxseu</title>
+      <meta data-n-head="ssr" data-hid="og:description" property="og:description" content="Home sweet homepage." />
+    </Head>
+    <div className="app">
+      <div className="logo noselect">pxseu</div>
+      
+      <div className="links" id="links">
+        <p><Link href="/about"><a className="link noselect">About Me</a></Link></p>
+        <p><Link href="/projects"><a className="link noselect">My Projects</a></Link></p>
+        <p><a className="link noselect" href="https://discord.pxseu.com">Discord Server</a></p>
       </div>
-    </BackgroundLoader>
+    </div>
     <style jsx>{`
       .logo {
         position: absolute;
@@ -118,7 +116,7 @@ const Index = () => (
           src: url("/index/font/go3v2.ttf");
       }
     `}</style>
-  </div>
+  </BackgroundLoader>
 )
 
 export default Index
