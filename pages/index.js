@@ -8,7 +8,6 @@ const Index = () => (
       <Head>
         <title>pxseu</title>
         <meta data-n-head="ssr" data-hid="og:description" property="og:description" content="Home sweet homepage." />
-        {/* <link rel="stylesheet" href="/index/css/styles.css" /> */}
       </Head>
       <div className="app">
         <div className="logo noselect">pxseu</div>
