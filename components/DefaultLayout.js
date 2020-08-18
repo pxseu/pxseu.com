@@ -1,13 +1,11 @@
-import Link from 'next/link'
 import BackgroundLoader from './BackgroundLoader'
+import Navbar from './Navbar';
 
 const DefaultLayout = (props) => (
     <BackgroundLoader>
+        <Navbar />
         <div className="app">
             { props.children }
-            <div className="center back">
-                <p><Link href="/"><a className="noselect">Go Back</a></Link></p>
-            </div>
         </div>
         <style jsx>{`.app{top: 100px;}`}</style>
     </BackgroundLoader> 
