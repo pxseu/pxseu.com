@@ -1,6 +1,9 @@
-console.log("%cWARNING!","color: red; font-size: 40px;");
-console.log("%cTHIS CONSOLE CAN BE USED FOR SELF XSS.","color: BLACK; font-size: 25px;");
-console.log("%cIF YOU DO NOT KNOW WHAT YOU ARE DOING DO NOT PASTE ANYTHING HERE!","color: BLACK; font-size: 25px;");
+const style1 = `text-align: center; color: red; font-size: 40px; background-color: #fff; padding: 10px; border: 4px solid red; border-radius: 25px;`;
+const style2 = `text-align: center; color: BLACK; font-size: 25px;  background-color: #fff; padding: 10px; border: 4px solid black; border-radius: 25px`;
+
+console.log("%cWARNING!", style1);
+console.log("%cTHIS CONSOLE CAN BE USED FOR SELF XSS.", style2);
+console.log("%cIF YOU DO NOT KNOW WHAT YOU ARE DOING DO NOT PASTE ANYTHING HERE!", style2);
 
 if(document.addEventListener){
 	document.addEventListener("DOMContentLoaded", function(){
