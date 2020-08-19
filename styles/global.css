@@ -1,14 +1,10 @@
 body {
-    background-color: black;
-    font-family: 'Roboto', sans-serif;
-    padding: 0;
-    margin: 0;
-    color: white;
-    font-size: 20px;
-}
-
-.app {
-  z-index: 2;
+  background-color: black;
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-size: 20px;
 }
 
 .particles-js {
@@ -25,30 +21,31 @@ body {
 }
 
 .center {
-    padding: 2px;
-    position: relative;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%);
-    text-align: center;
-    align-items: center;
-    cursor: default;
+  padding: 2px;
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+  align-items: center;
+  cursor: default;
 }
 
 .app {
-    position: absolute;
-    transform: translate(-50%);
-    left: 50%;
-    width: 480px;
-    animation: 1.5s ease-out 0s 1 fadeIn;
+  position: absolute;
+  transform: translate(-50%);
+  left: 50%;
+  width: 480px;
+  animation: 1.5s ease-out 0s 1 fadeIn;
+  z-index: 2;
 }
 
 a, p {
-    color: white;
-    transition: color 0.1s;
+  color: white;
+  transition: color 0.1s;
 }
 a:hover, p:hover {
-    color: #FFA9FF;
+  color: #FFA9FF;
 }
 
 a {
@@ -89,30 +86,30 @@ a:hover {
 }
 
 .back {
-    padding-top: 12px;
+  padding-top: 12px;
 }
 
 .image {
-    background-image: var(--bg-image);
-    width: 500px;
-    height: 500px;
-    background-size: cover;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
+  background-image: var(--bg-image);
+  width: 500px;
+  height: 500px;
+  background-size: cover;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
   
 ::-webkit-scrollbar-track {

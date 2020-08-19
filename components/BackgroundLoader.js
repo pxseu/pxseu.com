@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Particles from 'react-particles-js';
 
 const BackgroundLoader = (props) => (
-    <div>
+    <>
         <Head>
             <meta charSet="UTF-8" />
             <meta name="description" content="Pxseu's website!" />
@@ -30,7 +30,7 @@ const BackgroundLoader = (props) => (
         `}</style>
         <Particles className="particles-js" params={require('../particlesjs-config.json')}/>
         
-    </div>
+    </>
 )
 
 export default BackgroundLoader
