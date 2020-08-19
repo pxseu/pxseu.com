@@ -7,7 +7,7 @@ const DefaultLayout = (props) => (
         <div className="app">
             { props.children }
         </div>
-        <style jsx>{`.app{top: 100px;}`}</style>
+        <style jsx>{`.app{top: 40px;}`}</style>
     </BackgroundLoader> 
 )
 
