@@ -22,12 +22,7 @@ const About = () => (
             <p>Next.js, React, Express, MongoDB, Discord.js, EJS, Passport, Browser Extensions, Cross Platform Apps</p>
             <p>Currently learning / getting better with:</p>
             <p>Reacts and Next.js with Express</p>
-        </div>
-        <div className="center">
-            <p><a className="noselect" href="https://github.com/pxseu">Github</a></p>
-            <p><a className="noselect" href="https://twitter.com/pxseu">Twitter</a></p>            
-            <p><a className="noselect" href="mailto:me@pxseu.com">Email</a></p>            
-        </div>   
+        </div> 
     </DefaultLayout>    
 )
 
