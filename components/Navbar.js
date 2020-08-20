@@ -49,8 +49,10 @@ const Navbar = () => {
 function NavElements() {
     return (
         <>
-            <Link href="/about"><a>About</a></Link>
             <Link href="/projects"><a>Projects</a></Link>
+            <Link href="/yiff"><a>Yiff</a></Link>
+            <Link href="/about"><a>About</a></Link>
+            <Link href="/contact"><a>Contact</a></Link>
         </>
     )
 }
