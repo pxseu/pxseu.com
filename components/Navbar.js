@@ -4,11 +4,9 @@ import { useState, useEffect } from 'react'
 const Navbar = () => {
     const navbarClasses=[ 'navbar' ];
 
-    const [loaded, setLoaded] = useState(false);
-
-    const [navToggle, setNavToggle] = useState(false);
-
-    const [smallScreen, setsmallScreen] = useState(false);
+    const [loaded, setLoaded] = useState(false),
+    [navToggle, setNavToggle] = useState(false),
+    [smallScreen, setsmallScreen] = useState(false);
 
     const resizeHandler = () => {
         setNavToggle(false);
@@ -32,8 +30,7 @@ const Navbar = () => {
             <header className={ navbarClasses.join(" ")}>
                 <Link href="/"><p className="logoNavbar">pxseu</p></Link>
                 <nav className={ smallScreen ? "hidden" : "navigation"}>
-                    <Link href="/about"><a>About</a></Link>
-                    <Link href="/projects"><a>Projects</a></Link>
+                    <NavElements />
                 </nav>
                 <p className={ smallScreen ? "navigation navIcon" : "hidden"} onClick={ () => setNavToggle(true) }>
                     <i className="fas fa-bars"></i>
@@ -42,12 +39,20 @@ const Navbar = () => {
             <div className={navToggle ? "navOverlay show" : "navOverlay"}>
                 <a className="closebtn" onClick={ () => setNavToggle(false) }>&times;</a>
                 <div className="navOverlay-content">
-                    <Link href="/about"><a>About</a></Link>
-                    <Link href="/projects"><a>Projects</a></Link>
+                    <NavElements />
                 </div>
             </div>
         </>
     )
 };
+
+function NavElements() {
+    return (
+        <>
+            <Link href="/about"><a>About</a></Link>
+            <Link href="/projects"><a>Projects</a></Link>
+        </>
+    )
+}
 
 export default Navbar;
