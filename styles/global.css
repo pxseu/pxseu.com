@@ -99,15 +99,6 @@ a:hover {
   transform: translate(-50%);
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -152,16 +143,100 @@ a:hover {
   font-family: "Gang of Three";
   color: #FFA9FF;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 34px;
   margin-left: 20px;
 }
-  
-@font-face {
-  font-family: "Gang of Three";
-  src: url("/index/font/go3v2.ttf");
+
+.navIcon {
+  font-size: 34px;
+  margin-right: 20px;
 }
 
 #nprogress .spinner {
   top: 20px;
   left: 0px;
+}
+
+.hidden {
+  display: none;
+}
+
+.navOverlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.navOverlay.show {
+  width: 100%;
+}
+
+.navOverlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px; 
+}
+
+.navOverlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.navOverlay a:hover, .navOverlay a:focus {
+  color: #f1f1f1;
+}
+
+.navOverlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .navOverlay a {font-size: 20px}
+  .navOverlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@font-face {
+  font-family: "Gang of Three";
+  src: url("/index/font/go3v2.ttf");
+}
+
+@media screen and (min-width: 800px) {
+  .app {
+    width: 700px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .app {
+    width: 1200px;
+  }
 }
