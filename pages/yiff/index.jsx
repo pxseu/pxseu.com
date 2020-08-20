@@ -5,6 +5,7 @@ const Yiff = () => (
     <DefaultLayout>
         <Head>
             <title>Yiff</title>
+            <meta data-n-head="ssr" data-hid="og:image" property="og:image" content="https://cdn.discordapp.com/attachments/740669580112035945/746098953820569690/qhm60nu25mz41.png" />
             <meta data-n-head="ssr" data-hid="og:description" property="og:description" content="Yiff" />
         </Head>
     
@@ -15,7 +16,8 @@ const Yiff = () => (
             <p>fr fr fr</p>
             <p>This is not okay.</p>
         </div>
-    </DefaultLayout>    
+    </DefaultLayout> 
 )
+
 
 export default Yiff
