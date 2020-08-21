@@ -10,11 +10,13 @@ const Projects = () => (
         <DefaultLayout>
             <h1 className="center noselect"><a>My Projects</a></h1>
             <hr />
-            <div className="center">
-                <p><a className="noselect" href="https://premid.app/">Working in PreMiD as an Engineer.</a></p>
-                <p><a className="noselect" href="https://short.pxseu.com/">Simple Url shrinker</a></p>            
-                <p><a className="noselect" href="https://cdn.pxseu.com/">Simple File uploader</a></p>            
-                <p><a className="noselect" href="https://github.com/pxseu/ZeroTwoBot">Discord Bot</a></p>            
+            <div className="center noselect">
+                <p><a href="https://premid.app/">Working in PreMiD as an Engineer.</a></p>
+                <p><a href="https://short.pxseu.com/">Simple Url shrinker</a></p>            
+                <p><a href="https://cdn.pxseu.com/">Simple File uploader</a></p>   
+                <p><a href="https://dash.pxseu.com/">Dashbord for my apps</a></p>  
+                <p><a href="https://github.com/pxseu/pxseu.com">This website</a></p>         
+                <p><a href="https://github.com/pxseu/ZeroTwoBot">Discord Bot</a></p>            
             </div>
         </DefaultLayout>
     </div>       
