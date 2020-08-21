@@ -9,8 +9,8 @@ const LovesIndex = () => {
         <>
             <DefaultLayout>
                 <Head>
-                    <title>I love you &lt;333</title>
-                    <meta data-n-head="ssr" data-hid="og:description" property="og:description" content="I love you cutie <333" />
+                    <title>Grab a waifu!</title>
+                    <meta data-n-head="ssr" data-hid="og:description" property="og:description" content="Grab a waifu!" />
                 </Head>
                 <h1 className="center noselect">
                     <a onClick={ ()=> {
@@ -20,7 +20,9 @@ const LovesIndex = () => {
                 </h1>
                 <hr />
                 <div className={ waifuClick ? "center noselect imageDiv" : "hidden" }>
-                    <img className="waifuImage" src={`https://www.thiswaifudoesnotexist.net/example-${Math.floor(Math.random() * 100000)}.jpg`} alt="Unable to fetch image." />
+                    <img className="waifuImage" src={
+                        `https://www.thiswaifudoesnotexist.net/example-${Math.floor(Math.random() * 100000)}.jpg`
+                    } alt="Unable to fetch image." />
                     <p><a href="https://www.thiswaifudoesnotexist.net/">Provided by www.thiswaifudoesnotexist.net</a></p>
                 </div>
             </DefaultLayout>
