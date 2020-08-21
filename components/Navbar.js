@@ -4,32 +4,29 @@ import { useState, useEffect } from 'react'
 const Navbar = () => {
     const navbarClasses=[ 'navbar' ];
 
-    const [loaded, setLoaded] = useState(false),
-    [navToggle, setNavToggle] = useState(false),
+    const [navToggle, setNavToggle] = useState(false),
     [smallScreen, setsmallScreen] = useState(false);
 
     const resizeHandler = () => {
         setNavToggle(false);
-        if (window.innerWidth < 600) setsmallScreen(true);
+        if (window.innerWidth < 800) setsmallScreen(true);
         else setsmallScreen(false);
     }
 
     useEffect(() => {
-        if (!loaded){
-            resizeHandler();
-            setLoaded(true);
-        }
+        resizeHandler();
+
         window.addEventListener("resize", resizeHandler);
         return () => {
           window.removeEventListener("resize", resizeHandler);
         };
-    });
+    }, []);
 
     return (
         <>
             <header className={ navbarClasses.join(" ")}>
-                <Link href="/"><p className="logoNavbar">pxseu</p></Link>
-                <nav className={ smallScreen ? "hidden" : "navigation"}>
+                <Link href="/"><p className="logoNavbar noselect">pxseu</p></Link>
+                <nav className={ smallScreen ? "hidden" : "navigation noselect"}>
                     <NavElements />
                 </nav>
                 <p className={ smallScreen ? "navigation navIcon" : "hidden"} onClick={ () => setNavToggle(true) }>
@@ -37,8 +34,8 @@ const Navbar = () => {
                 </p>
             </header>
             <div className={navToggle ? "navOverlay show" : "navOverlay"}>
-                <a className="closebtn" onClick={ () => setNavToggle(false) }>&times;</a>
-                <div className="navOverlay-content">
+                <a className="closebtn noselect" onClick={ () => setNavToggle(false) }>&times;</a>
+                <div className="navOverlay-content noselect">
                     <NavElements />
                 </div>
             </div>
@@ -51,6 +48,7 @@ function NavElements() {
         <>
             <Link href="/projects"><a>Projects</a></Link>
             <Link href="/yiff"><a>Yiff</a></Link>
+            <Link href="/waifu"><a>Waifu</a></Link>
             <Link href="/about"><a>About</a></Link>
             <Link href="/contact"><a>Contact</a></Link>
         </>
