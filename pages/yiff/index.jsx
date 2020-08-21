@@ -4,7 +4,7 @@ import DefaultLayout from '../../components/DefaultLayout'
 
 
 const Yiff = () => {
-    /*const [loaded, setLoaded] = useState(false);
+    /*
     const [imageConfirm, setImageConfirm] = useState(false);
 
     const imageUrl = undefined; */
