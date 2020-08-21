@@ -15,7 +15,8 @@ const LovesIndex = () => {
                 <h1 className="center noselect">
                     <a onClick={ ()=> setLoveClick(true) }>I love you cutie &lt;333</a>
                 </h1>
-                <div className={ loveClick ? "imageDiv" : "hidden" }>
+                <hr />
+                <div className={ loveClick ? "center noselect imageDiv" : "hidden" }>
                     <img src="https://cdn.pxseu.com/meAndHer.jpg" />
                 </div>
             </DefaultLayout>
