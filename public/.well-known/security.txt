@@ -1,0 +1,7 @@
+# If you see this and you want to take a look around it would be appricated.
+# If you're passing by then still hi!
+
+Contact: mailto:security@pxseu.com
+Encryption: https://www.pxseu.com/pgp-key.txt
+Preferred-Languages: en
+Canonical: https://www.pxseu.com/.well-known/security.txt
