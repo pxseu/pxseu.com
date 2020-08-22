@@ -12,7 +12,7 @@ const LovesIndex = () => (
             <div className="center noselect">
                 <p>1. Any form of spamming will not be tolerated.</p>
                 <p>2. Adult contenet (gore, porn, deaths, naked photos) will not be tolerated.</p>
-                <p>3. I do not guarantee the state of the files for you. They can be delte at any point for storage / update reasons.</p>
+                <p>3. I do not guarantee the state of the files for you. They can be delted at any point for storage / update reasons.</p>
                 <p>4. Only one account is allowed per one user. (no second accounts will be tolerated)</p>
                 <p>5. Bans will be given without a reason and they might (not) be permanent.</p>
             </div>
