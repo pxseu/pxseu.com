@@ -7,7 +7,7 @@ const HallOfFame = () => (
             <title>Hall of fame</title>
             <meta data-n-head="ssr" data-hid="og:description" property="og:description" content="Hall of fame" />
         </Head>
-        <h1 className="center noselect"><a>These people helped with the reaion of the website</a></h1>
+        <h1 className="center noselect"><a>These people helped with the creation of the website</a></h1>
         <hr />
         <div className="center noselect">
             <p>Peitho | spell checking and corrections</p>
