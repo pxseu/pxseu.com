@@ -51,6 +51,7 @@ function NavElements() {
             <Link href="/waifu"><a>Waifu</a></Link>
             <Link href="/about"><a>About</a></Link>
             <Link href="/contact"><a>Contact</a></Link>
+            <Link href="/legal-stuff"><a>Legal Stuff</a></Link>
         </>
     )
 }
