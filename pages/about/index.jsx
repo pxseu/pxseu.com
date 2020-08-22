@@ -15,7 +15,7 @@ const About = () => (
             <p>Javascript lover.</p>
             <p>Always up for a new challange.</p>
             <p>16 years old.</p>
-            <p>Loves anime.</p>
+            <p>Loves anime and his cute and amazing girlfriend. (<a href="https://julie420.github.io">Peitho</a>)</p>
             <p>I use these languages:</p>
             <p>C++, C#, TS, JS, Python</p>
             <p>I have expreience with:</p>
