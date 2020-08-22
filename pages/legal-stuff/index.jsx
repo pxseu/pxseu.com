@@ -6,10 +6,9 @@ const LovesIndex = () => (
         <DefaultLayout>
             <Head>
                 <title>Terms of Service | Privacy Policy</title>
-                <meta data-n-head="ssr" data-hid="og:description" property="og:description" content="Terms of Service" />
+                <meta data-n-head="ssr" data-hid="og:description" property="og:description" content="Terms of Service | Privacy Policy" />
             </Head>
             <h1 className="center noselect"><a>Terms of Service and Privacy Policy.</a></h1>
-            <hr />
             <div className="center noselect">
                 <p>1. Any form of spamming will not be tolerated.</p>
                 <p>2. Adult contenet (gore, porn, deaths, naked photos) will not be tolerated.</p>
@@ -22,7 +21,7 @@ const LovesIndex = () => (
             <div className="center noselect">
                 <p>I value your privacy and your trust.</p>
                 <p>All of the data that you input / give will be stored in the propper way.</p>
-                <p>All your data can be delete with the account deleteion process.</p>
+                <p>All your data can be deleted with the account deletion process from the dashboard.</p>
             </div>
             <hr />
             <h4 className="center noselect"><a>If you have any question join my discord server!</a></h4>
