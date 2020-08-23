@@ -5,6 +5,7 @@ export default function Custom404() {
   return (
     <BackgroundLoader>
         <Head>
+            <title>404 | Not found</title>
             <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css' />
         </Head>
         <div className="app">
