@@ -2,6 +2,17 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
 const Navbar = () => {
+
+    const NavElements = () => (
+        <>
+            <Link href="/projects"><a>Projects</a></Link>
+            <Link href="/about"><a>About</a></Link>
+            <Link href="/contact"><a>Contact</a></Link>
+            <Link href="/legal-stuff"><a>Legal Stuff</a></Link>
+            <Link href="/other"><a>Other</a></Link>
+        </>
+    )
+
     const navbarClasses=[ 'navbar' ];
 
     const [navToggle, setNavToggle] = useState(false),
@@ -42,18 +53,5 @@ const Navbar = () => {
         </>
     )
 };
-
-function NavElements() {
-    return (
-        <>
-            <Link href="/projects"><a>Projects</a></Link>
-            <Link href="/yiff"><a>Yiff</a></Link>
-            <Link href="/waifu"><a>Waifu</a></Link>
-            <Link href="/about"><a>About</a></Link>
-            <Link href="/contact"><a>Contact</a></Link>
-            <Link href="/legal-stuff"><a>Legal Stuff</a></Link>
-        </>
-    )
-}
 
 export default Navbar;

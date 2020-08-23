@@ -11,8 +11,9 @@ const Contact = () => (
         <hr />
         <div className="center noselect">
             <p><a href="https://github.com/pxseu">Github</a></p>
-            <p><a href="https://twitter.com/pxseu">Twitter</a></p>            
-            <p><a href="mailto:me@pxseu.com">Email</a></p>            
+            <p><a href="https://twitter.com/pxseu">Twitter</a></p>
+            <p><a href="mailto:me@pxseu.com">Email</a></p>
+            <p><a href="https://discord.pxseu.com">Discord</a></p>
         </div>  
     </DefaultLayout>    
 )
