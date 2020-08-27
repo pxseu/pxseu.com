@@ -39,15 +39,19 @@ const About = () => {
 					Extensions, Cross Platform Apps
 				</p>
 				<p>Currently learning / getting better with:</p>
-				<p>Reacts and Next.js with Express</p>
+				<p>React and Next.js with Express</p>
 			</div>
 			<Modal open={isOpen} onClose={() => setIsOpen(false)}>
 				<p>
-					The website is <a href='https://julie420.github.io'>here.</a>
+					Her website is <a href='https://julie420.github.io'>here.</a>
 				</p>
+				<p>She is vewwy smort~!!!</p>
 			</Modal>
 		</DefaultLayout>
 	);
 };
 
 export default About;
+/* 
+			Peitho is hot af and i love her a lot omfg
+*/
