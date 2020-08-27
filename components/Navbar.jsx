@@ -15,8 +15,8 @@ const Navbar = () => {
 
     const navbarClasses=[ 'navbar' ];
 
-    const [navToggle, setNavToggle] = useState(false),
-    [smallScreen, setsmallScreen] = useState(false);
+    const [navToggle, setNavToggle] = useState(false);
+    const [smallScreen, setsmallScreen] = useState(false);
 
     const resizeHandler = () => {
         setNavToggle(false);
