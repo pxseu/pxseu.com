@@ -13,8 +13,9 @@ const OtherIndex = () =>  (
         </h1>
         <hr />
         <div className="center noselect">
-            <h3><Link href="/other/yiff"><a>Yiff</a></Link></h3>
-            <h3><Link href="/other/waifu"><a>Waifu</a></Link></h3>
+            <Link href="/other/yiff"><h3><a>Yiff</a></h3></Link>
+            <Link href="/other/waifu"><h3><a>Waifu</a></h3></Link>
+            <Link href="/hall-of-fame"><h3><a>Hall Of Fame</a></h3></Link>
         </div>
     </DefaultLayout>
 )
