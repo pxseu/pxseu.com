@@ -10,7 +10,7 @@ const HallOfFame = () => (
         <h1 className="center noselect"><a>These people helped with the creation of the website</a></h1>
         <hr />
         <div className="center noselect">
-            <p>Peitho | spell checking and corrections</p>
+            <p>Peitho | spell checking and langauge corrections</p>
             <p>Vek | told me about security.txt</p>
         </div>  
     </DefaultLayout>    
