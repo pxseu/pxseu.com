@@ -17,7 +17,6 @@ const About = () => {
 					content='About me.'
 				/>
 			</Head>
-
 			<h1 className='center noselect'>
 				<a>About Me</a>
 			</h1>
@@ -46,7 +45,6 @@ const About = () => {
 				<p>
 					The website is <a href='https://julie420.github.io'>here.</a>
 				</p>
-				<p className='warn'>Warning contains an ip logger.</p>
 			</Modal>
 		</DefaultLayout>
 	);
