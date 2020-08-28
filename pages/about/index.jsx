@@ -43,7 +43,7 @@ const About = () => {
 			</div>
 			<Modal open={isOpen} onClose={() => setIsOpen(false)}>
 				<p>
-					Her website is <a href='https://julie420.github.io'>here.</a>
+					<a href='https://julie420.github.io'>Her website is here.</a>
 				</p>
 				<p>She is vewwy smort~!!!</p>
 			</Modal>
@@ -52,6 +52,7 @@ const About = () => {
 };
 
 export default About;
+
 /* 
 			Peitho is hot af and i love her a lot omfg
 */

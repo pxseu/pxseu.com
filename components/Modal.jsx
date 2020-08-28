@@ -1,15 +1,29 @@
-import React from 'react';
+import { useEffect } from 'react';
 import ReactDom from 'react-dom';
 
 const Modal = ({ open, onClose, children }) => {
 	if (!open) return null;
 	const ModalText = children == undefined ? 'What?' : children;
 
+	useEffect(() => {
+		setTimeout(
+			() => document.getElementById('modal').classList.remove('fade'),
+			100
+		);
+	});
+
 	return ReactDom.createPortal(
 		<>
-			<div className='overlay' />
-			<div id='modal' className='modal'>
-				<div id='closeModal' className='closeModal' onClick={onClose}>
+			<div id='overlay' className='overlay' />
+			<div id='modal' className='modal fade'>
+				<div
+					id='closeModal'
+					className='closeModal'
+					onClick={() => {
+						document.getElementById('modal').classList.add('fade');
+						setTimeout(() => onClose(), 400);
+					}}
+				>
 					x
 				</div>
 				{ModalText}
@@ -28,6 +42,8 @@ const Modal = ({ open, onClose, children }) => {
 					border-radius: 10px;
 					border: 1px solid #ffffff;
 					text-align: center;
+					opacity: 1;
+					transition-duration: 0.3s;
 				}
 
 				.overlay {
@@ -59,6 +75,9 @@ const Modal = ({ open, onClose, children }) => {
 
 				.closeModal:hover {
 					background-color: #ff4242;
+				}
+				.fade {
+					opacity: 0;
 				}
 			`}</style>
 		</>,
