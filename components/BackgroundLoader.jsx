@@ -1,5 +1,17 @@
-import Head from 'next/head';
-import Particles from 'react-particles-js';
+import Head from "next/head";
+import Particles from "react-particles-js";
+import { isMobile } from "react-device-detect";
+
+const MobileFriendly = () => {
+	let particlesConfig;
+	if (isMobile) {
+		particlesConfig = require("../particlesjs-config.mobile.json");
+	} else {
+		particlesConfig = require("../particlesjs-config.json");
+	}
+
+	return <Particles className='particles-js' params={particlesConfig} />;
+};
 
 const BackgroundLoader = (props) => (
 	<>
@@ -57,10 +69,7 @@ const BackgroundLoader = (props) => (
 				background-color: black;
 			}
 		`}</style>
-		<Particles
-			className='particles-js'
-			params={require('../particlesjs-config.json')}
-		/>
+		<MobileFriendly />
 	</>
 );
 
