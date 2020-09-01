@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import DefaultLayout from '../../components/DefaultLayout';
+import Head from "next/head";
+import DefaultLayout from "../../components/DefaultLayout";
 
 const HallOfFame = () => (
 	<DefaultLayout>
@@ -19,6 +19,8 @@ const HallOfFame = () => (
 		<div className='center noselect'>
 			<p>Peitho | spell checking and langauge corrections</p>
 			<p>Vek | told me about security.txt</p>
+			<p>Milki | told me to remove Peitho</p>
+			<p>Amuq | DDOS'ed my website</p>
 		</div>
 	</DefaultLayout>
 );
