@@ -27,10 +27,10 @@ const About = () => {
 				<p>Always up for a new challange.</p>
 				<p>16 years old.</p>
 				{/* <p>I like anime and manga (and color pink uwu).</p> */}
-				<p>
+				{/* 				<p>
 					I love my cute and amazing girlfriend. (
 					<a onClick={() => setIsOpen(true)}>Peitho</a>)
-				</p>
+				</p> */}
 				<p>I use these languages:</p>
 				<p>C++, C#, TS, JS, Python</p>
 				<p>I have experience with:</p>
