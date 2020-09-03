@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
-import ReactDom from 'react-dom';
+import { useEffect } from "react";
+import ReactDom from "react-dom";
 
 const Modal = ({ open, onClose, children }) => {
 	if (!open) return null;
-	const ModalText = children == undefined ? 'What?' : children;
+	const ModalText = children == undefined ? "What?" : children;
 
 	useEffect(() => {
 		setTimeout(
-			() => document.getElementById('modal').classList.remove('fade'),
+			() => document.getElementById("modal").classList.remove("fade"),
 			100
 		);
 	});
@@ -20,7 +20,7 @@ const Modal = ({ open, onClose, children }) => {
 					id='closeModal'
 					className='closeModal'
 					onClick={() => {
-						document.getElementById('modal').classList.add('fade');
+						document.getElementById("modal").classList.add("fade");
 						setTimeout(() => onClose(), 400);
 					}}
 				>
@@ -81,7 +81,7 @@ const Modal = ({ open, onClose, children }) => {
 				}
 			`}</style>
 		</>,
-		document.getElementById('portal')
+		document.getElementById("portal")
 	);
 };
 

@@ -1,5 +1,5 @@
-import BackgroundLoader from './BackgroundLoader';
-import Navbar from './Navbar';
+import BackgroundLoader from "./BackgroundLoader";
+import Navbar from "./Navbar";
 
 const DefaultLayout = (props) => (
 	<BackgroundLoader>
