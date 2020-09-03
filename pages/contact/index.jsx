@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import DefaultLayout from '../../components/DefaultLayout';
+import Head from "next/head";
+import DefaultLayout from "../../components/DefaultLayout";
 
 const Contact = () => (
 	<DefaultLayout>

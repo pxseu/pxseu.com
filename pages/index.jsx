@@ -1,6 +1,6 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import BackgroundLoader from '../components/BackgroundLoader';
+import Head from "next/head";
+import Link from "next/link";
+import BackgroundLoader from "../components/BackgroundLoader";
 
 const Index = () => (
 	<BackgroundLoader>
@@ -46,7 +46,7 @@ const Index = () => (
 				text-align: center;
 				color: #ffa9ff;
 				font-size: 150px;
-				font-family: 'Gang of Three';
+				font-family: "Gang of Three";
 			}
 
 			.links {
@@ -68,7 +68,7 @@ const Index = () => (
 
 			.link {
 				color: white;
-				font-family: 'Roboto', sans-serif;
+				font-family: "Roboto", sans-serif;
 				text-decoration: none;
 				font-size: 30px;
 				transition: color 0.1s;
@@ -83,7 +83,7 @@ const Index = () => (
 			.link:after {
 				background: none repeat scroll 0 0 transparent;
 				bottom: 0;
-				content: '';
+				content: "";
 				display: block;
 				height: 2px;
 				left: 50%;

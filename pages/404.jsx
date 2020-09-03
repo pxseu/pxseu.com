@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import BackgroundLoader from '../components/BackgroundLoader';
+import Head from "next/head";
+import BackgroundLoader from "../components/BackgroundLoader";
 
 export default function Custom404() {
 	return (
@@ -193,7 +193,7 @@ export default function Custom404() {
 					}
 					h1 {
 						color: white;
-						font-family: 'Varela', sans-serif;
+						font-family: "Varela", sans-serif;
 					}
 					.bellowCenter {
 						position: absolute;

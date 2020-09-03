@@ -1,6 +1,6 @@
-import Head from 'next/head';
-import { useState } from 'react';
-import DefaultLayout from '../../../components/DefaultLayout';
+import Head from "next/head";
+import { useState } from "react";
+import DefaultLayout from "../../../components/DefaultLayout";
 
 const LovesIndex = () => {
 	const [loveClick, setLoveClick] = useState(false);
@@ -21,7 +21,7 @@ const LovesIndex = () => {
 					<a onClick={() => setLoveClick(true)}>I love you cutie &lt;333</a>
 				</h1>
 				<hr />
-				<div className={loveClick ? 'center noselect imageDiv' : 'hidden'}>
+				<div className={loveClick ? "center noselect imageDiv" : "hidden"}>
 					<img src='https://cdn.pxseu.com/meAndHer.jpg' />
 				</div>
 			</DefaultLayout>
