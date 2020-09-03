@@ -1,6 +1,6 @@
-import Head from 'next/head';
-import { useState } from 'react';
-import DefaultLayout from '../../../components/DefaultLayout';
+import Head from "next/head";
+import { useState } from "react";
+import DefaultLayout from "../../../components/DefaultLayout";
 
 const LovesIndex = () => {
 	const [waifuClick, setWaifuClick] = useState(true);
@@ -28,7 +28,7 @@ const LovesIndex = () => {
 					</a>
 				</h1>
 				<hr />
-				<div className={waifuClick ? 'center noselect imageDiv' : 'hidden'}>
+				<div className={waifuClick ? "center noselect imageDiv" : "hidden"}>
 					<img
 						className='waifuImage'
 						src={`https://www.thiswaifudoesnotexist.net/example-${Math.floor(

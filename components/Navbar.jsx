@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
 	const NavElements = () => (
@@ -22,7 +22,7 @@ const Navbar = () => {
 		</>
 	);
 
-	const navbarClasses = ['navbar'];
+	const navbarClasses = ["navbar"];
 
 	const [navToggle, setNavToggle] = useState(false);
 	const [smallScreen, setsmallScreen] = useState(false);
@@ -36,29 +36,29 @@ const Navbar = () => {
 	useEffect(() => {
 		resizeHandler();
 
-		window.addEventListener('resize', resizeHandler);
+		window.addEventListener("resize", resizeHandler);
 		return () => {
-			window.removeEventListener('resize', resizeHandler);
+			window.removeEventListener("resize", resizeHandler);
 		};
 	}, []);
 
 	return (
 		<>
-			<header className={navbarClasses.join(' ')}>
+			<header className={navbarClasses.join(" ")}>
 				<Link href='/'>
 					<p className='logoNavbar noselect'>pxseu</p>
 				</Link>
-				<nav className={smallScreen ? 'hidden' : 'navigation noselect'}>
+				<nav className={smallScreen ? "hidden" : "navigation noselect"}>
 					<NavElements />
 				</nav>
 				<p
-					className={smallScreen ? 'navigation navIcon' : 'hidden'}
+					className={smallScreen ? "navigation navIcon" : "hidden"}
 					onClick={() => setNavToggle(true)}
 				>
 					<i className='fas fa-bars'></i>
 				</p>
 			</header>
-			<div className={navToggle ? 'navOverlay show' : 'navOverlay'}>
+			<div className={navToggle ? "navOverlay show" : "navOverlay"}>
 				<a className='closebtn noselect' onClick={() => setNavToggle(false)}>
 					&times;
 				</a>
