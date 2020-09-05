@@ -1,20 +1,23 @@
 {
-  "name": "server---main",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev -p 8080",
-    "build": "next build",
-    "start": "next start -p 6001"
-  },
-  "dependencies": {
-    "i": "^0.3.6",
-    "next": "9.5.3",
-    "npm": "^6.14.8",
-    "nprogress": "^0.2.0",
-    "react": "16.13.1",
-    "react-device-detect": "^1.13.1",
-    "react-dom": "16.13.1",
-    "react-particles-js": "^3.3.0"
-  }
+	"name": "server---main",
+	"version": "0.1.0",
+	"private": true,
+	"main": "server.js",
+	"scripts": {
+		"dev": "cross-env NODE_ENV=development PORT=8080 nodemon --ignore './.next/' .",
+		"build": "next build",
+		"start": "cross-env NODE_ENV=production PORT=6001 node ."
+	},
+	"dependencies": {
+		"cross-env": "^7.0.2",
+		"express": "^4.17.1",
+		"helmet": "^4.1.0",
+		"morgan": "^1.10.0",
+		"next": "9.5.3",
+		"nprogress": "^0.2.0",
+		"react": "16.13.1",
+		"react-device-detect": "^1.13.1",
+		"react-dom": "16.13.1",
+		"react-particles-js": "^3.3.0"
+	}
 }
