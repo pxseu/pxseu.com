@@ -13,6 +13,23 @@ app.prepare().then(() => {
 
 	server.use(morgan("common"));
 	server.use(helmet());
+	server.use(
+		helmet.contentSecurityPolicy({
+			directives: {
+				defaultSrc: ["'self'"],
+				baseUri: ["'self'"],
+				fontSrc: ["'self'", "https:", "data:"],
+				frameAncestors: ["'self'"],
+				imgSrc: ["'self'", "data:"],
+				objectSrc: ["'none'"],
+				scriptSrc: ["'self'", "ajax.cloudflare.com"],
+				scriptSrcAttr: ["'none'"],
+				styleSrc: ["'self'", "https:", "'unsafe-inline'"],
+				upgradeInsecureRequests: [],
+				blockAllMixedContent: [],
+			},
+		})
+	);
 
 	server.all("*", (req, res) => {
 		return handle(req, res);
