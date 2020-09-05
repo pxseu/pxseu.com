@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development PORT=8080 nodemon --ignore './.next/' .",
 		"build": "next build",
-		"start": "cross-env NODE_ENV=production PORT=6001 node ."
+		"start": "cross-env NODE_ENV=production PORT=6000 node ."
 	},
 	"dependencies": {
 		"cross-env": "^7.0.2",
