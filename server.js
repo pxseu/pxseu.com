@@ -11,6 +11,7 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
 	const server = express();
 
+	server.set("trust proxy", 1);
 	server.use(morgan("common"));
 	server.use(helmet());
 	server.use(
