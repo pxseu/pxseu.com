@@ -37,3 +37,5 @@ const About = () => {
 };
 
 export default About;
+
+//              No more temp gf (she full-time now)
