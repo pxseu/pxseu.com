@@ -1,4 +1,4 @@
-const StyleWarn = `text-align: center; color: red; font-size: 40px; background-color: #fff; padding: 10px; border: 4px solid red; border-radius: 25px;`;
+/* const StyleWarn = `text-align: center; color: red; font-size: 40px; background-color: #fff; padding: 10px; border: 4px solid red; border-radius: 25px;`;
 const StyleNormal = `text-align: center; color: BLACK; font-size: 25px;  background-color: #fff; padding: 10px; border: 4px solid black; border-radius: 25px`;
 
 console.log("%cWARNING!", StyleWarn);
@@ -7,6 +7,10 @@ console.log(
 	"%cIF YOU DO NOT KNOW WHAT YOU ARE DOING DO NOT PASTE ANYTHING HERE!",
 	StyleNormal
 );
+
+useless ngl
+
+*/
 
 if (document.addEventListener) {
 	document.addEventListener("DOMContentLoaded", function () {

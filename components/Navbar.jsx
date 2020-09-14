@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from "next/head";
 import { useState, useEffect } from "react";
 
 const Navbar = () => {
@@ -19,6 +20,7 @@ const Navbar = () => {
 			<Link href='/other'>
 				<a>Other</a>
 			</Link>
+			<a href='//dash.pxseu.com'>Dash</a>
 		</>
 	);
 
@@ -29,7 +31,7 @@ const Navbar = () => {
 
 	const resizeHandler = () => {
 		setNavToggle(false);
-		if (window.innerWidth < 800) setsmallScreen(true);
+		if (window.innerWidth < 900) setsmallScreen(true);
 		else setsmallScreen(false);
 	};
 
@@ -44,6 +46,13 @@ const Navbar = () => {
 
 	return (
 		<>
+			<Head>
+				<link
+					rel='stylesheet'
+					href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'
+				/>
+			</Head>
+
 			<header className={navbarClasses.join(" ")}>
 				<Link href='/'>
 					<p className='logoNavbar noselect'>pxseu</p>
