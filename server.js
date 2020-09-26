@@ -1,4 +1,6 @@
-const express = require("express");
+"use strict";
+
+const server = require("express")();
 const helmet = require("helmet");
 const morgan = require("morgan");
 const next = require("next");
@@ -9,8 +11,6 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-	const server = express();
-
 	server.set("trust proxy", 1);
 	server.use(morgan("common"));
 	server.use(helmet());
