@@ -88,7 +88,8 @@ const BackgroundLoader = (props) => {
 				/>
 				{/* <script src='/essential/js/script.js'defer  /> */}
 
-				<meta name='viewport' content='width=device-width, initial-scale=0.8' />
+				<meta name='viewport' content='width=device-width, initial-scale=0.8' />\
+				<meta name="google-site-verification" content="azPHAHBpTuJ-8stcPE_LX6-GNwVGjzp5_V7E3KCcmMk" />
 			</Head>
 			{props.children}
 			<style jsx global>{`
