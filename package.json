@@ -16,7 +16,7 @@
 		"next": "9.5.4",
 		"nprogress": "^0.2.0",
 		"react": "16.13.1",
-		"react-device-detect": "^1.13.1",
+		"react-device-detect": "^1.14.0",
 		"react-dom": "16.13.1",
 		"react-particles-js": "^3.3.0"
 	},
