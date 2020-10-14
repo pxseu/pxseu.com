@@ -21,7 +21,12 @@ app.prepare().then(() => {
 				baseUri: ["'self'"],
 				fontSrc: ["'self'", "https:", "data:"],
 				frameAncestors: ["'self'"],
-				imgSrc: ["'self'", "data:"],
+				imgSrc: [
+					"'self'",
+					"data:",
+					"cdn.pxseu.com",
+					"www.thiswaifudoesnotexist.net",
+				],
 				objectSrc: ["'none'"],
 				scriptSrc: ["'self'", "ajax.cloudflare.com"],
 				scriptSrcAttr: ["'none'"],
