@@ -22,16 +22,19 @@ const Projects = () => (
 					<a href='https://premid.app/'>Working in PreMiD as an Engineer.</a>
 				</p>
 				<p>
-					<a href='https://short.pxseu.com/'>Simple Url shrinker</a>
+					<a href='https://short.pxseu.com/'>Url shrinker!</a>
 				</p>
 				<p>
-					<a href='https://cdn.pxseu.com/'>Simple File uploader</a>
+					<a href='https://cdn.pxseu.com/'>File uploader!</a>
 				</p>
 				<p>
-					<a href='https://dash.pxseu.com/'>Dasboard for my apps</a>
+					<a href='https://chat.pxseu.com/'>Chat App!</a>
 				</p>
 				<p>
-					<a href='https://github.com/pxseu/pxseu.com'>This website</a>
+					<a href='https://dash.pxseu.com/'>Dasboard for my apps!</a>
+				</p>
+				<p>
+					<a href='https://github.com/pxseu/pxseu.com'>This website!</a>
 				</p>
 				<p>
 					<a href='https://github.com/pxseu/ZeroTwoBot'>Discord Bot</a>
