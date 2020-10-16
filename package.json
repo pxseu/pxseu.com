@@ -4,7 +4,7 @@
 	"private": true,
 	"main": "server.js",
 	"scripts": {
-		"dev": "cross-env NODE_ENV=development PORT=8080 nodemon --ignore './.next/' .",
+		"dev": "cross-env NODE_ENV=development PORT=8080 nodemon .",
 		"build": "next build",
 		"start": "cross-env NODE_ENV=production PORT=6001 node ."
 	},
@@ -22,5 +22,8 @@
 	},
 	"devDependencies": {
 		"nodemon": "2.0.4"
+	},
+	"nodemonConfig": {
+		"ignore": ["./.next/", "./public"]
 	}
 }
