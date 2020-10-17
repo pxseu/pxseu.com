@@ -21,7 +21,7 @@
 		"react-particles-js": "^3.3.0"
 	},
 	"devDependencies": {
-		"nodemon": "2.0.4"
+		"nodemon": "2.0.5"
 	},
 	"nodemonConfig": {
 		"ignore": ["./.next/", "./public"]
