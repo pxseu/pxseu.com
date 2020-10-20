@@ -22,7 +22,7 @@ const LovesIndex = () => {
 				</h1>
 				<hr />
 				<div className={loveClick ? "center noselect imageDiv" : "hidden"}>
-					<img src='https://cdn.pxseu.com/meAndHer.jpg' />
+					<img src='https://cdn.pxseu.com/meAndHer.jpg?raw' />
 				</div>
 			</DefaultLayout>
 			<style jsx>{`

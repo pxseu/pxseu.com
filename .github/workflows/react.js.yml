@@ -25,5 +25,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - run: npm i --only=prod
+      - run: echo -e "WEBHOOK = ${{secrets.WEBHOOK}}" >> .env
       - run: npm run-script build
       - run: pm2 restart pxseu.com
