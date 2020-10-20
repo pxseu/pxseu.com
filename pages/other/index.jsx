@@ -28,6 +28,11 @@ const OtherIndex = () => (
 					<a>Waifu</a>
 				</h3>
 			</Link>
+			<Link href='/other/message'>
+				<h3>
+					<a>Message me!</a>
+				</h3>
+			</Link>
 			<Link href='/hall-of-fame'>
 				<h3>
 					<a>Hall Of Fame</a>
