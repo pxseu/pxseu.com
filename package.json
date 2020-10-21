@@ -23,7 +23,7 @@
 		"webhook-discord": "^3.7.7"
 	},
 	"devDependencies": {
-		"nodemon": "2.0.5"
+		"nodemon": "2.0.6"
 	},
 	"nodemonConfig": {
 		"ignore": [
