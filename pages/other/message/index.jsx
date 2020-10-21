@@ -52,7 +52,7 @@ const LovesIndex = () => {
 		<>
 			<DefaultLayout>
 				<Head>
-					<title>I love you &lt;333</title>
+					<title>Message me!</title>
 					<meta
 						data-n-head='ssr'
 						data-hid='og:description'
