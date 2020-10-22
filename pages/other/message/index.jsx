@@ -63,7 +63,7 @@ const LovesIndex = () => {
 				<h1 className='center noselect'>
 					<a>Message me!</a>
 				</h1>
-				<p className='center noselect'>Once per 10 minutes tho</p>
+				<p className='center noselect'>Once per minute tho</p>
 				<hr />
 				<div className='messageDiv'>
 					<form action=''>
