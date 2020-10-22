@@ -20,7 +20,7 @@ const About = () => {
 			<div className='center noselect'>
 				<p>Web and Back End developer.</p>
 				<p>Javascript lover.</p>
-				<p>Always up for a new challange.</p>
+				<p>Always up for a new challenge.</p>
 				<p>16 years old.</p>
 				<p>I use these languages:</p>
 				<p>C++, C#, TS, JS, Python</p>
