@@ -17,10 +17,11 @@ const HallOfFame = () => (
 		</h1>
 		<hr />
 		<div className='center noselect'>
-			<p>Peitho | spell checking and langauge corrections</p>
 			<p>Vek | told me about security.txt</p>
 			<p>Milki | nothing tbh</p>
 			<p>Amuq | DDOS'ed my website</p>
+			<p>JelNiSław | menel</p>
+			<p>crash | przekonał mnie</p>
 		</div>
 	</DefaultLayout>
 );
