@@ -18,10 +18,10 @@ const methodCheck = {
 };
 
 const sendMessageLimiter = rateLimit({
-	windowMs: 10 * 60 * 1000, // 10 minutes
+	windowMs: 1 * 60 * 1000, // 1 minutes
 	max: 1,
 	message: {
-		error: `Only one message per 10 minutes!`,
+		error: `Only one message per minute!`,
 	},
 });
 
