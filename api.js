@@ -2,6 +2,8 @@ const router = require("express").Router();
 const webhook = require("webhook-discord");
 const rateLimit = require("express-rate-limit");
 
+const DEV_MODE = process.env.NODE_ENV == "development";
+
 const methodCheck = {
 	post: (req, res, next) => {
 		const method = req.method;
@@ -37,9 +39,18 @@ router.use(
 			});
 		}
 
-		next();
+		if (body.content.trim().length > 2048) {
+			return res.status(400).json({
+				error: "Message is too large!",
+			});
+		}
+
+		if (DEV_MODE) {
+			next();
+			return;
+		}
+		sendMessageLimiter(req, res, next);
 	},
-	sendMessageLimiter,
 	async (req, res) => {
 		const message = await req.body.content.trim();
 		const Hook = new webhook.Webhook(process.env.WEBHOOK);
@@ -58,8 +69,9 @@ router.use(
 		embed.setTitle("New Message!");
 		embed.setDescription(`Content: \n${message}`);
 		embed.setColor("#3399ff");
+		embed.setFooter("pls no api abjus, thank!");
 		embed.setTime();
-		await Hook.send(embed);
+		Hook.send(embed);
 
 		res.json({
 			content: message,
