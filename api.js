@@ -41,7 +41,7 @@ router.use(
 	},
 	sendMessageLimiter,
 	async (req, res) => {
-		const body = await req.body;
+		const message = await req.body.content.trim();
 		const Hook = new webhook.Webhook(process.env.WEBHOOK);
 		const embed = new webhook.MessageBuilder();
 
@@ -56,13 +56,13 @@ router.use(
 		);
 		embed.setURL("https://www.pxseu.com/other/message");
 		embed.setTitle("New Message!");
-		embed.setDescription(`Content: \n${body.content.trim()}`);
+		embed.setDescription(`Content: \n${message}`);
 		embed.setColor("#3399ff");
 		embed.setTime();
 		await Hook.send(embed);
 
 		res.json({
-			content: body.content.trim(),
+			content: message,
 		});
 	}
 );
