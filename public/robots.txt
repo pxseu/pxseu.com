@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+User-agent: *
+Disallow: /api
+Host: https://www.pxseu.com
+Sitemap: https://www.pxseu.com/sitemap.xml

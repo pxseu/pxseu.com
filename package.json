@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development PORT=8080 nodemon .",
 		"build": "next build",
+		"postbuild": "next-sitemap",
 		"start": "cross-env NODE_ENV=production PORT=6001 node ."
 	},
 	"dependencies": {
@@ -15,6 +16,7 @@
 		"helmet": "^4.1.1",
 		"morgan": "^1.10.0",
 		"next": "9.5.5",
+		"next-sitemap": "^1.2.20",
 		"nprogress": "^0.2.0",
 		"react": "16.14.0",
 		"react-device-detect": "^1.14.0",
