@@ -3,7 +3,7 @@ import Head from "next/head";
 import DefaultLayout from "../../../components/DefaultLayout";
 import Modal from "../../../components/Modal";
 
-const LovesIndex = () => {
+const MessageIndex = () => {
 	const [showSucces, setShowSucces] = useState(false);
 	const [showSuccesMessage, setShowSuccesMessage] = useState("");
 	const [isError, showError] = useState(false);
@@ -146,4 +146,4 @@ const LovesIndex = () => {
 	);
 };
 
-export default LovesIndex;
+export default MessageIndex;

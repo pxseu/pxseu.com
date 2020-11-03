@@ -36,11 +36,18 @@ app.prepare().then(() => {
 				upgradeInsecureRequests: [],
 				blockAllMixedContent: [],
 			},
-		})
+		}),
 	);
 	server.use("/api", api);
 	server.all("*", (req, res) => {
-		return handle(req, res);
+		console.log(req.accepts("html, json") === "json");
+		if (/application\/json;/.test(req.get("accept"))) {
+			return res.json({
+				data: "json is not valid here btw",
+			});
+		} else {
+			return handle(req, res);
+		}
 	});
 
 	server.listen(port, (err) => {
@@ -48,7 +55,7 @@ app.prepare().then(() => {
 		console.log(
 			"\x1b[36m%s\x1b[0m",
 			`> Ready on http://localhost:${port}`,
-			"\x1b[0m"
+			"\x1b[0m",
 		);
 	});
 });
