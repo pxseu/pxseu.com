@@ -64,7 +64,7 @@ const LovesIndex = () => {
 					/>
 				</Head>
 
-				<h1 className='enter noselect'>
+				<h1 className='center noselect'>
 					<a>Message me!</a>
 				</h1>
 				<p className='center noselect'>Once per minute tho</p>
@@ -109,13 +109,13 @@ const LovesIndex = () => {
 				}
 
 				.messageInput {
-					position: absolute;
-					left: 10px;
-					top: 150%;
+					position: relative;
+					margin: 0;
+					margin-top: 20px;
+					margin-left: 10px;
 					height: calc(80% - 10);
 					transform: translate(0, -50%);
 					padding: 0;
-					margin: 0;
 					border: none;
 					width: calc(100% - 150px);
 					font-size: 17px;
@@ -126,13 +126,13 @@ const LovesIndex = () => {
 				}
 
 				.messageButton {
-					position: absolute;
-					top: 150%;
-					right: 8px;
+					position: relative;
+					margin: 0;
+					margin-top: 20px;
+					margin-left: 8px;
 					height: calc(80% - 10);
 					transform: translate(0, -50%);
 					width: 100px;
-					margin: 0;
 					padding: 0;
 					border: none;
 					font-size: 17px;
