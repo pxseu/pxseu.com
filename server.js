@@ -40,14 +40,7 @@ app.prepare().then(() => {
 	);
 	server.use("/api", api);
 	server.all("*", (req, res) => {
-		console.log(req.accepts("html, json") === "json");
-		if (/application\/json;/.test(req.get("accept"))) {
-			return res.json({
-				data: "json is not valid here btw",
-			});
-		} else {
-			return handle(req, res);
-		}
+		return handle(req, res);
 	});
 
 	server.listen(port, (err) => {
