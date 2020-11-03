@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Head from "next/head";
 import DefaultLayout from "../../../components/DefaultLayout";
 import Modal from "../../../components/Modal";
@@ -8,11 +8,12 @@ const LovesIndex = () => {
 	const [showSuccesMessage, setShowSuccesMessage] = useState("");
 	const [isError, showError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
+	const messageBox = useRef(null);
+
 	const sendMessage = async (e) => {
 		e.preventDefault();
 
-		const messageBox = document.getElementById("messageInput");
-		messageBox.blur();
+		messageBox.current.blur();
 
 		const url = `${window.location.protocol}//${window.location.host}/api/v1/sendMessage`;
 		let parrsedResponse;
@@ -28,12 +29,14 @@ const LovesIndex = () => {
 				},
 				redirect: "follow",
 				referrerPolicy: "no-referrer",
-				body: JSON.stringify({ content: messageBox.value }),
+				body: JSON.stringify({ content: messageBox.current.value }),
 			});
 
 			parrsedResponse = await response.json();
 		} catch (e) {
-			setErrorMessage("Message not sent!\nMight be a network or server issue.");
+			setErrorMessage(
+				"Message not sent!\nMight be a network or server issue.",
+			);
 			showError(true);
 			return;
 		}
@@ -60,7 +63,8 @@ const LovesIndex = () => {
 						content='Message me!'
 					/>
 				</Head>
-				<h1 className='center noselect'>
+
+				<h1 className='enter noselect'>
 					<a>Message me!</a>
 				</h1>
 				<p className='center noselect'>Once per minute tho</p>
@@ -77,8 +81,7 @@ const LovesIndex = () => {
 							type='submit'
 							onClick={(e) => sendMessage(e)}
 							className='messageButton'
-							id='messageButton'
-						>
+							id='messageButton'>
 							Send!
 						</button>
 					</form>
@@ -88,9 +91,8 @@ const LovesIndex = () => {
 				open={showSucces}
 				onClose={() => {
 					setShowSucces(false);
-					document.getElementById("messageInput").value = "";
-				}}
-			>
+					messageBox.current.value = "";
+				}}>
 				<p>Sent succesfull!</p>
 				<p>Data: "{showSuccesMessage}"</p>
 			</Modal>
