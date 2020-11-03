@@ -76,6 +76,7 @@ const MessageIndex = () => {
 							name='messageInput'
 							className='messageInput'
 							id='messageInput'
+							ref={messageBox}
 						/>
 						<button
 							type='submit'
