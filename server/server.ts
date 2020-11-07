@@ -1,11 +1,10 @@
-"use strict";
+import express, { Request, Response } from "express";
+import helmet from "helmet";
+import morgan from "morgan";
+import next from "next";
+import api from "./api";
 
-const server = require("express")();
-const helmet = require("helmet");
-const morgan = require("morgan");
-const next = require("next");
-
-const api = require("./api");
+const server = express();
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -39,12 +38,12 @@ app.prepare().then(() => {
 		}),
 	);
 	server.use("/api", api);
-	server.all("*", (req, res) => {
+	server.all("*", (req: Request, res: Response) => {
 		return handle(req, res);
 	});
 
-	server.listen(port, (err) => {
-		if (err) throw err;
+	server.listen(port, (error?: any) => {
+		if (error) throw error;
 		console.log(
 			"\x1b[36m%s\x1b[0m",
 			`> Ready on http://localhost:${port}`,
