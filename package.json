@@ -8,7 +8,8 @@
 		"compile": "rimraf dist && tsc --project tsconfig.server.json",
 		"start": "node .",
 		"dev": "cross-env NODE_ENV=development PORT=8080 nodemon -e ts --exec \"npm run compile && npm start\"",
-		"prod": "cross-env NODE_ENV=production PORT=6001 npm run compile && npm run build && npm start",
+		"prod": "cross-env NODE_ENV=production PORT=6001 npm start",
+		"deploy": "npm run compile && npm run build",
 		"build": "next build",
 		"postbuild": "next-sitemap"
 	},
