@@ -4,7 +4,7 @@ import { isMobile } from "react-device-detect";
 import { useEffect } from "react";
 
 const MobileFriendly = () => {
-	let particlesConfig;
+	let particlesConfig: any;
 	if (isMobile) {
 		particlesConfig = require("../../particlesjs-config.mobile.json");
 	} else {
@@ -14,7 +14,7 @@ const MobileFriendly = () => {
 	return <Particles className='particles-js' params={particlesConfig} />;
 };
 
-const BackgroundLoader = (props) => {
+const BackgroundLoader = (props: { children: any }) => {
 	let x = 0;
 
 	const TitleText = [

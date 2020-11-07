@@ -10,13 +10,18 @@ const MessageIndex = () => {
 	const [errorMessage, setErrorMessage] = useState("");
 	const messageBox = useRef(null);
 
-	const sendMessage = async (e) => {
+	const sendMessage = async (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+	) => {
 		e.preventDefault();
 
 		messageBox.current.blur();
 
 		const url = `${window.location.protocol}//${window.location.host}/api/v1/sendMessage`;
-		let parrsedResponse;
+		let parrsedResponse: {
+			error: React.SetStateAction<string>;
+			content: React.SetStateAction<string>;
+		};
 
 		try {
 			const response = await fetch(url, {
@@ -80,7 +85,7 @@ const MessageIndex = () => {
 						/>
 						<button
 							type='submit'
-							onClick={(e) => sendMessage(e)}
+							onClick={sendMessage}
 							className='messageButton'
 							id='messageButton'>
 							Send!
