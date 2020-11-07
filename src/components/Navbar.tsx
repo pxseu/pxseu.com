@@ -49,7 +49,7 @@ const Navbar = () => {
 			<Head>
 				<link
 					rel='stylesheet'
-					href='https://use.fontawesome.com/releases/v5.5.0/css/all.css'
+					href='//use.fontawesome.com/releases/v5.5.0/css/all.css'
 				/>
 			</Head>
 
@@ -62,13 +62,14 @@ const Navbar = () => {
 				</nav>
 				<p
 					className={smallScreen ? "navigation navIcon" : "hidden"}
-					onClick={() => setNavToggle(true)}
-				>
+					onClick={() => setNavToggle(true)}>
 					<i className='fas fa-bars'></i>
 				</p>
 			</header>
 			<div className={navToggle ? "navOverlay show" : "navOverlay"}>
-				<a className='closebtn noselect' onClick={() => setNavToggle(false)}>
+				<a
+					className='closebtn noselect'
+					onClick={() => setNavToggle(false)}>
 					&times;
 				</a>
 				<div className='navOverlay-content noselect'>
