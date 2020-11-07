@@ -1,7 +1,7 @@
 import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
 
-const DefaultLayout = (props) => (
+const DefaultLayout = (props: { children: any }) => (
 	<BackgroundLoader>
 		<Navbar />
 		<div className='app'>{props.children}</div>
