@@ -6,9 +6,9 @@ import { useEffect } from "react";
 const MobileFriendly = () => {
 	let particlesConfig;
 	if (isMobile) {
-		particlesConfig = require("../particlesjs-config.mobile.json");
+		particlesConfig = require("../../particlesjs-config.mobile.json");
 	} else {
-		particlesConfig = require("../particlesjs-config.json");
+		particlesConfig = require("../../particlesjs-config.json");
 	}
 
 	return <Particles className='particles-js' params={particlesConfig} />;
@@ -87,9 +87,15 @@ const BackgroundLoader = (props) => {
 					rel='stylesheet'
 				/>
 				{/* <script src='/essential/js/script.js'defer  /> */}
-
-				<meta name='viewport' content='width=device-width, initial-scale=0.8' />\
-				<meta name="google-site-verification" content="azPHAHBpTuJ-8stcPE_LX6-GNwVGjzp5_V7E3KCcmMk" />
+				<meta
+					name='viewport'
+					content='width=device-width, initial-scale=0.8'
+				/>
+				\
+				<meta
+					name='google-site-verification'
+					content='azPHAHBpTuJ-8stcPE_LX6-GNwVGjzp5_V7E3KCcmMk'
+				/>
 			</Head>
 			{props.children}
 			<style jsx global>{`

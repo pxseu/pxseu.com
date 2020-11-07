@@ -26,8 +26,9 @@ const About = () => {
 				<p>C++, C#, TS, JS, Python</p>
 				<p>I have experience with:</p>
 				<p>
-					Next.js, React, Express, MongoDB, Discord.js, EJS, Passport, Browser
-					Extensions, Cross Platform Apps, Websockets, REST Api's
+					Next.js, React, Express, MongoDB, Discord.js, EJS, Passport,
+					Browser Extensions, Cross Platform Apps, Websockets, REST
+					Api's
 				</p>
 				<p>Currently learning / getting better with:</p>
 				<p>React and Next.js with Express</p>
@@ -37,5 +38,3 @@ const About = () => {
 };
 
 export default About;
-
-//              No more temp gf (she full-time now)
