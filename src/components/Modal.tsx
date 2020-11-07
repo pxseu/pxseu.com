@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import ReactDom from "react-dom";
+import { createPortal } from "react-dom";
 
 const Modal = ({ open, onClose, children }) => {
 	if (!open) return null;
@@ -8,11 +8,11 @@ const Modal = ({ open, onClose, children }) => {
 	useEffect(() => {
 		setTimeout(
 			() => document.getElementById("modal").classList.remove("fade"),
-			100
+			100,
 		);
 	});
 
-	return ReactDom.createPortal(
+	return createPortal(
 		<>
 			<div id='overlay' className='overlay' />
 			<div id='modal' className='modal fade'>
@@ -22,8 +22,7 @@ const Modal = ({ open, onClose, children }) => {
 					onClick={() => {
 						document.getElementById("modal").classList.add("fade");
 						setTimeout(() => onClose(), 400);
-					}}
-				>
+					}}>
 					x
 				</div>
 				{ModalText}
@@ -81,7 +80,7 @@ const Modal = ({ open, onClose, children }) => {
 				}
 			`}</style>
 		</>,
-		document.getElementById("portal")
+		document.getElementById("portal"),
 	);
 };
 
