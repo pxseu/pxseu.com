@@ -58,22 +58,9 @@ const MessageIndex = () => {
 
 	return (
 		<>
-			<DefaultLayout>
-				<Head>
-					<title>Message me!</title>
-					<meta
-						data-n-head='ssr'
-						data-hid='og:description'
-						property='og:description'
-						content='Message me!'
-					/>
-				</Head>
+			<DefaultLayout title={"Message me!"}>
+				<p>Once per minute tho</p>
 
-				<h1 className='center noselect'>
-					<a>Message me!</a>
-				</h1>
-				<p className='center noselect'>Once per minute tho</p>
-				<hr />
 				<div className='messageDiv'>
 					<form action=''>
 						<input
