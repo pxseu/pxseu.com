@@ -7,21 +7,10 @@ const LovesIndex = () => {
 
 	return (
 		<>
-			<DefaultLayout>
-				<Head>
-					<title>I love you &lt;333</title>
-					<meta
-						data-n-head='ssr'
-						data-hid='og:description'
-						property='og:description'
-						content='I love you cutie <333'
-					/>
-				</Head>
-				<h1 className='center noselect'>
-					<a onClick={() => setLoveClick(true)}>I love you cutie &lt;333</a>
-				</h1>
-				<hr />
-				<div className={loveClick ? "center noselect imageDiv" : "hidden"}>
+			<DefaultLayout
+				title={"I love you <333"}
+				titleOnClick={() => setLoveClick(!loveClick)}>
+				<div className={loveClick ? "imageDiv" : "hidden"}>
 					<img src='https://cdn.pxseu.com/meAndHer.jpg?raw' />
 				</div>
 			</DefaultLayout>

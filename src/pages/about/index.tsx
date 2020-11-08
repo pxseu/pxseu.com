@@ -3,25 +3,10 @@ import DefaultLayout from "../../components/DefaultLayout";
 
 const About = () => {
 	return (
-		<DefaultLayout>
-			<Head>
-				<title>About Me</title>
-				<meta
-					data-n-head='ssr'
-					data-hid='og:description'
-					property='og:description'
-					content='About me.'
-				/>
-			</Head>
-			<h1 className='center noselect'>
-				<a>About Me</a>
-			</h1>
-			<hr />
-			<div className='center noselect'>
-				<p>Web and Back End developer.</p>
-				<p>Javascript lover.</p>
-				<p>Always up for a new challenge.</p>
-				<p>16 years old.</p>
+		<>
+			<DefaultLayout title={"About me"}>
+				<p>Web and Back End developer</p>
+				<p>Always up for a new challenge</p>
 				<p>I use these languages:</p>
 				<p>C++, C#, TS, JS, Python</p>
 				<p>I have experience with:</p>
@@ -32,8 +17,8 @@ const About = () => {
 				</p>
 				<p>Currently learning / getting better with:</p>
 				<p>React and Next.js with Express</p>
-			</div>
-		</DefaultLayout>
+			</DefaultLayout>
+		</>
 	);
 };
 
