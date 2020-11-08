@@ -7,32 +7,17 @@ const LovesIndex = () => {
 
 	return (
 		<>
-			<DefaultLayout>
-				<Head>
-					<title>Grab a waifu!</title>
-					<meta
-						data-n-head='ssr'
-						data-hid='og:description'
-						property='og:description'
-						content='Grab a waifu!'
-					/>
-				</Head>
-				<h1 className='center noselect'>
-					<a
-						onClick={() => {
-							setWaifuClick(false);
-							setTimeout(() => setWaifuClick(true), 1);
-						}}
-					>
-						Get me a diffrent waifu!
-					</a>
-				</h1>
-				<hr />
-				<div className={waifuClick ? "center noselect imageDiv" : "hidden"}>
+			<DefaultLayout
+				title={"Grab a waifu!"}
+				titleOnClick={() => {
+					setWaifuClick(false);
+					setTimeout(() => setWaifuClick(true), 1);
+				}}>
+				<div className={waifuClick ? "imageDiv" : "hidden"}>
 					<img
 						className='waifuImage'
 						src={`https://www.thiswaifudoesnotexist.net/example-${Math.floor(
-							Math.random() * 100000
+							Math.random() * 100000,
 						)}.jpg`}
 						alt='Unable to fetch image.'
 					/>

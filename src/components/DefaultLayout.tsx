@@ -1,16 +1,44 @@
 import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
+import Head from "next/head";
 
-const DefaultLayout = (props: { children: any }) => (
-	<BackgroundLoader>
-		<Navbar />
-		<div className='app'>{props.children}</div>
-		<style jsx>{`
-			.app {
-				top: 100px;
-			}
-		`}</style>
-	</BackgroundLoader>
+type DefaultLayoutInput = {
+	children: any;
+	title: string;
+	titleOnClick?: Function;
+};
+
+const DefaultLayout = ({
+	title,
+	children,
+	titleOnClick,
+}: DefaultLayoutInput) => (
+	<>
+		<Head>
+			<title>{title}</title>
+			<meta
+				data-n-head='ssr'
+				data-hid='og:description'
+				property='og:description'
+				content={title}
+			/>
+		</Head>
+		<BackgroundLoader>
+			<Navbar />
+			<div className='app'>
+				<h1 className='center noselect'>
+					<a onClick={() => titleOnClick()}>{title}</a>
+				</h1>
+				<hr />
+				<div className='center noselect'>{children}</div>
+			</div>
+			<style jsx>{`
+				.app {
+					top: 100px;
+				}
+			`}</style>
+		</BackgroundLoader>
+	</>
 );
 
 export default DefaultLayout;

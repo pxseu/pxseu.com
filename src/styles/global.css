@@ -1,6 +1,6 @@
 body {
 	background-color: black;
-	font-family: 'Roboto', sans-serif;
+	font-family: "Roboto", sans-serif;
 	padding: 0;
 	margin: 0;
 	color: white;
@@ -40,19 +40,17 @@ body {
 	z-index: 2;
 }
 
-a,
-p {
+a {
 	color: white;
 	transition: color 0.1s;
 }
-a:hover,
-p:hover {
+a:hover {
 	color: #ffa9ff;
 }
 
 a {
 	color: white;
-	font-family: 'Roboto', sans-serif;
+	font-family: "Roboto", sans-serif;
 	text-decoration: none;
 	transition: color 0.1s;
 	cursor: pointer;
@@ -68,7 +66,7 @@ a {
 a:after {
 	background: none repeat scroll 0 0 transparent;
 	bottom: 0;
-	content: '';
+	content: "";
 	display: block;
 	height: 2px;
 	left: 50%;
@@ -142,7 +140,7 @@ a:hover {
 }
 
 .logoNavbar {
-	font-family: 'Gang of Three';
+	font-family: "Gang of Three";
 	color: #ffa9ff;
 	cursor: pointer;
 	font-size: 34px;
@@ -230,8 +228,8 @@ a:hover {
 }
 
 @font-face {
-	font-family: 'Gang of Three';
-	src: url('/index/font/go3v2.ttf');
+	font-family: "Gang of Three";
+	src: url("/index/font/go3v2.ttf");
 }
 
 @media screen and (min-width: 800px) {
