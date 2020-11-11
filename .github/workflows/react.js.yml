@@ -6,19 +6,20 @@ on:
 
 jobs:
     build:
-        runs-on: self-hosted
-
-        strategy:
-            matrix:
-                node-version: [14.x]
-
+        runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
+            - name: executing remote ssh commands using ssh key
+              uses: appleboy/ssh-action@master
               with:
-                  node-version: ${{ matrix.node-version }}
-            - run: yarn
-            - run: echo -e "WEBHOOK = ${{secrets.WEBHOOK}}" >> .env
-            - run: yarn deploy
-            - run: pm2 restart pxseu.com
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  key: ${{ secrets.KEY }}
+                  port: ${{ secrets.PORT }}
+                  script: |
+                      cd ~/deploy/pxseu.com
+                      git reset --hard
+                      git pull
+                      yarn
+                      cp ../.env .env
+                      yarn deploy
+                      pm2 restart pxseu.com
