@@ -18,7 +18,7 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
-            - run: npm i
+            - run: yarn
             - run: echo -e "WEBHOOK = ${{secrets.WEBHOOK}}" >> .env
-            - run: npm run deploy
+            - run: yarn deploy
             - run: pm2 restart pxseu.com
