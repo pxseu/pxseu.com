@@ -1189,20 +1189,10 @@
     "@types/qs" "*"
     "@types/range-parser" "*"
 
-"@types/express@*":
+"@types/express@*", "@types/express@^4.17.9":
   version "4.17.9"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.9.tgz#f5f2df6add703ff28428add52bdec8a1091b0a78"
   integrity sha512-SDzEIZInC4sivGIFY4Sz1GG6J9UObPwCInYJjko2jzOf/Imx/dlpume6Xxwj1ORL82tBbmN4cPDIDkLbWHk9hw==
-  dependencies:
-    "@types/body-parser" "*"
-    "@types/express-serve-static-core" "*"
-    "@types/qs" "*"
-    "@types/serve-static" "*"
-
-"@types/express@^4.17.8":
-  version "4.17.8"
-  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.8.tgz#3df4293293317e61c60137d273a2e96cd8d5f27a"
-  integrity sha512-wLhcKh3PMlyA2cNAB9sjM1BntnhPMiM0JOBwPBqttjHev2428MLEB4AYVN+d8s2iyCVZac+o41Pflm/ZH5vLXQ==
   dependencies:
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "*"
@@ -1242,10 +1232,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@^14.14.6":
-  version "14.14.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.6.tgz#146d3da57b3c636cc0d1769396ce1cfa8991147f"
-  integrity sha512-6QlRuqsQ/Ox/aJEQWBEJG7A9+u7oSYl3mem/K8IzxXG/kAGbV1YPD9Bg9Zw3vyxC/YP+zONKwy8hGkSt1jxFMw==
+"@types/node@*", "@types/node@^14.14.7":
+  version "14.14.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.7.tgz#8ea1e8f8eae2430cf440564b98c6dfce1ec5945d"
+  integrity sha512-Zw1vhUSQZYw+7u5dAwNbIA9TuTotpzY/OF7sJM9FqPOF3SPjKnxrjoTktXDZgUjybf4cWVBP7O8wvKdSaGHweg==
 
 "@types/nprogress@^0.2.0":
   version "0.2.0"
@@ -4385,12 +4375,13 @@ neo-async@^2.5.0, neo-async@^2.6.1, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-next-sitemap@^1.2.20:
-  version "1.2.22"
-  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.2.22.tgz#69880ac6189f40ece23425f99c3cb185299607eb"
-  integrity sha512-4Ch6vJrc8krxM+6CyKMPYGMGTSA4eHbtFfHept5lbzoZrmPLi9Nr2guVuMljaJfMHvNribb/D6UhKvz3CqMLfA==
+next-sitemap@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.3.2.tgz#f88ddb1cca8a7d3cdcafc18ec1c3d71358670e57"
+  integrity sha512-wOVIRxVaSAtcr35K0Mi6rtfTwY0nw2UWpcbAUORscGIeU/O/V22Qq1dkodf1h2ftc/MMTrDYYkiMBhkiWh0O/w==
   dependencies:
     "@corex/deepmerge" "^2.4.24"
+    minimist "^1.2.5"
 
 next-tick@~1.0.0:
   version "1.0.0"
