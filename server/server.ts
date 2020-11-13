@@ -3,6 +3,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import next from "next";
 import api from "./api";
+import { connect } from "./db";
 
 const server = express();
 
@@ -11,7 +12,7 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-app.prepare().then(() => {
+app.prepare().then(async () => {
 	server.set("trust proxy", 1);
 	server.use(morgan("common"));
 	server.use(helmet());
@@ -42,6 +43,7 @@ app.prepare().then(() => {
 		return handle(req, res);
 	});
 
+	await connect();
 	server.listen(port, (error?: any) => {
 		if (error) throw error;
 		console.log(
