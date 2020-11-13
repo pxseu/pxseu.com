@@ -1,4 +1,4 @@
-import { ReactChildren, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 const Modal = ({
@@ -12,25 +12,20 @@ const Modal = ({
 }) => {
 	if (!open) return null;
 	const ModalText = children == undefined ? "What?" : children;
-	const modalEl = document.getElementById("modal");
+	const modalEl = useRef(((<div></div>) as unknown) as HTMLDivElement);
 	useEffect(() => {
-		setTimeout(
-			() => (modalEl == null ? void 0 : modalEl.classList.remove("fade")),
-			100,
-		);
+		setTimeout(() => modalEl.current.classList.remove("fade"), 100);
 	});
 
 	return createPortal(
 		<>
 			<div id='overlay' className='overlay' />
-			<div id='modal' className='modal fade'>
+			<div id='modal' className='modal fade' ref={modalEl}>
 				<div
 					id='closeModal'
 					className='closeModal'
 					onClick={() => {
-						modalEl == null
-							? void 0
-							: modalEl.classList.add("fade");
+						modalEl.current.classList.add("fade");
 						setTimeout(() => onClose(), 400);
 					}}>
 					x
@@ -45,7 +40,7 @@ const Modal = ({
 					left: 50%;
 					transform: translate(-50%, -50%);
 					background-color: #101010;
-					color: black;
+					color: white;
 					padding: 50px;
 					z-index: 1000;
 					border-radius: 10px;
