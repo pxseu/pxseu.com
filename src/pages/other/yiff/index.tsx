@@ -1,5 +1,3 @@
-import Head from "next/head";
-//import { useEffect, useState } from 'react'
 import DefaultLayout from "../../../components/DefaultLayout";
 
 const Yiff = () => (
