@@ -16,10 +16,9 @@ const MessageIndex = () => {
 
 		messageBox.current.blur();
 
-		const url = `${window.location.protocol}//${window.location.host}/api/v1/sendMessage`;
+		const url = `${window.location.protocol}//${window.location.host}/api/v2/sendMessage`;
 		let parrsedResponse: {
 			status: number;
-			error?: string;
 			message: string;
 		};
 
@@ -46,7 +45,7 @@ const MessageIndex = () => {
 			return;
 		}
 
-		if (parrsedResponse.error) {
+		if (parrsedResponse.status != 200) {
 			setErrorMessage(parrsedResponse.message);
 			showError(true);
 			return;
