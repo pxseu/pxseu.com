@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import Head from "next/head";
 import DefaultLayout from "../../../components/DefaultLayout";
 import Modal from "../../../components/Modal";
 
@@ -8,7 +7,7 @@ const MessageIndex = () => {
 	const [showSuccesMessage, setShowSuccesMessage] = useState("");
 	const [isError, showError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
-	const messageBox = useRef(null);
+	const messageBox = useRef(((<input />) as unknown) as HTMLInputElement);
 
 	const sendMessage = async (
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,

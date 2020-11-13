@@ -21,9 +21,9 @@ const methodCheck = {
 const sendMessageLimiter = rateLimit({
 	windowMs: 1 * 60 * 1000, // 1 minutes
 	max: 1,
-	message: {
+	message: JSON.stringify({
 		error: `Only one message per minute!`,
-	},
+	}),
 });
 
 router.use(require("express").json());
@@ -54,7 +54,7 @@ router.use(
 	},
 	async (req: Request, res: Response) => {
 		const message: string = await req.body.content.trim();
-		const Hook = new Webhook(process.env.WEBHOOK);
+		const Hook = new Webhook(process.env.WEBHOOK ?? "");
 		const embed = new MessageBuilder();
 
 		embed.setName("pxseu messenger");
