@@ -20,7 +20,7 @@
 		"helmet": "^4.1.1",
 		"mongoose": "^5.10.14",
 		"morgan": "^1.10.0",
-		"next": "10.0.0",
+		"next": "10.0.1",
 		"next-sitemap": "^1.2.20",
 		"nprogress": "^0.2.0",
 		"react": "16.14.0",
