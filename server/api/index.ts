@@ -20,7 +20,7 @@ export const sendMessageLimiter = rateLimit({
 
 router.use(require("express").json());
 
-router.use("v1", v1);
-router.use("v2", v2);
+router.use("/v1", v1);
+router.use("/v2", v2);
 
 export default router;
