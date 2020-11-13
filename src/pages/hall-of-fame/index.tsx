@@ -1,4 +1,3 @@
-import Head from "next/head";
 import DefaultLayout from "../../components/DefaultLayout";
 
 const HallOfFame = () => (
