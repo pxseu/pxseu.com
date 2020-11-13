@@ -1,6 +1,8 @@
 import { Router, Request, Response, NextFunction } from "express";
 import { Webhook, MessageBuilder } from "webhook-discord";
 import rateLimit from "express-rate-limit";
+import AuthKeyDb from "./db/models/auth_key";
+import { RequestWithUser } from "../express";
 
 const router = Router();
 const DEV_MODE = process.env.NODE_ENV == "development";
@@ -33,8 +35,14 @@ router.use(require("express").json());
 router.use(
 	"/v1/sendMessage",
 	methodCheck.post,
-	async (req: Request, res: Response, next: NextFunction) => {
+	async (req: RequestWithUser, res: Response, next: NextFunction) => {
 		const body: { message: string; content?: string } = await req.body;
+
+		const AuthKey = req.headers.authorization;
+
+		const apiKeyFound = await AuthKeyDb.findOne({
+			auth_key: AuthKey,
+		});
 
 		if (body.content != undefined) {
 			const message = "Cannot send empty message!";
@@ -66,13 +74,20 @@ router.use(
 			});
 		}
 
+		if (apiKeyFound) {
+			req.user = apiKeyFound.toJSON();
+			next();
+		}
+
 		if (DEV_MODE) {
 			next();
 			return;
 		}
+
 		sendMessageLimiter(req, res, next);
 	},
-	async (req: Request, res: Response) => {
+	async (req: RequestWithUser, res: Response) => {
+		const currentUser = await req.user;
 		const message: string = await req.body.message.trim();
 		const Hook = new Webhook(process.env.WEBHOOK ?? "");
 		const embed = new MessageBuilder();
@@ -97,10 +112,12 @@ router.use(
 		embed.setTime();
 		Hook.send(embed);
 
+		const user = currentUser == undefined ? undefined : req.user.user;
 		res.json({
 			status: 200,
 			message,
 			note: NOTE,
+			user,
 		});
 	},
 );
