@@ -1,8 +1,22 @@
 import { Router, Request, Response, NextFunction } from "express";
-import { methodCheck, NOTE, DEV_MODE, sendMessageLimiter } from "./";
+import { DEV_MODE, sendMessageLimiter } from "..";
 import { Webhook, MessageBuilder } from "webhook-discord";
 
 const router = Router();
+
+const methodCheck = {
+	post: (req: Request, res: Response, next: NextFunction) => {
+		const method = req.method;
+
+		if (method != "POST") {
+			return res.status(400).json({
+				status: 400,
+				message: "Method not allowed!",
+			});
+		}
+		next();
+	},
+};
 
 router.use(
 	"/sendMessage",
