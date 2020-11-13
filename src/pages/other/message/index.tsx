@@ -18,8 +18,9 @@ const MessageIndex = () => {
 
 		const url = `${window.location.protocol}//${window.location.host}/api/v1/sendMessage`;
 		let parrsedResponse: {
-			error: React.SetStateAction<string>;
-			content: React.SetStateAction<string>;
+			status: number;
+			error?: string;
+			message: string;
 		};
 
 		try {
@@ -33,7 +34,7 @@ const MessageIndex = () => {
 				},
 				redirect: "follow",
 				referrerPolicy: "no-referrer",
-				body: JSON.stringify({ content: messageBox.current.value }),
+				body: JSON.stringify({ message: messageBox.current.value }),
 			});
 
 			parrsedResponse = await response.json();
@@ -46,12 +47,12 @@ const MessageIndex = () => {
 		}
 
 		if (parrsedResponse.error) {
-			setErrorMessage(parrsedResponse.error);
+			setErrorMessage(parrsedResponse.message);
 			showError(true);
 			return;
 		}
 
-		setShowSuccesMessage(parrsedResponse.content);
+		setShowSuccesMessage(parrsedResponse.message);
 		setShowSucces(true);
 	};
 

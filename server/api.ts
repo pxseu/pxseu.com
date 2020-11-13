@@ -4,6 +4,7 @@ import rateLimit from "express-rate-limit";
 
 const router = Router();
 const DEV_MODE = process.env.NODE_ENV == "development";
+const NOTE = "pls no api abjus, thank!";
 
 const methodCheck = {
 	post: (req: Request, res: Response, next: NextFunction) => {
@@ -19,11 +20,12 @@ const methodCheck = {
 };
 
 const sendMessageLimiter = rateLimit({
-	windowMs: 1 * 60 * 1000, // 1 minutes
+	windowMs: 1 * 60 * 1000, // 1 minute
 	max: 1,
-	message: JSON.stringify({
-		error: `Only one message per minute!`,
-	}),
+	message: {
+		status: 429,
+		message: `Only one message per minute!`,
+	},
 });
 
 router.use(require("express").json());
@@ -32,17 +34,35 @@ router.use(
 	"/v1/sendMessage",
 	methodCheck.post,
 	async (req: Request, res: Response, next: NextFunction) => {
-		const body = await req.body;
+		const body: { message: string; content?: string } = await req.body;
 
-		if (body.content == undefined || body.content.trim() == "") {
+		if (body.content != undefined) {
+			const message = "Cannot send empty message!";
 			return res.status(400).json({
-				error: "Cannot send emtpy message!",
+				status: 400,
+				message,
+				error: message,
+				note: NOTE,
 			});
 		}
 
-		if (body.content.trim().length > 2048) {
+		if (body.message == undefined || body.message.trim() == "") {
+			const message = "Cannot send empty message!";
 			return res.status(400).json({
-				error: "Message is too large!",
+				status: 400,
+				message,
+				error: `${message} (please update your API to read the 'message' filed and not 'content')`,
+				note: NOTE,
+			});
+		}
+
+		if (body.message.trim().length > 2048) {
+			const message = "Message is too large!";
+			return res.status(400).json({
+				status: 400,
+				message,
+				error: `${message} (please update your API to read the message filed)`,
+				note: NOTE,
 			});
 		}
 
@@ -53,7 +73,7 @@ router.use(
 		sendMessageLimiter(req, res, next);
 	},
 	async (req: Request, res: Response) => {
-		const message: string = await req.body.content.trim();
+		const message: string = await req.body.message.trim();
 		const Hook = new Webhook(process.env.WEBHOOK ?? "");
 		const embed = new MessageBuilder();
 
@@ -78,7 +98,9 @@ router.use(
 		Hook.send(embed);
 
 		res.json({
-			content: message,
+			status: 200,
+			message,
+			note: NOTE,
 		});
 	},
 );
