@@ -8,20 +8,6 @@ const router = Router();
 export const DEV_MODE = process.env.NODE_ENV == "development";
 export const NOTE = "pls no api abjus, thank!";
 
-export const methodCheck = {
-	post: (req: Request, res: Response, next: NextFunction) => {
-		const method = req.method;
-
-		if (method != "POST") {
-			return res.status(400).json({
-				status: 400,
-				message: "Method not allowed!",
-			});
-		}
-		next();
-	},
-};
-
 export const sendMessageLimiter = rateLimit({
 	windowMs: 1 * 60 * 1000, // 1 minute
 	max: 1,
