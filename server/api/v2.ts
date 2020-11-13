@@ -1,58 +1,22 @@
-import { Router, Request, Response, NextFunction } from "express";
+import { Router, Response, NextFunction } from "express";
+import { methodCheck, NOTE, DEV_MODE, sendMessageLimiter } from "./";
+import AuthKeyDb from "../db/models/auth_key";
+import { RequestWithUser } from "../../express";
 import { Webhook, MessageBuilder } from "webhook-discord";
-import rateLimit from "express-rate-limit";
-import AuthKeyDb from "./db/models/auth_key";
-import { RequestWithUser } from "../express";
 
 const router = Router();
-const DEV_MODE = process.env.NODE_ENV == "development";
-const NOTE = "pls no api abjus, thank!";
-
-const methodCheck = {
-	post: (req: Request, res: Response, next: NextFunction) => {
-		const method = req.method;
-
-		if (method != "POST") {
-			return res.json({
-				error: "Method not allowed!",
-			});
-		}
-		next();
-	},
-};
-
-const sendMessageLimiter = rateLimit({
-	windowMs: 1 * 60 * 1000, // 1 minute
-	max: 1,
-	message: {
-		status: 429,
-		message: `Only one message per minute!`,
-	},
-});
-
-router.use(require("express").json());
 
 router.use(
-	"/v1/sendMessage",
+	"/sendMessage",
 	methodCheck.post,
 	async (req: RequestWithUser, res: Response, next: NextFunction) => {
-		const body: { message: string; content?: string } = await req.body;
+		const body: { message: string } = await req.body;
 
 		const AuthKey = req.headers.authorization;
 
 		const apiKeyFound = await AuthKeyDb.findOne({
 			auth_key: AuthKey,
 		});
-
-		if (body.content != undefined) {
-			const message = "Cannot send empty message!";
-			return res.status(400).json({
-				status: 400,
-				message,
-				error: message,
-				note: NOTE,
-			});
-		}
 
 		if (body.message == undefined || body.message.trim() == "") {
 			const message = "Cannot send empty message!";
