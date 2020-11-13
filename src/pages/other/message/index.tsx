@@ -16,7 +16,7 @@ const MessageIndex = () => {
 
 		messageBox.current.blur();
 
-		const url = `${window.location.protocol}//${window.location.host}/api/v1/sendMessage`;
+		const url = `${window.location.protocol}//${window.location.host}/api/v2/sendMessage`;
 		let parrsedResponse: {
 			status: number;
 			message: string;
