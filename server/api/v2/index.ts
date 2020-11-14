@@ -68,7 +68,7 @@ router.use(
 		sendMessageLimiter(req, res, next);
 	},
 	async (req: RequestWithUser, res: Response) => {
-		const user = await req.user;
+		const user = req.user;
 		const message: string = await req.body.message.trim();
 		const Hook = new Webhook(process.env.WEBHOOK ?? "");
 		const embed = new MessageBuilder();
