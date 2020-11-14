@@ -4,6 +4,9 @@ import AuthKeyDb from "../../db/models/auth_key";
 import { RequestWithUser } from "../../../express";
 import { Webhook, MessageBuilder } from "webhook-discord";
 
+const AVATAR =
+	"https://cdn.discordapp.com/avatars/645330135527981069/3440c4def2a42777de2ccafba45adf02.webp?size=4096";
+
 const router = Router();
 
 const methodCheck = {
@@ -53,7 +56,7 @@ router.use(
 		}
 
 		if (apiKeyFound) {
-			req.user = apiKeyFound.toJSON();
+			req.user = (await apiKeyFound.toJSON()).user;
 			next();
 		}
 
@@ -65,32 +68,26 @@ router.use(
 		sendMessageLimiter(req, res, next);
 	},
 	async (req: RequestWithUser, res: Response) => {
-		const currentUser = await req.user;
+		const user = await req.user;
 		const message: string = await req.body.message.trim();
 		const Hook = new Webhook(process.env.WEBHOOK ?? "");
 		const embed = new MessageBuilder();
 
 		embed.setName("pxseu messenger");
-		embed.setAvatar(
-			"https://cdn.discordapp.com/avatars/645330135527981069/3440c4def2a42777de2ccafba45adf02.webp?size=512",
-		);
+		embed.setAvatar(AVATAR);
 		embed.setAuthor(
 			"Anonymous",
-			"https://cdn.discordapp.com/avatars/645330135527981069/3440c4def2a42777de2ccafba45adf02.webp?size=512",
+			AVATAR,
 			"https://www.pxseu.com/other/message",
 		);
 		embed.setURL("https://www.pxseu.com/other/message");
 		embed.setTitle("New Message!");
 		embed.setDescription(`Content: \n${message}`);
 		embed.setColor("#3399ff");
-		embed.setFooter(
-			"pls no api abjus, thank!",
-			"https://cdn.discordapp.com/avatars/645330135527981069/3440c4def2a42777de2ccafba45adf02.webp?size=512",
-		);
+		embed.setFooter("pls no api abjus, thank!", AVATAR);
 		embed.setTime();
 		Hook.send(embed);
 
-		const user = currentUser == undefined ? undefined : req.user.user;
 		res.json({
 			status: 200,
 			message,
