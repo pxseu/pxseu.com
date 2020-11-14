@@ -3,11 +3,11 @@ import DefaultLayout from "../../components/DefaultLayout";
 const HallOfFame = () => (
 	<>
 		<DefaultLayout title={"Hall of fame"}>
-			{/* <p>
+			<p>
 				<a href='https://julie420.github.io/' target='about:blank'>
-					Peitho | attention seeker 
+					Peitho | wasn't there when I needed her but oh well
 				</a>
-			</p> */}
+			</p>
 			<p>
 				<a href='https://www.vektrix.com' target='about:blank'>
 					Vek | told me about security.txt
