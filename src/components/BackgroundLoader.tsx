@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Particles from "react-particles-js";
 import { isMobile } from "react-device-detect";
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 const MobileFriendly = () => {
 	let particlesConfig: any;
@@ -15,6 +15,8 @@ const MobileFriendly = () => {
 };
 
 const BackgroundLoader = (props: { children: any }) => {
+	const [particlesSwitch, setParticlesSwitch] = useState(true);
+
 	let x = 0;
 
 	const TitleText = [
@@ -98,12 +100,90 @@ const BackgroundLoader = (props: { children: any }) => {
 				/>
 			</Head>
 			{props.children}
+
+			<div className='particlesSwitch'>
+				{/* <div className='switchText'>Toggle Particles:</div> */}
+				<input
+					type='checkbox'
+					id='switch'
+					checked={particlesSwitch}
+					onClick={() => {
+						setParticlesSwitch(!particlesSwitch);
+					}}
+				/>
+				<label htmlFor='switch' id='switchLabel'>
+					Toggle
+				</label>
+			</div>
 			<style jsx global>{`
 				body {
 					background-color: black;
 				}
+				.particlesSwitch {
+					position: fixed;
+					bottom: 0;
+					left: 0;
+					z-index: 5;
+					background-color: ${particlesSwitch
+						? "rgba(44, 44, 44, 0.2)"
+						: "rgba(0, 0, 0, 0.2)"};
+					width: 80px;
+					/* padding: 10px; */
+					border-radius: 20px;
+				}
+				.switchText {
+					text-align: center;
+					padding: 0;
+					margin: 0;
+				}
+				input[type="checkbox"] {
+					height: 0;
+					width: 0;
+					padding: 0;
+					margin: 0;
+					visibility: hidden;
+				}
+				label {
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					cursor: pointer;
+					text-indent: -9999px;
+					width: calc(200px * 0.3);
+					height: calc(100px * 0.3);
+					background: grey;
+					display: block;
+					border-radius: calc(100px * 0.3);
+					position: relative;
+				}
+
+				label:after {
+					content: "";
+					position: absolute;
+					top: calc(5px * 0.3);
+					left: calc(5px * 0.3);
+					width: calc(90px * 0.3);
+					height: calc(90px * 0.3);
+					background: #fff;
+					border-radius: calc(90px * 0.3);
+					transition: 0.3s;
+				}
+
+				input:checked + label {
+					background: #bada55;
+				}
+
+				input:checked + label:after {
+					left: calc(100% - 5px);
+					transform: translateX(-100%);
+				}
+
+				label:active:after {
+					width: calc(130px * 0.3);
+				}
 			`}</style>
-			<MobileFriendly />
+			{particlesSwitch == true ? <MobileFriendly /> : null}
 		</>
 	);
 };
