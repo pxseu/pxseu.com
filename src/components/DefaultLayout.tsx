@@ -36,10 +36,14 @@ const DefaultLayout = ({
 				</h1>
 				<hr />
 				<div className='center noselect'>{children}</div>
+				<div className='bottomPadding'></div>
 			</div>
 			<style jsx>{`
 				.app {
 					top: 100px;
+				}
+				.bottomPadding {
+					padding: 20px;
 				}
 			`}</style>
 		</BackgroundLoader>
