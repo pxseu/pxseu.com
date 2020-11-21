@@ -11,7 +11,6 @@ const OtherIndex = () => (
 			</p>
 
 			<p>
-				{" "}
 				<Link href='/other/waifu'>
 					<a>Waifu</a>
 				</Link>

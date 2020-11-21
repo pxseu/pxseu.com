@@ -132,6 +132,7 @@ const MessageIndex = () => {
 					color: black;
 					padding: 10px;
 					border-radius: 20px;
+					cursor: pointer;
 				}
 			`}</style>
 		</>
