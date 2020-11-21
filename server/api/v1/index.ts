@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from "express";
-import { DEV_MODE, NOTE, sendMessageLimiter } from "..";
+import { DEV_MODE, sendMessageLimiter } from "..";
 import { Webhook, MessageBuilder } from "webhook-discord";
 import blacklist from "../../../blacklist.json";
 
@@ -55,8 +55,7 @@ router.use(
 		) {
 			return res.json({
 				status: 400,
-				message: "You said a word from the blacklist!",
-				note: NOTE,
+				error: "You said a word from the blacklist!",
 			});
 		}
 
