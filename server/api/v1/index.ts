@@ -1,7 +1,6 @@
 import { Router, Request, Response, NextFunction } from "express";
-import { DEV_MODE, sendMessageLimiter } from "..";
+import { DEV_MODE, isBlacklisted, sendMessageLimiter } from "..";
 import { Webhook, MessageBuilder } from "webhook-discord";
-import { blacklist, spaces } from "..";
 
 const router = Router();
 
@@ -47,15 +46,8 @@ router.use(
 	},
 	async (req: Request, res: Response) => {
 		const message: string = await req.body.content.trim();
-		let cleanMessage = message;
 
-		spaces.forEach((space) => {
-			cleanMessage = cleanMessage.replace(new RegExp(space, "gi"), "");
-		});
-
-		if (
-			blacklist.some((word) => cleanMessage.match(new RegExp(word, "gi")))
-		) {
+		if (isBlacklisted(message)) {
 			return res.json({
 				status: 400,
 				error: "You said a word from the blacklist!",
