@@ -47,12 +47,12 @@ router.use(
 	async (req: Request, res: Response) => {
 		const message: string = await req.body.content.trim();
 
-		if (isBlacklisted(message)) {
+		/* if (isBlacklisted(message)) {
 			return res.json({
 				status: 400,
 				error: "You said a word from the blacklist!",
 			});
-		}
+		} */
 
 		const Hook = new Webhook(process.env.WEBHOOK ?? "");
 		const embed = new MessageBuilder();
