@@ -107,7 +107,7 @@ const BackgroundLoader = (props: { children: any }) => {
 					type='checkbox'
 					id='switch'
 					checked={particlesSwitch}
-					onClick={() => {
+					onChange={() => {
 						setParticlesSwitch(!particlesSwitch);
 					}}
 				/>

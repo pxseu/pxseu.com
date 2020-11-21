@@ -74,13 +74,11 @@ router.use(
 		let cleanMessage = message;
 
 		spaces.forEach((space) => {
-			cleanMessage = cleanMessage.replaceAll(space, "");
-		})
+			cleanMessage = cleanMessage.replace(new RegExp(space, "gi"), "");
+		});
 
 		if (
-			blacklist.some((word) =>
-				message.split(" ").join("").match(new RegExp(word, "gi")),
-			)
+			blacklist.some((word) => cleanMessage.match(new RegExp(word, "gi")))
 		) {
 			return res.json({
 				status: 400,
