@@ -1,6 +1,7 @@
 import { Router, Request, Response, NextFunction } from "express";
-import { DEV_MODE, sendMessageLimiter } from "..";
+import { DEV_MODE, NOTE, sendMessageLimiter } from "..";
 import { Webhook, MessageBuilder } from "webhook-discord";
+import blacklist from "../../../blacklist.json";
 
 const router = Router();
 
@@ -46,6 +47,19 @@ router.use(
 	},
 	async (req: Request, res: Response) => {
 		const message: string = await req.body.content.trim();
+
+		if (
+			blacklist.some((word) =>
+				message.split(" ").join("").match(new RegExp(word, "gi")),
+			)
+		) {
+			return res.json({
+				status: 400,
+				message: "You said a word from the blacklist!",
+				note: NOTE,
+			});
+		}
+
 		const Hook = new Webhook(process.env.WEBHOOK ?? "");
 		const embed = new MessageBuilder();
 

@@ -3,6 +3,7 @@ import { NOTE, DEV_MODE, sendMessageLimiter } from "..";
 import AuthKeyDb from "../../db/models/auth_key";
 import { RequestWithUser } from "../../../express";
 import { Webhook, MessageBuilder } from "webhook-discord";
+import blacklist from "../../../blacklist.json";
 
 const AVATAR =
 	"https://cdn.discordapp.com/avatars/645330135527981069/3440c4def2a42777de2ccafba45adf02.webp?size=4096";
@@ -70,6 +71,20 @@ router.use(
 	async (req: RequestWithUser, res: Response) => {
 		const user = req.user;
 		const message: string = await req.body.message.trim();
+
+		if (
+			blacklist.some((word) =>
+				message.split(" ").join("").match(new RegExp(word, "gi")),
+			)
+		) {
+			return res.json({
+				status: 400,
+				message: "You said a word from the blacklist!",
+				note: NOTE,
+				user,
+			});
+		}
+
 		const Hook = new Webhook(process.env.WEBHOOK ?? "");
 		const embed = new MessageBuilder();
 
