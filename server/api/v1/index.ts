@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from "express";
 import { DEV_MODE, sendMessageLimiter } from "..";
 import { Webhook, MessageBuilder } from "webhook-discord";
-import blacklist from "../../../blacklist.json";
+import { blacklist, spaces } from "..";
 
 const router = Router();
 
@@ -47,6 +47,11 @@ router.use(
 	},
 	async (req: Request, res: Response) => {
 		const message: string = await req.body.content.trim();
+		let cleanMessage = message;
+
+		spaces.forEach((space) => {
+			cleanMessage = cleanMessage.replaceAll(space, "");
+		});
 
 		if (
 			blacklist.some((word) =>
