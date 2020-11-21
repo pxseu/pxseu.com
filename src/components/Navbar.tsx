@@ -76,6 +76,11 @@ const Navbar = () => {
 					<NavElements />
 				</div>
 			</div>
+			<style jsx>{`
+				.navIcon {
+					cursor: pointer;
+				}
+			`}</style>
 		</>
 	);
 };
