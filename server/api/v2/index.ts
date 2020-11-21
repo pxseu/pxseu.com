@@ -1,9 +1,8 @@
 import { Router, Response, NextFunction } from "express";
-import { NOTE, DEV_MODE, sendMessageLimiter } from "..";
+import { NOTE, DEV_MODE, sendMessageLimiter, isBlacklisted } from "..";
 import AuthKeyDb from "../../db/models/auth_key";
 import { RequestWithUser } from "../../../express";
 import { Webhook, MessageBuilder } from "webhook-discord";
-import { blacklist, spaces } from "..";
 
 const AVATAR =
 	"https://cdn.discordapp.com/avatars/645330135527981069/3440c4def2a42777de2ccafba45adf02.webp?size=4096";
@@ -71,20 +70,11 @@ router.use(
 	async (req: RequestWithUser, res: Response) => {
 		const user = req.user;
 		const message: string = await req.body.message.trim();
-		let cleanMessage = message;
 
-		spaces.forEach((space) => {
-			cleanMessage = cleanMessage.replace(new RegExp(space, "gi"), "");
-		});
-
-		if (
-			blacklist.some((word) => cleanMessage.match(new RegExp(word, "gi")))
-		) {
+		if (isBlacklisted(message)) {
 			return res.json({
 				status: 400,
-				message: "You said a word from the blacklist!",
-				note: NOTE,
-				user,
+				error: "You said a word from the blacklist!",
 			});
 		}
 
