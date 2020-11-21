@@ -18,6 +18,23 @@ export const sendMessageLimiter = rateLimit({
 	},
 });
 
+export const spaces = [
+	" ",
+	"\u200B",
+	"\u200A",
+	"\u2009",
+	"\u2008",
+	"\u2007",
+	"\u2006",
+	"\u2005",
+	"\u2004",
+	"\u2003",
+	"\u2002",
+	"\u2001",
+	"\u2000",
+];
+export const blacklist = ["ririxi"];
+
 router.use(require("express").json());
 
 router.use("/v1", v1);

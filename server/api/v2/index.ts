@@ -3,7 +3,7 @@ import { NOTE, DEV_MODE, sendMessageLimiter } from "..";
 import AuthKeyDb from "../../db/models/auth_key";
 import { RequestWithUser } from "../../../express";
 import { Webhook, MessageBuilder } from "webhook-discord";
-import blacklist from "../../../blacklist.json";
+import { blacklist, spaces } from "..";
 
 const AVATAR =
 	"https://cdn.discordapp.com/avatars/645330135527981069/3440c4def2a42777de2ccafba45adf02.webp?size=4096";
@@ -71,6 +71,11 @@ router.use(
 	async (req: RequestWithUser, res: Response) => {
 		const user = req.user;
 		const message: string = await req.body.message.trim();
+		let cleanMessage = message;
+
+		spaces.forEach((space) => {
+			cleanMessage = cleanMessage.replaceAll(space, "");
+		})
 
 		if (
 			blacklist.some((word) =>
