@@ -1,4 +1,6 @@
-export const blacklist = ["ririxi"];
+export const blacklist = [
+	/* "ririxi" */
+];
 
 export const spaces = [
 	" ",

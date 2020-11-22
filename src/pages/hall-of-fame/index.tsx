@@ -10,11 +10,8 @@ const HallOfFame = () => (
 			</p>
 			<p>
 				<a href='https://julie420.github.io/' target='_blank'>
-					Peitho | wasn't there when I needed her but oh well
+					Peitho | they're cute with theirs pink hair {"<"}3
 				</a>
-			</p>
-			<p>
-				<a href='' target='_blank'></a>
 			</p>
 			<p>
 				<a href='https://www.vektrix.com' target='_blank'>
@@ -43,7 +40,7 @@ const HallOfFame = () => (
 			</p>
 			<p>
 				<a href='https://RedBird16.com' target='_blank'>
-					Red_Prez16 | life coach @ RedBird16.com
+					Red_Prez16 | coder @ RedBird16.com
 				</a>
 			</p>
 			<p className='comment'>
@@ -52,7 +49,13 @@ const HallOfFame = () => (
 		</DefaultLayout>
 		<style jsx>{`
 			.comment {
+				color: #fff;
 				text-decoration: underline #ffa9ff;
+				transition-duration: 0.3s;
+			}
+			.comment:hover {
+				color: #ffa9ff;
+				text-decoration: underline #fff;
 			}
 		`}</style>
 	</>

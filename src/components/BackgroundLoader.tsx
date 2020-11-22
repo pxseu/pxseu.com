@@ -1,9 +1,11 @@
 import Head from "next/head";
 import Particles from "react-particles-js";
 import { isMobile } from "react-device-detect";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const MobileFriendly = () => {
+const particlesSwitchName = "particlesSwitch";
+
+const PlatformParticles = () => {
 	let particlesConfig: any;
 	if (isMobile) {
 		particlesConfig = require("../../particlesjs-config.mobile.json");
@@ -40,6 +42,11 @@ const BackgroundLoader = (props: { children: any }) => {
 
 	useEffect(() => {
 		const nameLoop = setInterval(loop, 800);
+		const localParts = localStorage.getItem(particlesSwitchName);
+		alert(localParts);
+		localParts
+			? setParticlesSwitch(JSON.parse(localParts.toLowerCase()))
+			: localStorage.setItem(particlesSwitchName, "true");
 
 		return () => {
 			clearInterval(nameLoop);
@@ -102,13 +109,18 @@ const BackgroundLoader = (props: { children: any }) => {
 			{props.children}
 
 			<div className='particlesSwitch'>
-				{/* <div className='switchText'>Toggle Particles:</div> */}
 				<input
 					type='checkbox'
 					id='switch'
 					checked={particlesSwitch}
 					onChange={() => {
-						setParticlesSwitch(!particlesSwitch);
+						setParticlesSwitch((currParts) => {
+							localStorage.setItem(
+								particlesSwitchName,
+								JSON.stringify(!currParts),
+							);
+							return !currParts;
+						});
 					}}
 				/>
 				<label htmlFor='switch' id='switchLabel'>
@@ -183,7 +195,7 @@ const BackgroundLoader = (props: { children: any }) => {
 					width: calc(130px * 0.3);
 				}
 			`}</style>
-			{particlesSwitch == true ? <MobileFriendly /> : null}
+			{particlesSwitch == true ? <PlatformParticles /> : null}
 		</>
 	);
 };
