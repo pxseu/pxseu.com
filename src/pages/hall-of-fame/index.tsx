@@ -8,11 +8,7 @@ const HallOfFame = () => (
 					curly | she's cute with her curly hair {"<"}3
 				</a>
 			</p>
-			<p>
-				<a href='https://julie420.github.io/' target='_blank'>
-					Peitho | they're cute with theirs pink hair {"<"}3
-				</a>
-			</p>
+			{/* lol bye */}
 			<p>
 				<a href='https://www.vektrix.com' target='_blank'>
 					Vek | told me about security.txt
