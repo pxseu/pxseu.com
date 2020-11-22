@@ -43,7 +43,7 @@ const BackgroundLoader = (props: { children: any }) => {
 	useEffect(() => {
 		const nameLoop = setInterval(loop, 800);
 		const localParts = localStorage.getItem(particlesSwitchName);
-		alert(localParts);
+
 		localParts
 			? setParticlesSwitch(JSON.parse(localParts.toLowerCase()))
 			: localStorage.setItem(particlesSwitchName, "true");
