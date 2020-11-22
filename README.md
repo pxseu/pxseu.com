@@ -10,7 +10,7 @@ Please check it out and contribute if you wish to do so!
 The website requires [Node.js](https://nodejs.org/) v14+ to run.
 
 Install the dependencies and devDependencies and start the server.
-To use it to it's full potential it requires a [Discord webhook](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
+To use it to it's full potential it requires a [Discord webhook](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) and a [MongoDB](https://www.mongodb.com/) database.
 For development use:
 
 ```sh
