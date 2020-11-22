@@ -16,6 +16,7 @@ For development use:
 ```sh
 $ nano .env
 WEBHOOK = (Your webhook token.)
+MONGODB_URI = (Your database.)
 $ npm install
 $ npm run dev
 ```
@@ -25,6 +26,7 @@ And for production please do:
 ```sh
 $ nano .env
 WEBHOOK = (Your webhook token.)
+MONGODB_URI = (Your database.)
 $ npm install
 $ npm run deploy
 $ npm run prod
