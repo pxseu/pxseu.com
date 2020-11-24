@@ -17,10 +17,9 @@ const PlatformParticles = () => {
 };
 
 const BackgroundLoader = (props: { children: any }) => {
-	const [particlesSwitch, setParticlesSwitch] = useState(true);
-
 	let x = 0;
 
+	const [particlesSwitch, setParticlesSwitch] = useState(true);
 	const TitleText = [
 		"I",
 		"I l",
@@ -35,10 +34,21 @@ const BackgroundLoader = (props: { children: any }) => {
 		"(⁄˘⁄ ⁄ ω⁄ ⁄ ˘⁄)",
 	];
 
-	function loop() {
-		document.getElementsByTagName("title")[0].innerHTML =
-			TitleText[x++ % TitleText.length];
-	}
+	const switchPaticles = () => {
+		setParticlesSwitch((currParts) => {
+			localStorage.setItem(
+				particlesSwitchName,
+				JSON.stringify(!currParts),
+			);
+			return !currParts;
+		});
+	};
+	const loop = () => {
+		const titleEl = document.getElementsByTagName("title")[0];
+		titleEl
+			? (titleEl.innerHTML = TitleText[x++ % TitleText.length])
+			: null;
+	};
 
 	useEffect(() => {
 		const nameLoop = setInterval(loop, 800);
@@ -100,7 +110,6 @@ const BackgroundLoader = (props: { children: any }) => {
 					name='viewport'
 					content='width=device-width, initial-scale=0.8'
 				/>
-				\
 				<meta
 					name='google-site-verification'
 					content='azPHAHBpTuJ-8stcPE_LX6-GNwVGjzp5_V7E3KCcmMk'
@@ -109,28 +118,17 @@ const BackgroundLoader = (props: { children: any }) => {
 			{props.children}
 
 			<div className='particlesSwitch'>
-				<input
-					type='checkbox'
-					id='switch'
-					checked={particlesSwitch}
-					onChange={() => {
-						setParticlesSwitch((currParts) => {
-							localStorage.setItem(
-								particlesSwitchName,
-								JSON.stringify(!currParts),
-							);
-							return !currParts;
-						});
-					}}
-				/>
-				<label htmlFor='switch' id='switchLabel'>
-					Toggle
+				<label className='switch'>
+					<input
+						type='checkbox'
+						id='switchLabel'
+						checked={particlesSwitch}
+						onChange={() => switchPaticles()}
+					/>
+					<span className='slider round'></span>
 				</label>
 			</div>
-			<style jsx global>{`
-				body {
-					background-color: black;
-				}
+			<style jsx>{`
 				.particlesSwitch {
 					position: fixed;
 					bottom: 0;
@@ -148,51 +146,63 @@ const BackgroundLoader = (props: { children: any }) => {
 					padding: 0;
 					margin: 0;
 				}
-				input[type="checkbox"] {
-					height: 0;
-					width: 0;
-					padding: 0;
-					margin: 0;
-					visibility: hidden;
-				}
-				label {
-					position: absolute;
-					left: 50%;
-					top: 50%;
-					transform: translate(-50%, -50%);
-					cursor: pointer;
-					text-indent: -9999px;
-					width: calc(200px * 0.3);
-					height: calc(100px * 0.3);
-					background: grey;
-					display: block;
-					border-radius: calc(100px * 0.3);
+				.switch {
 					position: relative;
+					display: inline-block;
+					width: 60px;
+					height: 34px;
 				}
 
-				label:after {
-					content: "";
+				.switch input {
+					opacity: 0;
+					width: 0;
+					height: 0;
+				}
+
+				.slider {
 					position: absolute;
-					top: calc(5px * 0.3);
-					left: calc(5px * 0.3);
-					width: calc(90px * 0.3);
-					height: calc(90px * 0.3);
-					background: #fff;
-					border-radius: calc(90px * 0.3);
-					transition: 0.3s;
+					cursor: pointer;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					background-color: #ccc;
+					-webkit-transition: 0.4s;
+					transition: 0.4s;
 				}
 
-				input:checked + label {
-					background: #bada55;
+				.slider:before {
+					position: absolute;
+					content: "";
+					height: 26px;
+					width: 26px;
+					left: 4px;
+					bottom: 4px;
+					background-color: white;
+					-webkit-transition: 0.4s;
+					transition: 0.4s;
 				}
 
-				input:checked + label:after {
-					left: calc(100% - 5px);
-					transform: translateX(-100%);
+				input:checked + .slider {
+					background-color: #ffa9ff;
 				}
 
-				label:active:after {
-					width: calc(130px * 0.3);
+				input:focus + .slider {
+					box-shadow: 0 0 1px #ffa9ff;
+				}
+
+				input:checked + .slider:before {
+					-webkit-transform: translateX(26px);
+					-ms-transform: translateX(26px);
+					transform: translateX(26px);
+				}
+
+				.slider.round {
+					border-radius: 34px;
+				}
+
+				.slider.round:before {
+					border-radius: 50%;
 				}
 			`}</style>
 			{particlesSwitch == true ? <PlatformParticles /> : null}
