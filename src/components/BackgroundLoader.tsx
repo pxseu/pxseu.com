@@ -37,7 +37,7 @@ const BackgroundLoader = (props: { children: any }) => {
 			"I love you <3",
 			"(⁄˘⁄ ⁄ ω⁄ ⁄ ˘⁄)",
 		],
-		DarlingCode = ["p", "e", "i", "t", "h", "o"];
+		DarlingCode = ["i", "a", "m", "r", "e", "t", "a", "r", "d", "e", "d"];
 
 	const loop = () => {
 		const titleEl = document.getElementsByTagName("title")[0];
