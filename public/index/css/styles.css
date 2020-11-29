@@ -119,16 +119,6 @@ p {
 	bottom: 0px;
 }
 
-.peitho {
-	position: relative;
-	top: 170px;
-	text-align: center;
-	animation: 1.5s ease-out 1s 1 fadeIn;
-	font-family: "Roboto", sans-serif;
-	color: white;
-	opacity: 0;
-}
-
 .noselect {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
