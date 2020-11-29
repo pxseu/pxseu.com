@@ -4,12 +4,6 @@ const HallOfFame = () => (
 	<>
 		<DefaultLayout title={"Hall of fame"}>
 			<p>
-				<a href='' target='_blank'>
-					curly | she's cute with her curly hair {"<"}3
-				</a>
-			</p>
-			{/* lol bye */}
-			<p>
 				<a href='https://www.vektrix.com' target='_blank'>
 					Vek | told me about security.txt
 				</a>
