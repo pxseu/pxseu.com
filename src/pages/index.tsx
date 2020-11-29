@@ -3,7 +3,7 @@ import Link from "next/link";
 import BackgroundLoader from "../components/BackgroundLoader";
 
 const Index = () => (
-	<BackgroundLoader>
+	<>
 		<Head>
 			<title>pxseu</title>
 			<meta
@@ -13,27 +13,31 @@ const Index = () => (
 				content='Home sweet homepage.'
 			/>
 		</Head>
-		<div className='app'>
-			<div className='logo noselect'>pxseu</div>
+		<BackgroundLoader>
+			<div className='app'>
+				<div className='logo noselect'>pxseu</div>
 
-			<div className='links' id='links'>
-				<p>
-					<Link href='/about'>
-						<a className='link noselect'>About Me</a>
-					</Link>
-				</p>
-				<p>
-					<Link href='/projects'>
-						<a className='link noselect'>My Projects</a>
-					</Link>
-				</p>
-				<p>
-					<a className='link noselect' href='https://discord.pxseu.com'>
-						Discord Server
-					</a>
-				</p>
+				<div className='links' id='links'>
+					<p>
+						<Link href='/about'>
+							<a className='link noselect'>About Me</a>
+						</Link>
+					</p>
+					<p>
+						<Link href='/projects'>
+							<a className='link noselect'>My Projects</a>
+						</Link>
+					</p>
+					<p>
+						<a
+							className='link noselect'
+							href='https://discord.pxseu.com'>
+							Discord Server
+						</a>
+					</p>
+				</div>
 			</div>
-		</div>
+		</BackgroundLoader>
 		<style jsx>{`
 			.logo {
 				position: absolute;
@@ -128,7 +132,7 @@ const Index = () => (
 				}
 			}
 		`}</style>
-	</BackgroundLoader>
+	</>
 );
 
 export default Index;

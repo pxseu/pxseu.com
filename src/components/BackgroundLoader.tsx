@@ -2,10 +2,12 @@ import Head from "next/head";
 import Particles from "react-particles-js";
 import { isMobile } from "react-device-detect";
 import { useEffect, useState } from "react";
-
+import Modal from "./Modal";
 const particlesSwitchName = "particlesSwitch";
 
-const PlatformParticles = () => {
+const PlatformParticles = (props: { on: boolean }) => {
+	if (!props.on) return null;
+
 	let particlesConfig: any;
 	if (isMobile) {
 		particlesConfig = require("../../particlesjs-config.mobile.json");
@@ -17,22 +19,52 @@ const PlatformParticles = () => {
 };
 
 const BackgroundLoader = (props: { children: any }) => {
-	let x = 0;
-
 	const [particlesSwitch, setParticlesSwitch] = useState(true);
+	const [darling, setDarling] = useState(false);
+	let titlePosition = 0,
+		darlingCodePosition = 0;
+
 	const TitleText = [
-		"I",
-		"I l",
-		"I lo",
-		"I lov",
-		"I love",
-		"I love y",
-		"I love yo",
-		"I love you",
-		"I love you <",
-		"I love you <3",
-		"(⁄˘⁄ ⁄ ω⁄ ⁄ ˘⁄)",
-	];
+			"I",
+			"I l",
+			"I lo",
+			"I lov",
+			"I love",
+			"I love y",
+			"I love yo",
+			"I love you",
+			"I love you <",
+			"I love you <3",
+			"(⁄˘⁄ ⁄ ω⁄ ⁄ ˘⁄)",
+		],
+		DarlingCode = ["p", "e", "i", "t", "h", "o"];
+
+	const loop = () => {
+		const titleEl = document.getElementsByTagName("title")[0];
+		titleEl
+			? (titleEl.innerHTML =
+					TitleText[titlePosition++ % TitleText.length])
+			: null;
+	};
+
+	const darlingCodeChecker = (event: KeyboardEvent) => {
+		const inputs = ["input", "select", "button", "textarea"];
+		const aEl = document.activeElement;
+		if (aEl && inputs.indexOf(aEl.tagName.toLowerCase()) !== -1) return;
+
+		const key = event.key.toLowerCase();
+		const requiredKey = DarlingCode[darlingCodePosition].toLowerCase();
+		if (key != requiredKey) {
+			darlingCodePosition = 0;
+			return;
+		}
+
+		darlingCodePosition++;
+		if (darlingCodePosition != DarlingCode.length) return;
+
+		setDarling(true);
+		darlingCodePosition = 0;
+	};
 
 	const switchPaticles = () => {
 		setParticlesSwitch((currParts) => {
@@ -43,15 +75,10 @@ const BackgroundLoader = (props: { children: any }) => {
 			return !currParts;
 		});
 	};
-	const loop = () => {
-		const titleEl = document.getElementsByTagName("title")[0];
-		titleEl
-			? (titleEl.innerHTML = TitleText[x++ % TitleText.length])
-			: null;
-	};
 
 	useEffect(() => {
 		const nameLoop = setInterval(loop, 800);
+		document.addEventListener("keydown", darlingCodeChecker);
 		const localParts = localStorage.getItem(particlesSwitchName);
 
 		localParts
@@ -59,6 +86,7 @@ const BackgroundLoader = (props: { children: any }) => {
 			: localStorage.setItem(particlesSwitchName, "true");
 
 		return () => {
+			document.removeEventListener("keydown", darlingCodeChecker);
 			clearInterval(nameLoop);
 		};
 	}, []);
@@ -116,7 +144,6 @@ const BackgroundLoader = (props: { children: any }) => {
 				/>
 			</Head>
 			{props.children}
-
 			<div className='particlesSwitch'>
 				<label className='switch'>
 					<input
@@ -152,13 +179,11 @@ const BackgroundLoader = (props: { children: any }) => {
 					width: 60px;
 					height: 34px;
 				}
-
 				.switch input {
 					opacity: 0;
 					width: 0;
 					height: 0;
 				}
-
 				.slider {
 					position: absolute;
 					cursor: pointer;
@@ -170,7 +195,6 @@ const BackgroundLoader = (props: { children: any }) => {
 					-webkit-transition: 0.4s;
 					transition: 0.4s;
 				}
-
 				.slider:before {
 					position: absolute;
 					content: "";
@@ -182,30 +206,28 @@ const BackgroundLoader = (props: { children: any }) => {
 					-webkit-transition: 0.4s;
 					transition: 0.4s;
 				}
-
 				input:checked + .slider {
 					background-color: #ffa9ff;
 				}
-
 				input:focus + .slider {
 					box-shadow: 0 0 1px #ffa9ff;
 				}
-
 				input:checked + .slider:before {
 					-webkit-transform: translateX(26px);
 					-ms-transform: translateX(26px);
 					transform: translateX(26px);
 				}
-
 				.slider.round {
 					border-radius: 34px;
 				}
-
 				.slider.round:before {
 					border-radius: 50%;
 				}
 			`}</style>
-			{particlesSwitch == true ? <PlatformParticles /> : null}
+			<PlatformParticles on={particlesSwitch} />
+			<Modal open={darling} onClose={() => setDarling(false)}>
+				I love you Darling!
+			</Modal>
 		</>
 	);
 };
