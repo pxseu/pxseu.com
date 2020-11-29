@@ -20,7 +20,7 @@ const Modal = ({
 	return createPortal(
 		<>
 			<div id='overlay' className='overlay' />
-			<div id='modal' className='modal fade' ref={modalEl}>
+			<div id='modal' className='modal fade noselect' ref={modalEl}>
 				<div
 					id='closeModal'
 					className='closeModal'
