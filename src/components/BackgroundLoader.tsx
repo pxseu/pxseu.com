@@ -21,10 +21,11 @@ const PlatformParticles = (props: { on: boolean }) => {
 const BackgroundLoader = (props: { children: any }) => {
 	const [particlesSwitch, setParticlesSwitch] = useState(true);
 	const [darling, setDarling] = useState(false);
+	const [isActive, setIsActive] = useState(true);
 	let titlePosition = 0,
 		darlingCodePosition = 0;
 
-	const TitleText = [
+	const TitleTextActive = [
 			"I",
 			"I l",
 			"I lo",
@@ -37,16 +38,35 @@ const BackgroundLoader = (props: { children: any }) => {
 			"I love you <3",
 			"(⁄˘⁄ ⁄ ω⁄ ⁄ ˘⁄)",
 		],
-		DarlingCode = ["i", "a", "m", "r", "e", "t", "a", "r", "d", "e", "d"];
+		TitleTextInactive = [
+			"Please come back :(((",
+			"I miss youuuu",
+			"I can give you cookies!!",
+			"Hey, how are things?",
+			"I really was looking forward to talking with you...",
+			"Mind coming around for a while?",
+			"What's up?",
+			"I love you...", // iykyk
+		],
+		DarlingCode = ["u", "w", "u"];
 
-	const loop = () => {
+	const loopActive = () => {
 		const titleEl = document.getElementsByTagName("title")[0];
-		titleEl
-			? (titleEl.innerHTML =
-					TitleText[titlePosition++ % TitleText.length])
-			: null;
+		if (titleEl) {
+			titleEl.innerHTML =
+				TitleTextActive[titlePosition++ % TitleTextActive.length];
+		}
 	};
 
+	const loopInactive = () => {
+		const titleEl = document.getElementsByTagName("title")[0];
+		if (titleEl) {
+			titleEl.innerHTML =
+				TitleTextInactive[
+					Math.floor(Math.random() * TitleTextInactive.length)
+				];
+		}
+	};
 	const darlingCodeChecker = (event: KeyboardEvent) => {
 		const inputs = ["input", "select", "button", "textarea"];
 		const aEl = document.activeElement;
@@ -76,9 +96,17 @@ const BackgroundLoader = (props: { children: any }) => {
 		});
 	};
 
+	const tabChanged = () => {
+		setIsActive((curAct) => !curAct);
+	};
+
 	useEffect(() => {
-		const nameLoop = setInterval(loop, 800);
+		const nameLoop = setInterval(
+			isActive ? loopActive : loopInactive,
+			isActive ? 800 : 2000,
+		);
 		document.addEventListener("keydown", darlingCodeChecker);
+		document.addEventListener("visibilitychange", tabChanged);
 		const localParts = localStorage.getItem(particlesSwitchName);
 
 		localParts
@@ -87,9 +115,10 @@ const BackgroundLoader = (props: { children: any }) => {
 
 		return () => {
 			document.removeEventListener("keydown", darlingCodeChecker);
+			document.removeEventListener("visibilitychange", tabChanged);
 			clearInterval(nameLoop);
 		};
-	}, []);
+	}, [isActive]);
 
 	return (
 		<>
