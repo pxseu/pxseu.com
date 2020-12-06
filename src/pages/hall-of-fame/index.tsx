@@ -29,6 +29,11 @@ const HallOfFame = () => (
 				</a>
 			</p>
 			<p>
+				<a href='https://mev.pxseu.com' target='_blank'>
+					Mev | co-founder of @booble-site
+				</a>
+			</p>
+			<p>
 				<a href='https://RedBird16.com' target='_blank'>
 					Red_Prez16 | coder @ RedBird16.com
 				</a>
