@@ -1,6 +1,6 @@
 import { Router, Response, NextFunction } from "express";
 import { NOTE, DEV_MODE, sendMessageLimiter, isBlacklisted } from "..";
-import AuthKeyDb from "../../db/models/auth_key";
+import AuthKeyDb, { apiUser } from "../../db/models/auth_key";
 import { RequestWithUser } from "../../../express";
 import { Webhook, MessageBuilder } from "webhook-discord";
 
@@ -31,9 +31,9 @@ router.use(
 
 		const AuthKey = req.headers.authorization;
 
-		const apiKeyFound = await AuthKeyDb.findOne({
+		const apiKeyFound = (await AuthKeyDb.findOne({
 			auth_key: AuthKey,
-		});
+		})) as apiUser;
 
 		if (body.message == undefined || body.message.trim() == "") {
 			const message = "Cannot send empty message!";
@@ -56,7 +56,7 @@ router.use(
 		}
 
 		if (apiKeyFound) {
-			req.user = (await apiKeyFound.toJSON()).user;
+			req.user = apiKeyFound.user;
 			next();
 		}
 
