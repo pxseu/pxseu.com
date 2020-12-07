@@ -3084,10 +3084,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.11.2:
-  version "5.11.2"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.11.2.tgz#ee5b99d0717cac67517663d642a6de335ef14163"
-  integrity sha512-vWmmzkyqJY46bn5H5eQOszhSmSAGghblZQLo8iNEqC4jlLhUrfh0qaGhfqxBQpbW03FDYk2xcDmYo/IC1S4x0A==
+mongoose@^5.11.4:
+  version "5.11.4"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.11.4.tgz#26c6be85bee47446570281f90331762751d8b995"
+  integrity sha512-80IyHZ1ID4dtmQAaAr1B1FO2hWxmKMqaGP4WBkZ7xDKY1WKiBxVr1j5fk+bedO/IqJWoVG4vdxQDYp7glqaKaA==
   dependencies:
     "@types/mongodb" "^3.5.27"
     bson "^1.1.4"
