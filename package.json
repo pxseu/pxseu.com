@@ -34,7 +34,7 @@
 		"@types/express-rate-limit": "^5.1.0",
 		"@types/mongoose": "^5.10.1",
 		"@types/morgan": "^1.9.2",
-		"@types/node": "^14.14.10",
+		"@types/node": "^14.14.11",
 		"@types/node-fetch": "^2.5.7",
 		"@types/nprogress": "^0.2.0",
 		"@types/react": "^17.0.0",
