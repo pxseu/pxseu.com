@@ -140,10 +140,11 @@ a:hover {
 }
 
 .logoNavbar {
-	font-family: "Gang of Three";
+	font-family: "Gang of Three", Verdana, Arial;
 	color: #ffa9ff;
 	cursor: pointer;
 	font-size: 34px;
+	font-display: swap;
 	margin-left: 20px;
 }
 
