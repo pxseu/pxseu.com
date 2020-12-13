@@ -15,7 +15,7 @@ const PlatformParticles = (props: { on: boolean }) => {
 		particlesConfig = require("../../particlesjs-config.json");
 	}
 
-	return <Particles className='particles-js' params={particlesConfig} />;
+	return <Particles className="particles-js" params={particlesConfig} />;
 };
 
 const BackgroundLoader = (props: { children: any }) => {
@@ -53,8 +53,7 @@ const BackgroundLoader = (props: { children: any }) => {
 	const loopActive = () => {
 		const titleEl = document.getElementsByTagName("title")[0];
 		if (titleEl) {
-			titleEl.innerHTML =
-				TitleTextActive[titlePosition++ % TitleTextActive.length];
+			titleEl.innerHTML = TitleTextActive[titlePosition++ % TitleTextActive.length];
 		}
 	};
 
@@ -62,9 +61,7 @@ const BackgroundLoader = (props: { children: any }) => {
 		const titleEl = document.getElementsByTagName("title")[0];
 		if (titleEl) {
 			titleEl.innerHTML =
-				TitleTextInactive[
-					Math.floor(Math.random() * TitleTextInactive.length)
-				];
+				TitleTextInactive[Math.floor(Math.random() * TitleTextInactive.length)];
 		}
 	};
 	const darlingCodeChecker = (event: KeyboardEvent) => {
@@ -88,10 +85,7 @@ const BackgroundLoader = (props: { children: any }) => {
 
 	const switchPaticles = () => {
 		setParticlesSwitch((currParts) => {
-			localStorage.setItem(
-				particlesSwitchName,
-				JSON.stringify(!currParts),
-			);
+			localStorage.setItem(particlesSwitchName, JSON.stringify(!currParts));
 			return !currParts;
 		});
 	};
@@ -101,10 +95,7 @@ const BackgroundLoader = (props: { children: any }) => {
 	};
 
 	useEffect(() => {
-		const nameLoop = setInterval(
-			isActive ? loopActive : loopInactive,
-			isActive ? 800 : 2000,
-		);
+		const nameLoop = setInterval(isActive ? loopActive : loopInactive, isActive ? 800 : 2000);
 		document.addEventListener("keydown", darlingCodeChecker);
 		document.addEventListener("visibilitychange", tabChanged);
 		const localParts = localStorage.getItem(particlesSwitchName);
@@ -123,65 +114,59 @@ const BackgroundLoader = (props: { children: any }) => {
 	return (
 		<>
 			<Head>
-				<meta charSet='UTF-8' />
-				<meta name='description' content="Pxseu's website!" />
-				<meta name='keywords' content='pxseu, poseuxck' />
-				<meta name='author' content='pxseu' />
-				<link rel='shortcut' href='/favicon.ico' />
-				<link rel='icon' href='/favicon.ico' />
-				<link rel='favicon' href='/favicon.ico' />
+				<meta charSet="UTF-8" />
+				<meta name="description" content="Pxseu's website!" />
+				<meta name="keywords" content="pxseu, poseuxck" />
+				<meta name="author" content="pxseu" />
+				<link rel="shortcut" href="/favicon.ico" />
+				<link rel="icon" href="/favicon.ico" />
+				<link rel="favicon" href="/favicon.ico" />
 				<meta
-					data-n-head='ssr'
-					data-hid='theme-color'
-					name='theme-color'
-					content='#6ab04c'
+					data-n-head="ssr"
+					data-hid="theme-color"
+					name="theme-color"
+					content="#6ab04c"
 				/>
 				<meta
-					data-n-head='ssr'
-					data-hid='og:site_name'
-					property='og:site_name'
-					content='pxseu.com'
+					data-n-head="ssr"
+					data-hid="og:site_name"
+					property="og:site_name"
+					content="pxseu.com"
 				/>
 				<meta
-					data-n-head='ssr'
-					data-hid='og:title'
-					property='og:title'
-					content='pxseu.com'
+					data-n-head="ssr"
+					data-hid="og:title"
+					property="og:title"
+					content="pxseu.com"
 				/>
 				<meta
-					data-n-head='ssr'
-					data-hid='og:image'
-					property='og:image'
-					content='https://www.pxseu.com/essential/media/icon.png'
+					data-n-head="ssr"
+					data-hid="og:image"
+					property="og:image"
+					content="https://www.pxseu.com/essential/media/icon.png"
 				/>
 				<meta
-					name='viewport'
-					content='width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no, minimal-ui'
-				/>
-				<link
-					href='https://fonts.googleapis.com/css2?family=Roboto&display=swap'
-					rel='stylesheet'
+					name="viewport"
+					content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no, minimal-ui"
 				/>
 				{/* <script src='/essential/js/script.js'defer  /> */}
+				<meta name="viewport" content="width=device-width, initial-scale=0.8" />
 				<meta
-					name='viewport'
-					content='width=device-width, initial-scale=0.8'
-				/>
-				<meta
-					name='google-site-verification'
-					content='azPHAHBpTuJ-8stcPE_LX6-GNwVGjzp5_V7E3KCcmMk'
+					name="google-site-verification"
+					content="azPHAHBpTuJ-8stcPE_LX6-GNwVGjzp5_V7E3KCcmMk"
 				/>
 			</Head>
 			{props.children}
-			<div className='particlesSwitch'>
-				<label className='switch'>
+			<div className="particlesSwitch">
+				<label className="switch">
+					<p className="visually_hidden">Switch particles on or off</p>
 					<input
-						type='checkbox'
-						id='switchLabel'
+						type="checkbox"
+						id="switchLabel"
 						checked={particlesSwitch}
 						onChange={() => switchPaticles()}
 					/>
-					<span className='slider round'></span>
+					<span className="slider round"></span>
 				</label>
 			</div>
 			<style jsx>{`
@@ -197,11 +182,7 @@ const BackgroundLoader = (props: { children: any }) => {
 					/* padding: 10px; */
 					border-radius: 20px;
 				}
-				.switchText {
-					text-align: center;
-					padding: 0;
-					margin: 0;
-				}
+
 				.switch {
 					position: relative;
 					display: inline-block;
