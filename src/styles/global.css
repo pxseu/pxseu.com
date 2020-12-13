@@ -144,7 +144,6 @@ a:hover {
 	color: #ffa9ff;
 	cursor: pointer;
 	font-size: 34px;
-	font-display: swap;
 	margin-left: 20px;
 }
 
@@ -245,6 +244,7 @@ a:hover {
 @font-face {
 	font-family: "Gang of Three";
 	src: url("/index/font/go3v2.ttf");
+	font-display: swap;
 }
 
 @media screen and (min-width: 800px) {
