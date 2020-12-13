@@ -15,25 +15,30 @@ const Index = () => (
 		</Head>
 		<BackgroundLoader>
 			<div className="app">
-				<div className="logo noselect">pxseu</div>
+				<a className="skip-link" href="#linksSkip">
+					Go to links!
+				</a>
+				<h1 className="logo noselect">pxseu</h1>
 
-				<div className="links" id="links">
-					<p>
-						<Link href="/about">
-							<a className="link noselect">About Me</a>
-						</Link>
-					</p>
-					<p>
-						<Link href="/projects">
-							<a className="link noselect">My Projects</a>
-						</Link>
-					</p>
-					<p>
-						<a className="link noselect" href="https://discord.pxseu.com">
-							Discord Server
-						</a>
-					</p>
-				</div>
+				<main id="linksSkip">
+					<div className="links" id="links">
+						<p>
+							<Link href="/about">
+								<a className="link noselect">About Me</a>
+							</Link>
+						</p>
+						<p>
+							<Link href="/projects">
+								<a className="link noselect">My Projects</a>
+							</Link>
+						</p>
+						<p>
+							<a className="link noselect" href="https://discord.pxseu.com">
+								Discord Server
+							</a>
+						</p>
+					</div>
+				</main>
 			</div>
 		</BackgroundLoader>
 		<style jsx>{`
@@ -41,7 +46,7 @@ const Index = () => (
 				position: absolute;
 				left: 50%;
 				transform: translate(-50%);
-				top: 220px;
+				top: 119px;
 				z-index: 2;
 				animation: 1.5s ease-out 0s 1 fadeIn;
 				cursor: pointer;
@@ -50,6 +55,7 @@ const Index = () => (
 				font-display: swap;
 				font-size: 150px;
 				font-family: "Gang of Three", Verdana, Arial;
+				font-weight: normal;
 			}
 
 			.links {
