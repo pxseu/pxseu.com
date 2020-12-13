@@ -33,7 +33,8 @@ body {
 	text-align: center;
 	color: #ffa9ff;
 	font-size: 150px;
-	font-family: "Gang of Three";
+	font-family: "Gang of Three", Verdana, Arial;
+	font-display: swap;
 }
 
 .links {
