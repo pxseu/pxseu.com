@@ -52,7 +52,6 @@ const Index = () => (
 				cursor: pointer;
 				text-align: center;
 				color: #ffa9ff;
-				font-display: swap;
 				font-size: 150px;
 				font-family: "Gang of Three", Verdana, Arial;
 				font-weight: normal;
