@@ -7,31 +7,29 @@ const Index = () => (
 		<Head>
 			<title>pxseu</title>
 			<meta
-				data-n-head='ssr'
-				data-hid='og:description'
-				property='og:description'
-				content='Home sweet homepage.'
+				data-n-head="ssr"
+				data-hid="og:description"
+				property="og:description"
+				content="Home sweet homepage."
 			/>
 		</Head>
 		<BackgroundLoader>
-			<div className='app'>
-				<div className='logo noselect'>pxseu</div>
+			<div className="app">
+				<div className="logo noselect">pxseu</div>
 
-				<div className='links' id='links'>
+				<div className="links" id="links">
 					<p>
-						<Link href='/about'>
-							<a className='link noselect'>About Me</a>
+						<Link href="/about">
+							<a className="link noselect">About Me</a>
 						</Link>
 					</p>
 					<p>
-						<Link href='/projects'>
-							<a className='link noselect'>My Projects</a>
+						<Link href="/projects">
+							<a className="link noselect">My Projects</a>
 						</Link>
 					</p>
 					<p>
-						<a
-							className='link noselect'
-							href='https://discord.pxseu.com'>
+						<a className="link noselect" href="https://discord.pxseu.com">
 							Discord Server
 						</a>
 					</p>
@@ -49,8 +47,9 @@ const Index = () => (
 				cursor: pointer;
 				text-align: center;
 				color: #ffa9ff;
+				font-display: swap;
 				font-size: 150px;
-				font-family: "Gang of Three";
+				font-family: "Gang of Three", Verdana, Arial;
 			}
 
 			.links {
