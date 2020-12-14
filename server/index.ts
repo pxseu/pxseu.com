@@ -33,7 +33,7 @@ app.prepare().then(async () => {
 					"img.shields.io",
 				],
 				objectSrc: ["'none'"],
-				scriptSrc: ["'self'", "ajax.cloudflare.com"],
+				scriptSrc: ["'self'", "ajax.cloudflare.com", "static.cloudflareinsights.com"],
 				scriptSrcAttr: ["'none'"],
 				styleSrc: ["'self'", "https:", "'unsafe-inline'"],
 				upgradeInsecureRequests: [],
