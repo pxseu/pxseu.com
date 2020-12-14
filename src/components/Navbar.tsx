@@ -5,26 +5,24 @@ import { useState, useEffect } from "react";
 const Navbar = () => {
 	const NavElements = () => (
 		<>
-			<Link href='/projects'>
+			<Link href="/projects">
 				<a>Projects</a>
 			</Link>
-			<Link href='/about'>
+			<Link href="/about">
 				<a>About</a>
 			</Link>
-			<Link href='/contact'>
+			<Link href="/contact">
 				<a>Contact</a>
 			</Link>
-			<Link href='/legal-stuff'>
+			<Link href="/legal-stuff">
 				<a>Legal Stuff</a>
 			</Link>
-			<Link href='/other'>
+			<Link href="/other">
 				<a>Other</a>
 			</Link>
-			<a href='//dash.pxseu.com'>Dash</a>
+			<a href="//dash.pxseu.com">Dash</a>
 		</>
 	);
-
-	const navbarClasses = ["navbar"];
 
 	const [navToggle, setNavToggle] = useState(false);
 	const [smallScreen, setsmallScreen] = useState(false);
@@ -47,32 +45,27 @@ const Navbar = () => {
 	return (
 		<>
 			<Head>
-				<link
-					rel='stylesheet'
-					href='//use.fontawesome.com/releases/v5.5.0/css/all.css'
-				/>
+				<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.5.0/css/all.css" />
 			</Head>
 
-			<header className={navbarClasses.join(" ")}>
-				<Link href='/'>
-					<p className='logoNavbar noselect'>pxseu</p>
+			<header className="noselect navbar">
+				<Link href="/">
+					<p className="logoNavbar">pxseu</p>
 				</Link>
-				<nav className={smallScreen ? "hidden" : "navigation noselect"}>
+				<nav className={smallScreen ? "hidden" : "navigation"}>
 					<NavElements />
 				</nav>
 				<p
 					className={smallScreen ? "navigation navIcon" : "hidden"}
 					onClick={() => setNavToggle(true)}>
-					<i className='fas fa-bars'></i>
+					<i className="fas fa-bars"></i>
 				</p>
 			</header>
-			<div className={navToggle ? "navOverlay show" : "navOverlay"}>
-				<a
-					className='closebtn noselect'
-					onClick={() => setNavToggle(false)}>
+			<div className={navToggle ? "navOverlay show noselect" : "navOverlay"}>
+				<a className="closebtn" onClick={() => setNavToggle(false)}>
 					&times;
 				</a>
-				<div className='navOverlay-content noselect'>
+				<div className="navOverlay-content">
 					<NavElements />
 				</div>
 			</div>

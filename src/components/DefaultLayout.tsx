@@ -21,19 +21,19 @@ const DefaultLayout = ({ title, children, titleOnClick }: DefaultLayoutInput) =>
 		</Head>
 		<BackgroundLoader>
 			<Navbar />
-			<div className="app">
-				<h1 className="center noselect">
+			<div className="noselect app">
+				<h1 className="center">
 					<a onClick={() => (titleOnClick == undefined ? void 0 : titleOnClick())}>
 						{title}
 					</a>
 				</h1>
 				<hr />
-				<main className="center noselect">{children}</main>
+				<main className="center">{children}</main>
 				<div className="bottomPadding"></div>
 			</div>
 			<style jsx>{`
 				.app {
-					top: 100px;
+					top: 50px;
 				}
 				.bottomPadding {
 					padding: 20px;

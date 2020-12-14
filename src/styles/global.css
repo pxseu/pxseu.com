@@ -40,6 +40,12 @@ body {
 	z-index: 2;
 }
 
+p,
+h2 {
+	padding: 5px;
+	margin: 5px;
+}
+
 a {
 	color: white;
 	transition: color 0.1s;
@@ -241,6 +247,13 @@ a:hover {
 	padding: 0;
 	position: absolute;
 	width: 1px;
+}
+
+.emoji {
+	display: inline-block;
+	width: auto;
+	height: 1em;
+	vertical-align: -0.125em;
 }
 
 @keyframes fadeIn {
