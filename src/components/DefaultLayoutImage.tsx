@@ -7,10 +7,17 @@ type DefaultLayoutInput = {
 	children: any;
 	title: string;
 	titleOnClick?: Function;
-	image: string;
+	image?: string;
+	video?: string;
 };
 
-const DefaultLayoutImage = ({ title, children, titleOnClick, image }: DefaultLayoutInput) => (
+const DefaultLayoutImage = ({
+	title,
+	children,
+	titleOnClick,
+	image,
+	video,
+}: DefaultLayoutInput) => (
 	<>
 		<Head>
 			<title>{title}</title>
@@ -32,7 +39,19 @@ const DefaultLayoutImage = ({ title, children, titleOnClick, image }: DefaultLay
 				<hr />
 				<div className="container">
 					<div className="imgrow row">
-						<img draggable="false" className="center" src={image} alt={"Image"} />
+						{image && (
+							<img draggable="false" className="center" src={image} alt={"Image"} />
+						)}
+						{video && (
+							<video
+								className="center"
+								src={video}
+								autoPlay={true}
+								loop={true}
+								muted={true}
+								controls={false}
+							/>
+						)}
 					</div>
 					<div className=" row">
 						<div className="center">{children}</div>
