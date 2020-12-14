@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"repository": "https://github.com/pxseu/pxseu.com",
 	"private": true,
-	"main": "./dist/server.js",
+	"main": "./dist/index.js",
 	"scripts": {
 		"compile": "rimraf dist && tsc --project tsconfig.server.json",
 		"start": "node .",
