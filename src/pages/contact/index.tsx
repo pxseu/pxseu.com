@@ -2,23 +2,24 @@ import DefaultLayout from "../../components/DefaultLayout";
 
 const Contact = () => (
 	<DefaultLayout title={"Contact / Socials"}>
+		<p>Bellow are a couple of ways you can get in touch with me!</p>
 		<p>
-			<a href='https://github.com/pxseu' target='_blank'>
+			<a href="https://github.com/pxseu" target="_blank">
 				Github
 			</a>
 		</p>
 		<p>
-			<a href='https://twitter.com/pxseu' target='_blank'>
+			<a href="https://twitter.com/pxseu" target="_blank">
 				Twitter
 			</a>
 		</p>
 		<p>
-			<a href='mailto:me@pxseu.com' target='_blank'>
+			<a href="mailto:me@pxseu.com" target="_blank">
 				Email
 			</a>
 		</p>
 		<p>
-			<a href='https://discord.pxseu.com' target='_blank'>
+			<a href="https://discord.pxseu.com" target="_blank">
 				Discord
 			</a>
 		</p>

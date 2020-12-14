@@ -3,6 +3,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import next from "next";
 import api from "./api";
+import redirects from "./rewrites";
 import { connect } from "./db";
 
 const server = express();
@@ -23,12 +24,7 @@ app.prepare().then(async () => {
 				baseUri: ["'self'"],
 				fontSrc: ["'self'", "https:", "data:"],
 				frameAncestors: ["'self'"],
-				imgSrc: [
-					"'self'",
-					"data:",
-					"cdn.pxseu.com",
-					"www.thiswaifudoesnotexist.net",
-				],
+				imgSrc: ["'self'", "data:", "cdn.pxseu.com", "www.thiswaifudoesnotexist.net"],
 				objectSrc: ["'none'"],
 				scriptSrc: ["'self'", "ajax.cloudflare.com"],
 				scriptSrcAttr: ["'none'"],
@@ -36,8 +32,15 @@ app.prepare().then(async () => {
 				upgradeInsecureRequests: [],
 				blockAllMixedContent: [],
 			},
-		}),
+		})
 	);
+
+	server.use((_, res, next) => {
+		res.header("X-CUM", "sticky");
+		next();
+	});
+
+	server.use(redirects);
 	server.use("/api", api);
 	server.all("*", (req: Request, res: Response) => {
 		return handle(req, res);
@@ -46,10 +49,6 @@ app.prepare().then(async () => {
 	await connect();
 	server.listen(port, (error?: any) => {
 		if (error) throw error;
-		console.log(
-			"\x1b[36m%s\x1b[0m",
-			`> Ready on http://localhost:${port}`,
-			"\x1b[0m",
-		);
+		console.log("\x1b[36m%s\x1b[0m", `> Ready on http://localhost:${port}`, "\x1b[0m");
 	});
 });
