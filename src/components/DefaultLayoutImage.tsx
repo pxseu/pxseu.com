@@ -23,18 +23,18 @@ const DefaultLayoutImage = ({ title, children, titleOnClick, image }: DefaultLay
 		</Head>
 		<BackgroundLoader>
 			<Navbar />
-			<div className="app">
-				<h1 className="center noselect">
+			<div className="noselect app">
+				<h1 className="center">
 					<a onClick={() => (titleOnClick == undefined ? void 0 : titleOnClick())}>
 						{title}
 					</a>
 				</h1>
 				<hr />
-				<div className="container noselect">
+				<div className="container">
 					<div className="imgrow row">
-						<img className="center" src={image} alt={"Image"} />
+						<img draggable="false" className="center" src={image} alt={"Image"} />
 					</div>
-					<div className="row">
+					<div className=" row">
 						<div className="center">{children}</div>
 					</div>
 				</div>
@@ -43,7 +43,7 @@ const DefaultLayoutImage = ({ title, children, titleOnClick, image }: DefaultLay
 		</BackgroundLoader>
 		<style jsx>{`
 			.app {
-				top: 100px;
+				top: 50px;
 			}
 			.bottomPadding {
 				padding: 20px;
