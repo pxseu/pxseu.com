@@ -4,7 +4,7 @@ import Twemoji from "../../components/Twemoji";
 const About = () => {
 	return (
 		<>
-			<DefaultLayout title={"About me!"} image="/images/pfp.gif">
+			<DefaultLayout title={"About me!"} video="/videos/pfp.mp4">
 				<h2>
 					Hey <Twemoji emoji="👋" />
 				</h2>
