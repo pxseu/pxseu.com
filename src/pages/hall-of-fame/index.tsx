@@ -19,6 +19,11 @@ const HallOfFame = () => (
 				</a>
 			</p>
 			<p>
+				<a href='https://twitter.com/Apxllooo' target='_blank'>
+					Apx | sent minecraft mods
+				</a>
+			</p>
+			<p>
 				<a href='https://jelnislaw.ml/' target='_blank'>
 					JelNiSław | menel
 				</a>
