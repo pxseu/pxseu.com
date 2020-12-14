@@ -13,50 +13,63 @@ const About = () => {
 				</p>
 				<p>I'm a 16 year old developer from Poland.</p>
 				<p>
-					I work <mark className="impMark">Front</mark> and{" "}
-					<mark className="impMark">Back</mark> End area.
+					I work in <mark className="impMark">Frontend</mark> and{" "}
+					<mark className="impMark">Backend</mark> areas.
 				</p>
 				<p>
-					I enjoy to make <mark className="impMark">Api</mark>'s, some basic JavaScript
-					stuff and more.
+					I enjoy making <mark className="impMark">Api</mark>'s, and other small scripts.
 				</p>
-				<p>I have experience with:</p>
+				<p>I use:</p>
 				<p>
 					<img
-						className="badge"
+						className="badge noselect"
+						draggable="false"
 						src="https://img.shields.io/badge/-TypeScript-007acc?style=flat-square&logo=typescript&logoColor=white"
 						alt="TypeScript"
+						onDragStart={() => false}
 					/>
 					<img
-						className="badge"
+						className="badge noselect"
+						draggable="false"
 						src="https://img.shields.io/badge/-JavaScript-edb200?style=flat-square&logo=javascript&logoColor=white"
 						alt="JavaScript"
+						onDragStart={() => false}
 					/>
 					<img
-						className="badge"
+						className="badge noselect"
+						draggable="false"
 						src="https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=Next.js&logoColor=white"
 						alt="Next.js"
+						onDragStart={() => false}
 					/>
 					<img
-						className="badge"
+						className="badge noselect"
+						draggable="false"
 						src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white"
 						alt="React"
+						onDragStart={() => false}
 					/>
 
 					<img
-						className="badge"
+						className="badge noselect"
+						draggable="false"
 						src="https://img.shields.io/badge/-mongoDB-4fb23f?style=flat-square&logo=mongodb&logoColor=white"
 						alt="MongoDB"
+						onDragStart={() => false}
 					/>
 					<img
-						className="badge"
+						className="badge noselect"
+						draggable="false"
 						src="https://img.shields.io/badge/-Visual Studio Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white"
 						alt="vsCode"
+						onDragStart={() => false}
 					/>
 					<img
-						className="badge"
+						className="badge noselect"
+						draggable="false"
 						src="https://img.shields.io/badge/-Git-f05033?style=flat-square&logo=git&logoColor=white"
 						alt="Git"
+						onDragStart={() => false}
 					/>
 				</p>
 			</DefaultLayout>
