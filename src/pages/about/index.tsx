@@ -1,19 +1,16 @@
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultLayout from "../../components/DefaultLayoutImage";
 
 const About = () => {
 	return (
 		<>
-			<DefaultLayout title={"About me"}>
-				<p>Web and Back End developer</p>
-				<p>I use these languages:</p>
+			<DefaultLayout title={"About me!"} image="/images/pfp.gif">
+				<p>I'm a Front and Back End developer.</p>
+				<p>I enjoy to make Api's, some basic javascript stuff and more.</p>
+				<p>I mostly use these languages:</p>
 				<p>TS, JS</p>
 				<p>I have experience with:</p>
-				<p>
-					Next.js, React, Express, MongoDB, Discord.js, EJS,
-					Websockets, REST Api's
-				</p>
-				<p>Currently learning / getting better with:</p>
-				<p>Nothing</p>
+				<p>Next.js, React, Express, MongoDB, Discord.js, EJS, Websockets, REST Api's</p>
+				<p></p>
 			</DefaultLayout>
 		</>
 	);
