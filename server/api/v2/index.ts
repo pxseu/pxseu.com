@@ -21,6 +21,17 @@ const methodCheck = {
 		}
 		next();
 	},
+	get: (req: RequestWithUser, res: Response, next: NextFunction) => {
+		const method = req.method;
+
+		if (method != "GET") {
+			return res.status(400).json({
+				status: 400,
+				message: "Method not allowed!",
+			});
+		}
+		next();
+	},
 };
 
 router.use(
@@ -83,11 +94,7 @@ router.use(
 
 		embed.setName("pxseu messenger");
 		embed.setAvatar(AVATAR);
-		embed.setAuthor(
-			"Anonymous",
-			AVATAR,
-			"https://www.pxseu.com/other/message",
-		);
+		embed.setAuthor("Anonymous", AVATAR, "https://www.pxseu.com/other/message");
 		embed.setURL("https://www.pxseu.com/other/message");
 		embed.setTitle("New Message!");
 		embed.setDescription(`Content: \n${message}`);
@@ -102,7 +109,45 @@ router.use(
 			note: NOTE,
 			user,
 		});
-	},
+	}
 );
 
+router.use("/bajo-jajo", methodCheck.get, (req, res) => {
+	const query = req.query.repeat as string;
+	const repeats = query ? parseInt(query) : getRandomInt(1, 2000);
+	console.log(repeats);
+	if (isNaN(repeats)) {
+		res.status(400).json({
+			status: 400,
+			message: '"repeat" is not a number',
+		});
+		return;
+	}
+
+	if (repeats > 0 && repeats > 35000) {
+		res.status(400).json({
+			status: 400,
+			message: '"repeat" is too large or too small (should be between 0 and 35000)',
+		});
+		return;
+	}
+
+	const string = "bajo jajo ";
+	res.json({
+		status: 200,
+		message: string.repeat(repeats).trim(),
+	});
+});
+
 export default router;
+
+/**
+ *
+ * @param min Minimalna liczba
+ * @param max Maksymalna liczba
+ */
+function getRandomInt(min: number, max: number) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min)) + min;
+}
