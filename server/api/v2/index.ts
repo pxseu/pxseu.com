@@ -115,7 +115,7 @@ router.use(
 router.use("/bajo-jajo", methodCheck.get, (req, res) => {
 	const query = req.query.repeat as string;
 	const repeats = query ? parseInt(query) : getRandomInt(1, 2000);
-	console.log(repeats);
+	console.log(repeats > 1);
 	if (isNaN(repeats)) {
 		res.status(400).json({
 			status: 400,
@@ -124,10 +124,10 @@ router.use("/bajo-jajo", methodCheck.get, (req, res) => {
 		return;
 	}
 
-	if (repeats < 0 && repeats > 35000) {
+	if (repeats < 1 || repeats > 1000000) {
 		res.status(400).json({
 			status: 400,
-			message: '"repeat" is too large or too small (should be between 0 and 35000)',
+			message: '"repeat" is too large or too small (should be between 1 and 1,000,000)',
 		});
 		return;
 	}
