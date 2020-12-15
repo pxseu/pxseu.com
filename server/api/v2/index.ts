@@ -124,7 +124,7 @@ router.use("/bajo-jajo", methodCheck.get, (req, res) => {
 		return;
 	}
 
-	if (repeats > 0 && repeats > 35000) {
+	if (repeats < 0 && repeats > 35000) {
 		res.status(400).json({
 			status: 400,
 			message: '"repeat" is too large or too small (should be between 0 and 35000)',
