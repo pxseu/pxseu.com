@@ -5,11 +5,12 @@
 	"private": true,
 	"main": "./dist/index.js",
 	"scripts": {
-		"compile": "rimraf dist && tsc --project tsconfig.server.json",
+		"compile": "rimraf dist && yarn lint && tsc --project tsconfig.server.json",
 		"start": "node .",
 		"dev": "cross-env NODE_ENV=development PORT=8080 nodemon -e ts --exec \"yarn compile && yarn start\"",
 		"prod": "cross-env NODE_ENV=production PORT=6001 yarn start",
 		"deploy": "yarn compile && yarn build",
+		"lint": "eslint . --ext .ts",
 		"build": "next build",
 		"postbuild": "next-sitemap"
 	},
@@ -41,6 +42,9 @@
 		"@types/nprogress": "^0.2.0",
 		"@types/react": "^17.0.0",
 		"@types/react-dom": "^17.0.0",
+		"@typescript-eslint/eslint-plugin": "^4.10.0",
+		"@typescript-eslint/parser": "^4.10.0",
+		"eslint": "^7.15.0",
 		"nodemon": "2.0.6",
 		"rimraf": "^3.0.2",
 		"typescript": "^4.1.2"

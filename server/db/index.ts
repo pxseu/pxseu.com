@@ -5,10 +5,10 @@ mongoose.connection.on("error", (error) => {
 	process.exit(1);
 });
 mongoose.connection.once("open", () =>
-	console.log(`> Connected to database: ${mongoose.connection.name}`),
+	console.log(`> Connected to database: ${mongoose.connection.name}`)
 );
 
-export const connect = async () => {
+export const connect = async (): Promise<void> => {
 	await mongoose.connect(process.env.MONGODB_URI ?? "", {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
