@@ -1,5 +1,5 @@
 import { Router } from "express";
-const rewrites = require("../../rewrites.json");
+import { rewrites } from "../config";
 
 const router = Router();
 
