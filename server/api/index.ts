@@ -26,14 +26,19 @@ export const isBlacklisted = (message: string) => {
 		cleanMessage = cleanMessage.replace(new RegExp(space, "gi"), "");
 	});
 
-	return blacklist.some((word) => cleanMessage.match(new RegExp(word, "gi")))
-		? true
-		: false;
+	return blacklist.some((word) => cleanMessage.match(new RegExp(word, "gi"))) ? true : false;
 };
 
 router.use(require("express").json());
 
 router.use("/v1", v1);
 router.use("/v2", v2);
+
+router.use((_, res) => {
+	res.json({
+		status: 404,
+		message: "Not found",
+	});
+});
 
 export default router;
