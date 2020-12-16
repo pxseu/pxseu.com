@@ -4,9 +4,7 @@ import AuthKeyDb, { apiUser } from "../../db/models/auth_key";
 import { RequestWithUser } from "../../../express";
 import { Webhook, MessageBuilder } from "webhook-discord";
 
-const AVATAR =
-	"https://cdn.discordapp.com/avatars/645330135527981069/3440c4def2a42777de2ccafba45adf02.webp?size=4096";
-
+const AVATAR = "https://cdn.pxseu.com/assets/pfp.gif";
 const router = Router();
 
 const methodCheck = {

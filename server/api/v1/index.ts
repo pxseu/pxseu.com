@@ -2,6 +2,7 @@ import { Router, Request, Response, NextFunction } from "express";
 import { DEV_MODE, isBlacklisted, sendMessageLimiter } from "..";
 import { Webhook, MessageBuilder } from "webhook-discord";
 
+const AVATAR = "https://cdn.pxseu.com/assets/pfp.gif";
 const router = Router();
 
 const methodCheck = {
@@ -58,22 +59,13 @@ router.use(
 		const embed = new MessageBuilder();
 
 		embed.setName("pxseu messenger");
-		embed.setAvatar(
-			"https://cdn.discordapp.com/avatars/645330135527981069/3440c4def2a42777de2ccafba45adf02.webp?size=512",
-		);
-		embed.setAuthor(
-			"Anonymous",
-			"https://cdn.discordapp.com/avatars/645330135527981069/3440c4def2a42777de2ccafba45adf02.webp?size=512",
-			"https://www.pxseu.com/other/message",
-		);
+		embed.setAvatar(AVATAR);
+		embed.setAuthor("Anonymous", AVATAR, "https://www.pxseu.com/other/message");
 		embed.setURL("https://www.pxseu.com/other/message");
 		embed.setTitle("New Message!");
 		embed.setDescription(`Content: \n${message}`);
 		embed.setColor("#3399ff");
-		embed.setFooter(
-			"pls no api abjus, thank!",
-			"https://cdn.discordapp.com/avatars/645330135527981069/3440c4def2a42777de2ccafba45adf02.webp?size=512",
-		);
+		embed.setFooter("pls no api abjus, thank!", AVATAR);
 		embed.setTime();
 		Hook.send(embed);
 
@@ -81,7 +73,7 @@ router.use(
 			content: message,
 			note: "DEPRECATION WARNING: USE V2",
 		});
-	},
+	}
 );
 
 export default router;
