@@ -1,3 +1,10 @@
+export const rewrites = [
+	{
+		req: "/bio",
+		res: "/about",
+	},
+];
+
 export const blacklist = [
 	/* "ririxi" */
 ];

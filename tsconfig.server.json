@@ -6,6 +6,6 @@
         "noEmit": false
     },
     "include": [
-        "server"
+        "./server/**/*.ts",
     ]
 }

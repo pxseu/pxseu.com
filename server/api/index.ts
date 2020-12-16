@@ -1,4 +1,4 @@
-import { Router, Request, Response, NextFunction } from "express";
+import express, { Router } from "express";
 import rateLimit from "express-rate-limit";
 import v1 from "./v1";
 import v2 from "./v2";
@@ -19,17 +19,17 @@ export const sendMessageLimiter = rateLimit({
 	},
 });
 
-export const isBlacklisted = (message: string) => {
+export const isBlacklisted = (message: string): boolean => {
 	let cleanMessage = message;
 
 	spaces.forEach((space) => {
 		cleanMessage = cleanMessage.replace(new RegExp(space, "gi"), "");
 	});
 
-	return blacklist.some((word) => cleanMessage.match(new RegExp(word, "gi"))) ? true : false;
+	return blacklist.some((word) => cleanMessage.match(new RegExp(word, "gi")));
 };
 
-router.use(require("express").json());
+router.use(express.json());
 
 router.use("/v1", v1);
 router.use("/v2", v2);
