@@ -30,7 +30,6 @@ app.prepare().then(async () => {
 					"cdn.pxseu.com",
 					"www.thiswaifudoesnotexist.net",
 					"twemoji.maxcdn.com",
-					"img.shields.io",
 				],
 				objectSrc: ["'none'"],
 				scriptSrc: ["'self'", "ajax.cloudflare.com", "static.cloudflareinsights.com"],
@@ -54,7 +53,7 @@ app.prepare().then(async () => {
 	});
 
 	await connect();
-	const srvr = server
+	server
 		.listen(port, () => {
 			console.log("\x1b[36m%s\x1b[0m", `> Ready on http://localhost:${port}`, "\x1b[0m");
 		})
