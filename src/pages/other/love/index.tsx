@@ -6,12 +6,12 @@ const LovesIndex = () => {
 
 	return (
 		<>
-			<DefaultLayout
-				title={"I love you <333"}
-				titleOnClick={() => setLoveClick(!loveClick)}>
-				<div className={loveClick ? "imageDiv" : "hidden"}>
-					<img src='https://cdn.pxseu.com/meAndHer.jpg?raw' />
-				</div>
+			<DefaultLayout title={"I love you <333"} titleOnClick={() => setLoveClick(!loveClick)}>
+				{loveClick && (
+					<div className="imageDiv">
+						<img src="https://cdn.pxseu.com/meAndHer.jpg?raw" />
+					</div>
+				)}
 			</DefaultLayout>
 			<style jsx>{`
 				.imageDiv {
