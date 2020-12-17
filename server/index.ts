@@ -4,6 +4,7 @@ import morgan from "morgan";
 import next from "next";
 import api from "./api";
 import redirects from "./rewrites";
+import headersSet from "./headersSet";
 import { connect } from "./db";
 
 const server = express();
@@ -41,13 +42,9 @@ app.prepare().then(async () => {
 		})
 	);
 
-	server.use((_, res, next) => {
-		res.header("X-CUM", "sticky");
-		next();
-	});
-
 	server.use(redirects);
 	server.use("/api", api);
+	server.use(headersSet);
 	server.all("*", (req: Request, res: Response) => {
 		return handle(req, res);
 	});
