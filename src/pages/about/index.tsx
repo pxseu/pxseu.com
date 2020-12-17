@@ -24,28 +24,28 @@ const About = () => {
 					<img
 						className="badge noselect"
 						draggable="false"
-						src="https://img.shields.io/badge/-TypeScript-007acc?style=flat-square&logo=typescript&logoColor=white"
+						src="/assets/svg/typescript.svg"
 						alt="TypeScript"
 						onDragStart={() => false}
 					/>
 					<img
 						className="badge noselect"
 						draggable="false"
-						src="https://img.shields.io/badge/-JavaScript-edb200?style=flat-square&logo=javascript&logoColor=white"
+						src="/assets/svg/javascript.svg"
 						alt="JavaScript"
 						onDragStart={() => false}
 					/>
 					<img
 						className="badge noselect"
 						draggable="false"
-						src="https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=Next.js&logoColor=white"
+						src="/assets/svg/nextjs.svg"
 						alt="Next.js"
 						onDragStart={() => false}
 					/>
 					<img
 						className="badge noselect"
 						draggable="false"
-						src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white"
+						src="/assets/svg/react.svg"
 						alt="React"
 						onDragStart={() => false}
 					/>
@@ -53,21 +53,21 @@ const About = () => {
 					<img
 						className="badge noselect"
 						draggable="false"
-						src="https://img.shields.io/badge/-mongoDB-4fb23f?style=flat-square&logo=mongodb&logoColor=white"
+						src="/assets/svg/mongodb.svg"
 						alt="MongoDB"
 						onDragStart={() => false}
 					/>
 					<img
 						className="badge noselect"
 						draggable="false"
-						src="https://img.shields.io/badge/-Visual Studio Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white"
+						src="/assets/svg/vscode.svg"
 						alt="vsCode"
 						onDragStart={() => false}
 					/>
 					<img
 						className="badge noselect"
 						draggable="false"
-						src="https://img.shields.io/badge/-Git-f05033?style=flat-square&logo=git&logoColor=white"
+						src="/assets/svg/git.svg"
 						alt="Git"
 						onDragStart={() => false}
 					/>
