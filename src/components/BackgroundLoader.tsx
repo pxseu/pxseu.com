@@ -1,8 +1,10 @@
+import React, { memo } from "react";
 import Head from "next/head";
 import Particles from "react-particles-js";
 import { isMobile } from "react-device-detect";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
+
 const particlesSwitchName = "particlesSwitch";
 
 const PlatformParticles = (props: { on: boolean }) => {
@@ -242,4 +244,4 @@ const BackgroundLoader = (props: { children: any }) => {
 	);
 };
 
-export default BackgroundLoader;
+export default memo(BackgroundLoader);

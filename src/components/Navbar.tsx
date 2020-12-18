@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 
 const Navbar = () => {
 	const NavElements = () => (
@@ -78,4 +78,4 @@ const Navbar = () => {
 	);
 };
 
-export default Navbar;
+export default memo(Navbar);

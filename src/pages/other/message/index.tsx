@@ -9,11 +9,10 @@ const MessageIndex = () => {
 	const [errorMessage, setErrorMessage] = useState("");
 	const messageBox = useRef(((<input />) as unknown) as HTMLInputElement);
 
-	const sendMessage = async (
-		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-	) => {
+	const sendMessage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		e.preventDefault();
 
+		messageBox.current.disabled = true;
 		messageBox.current.blur();
 
 		const url = `${window.location.protocol}//${window.location.host}/api/v2/sendMessage`;
@@ -38,9 +37,7 @@ const MessageIndex = () => {
 
 			parrsedResponse = await response.json();
 		} catch (e) {
-			setErrorMessage(
-				"Message not sent!\nMight be a network or server issue.",
-			);
+			setErrorMessage("Message not sent!\nMight be a network or server issue.");
 			showError(true);
 			return;
 		}
@@ -53,6 +50,7 @@ const MessageIndex = () => {
 
 		setShowSuccesMessage(parrsedResponse.message);
 		setShowSucces(true);
+		messageBox.current.disabled = false;
 	};
 
 	return (
@@ -60,20 +58,20 @@ const MessageIndex = () => {
 			<DefaultLayout title={"Message me!"}>
 				<p>Once per minute tho</p>
 
-				<div className='messageDiv'>
-					<form action=''>
+				<div className="messageDiv">
+					<form action="">
 						<input
-							type='text'
-							name='messageInput'
-							className='messageInput'
-							id='messageInput'
+							type="text"
+							name="messageInput"
+							className="messageInput"
+							id="messageInput"
 							ref={messageBox}
 						/>
 						<button
-							type='submit'
+							type="submit"
 							onClick={sendMessage}
-							className='messageButton'
-							id='messageButton'>
+							className="messageButton"
+							id="messageButton">
 							Send!
 						</button>
 					</form>
