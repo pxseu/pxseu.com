@@ -1,7 +1,7 @@
+import React, { memo } from "react";
 import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
 import Head from "next/head";
-import Image from "next/image";
 
 type DefaultLayoutInput = {
 	children: any;
@@ -111,4 +111,4 @@ const DefaultLayoutImage = ({
 	</>
 );
 
-export default DefaultLayoutImage;
+export default memo(DefaultLayoutImage);

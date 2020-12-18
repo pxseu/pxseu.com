@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
 import Head from "next/head";
@@ -43,4 +44,4 @@ const DefaultLayout = ({ title, children, titleOnClick }: DefaultLayoutInput) =>
 	</>
 );
 
-export default DefaultLayout;
+export default memo(DefaultLayout);

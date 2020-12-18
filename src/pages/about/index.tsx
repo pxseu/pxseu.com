@@ -1,5 +1,6 @@
 import DefaultLayout from "../../components/DefaultLayoutImage";
 import Twemoji from "../../components/Twemoji";
+import BadgeComp from "../../components/Badge";
 
 const About = () => {
 	return (
@@ -21,56 +22,13 @@ const About = () => {
 				</p>
 				<p>I use:</p>
 				<p>
-					<img
-						className="badge noselect"
-						draggable="false"
-						src="/assets/svg/typescript.svg"
-						alt="TypeScript"
-						onDragStart={() => false}
-					/>
-					<img
-						className="badge noselect"
-						draggable="false"
-						src="/assets/svg/javascript.svg"
-						alt="JavaScript"
-						onDragStart={() => false}
-					/>
-					<img
-						className="badge noselect"
-						draggable="false"
-						src="/assets/svg/nextjs.svg"
-						alt="Next.js"
-						onDragStart={() => false}
-					/>
-					<img
-						className="badge noselect"
-						draggable="false"
-						src="/assets/svg/react.svg"
-						alt="React"
-						onDragStart={() => false}
-					/>
-
-					<img
-						className="badge noselect"
-						draggable="false"
-						src="/assets/svg/mongodb.svg"
-						alt="MongoDB"
-						onDragStart={() => false}
-					/>
-					<img
-						className="badge noselect"
-						draggable="false"
-						src="/assets/svg/vscode.svg"
-						alt="vsCode"
-						onDragStart={() => false}
-					/>
-					<img
-						className="badge noselect"
-						draggable="false"
-						src="/assets/svg/git.svg"
-						alt="Git"
-						onDragStart={() => false}
-					/>
+					<BadgeComp badge="typescript" />
+					<BadgeComp badge="javascript" />
+					<BadgeComp badge="nextjs" />
+					<BadgeComp badge="react" />
+					<BadgeComp badge="mongodb" />
+					<BadgeComp badge="vscode" />
+					<BadgeComp badge="git" />
 				</p>
 			</DefaultLayout>
 			<style jsx>{`
@@ -92,13 +50,6 @@ const About = () => {
 					color: #ffa9ff;
 					font-family: "Gang of Three", Verdana, Arial;
 					font-size: 22px;
-				}
-
-				.badge {
-					display: inline-block;
-					width: auto;
-					height: 1.8rem;
-					vertical-align: -0.125em;
 				}
 			`}</style>
 		</>
