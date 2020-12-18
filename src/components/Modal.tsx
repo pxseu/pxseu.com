@@ -12,9 +12,9 @@ const Modal = ({
 }) => {
 	if (!open) return null;
 	const ModalText = children == undefined ? "What?" : children;
-	const modalEl = useRef(((<div></div>) as unknown) as HTMLDivElement);
+	const modalEl = useRef<HTMLDivElement>(null);
 	useEffect(() => {
-		setTimeout(() => modalEl.current.classList.remove("fade"), 100);
+		setTimeout(() => modalEl.current?.classList.remove("fade"), 100);
 	});
 
 	return createPortal(
@@ -25,7 +25,7 @@ const Modal = ({
 					id="closeModal"
 					className="closeModal"
 					onClick={() => {
-						modalEl.current.classList.add("fade");
+						modalEl.current?.classList.add("fade");
 						setTimeout(() => onClose(), 400);
 					}}>
 					x
