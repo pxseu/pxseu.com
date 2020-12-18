@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, memo } from "react";
 import { createPortal } from "react-dom";
 
 const Modal = ({
@@ -19,11 +19,11 @@ const Modal = ({
 
 	return createPortal(
 		<>
-			<div id='overlay' className='overlay' />
-			<div id='modal' className='modal fade noselect' ref={modalEl}>
+			<div id="overlay" className="overlay" />
+			<div id="modal" className="modal fade noselect" ref={modalEl}>
 				<div
-					id='closeModal'
-					className='closeModal'
+					id="closeModal"
+					className="closeModal"
 					onClick={() => {
 						modalEl.current.classList.add("fade");
 						setTimeout(() => onClose(), 400);
@@ -85,8 +85,8 @@ const Modal = ({
 				}
 			`}</style>
 		</>,
-		document.getElementById("portal") ?? document.body,
+		document.getElementById("portal") ?? document.body
 	);
 };
 
-export default Modal;
+export default memo(Modal);
