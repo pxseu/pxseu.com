@@ -4,16 +4,17 @@ import Modal from "../../../components/Modal";
 
 const MessageIndex = () => {
 	const [showSucces, setShowSucces] = useState(false);
+	const [disabledButton, setDisabledButton] = useState(false);
 	const [showSuccesMessage, setShowSuccesMessage] = useState("");
 	const [isError, showError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
-	const messageBox = useRef(((<input />) as unknown) as HTMLInputElement);
+	const messageBox = useRef<HTMLInputElement>(null);
 
 	const sendMessage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		e.preventDefault();
 
-		messageBox.current.disabled = true;
-		messageBox.current.blur();
+		setDisabledButton(true);
+		messageBox.current?.blur();
 
 		const url = `${window.location.protocol}//${window.location.host}/api/v2/sendMessage`;
 		let parrsedResponse: {
@@ -32,25 +33,27 @@ const MessageIndex = () => {
 				},
 				redirect: "follow",
 				referrerPolicy: "no-referrer",
-				body: JSON.stringify({ message: messageBox.current.value }),
+				body: JSON.stringify({ message: messageBox.current?.value }),
 			});
 
 			parrsedResponse = await response.json();
 		} catch (e) {
 			setErrorMessage("Message not sent!\nMight be a network or server issue.");
 			showError(true);
+			setDisabledButton(false);
 			return;
 		}
 
 		if (parrsedResponse.status != 200) {
 			setErrorMessage(parrsedResponse.message);
 			showError(true);
+			setDisabledButton(false);
 			return;
 		}
 
 		setShowSuccesMessage(parrsedResponse.message);
 		setShowSucces(true);
-		messageBox.current.disabled = false;
+		setDisabledButton(false);
 	};
 
 	return (
@@ -71,7 +74,8 @@ const MessageIndex = () => {
 							type="submit"
 							onClick={sendMessage}
 							className="messageButton"
-							id="messageButton">
+							id="messageButton"
+							disabled={disabledButton}>
 							Send!
 						</button>
 					</form>
@@ -81,7 +85,7 @@ const MessageIndex = () => {
 				open={showSucces}
 				onClose={() => {
 					setShowSucces(false);
-					messageBox.current.value = "";
+					messageBox.current ? (messageBox.current.value = "") : null;
 				}}>
 				<p>Sent succesfull!</p>
 				<p>Data: "{showSuccesMessage}"</p>
@@ -126,11 +130,29 @@ const MessageIndex = () => {
 					padding: 0;
 					border: none;
 					font-size: 17px;
-					background-color: #dcdcdc;
-					color: black;
+					color: white;
+					background: none;
 					padding: 10px;
+					border-style: solid;
+					border-color: white;
+					border-width: 0.1rem;
 					border-radius: 20px;
 					cursor: pointer;
+					transition-duration: 0.2s;
+				}
+
+				.messageButton:hover {
+					color: black;
+					background-color: white;
+					border-color: black;
+				}
+
+				.messageButton:active {
+					box-shadow: 0px 5px 3px white;
+				}
+
+				.messageButton:disabled {
+					cursor: not-allowed;
 				}
 			`}</style>
 		</>
