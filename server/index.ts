@@ -16,7 +16,7 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(async () => {
 	server.set("trust proxy", 1);
-	server.use(morgan("common"));
+	server.use(morgan(dev ? "dev" : "common"));
 	server.use(helmet());
 	server.use(
 		helmet.contentSecurityPolicy({
