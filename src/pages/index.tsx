@@ -76,7 +76,6 @@ const Index = () => (
 
 			.link {
 				color: white;
-				font-family: "Roboto", sans-serif;
 				text-decoration: none;
 				font-size: 30px;
 				transition: color 0.1s;
