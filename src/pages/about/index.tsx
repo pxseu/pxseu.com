@@ -1,6 +1,7 @@
 import DefaultLayout from "../../components/DefaultLayoutImage";
 import Twemoji from "../../components/Twemoji";
 import BadgeComp from "../../components/Badge";
+import Age from "../../components/Age";
 
 const About = () => {
 	return (
@@ -12,7 +13,9 @@ const About = () => {
 				<p>
 					I'm <span className="me">pxseu</span>!
 				</p>
-				<p>I'm a 16 year old developer from Poland.</p>
+				<p>
+					I'm a <Age timestamp={1090022400000} /> year old developer from Poland.
+				</p>
 				<p>
 					I work in <mark className="impMark">Frontend</mark> and{" "}
 					<mark className="impMark">Backend</mark> areas.

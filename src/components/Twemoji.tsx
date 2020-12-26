@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import twemoji from "twemoji";
+import styles from "./Twemoji.module.css";
 
 type props = {
 	emoji: string;
@@ -8,22 +9,15 @@ type props = {
 const Twemoji = ({ emoji }: props) => (
 	<>
 		<span
-			className="emoji"
+			className={styles.emoji}
 			dangerouslySetInnerHTML={{
 				__html: twemoji.parse(emoji, {
 					folder: "svg",
 					ext: ".svg",
+					className: styles.emoji,
 				}),
 			}}
 		/>
-		<style jsx global>{`
-			.emoji {
-				display: inline-block;
-				width: auto;
-				height: 1em;
-				vertical-align: -0.125em;
-			}
-		`}</style>
 	</>
 );
 
