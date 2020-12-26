@@ -20,6 +20,8 @@ const BadgeComp = ({ badge }: props) => (
 				width: auto;
 				height: 1.8rem;
 				vertical-align: -0.125rem;
+				margin-left: 0.1rem;
+				margin-right: 0.1rem;
 			}
 		`}</style>
 	</>
