@@ -1,46 +1,30 @@
-import Head from "next/head";
-import BackgroundLoader from "../components/BackgroundLoader";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import DefaultLayout from "../components/DefaultLayout";
 
 const Custom404 = () => {
 	const router = useRouter();
 
 	return (
 		<>
-			<Head>
-				<title>404 | Not found</title>
-				<meta
-					data-n-head="ssr"
-					data-hid="og:description"
-					property="og:description"
-					content="404 | Not found"
-				/>
-			</Head>
-			<BackgroundLoader>
-				<div className="app center noselect">
-					<h1>
-						<span className="fadeText">404</span> Not Found
-					</h1>
+			<DefaultLayout title={"404 | Not found"}>
+				{router.pathname == router.asPath ? (
+					<p>You're not funny</p>
+				) : (
+					<>
+						<p>
+							<code className="pathUrl">{router.asPath}</code>
+						</p>
+						<p>Is not on the server.</p>
+					</>
+				)}
 
-					{router.pathname == router.asPath ? (
-						<p>You're not funny</p>
-					) : (
-						<>
-							<p>
-								<code className="pathUrl">{router.asPath}</code>
-							</p>
-							<p>Is not on the server.</p>
-						</>
-					)}
-
-					<p>
-						<Link href="/">
-							<button className="buttonNotFound">Go home</button>
-						</Link>
-					</p>
-				</div>
-			</BackgroundLoader>
+				<p>
+					<Link href="/">
+						<button className="buttonNotFound">Go home</button>
+					</Link>
+				</p>
+			</DefaultLayout>
 			<style jsx>{`
 				.pathUrl {
 					display: block;
