@@ -7,6 +7,17 @@ body {
 	font-size: 20px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b {
+	font-family: "RobotoBold", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
 .particles-js {
 	height: 100%;
 	width: 100%;
@@ -248,13 +259,6 @@ a:hover {
 	width: 1px;
 }
 
-/* .emoji {
-	display: inline-block;
-	width: auto;
-	height: 1em;
-	vertical-align: -0.125em;
-}
- */
 @keyframes fadeIn {
 	0% {
 		opacity: 0;
