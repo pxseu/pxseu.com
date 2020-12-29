@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import DefaultLayout from "../../../components/DefaultLayout";
 import Modal from "../../../components/Modal";
 
-const MessageIndex = () => {
+const MessageIndex = (): JSX.Element => {
 	const [showSucces, setShowSucces] = useState(false);
 	const [disabledButton, setDisabledButton] = useState(false);
 	const [showSuccesMessage, setShowSuccesMessage] = useState("");
@@ -88,7 +88,7 @@ const MessageIndex = () => {
 					messageBox.current ? (messageBox.current.value = "") : null;
 				}}>
 				<p>Sent succesfull!</p>
-				<p>Data: "{showSuccesMessage}"</p>
+				<p>Data: &rdquo;{showSuccesMessage}&rdquo;</p>
 			</Modal>
 
 			<Modal open={isError} onClose={() => showError(false)}>

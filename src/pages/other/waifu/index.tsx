@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import DefaultLayout from "../../../components/DefaultLayout";
 
-const LovesIndex = () => {
+const LovesIndex = (): JSX.Element => {
 	const [waifuClick, setWaifuClick] = useState(true);
 
 	return (
@@ -14,14 +14,14 @@ const LovesIndex = () => {
 				}}>
 				<div className={waifuClick ? "imageDiv" : "hidden"}>
 					<img
-						className='waifuImage'
+						className="waifuImage"
 						src={`https://www.thiswaifudoesnotexist.net/example-${Math.floor(
-							Math.random() * 100000,
+							Math.random() * 100000
 						)}.jpg`}
-						alt='Unable to fetch image.'
+						alt="Unable to fetch image."
 					/>
 					<p>
-						<a href='https://www.thiswaifudoesnotexist.net/'>
+						<a href="https://www.thiswaifudoesnotexist.net/">
 							Provided by www.thiswaifudoesnotexist.net
 						</a>
 					</p>

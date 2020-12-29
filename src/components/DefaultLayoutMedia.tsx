@@ -1,11 +1,11 @@
-import React, { memo } from "react";
+import React, { memo, ReactNode } from "react";
 import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
 import Head from "next/head";
 import style from "./DefaultLayoutMedia.module.css";
 
 type DefaultLayoutInput = {
-	children: any;
+	children: ReactNode;
 	title: string;
 	titleOnClick?: () => void;
 	image?: string;

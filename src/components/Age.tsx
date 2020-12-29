@@ -2,7 +2,7 @@
  *  Skidded from https://github.com/ottomated/portfolio/blob/master/js/age.js
  */
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Age.module.css";
 
 type props = {
@@ -15,8 +15,8 @@ const getDate = (timestamp: number): string => {
 	return time.toString().substring(0, 12);
 };
 
-const Age = ({ timestamp }: props) => {
-	const [age, setAge] = useState(getDate(timestamp));
+const Age = ({ timestamp }: props): JSX.Element => {
+	const [age, setAge] = useState("0".repeat(12));
 
 	useEffect(() => {
 		const ageChange = setInterval(() => {

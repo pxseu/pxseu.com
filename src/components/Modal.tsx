@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo } from "react";
+import React, { useEffect, useRef, memo, ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 const Modal = ({
@@ -7,8 +7,8 @@ const Modal = ({
 	children,
 }: {
 	open: boolean;
-	onClose: Function;
-	children: any;
+	onClose: () => void | Promise<void>;
+	children: ReactNode;
 }) => {
 	if (!open) return null;
 	const ModalText = children == undefined ? "What?" : children;

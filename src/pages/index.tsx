@@ -1,8 +1,9 @@
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import BackgroundLoader from "../components/BackgroundLoader";
 
-const Index = () => (
+const Index = (): JSX.Element => (
 	<>
 		<Head>
 			<title>pxseu</title>
