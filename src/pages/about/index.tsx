@@ -1,12 +1,16 @@
-import DefaultLayout from "../../components/DefaultLayoutImage";
+import dynamic from "next/dynamic";
+import DefaultLayout from "../../components/DefaultLayoutMedia";
 import Twemoji from "../../components/Twemoji";
 import BadgeComp from "../../components/Badge";
-import Age from "../../components/Age";
+
+const Age = dynamic(() => import("../../components/Age"), {
+	ssr: false,
+});
 
 const About = () => {
 	return (
 		<>
-			<DefaultLayout title={"About me!"} video="/videos/pfp.mp4">
+			<DefaultLayout title="About me!" image="/images/pfp.png" mediaType="image">
 				<h2>
 					Hey <Twemoji emoji="👋" />
 				</h2>
@@ -16,13 +20,8 @@ const About = () => {
 				<p>
 					I'm a <Age timestamp={1090022400000} /> year old developer from Poland.
 				</p>
-				<p>
-					I work in <mark className="impMark">Frontend</mark> and{" "}
-					<mark className="impMark">Backend</mark> areas.
-				</p>
-				<p>
-					I enjoy making <mark className="impMark">Api</mark>'s, and other small scripts.
-				</p>
+				<p>I work in Frontend and Backend areas.</p>
+				<p>I enjoy making Api's, and other small scripts.</p>
 				<p>I use:</p>
 				<p>
 					<BadgeComp badge="typescript" />
@@ -35,10 +34,8 @@ const About = () => {
 				</p>
 			</DefaultLayout>
 			<style jsx>{`
-				.impMark,
 				.jsMark,
 				.tsMark {
-					color: #ff3232;
 					fontweight: bolder;
 					background: none;
 				}
