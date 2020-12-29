@@ -1,0 +1,54 @@
+.app {
+	top: 50px;
+}
+.bottomPadding {
+	padding: 20px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.row {
+	flex: 1;
+	display: inline-block;
+}
+
+.imgrow img {
+	padding: 10px;
+	height: 90%;
+}
+
+.imgrow {
+	overflow: hidden;
+}
+
+.imgrow * {
+	border-radius: 20px;
+}
+
+.imgrow img:hover {
+	box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 1);
+}
+
+@media screen and (min-width: 800px) {
+	.container {
+		flex-direction: row;
+	}
+
+	.imgrow img {
+		height: auto;
+		width: 90%;
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.imgrow img {
+		width: 60%;
+	}
+}
