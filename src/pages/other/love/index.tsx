@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import DefaultLayout from "../../../components/DefaultLayout";
 
-const LovesIndex = () => {
+const LovesIndex = (): JSX.Element => {
 	const [loveClick, setLoveClick] = useState(false);
 
 	return (

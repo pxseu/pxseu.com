@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, ReactNode } from "react";
 import Head from "next/head";
 import Particles from "react-particles-js";
 import { isMobile } from "react-device-detect";
@@ -10,7 +10,7 @@ const particlesSwitchName = "particlesSwitch";
 const PlatformParticles = (props: { on: boolean }) => {
 	if (!props.on) return null;
 
-	let particlesConfig: any;
+	let particlesConfig;
 	if (isMobile) {
 		particlesConfig = require("../../particlesjs-config.mobile.json");
 	} else {
@@ -20,7 +20,7 @@ const PlatformParticles = (props: { on: boolean }) => {
 	return <Particles className="particles-js" params={particlesConfig} />;
 };
 
-const BackgroundLoader = (props: { children: any }) => {
+const BackgroundLoader = (props: { children: ReactNode }) => {
 	const [particlesSwitch, setParticlesSwitch] = useState(true);
 	const [darling, setDarling] = useState(false);
 	const [isActive, setIsActive] = useState(true);

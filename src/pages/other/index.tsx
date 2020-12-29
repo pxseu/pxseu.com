@@ -1,7 +1,8 @@
+import React from "react";
 import Link from "next/link";
 import DefaultLayout from "../../components/DefaultLayout";
 
-const OtherIndex = () => (
+const OtherIndex = (): JSX.Element => (
 	<>
 		<DefaultLayout title={"Other stuff"}>
 			<p>Bunch of stuff to long to fit on the Navbar</p>

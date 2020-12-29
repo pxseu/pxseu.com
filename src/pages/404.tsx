@@ -1,15 +1,16 @@
+import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import DefaultLayout from "../components/DefaultLayout";
 
-const Custom404 = () => {
+const Custom404 = (): JSX.Element => {
 	const router = useRouter();
 
 	return (
 		<>
 			<DefaultLayout title={"404 | Not found"}>
 				{router.pathname == router.asPath ? (
-					<p>You're not funny</p>
+					<p>You&rsquo;re not funny</p>
 				) : (
 					<>
 						<p>

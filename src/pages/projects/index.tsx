@@ -1,6 +1,7 @@
+import React from "react";
 import DefaultLayout from "../../components/DefaultLayout";
 
-const Projects = () => (
+const Projects = (): JSX.Element => (
 	<div>
 		<DefaultLayout title={"My Projects"}>
 			<p>

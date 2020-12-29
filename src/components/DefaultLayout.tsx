@@ -1,12 +1,12 @@
-import React, { memo } from "react";
+import React, { memo, ReactNode } from "react";
 import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
 import Head from "next/head";
 
 type DefaultLayoutInput = {
-	children: any;
+	children: ReactNode;
 	title: string;
-	titleOnClick?: Function;
+	titleOnClick?: () => void | Promise<void>;
 };
 
 const DefaultLayout = ({ title, children, titleOnClick }: DefaultLayoutInput) => (
