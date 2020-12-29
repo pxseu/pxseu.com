@@ -1,6 +1,7 @@
+import React from "react";
 import DefaultLayout from "../../components/DefaultLayout";
 
-const LovesIndex = () => (
+const LovesIndex = (): JSX.Element => (
 	<>
 		<DefaultLayout title={"Terms of Service | Privacy Policy"}>
 			<p>1. Any form of spamming will not be tolerated.</p>
