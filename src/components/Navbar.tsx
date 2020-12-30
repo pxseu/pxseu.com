@@ -1,36 +1,38 @@
 import Link from "next/link";
 import Head from "next/head";
-import React, { useState, useEffect, memo } from "react";
+import React, { useState, useEffect, memo, useRef } from "react";
+import style from "./Navbar.module.css";
+
+const NavElements = () => (
+	<>
+		<Link href="/projects">
+			<a>Projects</a>
+		</Link>
+		<Link href="/about">
+			<a>About</a>
+		</Link>
+		<Link href="/contact">
+			<a>Contact</a>
+		</Link>
+		<Link href="/other">
+			<a>Other</a>
+		</Link>
+		<a href="//dash.pxseu.com">Dash</a>
+	</>
+);
 
 const Navbar = () => {
-	const NavElements = () => (
-		<>
-			<Link href="/projects">
-				<a>Projects</a>
-			</Link>
-			<Link href="/about">
-				<a>About</a>
-			</Link>
-			<Link href="/contact">
-				<a>Contact</a>
-			</Link>
-			<Link href="/legal-stuff">
-				<a>Legal Stuff</a>
-			</Link>
-			<Link href="/other">
-				<a>Other</a>
-			</Link>
-			<a href="//dash.pxseu.com">Dash</a>
-		</>
-	);
-
 	const [navToggle, setNavToggle] = useState(false);
 	const [smallScreen, setsmallScreen] = useState(false);
+	const [navOpen, setNavOpen] = useState(false);
+	const navOverlayRef = useRef<HTMLDivElement | null>(null);
 
 	const resizeHandler = () => {
-		setNavToggle(false);
 		if (window.innerWidth < 900) setsmallScreen(true);
-		else setsmallScreen(false);
+		else {
+			setsmallScreen(false);
+			setNavToggle(false);
+		}
 	};
 
 	useEffect(() => {
@@ -42,38 +44,56 @@ const Navbar = () => {
 		};
 	}, []);
 
+	useEffect(() => {
+		if (!navOpen) {
+			if (navOverlayRef.current) navOverlayRef.current.classList.remove(style.showNav);
+			setTimeout(() => {
+				setNavToggle(navOpen);
+			}, 500);
+			return;
+		}
+
+		setNavToggle(navOpen);
+		setTimeout(() => {
+			if (navOverlayRef.current) navOverlayRef.current.classList.add(style.showNav);
+		}, 10);
+	}, [navOpen]);
+
 	return (
 		<>
 			<Head>
 				<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.5.0/css/all.css" />
 			</Head>
 
-			<header className="noselect navbar">
+			<header className={`noselect ${style.navbar}`}>
 				<Link href="/">
-					<p className="logoNavbar">pxseu</p>
+					<p className={style.logoNavbar}>pxseu</p>
 				</Link>
-				<nav className={smallScreen ? "hidden" : "navigation"}>
-					<NavElements />
-				</nav>
-				<p
-					className={smallScreen ? "navigation navIcon" : "hidden"}
-					onClick={() => setNavToggle(true)}>
-					<i className="fas fa-bars"></i>
-				</p>
+				{smallScreen ? (
+					<p
+						className={`navigation ${style.navIcon} `}
+						onClick={() => {
+							if (!navOpen && !navToggle) setNavOpen(true);
+						}}>
+						<i className="fas fa-bars"></i>
+					</p>
+				) : (
+					<nav className="navigation">
+						<NavElements />
+					</nav>
+				)}
 			</header>
-			<div className={navToggle ? "navOverlay show noselect" : "navOverlay"}>
-				<a className="closebtn" onClick={() => setNavToggle(false)}>
-					&times;
-				</a>
-				<div className="navOverlay-content">
-					<NavElements />
+			{navToggle && (
+				<div className={`${style.navOverlay} noselect`} ref={navOverlayRef}>
+					<a className={style.closebtn} onClick={() => setNavOpen(false)}>
+						&times;
+					</a>
+					<div className={style.navOverlayContent}>
+						<NavElements />
+					</div>
 				</div>
-			</div>
-			<style jsx>{`
-				.navIcon {
-					cursor: pointer;
-				}
-			`}</style>
+			)}
+			<style jsx>{``}</style>
 		</>
 	);
 };
