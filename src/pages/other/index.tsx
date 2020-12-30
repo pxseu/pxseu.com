@@ -29,6 +29,9 @@ const OtherIndex = (): JSX.Element => (
 					<a>Hall Of Fame</a>
 				</Link>
 			</p>
+			<Link href="/other/legal-stuff">
+				<a>Legal Stuff</a>
+			</Link>
 			<p className="comment">
 				<i>psst these are links!</i>
 			</p>

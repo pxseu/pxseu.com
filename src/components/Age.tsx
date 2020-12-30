@@ -5,6 +5,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Age.module.css";
 
+const DEFAULT_VALUE = "0".repeat(12);
+
 type props = {
 	timestamp: number;
 };
@@ -16,7 +18,7 @@ const getDate = (timestamp: number): string => {
 };
 
 const Age = ({ timestamp }: props): JSX.Element => {
-	const [age, setAge] = useState("0".repeat(12));
+	const [age, setAge] = useState(DEFAULT_VALUE);
 
 	useEffect(() => {
 		const ageChange = setInterval(() => {
