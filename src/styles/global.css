@@ -73,7 +73,6 @@ a {
 	position: relative;
 	top: 0;
 	transition: top ease 0.2s, color 0.1s;
-
 	display: inline-block;
 	padding: 0px 20px;
 	position: relative;
@@ -91,6 +90,7 @@ a:after {
 	transition: width 0.3s ease 0s, left 0.3s ease 0s;
 	width: 0;
 }
+
 a:hover:after {
 	width: 100%;
 	left: 0;
@@ -103,16 +103,6 @@ a:hover {
 
 .back {
 	padding-top: 12px;
-}
-
-.image {
-	background-image: var(--bg-image);
-	width: 500px;
-	height: 500px;
-	background-size: cover;
-	position: relative;
-	left: 50%;
-	transform: translate(-50%);
 }
 
 ::-webkit-scrollbar {
@@ -140,34 +130,6 @@ a:hover {
 	user-select: none;
 }
 
-.navbar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 60px;
-	box-sizing: border-box;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: rgba(0, 0, 0, 0.5);
-	transition: all 0.7s ease-in;
-	z-index: 3;
-}
-
-.logoNavbar {
-	font-family: "Gang of Three", Verdana, Arial;
-	color: #ffa9ff;
-	cursor: pointer;
-	font-size: 34px;
-	margin-left: 20px;
-}
-
-.navIcon {
-	font-size: 34px;
-	margin-right: 20px;
-}
-
 #nprogress .spinner {
 	top: 20px;
 	left: 0px;
@@ -175,63 +137,6 @@ a:hover {
 
 .hidden {
 	display: none;
-}
-
-.navOverlay {
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 3;
-	left: 0;
-	top: 0;
-	background-color: rgb(0, 0, 0);
-	background-color: rgba(0, 0, 0, 0.9);
-	overflow-x: hidden;
-	transition: 0.5s;
-}
-
-.navOverlay.show {
-	width: 100%;
-}
-
-.navOverlay-content {
-	position: relative;
-	top: 25%;
-	width: 100%;
-	text-align: center;
-	margin-top: 30px;
-}
-
-.navOverlay a {
-	padding: 8px;
-	text-decoration: none;
-	font-size: 36px;
-	color: #818181;
-	display: block;
-	transition: 0.3s;
-}
-
-.navOverlay a:hover,
-.navOverlay a:focus {
-	color: #f1f1f1;
-}
-
-.navOverlay .closebtn {
-	position: absolute;
-	top: 20px;
-	right: 45px;
-	font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-	.navOverlay a {
-		font-size: 20px;
-	}
-	.navOverlay .closebtn {
-		font-size: 40px;
-		top: 15px;
-		right: 35px;
-	}
 }
 
 .skip-link {

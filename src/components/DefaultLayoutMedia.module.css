@@ -1,6 +1,7 @@
 .app {
 	top: 50px;
 }
+
 .bottomPadding {
 	padding: 20px;
 }
@@ -19,36 +20,29 @@
 	display: inline-block;
 }
 
-.imgrow img {
-	padding: 10px;
-	height: 90%;
-}
-
 .imgrow {
+	height: 20%;
+	width: 100%;
 	overflow: hidden;
 }
 
 .imgrow * {
+	padding: 10px;
+	width: 60%;
 	border-radius: 20px;
-}
-
-.imgrow img:hover {
-	box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 1);
 }
 
 @media screen and (min-width: 800px) {
 	.container {
 		flex-direction: row;
 	}
-
-	.imgrow img {
-		height: auto;
-		width: 90%;
+	.imgrow * {
+		width: 100%;
 	}
 }
 
 @media screen and (min-width: 1400px) {
-	.imgrow img {
-		width: 60%;
+	.imgrow * {
+		width: 80%;
 	}
 }
