@@ -1,23 +1,49 @@
 import Link from "next/link";
-import Head from "next/head";
 import React, { useState, useEffect, memo, useRef } from "react";
 import style from "./Navbar.module.css";
 
-const NavElements = () => (
+interface NavElsProps {
+	className?: string;
+}
+
+const NavElements = ({ className }: NavElsProps) => (
 	<>
-		<Link href="/projects">
-			<a>Projects</a>
-		</Link>
-		<Link href="/about">
-			<a>About</a>
-		</Link>
-		<Link href="/contact">
-			<a>Contact</a>
-		</Link>
-		<Link href="/other">
-			<a>Other</a>
-		</Link>
-		<a href="//dash.pxseu.com">Dash</a>
+		<nav className={className}>
+			<Link href="/projects">
+				<a>Projects</a>
+			</Link>
+			<Link href="/about">
+				<a>About</a>
+			</Link>
+			<Link href="/contact">
+				<a>Contact</a>
+			</Link>
+			<Link href="/other">
+				<a>Other</a>
+			</Link>
+			<a href="//dash.pxseu.com">Dash</a>
+		</nav>
+	</>
+);
+
+interface MenuProps {
+	canHandleClick: boolean;
+	handleClick: () => void;
+}
+
+const MenuBorger = ({ canHandleClick, handleClick }: MenuProps) => (
+	<>
+		<nav
+			id="menuButton"
+			onClick={() => {
+				if (canHandleClick) handleClick();
+			}}>
+			<div className={`center ${style.menuContainer}`}>
+				<div className={style.bar1}></div>
+				<div className={style.bar2}></div>
+				<div className={style.bar3}></div>
+			</div>
+		</nav>
 	</>
 );
 
@@ -49,7 +75,7 @@ const Navbar = () => {
 			if (navOverlayRef.current) navOverlayRef.current.classList.remove(style.showNav);
 			setTimeout(() => {
 				setNavToggle(navOpen);
-			}, 500);
+			}, 400);
 			return;
 		}
 
@@ -61,26 +87,17 @@ const Navbar = () => {
 
 	return (
 		<>
-			<Head>
-				<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.5.0/css/all.css" />
-			</Head>
-
 			<header className={`noselect ${style.navbar}`}>
 				<Link href="/">
 					<p className={style.logoNavbar}>pxseu</p>
 				</Link>
 				{smallScreen ? (
-					<p
-						className={`navigation ${style.navIcon} `}
-						onClick={() => {
-							if (!navOpen && !navToggle) setNavOpen(true);
-						}}>
-						<i className="fas fa-bars"></i>
-					</p>
+					<MenuBorger
+						canHandleClick={!navOpen && !navToggle}
+						handleClick={() => setNavOpen(true)}
+					/>
 				) : (
-					<nav className="navigation">
-						<NavElements />
-					</nav>
+					<NavElements />
 				)}
 			</header>
 			{navToggle && (
@@ -88,12 +105,10 @@ const Navbar = () => {
 					<a className={style.closebtn} onClick={() => setNavOpen(false)}>
 						&times;
 					</a>
-					<div className={style.navOverlayContent}>
-						<NavElements />
-					</div>
+
+					<NavElements className={style.navOverlayContent} />
 				</div>
 			)}
-			<style jsx>{``}</style>
 		</>
 	);
 };
