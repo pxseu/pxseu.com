@@ -11,7 +11,7 @@ const About = (): JSX.Element => (
 				Hey <Twemoji emoji="👋" />
 			</h2>
 			<p>
-				I&rsquo;m
+				I&rsquo;m{" "}
 				<span className="me">pxseu</span>!
 			</p>
 			<p>
