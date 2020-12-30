@@ -13,12 +13,6 @@
 	z-index: 3;
 }
 
-.navIcon {
-	cursor: pointer;
-	font-size: 34px;
-	margin-right: 20px;
-}
-
 .logoNavbar {
 	font-family: "Gang of Three", Verdana, Arial;
 	color: #ffa9ff;
@@ -46,10 +40,12 @@
 
 .navOverlayContent {
 	position: relative;
+	left: 50%;
 	top: 25%;
-	width: 100%;
+	width: 80%;
 	text-align: center;
 	margin-top: 30px;
+	transform: translate(-50%);
 }
 .navOverlay a {
 	padding: 8px;
@@ -81,4 +77,20 @@
 		top: 15px;
 		right: 35px;
 	}
+}
+
+.menuContainer {
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 15px;
+}
+
+.menuContainer > .bar1,
+.menuContainer > .bar2,
+.menuContainer > .bar3 {
+	width: 35px;
+	height: 5px;
+	background-color: #fff;
+	margin: 6px 0;
+	transition: 0.4s;
 }
