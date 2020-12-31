@@ -16,9 +16,6 @@ const Index = (): JSX.Element => (
 		</Head>
 		<BackgroundLoader>
 			<div className="app">
-				<a className="skip-link" href="#linksSkip">
-					Go to links!
-				</a>
 				<h1 className="logo noselect">pxseu</h1>
 
 				<main id="linksSkip">

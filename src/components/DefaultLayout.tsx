@@ -2,6 +2,7 @@ import React, { memo, ReactNode } from "react";
 import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
 import Head from "next/head";
+import style from "./DefaultLayout.module.css";
 
 type DefaultLayoutInput = {
 	children: ReactNode;
@@ -22,7 +23,7 @@ const DefaultLayout = ({ title, children, titleOnClick }: DefaultLayoutInput) =>
 		</Head>
 		<BackgroundLoader>
 			<Navbar />
-			<div className="noselect app">
+			<div className={`noselect ${style.app}`}>
 				<h1 className="center">
 					<a onClick={() => (titleOnClick == undefined ? void 0 : titleOnClick())}>
 						{title}
@@ -30,16 +31,8 @@ const DefaultLayout = ({ title, children, titleOnClick }: DefaultLayoutInput) =>
 				</h1>
 				<hr />
 				<main className="center">{children}</main>
-				<div className="bottomPadding"></div>
+				<div className={style.bottomPadding}></div>
 			</div>
-			<style jsx>{`
-				.app {
-					top: 50px;
-				}
-				.bottomPadding {
-					padding: 20px;
-				}
-			`}</style>
 		</BackgroundLoader>
 	</>
 );

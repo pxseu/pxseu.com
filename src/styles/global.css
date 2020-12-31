@@ -14,7 +14,7 @@ h4,
 h5,
 h6,
 b {
-	font-family: "RobotoBold", Arial, Helvetica, sans-serif;
+	font-family: "Roboto Bold", Arial, Helvetica, sans-serif;
 	font-weight: bold;
 }
 
@@ -40,15 +40,6 @@ b {
 	text-align: center;
 	align-items: center;
 	cursor: default;
-}
-
-.app {
-	position: absolute;
-	transform: translate(-50%);
-	left: 50%;
-	width: 480px;
-	animation: 1.5s ease-out 0s 1 fadeIn;
-	z-index: 2;
 }
 
 p,
@@ -139,20 +130,6 @@ a:hover {
 	display: none;
 }
 
-.skip-link {
-	position: absolute;
-	top: -40px;
-	left: 0;
-	background: #000000;
-	color: #ffa9ff;
-	padding: 5px;
-	z-index: 100;
-}
-
-.skip-link:focus {
-	top: 0;
-}
-
 .visually_hidden {
 	border: 0;
 	clip: rect(0 0 0 0);
@@ -164,31 +141,10 @@ a:hover {
 	width: 1px;
 }
 
-@keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
 @font-face {
 	font-family: "Gang of Three";
 	src: url("/font/go3v2.ttf");
 	font-display: swap;
-}
-
-@media screen and (min-width: 800px) {
-	.app {
-		width: 700px;
-	}
-}
-
-@media screen and (min-width: 1400px) {
-	.app {
-		width: 1200px;
-	}
 }
 
 @font-face {
@@ -200,7 +156,7 @@ a:hover {
 }
 
 @font-face {
-	font-family: "RobotoBold";
+	font-family: "Roboto Bold";
 	font-style: normal;
 	font-weight: 700;
 	font-display: swap;
