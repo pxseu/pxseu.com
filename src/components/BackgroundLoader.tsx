@@ -123,27 +123,10 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<link rel="shortcut" href="/favicon.ico" />
 				<link rel="icon" href="/favicon.ico" />
 				<link rel="favicon" href="/favicon.ico" />
+				<meta name="theme-color" content="#6ab04c" />
+				<meta property="og:site_name" content="pxseu.com" />
+				<meta property="og:title" content="pxseu.com" />
 				<meta
-					data-n-head="ssr"
-					data-hid="theme-color"
-					name="theme-color"
-					content="#6ab04c"
-				/>
-				<meta
-					data-n-head="ssr"
-					data-hid="og:site_name"
-					property="og:site_name"
-					content="pxseu.com"
-				/>
-				<meta
-					data-n-head="ssr"
-					data-hid="og:title"
-					property="og:title"
-					content="pxseu.com"
-				/>
-				<meta
-					data-n-head="ssr"
-					data-hid="og:image"
 					property="og:image"
 					content="https://www.pxseu.com/essential/media/icon.png"
 				/>
