@@ -12,6 +12,7 @@
 		"deploy": "yarn compile && yarn build",
 		"lint": "eslint src/**/*.{ts,tsx} --fix",
 		"build": "next build",
+		"export": "next export",
 		"postbuild": "next-sitemap"
 	},
 	"dependencies": {
