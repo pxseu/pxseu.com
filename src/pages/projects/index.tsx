@@ -2,7 +2,7 @@ import React from "react";
 import DefaultLayout from "../../components/DefaultLayout";
 
 const Projects = (): JSX.Element => (
-	<div>
+	<>
 		<DefaultLayout title={"My Projects"}>
 			<p>
 				<a href="https://github.com/PreMiD/Discord-Bot">Little work on the PreMiD bot</a>
@@ -40,7 +40,7 @@ const Projects = (): JSX.Element => (
 				text-decoration: underline #fff;
 			}
 		`}</style>
-	</div>
+	</>
 );
 
 export default Projects;
