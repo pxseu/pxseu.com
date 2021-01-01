@@ -15,7 +15,7 @@
 	-webkit-text-fill-color: transparent;
 	animation: rainbow 18s ease infinite;
 	background-size: 1800% 1800%;
-	font-family: "RobotoBold", Arial, Helvetica, sans-serif;
+	font-family: "Roboto Bold", Arial, Helvetica, sans-serif;
 }
 
 @keyframes rainbow {

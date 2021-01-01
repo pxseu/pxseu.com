@@ -8,29 +8,29 @@ const OtherIndex = (): JSX.Element => (
 			<p>Bunch of stuff to long to fit on the Navbar</p>
 			<p>
 				<Link href="/other/yiff">
-					<a>Yiff</a>
+					<a className="link">Yiff</a>
 				</Link>
 			</p>
 
 			<p>
 				<Link href="/other/waifu">
-					<a>Waifu</a>
+					<a className="link">Waifu</a>
 				</Link>
 			</p>
 
 			<p>
 				<Link href="/other/message">
-					<a>Message me!</a>
+					<a className="link">Message me!</a>
 				</Link>
 			</p>
 
 			<p>
 				<Link href="/hall-of-fame">
-					<a>Hall Of Fame</a>
+					<a className="link">Hall Of Fame</a>
 				</Link>
 			</p>
 			<Link href="/other/legal-stuff">
-				<a>Legal Stuff</a>
+				<a className="link">Legal Stuff</a>
 			</Link>
 			<p className="comment">
 				<i>psst these are links!</i>

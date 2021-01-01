@@ -25,7 +25,11 @@ const DefaultLayout = ({ title, children, titleOnClick }: DefaultLayoutInput) =>
 			<Navbar />
 			<div className={`noselect ${style.app}`}>
 				<h1 className="center">
-					<a onClick={() => (titleOnClick == undefined ? void 0 : titleOnClick())}>
+					<a
+						className={titleOnClick ? "link" : ""}
+						onClick={() => {
+							if (titleOnClick) titleOnClick();
+						}}>
 						{title}
 					</a>
 				</h1>
