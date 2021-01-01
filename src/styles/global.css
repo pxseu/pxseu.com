@@ -48,15 +48,15 @@ h2 {
 	margin: 5px;
 }
 
-a {
+.link {
 	color: white;
 	transition: color 0.1s;
 }
-a:hover {
+.link:hover {
 	color: #ffa9ff;
 }
 
-a {
+.link {
 	color: white;
 	text-decoration: none;
 	transition: color 0.1s;
@@ -69,7 +69,7 @@ a {
 	position: relative;
 }
 
-a:after {
+.link:after {
 	background: none repeat scroll 0 0 transparent;
 	bottom: 0;
 	content: "";
@@ -82,12 +82,12 @@ a:after {
 	width: 0;
 }
 
-a:hover:after {
+.link:hover:after {
 	width: 100%;
 	left: 0;
 }
 
-a:hover {
+.link:hover {
 	color: #ffa9ff;
 	top: -2px;
 }

@@ -10,18 +10,20 @@ const NavElements = ({ className }: NavElsProps) => (
 	<>
 		<nav className={className}>
 			<Link href="/projects">
-				<a>Projects</a>
+				<a className="link">Projects</a>
 			</Link>
 			<Link href="/about">
-				<a>About</a>
+				<a className="link">About</a>
 			</Link>
 			<Link href="/contact">
-				<a>Contact</a>
+				<a className="link">Contact</a>
 			</Link>
 			<Link href="/other">
-				<a>Other</a>
+				<a className="link">Other</a>
 			</Link>
-			<a href="//dash.pxseu.com">Dash</a>
+			<a className="link" href="//dash.pxseu.com">
+				Dash
+			</a>
 		</nav>
 	</>
 );
@@ -102,7 +104,7 @@ const Navbar = () => {
 			</header>
 			{navToggle && (
 				<div className={`${style.navOverlay} noselect`} ref={navOverlayRef}>
-					<a className={style.closebtn} onClick={() => setNavOpen(false)}>
+					<a className={`link ${style.closebtn}`} onClick={() => setNavOpen(false)}>
 						&times;
 					</a>
 

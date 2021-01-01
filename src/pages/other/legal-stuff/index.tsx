@@ -16,7 +16,7 @@ const LovesIndex = (): JSX.Element => (
 			<p>5. Bans will be given without a reason and they might (not) be permanent.</p>
 			<hr />
 			<h1>
-				<a>Privacy Policy</a>
+				<a className="link">Privacy Policy</a>
 			</h1>
 			<div>
 				<p>I value your privacy and your trust.</p>
@@ -28,7 +28,7 @@ const LovesIndex = (): JSX.Element => (
 			</div>
 			<hr />
 			<h4>
-				<a href="https://discord.pxseu.com">
+				<a className="link" href="https://discord.pxseu.com">
 					If you have any question join my discord server!
 				</a>
 			</h4>
