@@ -47,8 +47,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 			"Hey, how are things?",
 			"I really was looking forward to talking with you...",
 			"Mind coming around for a while?",
-			"What's up?",
-			"I love you...", // iykyk
+			"What's up?"
 		],
 		DarlingCode = ["u", "w", "u"];
 
