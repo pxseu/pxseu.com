@@ -21,7 +21,7 @@ const LovesIndex = (): JSX.Element => {
 						alt="Unable to fetch image."
 					/>
 					<p>
-						<a href="https://www.thiswaifudoesnotexist.net/">
+						<a className="link" href="https://www.thiswaifudoesnotexist.net/">
 							Provided by www.thiswaifudoesnotexist.net
 						</a>
 					</p>

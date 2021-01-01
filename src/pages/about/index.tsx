@@ -11,8 +11,7 @@ const About = (): JSX.Element => (
 				Hey <Twemoji emoji="👋" />
 			</h2>
 			<p>
-				I&rsquo;m{" "}
-				<span className="me">pxseu</span>!
+				I&rsquo;m <span className="me">pxseu</span>!
 			</p>
 			<p>
 				I&rsquo;m a <Age timestamp={1090022400000} /> year old developer from Poland.

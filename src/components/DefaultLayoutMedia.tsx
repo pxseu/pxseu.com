@@ -30,7 +30,9 @@ const DefaultLayoutImage = ({
 			<Navbar />
 			<div className={`noselect ${style.app} app`}>
 				<h1 className="center">
-					<a onClick={() => titleOnClick != undefined && titleOnClick()}>{title}</a>
+					<a className="link" onClick={() => titleOnClick != undefined && titleOnClick()}>
+						{title}
+					</a>
 				</h1>
 				<hr />
 				<div className={style.container}>
