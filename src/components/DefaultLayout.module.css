@@ -4,7 +4,7 @@
 	transform: translate(-50%);
 	left: 50%;
 	width: 480px;
-	animation: 1.5s ease-out 0s 1 fadeIn;
+	animation: fadeIn ease 1.5s;
 	z-index: 2;
 }
 
@@ -17,6 +17,15 @@
 @media screen and (min-width: 1400px) {
 	.app {
 		width: 1200px;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }
 
