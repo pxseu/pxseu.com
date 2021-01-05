@@ -4,7 +4,16 @@ import Twemoji from "../../components/Twemoji";
 
 const Contact = (): JSX.Element => (
 	<DefaultLayout title={"Contact / Socials"}>
-		<p>Bellow are a couple of ways you can get in touch with me!</p>
+		<p>Bellow are some socials you can find me on!</p>
+		<p>
+			<a
+				className="link"
+				href="mailto:contact.pxseu@gmail.com"
+				target="_blank"
+				rel="noreferrer">
+				<Twemoji emoji="📧" /> Email
+			</a>
+		</p>
 		<p>
 			<a className="link" href="https://github.com/pxseu" target="_blank" rel="noreferrer">
 				<Twemoji emoji="🌐" /> Github
@@ -16,13 +25,30 @@ const Contact = (): JSX.Element => (
 			</a>
 		</p>
 		<p>
-			<a className="link" href="mailto:me@pxseu.com" target="_blank" rel="noreferrer">
-				<Twemoji emoji="📧" /> Email
+			<a
+				className="link"
+				href="https://discord.com/users/338718840873811979"
+				target="_blank"
+				rel="noreferrer">
+				<Twemoji emoji="📱" /> Discord
 			</a>
 		</p>
 		<p>
-			<a className="link" href="https://discord.pxseu.com" target="_blank" rel="noreferrer">
-				<Twemoji emoji="📱" /> Discord
+			<a
+				className="link"
+				href="https://steamcommunity.com/id/pxseu/"
+				target="_blank"
+				rel="noreferrer">
+				<Twemoji emoji="🎮" /> Steam
+			</a>
+		</p>
+		<p>
+			<a
+				className="link"
+				href="https://open.spotify.com/user/1evum6fq9klvekqjbz4cu5v79"
+				target="_blank"
+				rel="noreferrer">
+				<Twemoji emoji="🎧" /> Spotify
 			</a>
 		</p>
 	</DefaultLayout>
