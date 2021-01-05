@@ -14,7 +14,8 @@ const About = (): JSX.Element => (
 				I&rsquo;m <span className="me">pxseu</span>!
 			</p>
 			<p>
-				I&rsquo;m a <Age timestamp={1090022400000} /> year old developer from Poland.
+				I&rsquo;m a <Age timestamp={1090022400000 /* totaly not my bd 😳 */} /> year old
+				developer from Poland.
 			</p>
 			<p>I work in Frontend and Backend areas.</p>
 			<p>I enjoy making Api&rsquo;s, and other small scripts.</p>
