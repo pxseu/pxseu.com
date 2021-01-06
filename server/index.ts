@@ -36,6 +36,13 @@ app.prepare().then(async () => {
 				scriptSrc: ["'self'", "ajax.cloudflare.com", "static.cloudflareinsights.com"],
 				scriptSrcAttr: ["'none'"],
 				styleSrc: ["'self'", "https:", "'unsafe-inline'"],
+				connectSrc: [
+					"'self'",
+					"data:",
+					"cdn.pxseu.com",
+					"www.thiswaifudoesnotexist.net",
+					"twemoji.maxcdn.com",
+				],
 				upgradeInsecureRequests: [],
 				blockAllMixedContent: [],
 			},
