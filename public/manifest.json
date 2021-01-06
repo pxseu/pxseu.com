@@ -29,7 +29,7 @@
 			"type": "image/png"
 		},
 		{
-			"src": "/iamges/maskable_icon_x1.png",
+			"src": "/images/maskable_icon_x1.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "any maskable"
