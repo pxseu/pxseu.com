@@ -128,7 +128,10 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<meta name="theme-color" content="#ffa9ff" />
 				<meta property="og:site_name" content="pxseu.com" />
 				<meta property="og:title" content="pxseu.com" />
-				<meta property="og:image" content="https://www.pxseu.com/images/icon-512x512.png" />
+				<meta
+					property="og:image"
+					content="https://www.pxseu.com/android-chrome-512x512.png"
+				/>
 				<meta
 					name="viewport"
 					content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no, minimal-ui"
