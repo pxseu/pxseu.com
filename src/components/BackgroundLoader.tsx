@@ -47,7 +47,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 			"Hey, how are things?",
 			"I really was looking forward to talking with you...",
 			"Mind coming around for a while?",
-			"What's up?"
+			"What's up?",
 		],
 		DarlingCode = ["u", "w", "u"];
 
@@ -122,13 +122,12 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<link rel="shortcut" href="/favicon.ico" />
 				<link rel="icon" href="/favicon.ico" />
 				<link rel="favicon" href="/favicon.ico" />
-				<meta name="theme-color" content="#6ab04c" />
+				<meta name="theme-color" content="#ffa9ff" />
+				<link rel="manifest" href="manifest.json" />
+				<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 				<meta property="og:site_name" content="pxseu.com" />
 				<meta property="og:title" content="pxseu.com" />
-				<meta
-					property="og:image"
-					content="https://www.pxseu.com/essential/media/icon.png"
-				/>
+				<meta property="og:image" content="https://www.pxseu.com/images/icon-512x512.png" />
 				<meta
 					name="viewport"
 					content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no, minimal-ui"
