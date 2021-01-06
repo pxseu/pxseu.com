@@ -20,7 +20,7 @@
 		"express": "^4.17.1",
 		"express-rate-limit": "^5.2.3",
 		"helmet": "^4.1.1",
-		"mongoose": "^5.11.9",
+		"mongoose": "^5.11.10",
 		"morgan": "^1.10.0",
 		"next": "10.0.3",
 		"next-pwa": "^5.0.2",
