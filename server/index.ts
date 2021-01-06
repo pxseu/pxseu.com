@@ -42,6 +42,7 @@ app.prepare().then(async () => {
 					"cdn.pxseu.com",
 					"www.thiswaifudoesnotexist.net",
 					"twemoji.maxcdn.com",
+					"ajax.cloudflare.com",
 				],
 				upgradeInsecureRequests: [],
 				blockAllMixedContent: [],
