@@ -125,7 +125,6 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#656667" />
 				<meta name="msapplication-TileColor" content="#ffa9ff" />
 				<link rel="manifest" href="/manifest.json" />
-				<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 				<meta name="theme-color" content="#ffa9ff" />
 				<meta property="og:site_name" content="pxseu.com" />
 				<meta property="og:title" content="pxseu.com" />
