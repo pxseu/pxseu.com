@@ -119,12 +119,14 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<meta name="description" content="Pxseu's website!" />
 				<meta name="keywords" content="pxseu, poseuxck" />
 				<meta name="author" content="pxseu" />
-				<link rel="shortcut" href="/favicon.ico" />
-				<link rel="icon" href="/favicon.ico" />
-				<link rel="favicon" href="/favicon.ico" />
-				<meta name="theme-color" content="#ffa9ff" />
-				<link rel="manifest" href="manifest.json" />
+				<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+				<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#656667" />
+				<meta name="msapplication-TileColor" content="#ffa9ff" />
+				<link rel="manifest" href="/manifest.json" />
 				<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+				<meta name="theme-color" content="#ffa9ff" />
 				<meta property="og:site_name" content="pxseu.com" />
 				<meta property="og:title" content="pxseu.com" />
 				<meta property="og:image" content="https://www.pxseu.com/images/icon-512x512.png" />
