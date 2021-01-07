@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState, useEffect, memo, useRef } from "react";
-import style from "./Navbar.module.css";
+import style from "../styles/Navbar.module.css";
 
 interface NavElsProps {
 	className?: string;
