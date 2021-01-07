@@ -1,0 +1,60 @@
+.logo {
+	z-index: 2;
+	animation: 1.5s ease-out 0s 1 fadeIn;
+	cursor: pointer;
+	text-align: center;
+	color: #ffa9ff;
+	font-size: 120px;
+	font-family: "Gang of Three", Verdana, Arial;
+	font-weight: normal;
+	margin: 0;
+}
+.links {
+	z-index: 2;
+	animation: 1.5s ease-out 0s 1 fadeIn;
+	cursor: default;
+	text-align: center;
+	padding: 10px;
+}
+.linksParent {
+	cursor: default;
+	text-align: center;
+	display: inline-block;
+}
+.link {
+	color: white;
+	text-decoration: none;
+	font-size: 30px;
+	transition: color 0.1s;
+	cursor: pointer;
+	position: relative;
+	top: 0;
+	transition: top ease 0.2s, color 0.1s;
+	padding: 15px 20px;
+}
+.link:after {
+	background: none repeat scroll 0 0 transparent;
+	bottom: 0;
+	content: "";
+	display: block;
+	height: 2px;
+	left: 50%;
+	position: absolute;
+	background: #fff;
+	transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	width: 0;
+}
+.link:hover:after {
+	width: 100%;
+	left: 0;
+}
+.link:hover {
+	color: #ffa9ff;
+	top: -2px;
+}
+
+@media screen and (min-width: 600px) {
+	.logo {
+		font-size: 150px;
+	}
+}

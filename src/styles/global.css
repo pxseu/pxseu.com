@@ -99,22 +99,6 @@ h2 {
 	padding-top: 12px;
 }
 
-::-webkit-scrollbar {
-	width: 10px;
-}
-
-::-webkit-scrollbar-track {
-	background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-	background: #888;
-}
-
-::-webkit-scrollbar-thumb:hover {
-	background: #555;
-}
-
 .noselect {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -164,4 +148,22 @@ h2 {
 	font-weight: 700;
 	font-display: swap;
 	src: url("/font/Roboto-Bold.ttf");
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+	border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
 }

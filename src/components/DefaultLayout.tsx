@@ -2,7 +2,7 @@ import React, { memo, ReactNode } from "react";
 import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
 import Head from "next/head";
-import style from "./DefaultLayout.module.css";
+import styles from "../styles/DefaultLayout.module.css";
 
 type DefaultLayoutInput = {
 	children: ReactNode;
@@ -23,7 +23,7 @@ const DefaultLayout = ({ title, children, titleOnClick }: DefaultLayoutInput) =>
 		</Head>
 		<BackgroundLoader>
 			<Navbar />
-			<div className={`noselect ${style.app}`}>
+			<div className={`noselect ${styles.app}`}>
 				<h1 className="center">
 					<a
 						className={titleOnClick ? "link" : ""}
@@ -35,7 +35,7 @@ const DefaultLayout = ({ title, children, titleOnClick }: DefaultLayoutInput) =>
 				</h1>
 				<hr />
 				<main className="center">{children}</main>
-				<div className={style.bottomPadding}></div>
+				<div className={styles.bottomPadding}></div>
 			</div>
 		</BackgroundLoader>
 	</>

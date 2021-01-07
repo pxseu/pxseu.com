@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import twemoji from "twemoji";
-import styles from "./Twemoji.module.css";
+import styles from "../styles/Twemoji.module.css";
 
 type props = {
 	emoji: string;

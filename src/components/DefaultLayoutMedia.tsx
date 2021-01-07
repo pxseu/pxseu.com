@@ -2,7 +2,7 @@ import React, { memo, ReactNode } from "react";
 import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
 import Head from "next/head";
-import style from "./DefaultLayoutMedia.module.css";
+import styles from "../styles/DefaultLayoutMedia.module.css";
 
 type DefaultLayoutInput = {
 	children: ReactNode;
@@ -28,15 +28,15 @@ const DefaultLayoutImage = ({
 		</Head>
 		<BackgroundLoader>
 			<Navbar />
-			<div className={`noselect ${style.app} app`}>
+			<div className={`noselect ${styles.app} app`}>
 				<h1 className="center">
 					<a className="link" onClick={() => titleOnClick != undefined && titleOnClick()}>
 						{title}
 					</a>
 				</h1>
 				<hr />
-				<div className={style.container}>
-					<div className={`${style.imgrow} ${style.row}`}>
+				<div className={styles.container}>
+					<div className={`${styles.imgrow} ${styles.row}`}>
 						{mediaType == "image" && (
 							<img draggable="false" className="center" src={image} alt={"Image"} />
 						)}
@@ -51,11 +51,11 @@ const DefaultLayoutImage = ({
 							/>
 						)}
 					</div>
-					<div className={style.row}>
+					<div className={styles.row}>
 						<div className="center">{children}</div>
 					</div>
 				</div>
-				<div className={style.bottomPadding}></div>
+				<div className={styles.bottomPadding}></div>
 			</div>
 		</BackgroundLoader>
 	</>
