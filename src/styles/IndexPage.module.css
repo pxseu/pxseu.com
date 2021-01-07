@@ -1,6 +1,5 @@
 .logo {
 	z-index: 2;
-	animation: 1.5s ease-out 0s 1 fadeIn;
 	cursor: pointer;
 	text-align: center;
 	color: #ffa9ff;
@@ -11,7 +10,6 @@
 }
 .links {
 	z-index: 2;
-	animation: 1.5s ease-out 0s 1 fadeIn;
 	cursor: default;
 	text-align: center;
 	padding: 10px;
