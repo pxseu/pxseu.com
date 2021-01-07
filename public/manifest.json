@@ -6,7 +6,7 @@
 	"background_color": "#000000",
 	"display": "standalone",
 	"scope": "/",
-	"start_url": "/",
+	"start_url": "https://www.pxseu.com/?source=pwa",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png",
@@ -17,6 +17,20 @@
 			"src": "/android-chrome-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png"
+		}
+	],
+	"shortcuts": [
+		{
+			"name": "Stuff about me",
+			"short_name": "About me",
+			"url": "/about?source=pwa",
+			"icons": [{ "src": "/images/about_me.png", "sizes": "192x192" }]
+		},
+		{
+			"name": "Places where you can find me",
+			"short_name": "Contact me",
+			"url": "/contact?source=pwa",
+			"icons": [{ "src": "/images/contact_me.png", "sizes": "192x192" }]
 		}
 	]
 }
