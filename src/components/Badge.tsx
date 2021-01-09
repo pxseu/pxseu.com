@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import styles from "../styles/components/Badge.module.css";
 
 type props = {
 	badge: string;
@@ -6,25 +7,13 @@ type props = {
 
 const BadgeComp = ({ badge }: props) => (
 	/* Not wrapped in a div because of better layout */
-	<>
-		<img
-			className="badge noselect"
-			draggable="false"
-			src={`/assets/svg/badges/${badge}.svg`}
-			alt={capitalizeFirstLetter(badge)}
-			onDragStart={() => false}
-		/>
-		<style jsx>{`
-			.badge {
-				display: inline-block;
-				width: auto;
-				height: 1.8rem;
-				vertical-align: -0.125rem;
-				margin-left: 0.1rem;
-				margin-right: 0.1rem;
-			}
-		`}</style>
-	</>
+	<img
+		className={`${styles.badge} noselect`}
+		draggable="false"
+		src={`/assets/svg/badges/${badge}.svg`}
+		alt={capitalizeFirstLetter(badge)}
+		onDragStart={() => false}
+	/>
 );
 
 export default memo(BadgeComp);

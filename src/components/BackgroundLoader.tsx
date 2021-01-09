@@ -115,33 +115,61 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 	return (
 		<>
 			<Head>
+				{/* Main Meta */}
 				<meta charSet="UTF-8" />
+				<meta httpEquiv="x-ua-compatible" content="ie=edge" />
 				<meta name="description" content="Pxseu's website!" />
 				<meta name="keywords" content="pxseu, poseuxck" />
 				<meta name="author" content="pxseu" />
+				<meta name="robots" content="index, follow" />
+				<link rel="manifest" href="/manifest.json" />
+				{/* End Main Meta */}
+
+				{/* Icons */}
 				<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 				<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#656667" />
+				{/* End Icons */}
+
+				{/* Colors */}
 				<meta name="msapplication-TileColor" content="#ffa9ff" />
-				<link rel="manifest" href="/manifest.json" />
 				<meta name="theme-color" content="#ffa9ff" />
+				{/* End Colors */}
+
+				{/* Open Graph */}
+				<meta property="og:url" content="https://www.pxseu.com" />
+				<meta property="og:type" content="website" />
+				<meta property="og:locale" content="en_US" />
 				<meta property="og:site_name" content="pxseu.com" />
 				<meta property="og:title" content="pxseu.com" />
 				<meta
 					property="og:image"
 					content="https://www.pxseu.com/android-chrome-512x512.png"
 				/>
+				{/* End Open Graph */}
+
+				{/* Twitter */}
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:site" content="@pxseu" />
+				<meta name="twitter:title" content="pxseu.com" />
+				<meta name="twitter:description" content="Pxseu's website!" />
+				<meta
+					name="twitter:image"
+					content="https://www.pxseu.com/android-chrome-512x512.png"
+				/>
+				{/* End Twitter */}
+
+				{/* Misc */}
 				<meta
 					name="viewport"
 					content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no, minimal-ui"
 				/>
-				{/* <script src='/essential/js/script.js'defer  /> */}
-				<meta name="viewport" content="width=device-width, initial-scale=0.8" />
 				<meta
 					name="google-site-verification"
 					content="azPHAHBpTuJ-8stcPE_LX6-GNwVGjzp5_V7E3KCcmMk"
 				/>
+				{/* End Misc */}
 			</Head>
 			{props.children}
 			<div className="particlesSwitch">

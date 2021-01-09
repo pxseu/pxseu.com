@@ -3,7 +3,7 @@
  */
 
 import React, { useEffect, useState } from "react";
-import styles from "../styles/Age.module.css";
+import styles from "../styles/components/Age.module.css";
 
 const DEFAULT_VALUE = "0".repeat(12);
 

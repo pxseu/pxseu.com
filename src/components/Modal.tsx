@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, memo, ReactNode } from "react";
 import { createPortal } from "react-dom";
+import styles from "../styles/components/Modal.module.css";
 
 const Modal = ({
 	open,
@@ -14,76 +15,24 @@ const Modal = ({
 	const ModalText = children == undefined ? "What?" : children;
 	const modalEl = useRef<HTMLDivElement>(null);
 	useEffect(() => {
-		setTimeout(() => modalEl.current?.classList.remove("fade"), 100);
+		setTimeout(() => modalEl.current?.classList.remove(styles.fade), 100);
 	});
 
 	return createPortal(
 		<>
-			<div id="overlay" className="overlay" />
-			<div id="modal" className="modal fade noselect" ref={modalEl}>
+			<div id="overlay" className={styles.overlay} />
+			<div id="modal" className={`${styles.modal} ${styles.fade} noselect`} ref={modalEl}>
 				<div
 					id="closeModal"
-					className="closeModal"
+					className={styles.closeModal}
 					onClick={() => {
-						modalEl.current?.classList.add("fade");
+						modalEl.current?.classList.add(styles.fade);
 						setTimeout(() => onClose(), 400);
 					}}>
 					x
 				</div>
 				{ModalText}
 			</div>
-
-			<style jsx>{`
-				.modal {
-					position: fixed;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-					background-color: #101010;
-					color: white;
-					padding: 50px;
-					z-index: 1000;
-					border-radius: 10px;
-					border: 1px solid #ffffff;
-					text-align: center;
-					opacity: 1;
-					transition-duration: 0.3s;
-				}
-
-				.overlay {
-					position: fixed;
-					top: 0;
-					left: 0;
-					right: 0;
-					bottom: 0;
-					background-color: rgba(0, 0, 0, 0.7);
-					z-index: 1000;
-				}
-
-				.closeModal {
-					position: absolute;
-					top: 10px;
-					right: 10px;
-					font-family: Arial, sans-serif;
-					cursor: pointer;
-					font-weight: 300;
-					font-size: 20px;
-					background-color: rgba(255, 66, 66, 0.7);
-					color: white;
-					padding: 0px;
-					width: 25px;
-					height: 25px;
-					text-align: center;
-					transition-duration: 0.2s;
-				}
-
-				.closeModal:hover {
-					background-color: #ff4242;
-				}
-				.fade {
-					opacity: 0;
-				}
-			`}</style>
 		</>,
 		document.getElementById("portal") ?? document.body
 	);
