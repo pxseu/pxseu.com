@@ -174,7 +174,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 			{props.children}
 			<div className="particlesSwitch">
 				<label className="switch">
-					<p className="visually_hidden">Switch particles on or off</p>
+					<p className="visually_hidden noselect">Switch particles on or off</p>
 					<input
 						type="checkbox"
 						id="switchLabel"
