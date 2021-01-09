@@ -1,0 +1,30 @@
+.pathUrl {
+	display: block;
+	white-space: pre-wrap;
+	background-color: #303030;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	word-wrap: break-word;
+}
+
+.buttonNotFound {
+	position: relative;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	padding: 1rem 1.5rem;
+	color: white;
+	cursor: pointer;
+	outline: none;
+	border-radius: 100px;
+	border: 2px solid white;
+	background: none;
+	transition-duration: 0.2s;
+	font-size: 16px;
+}
+
+.buttonNotFound:hover {
+	color: black;
+	border: 2px solid black;
+	background-color: white;
+}
