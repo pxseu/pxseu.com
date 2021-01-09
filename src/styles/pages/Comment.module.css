@@ -1,0 +1,9 @@
+.comment {
+	color: #fff;
+	text-decoration: underline #ffa9ff;
+	transition-duration: 0.3s;
+}
+.comment:hover {
+	color: #ffa9ff;
+	text-decoration: underline #fff;
+}

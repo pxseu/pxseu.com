@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
 import BackgroundLoader from "../components/BackgroundLoader";
-import styles from "../styles/IndexpageLayout.module.css";
+import styles from "../styles/components/IndexpageLayout.module.css";
 
 interface props {
 	children: ReactNode;

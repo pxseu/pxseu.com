@@ -2,7 +2,7 @@ import React, { memo, ReactNode } from "react";
 import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
 import Head from "next/head";
-import styles from "../styles/DefaultLayout.module.css";
+import styles from "../styles/components/DefaultLayout.module.css";
 
 type DefaultLayoutInput = {
 	children: ReactNode;

@@ -1,6 +1,7 @@
 import React from "react";
-import DefaultLayout from "../../components/DefaultLayout";
-import Twemoji from "../../components/Twemoji";
+import DefaultLayout from "../components/DefaultLayout";
+import Twemoji from "../components/Twemoji";
+import styles from "../styles/pages/Comment.module.css";
 
 const Contact = (): JSX.Element => (
 	<DefaultLayout title={"Contact / Socials"}>
@@ -50,6 +51,9 @@ const Contact = (): JSX.Element => (
 				rel="noreferrer">
 				<Twemoji emoji="🎧" /> Spotify
 			</a>
+		</p>
+		<p className={styles.comment}>
+			<i>psst these are links!</i>
 		</p>
 	</DefaultLayout>
 );
