@@ -1,0 +1,15 @@
+.codeBlock {
+	user-select: text;
+	background-color: #000000;
+	border-radius: 8px;
+	border-color: #ffffff;
+	border-width: 1px;
+	border-style: solid;
+	margin: 10px;
+	padding: 10px;
+	font-family: "Roboto Bold", Arial, Helvetica, sans-serif;
+	display: inline-block;
+}
+.codeBlock::selection {
+	color: #ffa9ff;
+}

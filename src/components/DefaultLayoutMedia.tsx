@@ -30,7 +30,11 @@ const DefaultLayoutImage = ({
 			<Navbar />
 			<div className={`noselect ${styles.app} app`}>
 				<h1 className="center">
-					<a className="link" onClick={() => titleOnClick != undefined && titleOnClick()}>
+					<a
+						className={titleOnClick ? "link" : ""}
+						onClick={() => {
+							if (titleOnClick) titleOnClick();
+						}}>
 						{title}
 					</a>
 				</h1>
