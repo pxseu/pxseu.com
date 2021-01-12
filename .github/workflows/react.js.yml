@@ -16,6 +16,8 @@ jobs:
                   key: ${{ secrets.KEY }}
                   port: ${{ secrets.PORT }}
                   script: |
+                      export NVM_DIR=~/.nvm
+                      source ~/.nvm/nvm.sh
                       cd ~/deploy/pxseu.com
                       git reset --hard
                       git pull
