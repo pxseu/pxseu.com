@@ -4,7 +4,7 @@ import { DEV_MODE, isBlacklisted, NOTE, sendMessageLimiter } from "..";
 import { RequestWithUser } from "../../../express";
 import AuthKeyDb, { apiUser } from "../../db/models/auth_key";
 
-const AVATAR = "https://cdn.pxseu.com/assets/pfp.gif";
+const AVATAR = "https://cdn.pxseu.com/assets/pfp.gif?v=2";
 
 export const sendMessage = async (req: RequestWithUser, res: Response): Promise<void> => {
 	const user = req.user;
@@ -28,7 +28,7 @@ export const sendMessage = async (req: RequestWithUser, res: Response): Promise<
 	embed.setTitle("New Message!");
 	embed.setDescription(`Content: \n${message}`);
 	embed.setColor("#3399ff");
-	embed.setFooter("pls no api abjus, thank!", AVATAR);
+	embed.setFooter(user ? `via ${user}` : "pls no api abjus, thank!", AVATAR);
 	embed.setTime();
 	Hook.send(embed);
 
@@ -52,6 +52,8 @@ export const isValidMessage = async (
 	const apiKeyFound = (await AuthKeyDb.findOne({
 		auth_key: AuthKey,
 	})) as apiUser;
+
+	console.log(apiKeyFound);
 
 	if (body.message == undefined || body.message.trim() == "") {
 		const message = "Cannot send empty message!";
