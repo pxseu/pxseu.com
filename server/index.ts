@@ -59,6 +59,7 @@ app.prepare().then(async () => {
 	});
 
 	await connect();
+
 	server
 		.listen(port, () => {
 			console.log("\x1b[36m%s\x1b[0m", `> Ready on http://localhost:${port}`, "\x1b[0m");
