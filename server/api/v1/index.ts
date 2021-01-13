@@ -2,7 +2,7 @@ import { Router, Request, Response, NextFunction } from "express";
 import { DEV_MODE, isBlacklisted, sendMessageLimiter } from "..";
 import { Webhook, MessageBuilder } from "webhook-discord";
 
-const AVATAR = "https://cdn.pxseu.com/assets/pfp.gif";
+const AVATAR = "https://cdn.pxseu.com/assets/pfp.gif?v=2";
 const router = Router();
 
 const methodCheck = {
