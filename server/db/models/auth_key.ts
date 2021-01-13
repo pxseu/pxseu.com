@@ -9,9 +9,11 @@ export type apiUser = Document & {
 const serverSchema = new Schema({
 	auth_key: {
 		type: String,
+		required: true,
 	},
 	user: {
 		type: String,
+		required: true,
 	},
 });
 
