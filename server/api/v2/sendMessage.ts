@@ -1,4 +1,4 @@
-import { NextFunction, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { MessageBuilder, Webhook } from "webhook-discord";
 import { DEV_MODE, isBlacklisted, NOTE, sendMessageLimiter } from "..";
 import { RequestWithUser } from "../../../express";
@@ -47,7 +47,7 @@ export const isValidMessage = async (
 ): Promise<void> => {
 	const body: { message: string } = await req.body;
 
-	const AuthKey = req.headers.authorization;
+	const AuthKey = extractToken(req);
 
 	const apiKeyFound = (await AuthKeyDb.findOne({
 		auth_key: AuthKey,
@@ -78,6 +78,7 @@ export const isValidMessage = async (
 	if (apiKeyFound) {
 		req.user = apiKeyFound.user;
 		next();
+		return;
 	}
 
 	if (DEV_MODE) {
@@ -87,3 +88,15 @@ export const isValidMessage = async (
 
 	sendMessageLimiter(req, res, next);
 };
+
+function extractToken(req: Request): string | null {
+	if (req.headers.authorization && req.headers.authorization.split(" ")[0] === "Bearer") {
+		return req.headers.authorization.split(" ")[1];
+	} else if (req.query && req.query.token) {
+		return req.query.token.toString();
+	} else if (req.body && req.body.token) {
+		return req.body.token;
+	}
+
+	return null;
+}
