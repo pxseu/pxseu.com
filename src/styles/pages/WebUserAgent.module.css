@@ -1,8 +1,8 @@
 .codeBlock {
 	user-select: text;
-	background-color: #000000;
+	background-color: var(--background);
 	border-radius: 8px;
-	border-color: #ffffff;
+	border-color: var(--font-normal);
 	border-width: 1px;
 	border-style: solid;
 	margin: 10px;
@@ -11,5 +11,5 @@
 	display: inline-block;
 }
 .codeBlock::selection {
-	color: #ffa9ff;
+	color: var(--logo);
 }

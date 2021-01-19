@@ -1,17 +1,5 @@
-.jsMark,
-.tsMark {
-	font-weight: bolder;
-	background: none;
-}
-.jsMark {
-	color: #f0db4f;
-}
-.tsMark {
-	color: #3178c6;
-}
-
 .me {
-	color: #ffa9ff;
+	color: var(--logo);
 	font-family: "Gang of Three", Verdana, Arial;
 	font-size: 22px;
 }

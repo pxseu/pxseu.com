@@ -1,9 +1,9 @@
 .comment {
-	color: #fff;
-	text-decoration: underline #ffa9ff;
+	color: var(--font-normal);
+	text-decoration: underline var(--logo);
 	transition-duration: 0.3s;
 }
 .comment:hover {
-	color: #ffa9ff;
-	text-decoration: underline #fff;
+	color: var(--logo);
+	text-decoration: underline var(--font-normal);
 }
