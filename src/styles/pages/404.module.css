@@ -1,7 +1,7 @@
 .pathUrl {
 	display: block;
 	white-space: pre-wrap;
-	background-color: #303030;
+	background-color: var(--textboxes-background);
 	padding: 0.5rem;
 	border-radius: 0.5rem;
 	word-wrap: break-word;
@@ -13,18 +13,18 @@
 	-moz-appearance: none;
 	appearance: none;
 	padding: 1rem 1.5rem;
-	color: white;
+	color: var(--font-normal);
 	cursor: pointer;
 	outline: none;
 	border-radius: 100px;
-	border: 2px solid white;
+	border: 2px solid var(--border);
 	background: none;
 	transition-duration: 0.2s;
 	font-size: 16px;
 }
 
 .buttonNotFound:hover {
-	color: black;
-	border: 2px solid black;
-	background-color: white;
+	color: var(--font-normal);
+	border: 2px solid var(--border-hover);
+	background-color: var(--background-hover);
 }

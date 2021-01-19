@@ -2,7 +2,7 @@
 	z-index: 2;
 	cursor: pointer;
 	text-align: center;
-	color: #ffa9ff;
+	color: var(--logo);
 	font-size: 120px;
 	font-family: "Gang of Three", Verdana, Arial;
 	font-weight: normal;
@@ -20,7 +20,7 @@
 	display: inline-block;
 }
 .link {
-	color: white;
+	color: var(--font-normal);
 	text-decoration: none;
 	font-size: 30px;
 	transition: color 0.1s;
@@ -31,14 +31,13 @@
 	padding: 15px 20px;
 }
 .link:after {
-	background: none repeat scroll 0 0 transparent;
+	background: var(--font-normal);
 	bottom: 0;
 	content: "";
 	display: block;
 	height: 2px;
 	left: 50%;
 	position: absolute;
-	background: #fff;
 	transition: width 0.3s ease 0s, left 0.3s ease 0s;
 	width: 0;
 }
@@ -47,7 +46,7 @@
 	left: 0;
 }
 .link:hover {
-	color: #ffa9ff;
+	color: var(--logo);
 	top: -2px;
 }
 

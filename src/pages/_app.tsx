@@ -3,6 +3,7 @@ import Router from "next/router";
 import type { AppProps } from "next/app";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import "../styles/colors.css";
 import "../styles/global.css";
 
 Router.events.on("routeChangeStart", () => NProgress.start());

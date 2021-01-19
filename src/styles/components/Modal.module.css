@@ -8,7 +8,7 @@
 	padding: 50px;
 	z-index: 1000;
 	border-radius: 10px;
-	border: 1px solid #ffffff;
+	border: 1px solid var(--border);
 	text-align: center;
 	opacity: 1;
 	transition-duration: 0.3s;
@@ -20,7 +20,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: var(--overlay);
 	z-index: 1000;
 }
 
@@ -32,7 +32,7 @@
 	cursor: pointer;
 	font-weight: 300;
 	font-size: 20px;
-	background-color: rgba(255, 66, 66, 0.7);
+	background-color: var(--close);
 	color: white;
 	padding: 0px;
 	width: 25px;
@@ -42,7 +42,7 @@
 }
 
 .closeModal:hover {
-	background-color: #ff4242;
+	background-color: var(--close-hover);
 }
 .fade {
 	opacity: 0;

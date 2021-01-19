@@ -27,7 +27,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #ccc;
+	background-color: var(--slider-track);
 	-webkit-transition: 0.4s;
 	transition: 0.4s;
 }
@@ -43,10 +43,10 @@
 	transition: 0.4s;
 }
 .switchInput:checked + .slider {
-	background-color: #ffa9ff;
+	background-color: var(--logo);
 }
 .switchInput:focus + .slider {
-	box-shadow: 0 0 1px #ffa9ff;
+	box-shadow: 0 0 1px var(--logo);
 }
 .switchInput:checked + .slider:before {
 	-webkit-transform: translateX(26px);
