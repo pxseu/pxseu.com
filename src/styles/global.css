@@ -1,9 +1,9 @@
 body {
-	background-color: black;
+	background-color: var(--background);
 	font-family: "Roboto", Arial, Helvetica, sans-serif;
 	padding: 0;
 	margin: 0;
-	color: white;
+	color: var(--font-normal);
 	font-size: 20px;
 }
 
@@ -28,7 +28,7 @@ b {
 	padding: 0;
 	margin: 0;
 	position: fixed;
-	background-color: #000;
+	background-color: var(--background);
 	background-size: cover;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
@@ -52,15 +52,12 @@ h2 {
 }
 
 .link {
-	color: white;
+	color: var(--font-normal);
 	transition: color 0.1s;
-}
-.link:hover {
-	color: #ffa9ff;
 }
 
 .link {
-	color: white;
+	color: var(--font-normal);
 	text-decoration: none;
 	transition: color 0.1s;
 	cursor: pointer;
@@ -73,14 +70,13 @@ h2 {
 }
 
 .link:after {
-	background: none repeat scroll 0 0 transparent;
+	background: none repeat scroll 0 0 var(--font-normal);
 	bottom: 0;
 	content: "";
 	display: block;
 	height: 2px;
 	left: 50%;
 	position: absolute;
-	background: #fff;
 	transition: width 0.3s ease 0s, left 0.3s ease 0s;
 	width: 0;
 }
@@ -91,7 +87,7 @@ h2 {
 }
 
 .link:hover {
-	color: #ffa9ff;
+	color: var(--logo);
 	top: -2px;
 }
 
@@ -156,14 +152,14 @@ h2 {
 }
 
 ::-webkit-scrollbar-track {
-	background: #f1f1f1;
+	background: var(--scroll-track);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #888;
+	background: var(--scroll-thumb);
 	border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #555;
+	background: var(--scroll-thumb-hover);
 }

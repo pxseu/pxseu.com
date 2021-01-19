@@ -14,8 +14,8 @@
 	border: none;
 	width: calc(100% - 150px);
 	font-size: 17px;
-	background-color: #ffffff;
-	color: black;
+	background-color: var(--font-normal);
+	color: var(--background);
 	border-radius: 20px;
 	padding: 10px;
 }
@@ -31,11 +31,11 @@
 	padding: 0;
 	border: none;
 	font-size: 17px;
-	color: white;
+	color: var(--font-normal);
 	background: none;
 	padding: 10px;
 	border-style: solid;
-	border-color: white;
+	border-color: var(--border);
 	border-width: 0.1rem;
 	border-radius: 20px;
 	cursor: pointer;
@@ -43,13 +43,13 @@
 }
 
 .messageButton:hover {
-	color: black;
-	background-color: white;
-	border-color: black;
+	color: var(--font-normal-hover);
+	background-color: var(--background-hover);
+	border-color: var(--border-hover);
 }
 
 .messageButton:active {
-	box-shadow: 0px 5px 3px white;
+	box-shadow: 0px 5px 3px var(--shadow);
 }
 
 .messageButton:disabled {

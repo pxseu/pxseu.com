@@ -1,0 +1,29 @@
+:root {
+	--background: #000000;
+	--font-normal: #ffffff;
+
+	--background-hover: #ffffff;
+	--font-normal-hover: #000000;
+
+	--logo: #ffaaff;
+
+	--scroll-track: #7c7c7c;
+	--scroll-thumb: #888888;
+	--scroll-thumb-hover: #555555;
+
+	--slider-track: #cccccc;
+
+	--border: #ffffff;
+	--border-hover: #000000;
+
+	--overlay: rgba(0, 0, 0, 0.7);
+
+	--close: #fd4a4acc;
+	--close-hover: #ff4242;
+
+	--navbar: rgba(0, 0, 0, 0.5);
+
+	--shadow: #ffffff;
+
+	--textboxes-background: #303030;
+}

@@ -7,5 +7,5 @@
 	border-style: double;
 	border-width: 1px;
 	border-color: white;
-	background-color: black;
+	background-color: var(--background);
 }
