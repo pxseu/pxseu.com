@@ -1,6 +1,7 @@
 {
 	"name": "www.pxseu.com",
 	"short_name": "www.pxseu.com",
+	"start_url": "https://www.pxseu.com",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png?v=2",
@@ -11,6 +12,12 @@
 			"src": "/android-chrome-512x512.png?v=2",
 			"sizes": "512x512",
 			"type": "image/png"
+		},
+		{
+			"src": "/android-chrome-512x512.png?v=2",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
 		}
 	],
 	"theme_color": "#2fbaff",
