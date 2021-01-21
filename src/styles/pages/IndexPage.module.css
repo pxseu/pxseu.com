@@ -1,12 +1,9 @@
 .logo {
-	z-index: 2;
-	cursor: pointer;
-	text-align: center;
-	color: var(--logo);
-	font-size: 120px;
-	font-family: "Gang of Three", Verdana, Arial;
-	font-weight: normal;
-	margin: 0;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%);
+	width: 300px;
+	height: 120px;
 }
 .links {
 	z-index: 2;

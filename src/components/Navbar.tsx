@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useState, useEffect, memo, useRef } from "react";
+import LogoTxt from "../components/LogoTxt";
 import style from "../styles/components/Navbar.module.css";
 
 interface NavElsProps {
@@ -90,14 +91,15 @@ const Navbar = () => {
 	return (
 		<>
 			<header className={`noselect ${style.navbar}`}>
-				<Link href="/">
-					<p className={style.logoNavbar}>pxseu</p>
-				</Link>
+				<div className={style.logo}>
+					<Link href="/">
+						<a>
+							<LogoTxt />
+						</a>
+					</Link>
+				</div>
 				{smallScreen ? (
-					<MenuBorger
-						canHandleClick={!navOpen && !navToggle}
-						handleClick={() => setNavOpen(true)}
-					/>
+					<MenuBorger canHandleClick={!navOpen && !navToggle} handleClick={() => setNavOpen(true)} />
 				) : (
 					<NavElements />
 				)}
