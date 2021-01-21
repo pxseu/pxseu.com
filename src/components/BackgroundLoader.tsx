@@ -62,8 +62,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 	const loopInactive = () => {
 		const titleEl = document.getElementsByTagName("title")[0];
 		if (titleEl) {
-			titleEl.innerHTML =
-				TitleTextInactive[Math.floor(Math.random() * TitleTextInactive.length)];
+			titleEl.innerHTML = TitleTextInactive[Math.floor(Math.random() * TitleTextInactive.length)];
 		}
 	};
 	const darlingCodeChecker = (event: KeyboardEvent) => {
@@ -123,19 +122,20 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<meta name="keywords" content="pxseu, poseuxck" />
 				<meta name="author" content="pxseu" />
 				<meta name="robots" content="index, follow" />
-				<link rel="manifest" href="/manifest.json" />
+				<link rel="manifest" href="/manifest.json?v=2" />
 				{/* End Main Meta */}
 
 				{/* Icons */}
-				<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-				<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#656667" />
+				<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
+				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
+				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2" />
+				<link rel="shortcut icon" href="/favicon.ico?v=2" />
+				<link rel="mask-icon" href="/safari-pinned-tab.svg?v=2" color="#2fbaff" />
 				{/* End Icons */}
 
 				{/* Colors */}
-				<meta name="msapplication-TileColor" content="#ffa9ff" />
-				<meta name="theme-color" content="#ffa9ff" />
+				<meta name="msapplication-TileColor" content="#2fbaff" />
+				<meta name="theme-color" content="#2fbaff" />
 				{/* End Colors */}
 
 				{/* Open Graph */}
@@ -144,10 +144,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<meta property="og:locale" content="en_US" />
 				<meta property="og:site_name" content="pxseu.com" />
 				<meta property="og:title" content="pxseu.com" />
-				<meta
-					property="og:image"
-					content="https://www.pxseu.com/android-chrome-512x512.png"
-				/>
+				<meta property="og:image" content="https://www.pxseu.com/android-chrome-512x512.png?v=2" />
 				{/* End Open Graph */}
 
 				{/* Twitter */}
@@ -155,10 +152,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<meta name="twitter:site" content="@pxseu" />
 				<meta name="twitter:title" content="pxseu.com" />
 				<meta name="twitter:description" content="Pxseu's website!" />
-				<meta
-					name="twitter:image"
-					content="https://www.pxseu.com/android-chrome-512x512.png"
-				/>
+				<meta name="twitter:image" content="https://www.pxseu.com/android-chrome-512x512.png?v=2" />
 				{/* End Twitter */}
 
 				{/* Misc */}
@@ -166,10 +160,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 					name="viewport"
 					content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8"
 				/>
-				<meta
-					name="google-site-verification"
-					content="azPHAHBpTuJ-8stcPE_LX6-GNwVGjzp5_V7E3KCcmMk"
-				/>
+				<meta name="google-site-verification" content="azPHAHBpTuJ-8stcPE_LX6-GNwVGjzp5_V7E3KCcmMk" />
 				{/* End Misc */}
 			</Head>
 			{props.children}
