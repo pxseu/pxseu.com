@@ -1,11 +1,14 @@
 import React from "react";
 import Link from "next/link";
+import Logo from "../components/LogoTxt"
 import IndexpageLayout from "../components/IndexpageLayout";
 import styles from "../styles/pages/IndexPage.module.css";
 
 const Index = (): JSX.Element => (
 	<IndexpageLayout>
-		<h1 className={`${styles.logo} noselect`}>pxseu</h1>
+		<div className={styles.logo}>
+			<Logo />
+		</div>
 
 		<main className={styles.links}>
 			<p className={styles.linksParent}>
