@@ -101,6 +101,25 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 		document.addEventListener("visibilitychange", tabChanged);
 		const localParts = localStorage.getItem(particlesSwitchName);
 
+		/* Disables all errors for production */
+		if (process.env.NODE_ENV == "production") {
+			// @ts-expect-error eqeq
+			window.console = {
+				log: () => {
+					/*  */
+				},
+				info: () => {
+					/*  */
+				},
+				warn: () => {
+					/*  */
+				},
+				error: () => {
+					/*  */
+				},
+			};
+		}
+
 		localParts
 			? setParticlesSwitch(JSON.parse(localParts.toLowerCase()))
 			: localStorage.setItem(particlesSwitchName, "true");
@@ -156,10 +175,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				{/* End Twitter */}
 
 				{/* Misc */}
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8"
-				/>
+				<meta name="viewport" content="width=device-width, initial-scale=0.8" />
 				<meta name="google-site-verification" content="azPHAHBpTuJ-8stcPE_LX6-GNwVGjzp5_V7E3KCcmMk" />
 				{/* End Misc */}
 			</Head>
