@@ -4,6 +4,11 @@
 	transform: translate(-50%);
 	width: 300px;
 	height: 120px;
+	text-align: center;
+}
+
+.logo > img {
+	display: inline-block;
 }
 .links {
 	z-index: 2;
