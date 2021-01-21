@@ -2,7 +2,7 @@ import React from "react";
 
 const LogoTxt = (): JSX.Element => (
 	<>
-		<img className="logo" src="/assets/svg/logo/logo-txt.svg" />
+		<img className="logo noselect" src="/assets/svg/logo/logo-txt.svg" />
 		<style jsx>{`
 			.logo {
 				max-width: 100%;
