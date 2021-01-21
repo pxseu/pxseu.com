@@ -6,7 +6,7 @@ import Age from "../components/Age";
 import styles from "../styles/pages/About.module.css";
 
 const About = (): JSX.Element => (
-	<DefaultLayout title="About me!" image="/assets/svg/logo/logo-bg.svg" mediaType="image">
+	<DefaultLayout title="About me!" image="/images/pfp.png?v=3" mediaType="image">
 		<h2>
 			Hey <Twemoji emoji="👋" />
 		</h2>
