@@ -10,20 +10,12 @@ const HallOfFame = (): JSX.Element => (
 			</a>
 		</p>
 		<p>
-			<a
-				className="link"
-				href="https://twitter.com/milkeusz"
-				target="_blank"
-				rel="noreferrer">
+			<a className="link" href="https://twitter.com/milkeusz" target="_blank" rel="noreferrer">
 				Milki | nothing tbh
 			</a>
 		</p>
 		<p>
-			<a
-				className="link"
-				href="https://twitter.com/rubinstagram"
-				target="_blank"
-				rel="noreferrer">
+			<a className="link" href="https://twitter.com/rubinstagram" target="_blank" rel="noreferrer">
 				Sylwia | gave her own opinion about this websites design
 			</a>
 		</p>
@@ -33,11 +25,7 @@ const HallOfFame = (): JSX.Element => (
 			</a>
 		</p>
 		<p>
-			<a
-				className="link"
-				href="https://twitter.com/Apxllooo"
-				target="_blank"
-				rel="noreferrer">
+			<a className="link" href="https://twitter.com/Apxllooo" target="_blank" rel="noreferrer">
 				Apx | sent minecraft mods
 			</a>
 		</p>
@@ -59,6 +47,11 @@ const HallOfFame = (): JSX.Element => (
 		<p>
 			<a className="link" href="https://RedBird16.com" target="_blank" rel="noreferrer">
 				Red_Prez16 | coder @ RedBird16.com
+			</a>
+		</p>
+		<p>
+			<a className="link" href="https://ririxi.dev/" target="_blank" rel="noreferrer">
+				ririxi | cute furry
 			</a>
 		</p>
 		<p className={styles.comment}>
