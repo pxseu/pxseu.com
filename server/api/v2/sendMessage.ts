@@ -66,7 +66,7 @@ export const isValidMessage = async (
 		return;
 	}
 
-	if (body.message.trim().length > 2048) {
+	if (body.message.trim().length > 2000) {
 		const message = "Message is too large!";
 		res.status(400).json({
 			status: 400,
