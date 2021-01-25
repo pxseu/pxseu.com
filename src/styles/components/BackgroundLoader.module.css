@@ -3,9 +3,7 @@
 	bottom: 0;
 	left: 0;
 	z-index: 5;
-	background-color: rgba(44, 44, 44, 0.2);
 	width: 80px;
-	/* padding: 10px; */
 	border-radius: 20px;
 }
 

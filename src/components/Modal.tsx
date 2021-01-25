@@ -31,7 +31,7 @@ const Modal = ({
 					}}>
 					x
 				</div>
-				{ModalText}
+				<div className={styles.modalContent}>{ModalText}</div>
 			</div>
 		</>,
 		document.getElementById("portal") ?? document.body

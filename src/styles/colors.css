@@ -26,4 +26,6 @@
 	--shadow: #ffffff;
 
 	--textboxes-background: #303030;
+
+	--clickable-hover-shadow: 0 4px 38px rgba(255, 255, 255, 0.3), 0 6px 19px rgba(255, 255, 255, 0.22);
 }
