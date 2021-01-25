@@ -24,7 +24,8 @@
 }
 
 .buttonNotFound:hover {
-	color: var(--font-normal);
+	color: var(--font-normal-hover);
 	border: 2px solid var(--border-hover);
 	background-color: var(--background-hover);
+	box-shadow: var(--clickable-hover-shadow);
 }

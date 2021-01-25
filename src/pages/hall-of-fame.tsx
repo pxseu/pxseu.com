@@ -45,11 +45,6 @@ const HallOfFame = (): JSX.Element => (
 			</a>
 		</p>
 		<p>
-			<a className="link" href="https://RedBird16.com" target="_blank" rel="noreferrer">
-				Red_Prez16 | coder @ RedBird16.com
-			</a>
-		</p>
-		<p>
 			<a className="link" href="https://ririxi.dev/" target="_blank" rel="noreferrer">
 				ririxi | cute furry
 			</a>
