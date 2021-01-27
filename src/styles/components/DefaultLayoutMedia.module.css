@@ -1,0 +1,80 @@
+.app {
+	top: 50px;
+	position: relative;
+	width: 480px;
+	animation: fadeIn ease 1.5s;
+	z-index: 2;
+}
+
+@media screen and (min-width: 480px) {
+	.app {
+		transform: translate(-50%);
+		left: 50%;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	.app {
+		width: 700px;
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.app {
+		width: 1200px;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.bottomPadding {
+	padding: 20px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.row {
+	flex: 1;
+	display: inline-block;
+}
+
+.imgrow {
+	height: 20%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.imgrow * {
+	padding: 10px;
+	width: 60%;
+	border-radius: 20px;
+}
+
+@media screen and (min-width: 800px) {
+	.container {
+		flex-direction: row;
+	}
+	.imgrow * {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.imgrow * {
+		width: 80%;
+	}
+}

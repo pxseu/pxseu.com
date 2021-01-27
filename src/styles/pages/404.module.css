@@ -1,0 +1,31 @@
+.pathUrl {
+	display: block;
+	white-space: pre-wrap;
+	background-color: var(--textboxes-background);
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	word-wrap: break-word;
+}
+
+.buttonNotFound {
+	position: relative;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	padding: 1rem 1.5rem;
+	color: var(--font-normal);
+	cursor: pointer;
+	outline: none;
+	border-radius: 100px;
+	border: 2px solid var(--border);
+	background: none;
+	transition-duration: 0.2s;
+	font-size: 16px;
+}
+
+.buttonNotFound:hover {
+	color: var(--font-normal-hover);
+	border: 2px solid var(--border-hover);
+	background-color: var(--background-hover);
+	box-shadow: var(--clickable-hover-shadow);
+}

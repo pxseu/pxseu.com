@@ -1,0 +1,45 @@
+.app {
+	top: 200px;
+	position: relative;
+	width: 400px;
+	animation: fadeIn ease 1.5s;
+	z-index: 2;
+}
+
+@media screen and (min-width: 400px) {
+	.app {
+		transform: translate(-50%);
+		left: 50%;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.app {
+		width: 480px;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	.app {
+		width: 700px;
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.app {
+		width: 1200px;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.bottomPadding {
+	padding: 20px;
+}

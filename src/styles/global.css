@@ -1,0 +1,165 @@
+body {
+	background-color: var(--background);
+	font-family: "Roboto", Arial, Helvetica, sans-serif;
+	padding: 0;
+	margin: 0;
+	color: var(--font-normal);
+	font-size: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b {
+	font-family: "Roboto Bold", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.particles-js {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	padding: 0;
+	margin: 0;
+	position: fixed;
+	background-color: var(--background);
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+
+.center {
+	padding: 2px;
+	position: relative;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%);
+	text-align: center;
+	align-items: center;
+	cursor: default;
+}
+
+p,
+h2 {
+	padding: 5px;
+	margin: 5px;
+}
+
+.link {
+	color: var(--font-normal);
+	transition: color 0.1s;
+}
+
+.link {
+	color: var(--font-normal);
+	text-decoration: none;
+	transition: color 0.1s;
+	cursor: pointer;
+	position: relative;
+	top: 0;
+	transition: top ease 0.2s, color 0.1s;
+	display: inline-block;
+	padding: 0px 20px;
+	position: relative;
+}
+
+.link:after {
+	background: none repeat scroll 0 0 var(--font-normal);
+	bottom: 0;
+	content: "";
+	display: block;
+	height: 2px;
+	left: 50%;
+	position: absolute;
+	transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	width: 0;
+}
+
+.link:hover:after {
+	width: 100%;
+	left: 0;
+}
+
+.link:hover {
+	color: var(--logo);
+	top: -2px;
+}
+
+.back {
+	padding-top: 12px;
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#nprogress .spinner {
+	top: 20px;
+	left: 0px;
+}
+
+.hidden {
+	display: none;
+}
+
+.visually_hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+@font-face {
+	font-family: "Gang of Three";
+	src: url("/font/go3v2.ttf");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/font/Roboto-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Roboto Bold";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("/font/Roboto-Bold.ttf");
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+	border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--scroll-thumb);
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--scroll-thumb-hover);
+}

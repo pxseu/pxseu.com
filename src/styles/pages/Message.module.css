@@ -1,0 +1,57 @@
+.messageInput:focus,
+.messageButton:focus {
+	outline: none;
+}
+
+.messageInput {
+	position: relative;
+	margin: 0;
+	margin-top: 20px;
+	margin-left: 10px;
+	height: calc(80% - 10);
+	transform: translate(0, -50%);
+	padding: 0;
+	border: none;
+	width: calc(100% - 150px);
+	font-size: 17px;
+	background-color: var(--font-normal);
+	color: var(--background);
+	border-radius: 20px;
+	padding: 10px;
+}
+
+.messageButton {
+	position: relative;
+	margin: 0;
+	margin-top: 20px;
+	margin-left: 8px;
+	height: calc(80% - 10);
+	transform: translate(0, -50%);
+	width: 100px;
+	padding: 0;
+	border: none;
+	font-size: 17px;
+	color: var(--font-normal);
+	background: none;
+	padding: 10px;
+	border-style: solid;
+	border-color: var(--border);
+	border-width: 0.1rem;
+	border-radius: 20px;
+	cursor: pointer;
+	transition-duration: 0.2s;
+}
+
+.messageButton:hover {
+	color: var(--font-normal-hover);
+	background-color: var(--background-hover);
+	border-color: var(--border-hover);
+}
+
+.messageButton:active {
+	box-shadow: 0px 5px 3px var(--shadow);
+}
+
+.messageButton:disabled {
+	cursor: not-allowed;
+}

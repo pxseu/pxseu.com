@@ -1,0 +1,104 @@
+.navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 60px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--navbar);
+	transition: all 0.7s ease-in;
+	z-index: 3;
+	backdrop-filter: blur(5px);
+}
+
+.logo {
+	height: 70px;
+	margin-left: 20px;
+}
+
+.navOverlay {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 3;
+	left: -100%;
+	top: 0;
+	background-color: var(--background);
+	background-color: var(--overlay);
+	overflow-x: hidden;
+	transition: 0.4s;
+	backdrop-filter: blur(5px);
+}
+
+.showNav {
+	left: 0;
+}
+
+.navOverlayContent {
+	position: relative;
+	left: 50%;
+	top: 25%;
+	width: 80%;
+	text-align: center;
+	margin-top: 30px;
+	transform: translate(-50%);
+}
+.navOverlay a {
+	padding: 8px;
+	text-decoration: none;
+	font-size: 36px;
+	color: var(--font-normal);
+	display: block;
+	transition: 0.3s;
+}
+
+.navOverlay a:hover,
+.navOverlay a:focus {
+	color: var(--font-normal);
+}
+
+.navOverlay .closebtn {
+	position: absolute;
+	top: 20px;
+	right: 45px;
+	font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+	.navOverlay a {
+		font-size: 20px;
+	}
+	.navOverlay .closebtn {
+		font-size: 40px;
+		top: 15px;
+		right: 35px;
+	}
+}
+
+.menuContainer {
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 15px;
+}
+
+.menuContainer > .bar1,
+.menuContainer > .bar2,
+.menuContainer > .bar3 {
+	width: 35px;
+	height: 5px;
+	background-color: var(--font-normal);
+	margin: 6px 0;
+	transition: 0.4s;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

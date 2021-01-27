@@ -1,0 +1,59 @@
+.logo {
+	position: relative;
+	left: 50%;
+	transform: translate(-50%);
+	width: 500px;
+	height: 180px;
+	text-align: center;
+}
+
+.logo > img {
+	display: inline-block;
+}
+.links {
+	z-index: 2;
+	cursor: default;
+	text-align: center;
+	padding: 10px;
+}
+.linksParent {
+	cursor: default;
+	text-align: center;
+	display: inline-block;
+}
+.link {
+	color: var(--font-normal);
+	text-decoration: none;
+	font-size: 30px;
+	transition: color 0.1s;
+	cursor: pointer;
+	position: relative;
+	top: 0;
+	transition: top ease 0.2s, color 0.1s;
+	padding: 15px 20px;
+}
+.link:after {
+	background: var(--font-normal);
+	bottom: 0;
+	content: "";
+	display: block;
+	height: 2px;
+	left: 50%;
+	position: absolute;
+	transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	width: 0;
+}
+.link:hover:after {
+	width: 100%;
+	left: 0;
+}
+.link:hover {
+	color: var(--logo);
+	top: -2px;
+}
+
+@media screen and (min-width: 600px) {
+	.logo {
+		font-size: 150px;
+	}
+}

@@ -1,0 +1,9 @@
+.comment {
+	color: var(--font-normal);
+	text-decoration: underline var(--logo);
+	transition-duration: 0.3s;
+}
+.comment:hover {
+	color: var(--logo);
+	text-decoration: underline var(--font-normal);
+}
