@@ -11,7 +11,8 @@
 	background-color: var(--navbar);
 	transition: all 0.7s ease-in;
 	z-index: 3;
-	backdrop-filter: blur(5px);
+	backdrop-filter: blur(1px);
+	border-bottom: 1px outset var(--navbar);
 }
 
 .logo {
@@ -30,7 +31,7 @@
 	background-color: var(--overlay);
 	overflow-x: hidden;
 	transition: 0.4s;
-	backdrop-filter: blur(5px);
+	backdrop-filter: blur(2px);
 }
 
 .showNav {
@@ -62,6 +63,16 @@
 
 .navOverlay .closebtn {
 	position: absolute;
+	color: var(--close);
+	top: 20px;
+	right: 45px;
+	font-size: 60px;
+	cursor: pointer;
+}
+
+.navOverlay .closebtn:hover {
+	position: absolute;
+	color: var(--close-hover);
 	top: 20px;
 	right: 45px;
 	font-size: 60px;
