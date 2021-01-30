@@ -6,6 +6,7 @@
 	--font-normal-hover: #000000;
 
 	--logo: #2fbaff;
+	--logo-grad: linear-gradient(to right, #2b99ff 0%, #33e7ff 46.875%, #6bff37 100%);
 
 	--scroll-track: #7c7c7c;
 	--scroll-thumb: #888888;
