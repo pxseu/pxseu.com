@@ -1,8 +1,8 @@
-import React from "react";
-import Router from "next/router";
 import type { AppProps } from "next/app";
+import Router from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import React from "react";
 import "../styles/colors.css";
 import "../styles/global.css";
 

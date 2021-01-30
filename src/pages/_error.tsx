@@ -7,7 +7,7 @@ import DefaultLayout from "../components/DefaultLayout";
 import styles from "../styles/pages/Error.module.css";
 
 const Error: NextPage<ErrorProps> = ({ statusCode }: ErrorProps) => {
-	if (statusCode == 200) {
+	if (statusCode == 404) {
 		return <CustomNotFound />;
 	}
 
@@ -29,7 +29,17 @@ const Error: NextPage<ErrorProps> = ({ statusCode }: ErrorProps) => {
 };
 
 Error.getInitialProps = ({ res, err }) => {
-	const statusCode = res ? res.statusCode : err ? err.statusCode ?? 0 : 404;
+	const statusCode = res
+		? res.statusCode == 200
+			? (() => {
+					res.statusCode = 404;
+					return 404;
+			  })()
+			: res.statusCode
+		: err
+		? err.statusCode ?? 500
+		: 404;
+
 	return { statusCode };
 };
 
