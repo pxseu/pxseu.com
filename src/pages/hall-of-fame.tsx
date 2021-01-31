@@ -45,10 +45,10 @@ const HallOfFame = (): JSX.Element => (
 		{/* If you see this i don't want to ask you because it's past you
 		and yeah i don't want to make you unhappy 
 		<PersonInHof person="Vek" desc="told me about security.txt" url="https://www.vektrix.cc" emoji="🔐" /> */}
-		<PersonInHof person="Amuq" desc="DDOS'ed my website" url="https://twitter.com/Amuq16" emoji="💥" />
+		<PersonInHof person="amuq" desc="DDOS'ed my website" url="https://twitter.com/Amuq16" emoji="💥" />
 		<PersonInHof person="Apx" desc="sent Minecraft mods" url="https://twitter.com/Apxllooo" emoji="🛠" />
+		<PersonInHof person="milki" desc="my little pogchamp" url="https://twitter.com/milkeusz" emoji="💗" />
 		<PersonInHof person="crash" desc="przekonał mnie" url="https://twitter.com/crash7_" emoji="😳" />
-		<PersonInHof person="Milki" desc="nothing special" url="https://twitter.com/milkeusz" emoji="😎" />
 		<PersonInHof person="JelNiSław" desc="menel" url="https://jelnislaw.ml/" emoji="😁" />
 		<PersonInHof person="ririxi" desc="cute furry" url="https://ririxi.dev/" emoji="😍" />
 		<p className={styles.comment}>
