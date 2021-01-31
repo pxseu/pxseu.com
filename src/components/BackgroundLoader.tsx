@@ -141,7 +141,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<meta name="keywords" content="pxseu, poseuxck" />
 				<meta name="author" content="pxseu" />
 				<meta name="robots" content="index, follow" />
-				<link rel="manifest" href="/manifest.json?v=2" />
+				<link rel="manifest" href="/manifest.json?v=3" />
 				{/* End Main Meta */}
 
 				{/* Icons */}
