@@ -7,7 +7,7 @@ import styles from "../styles/pages/About.module.css";
 
 const About = (): JSX.Element => (
 	<>
-		<DefaultLayoutMedia title="About me!" image="/images/pfp.png?v=3" mediaType="image">
+		<DefaultLayoutMedia title="About me!" image="/images/pfp.png?v=4" mediaType="image">
 			<h2>
 				Hey <Twemoji emoji="👋" />
 			</h2>
