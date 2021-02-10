@@ -1,4 +1,4 @@
-.pathUrl {
+.codeBlock {
 	display: block;
 	white-space: pre-wrap;
 	background-color: var(--textboxes-background);
@@ -7,7 +7,7 @@
 	word-wrap: break-word;
 }
 
-.buttonNotFound {
+.buttonGoBack {
 	position: relative;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -23,7 +23,7 @@
 	font-size: 16px;
 }
 
-.buttonNotFound:hover {
+.buttonGoBack:hover {
 	color: var(--font-normal-hover);
 	border: 2px solid var(--border-hover);
 	background-color: var(--background-hover);

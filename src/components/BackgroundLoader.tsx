@@ -141,20 +141,20 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<meta name="keywords" content="pxseu, poseuxck" />
 				<meta name="author" content="pxseu" />
 				<meta name="robots" content="index, follow" />
-				<link rel="manifest" href="/manifest.json?v=2" />
+				<link rel="manifest" href="/manifest.json?v=4" />
 				{/* End Main Meta */}
 
 				{/* Icons */}
-				<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
-				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
-				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2" />
-				<link rel="shortcut icon" href="/favicon.ico?v=2" />
-				<link rel="mask-icon" href="/safari-pinned-tab.svg?v=2" color="#2fbaff" />
+				<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
+				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=4" />
+				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=4" />
+				<link rel="shortcut icon" href="/favicon.ico?v=4" />
+				<link rel="mask-icon" href="/safari-pinned-tab.svg?v=4" color="#F52F79" />
 				{/* End Icons */}
 
 				{/* Colors */}
-				<meta name="msapplication-TileColor" content="#2fbaff" />
-				<meta name="theme-color" content="#2fbaff" />
+				<meta name="msapplication-TileColor" content="#F52F79" />
+				<meta name="theme-color" content="#F52F79" />
 				{/* End Colors */}
 
 				{/* Open Graph */}
@@ -163,7 +163,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<meta property="og:locale" content="en_US" />
 				<meta property="og:site_name" content="pxseu.com" />
 				<meta property="og:title" content="pxseu.com" />
-				<meta property="og:image" content="https://www.pxseu.com/android-chrome-512x512.png?v=2" />
+				<meta property="og:image" content="https://www.pxseu.com/android-chrome-512x512.png?v=4" />
 				{/* End Open Graph */}
 
 				{/* Twitter */}
@@ -171,7 +171,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				<meta name="twitter:site" content="@pxseu" />
 				<meta name="twitter:title" content="pxseu.com" />
 				<meta name="twitter:description" content="Pxseu's website!" />
-				<meta name="twitter:image" content="https://www.pxseu.com/android-chrome-512x512.png?v=2" />
+				<meta name="twitter:image" content="https://www.pxseu.com/android-chrome-512x512.png?v=4" />
 				{/* End Twitter */}
 
 				{/* Misc */}

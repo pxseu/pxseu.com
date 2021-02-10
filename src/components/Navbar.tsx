@@ -106,7 +106,7 @@ const Navbar = () => {
 			</header>
 			{navToggle && (
 				<div className={`${style.navOverlay} noselect`} ref={navOverlayRef}>
-					<a className={`link ${style.closebtn}`} onClick={() => setNavOpen(false)}>
+					<a className={`${style.closebtn}`} onClick={() => setNavOpen(false)}>
 						&times;
 					</a>
 
