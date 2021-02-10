@@ -2,7 +2,7 @@ name: Build website NEXT.JS
 
 on:
     push:
-        branches: [master]
+        branches: [senpai]
 
 jobs:
     build:

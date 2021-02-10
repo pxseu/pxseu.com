@@ -7,3 +7,7 @@
 	color: var(--logo);
 	text-decoration: underline var(--font-normal);
 }
+
+.spacer {
+	color: var(--logo);
+}
