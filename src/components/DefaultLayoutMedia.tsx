@@ -13,14 +13,7 @@ type DefaultLayoutInput = {
 	mediaType?: "image" | "video";
 };
 
-const DefaultLayoutImage = ({
-	title,
-	children,
-	titleOnClick,
-	image,
-	video,
-	mediaType,
-}: DefaultLayoutInput) => (
+const DefaultLayoutImage = ({ title, children, titleOnClick, image, video, mediaType }: DefaultLayoutInput) => (
 	<>
 		<Head>
 			<title>{title}</title>
@@ -41,9 +34,7 @@ const DefaultLayoutImage = ({
 				<hr />
 				<div className={styles.container}>
 					<div className={`${styles.imgrow} ${styles.row}`}>
-						{mediaType == "image" && (
-							<img draggable="false" className="center" src={image} alt={"Image"} />
-						)}
+						{mediaType == "image" && <img draggable="false" className="center" src={image} alt={"Image"} />}
 						{mediaType == "video" && (
 							<video
 								className="center"

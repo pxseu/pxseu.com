@@ -5,19 +5,20 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/components/Age.module.css";
 
-const DEFAULT_VALUE = "0".repeat(12);
+const DATE_LENGTH = 12;
+const DEFAULT_VALUE = "0".repeat(DATE_LENGTH);
 
-type props = {
+type AgeProps = {
 	timestamp: number;
 };
 
 const getDate = (timestamp: number): string => {
 	let time = new Date().getTime() - new Date(timestamp).getTime();
 	time /= 1000 * 60 * 60 * 24 * 365.25;
-	return time.toString().substring(0, 12);
+	return time.toString().substring(0, DATE_LENGTH);
 };
 
-const Age = ({ timestamp }: props): JSX.Element => {
+const Age = ({ timestamp }: AgeProps): JSX.Element => {
 	const [age, setAge] = useState(DEFAULT_VALUE);
 
 	useEffect(() => {

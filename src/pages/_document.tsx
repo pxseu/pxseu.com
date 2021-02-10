@@ -1,12 +1,5 @@
+import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from "next/document";
 import React from "react";
-import Document, {
-	Html,
-	Head,
-	Main,
-	NextScript,
-	DocumentContext,
-	DocumentInitialProps,
-} from "next/document";
 
 class MyDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
@@ -16,7 +9,7 @@ class MyDocument extends Document {
 
 	render(): JSX.Element {
 		return (
-			<Html lang="en">
+			<Html lang="en" className="HELL-YEAH-BABY-CSS">
 				<Head />
 				<body>
 					<noscript

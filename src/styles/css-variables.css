@@ -5,7 +5,8 @@
 	--background-hover: #ffffff;
 	--font-normal-hover: #000000;
 
-	--logo: #2fbaff;
+	--logo: #F52F79;
+	--logo-grad: linear-gradient(to right, #FF2B2B 0%, #E337FF 100%);
 
 	--scroll-track: #7c7c7c;
 	--scroll-thumb: #888888;
