@@ -43,7 +43,7 @@
 		"@types/node-fetch": "^2.5.8",
 		"@types/nprogress": "^0.2.0",
 		"@types/react": "^17.0.2",
-		"@types/react-dom": "^17.0.0",
+		"@types/react-dom": "^17.0.1",
 		"@types/twemoji": "^12.1.1",
 		"@typescript-eslint/eslint-plugin": "^4.16.1",
 		"@typescript-eslint/parser": "^4.15.2",
