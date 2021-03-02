@@ -46,7 +46,7 @@
 		"@types/react-dom": "^17.0.0",
 		"@types/twemoji": "^12.1.1",
 		"@typescript-eslint/eslint-plugin": "^4.16.1",
-		"@typescript-eslint/parser": "^4.15.2",
+		"@typescript-eslint/parser": "^4.16.1",
 		"eslint": "^7.21.0",
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-react": "^7.21.5",
