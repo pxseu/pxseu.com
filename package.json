@@ -24,7 +24,7 @@
 		"morgan": "^1.10.0",
 		"next": "10.0.7",
 		"next-pwa": "^5.0.5",
-		"next-sitemap": "^1.5.8",
+		"next-sitemap": "^1.5.10",
 		"nprogress": "^0.2.0",
 		"react": "16.14.0",
 		"react-device-detect": "^1.14.0",
