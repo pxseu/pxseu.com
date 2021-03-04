@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { MessageBuilder, Webhook } from "webhook-discord";
 import { DEV_MODE, isBlacklisted, NOTE, sendMessageLimiter } from "..";
 import { RequestWithUser } from "../../../express";
-import AuthKeyDb, { apiUser } from "../../db/models/auth_key";
+import AuthKeyDb from "../../db/models/auth_key";
 
 const AVATAR = "https://cdn.pxseu.com/assets/pfp.gif?v=2";
 
@@ -40,20 +40,8 @@ export const sendMessage = async (req: RequestWithUser, res: Response): Promise<
 	});
 };
 
-export const isValidMessage = async (
-	req: RequestWithUser,
-	res: Response,
-	next: NextFunction
-): Promise<void> => {
+export const isValidMessage = async (req: RequestWithUser, res: Response, next: NextFunction): Promise<void> => {
 	const body: { message: string } = await req.body;
-
-	const AuthKey = extractToken(req);
-
-	const apiKeyFound = (await AuthKeyDb.findOne({
-		auth_key: AuthKey,
-	})) as apiUser;
-
-	console.log(apiKeyFound);
 
 	if (body.message == undefined || body.message.trim() == "") {
 		const message = "Cannot send empty message!";
@@ -77,10 +65,18 @@ export const isValidMessage = async (
 		return;
 	}
 
-	if (apiKeyFound) {
-		req.user = apiKeyFound.user;
-		next();
-		return;
+	const AuthKey = extractToken(req);
+
+	if (AuthKey) {
+		const apiKeyFound = await AuthKeyDb.findOne({
+			auth_key: AuthKey,
+		});
+
+		if (apiKeyFound) {
+			req.user = apiKeyFound.user;
+			next();
+			return;
+		}
 	}
 
 	if (DEV_MODE) {

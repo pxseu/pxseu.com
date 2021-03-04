@@ -17,4 +17,4 @@ const serverSchema = new Schema({
 	},
 });
 
-export default mongoose.model("auth_key_api", serverSchema);
+export default mongoose.model<apiUser>("auth_key_api", serverSchema);
