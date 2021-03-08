@@ -5,8 +5,8 @@
 	--background-hover: #ffffff;
 	--font-normal-hover: #000000;
 
-	--logo: #F52F79;
-	--logo-grad: linear-gradient(to right, #FF2B2B 0%, #E337FF 100%);
+	--logo: #f52f79;
+	--logo-grad: linear-gradient(to right, #ff2b2b 0%, #e337ff 100%);
 
 	--scroll-track: #7c7c7c;
 	--scroll-thumb: #888888;
@@ -29,4 +29,6 @@
 	--textboxes-background: #303030;
 
 	--clickable-hover-shadow: 0 4px 38px rgba(255, 255, 255, 0.3), 0 6px 19px rgba(255, 255, 255, 0.22);
+
+	--default-font-family: "Roboto", Arial, Helvetica, sans-serif;
 }

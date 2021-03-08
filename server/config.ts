@@ -3,6 +3,14 @@ export const rewrites = [
 		req: "/bio",
 		res: "/about",
 	},
+	{
+		req: "/msg",
+		res: "/other/message",
+	},
+	{
+		req: "/%F0%9F%92%97",
+		res: "https://ririxi.dev/",
+	},
 ];
 
 export const blacklist = [
