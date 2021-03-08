@@ -7,11 +7,7 @@ const Contact = (): JSX.Element => (
 	<DefaultLayout title={"Contact / Socials"}>
 		<p>Bellow are some socials you can find me on!</p>
 		<p>
-			<a
-				className="link"
-				href="mailto:contact.pxseu@gmail.com"
-				target="_blank"
-				rel="noreferrer">
+			<a className="link" href="mailto:contact.pxseu@gmail.com" target="_blank" rel="noreferrer">
 				<Twemoji emoji="📧" /> Email
 			</a>
 		</p>
@@ -26,21 +22,18 @@ const Contact = (): JSX.Element => (
 			</a>
 		</p>
 		<p>
-			<a
-				className="link"
-				href="https://discord.com/users/338718840873811979"
-				target="_blank"
-				rel="noreferrer">
+			<a className="link" href="https://discord.com/users/338718840873811979" target="_blank" rel="noreferrer">
 				<Twemoji emoji="📱" /> Discord
 			</a>
 		</p>
 		<p>
-			<a
-				className="link"
-				href="https://steamcommunity.com/id/pxseu/"
-				target="_blank"
-				rel="noreferrer">
+			<a className="link" href="https://steamcommunity.com/id/pxseu/" target="_blank" rel="noreferrer">
 				<Twemoji emoji="🎮" /> Steam
+			</a>
+		</p>
+		<p>
+			<a className="link" href="hhttps://anilist.co/user/pxseu/" target="_blank" rel="noreferrer">
+				<Twemoji emoji="📺" /> Anilist
 			</a>
 		</p>
 		<p>

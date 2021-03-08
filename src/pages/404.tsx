@@ -14,7 +14,7 @@ const Custom404 = (): JSX.Element => {
 			) : (
 				<>
 					<p>
-						<code className={styles.codeBlock}>{router.asPath}</code>
+						<code className={styles.codeBlock}>{decodeURI(router.asPath)}</code>
 					</p>
 					<p>Is not on the server.</p>
 				</>

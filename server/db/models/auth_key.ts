@@ -1,7 +1,6 @@
-import mongoose, { Document } from "mongoose";
-const Schema = mongoose.Schema;
+import { Document, model, Schema } from "mongoose";
 
-export type apiUser = Document & {
+export interface apiUser extends Document {
 	auth_key: string;
 	user: string;
 };
@@ -17,4 +16,4 @@ const serverSchema = new Schema({
 	},
 });
 
-export default mongoose.model<apiUser>("auth_key_api", serverSchema);
+export default model<apiUser>("auth_key_api", serverSchema);

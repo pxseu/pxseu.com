@@ -8,7 +8,7 @@ const AVATAR = "https://cdn.pxseu.com/assets/pfp.gif?v=2";
 
 export const sendMessage = async (req: RequestWithUser, res: Response): Promise<void> => {
 	const user = req.user;
-	const message: string = await req.body.message.trim();
+	const message: string = req.body.message;
 
 	if (isBlacklisted(message)) {
 		res.json({
@@ -23,8 +23,8 @@ export const sendMessage = async (req: RequestWithUser, res: Response): Promise<
 
 	embed.setName("pxseu messenger");
 	embed.setAvatar(AVATAR);
-	embed.setAuthor("Anonymous", AVATAR, "https://www.pxseu.com/other/message");
-	embed.setURL("https://www.pxseu.com/other/message");
+	embed.setAuthor("Anonymous", AVATAR, "https://pxseu.com/msg");
+	embed.setURL("https://pxseu.com/msg");
 	embed.setTitle("New Message!");
 	embed.setDescription(`Content: \n${message}`);
 	embed.setColor("#3399ff");
@@ -43,23 +43,23 @@ export const sendMessage = async (req: RequestWithUser, res: Response): Promise<
 export const isValidMessage = async (req: RequestWithUser, res: Response, next: NextFunction): Promise<void> => {
 	const body: { message: string } = await req.body;
 
-	if (body.message == undefined || body.message.trim() == "") {
+	body.message = trimText(body.message);
+
+	if (body.message == undefined || body.message == "") {
 		const message = "Cannot send empty message!";
 		res.status(400).json({
 			status: 400,
 			message,
-			error: `${message} (please update your API to read the 'message' filed and not 'content')`,
 			note: NOTE,
 		});
 		return;
 	}
 
-	if (body.message.trim().length > 2000) {
+	if (body.message.length > 2000) {
 		const message = "Message is too large!";
 		res.status(400).json({
 			status: 400,
 			message,
-			error: `${message} (please update your API to read the message filed)`,
 			note: NOTE,
 		});
 		return;
@@ -97,4 +97,12 @@ function extractToken(req: Request): string | null {
 	}
 
 	return null;
+}
+
+function trimText(text: string): string {
+	text = text.replace(/ {2,}/g, " ");
+	text = text.replace(/(\r?\n){3,}/g, "\n\n");
+	text = text.trim();
+	console.log(text);
+	return text;
 }

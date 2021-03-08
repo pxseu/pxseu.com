@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import DefaultLayout from "../../components/DefaultLayout";
 import Modal from "../../components/Modal";
 import styles from "../../styles/pages/Message.module.css";
+import buttonStyles from "../../styles/pages/Error.module.css";
 
 const MessageIndex = (): JSX.Element => {
 	const [showSucces, setShowSucces] = useState(false);
@@ -9,7 +10,7 @@ const MessageIndex = (): JSX.Element => {
 	const [showSuccesMessage, setShowSuccesMessage] = useState("");
 	const [isError, showError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
-	const messageBox = useRef<HTMLInputElement>(null);
+	const messageBox = useRef<HTMLTextAreaElement>(null);
 
 	const sendMessage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		e.preventDefault();
@@ -60,23 +61,21 @@ const MessageIndex = (): JSX.Element => {
 	return (
 		<>
 			<DefaultLayout title={"Message me!"}>
-				<p>Once per minute tho</p>
-
-				<div>
+				<p>Say as much dumb shit you can ty {"<3"}</p>
+				<div className={styles.formWrapper}>
 					<form>
-						<input
-							type="text"
-							name="messageInput"
-							className={styles.messageInput}
-							ref={messageBox}
-						/>
-						<button
-							type="submit"
-							onClick={sendMessage}
-							className={styles.messageButton}
-							disabled={disabledButton}>
-							Send!
-						</button>
+						<div className={styles.textAreaWrapper}>
+							<textarea name="messageInput" className={styles.messageInput} ref={messageBox} />
+						</div>
+						<div className={styles.buttonWrapper}>
+							<button
+								type="submit"
+								onClick={sendMessage}
+								className={buttonStyles.buttonGoBack}
+								disabled={disabledButton}>
+								Send!
+							</button>
+						</div>
 					</form>
 				</div>
 			</DefaultLayout>
@@ -86,8 +85,7 @@ const MessageIndex = (): JSX.Element => {
 					setShowSucces(false);
 					messageBox.current ? (messageBox.current.value = "") : null;
 				}}>
-				<p>Sent succesfull!</p>
-				<p>Data: &rdquo;{showSuccesMessage}&rdquo;</p>
+				<p>Message was sent!</p>
 			</Modal>
 
 			<Modal open={isError} onClose={() => showError(false)}>
