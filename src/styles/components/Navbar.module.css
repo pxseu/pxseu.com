@@ -11,7 +11,7 @@
 	background-color: var(--navbar);
 	transition: all 0.7s ease-in;
 	z-index: 3;
-	backdrop-filter: blur(1px);
+	/* 	backdrop-filter: blur(1px); */
 	border-bottom: 1px outset var(--navbar);
 }
 
@@ -31,7 +31,7 @@
 	background-color: var(--overlay);
 	overflow-x: hidden;
 	transition: 0.4s;
-	backdrop-filter: blur(2px);
+	/* 	backdrop-filter: blur(2px); */
 }
 
 .showNav {
