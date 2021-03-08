@@ -32,7 +32,7 @@ const Contact = (): JSX.Element => (
 			</a>
 		</p>
 		<p>
-			<a className="link" href="hhttps://anilist.co/user/pxseu/" target="_blank" rel="noreferrer">
+			<a className="link" href="https://anilist.co/user/pxseu/" target="_blank" rel="noreferrer">
 				<Twemoji emoji="📺" /> Anilist
 			</a>
 		</p>
