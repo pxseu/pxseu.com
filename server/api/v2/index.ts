@@ -9,7 +9,7 @@ const methodCheck = {
 	post: (req: RequestWithUser, res: Response, next: NextFunction) => {
 		const method = req.method;
 
-		if (method != "POST") {
+		if (method !== "POST") {
 			return res.status(400).json({
 				status: 400,
 				message: "Method not allowed!",
@@ -20,7 +20,7 @@ const methodCheck = {
 	get: (req: RequestWithUser, res: Response, next: NextFunction) => {
 		const method = req.method;
 
-		if (method != "GET") {
+		if (method !== "GET") {
 			return res.status(400).json({
 				status: 400,
 				message: "Method not allowed!",
