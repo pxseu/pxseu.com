@@ -16,7 +16,7 @@ export const sendMessage = async (req: RequestWithUser, res: Response): Promise<
 
 	embed.setName("anon chat");
 	embed.setAvatar(AVATAR);
-	embed.setAuthor(name ?? "Anonymous", AVATAR, "https://pxseu.com/msg");
+	embed.setAuthor(!name ? "Anonymous" : name, AVATAR, "https://pxseu.com/msg");
 	embed.setURL("https://pxseu.com/msg");
 	embed.setTitle("New message!");
 	embed.setDescription(`Content:\n${message}`);
