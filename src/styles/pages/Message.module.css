@@ -22,6 +22,10 @@
 	outline-color: var(--logo);
 }
 
+.nameInput {
+	height: 15px;
+}
+
 .formWrapper {
 	margin-top: 20px;
 }
