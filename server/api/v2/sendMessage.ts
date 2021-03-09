@@ -83,7 +83,7 @@ export const isValidMessage = async (req: RequestWithUser, res: Response, next: 
 		return;
 	}
 
-	if (body.name.length > 20) {
+	if (body.name && body.name.length > 20) {
 		res.status(400).json({
 			status: 400,
 			message: "Name cannot be longer than 20 characters!",
