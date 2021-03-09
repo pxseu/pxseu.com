@@ -19,6 +19,8 @@ export const sendMessageLimiter = rateLimit({
 });
 
 export const isBlacklisted = (message: string): boolean => {
+	if (typeof message !== "string") return false;
+
 	let cleanMessage = message;
 
 	spaces.forEach((space) => {
@@ -33,7 +35,6 @@ router.use((req, res, next) => {
 		verify: getRawBody,
 	})(req, res, (err) => {
 		if (err) {
-			console.log(err);
 			res.status(400).json({
 				status: 400,
 				message: "Your JSON request could not be parsed.",
