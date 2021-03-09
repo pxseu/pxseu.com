@@ -7,17 +7,18 @@ import buttonStyles from "../../styles/pages/Error.module.css";
 const MessageIndex = (): JSX.Element => {
 	const [showSucces, setShowSucces] = useState(false);
 	const [disabledButton, setDisabledButton] = useState(false);
-	const [showSuccesMessage, setShowSuccesMessage] = useState("");
 	const [isError, showError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
-	const messageBox = useRef<HTMLTextAreaElement>(null);
+	const messageInput = useRef<HTMLTextAreaElement>(null);
+	const nameInput = useRef<HTMLInputElement>(null);
 
 	const sendMessage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		e.preventDefault();
 
 		setDisabledButton(true);
-		messageBox.current?.blur();
+		messageInput.current?.blur();
 
+		// always go with https
 		const url = `${window.location.protocol}//${window.location.host}/api/v2/sendMessage`;
 		let parrsedResponse: {
 			status: number;
@@ -35,7 +36,7 @@ const MessageIndex = (): JSX.Element => {
 				},
 				redirect: "follow",
 				referrerPolicy: "no-referrer",
-				body: JSON.stringify({ message: messageBox.current?.value }),
+				body: JSON.stringify({ message: messageInput.current?.value, name: nameInput.current?.value }),
 			});
 
 			parrsedResponse = await response.json();
@@ -53,7 +54,6 @@ const MessageIndex = (): JSX.Element => {
 			return;
 		}
 
-		setShowSuccesMessage(parrsedResponse.message);
 		setShowSucces(true);
 		setDisabledButton(false);
 	};
@@ -63,27 +63,36 @@ const MessageIndex = (): JSX.Element => {
 			<DefaultLayout title={"Message me!"}>
 				<p>Say as much dumb shit you can ty {"<3"}</p>
 				<div className={styles.formWrapper}>
-					<form>
-						<div className={styles.textAreaWrapper}>
-							<textarea name="messageInput" className={styles.messageInput} ref={messageBox} />
-						</div>
-						<div className={styles.buttonWrapper}>
-							<button
-								type="submit"
-								onClick={sendMessage}
-								className={buttonStyles.buttonGoBack}
-								disabled={disabledButton}>
-								Send!
-							</button>
-						</div>
-					</form>
+					<div className={styles.textAreaWrapper}>
+						<p>Name: (optional)</p>
+						<input
+							name="messageInput"
+							className={[styles.messageInput, styles.nameInput].join(" ")}
+							ref={nameInput}
+							placeholder='e.g. "05xapresses"'
+						/>
+					</div>
+					<div className={styles.textAreaWrapper}>
+						<p>Content:</p>
+						<textarea
+							name="messageInput"
+							className={styles.messageInput}
+							ref={messageInput}
+							placeholder='e.g. "drain gang"'
+						/>
+					</div>
+					<div className={styles.buttonWrapper}>
+						<button onClick={sendMessage} className={buttonStyles.buttonGoBack} disabled={disabledButton}>
+							Send!
+						</button>
+					</div>
 				</div>
 			</DefaultLayout>
 			<Modal
 				open={showSucces}
 				onClose={() => {
 					setShowSucces(false);
-					messageBox.current ? (messageBox.current.value = "") : null;
+					messageInput.current ? (messageInput.current.value = "") : null;
 				}}>
 				<p>Message was sent!</p>
 			</Modal>
