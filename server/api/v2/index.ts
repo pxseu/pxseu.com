@@ -11,8 +11,7 @@ const methodCheck = {
 
 		if (method === "POST") return next();
 
-		res.status(400).json({
-			status: 400,
+		res.api(405, {
 			message: "Method not allowed!",
 		});
 	},
@@ -21,8 +20,7 @@ const methodCheck = {
 
 		if (method === "GET") return next();
 
-		res.status(400).json({
-			status: 400,
+		res.api(405, {
 			message: "Method not allowed!",
 		});
 	},
