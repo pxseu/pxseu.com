@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 import { MessageBuilder, Webhook } from "webhook-discord";
-import { DEV_MODE, isBlacklisted, NOTE, sendMessageLimiter } from "..";
+import { DEV_MODE, sendMessageLimiter } from "..";
 import { RequestWithUser } from "../../../express";
 import AuthKeyDb from "../../db/models/auth_key";
 
 const AVATAR = "https://cdn.pxseu.com/btXqULXS9.jpg";
 
 export const sendMessage = async (req: RequestWithUser, res: Response): Promise<void> => {
-	const user = req.user;
+	const apiUser = req.user;
 	const message: string = req.body.message;
 	const name: string = req.body.name;
 
@@ -21,76 +21,51 @@ export const sendMessage = async (req: RequestWithUser, res: Response): Promise<
 	embed.setTitle("New message!");
 	embed.setDescription(`Content:\n${message}`);
 	embed.setColor("#3399ff");
-	embed.setFooter(user ? `via ${user}` : "pls no api abjus, thank!", AVATAR);
+	embed.setFooter(apiUser ? `via ${apiUser}` : "pls no api abjus, thank!", AVATAR);
 	embed.setTime();
 	Hook.send(embed);
 
-	res.json({
-		status: 200,
+	res.api(200, {
 		message,
-		note: NOTE,
-		user,
+		user: apiUser?.user,
 	});
 };
 
-export const isValidMessage = async (req: RequestWithUser, res: Response, next: NextFunction): Promise<void> => {
+export const isValidMessage = async (req: RequestWithUser, res: Response, next: NextFunction): Promise<unknown> => {
+	if (!JSON.parse(process.env.ALLOW_SEND_MESSAGE))
+		return res.api(503, {
+			message: "Service disabled.",
+		});
+
 	const body: { message: string; name: string } = await req.body;
 
 	body.message = trimText(body.message);
 	body.name = trimText(body.name, { noNewLine: true });
 
-	if (isBlacklisted(body.message) || isBlacklisted(body.name)) {
-		res.status(400).json({
-			status: 400,
-			error: "You said a word from the blacklist!",
-		});
-		return;
-	}
-
-	if (!body.message || body.message === "") {
-		res.status(400).json({
-			status: 400,
+	if (!body.message || body.message === "")
+		return res.api(400, {
 			message: "Cannot send an empty message!",
-			note: NOTE,
 		});
-		return;
-	}
 
-	if (typeof body.message !== "string") {
-		res.status(400).json({
-			status: 400,
+	if (typeof body.message !== "string")
+		return res.api(400, {
 			message: "Message should be a string!",
-			note: NOTE,
 		});
-		return;
-	}
 
-	if (body.name && (typeof body.name !== "string" || body.name === "")) {
-		res.status(400).json({
-			status: 400,
+	if (body.name && (typeof body.name !== "string" || body.name === ""))
+		return res.api(400, {
 			message: "Name should be a string!",
-			note: NOTE,
 		});
-		return;
-	}
 
-	if (body.message.length > 2000) {
-		res.status(400).json({
-			status: 400,
+	if (body.message.length > 2000)
+		return res.api(413, {
 			message: "Message cannot be larger than 2000 characters!",
-			note: NOTE,
 		});
-		return;
-	}
 
-	if (body.name && body.name.length > 20) {
-		res.status(400).json({
-			status: 400,
+	if (body.name && body.name.length > 20)
+		return res.api(413, {
 			message: "Name cannot be longer than 20 characters!",
-			note: NOTE,
 		});
-		return;
-	}
 
 	const AuthKey = extractToken(req);
 
@@ -100,16 +75,12 @@ export const isValidMessage = async (req: RequestWithUser, res: Response, next: 
 		});
 
 		if (apiKeyFound) {
-			req.user = apiKeyFound.user;
-			next();
-			return;
+			req.user = apiKeyFound;
+			return next();
 		}
 	}
 
-	if (DEV_MODE) {
-		next();
-		return;
-	}
+	if (DEV_MODE) return next();
 
 	sendMessageLimiter(req, res, next);
 };

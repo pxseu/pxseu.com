@@ -3,7 +3,6 @@ import { Router } from "express";
 const router = Router();
 
 router.use((_, res, next) => {
-	res.set("X-CUM", "sticky");
 	res.set("X-pxseu", "cute");
 	res.set("X-JelNiSlaw", "menel");
 	next();
