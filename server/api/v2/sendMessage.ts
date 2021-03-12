@@ -21,13 +21,13 @@ export const sendMessage = async (req: RequestWithUser, res: Response): Promise<
 	embed.setTitle("New message!");
 	embed.setDescription(`Content:\n${message}`);
 	embed.setColor("#3399ff");
-	embed.setFooter(apiUser ? `via ${apiUser.user}` : "pls no api abjus, thank!", AVATAR);
+	embed.setFooter(apiUser ? `via ${apiUser.name}` : "pls no api abjus, thank!", AVATAR);
 	embed.setTime();
 	Hook.send(embed);
 
 	res.api(200, {
 		message,
-		user: apiUser?.user,
+		user: apiUser?.name,
 	});
 };
 
