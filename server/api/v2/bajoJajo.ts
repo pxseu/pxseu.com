@@ -13,16 +13,14 @@ export const bajoJajo = (req: Request, res: Response): void => {
 	}
 
 	if (repeats < 1 || repeats > 1000000) {
-		res.status(400).json({
-			status: 400,
+		res.api(400, {
 			message: '"repeat" is too large or too small (should be between 1 and 1,000,000)',
 		});
 		return;
 	}
 
 	const string = "bajo jajo ";
-	res.json({
-		status: 200,
+	res.api(200, {
 		message: string.repeat(repeats).trim(),
 	});
 };
