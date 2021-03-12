@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { rewrites } from "../config";
+import { rewrites } from "../utils/config";
 
 const router = Router();
 
