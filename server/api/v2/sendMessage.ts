@@ -32,7 +32,7 @@ export const sendMessage = async (req: RequestWithUser, res: Response): Promise<
 };
 
 export const isValidMessage = async (req: RequestWithUser, res: Response, next: NextFunction): Promise<unknown> => {
-	if (!JSON.parse(process.env.ALLOW_SEND_MESSAGE))
+	if (!JSON.parse(process.env.ALLOW_SEND_MESSAGE ?? ""))
 		return res.api(503, {
 			message: "Service disabled.",
 		});

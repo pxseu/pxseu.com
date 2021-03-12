@@ -20,7 +20,7 @@ router.use((req, res, next) => {
 	express.json({
 		verify: getRawBody,
 	})(req, res, (err) => {
-		if (!err) next();
+		if (!err) return next();
 
 		res.api(400, { message: "Your JSON request could not be parsed." });
 	});

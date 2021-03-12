@@ -7,6 +7,7 @@ import redirects from "./utils/rewrites";
 import headersSet from "./utils/headersSet";
 import { connect } from "./db";
 import { cspDirectives } from "./utils/config";
+import { useApiExtender } from "./utils/extenders";
 
 const server = express();
 
@@ -23,6 +24,7 @@ const handle = app.getRequestHandler();
 	server.use(morgan(dev ? "dev" : "common"));
 	server.use(helmet());
 	server.use(helmet.contentSecurityPolicy(cspDirectives));
+	server.use(useApiExtender);
 
 	server.use(redirects);
 	server.use("/api", api);
