@@ -2,15 +2,15 @@ import { Document, model, Schema } from "mongoose";
 
 export interface apiUser extends Document {
 	auth_key: string;
-	user: string;
-};
+	name: string;
+}
 
 const serverSchema = new Schema({
 	auth_key: {
 		type: String,
 		required: true,
 	},
-	user: {
+	name: {
 		type: String,
 		required: true,
 	},
