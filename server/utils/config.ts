@@ -21,7 +21,7 @@ export const cspDirectives = {
 		frameAncestors: ["'self'"],
 		imgSrc: ["'self'", "data:", "cdn.pxseu.com", "www.thiswaifudoesnotexist.net", "twemoji.maxcdn.com"],
 		objectSrc: ["'none'"],
-		scriptSrc: ["'self'", "ajax.cloudflare.com", "static.cloudflareinsights.com"],
+		scriptSrc: ["'self'", "ajax.cloudflare.com", "static.cloudflareinsights.com", "'unsafe-eval'"],
 		scriptSrcAttr: ["'none'"],
 		styleSrc: ["'self'", "https:", "'unsafe-inline'"],
 		connectSrc: [

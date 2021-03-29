@@ -11,6 +11,7 @@ const MessageIndex = (): JSX.Element => {
 	const [errorMessage, setErrorMessage] = useState("");
 	const messageInput = useRef<HTMLTextAreaElement>(null);
 	const nameInput = useRef<HTMLInputElement>(null);
+	const attachmentInput = useRef<HTMLInputElement>(null);
 
 	const sendMessage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		e.preventDefault();
@@ -36,7 +37,11 @@ const MessageIndex = (): JSX.Element => {
 				},
 				redirect: "follow",
 				referrerPolicy: "no-referrer",
-				body: JSON.stringify({ message: messageInput.current?.value, name: nameInput.current?.value }),
+				body: JSON.stringify({
+					message: messageInput.current?.value,
+					name: nameInput.current?.value,
+					attachment: attachmentInput.current?.value,
+				}),
 			});
 
 			parrsedResponse = await response.json();
@@ -64,21 +69,31 @@ const MessageIndex = (): JSX.Element => {
 				<p>Say as much dumb shit you can ty {"<3"}</p>
 				<div className={styles.formWrapper}>
 					<div className={styles.textAreaWrapper}>
-						<p>Name: (optional)</p>
+						<label className={styles.labelStyle}>Name: (optional)</label>
 						<input
 							name="messageInput"
 							className={[styles.messageInput, styles.nameInput].join(" ")}
 							ref={nameInput}
-							placeholder='e.g. "Peitho"'
+							placeholder='e.g. "dababy"'
 						/>
 					</div>
 					<div className={styles.textAreaWrapper}>
-						<p>Content:</p>
+						<label className={styles.labelStyle}>Content:</label>
 						<textarea
 							name="messageInput"
 							className={styles.messageInput}
 							ref={messageInput}
 							placeholder='e.g. "drain gang"'
+						/>
+					</div>
+					<div className={styles.textAreaWrapper}>
+						<label className={styles.labelStyle}>Attachment: (optional)</label>
+						<input
+							name="messageInput"
+							type="url"
+							className={[styles.messageInput, styles.nameInput].join(" ")}
+							ref={attachmentInput}
+							placeholder='e.g. "https://cdn.pxseu.com/btXqULXS9.jpg"'
 						/>
 					</div>
 					<div className={styles.buttonWrapper}>
