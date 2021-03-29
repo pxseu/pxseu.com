@@ -6,14 +6,23 @@ import AuthKeyDb from "../../db/models/auth_key";
 
 const AVATAR = "https://cdn.pxseu.com/btXqULXS9.jpg";
 
+interface BodyTypes {
+	message: string;
+	name: string;
+	attachment: string;
+}
+
 export const sendMessage = async (req: RequestWithUser, res: Response): Promise<void> => {
 	const apiUser = req.user;
 	const message: string = req.body.message;
 	const name: string = req.body.name;
+	const embedUrl = req.body.attachment;
 
 	const Hook = new Webhook(process.env.WEBHOOK ?? "");
 	const embed = new MessageBuilder();
 
+	embedUrl && embed.setText(`Attachment: ${embedUrl}`);
+	embedUrl && embed.setImage(embedUrl);
 	embed.setName("anon chat");
 	embed.setAvatar(AVATAR);
 	embed.setAuthor(!name ? "Anonymous" : name, AVATAR, "https://pxseu.com/msg");
@@ -37,10 +46,11 @@ export const isValidMessage = async (req: RequestWithUser, res: Response, next: 
 			message: "Service disabled.",
 		});
 
-	const body: { message: string; name: string } = await req.body;
+	const body: BodyTypes = req.body;
 
 	body.message = trimText(body.message);
 	body.name = trimText(body.name, { noNewLine: true });
+	body.attachment = trimText(body.attachment);
 
 	if (!body.message || body.message === "")
 		return res.api(400, {
@@ -67,6 +77,25 @@ export const isValidMessage = async (req: RequestWithUser, res: Response, next: 
 			message: "Name cannot be longer than 20 characters!",
 		});
 
+	if (body.attachment && typeof body.attachment !== "string")
+		return res.api(400, {
+			message: "Attachment should be a URL in a string form!",
+		});
+
+	if (body.attachment && body.attachment.length > 200)
+		return res.api(400, {
+			message: "Attachment a URL cannot be longer than 200 characters.",
+		});
+
+	if (body.attachment)
+		try {
+			new URL(body.attachment);
+		} catch {
+			return res.api(400, {
+				message: "Attachment must be a valid URL!",
+			});
+		}
+
 	const AuthKey = extractToken(req);
 
 	if (AuthKey) {
@@ -88,9 +117,13 @@ export const isValidMessage = async (req: RequestWithUser, res: Response, next: 
 function extractToken(req: Request): string | null {
 	if (req.headers?.authorization && req.headers.authorization.split(" ")[0] === "Bearer") {
 		return req.headers.authorization.split(" ")[1];
-	} else if (req.query && req.query.token) {
+	}
+
+	if (req.query && req.query.token) {
 		return req.query.token.toString();
-	} else if (req.body && req.body.token) {
+	}
+
+	if (req.body && req.body.token) {
 		return req.body.token;
 	}
 
