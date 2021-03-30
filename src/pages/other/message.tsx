@@ -71,7 +71,7 @@ const MessageIndex = (): JSX.Element => {
 					<div className={styles.textAreaWrapper}>
 						<label className={styles.labelStyle}>Name: (optional)</label>
 						<input
-							name="messageInput"
+							name="nameInput"
 							className={[styles.messageInput, styles.nameInput].join(" ")}
 							ref={nameInput}
 							placeholder='e.g. "dababy"'
@@ -87,9 +87,9 @@ const MessageIndex = (): JSX.Element => {
 						/>
 					</div>
 					<div className={styles.textAreaWrapper}>
-						<label className={styles.labelStyle}>Attachment: (optional)</label>
+						<label className={styles.labelStyle}>Attachment:</label>
 						<input
-							name="messageInput"
+							name="attachmentInput"
 							type="url"
 							className={[styles.messageInput, styles.nameInput].join(" ")}
 							ref={attachmentInput}
@@ -108,6 +108,7 @@ const MessageIndex = (): JSX.Element => {
 				onClose={() => {
 					setShowSucces(false);
 					messageInput.current ? (messageInput.current.value = "") : null;
+					attachmentInput.current ? (attachmentInput.current.value = "") : null;
 				}}>
 				<p>Message was sent!</p>
 			</Modal>
