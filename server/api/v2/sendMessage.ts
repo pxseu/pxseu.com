@@ -64,14 +64,14 @@ export const isValidMessage = async (req: RequestWithUser, res: Response, next: 
 			message: "Message should be a string",
 		});
 
+	if (body.message && body.message.length > 2000)
+		return res.api(413, {
+			message: "Message cannot be larger than 2000 characters",
+		});
+
 	if (body.name && (typeof body.name !== "string" || body.name === ""))
 		return res.api(400, {
 			message: "Name should be a string",
-		});
-
-	if (body.message.length > 2000)
-		return res.api(413, {
-			message: "Message cannot be larger than 2000 characters",
 		});
 
 	if (body.name && body.name.length > 20)
