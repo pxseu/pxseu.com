@@ -4,7 +4,7 @@ import { DEV_MODE, sendMessageLimiter } from "..";
 import { RequestWithUser } from "../../../express";
 import AuthKeyDb from "../../db/models/auth_key";
 
-const AVATAR = "https://cdn.pxseu.com/btXqULXS9.jpg";
+const AVATAR = "https://cdn.pxseu.com/5As8jItIj.jpg";
 
 interface BodyTypes {
 	message: string;
@@ -18,20 +18,23 @@ export const sendMessage = async (req: RequestWithUser, res: Response): Promise<
 	const name: string = req.body.name;
 	const embedUrl = req.body.attachment;
 
-	const Hook = new Webhook(process.env.WEBHOOK ?? "");
+	const Hook = new Webhook(process.env.WEBHOOK_MESSAGE ?? "");
 	const embed = new MessageBuilder();
 
 	embedUrl && embed.setText(`Attachment: ${embedUrl}`);
 	embedUrl && embed.setImage(embedUrl);
+	message && embed.setDescription(`Content:\n${message}`);
+	embed.setAuthor(name ? name : "Anonymous", AVATAR, "https://pxseu.com/msg");
+	embed.setFooter(apiUser ? `via ${apiUser.name}` : "pls no api abjus, thank!", AVATAR);
+	embed.setTitle(message ? "New message!" : "New attachment!");
+
 	embed.setName("anon chat");
 	embed.setAvatar(AVATAR);
-	embed.setAuthor(!name ? "Anonymous" : name, AVATAR, "https://pxseu.com/msg");
 	embed.setURL("https://pxseu.com/msg");
-	embed.setTitle("New message!");
-	embed.setDescription(`Content:\n${message}`);
+
 	embed.setColor("#3399ff");
-	embed.setFooter(apiUser ? `via ${apiUser.name}` : "pls no api abjus, thank!", AVATAR);
 	embed.setTime();
+
 	Hook.send(embed);
 
 	res.api(200, {
@@ -48,53 +51,61 @@ export const isValidMessage = async (req: RequestWithUser, res: Response, next: 
 
 	const body: BodyTypes = req.body;
 
+	let isBodyOrAttachment = false;
+
 	body.message = trimText(body.message);
 	body.name = trimText(body.name, { noNewLine: true });
 	body.attachment = trimText(body.attachment);
 
-	if (!body.message || body.message === "")
-		return res.api(400, {
-			message: "Cannot send an empty message!",
-		});
+	if (body.message) isBodyOrAttachment = true;
 
-	if (typeof body.message !== "string")
+	if (body.message && typeof body.message !== "string")
 		return res.api(400, {
-			message: "Message should be a string!",
+			message: "Message should be a string",
 		});
 
 	if (body.name && (typeof body.name !== "string" || body.name === ""))
 		return res.api(400, {
-			message: "Name should be a string!",
+			message: "Name should be a string",
 		});
 
 	if (body.message.length > 2000)
 		return res.api(413, {
-			message: "Message cannot be larger than 2000 characters!",
+			message: "Message cannot be larger than 2000 characters",
 		});
 
 	if (body.name && body.name.length > 20)
 		return res.api(413, {
-			message: "Name cannot be longer than 20 characters!",
+			message: "Name cannot be longer than 20 characters",
 		});
 
-	if (body.attachment && typeof body.attachment !== "string")
+	if (body.attachment && typeof body?.attachment !== "string")
 		return res.api(400, {
-			message: "Attachment should be a URL in a string form!",
+			message: "Attachment should be a URL in a string form",
 		});
 
 	if (body.attachment && body.attachment.length > 200)
 		return res.api(400, {
-			message: "Attachment a URL cannot be longer than 200 characters.",
+			message: "Attachment a URL cannot be longer than 200 characters",
 		});
 
 	if (body.attachment)
 		try {
-			new URL(body.attachment);
+			const url = new URL(body.attachment);
+
+			// Make sure that it's url encoded so it doesn't crash
+			body.attachment = url.toString();
+			isBodyOrAttachment = true;
 		} catch {
 			return res.api(400, {
-				message: "Attachment must be a valid URL!",
+				message: "Attachment must be a valid URL",
 			});
 		}
+
+	if (!isBodyOrAttachment)
+		return res.api(400, {
+			message: "Attachment or Message must be provided",
+		});
 
 	const AuthKey = extractToken(req);
 
