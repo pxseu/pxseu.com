@@ -22,7 +22,8 @@ const About = (): JSX.Element => {
 					<p>I love to create new things and watch anime.</p>
 					<p>I started coding around 2019 when I went to High School.</p>
 					<p>
-						After falling in love with coding I started to find some online who shared my interests friends.
+						After falling in love with coding I started to find some online friends who also shared my
+						interests and passion for it.
 					</p>
 					<p>
 						I bought my first domain at the start of 2020 and then few months later bought this one which I
