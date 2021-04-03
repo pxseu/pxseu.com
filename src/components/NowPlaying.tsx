@@ -23,20 +23,7 @@ interface NowPlayingApi {
 const NowPlaying = (): JSX.Element => {
 	const { data, error } = useSWR("/api/v2/spotify/nowPlaying", fetcher);
 
-	if (error) {
-		return (
-			<div className={styles.spotifyBox}>
-				<div className={styles.spotifyThumbnail}>
-					<Skeleton height={100} className={styles.imagetag} />
-				</div>
-				<div className={styles.spotifyContent}>
-					<p className={styles.songTitle}>Error while fetching the data</p>
-				</div>
-			</div>
-		);
-	}
-
-	if (!data) {
+	if (!data || error) {
 		return (
 			<SkeletonTheme color="#222" highlightColor="#444">
 				<div className={styles.spotifyBox}>
@@ -66,16 +53,12 @@ const NowPlaying = (): JSX.Element => {
 			<SkeletonTheme color="#222" highlightColor="#444">
 				<div className={styles.spotifyBox}>
 					<div className={styles.spotifyThumbnail}>
-					<img className={styles.imagetag} src={placeholder} alt="Album thumbnail" />
+						<img className={styles.imagetag} src={placeholder} alt="Album thumbnail" />
 					</div>
 					<div className={styles.spotifyContent}>
 						<p className={styles.songTitle}>No song playing</p>
-						<p className={styles.artists}>
-							If you get lucky you,
-						</p>
-						<p className={styles.album}>
-						can see me listen to music.
-						</p>
+						<p className={styles.artists}>If you get lucky you,</p>
+						<p className={styles.album}>can see me listen to music.</p>
 					</div>
 				</div>
 			</SkeletonTheme>
