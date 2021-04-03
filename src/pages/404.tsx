@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import DefaultLayout from "../components/DefaultLayout";
+import PageWithTitle from "../components/PageWithTitle";
 import styles from "../styles/pages/Error.module.css";
 
 const Custom404 = (): JSX.Element => {
 	const router = useRouter();
 
 	return (
-		<DefaultLayout title={"404 | Not found"}>
+		<PageWithTitle title={"404 | Not found"}>
 			{router.pathname == router.asPath ? (
 				<p>You&rsquo;re not funny</p>
 			) : (
@@ -25,7 +25,7 @@ const Custom404 = (): JSX.Element => {
 					<button className={styles.buttonGoBack}>Go home</button>
 				</Link>
 			</p>
-		</DefaultLayout>
+		</PageWithTitle>
 	);
 };
 

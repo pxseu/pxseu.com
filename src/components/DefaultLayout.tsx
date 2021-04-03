@@ -3,39 +3,24 @@ import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
 import Head from "next/head";
 import styles from "../styles/components/DefaultLayout.module.css";
+import Footer from "./Footer";
 
-type DefaultLayoutInput = {
+interface DefaultLayoutInput {
 	children: ReactNode;
-	title: string;
-	titleOnClick?: () => void | Promise<void>;
-};
+	title?: string;
+}
 
-const DefaultLayout = ({ title, children, titleOnClick }: DefaultLayoutInput) => (
+const DefaultLayout = ({ title, children }: DefaultLayoutInput) => (
 	<>
 		<Head>
 			<title>{title}</title>
-			<meta
-				data-n-head="ssr"
-				data-hid="og:description"
-				property="og:description"
-				content={title}
-			/>
+			<meta data-n-head="ssr" data-hid="og:description" property="og:description" content={title} />
 		</Head>
 		<BackgroundLoader>
-			<Navbar />
-			<div className={`noselect ${styles.app}`}>
-				<h1 className="center">
-					<a
-						className={titleOnClick ? "link" : ""}
-						onClick={() => {
-							if (titleOnClick) titleOnClick();
-						}}>
-						{title}
-					</a>
-				</h1>
-				<hr />
-				<main className="center">{children}</main>
-				<div className={styles.bottomPadding}></div>
+			<div className={styles.pageWrapper}>
+				<Navbar />
+				<main className={[styles.app].join(" ")}>{children}</main>
+				<Footer />
 			</div>
 		</BackgroundLoader>
 	</>

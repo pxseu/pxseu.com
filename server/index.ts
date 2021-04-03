@@ -2,10 +2,11 @@ import express, { Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import next from "next";
+
 import api from "./api";
 import redirects from "./utils/rewrites";
 import headersSet from "./utils/headersSet";
-import { connect } from "./db";
+import { connect } from "./db/mongo";
 import { cspDirectives } from "./utils/config";
 import { useApiExtender } from "./utils/extenders";
 
@@ -29,6 +30,7 @@ const handle = app.getRequestHandler();
 	server.use(redirects);
 	server.use("/api", api);
 	server.use(headersSet);
+
 	server.all("*", (req: Request, res: Response) => {
 		return handle(req, res);
 	});

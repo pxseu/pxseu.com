@@ -1,0 +1,31 @@
+.wrapper {
+	width: 150px;
+	margin: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	display: inline-flex;
+	transition-duration: 0.2s;
+	transition-property: transform;
+	box-shadow: var(--popup-shadow);
+	background-color: var(--background-secondary);
+	text-align: center;
+}
+
+.wrapper:hover {
+	transform: translateY(-2px);
+}
+
+.content {
+	width: 100%;
+}
+
+.content > a {
+	color: var(--body-normal);
+	text-decoration: underline var(--logo);
+	transition-duration: 0.2s;
+}
+
+.content > a:hover {
+	color: var(--logo);
+	text-decoration: underline var(--font-normal);
+}

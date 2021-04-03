@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
-import DefaultLayout from "../../components/DefaultLayout";
-import Modal from "../../components/Modal";
-import styles from "../../styles/pages/Message.module.css";
-import buttonStyles from "../../styles/pages/Error.module.css";
+import DefaultLayout from "../components/DefaultLayout";
+import Modal from "../components/Modal";
+import styles from "../styles/pages/Message.module.css";
+import buttonStyles from "../styles/pages/Error.module.css";
 
 const MessageIndex = (): JSX.Element => {
 	const [showSucces, setShowSucces] = useState(false);
@@ -66,8 +66,7 @@ const MessageIndex = (): JSX.Element => {
 	return (
 		<>
 			<DefaultLayout title={"Message me!"}>
-				<p>Say as much dumb shit you can ty {"<3"}</p>
-				<div className={styles.formWrapper}>
+				<div className={["center", styles.formWrapper].join(" ")}>
 					<div className={styles.textAreaWrapper}>
 						<label className={styles.labelStyle}>Name: (optional)</label>
 						<input

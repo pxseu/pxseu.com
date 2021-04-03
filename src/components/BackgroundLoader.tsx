@@ -1,28 +1,9 @@
 import React, { memo, ReactNode } from "react";
 import Head from "next/head";
-import Particles from "react-particles-js";
-import { isMobile } from "react-device-detect";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
-import styles from "../styles/components/BackgroundLoader.module.css";
-
-const particlesSwitchName = "particlesSwitch";
-
-const PlatformParticles = (props: { on: boolean }) => {
-	if (!props.on) return null;
-
-	let particlesConfig;
-	if (isMobile) {
-		particlesConfig = require("../../particlesjs-config.mobile.json");
-	} else {
-		particlesConfig = require("../../particlesjs-config.json");
-	}
-
-	return <Particles className="particles-js" params={particlesConfig} />;
-};
 
 const BackgroundLoader = (props: { children: ReactNode }) => {
-	const [particlesSwitch, setParticlesSwitch] = useState(true);
 	const [darling, setDarling] = useState(false);
 	const [isActive, setIsActive] = useState(true);
 	let titlePosition = 0,
@@ -50,7 +31,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 			"Mind coming around for a while?",
 			"What's up?",
 		],
-		DarlingCode = ["u", "w", "u"];
+		DarlingCode = "uwu";
 
 	const loopActive = () => {
 		const titleEl = document.getElementsByTagName("title")[0];
@@ -84,13 +65,6 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 		darlingCodePosition = 0;
 	};
 
-	const switchPaticles = () => {
-		setParticlesSwitch((currParts) => {
-			localStorage.setItem(particlesSwitchName, JSON.stringify(!currParts));
-			return !currParts;
-		});
-	};
-
 	const tabChanged = () => {
 		setIsActive((curAct) => !curAct);
 	};
@@ -99,30 +73,6 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 		const nameLoop = setInterval(isActive ? loopActive : loopInactive, isActive ? 800 : 2000);
 		document.addEventListener("keydown", darlingCodeChecker);
 		document.addEventListener("visibilitychange", tabChanged);
-		const localParts = localStorage.getItem(particlesSwitchName);
-
-		/* Disables all errors for production */
-		if (process.env.NODE_ENV == "production") {
-			// @ts-expect-error eqeq
-			window.console = {
-				log: () => {
-					/*  */
-				},
-				info: () => {
-					/*  */
-				},
-				warn: () => {
-					/*  */
-				},
-				error: () => {
-					/*  */
-				},
-			};
-		}
-
-		localParts
-			? setParticlesSwitch(JSON.parse(localParts.toLowerCase()))
-			: localStorage.setItem(particlesSwitchName, "true");
 
 		return () => {
 			document.removeEventListener("keydown", darlingCodeChecker);
@@ -180,19 +130,7 @@ const BackgroundLoader = (props: { children: ReactNode }) => {
 				{/* End Misc */}
 			</Head>
 			{props.children}
-			<div className={styles.particlesSwitch}>
-				<label className={styles.switch}>
-					<p className="visually_hidden noselect">Switch particles on or off</p>
-					<input
-						type="checkbox"
-						className={styles.switchInput}
-						checked={particlesSwitch}
-						onChange={() => switchPaticles()}
-					/>
-					<span className={`${styles.slider} ${styles.round}`}></span>
-				</label>
-			</div>
-			<PlatformParticles on={particlesSwitch} />
+
 			<Modal open={darling} onClose={() => setDarling(false)}>
 				I love you Darling!
 			</Modal>

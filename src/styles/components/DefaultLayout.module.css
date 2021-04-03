@@ -1,9 +1,17 @@
 .app {
-	top: 50px;
 	position: relative;
+	padding: 20px 0 20px 0;
 	width: 480px;
 	animation: fadeIn ease 1.5s;
 	z-index: 2;
+	user-select: none;
+}
+
+.pageWrapper {
+	box-sizing: border-box;
+	min-height: 100%;
+	padding: 0 0 40px;
+	position: relative;
 }
 
 @media screen and (min-width: 480px) {
@@ -32,8 +40,4 @@
 	100% {
 		opacity: 1;
 	}
-}
-
-.bottomPadding {
-	padding: 20px;
 }
