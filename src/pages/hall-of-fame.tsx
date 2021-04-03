@@ -1,5 +1,5 @@
 import React from "react";
-import DefaultLayout from "../components/DefaultLayout";
+import PageWithTitle from "../components/PageWithTitle";
 import Twemoji from "../components/Twemoji";
 import styles from "../styles/pages/Comment.module.css";
 
@@ -21,7 +21,7 @@ const PersonInHof = ({ url, person, desc, emoji }: PersonInHofProps): JSX.Elemen
 );
 
 const HallOfFame = (): JSX.Element => (
-	<DefaultLayout title={"Hall of fame"}>
+	<PageWithTitle title={"Hall of fame"}>
 		<PersonInHof
 			person="Sylwia"
 			desc="gave her own opinion about this websites design"
@@ -54,7 +54,7 @@ const HallOfFame = (): JSX.Element => (
 		<p className={styles.comment}>
 			<i>psst these are links!</i>
 		</p>
-	</DefaultLayout>
+	</PageWithTitle>
 );
 
 export default HallOfFame;

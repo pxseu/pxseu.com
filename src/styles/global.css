@@ -1,3 +1,11 @@
+html,
+body,
+div#__next {
+	min-width: 320px;
+	height: 100%;
+	width: 100%;
+}
+
 body {
 	background-color: var(--background);
 	font-family: var(--default-font-family);
@@ -18,20 +26,12 @@ b {
 	font-weight: bold;
 }
 
-.particles-js {
-	position: absolute;
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 100%;
-	z-index: 1;
-	padding: 0;
-	margin: 0;
-	position: fixed;
-	background-color: var(--background);
-	background-size: cover;
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
+hr {
+	background-color: var(--font-normal);
+	border: none;
+	height: 1px;
+	margin: 20px 4px;
+	box-shadow: var(--popup-shadow);
 }
 
 .center {
@@ -59,7 +59,7 @@ h2 {
 .link {
 	color: var(--font-normal);
 	text-decoration: none;
-	transition: color 0.1s;
+	transition-duration: 0.2s;
 	cursor: pointer;
 	position: relative;
 	top: 0;
@@ -88,11 +88,7 @@ h2 {
 
 .link:hover {
 	color: var(--logo);
-	top: -2px;
-}
-
-.back {
-	padding-top: 12px;
+	transform: translateY(-2px);
 }
 
 .noselect {
@@ -162,4 +158,8 @@ h2 {
 	font-weight: 700;
 	font-display: swap;
 	src: url("/font/Roboto-Bold.ttf");
+}
+
+pre {
+	word-wrap: normal;
 }

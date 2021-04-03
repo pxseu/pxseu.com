@@ -5,4 +5,12 @@
 	vertical-align: -0.125rem;
 	margin-left: 0.1rem;
 	margin-right: 0.1rem;
+	padding: 2px;
+	box-shadow: var(--popup-shadow);
+	transition-duration: 0.2s;
+	transition-property: transform;
+}
+
+.badge:hover {
+	transform: translateY(-3px);
 }

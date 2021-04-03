@@ -8,6 +8,7 @@
 }
 
 .buttonGoBack {
+	margin-top: 5px;
 	position: relative;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -16,16 +17,15 @@
 	color: var(--font-normal);
 	cursor: pointer;
 	outline: none;
-	border-radius: 100px;
+	border-radius: 20px;
 	border: 2px solid var(--border);
 	background: none;
-	transition-duration: 0.2s;
 	font-size: 16px;
+	box-shadow: var(--popup-shadow);
+	transition-duration: 0.2s;
+	transition-property: transform;
 }
 
 .buttonGoBack:hover {
-	color: var(--font-normal-hover);
-	border: 2px solid var(--border-hover);
-	background-color: var(--background-hover);
-	box-shadow: var(--clickable-hover-shadow);
+	transform: translateY(-2px);
 }

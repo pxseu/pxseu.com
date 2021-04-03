@@ -1,0 +1,11 @@
+.footer {
+	bottom: 0;
+	height: 40px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	background-color: var(--navbar);
+	z-index: 3;
+	overflow: hidden;
+	user-select: none;
+}

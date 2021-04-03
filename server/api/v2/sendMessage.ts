@@ -1,10 +1,20 @@
 import { NextFunction, Request, Response } from "express";
 import { MessageBuilder, Webhook } from "webhook-discord";
-import { DEV_MODE, sendMessageLimiter } from "..";
+import { DEV_MODE } from "..";
+import rateLimit from "express-rate-limit";
 import { RequestWithUser } from "../../../express";
 import AuthKeyDb from "../../db/models/auth_key";
 
 const AVATAR = "https://cdn.pxseu.com/5As8jItIj.jpg";
+
+const sendMessageLimiter = rateLimit({
+	windowMs: 0.5 * 60 * 1000, // 1 per 30 s
+	max: 1,
+	message: {
+		status: 429,
+		message: `Only one message per 30s!`,
+	},
+});
 
 interface BodyTypes {
 	message: string;

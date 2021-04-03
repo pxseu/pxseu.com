@@ -19,11 +19,11 @@ const NavElements = ({ className }: NavElsProps) => (
 			<Link href="/contact">
 				<a className="link">Contact</a>
 			</Link>
-			<Link href="/other">
-				<a className="link">Other</a>
+			<Link href="/message">
+				<a className="link">Message</a>
 			</Link>
-			<a className="link" href="//dash.pxseu.com">
-				Dash
+			<a className="link" href="//discord.pxseu.com/">
+				Discord
 			</a>
 		</nav>
 	</>

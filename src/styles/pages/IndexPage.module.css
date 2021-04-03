@@ -1,59 +1,32 @@
-.logo {
-	position: relative;
-	left: 50%;
-	transform: translate(-50%);
-	width: 500px;
-	height: 180px;
-	text-align: center;
+.usernameColor {
+	background: var(--logo-grad);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
-.logo > img {
-	display: inline-block;
-}
 .links {
+	margin-top: 20px;
 	z-index: 2;
 	cursor: default;
 	text-align: center;
 	padding: 10px;
 }
-.linksParent {
-	cursor: default;
+.link {
+	color: var(--text-normal);
+	font-size: 20px;
+	cursor: pointer;
 	text-align: center;
 	display: inline-block;
-}
-.link {
-	color: var(--font-normal);
-	text-decoration: none;
-	font-size: 30px;
-	transition: color 0.1s;
-	cursor: pointer;
-	position: relative;
-	top: 0;
-	transition: top ease 0.2s, color 0.1s;
-	padding: 15px 20px;
-}
-.link:after {
-	background: var(--font-normal);
-	bottom: 0;
-	content: "";
-	display: block;
-	height: 2px;
-	left: 50%;
-	position: absolute;
-	transition: width 0.3s ease 0s, left 0.3s ease 0s;
-	width: 0;
-}
-.link:hover:after {
-	width: 100%;
-	left: 0;
-}
-.link:hover {
-	color: var(--logo);
-	top: -2px;
+	background-color: var(--background-lighter);
+	box-shadow: var(--popup-shadow);
+	border-radius: var(--border-radius);
+	padding: 10px;
+	margin: 10px;
+	border: none;
+	transition-duration: 0.2s;
+	transition-property: transform;
 }
 
-@media screen and (min-width: 600px) {
-	.logo {
-		font-size: 150px;
-	}
+.link:hover {
+	transform: translateY(-3px);
 }
