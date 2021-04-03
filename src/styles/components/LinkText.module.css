@@ -21,7 +21,8 @@
 
 .content > a {
 	color: var(--body-normal);
-	text-decoration: underline var(--logo);
+	text-decoration: none;
+	/*text-decoration: underline var(--logo);*/
 	transition-duration: 0.2s;
 }
 
