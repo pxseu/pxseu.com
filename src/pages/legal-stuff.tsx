@@ -1,8 +1,8 @@
 import React from "react";
-import DefaultLayout from "../../components/DefaultLayout";
+import PageWithTitle from "../components/PageWithTitle";
 
 const LegalStuff = (): JSX.Element => (
-	<DefaultLayout title={"Terms of Service | Privacy Policy"}>
+	<PageWithTitle title={"Terms of Service | Privacy Policy"}>
 		<p>1. Any form of spamming will not be tolerated.</p>
 		<p>2. Adult content (gore, porn, deaths, naked photos) will not be tolerated.</p>
 		<p>
@@ -26,7 +26,7 @@ const LegalStuff = (): JSX.Element => (
 				If you have any question join my discord server!
 			</a>
 		</h4>
-	</DefaultLayout>
+	</PageWithTitle>
 );
 
 export default LegalStuff;
