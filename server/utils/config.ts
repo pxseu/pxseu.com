@@ -43,6 +43,7 @@ export const cspDirectives = {
 			"twemoji.maxcdn.com",
 			"ajax.cloudflare.com",
 			"static.cloudflareinsights.com",
+			"i.scdn.co",
 		],
 		upgradeInsecureRequests: [],
 		blockAllMixedContent: [],
