@@ -4,7 +4,11 @@
 
 .bio > p {
 	padding: 0;
-	margin: 2px;
+	margin-bottom: 12px;
+}
+
+.bio > p:last-of-type {
+	margin-bottom: 0;
 }
 
 .link {
