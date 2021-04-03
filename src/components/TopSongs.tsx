@@ -15,11 +15,7 @@ const TopSongs = (): JSX.Element => {
 
 	const emtpyArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-	if (error) {
-		return <div className={styles.topSongsWrapper}></div>;
-	}
-
-	if (!data) {
+	if (!data || error) {
 		return (
 			<SkeletonTheme color="#222" highlightColor="#444">
 				<div className={styles.topSongsWrapper}>
@@ -44,8 +40,6 @@ const TopSongs = (): JSX.Element => {
 	}
 
 	const tracks = data.tracks as Song[];
-
-	console.log(tracks);
 
 	return (
 		<div className={styles.topSongsWrapper}>
