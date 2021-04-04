@@ -31,7 +31,7 @@ const About = (): JSX.Element => {
 					</p>
 					<p>I am always ready to help others and enjoy it too!</p>
 					<p>
-						If you want to, you can contat me{" "}
+						If you want to, you can contact me{" "}
 						<Link href="/contact">
 							<a className={styles.link}>here</a>
 						</Link>
