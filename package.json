@@ -35,7 +35,7 @@
 		"swr": "^0.5.5",
 		"twemoji": "^13.0.2",
 		"webhook-discord": "^3.7.7",
-		"webpack": "5.28.0"
+		"webpack": "5.30.0"
 	},
 	"devDependencies": {
 		"@types/express": "^4.17.11",
