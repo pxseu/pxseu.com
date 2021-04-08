@@ -4,7 +4,6 @@ import styles from "../styles/components/Modal.module.css";
 
 interface ModalInteraface {
 	open: boolean;
-	title: string;
 	onClose: () => void | Promise<void>;
 	children: ReactNode;
 }
