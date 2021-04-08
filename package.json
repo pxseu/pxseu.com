@@ -8,6 +8,7 @@
 		"compile": "rimraf dist && tsc --project tsconfig.server.json",
 		"start": "node .",
 		"dev": "cross-env NODE_ENV=development PORT=8080 nodemon -e ts --exec \"yarn compile || exit 1 && yarn start\"",
+		"dev:api": "cross-env NODE_ENV=development PORT=8080 API_ONLY=true nodemon -e ts --exec \"yarn compile || exit 1 && yarn start\"",
 		"prod": "cross-env NODE_ENV=production PORT=6001 yarn start",
 		"deploy": "yarn compile && yarn build",
 		"lint": "eslint {src,server}/**/*.{ts,tsx} --fix",
@@ -17,6 +18,8 @@
 	},
 	"dependencies": {
 		"cross-env": "^7.0.3",
+		"discord.js": "^12.5.3",
+		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"express-rate-limit": "^5.2.6",
 		"helmet": "^4.4.1",
@@ -24,7 +27,7 @@
 		"morgan": "^1.10.0",
 		"next": "10.0.9",
 		"next-pwa": "^5.0.6",
-		"next-sitemap": "^1.6.9",
+		"next-sitemap": "^1.6.20",
 		"node-fetch": "^2.6.1",
 		"nprogress": "^0.2.0",
 		"querystring": "^0.2.1",
@@ -34,8 +37,8 @@
 		"redis": "^3.1.0",
 		"swr": "^0.5.5",
 		"twemoji": "^13.0.2",
-		"webhook-discord": "^3.7.7",
-		"webpack": "5.28.0"
+		"webpack": "5.28.0",
+		"yup": "^0.32.9"
 	},
 	"devDependencies": {
 		"@types/express": "^4.17.11",
