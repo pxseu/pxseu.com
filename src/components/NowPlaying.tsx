@@ -1,8 +1,8 @@
 import React from "react";
-import useSWR from "swr";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import styles from "../styles/components/NowPlaying.module.css";
+import useSWR from "swr";
 import { fetcher } from "../lib/fetcher";
+import styles from "../styles/components/NowPlaying.module.css";
 
 interface NowPlayingApi {
 	playing: boolean;

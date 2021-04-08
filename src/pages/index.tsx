@@ -1,8 +1,8 @@
-import React from "react";
-import styles from "../styles/pages/IndexPage.module.css";
-import NowPlaying from "../components/NowPlaying";
-import DefaultLayout from "../components/DefaultLayout";
 import Link from "next/link";
+import React from "react";
+import DefaultLayout from "../components/DefaultLayout";
+import NowPlaying from "../components/NowPlaying";
+import styles from "../styles/pages/IndexPage.module.css";
 
 const Index = (): JSX.Element => {
 	return (

@@ -1,4 +1,4 @@
-import React, { ReactNode, MouseEventHandler } from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
 import DefaultLayout from "./DefaultLayout";
 
 interface PageWithTitleProps {
