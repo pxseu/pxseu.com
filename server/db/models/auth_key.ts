@@ -3,6 +3,7 @@ import { Document, model, Schema } from "mongoose";
 export interface apiUser extends Document {
 	auth_key: string;
 	name: string;
+	messageCount: number;
 }
 
 const serverSchema = new Schema({
@@ -13,6 +14,11 @@ const serverSchema = new Schema({
 	name: {
 		type: String,
 		required: true,
+	},
+	messageCount: {
+		type: Number,
+		required: true,
+		default: 0,
 	},
 });
 
