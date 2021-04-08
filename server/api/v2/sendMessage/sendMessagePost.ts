@@ -54,12 +54,12 @@ export const validateMessage = async (req: RequestWithUser, res: Response, next:
 		await schema.validate(req.body);
 	} catch (error) {
 		if (error instanceof yup.ValidationError)
-			return res.api(500, {
+			return res.api(400, {
 				message: capitalize(error.errors.join(", ")),
 			});
 
-		return res.api(400, {
-			message: capitalize(error.message),
+		return res.api(500, {
+			message: "Something broke idk",
 		});
 	}
 
