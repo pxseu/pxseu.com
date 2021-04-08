@@ -1,6 +1,5 @@
-import React, { memo, ReactNode } from "react";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import React, { memo, ReactNode, useEffect, useState } from "react";
 import Modal from "./Modal";
 
 const BackgroundLoader = (props: { children: ReactNode }) => {

@@ -1,18 +1,16 @@
 import "dotenv/config";
-
-const DISSABLE_NEXT = process.env.API_ONLY === "true";
-
 import express, { Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import next from "next";
-
 import api from "./api";
-import redirects from "./utils/rewrites";
-import headersSet from "./utils/headersSet";
 import { connect } from "./db/mongo";
 import { cspDirectives } from "./utils/config";
 import { useApiExtender } from "./utils/extenders";
+import headersSet from "./utils/headersSet";
+import redirects from "./utils/rewrites";
+
+const DISSABLE_NEXT = process.env.API_ONLY === "true";
 
 const server = express();
 

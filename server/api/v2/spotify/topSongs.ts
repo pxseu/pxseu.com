@@ -1,6 +1,6 @@
-import { getAccessToken } from "../spotify";
-import { redis } from "../../../db/redis";
 import { Response } from "express";
+import { redis } from "../../../db/redis";
+import { getAccessToken } from "../spotify";
 
 const CACHE_KEY = "spotify:top_songs";
 const CACHE_TIME = 5 * 60; // 5 min

@@ -1,8 +1,8 @@
 import React from "react";
-import useSWR from "swr";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import styles from "../styles/components/TopSongs.module.css";
+import useSWR from "swr";
 import { fetcher } from "../lib/fetcher";
+import styles from "../styles/components/TopSongs.module.css";
 
 interface Song {
 	title: string;

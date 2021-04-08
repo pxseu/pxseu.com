@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
 import Head from "next/head";
+import React, { ReactNode } from "react";
 import BackgroundLoader from "../components/BackgroundLoader";
 import styles from "../styles/components/IndexpageLayout.module.css";
 
