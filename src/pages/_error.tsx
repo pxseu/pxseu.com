@@ -1,10 +1,10 @@
-import React from "react";
-import Link from "next/link";
 import { NextPage } from "next";
-import CustomNotFound from "./404";
 import { ErrorProps } from "next/error";
+import Link from "next/link";
+import React from "react";
 import DefaultLayout from "../components/DefaultLayout";
 import styles from "../styles/pages/Error.module.css";
+import CustomNotFound from "./404";
 
 const Error: NextPage<ErrorProps> = ({ statusCode }: ErrorProps) => {
 	if (statusCode == 404) {

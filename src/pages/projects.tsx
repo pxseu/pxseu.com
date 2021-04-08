@@ -1,6 +1,6 @@
 import React from "react";
-import { StyledLink } from "../components/LinkText";
 import DefaultLayout from "../components/DefaultLayout";
+import { StyledLink } from "../components/LinkText";
 import commentStyles from "../styles/pages/Comment.module.css";
 import styles from "../styles/pages/Projects.module.css";
 

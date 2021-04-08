@@ -1,8 +1,8 @@
 import React from "react";
 import DefaultLayout from "../components/DefaultLayout";
-import styles from "../styles/pages/Contact.module.css";
-import stylesComment from "../styles/pages/Comment.module.css";
 import { StyledLink } from "../components/LinkText";
+import stylesComment from "../styles/pages/Comment.module.css";
+import styles from "../styles/pages/Contact.module.css";
 
 const Contact = (): JSX.Element => (
 	<DefaultLayout title={"Contact / Socials"}>
