@@ -1,3 +1,7 @@
+import "dotenv/config";
+
+const DISSABLE_NEXT = process.env.API_ONLY === "true";
+
 import express, { Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
@@ -18,7 +22,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 (async () => {
-	await app.prepare();
+	if (!DISSABLE_NEXT) await app.prepare();
 	await connect();
 
 	server.set("trust proxy", 1);
@@ -31,9 +35,10 @@ const handle = app.getRequestHandler();
 	server.use("/api", api);
 	server.use(headersSet);
 
-	server.all("*", (req: Request, res: Response) => {
-		return handle(req, res);
-	});
+	if (!DISSABLE_NEXT)
+		server.all("*", (req: Request, res: Response) => {
+			return handle(req, res);
+		});
 
 	const httpServer = server.listen(port);
 

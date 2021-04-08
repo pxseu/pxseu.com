@@ -1,16 +1,15 @@
 import { Router } from "express";
 import fetch from "node-fetch";
-import { methodCheck } from "../methodCheck";
 import querystring from "querystring";
 // import { redis } from "../../db/redis";
 
 import nowPlaying from "./spotify/nowPlaying";
 import topSongs from "./spotify/topSongs";
 
-const router = Router();
+export const router = Router();
 
-router.get("/nowPlaying", methodCheck.get, nowPlaying);
-router.get("/topSongs", methodCheck.get, topSongs);
+router.get("/nowPlaying", nowPlaying);
+router.get("/topSongs", topSongs);
 
 // const CACHE_KEY = "spotify:refresh_token";
 
@@ -40,5 +39,3 @@ export const getAccessToken = async (): Promise<Record<string, unknown>> => {
 
 	return data;
 };
-
-export default router;
