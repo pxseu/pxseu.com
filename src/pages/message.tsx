@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import DefaultLayout from "../components/DefaultLayout";
 import Modal from "../components/Modal";
-import styles from "../styles/pages/Message.module.css";
 import buttonStyles from "../styles/pages/Error.module.css";
+import styles from "../styles/pages/Message.module.css";
 
 const MessageIndex = (): JSX.Element => {
 	const [showSucces, setShowSucces] = useState(false);

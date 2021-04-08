@@ -1,9 +1,9 @@
-import React, { memo, ReactNode } from "react";
-import BackgroundLoader from "./BackgroundLoader";
-import Navbar from "./Navbar";
 import Head from "next/head";
+import React, { memo, ReactNode } from "react";
 import styles from "../styles/components/DefaultLayout.module.css";
+import BackgroundLoader from "./BackgroundLoader";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 interface DefaultLayoutInput {
 	children: ReactNode;

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState, useEffect, memo, useRef } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import LogoTxt from "../components/LogoTxt";
 import style from "../styles/components/Navbar.module.css";
 

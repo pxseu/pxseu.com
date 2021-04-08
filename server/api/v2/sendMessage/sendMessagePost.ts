@@ -2,7 +2,7 @@ import { MessageEmbed } from "discord.js";
 import { NextFunction, Request, Response } from "express";
 import rateLimit from "express-rate-limit";
 import * as yup from "yup";
-import { client, AVATAR, embedWithBase } from ".";
+import { AVATAR, client, embedWithBase } from ".";
 import { DEV_MODE } from "../../";
 import { RequestWithUser } from "../../../../express";
 import AuthKeyDb from "../../../db/models/auth_key";
@@ -16,23 +16,23 @@ const sendMessageLimiter = rateLimit({
 	},
 });
 
-interface BodyType {
-	message?: string;
-	name?: string;
-	attachment?: string;
-}
-
 const schema = yup.object().shape({
-	message: yup.string().test("lenght", "The message cannot be logner than 2000", (value) => {
-		if (!value) return true;
+	message: yup
+		.string()
+		.test("lenght", "The message cannot be logner than 2000", (value) => {
+			if (!value) return true;
 
-		return value.length <= 2000;
-	}),
-	name: yup.string().test("lenght", "The name cannot be longer than 20 characters", (value) => {
-		if (!value) return true;
+			return value.length <= 2000;
+		})
+		.nullable(),
+	name: yup
+		.string()
+		.test("lenght", "The name cannot be longer than 20 characters", (value) => {
+			if (!value) return true;
 
-		return value.length <= 20;
-	}),
+			return value.length <= 20;
+		})
+		.nullable(),
 	attachment: yup
 		.string()
 		.url()
@@ -40,7 +40,8 @@ const schema = yup.object().shape({
 			if (!value) return true;
 
 			return value.length <= 200;
-		}),
+		})
+		.nullable(),
 });
 
 export const validateMessage = async (req: RequestWithUser, res: Response, next: NextFunction): Promise<unknown> => {
@@ -52,9 +53,9 @@ export const validateMessage = async (req: RequestWithUser, res: Response, next:
 	try {
 		await schema.validate(req.body);
 	} catch (error) {
-		if (error?.name !== "ValidationError")
+		if (error instanceof yup.ValidationError)
 			return res.api(500, {
-				message: "There was an internal server error",
+				message: capitalize(error.errors.join(", ")),
 			});
 
 		return res.api(400, {
@@ -112,7 +113,7 @@ export const postMessage = async (req: RequestWithUser, res: Response): Promise<
 			message: "Message was delievered",
 			user: req.user?.name,
 		});
-	} catch (e) {
+	} catch (e: unknown) {
 		res.api(500, {
 			message: "Failed to deliver the message.",
 			user: req.user?.name,
@@ -134,21 +135,6 @@ function extractToken(req: Request): string | null {
 	}
 
 	return null;
-}
-
-function trimText(text: string, options?: { noNewLine: boolean }): string {
-	if (typeof text !== "string") return text;
-
-	text = text.replace(/ {2,}/g, " ");
-
-	if (options?.noNewLine === true) {
-		text = text.replace(/(\r?\n){1,}/g, "");
-	} else {
-		text = text.replace(/(\r?\n){3,}/g, "\n\n");
-	}
-
-	text = text.trim();
-	return text;
 }
 
 const capitalize = (s: string): string => {

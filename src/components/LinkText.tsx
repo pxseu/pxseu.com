@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import Twemoji from "./Twemoji";
 import styles from "../styles/components/LinkText.module.css";
+import Twemoji from "./Twemoji";
 
 interface ContactPlacesData {
 	href: string;

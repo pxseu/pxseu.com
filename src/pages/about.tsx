@@ -1,5 +1,5 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
 import Age from "../components/Age";
 import Badges from "../components/Badges";
 import PageWithTitle from "../components/DefaultLayout";

@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 
 export const useApiExtender = (_: Request, res: Response, next: NextFunction): void => {
 	res.api = (status, body) => {
