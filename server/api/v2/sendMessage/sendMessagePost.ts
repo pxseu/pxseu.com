@@ -96,8 +96,8 @@ export const postMessage = async (req: RequestWithUser, res: Response): Promise<
 		embed.setImage(req.body.attachment);
 	}
 
-	req.body.message && embed.setDescription(`Content:\n${req.body.message}`);
-	embed.setAuthor(req.body.name ? req.body.name : "Anonymous", AVATAR, "https://pxseu.com/msg");
+	req.body.message && embed.setDescription(req.body.message);
+	embed.setAuthor(req.body.name || "Anonymous", AVATAR, "https://pxseu.com/msg");
 	embed.setFooter(req.user ? `via ${req.user.name}` : "pls no api abjus, thank!", AVATAR);
 	embed.setTitle(req.body.message ? "New message!" : "New attachment!");
 
