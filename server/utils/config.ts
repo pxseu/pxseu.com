@@ -5,7 +5,7 @@ export const rewrites = [
 	},
 	{
 		req: "/msg",
-		res: "/other/message",
+		res: "/message",
 	},
 	{
 		req: "/%F0%9F%92%97",
