@@ -23,10 +23,10 @@ const schema = yup.object().shape({
 		.nullable(),
 	name: yup
 		.string()
-		.test("lenght", "The name cannot be longer than 20 characters", (value) => {
+		.test("lenght", "The name cannot be longer than 128 characters", (value) => {
 			if (!value) return true;
 
-			return value.length <= 20;
+			return value.length <= 128;
 		})
 		.nullable(),
 	attachment: yup
@@ -90,6 +90,7 @@ export const postMessage = async (req: Request, res: Response): Promise<void> =>
 	embed.setTimestamp();
 
 	try {
+		await client.send(req.body.message);
 		await client.send(req.body.attachment ? `Attachment: ${req.body.attachment}` : undefined, embedWithBase(embed));
 
 		res.api(200, {
