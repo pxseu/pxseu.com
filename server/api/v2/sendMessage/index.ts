@@ -3,7 +3,9 @@ import { Router } from "express";
 import { postMessage, validateMessage } from "./sendMessagePost";
 
 export const AVATAR = "https://cdn.pxseu.com/5As8jItIj.jpg";
-export const client = new WebhookClient(process.env.WEBHOOK_MESSAGE_ID ?? "", process.env.WEBHOOK_MESSAGE_TOKEN ?? "");
+export const client = new WebhookClient(process.env.WEBHOOK_MESSAGE_ID ?? "", process.env.WEBHOOK_MESSAGE_TOKEN ?? "", {
+	disableMentions: "everyone",
+});
 
 export const embedWithBase = (embed: MessageEmbed): WebhookMessageOptions => {
 	return {
