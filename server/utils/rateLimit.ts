@@ -3,9 +3,9 @@ import { redis } from "../db/redis";
 
 interface RateLimitInteraface {
 	/**
-	 *  Ammount of requests allowed to be made before reteLimit is reached
+	 *  Amount of requests allowed to be made before reteLimit is reached
 	 */
-	ammount: number;
+	amount: number;
 
 	/**
 	 *  In seconds
@@ -37,16 +37,16 @@ const getRateLimit = async (req: Request, rateLimitId: string): Promise<number |
 };
 
 interface SetRateLimit {
-	ammount: number;
+	amount: number;
 	resetTime: number;
 }
 
-const setRateLimit = async (req: Request, { ammount, resetTime }: SetRateLimit, rateLimitId: string) => {
+const setRateLimit = async (req: Request, { amount: amount, resetTime }: SetRateLimit, rateLimitId: string) => {
 	await redis.setAsync(
 		createKey(req, rateLimitId),
 		resetTime,
-		// @ts-expect-error dfghdfdfhdfh
-		(req.user ? req.user.rate_limit[rateLimitId] : ammount - 1).toString()
+
+		(amount - 1).toString()
 	);
 };
 
@@ -54,23 +54,39 @@ const updateRateLimit = async (req: Request, rateLimitId: string) => {
 	await redis.decrAsync(createKey(req, rateLimitId));
 };
 
-export const rateLimit = ({ ammount, resetTime, rateLimitId, message }: RateLimitInteraface): Limiter => {
-	if (ammount < 1) throw new Error("Ammount must be at least 1");
+const getRateLimitReset = async (req: Request, rateLimitId: string) => {
+	const ttl = await redis.ttlAsync(createKey(req, rateLimitId));
+
+	let date = new Date(new Date().toUTCString());
+	date = new Date(date.getTime() + ttl * 1000);
+
+	return date.getTime();
+};
+
+export const rateLimit = ({ amount, resetTime, rateLimitId, message }: RateLimitInteraface): Limiter => {
+	if (amount < 1) throw new Error("Amount must be at least 1");
 
 	return async (req, res, next) => {
 		const rateLimit = await getRateLimit(req, rateLimitId);
 
-		console.log(rateLimit);
+		// @ts-expect-error dfghdfdfhdfh
+		const userMaxAmount = req.user ? req.user.rate_limit[rateLimitId] : amount;
+
+		res.setHeader("X-RateLimit-Limit", userMaxAmount);
 
 		if (rateLimit === null) {
-			await setRateLimit(req, { ammount, resetTime }, rateLimitId);
+			res.setHeader("X-RateLimit-Remaining", userMaxAmount - 1);
+			await setRateLimit(req, { amount: userMaxAmount, resetTime }, rateLimitId);
 			return next();
 		}
 
 		if (rateLimit <= 0) {
-			return res.api(429, { message: message ? message(ammount, resetTime) : "Too many requests!" });
+			res.setHeader("X-RateLimit-Remaining", 0);
+			res.setHeader("X-RateLimit-Reset", await getRateLimitReset(req, rateLimitId));
+			return res.api(429, { message: message ? message(userMaxAmount, resetTime) : "Too many requests!" });
 		}
 
+		res.setHeader("X-RateLimit-Remaining", rateLimit - 1);
 		await updateRateLimit(req, rateLimitId);
 		return next();
 	};

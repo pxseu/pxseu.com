@@ -6,16 +6,16 @@ import { AVATAR, client, embedWithBase } from ".";
 import { rateLimit } from "../../../utils/rateLimit";
 
 const rateLimiter = rateLimit({
-	ammount: 1,
+	amount: 1,
 	rateLimitId: "sendMessage",
 	resetTime: 10,
-	message: (ammount, time) => `You can only send ${ammount} message(s) per ${time} second(s)`,
+	message: (amount, time) => `You can only send ${amount} message(s) per ${time} second(s)`,
 });
 
 const schema = yup.object().shape({
 	message: yup
 		.string()
-		.test("lenght", "The message cannot be logner than 2000", (value) => {
+		.test("length", "The message cannot be logner than 2000", (value) => {
 			if (!value) return true;
 
 			return value.length <= 2000;
@@ -23,7 +23,7 @@ const schema = yup.object().shape({
 		.nullable(),
 	name: yup
 		.string()
-		.test("lenght", "The name cannot be longer than 128 characters", (value) => {
+		.test("length", "The name cannot be longer than 128 characters", (value) => {
 			if (!value) return true;
 
 			return value.length <= 128;
@@ -32,7 +32,7 @@ const schema = yup.object().shape({
 	attachment: yup
 		.string()
 		.url()
-		.test("lenght", "The attachment cannot be longer than 200 characters", (value) => {
+		.test("length", "The attachment cannot be longer than 200 characters", (value) => {
 			if (!value) return true;
 
 			return value.length <= 200;
