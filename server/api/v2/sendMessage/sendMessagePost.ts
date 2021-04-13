@@ -9,7 +9,7 @@ const rateLimiter = rateLimit({
 	ammount: 1,
 	rateLimitId: "sendMessage",
 	resetTime: 10,
-	message: (ammount, time) => `You can only send ${ammount} per ${time} second(s)`,
+	message: (ammount, time) => `You can only send ${ammount} message(s) per ${time} second(s)`,
 });
 
 const schema = yup.object().shape({

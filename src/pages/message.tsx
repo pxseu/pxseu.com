@@ -1,34 +1,45 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DefaultLayout from "../components/DefaultLayout";
 import Modal from "../components/Modal";
 import buttonStyles from "../styles/pages/Error.module.css";
 import styles from "../styles/pages/Message.module.css";
 
+const NAME_KEY = "sendMessage:name";
+
 const MessageIndex = (): JSX.Element => {
-	const [showSucces, setShowSucces] = useState(false);
+	const [isError, setIsError] = useState(false);
+	const [showModal, setShowModal] = useState(false);
 	const [disabledButton, setDisabledButton] = useState(false);
-	const [isError, showError] = useState(false);
-	const [errorMessage, setErrorMessage] = useState("");
-	const messageInput = useRef<HTMLTextAreaElement>(null);
+
+	const [messageContent, setMessage] = useState("");
+
 	const nameInput = useRef<HTMLInputElement>(null);
+	const messageInput = useRef<HTMLTextAreaElement>(null);
 	const attachmentInput = useRef<HTMLInputElement>(null);
 
 	const sendMessage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		e.preventDefault();
 
 		setDisabledButton(true);
+		setIsError(false);
+
+		const name = nameInput.current?.value ?? null;
+		const message = messageInput.current?.value ?? null;
+		const attachment = attachmentInput.current?.value ?? null;
+
+		if (name && localStorage) localStorage.setItem(NAME_KEY, name);
+
 		messageInput.current?.blur();
 
 		// always go with https
-		const url = `${window.location.protocol}//${window.location.host}/api/v2/sendMessage`;
 
 		let parrsedResponse: {
-			success: boolean;
-			message: string;
-		};
+			success?: boolean;
+			message?: string;
+		} = {};
 
 		try {
-			const response = await fetch(url, {
+			const response = await fetch("/api/v2/sendMessage", {
 				method: "POST",
 				mode: "cors",
 				cache: "no-cache",
@@ -39,30 +50,33 @@ const MessageIndex = (): JSX.Element => {
 				redirect: "follow",
 				referrerPolicy: "no-referrer",
 				body: JSON.stringify({
-					message: messageInput.current?.value,
-					name: nameInput.current?.value,
-					attachment: attachmentInput.current?.value,
+					message,
+					name,
+					attachment,
 				}),
 			});
 
 			parrsedResponse = await response.json();
 		} catch (e) {
-			setErrorMessage("Message not sent!\nMight be a network or server issue.");
-			showError(true);
-			setDisabledButton(false);
-			return;
+			setMessage("Message not sent!\nMight be a network or server issue.");
+			setIsError(true);
 		}
 
 		if (!parrsedResponse.success) {
-			setErrorMessage(parrsedResponse.message);
-			showError(true);
-			setDisabledButton(false);
-			return;
+			setIsError(true);
 		}
 
-		setShowSucces(true);
+		if (parrsedResponse.message) {
+			setMessage(parrsedResponse.message);
+		}
+
+		setShowModal(true);
 		setDisabledButton(false);
 	};
+
+	useEffect(() => {
+		if (nameInput.current && localStorage) nameInput.current.value = localStorage.getItem(NAME_KEY) ?? "";
+	}, []);
 
 	return (
 		<>
@@ -104,18 +118,15 @@ const MessageIndex = (): JSX.Element => {
 				</div>
 			</DefaultLayout>
 			<Modal
-				open={showSucces}
+				open={showModal}
 				onClose={() => {
-					setShowSucces(false);
-					messageInput.current ? (messageInput.current.value = "") : null;
-					attachmentInput.current ? (attachmentInput.current.value = "") : null;
-				}}>
-				<p>Message was sent!</p>
-			</Modal>
+					setShowModal(false);
 
-			<Modal open={isError} onClose={() => showError(false)}>
-				<p>Error!</p>
-				<p>{errorMessage}</p>
+					if (messageInput.current) messageInput.current.value = "";
+					if (attachmentInput.current) attachmentInput.current.value = "";
+				}}>
+				{isError && <p>Error!</p>}
+				<p>{messageContent}</p>
 			</Modal>
 		</>
 	);
