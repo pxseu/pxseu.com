@@ -1,13 +1,14 @@
 {
-    "extends": "./tsconfig.json",
+    "extends": "../tsconfig.json",
     "compilerOptions": {
         "noEmit": false,
         "moduleResolution": "node",
         "target": "es2019",
         "module": "commonjs",
-        "outDir": "dist",
+        "outDir": "../dist",
     },
     "include": [
-        "./server/**/*.ts",
+        "../express.d.ts",
+        "./**/*.ts",
     ]
 }

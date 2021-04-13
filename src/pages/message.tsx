@@ -21,8 +21,9 @@ const MessageIndex = (): JSX.Element => {
 
 		// always go with https
 		const url = `${window.location.protocol}//${window.location.host}/api/v2/sendMessage`;
+
 		let parrsedResponse: {
-			status: number;
+			success: boolean;
 			message: string;
 		};
 
@@ -52,7 +53,7 @@ const MessageIndex = (): JSX.Element => {
 			return;
 		}
 
-		if (parrsedResponse.status != 200) {
+		if (!parrsedResponse.success) {
 			setErrorMessage(parrsedResponse.message);
 			showError(true);
 			setDisabledButton(false);

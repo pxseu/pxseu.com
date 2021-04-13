@@ -3,7 +3,7 @@ import express, { Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import next from "next";
-import api from "./api";
+import { router as apiRouter } from "./api";
 import { connect } from "./db/mongo";
 import { cspDirectives } from "./utils/config";
 import { useApiExtender } from "./utils/extenders";
@@ -30,7 +30,7 @@ const handle = app.getRequestHandler();
 	server.use(useApiExtender);
 
 	server.use(redirects);
-	server.use("/api", api);
+	server.use("/api", apiRouter);
 	server.use(headersSet);
 
 	if (!DISSABLE_NEXT)
