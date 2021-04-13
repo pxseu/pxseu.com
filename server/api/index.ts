@@ -1,8 +1,9 @@
 import express, { Router } from "express";
 import { IncomingMessage } from "node:http";
+import { setUser } from "../utils/setUser";
 import v2 from "./v2";
 
-const router = Router();
+export const router = Router();
 
 export const DEV_MODE = process.env.NODE_ENV == "development";
 
@@ -16,6 +17,8 @@ router.use((req, res, next) => {
 	});
 });
 
+router.use(setUser);
+
 router.use("/v2", v2);
 
 router.use((_, res) => {
@@ -23,8 +26,6 @@ router.use((_, res) => {
 		message: "Not found",
 	});
 });
-
-export default router;
 
 function getRawBody(req: IncomingMessage, _: never, buf: Buffer) {
 	// @ts-expect-error lazy

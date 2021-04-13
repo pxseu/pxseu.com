@@ -4,8 +4,9 @@ export const useApiExtender = (_: Request, res: Response, next: NextFunction): v
 	res.api = (status, body) => {
 		return res.status(status).json({
 			...body,
-			status,
+			success: status >= 200 && status < 300,
 		});
 	};
-	next();
+
+	return next();
 };

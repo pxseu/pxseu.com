@@ -1,9 +1,12 @@
 import { Document, model, Schema } from "mongoose";
 
-export interface apiUser extends Document {
+export interface ApiUser extends Document {
 	auth_key: string;
 	name: string;
 	messageCount: number;
+	rate_limit: {
+		sendMessage: number;
+	};
 }
 
 const serverSchema = new Schema({
@@ -20,6 +23,11 @@ const serverSchema = new Schema({
 		required: true,
 		default: 0,
 	},
+	rate_limit: {
+		sendMessage: {
+			type: Number,
+		},
+	},
 });
 
-export default model<apiUser>("auth_key_api", serverSchema);
+export default model<ApiUser>("auth_key_api", serverSchema);
