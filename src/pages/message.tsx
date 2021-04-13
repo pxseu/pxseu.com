@@ -9,7 +9,7 @@ const NAME_KEY = "sendMessage:name";
 const MessageIndex = (): JSX.Element => {
 	const [isError, setIsError] = useState(false);
 	const [showModal, setShowModal] = useState(false);
-	const [disabledButton, setDisabledButton] = useState(false);
+	const [disableButton, setDisableButton] = useState(false);
 
 	const [messageContent, setMessage] = useState("");
 
@@ -20,7 +20,7 @@ const MessageIndex = (): JSX.Element => {
 	const sendMessage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		e.preventDefault();
 
-		setDisabledButton(true);
+		setDisableButton(true);
 		setIsError(false);
 
 		const name = nameInput.current?.value ?? null;
@@ -71,7 +71,11 @@ const MessageIndex = (): JSX.Element => {
 		}
 
 		setShowModal(true);
-		setDisabledButton(false);
+
+		if (messageInput.current) messageInput.current.value = "";
+		if (attachmentInput.current) attachmentInput.current.value = "";
+
+		setDisableButton(false);
 	};
 
 	useEffect(() => {
@@ -111,7 +115,7 @@ const MessageIndex = (): JSX.Element => {
 						/>
 					</div>
 					<div className={styles.buttonWrapper}>
-						<button onClick={sendMessage} className={buttonStyles.buttonGoBack} disabled={disabledButton}>
+						<button onClick={sendMessage} className={buttonStyles.buttonGoBack} disabled={disableButton}>
 							Send!
 						</button>
 					</div>
@@ -121,9 +125,6 @@ const MessageIndex = (): JSX.Element => {
 				open={showModal}
 				onClose={() => {
 					setShowModal(false);
-
-					if (messageInput.current) messageInput.current.value = "";
-					if (attachmentInput.current) attachmentInput.current.value = "";
 				}}>
 				{isError && <p>Error!</p>}
 				<p>{messageContent}</p>

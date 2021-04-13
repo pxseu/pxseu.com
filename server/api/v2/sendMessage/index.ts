@@ -4,7 +4,7 @@ import { postMessage, validateMessage } from "./sendMessagePost";
 
 export const AVATAR = "https://cdn.pxseu.com/wgzWy1U9f.png";
 export const client = new WebhookClient(process.env.WEBHOOK_MESSAGE_ID ?? "", process.env.WEBHOOK_MESSAGE_TOKEN ?? "", {
-	disableMentions: "everyone",
+	disableMentions: "all",
 });
 
 export const embedWithBase = (embed: MessageEmbed): WebhookMessageOptions => {
