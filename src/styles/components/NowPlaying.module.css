@@ -66,3 +66,23 @@
 .album {
 	font-size: 15px;
 }
+
+.imagetag {
+	background: rgb(57, 57, 57);
+	background: linear-gradient(90deg, rgba(57, 57, 57, 1) 0%, rgba(4, 4, 4, 1) 100%);
+	background-size: 400% 400%;
+	animation: gradient 2s ease infinite;
+	outline: none;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

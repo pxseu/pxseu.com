@@ -1,33 +1,52 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DefaultLayout from "../components/DefaultLayout";
 import Modal from "../components/Modal";
 import buttonStyles from "../styles/pages/Error.module.css";
 import styles from "../styles/pages/Message.module.css";
 
+const NAME_KEY = "sendMessage:name";
+
 const MessageIndex = (): JSX.Element => {
-	const [showSucces, setShowSucces] = useState(false);
-	const [disabledButton, setDisabledButton] = useState(false);
-	const [isError, showError] = useState(false);
-	const [errorMessage, setErrorMessage] = useState("");
-	const messageInput = useRef<HTMLTextAreaElement>(null);
+	const [isError, setIsError] = useState(false);
+	const [showModal, setShowModal] = useState(false);
+	const [disableButton, setDisableButton] = useState(false);
+
+	const [messageContent, setMessage] = useState("");
+
 	const nameInput = useRef<HTMLInputElement>(null);
+	const messageInput = useRef<HTMLTextAreaElement>(null);
 	const attachmentInput = useRef<HTMLInputElement>(null);
 
 	const sendMessage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		e.preventDefault();
 
-		setDisabledButton(true);
+		setDisableButton(true);
+		setIsError(false);
+
+		const name = nameInput.current?.value ?? null;
+		const message = messageInput.current?.value ?? null;
+		const attachment = attachmentInput.current?.value ?? null;
+
+		if (name && localStorage) localStorage.setItem(NAME_KEY, name);
+
 		messageInput.current?.blur();
 
 		// always go with https
-		const url = `${window.location.protocol}//${window.location.host}/api/v2/sendMessage`;
+
 		let parrsedResponse: {
-			status: number;
-			message: string;
-		};
+			success?: boolean;
+			message?: string;
+
+			/**
+			 *  Only when rate limited
+			 */
+			retry_after?: number;
+		} = {};
+
+		let error = false;
 
 		try {
-			const response = await fetch(url, {
+			const response = await fetch("/api/v2/sendMessage", {
 				method: "POST",
 				mode: "cors",
 				cache: "no-cache",
@@ -38,30 +57,43 @@ const MessageIndex = (): JSX.Element => {
 				redirect: "follow",
 				referrerPolicy: "no-referrer",
 				body: JSON.stringify({
-					message: messageInput.current?.value,
-					name: nameInput.current?.value,
-					attachment: attachmentInput.current?.value,
+					message,
+					name,
+					attachment,
 				}),
 			});
 
 			parrsedResponse = await response.json();
 		} catch (e) {
-			setErrorMessage("Message not sent!\nMight be a network or server issue.");
-			showError(true);
-			setDisabledButton(false);
-			return;
+			setMessage("Message not sent!\nMight be a network or server issue.");
+			error = true;
 		}
 
-		if (parrsedResponse.status != 200) {
-			setErrorMessage(parrsedResponse.message);
-			showError(true);
-			setDisabledButton(false);
-			return;
+		if (parrsedResponse.message) {
+			setMessage(parrsedResponse.message);
 		}
 
-		setShowSucces(true);
-		setDisabledButton(false);
+		if (!parrsedResponse.success) {
+			error = true;
+
+			if (parrsedResponse.retry_after) {
+				setMessage(`Please try again in ${parrsedResponse.retry_after} second(s)`);
+			}
+		}
+
+		if (!error) {
+			if (messageInput.current) messageInput.current.value = "";
+			if (attachmentInput.current) attachmentInput.current.value = "";
+		}
+
+		setIsError(error);
+		setShowModal(true);
+		setDisableButton(false);
 	};
+
+	useEffect(() => {
+		if (nameInput.current && localStorage) nameInput.current.value = localStorage.getItem(NAME_KEY) ?? "";
+	}, []);
 
 	return (
 		<>
@@ -96,25 +128,19 @@ const MessageIndex = (): JSX.Element => {
 						/>
 					</div>
 					<div className={styles.buttonWrapper}>
-						<button onClick={sendMessage} className={buttonStyles.buttonGoBack} disabled={disabledButton}>
+						<button onClick={sendMessage} className={buttonStyles.buttonGoBack} disabled={disableButton}>
 							Send!
 						</button>
 					</div>
 				</div>
 			</DefaultLayout>
 			<Modal
-				open={showSucces}
+				open={showModal}
 				onClose={() => {
-					setShowSucces(false);
-					messageInput.current ? (messageInput.current.value = "") : null;
-					attachmentInput.current ? (attachmentInput.current.value = "") : null;
+					setShowModal(false);
 				}}>
-				<p>Message was sent!</p>
-			</Modal>
-
-			<Modal open={isError} onClose={() => showError(false)}>
-				<p>Error!</p>
-				<p>{errorMessage}</p>
+				{isError && <p>Error!</p>}
+				<p>{messageContent}</p>
 			</Modal>
 		</>
 	);

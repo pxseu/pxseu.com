@@ -2,8 +2,10 @@ import { MessageEmbed, WebhookClient, WebhookMessageOptions } from "discord.js";
 import { Router } from "express";
 import { postMessage, validateMessage } from "./sendMessagePost";
 
-export const AVATAR = "https://cdn.pxseu.com/5As8jItIj.jpg";
-export const client = new WebhookClient(process.env.WEBHOOK_MESSAGE_ID ?? "", process.env.WEBHOOK_MESSAGE_TOKEN ?? "");
+export const AVATAR = "https://cdn.pxseu.com/wgzWy1U9f.png";
+export const client = new WebhookClient(process.env.WEBHOOK_MESSAGE_ID ?? "", process.env.WEBHOOK_MESSAGE_TOKEN ?? "", {
+	disableMentions: "all",
+});
 
 export const embedWithBase = (embed: MessageEmbed): WebhookMessageOptions => {
 	return {

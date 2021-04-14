@@ -1,25 +1,21 @@
 import { MessageEmbed } from "discord.js";
 import { NextFunction, Request, Response } from "express";
-import rateLimit from "express-rate-limit";
 import * as yup from "yup";
 import { AVATAR, client, embedWithBase } from ".";
-import { DEV_MODE } from "../../";
-import { RequestWithUser } from "../../../../express";
-import AuthKeyDb from "../../../db/models/auth_key";
+// import { DEV_MODE } from "../../";
+import { rateLimit } from "../../../utils/rateLimit";
 
-const sendMessageLimiter = rateLimit({
-	windowMs: 0.5 * 60 * 1000, // 1 per 30 s
-	max: 1,
-	message: {
-		status: 429,
-		message: `Only one message per 30s!`,
-	},
+const rateLimiter = rateLimit({
+	amount: 1,
+	rateLimitId: "sendMessage",
+	resetTime: 10,
+	message: (amount, time) => `You can only send ${amount} message(s) per ${time} second(s)`,
 });
 
 const schema = yup.object().shape({
 	message: yup
 		.string()
-		.test("lenght", "The message cannot be logner than 2000", (value) => {
+		.test("length", "The message cannot be longer than 2000", (value) => {
 			if (!value) return true;
 
 			return value.length <= 2000;
@@ -27,16 +23,16 @@ const schema = yup.object().shape({
 		.nullable(),
 	name: yup
 		.string()
-		.test("lenght", "The name cannot be longer than 20 characters", (value) => {
+		.test("length", "The name cannot be longer than 128 characters", (value) => {
 			if (!value) return true;
 
-			return value.length <= 20;
+			return value.length <= 128;
 		})
 		.nullable(),
 	attachment: yup
 		.string()
 		.url()
-		.test("lenght", "The attachment cannot be longer than 200 characters", (value) => {
+		.test("length", "The attachment cannot be longer than 200 characters", (value) => {
 			if (!value) return true;
 
 			return value.length <= 200;
@@ -44,7 +40,7 @@ const schema = yup.object().shape({
 		.nullable(),
 });
 
-export const validateMessage = async (req: RequestWithUser, res: Response, next: NextFunction): Promise<unknown> => {
+export const validateMessage = async (req: Request, res: Response, next: NextFunction): Promise<unknown> => {
 	if (!JSON.parse(process.env.ALLOW_SEND_MESSAGE ?? ""))
 		return res.api(503, {
 			message: "Service disabled.",
@@ -71,25 +67,12 @@ export const validateMessage = async (req: RequestWithUser, res: Response, next:
 	if (req.body.attachment === null && req.body.message === null)
 		return res.api(400, { message: "You must provide a message or an attachment" });
 
-	const AuthKey = extractToken(req);
+	// if (DEV_MODE) return next();
 
-	if (AuthKey) {
-		const apiKeyFound = await AuthKeyDb.findOne({
-			auth_key: AuthKey,
-		});
-
-		if (apiKeyFound) {
-			req.user = apiKeyFound;
-			return next();
-		}
-	}
-
-	if (DEV_MODE) return next();
-
-	sendMessageLimiter(req, res, next);
+	return rateLimiter(req, res, next);
 };
 
-export const postMessage = async (req: RequestWithUser, res: Response): Promise<void> => {
+export const postMessage = async (req: Request, res: Response): Promise<void> => {
 	const embed = new MessageEmbed();
 
 	if (req.body.attachment) {
@@ -110,32 +93,16 @@ export const postMessage = async (req: RequestWithUser, res: Response): Promise<
 		await client.send(req.body.attachment ? `Attachment: ${req.body.attachment}` : undefined, embedWithBase(embed));
 
 		res.api(200, {
-			message: "Message was delievered",
+			message: "Message was delivered",
 			user: req.user?.name,
 		});
 	} catch (e: unknown) {
 		res.api(500, {
-			message: "Failed to deliver the message.",
+			message: "Failed to deliver message",
 			user: req.user?.name,
 		});
 	}
 };
-
-function extractToken(req: Request): string | null {
-	if (req.headers?.authorization && req.headers.authorization.split(" ")[0] === "Bearer") {
-		return req.headers.authorization.split(" ")[1];
-	}
-
-	if (req.query && req.query.token) {
-		return req.query.token.toString();
-	}
-
-	if (req.body && req.body.token) {
-		return req.body.token;
-	}
-
-	return null;
-}
 
 const capitalize = (s: string): string => {
 	if (typeof s !== "string") return s;
