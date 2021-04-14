@@ -36,7 +36,14 @@ const MessageIndex = (): JSX.Element => {
 		let parrsedResponse: {
 			success?: boolean;
 			message?: string;
+
+			/**
+			 *  Only when rate limited
+			 */
+			retry_after?: number;
 		} = {};
+
+		let error = false;
 
 		try {
 			const response = await fetch("/api/v2/sendMessage", {
@@ -59,22 +66,28 @@ const MessageIndex = (): JSX.Element => {
 			parrsedResponse = await response.json();
 		} catch (e) {
 			setMessage("Message not sent!\nMight be a network or server issue.");
-			setIsError(true);
-		}
-
-		if (!parrsedResponse.success) {
-			setIsError(true);
+			error = true;
 		}
 
 		if (parrsedResponse.message) {
 			setMessage(parrsedResponse.message);
 		}
 
+		if (!parrsedResponse.success) {
+			error = true;
+
+			if (parrsedResponse.retry_after) {
+				setMessage(`Please try again in ${parrsedResponse.retry_after} second(s)`);
+			}
+		}
+
+		if (!error) {
+			if (messageInput.current) messageInput.current.value = "";
+			if (attachmentInput.current) attachmentInput.current.value = "";
+		}
+
+		setIsError(error);
 		setShowModal(true);
-
-		if (messageInput.current) messageInput.current.value = "";
-		if (attachmentInput.current) attachmentInput.current.value = "";
-
 		setDisableButton(false);
 	};
 

@@ -15,7 +15,7 @@ const rateLimiter = rateLimit({
 const schema = yup.object().shape({
 	message: yup
 		.string()
-		.test("length", "The message cannot be logner than 2000", (value) => {
+		.test("length", "The message cannot be longer than 2000", (value) => {
 			if (!value) return true;
 
 			return value.length <= 2000;
@@ -90,16 +90,15 @@ export const postMessage = async (req: Request, res: Response): Promise<void> =>
 	embed.setTimestamp();
 
 	try {
-		await client.send(req.body.message);
 		await client.send(req.body.attachment ? `Attachment: ${req.body.attachment}` : undefined, embedWithBase(embed));
 
 		res.api(200, {
-			message: "Message was delievered",
+			message: "Message was delivered",
 			user: req.user?.name,
 		});
 	} catch (e: unknown) {
 		res.api(500, {
-			message: "Failed to deliver the message.",
+			message: "Failed to deliver message",
 			user: req.user?.name,
 		});
 	}

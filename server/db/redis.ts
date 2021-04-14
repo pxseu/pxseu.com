@@ -10,6 +10,6 @@ export const redis = {
 	setAsync: promisify(client.setex).bind(client),
 	getAsync: promisify(client.get).bind(client),
 	deleteAsync: promisify(client.del).bind(client),
-	decrAsync: promisify(client.decr).bind(client),
-	ttlAsync: promisify(client.ttl).bind(client),
+	incrAsync: promisify(client.incr).bind(client),
+	ttlAsync: promisify(client.pttl).bind(client),
 };

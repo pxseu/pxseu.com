@@ -1,11 +1,17 @@
 import { Document, model, Schema } from "mongoose";
 
+interface RateLimitObject {
+	amount: number;
+	reset: number;
+}
+
 export interface ApiUser extends Document {
 	auth_key: string;
 	name: string;
 	messageCount: number;
 	rate_limit: {
-		sendMessage: number;
+		sendMessage: RateLimitObject;
+		[key: string]: RateLimitObject;
 	};
 }
 
@@ -25,7 +31,16 @@ const serverSchema = new Schema({
 	},
 	rate_limit: {
 		sendMessage: {
-			type: Number,
+			amount: {
+				type: Number,
+				required: true,
+				default: 10,
+			},
+			reset: {
+				type: Number,
+				required: true,
+				default: 10,
+			},
 		},
 	},
 });
