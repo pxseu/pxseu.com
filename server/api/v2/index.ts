@@ -5,8 +5,8 @@ import { router as spotifyRouter } from "./spotify";
 
 const router = Router();
 
-router.use("/sendMessage", sendMessageRouter);
-router.use("/bajoJajo", bajoJajo);
+router.use(["/sendMessage", "send_message"], sendMessageRouter);
+router.use(["/bajoJajo", "bajo_jajo"], bajoJajo);
 router.use("/spotify", spotifyRouter);
 
 export default router;

@@ -53,7 +53,7 @@ const NowPlaying = (): JSX.Element => {
 			<SkeletonTheme color="#222" highlightColor="#444">
 				<div className={styles.spotifyBox}>
 					<div className={styles.spotifyThumbnail}>
-						<img className={styles.imagetag} src={placeholder} alt="Album thumbnail" />
+						<img width={100} height={100} className={styles.imagetag} src={placeholder} />
 					</div>
 					<div className={styles.spotifyContent}>
 						<p className={styles.songTitle}>No song playing</p>
@@ -74,7 +74,7 @@ const NowPlaying = (): JSX.Element => {
 	return (
 		<div className={styles.spotifyBox}>
 			<div className={styles.spotifyThumbnail}>
-				<img className={styles.imagetag} src={image} alt="Album thumbnail" />
+				<img width={100} height={100} className={styles.imagetag} src={image} />
 			</div>
 			<div className={styles.spotifyContent}>
 				<p className={styles.songTitle} title={spotify.data.song.title}>

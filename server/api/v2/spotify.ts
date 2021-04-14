@@ -7,8 +7,8 @@ import topSongs from "./spotify/topSongs";
 
 export const router = Router();
 
-router.get("/nowPlaying", nowPlaying);
-router.get("/topSongs", topSongs);
+router.get(["/nowPlaying", "/now_playing"], nowPlaying);
+router.get(["/topSongs", "/top_songs"], topSongs);
 
 // const CACHE_KEY = "spotify:refresh_token";
 
