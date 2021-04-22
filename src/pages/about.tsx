@@ -1,8 +1,10 @@
 import Link from "next/link";
 import React from "react";
 import Age from "../components/Age";
+import AnimeStats from "../components/AnimeStats";
 import Badges from "../components/Badges";
 import PageWithTitle from "../components/DefaultLayout";
+import FavouriteAnime from "../components/FavouriteAnime";
 import TopSongs from "../components/TopSongs";
 import Twemoji from "../components/Twemoji";
 import styles from "../styles/pages/About.module.css";
@@ -42,6 +44,21 @@ const About = (): JSX.Element => {
 				<div className="topsongs">
 					<p className={["center", styles.topSongsTitle].join(" ")}>My top songs on Spotify:</p>
 					<TopSongs />
+				</div>
+				<hr />
+				<div className="favouriteAnime">
+					<p className={["center", styles.topSongsTitle].join(" ")}>
+						My favourite Anime (from{" "}
+						<a className={styles.link} href="//anilist.co/">
+							AniList
+						</a>
+						):
+					</p>
+					<FavouriteAnime />
+				</div>
+				<div className="statsAnime">
+					<p className={["center", styles.topSongsTitle].join(" ")}>My Anime stats:</p>
+					<AnimeStats />
 				</div>
 				<hr />
 				<Badges />

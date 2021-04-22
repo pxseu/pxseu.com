@@ -1,9 +1,9 @@
 import { Response } from "express";
 import { redis } from "../../../db/redis";
-import { getAccessToken } from "../spotify";
+import { getAccessToken } from ".";
 
 const CACHE_KEY = "spotify:top_songs";
-const CACHE_TIME = 5 * 60; // 5 min
+const CACHE_TIME = 5 * 60 * 1000; // 5 min
 
 interface Song {
 	name: string;
@@ -13,6 +13,10 @@ interface Song {
 	external_urls: {
 		spotify: string;
 	};
+}
+
+interface Res {
+	items: Song[];
 }
 
 const TopTracks = async (_: unknown, res: Response): Promise<unknown> => {
@@ -28,15 +32,24 @@ const TopTracks = async (_: unknown, res: Response): Promise<unknown> => {
 
 	// TODO: implement caching - done
 
-	const response = await (
-		await fetch("https://api.spotify.com/v1/me/top/tracks", {
-			headers: {
-				Authorization: `Bearer ${access_token}`,
-			},
-		})
-	).json();
+	let response: Res;
 
-	const tracks = response.items.slice(0, 10).map((track: Song) => ({
+	try {
+		response = await (
+			await fetch("https://api.spotify.com/v1/me/top/tracks", {
+				headers: {
+					Authorization: `Bearer ${access_token}`,
+				},
+			})
+		).json();
+	} catch (error) {
+		return res.api(500, {
+			data: "Failed to make the call with an external Api",
+			cached: false,
+		});
+	}
+
+	const tracks = response.items.slice(0, 10).map((track) => ({
 		title: track.name,
 		artist: track.artists.map((_artist) => _artist.name).join(", "),
 		songUrl: track.external_urls.spotify,

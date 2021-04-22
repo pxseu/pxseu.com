@@ -7,8 +7,8 @@
 	"scripts": {
 		"compile": "rimraf dist && tsc --project server/tsconfig.json",
 		"start": "node .",
-		"dev": "cross-env NODE_ENV=development PORT=8080 nodemon -e ts --exec \"yarn compile && yarn start\"",
-		"dev:api": "cross-env NODE_ENV=development PORT=8080 API_ONLY=true nodemon -e ts --exec \"yarn compile && yarn start\"",
+		"dev": "cross-env NODE_ENV=development PORT=8080 nodemon -e ts --exec \"yarn compile && yarn start || exit 1\"",
+		"dev:api": "cross-env API_ONLY=true yarn dev",
 		"prod": "cross-env NODE_ENV=production PORT=6001 yarn start",
 		"deploy": "yarn compile && yarn build",
 		"lint": "eslint {src,server}/**/*.{ts,tsx} --fix",

@@ -7,7 +7,7 @@ const client = createClient({
 });
 
 export const redis = {
-	setAsync: promisify(client.setex).bind(client),
+	setAsync: promisify(client.psetex).bind(client),
 	getAsync: promisify(client.get).bind(client),
 	deleteAsync: promisify(client.del).bind(client),
 	incrAsync: promisify(client.incr).bind(client),

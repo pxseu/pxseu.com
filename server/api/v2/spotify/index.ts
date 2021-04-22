@@ -2,8 +2,8 @@ import { Router } from "express";
 import fetch from "node-fetch";
 import querystring from "querystring";
 // import { redis } from "../../db/redis";
-import nowPlaying from "./spotify/nowPlaying";
-import topSongs from "./spotify/topSongs";
+import nowPlaying from "./nowPlaying";
+import topSongs from "./topSongs";
 
 export const router = Router();
 
