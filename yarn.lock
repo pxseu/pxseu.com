@@ -3939,10 +3939,10 @@ next-pwa@^5.0.6:
     workbox-webpack-plugin "^6.1.1"
     workbox-window "^6.1.1"
 
-next-sitemap@^1.6.9:
-  version "1.6.9"
-  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.6.9.tgz#54ecfc2a6c4f7ef0a6d06a7c23d50efd298b4f6a"
-  integrity sha512-3KeFgaIrFPV6S51qkSPELOEgfl63gdpCG7ttR2XU7GsbjeNJegUbu+CUt4WoaK5mixtk6H6lEl8lM+MIf/hOWQ==
+next-sitemap@^1.6.25:
+  version "1.6.25"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.6.25.tgz#bab5694e998e57b9932c57fb6dd95448d55ab88c"
+  integrity sha512-lZ1Mchz0Kwfy9C2kdxlp1FPT1kj6g2EY6+cAuBjmRht+3fbDqLaDaC0z3cYhjvsfmHlshc1FNkZ7Ntq5a8q7tQ==
   dependencies:
     "@corex/deepmerge" "^2.5.6"
     matcher "^4.0.0"
