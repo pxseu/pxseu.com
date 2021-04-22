@@ -1,0 +1,113 @@
+.favouriteAnime {
+	display: inline-flex;
+	justify-content: center;
+	width: 100%;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.anime {
+	display: inline-flex;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: var(--popup-shadow);
+	background-color: var(--background-lighter);
+	border-radius: var(--border-radius);
+	width: 400px;
+	height: 150px;
+	transition-duration: 0.2s;
+	transition-property: transform;
+}
+
+.anime:hover {
+	transform: translateY(-3px);
+}
+
+.animeImage {
+	width: 100px;
+	padding: 0;
+	margin: 0;
+}
+.animeImage > .imagetag {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: var(--border-radius);
+	box-shadow: var(--popup-shadow);
+}
+
+.animeText {
+	display: inline-flex;
+	flex-direction: column;
+	margin-left: 10px;
+	justify-content: center;
+	width: 80%;
+	flex-wrap: wrap;
+}
+
+.animeTitle {
+	width: 300px;
+}
+
+.animeText > div > p > a {
+	color: var(--body-normal);
+	text-decoration: underline var(--logo);
+	transition-duration: 0.2s;
+}
+.animeText > div > p > a:hover {
+	color: var(--logo);
+	text-decoration: underline var(--font-normal);
+}
+
+.animeGenres {
+	margin-top: 10px;
+	display: inline-flex;
+	flex-direction: row;
+}
+
+.animeText > div > p {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: left;
+	margin: 0;
+	padding: 0;
+}
+
+.genra {
+	margin: 2px;
+	background-color: var(--background-secondary-lighter);
+	padding: 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	border-radius: var(--border-radius);
+	box-shadow: var(--popup-shadow);
+	transition-duration: 0.2s;
+	transition-property: transform;
+}
+
+.genra:hover {
+	transform: translateY(-3px);
+}
+
+.imagetag {
+	background: rgb(57, 57, 57);
+	background: linear-gradient(90deg, rgba(57, 57, 57, 1) 0%, rgba(4, 4, 4, 1) 100%);
+	background-size: 400% 400%;
+	animation: gradient 2s ease infinite;
+	outline: none;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

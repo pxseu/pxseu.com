@@ -1,44 +1,45 @@
 :root {
-	--background: #101010;
-	--background-secondary: #2b2b2b;
-	--background-lighter: #252525;
+	--background: hsl(0, 0%, 6%);
+	--background-secondary: hsl(0, 0%, 17%);
+	--background-lighter: hsl(0, 0%, 15%);
+	--background-secondary-lighter: hsl(0, 0%, 25%);
 
-	--font-normal: #ffffff;
+	--font-normal: hsl(0, 0%, 100%);
 
-	--background-hover: #ffffff;
-	--font-normal-hover: #101010;
+	--background-hover: hsl(0, 0%, 100%);
+	--font-normal-hover: hsl(0, 0%, 6%);
 
-	--logo: #f52f79;
-	--logo-grad: linear-gradient(to right, #ff2b2b 0%, #e337ff 100%);
+	--logo: hsl(338, 91%, 57%);
+	--logo-grad: linear-gradient(to right, hsl(0, 100%, 58%) 0%, hsl(292, 100%, 61%) 100%);
 
 	--scroll-track: var(--background);
-	--scroll-thumb: #585858;
-	--scroll-thumb-hover: #555555;
+	--scroll-thumb: hsl(0, 0%, 35%);
+	--scroll-thumb-hover: hsl(0, 0%, 33%);
 
-	--slider-track: #cccccc;
+	--slider-track: hsl(0, 0%, 80%);
 
-	--border: #ffffff;
-	--border-hover: #101010;
+	--border: hsl(0, 0%, 100%);
+	--border-hover: hsl(0, 0%, 6%);
 
-	--overlay: #000000e6;
+	--overlay: hsla(0, 0%, 0%, 0.902);
 
-	--close: #fd4a4acc;
-	--close-hover: #ff4242;
+	--close: hsla(0, 98%, 64%, 0.8);
+	--close-hover: hsl(0, 100%, 63%);
 
-	--question: #69a7bbcc;
-	--question-hover: #69a7bb;
+	--question: hsla(195, 38%, 57%, 0.8);
+	--question-hover: hsl(195, 38%, 57%);
 
 	--navbar: #0d0d0d;
 
-	--shadow: #ffffff;
+	--shadow: hsl(0, 0%, 100%);
 
-	--textboxes-background: #303030;
+	--textboxes-background: hsl(0, 0%, 19%);
 
-	--clickable-hover-shadow: 0 4px 38px rgba(255, 255, 255, 0.3), 0 6px 19px rgba(255, 255, 255, 0.22);
+	--clickable-hover-shadow: 0 4px 38px hsla(0, 0%, 100%, 0.3), 0 6px 19px hsla(0, 0%, 100%, 0.22);
 
 	--default-font-family: "Roboto", Arial, Helvetica, sans-serif;
 
-	--popup-shadow: 0px 5px 5px #00000040;
+	--popup-shadow: 0px 5px 5px hsla(0, 0%, 0%, 0.251);
 
 	--border-radius: 10px;
 }

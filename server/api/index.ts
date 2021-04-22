@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import { IncomingMessage } from "node:http";
 import { setUser } from "../utils/setUser";
-import v2 from "./v2";
+import {router as v2} from "./v2";
 
 export const router = Router();
 

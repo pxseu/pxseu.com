@@ -1,10 +1,10 @@
 import { Response } from "express";
 import fetch from "node-fetch";
 import { redis } from "../../../db/redis";
-import { getAccessToken } from "../spotify";
+import { getAccessToken } from ".";
 
 const CACHE_KEY = "spotify:now_playing";
-const CACHE_TIME = 10;
+const CACHE_TIME = 10 * 1000;
 
 interface Song {
 	is_playing: boolean;
@@ -60,12 +60,13 @@ const nowPlaying = async (_: unknown, res: Response): Promise<unknown> => {
 		await redis.setAsync(CACHE_KEY, CACHE_TIME, JSON.stringify({ playing: false }));
 		return res.api(200, { playing: false, cached: false });
 	}
+
 	const song: Song = await response.json();
 
 	const data = {
 		song: {
 			title: song.item.name,
-			artists: song.item.artists.map((_artist) => _artist.name).join(", "),
+			artists: song.item.artists.map((artist) => artist.name).join(", "),
 			url: song.item.external_urls.spotify,
 		},
 		album: {
