@@ -5,13 +5,13 @@
 	transform: translate(-50%, -50%);
 	background-color: #101010;
 	color: white;
-	padding: 50px;
+	padding: 25px 5px 10px;
 	z-index: 1000;
 	border-radius: 10px;
-	border: 1px solid var(--border);
 	text-align: center;
 	opacity: 1;
 	transition-duration: 0.3s;
+	box-shadow: var(--popup-shadow);
 }
 
 .overlay {
@@ -24,31 +24,58 @@
 	z-index: 1000;
 }
 
-.closeModal {
+.closeModal::before {
+	content: "X";
+	margin-left: 0;
+}
+
+.closeModal,
+.modalQuestion {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 5px;
+	right: 5px;
 	font-family: Arial, sans-serif;
 	cursor: pointer;
 	font-weight: 300;
-	font-size: 20px;
+	font-size: 13px;
 	background-color: var(--close);
 	color: white;
 	padding: 0px;
-	width: 25px;
-	height: 25px;
+	width: 18px;
+	height: 18px;
 	text-align: center;
+	border-radius: 100%;
 	transition-duration: 0.2s;
+	line-height: 18px;
 }
 
 .closeModal:hover {
 	background-color: var(--close-hover);
 }
+
+.modalQuestion {
+	background-color: var(--question);
+	right: 28px;
+}
+
+.modalQuestion:hover {
+	background-color: var(--question-hover);
+}
+
+.modalQuestion::before {
+	content: "?";
+}
+
 .fade {
 	opacity: 0;
 }
 
 .modalContent {
+	margin-top: 3px;
+	border-radius: 10px;
+	background-color: var(--background-secondary);
+	padding: 20px;
 	overflow-wrap: break-word;
-	max-width: uwuuwuuwu30vw;
+	min-width: 100px;
+	box-shadow: var(--popup-shadow);
 }

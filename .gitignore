@@ -36,3 +36,4 @@ yarn-error.log*
 /public/sitemap.xml
 /public/sw*
 /public/workbox-*
+dump.rdb

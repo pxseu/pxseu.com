@@ -1,5 +1,7 @@
 .navbar {
-	position: fixed;
+	/* fallback */
+	position: absolute;
+	position: sticky;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -11,8 +13,8 @@
 	background-color: var(--navbar);
 	transition: all 0.7s ease-in;
 	z-index: 3;
+	box-shadow: var(--popup-shadow);
 	/* 	backdrop-filter: blur(1px); */
-	border-bottom: 1px outset var(--navbar);
 }
 
 .logo {
@@ -24,7 +26,7 @@
 	height: 100%;
 	width: 100%;
 	position: fixed;
-	z-index: 3;
+	z-index: 4;
 	left: -100%;
 	top: 0;
 	background-color: var(--background);

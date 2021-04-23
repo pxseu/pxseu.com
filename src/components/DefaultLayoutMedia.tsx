@@ -1,8 +1,8 @@
+import Head from "next/head";
 import React, { memo, ReactNode } from "react";
+import styles from "../styles/components/DefaultLayoutMedia.module.css";
 import BackgroundLoader from "./BackgroundLoader";
 import Navbar from "./Navbar";
-import Head from "next/head";
-import styles from "../styles/components/DefaultLayoutMedia.module.css";
 
 type DefaultLayoutInput = {
 	children: ReactNode;

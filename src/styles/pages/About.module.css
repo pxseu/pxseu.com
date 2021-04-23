@@ -1,3 +1,28 @@
 .me {
 	color: var(--logo);
 }
+
+.bio > p {
+	padding: 0;
+	margin-bottom: 12px;
+}
+
+.bio > p:last-of-type {
+	margin-bottom: 0;
+}
+
+.link {
+	color: var(--body-normal);
+	text-decoration: underline var(--logo);
+	transition-duration: 0.2s;
+}
+
+.link:hover {
+	color: var(--logo);
+	text-decoration: underline var(--font-normal);
+}
+
+.topSongsTitle {
+	margin: 0;
+	padding: 0;
+}

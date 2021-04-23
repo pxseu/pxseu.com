@@ -1,36 +1,70 @@
+import Link from "next/link";
 import React from "react";
 import Age from "../components/Age";
-import BadgeComp from "../components/Badge";
-import DefaultLayout from "../components/DefaultLayout";
+import AnimeStats from "../components/AnimeStats";
+import Badges from "../components/Badges";
+import PageWithTitle from "../components/DefaultLayout";
+import FavouriteAnime from "../components/FavouriteAnime";
+import TopSongs from "../components/TopSongs";
 import Twemoji from "../components/Twemoji";
 import styles from "../styles/pages/About.module.css";
 
-const About = (): JSX.Element => (
-	<>
-		<DefaultLayout title="About me!">
-			<h2>
-				Hey <Twemoji emoji="👋" />
-			</h2>
-			<p>
-				You can call me <span className={styles.me}>pxseu</span>!
-			</p>
-			<p>
-				I am a <Age timestamp={1090022400000 /* totaly not my bd 😳 */} /> year old developer from Poland.
-			</p>
-			<p>I work in Frontend and Backend areas.</p>
-			<p>I enjoy making Api&rsquo;s, and other small scripts.</p>
-			<p>Stuff I use:</p>
-			<p>
-				<BadgeComp badge="typescript" />
-				<BadgeComp badge="javascript" />
-				<BadgeComp badge="nextjs" />
-				<BadgeComp badge="react" />
-				<BadgeComp badge="mongodb" />
-				<BadgeComp badge="vscode" />
-				<BadgeComp badge="git" />
-			</p>
-		</DefaultLayout>
-	</>
-);
+const About = (): JSX.Element => {
+	return (
+		<PageWithTitle title="About me!">
+			<div>
+				<h2 className="center">
+					Hey again <Twemoji emoji="👋" />
+				</h2>
+				<div className={["center", styles.bio].join(" ")}>
+					<p>
+						I am a <Age timestamp={1090022400000 /* totaly not my bd 😳 */} /> year old developer from
+						Poland.
+					</p>
+					<p>I love to create new things and watch anime.</p>
+					<p>I started coding around 2019 when I went to High School.</p>
+					<p>
+						After falling in love with coding I started to find some online friends who also shared my
+						interests and passion for it.
+					</p>
+					<p>
+						I bought my first domain at the start of 2020 and then few months later bought this one which I
+						use and love till this day.
+					</p>
+					<p>I am always ready to help others and enjoy it too!</p>
+					<p>
+						If you want to, you can contact me{" "}
+						<Link href="/contact">
+							<a className={styles.link}>here</a>
+						</Link>
+						.
+					</p>
+				</div>
+				<hr />
+				<div className="topsongs">
+					<p className={["center", styles.topSongsTitle].join(" ")}>My top songs on Spotify:</p>
+					<TopSongs />
+				</div>
+				<hr />
+				<div className="favouriteAnime">
+					<p className={["center", styles.topSongsTitle].join(" ")}>
+						My favourite Anime (from{" "}
+						<a className={styles.link} href="//anilist.co/">
+							AniList
+						</a>
+						):
+					</p>
+					<FavouriteAnime />
+				</div>
+				<div className="statsAnime">
+					<p className={["center", styles.topSongsTitle].join(" ")}>My Anime stats:</p>
+					<AnimeStats />
+				</div>
+				<hr />
+				<Badges />
+			</div>
+		</PageWithTitle>
+	);
+};
 
 export default About;

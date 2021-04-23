@@ -5,11 +5,15 @@ export const rewrites = [
 	},
 	{
 		req: "/msg",
-		res: "/other/message",
+		res: "/message",
 	},
 	{
 		req: "/%F0%9F%92%97",
 		res: "https://ririxi.dev/",
+	},
+	{
+		req: "/other/legal-stuff",
+		res: "/legal-stuff",
 	},
 ];
 
@@ -19,7 +23,7 @@ export const cspDirectives = {
 		baseUri: ["'self'"],
 		fontSrc: ["'self'", "https:", "data:"],
 		frameAncestors: ["'self'"],
-		imgSrc: ["'self'", "data:", "cdn.pxseu.com", "www.thiswaifudoesnotexist.net", "twemoji.maxcdn.com"],
+		imgSrc: ["'self'", "data:", "cdn.pxseu.com", "twemoji.maxcdn.com", "i.scdn.co", "s4.anilist.co"],
 		objectSrc: ["'none'"],
 		scriptSrc: ["'self'", "ajax.cloudflare.com", "static.cloudflareinsights.com", "'unsafe-eval'"],
 		scriptSrcAttr: ["'none'"],
@@ -28,10 +32,11 @@ export const cspDirectives = {
 			"'self'",
 			"data:",
 			"cdn.pxseu.com",
-			"www.thiswaifudoesnotexist.net",
 			"twemoji.maxcdn.com",
 			"ajax.cloudflare.com",
 			"static.cloudflareinsights.com",
+			"i.scdn.co",
+			"s4.anilist.co",
 		],
 		upgradeInsecureRequests: [],
 		blockAllMixedContent: [],

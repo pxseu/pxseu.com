@@ -1,32 +1,12 @@
-import { Router, Response, NextFunction } from "express";
-import { RequestWithUser } from "../../../express";
-import { sendMessage, isValidMessage } from "./sendMessage";
+import { Router } from "express";
 import { bajoJajo } from "./bajoJajo";
+import { router as sendMessageRouter } from "./sendMessage";
+import { router as spotifyRouter } from "./spotify";
+import { router as anilistRouter } from "./anilist";
 
-const router = Router();
+export const router = Router();
 
-const methodCheck = {
-	post: (req: RequestWithUser, res: Response, next: NextFunction) => {
-		const method = req.method;
-
-		if (method === "POST") return next();
-
-		res.api(405, {
-			message: "Method not allowed!",
-		});
-	},
-	get: (req: RequestWithUser, res: Response, next: NextFunction) => {
-		const method = req.method;
-
-		if (method === "GET") return next();
-
-		res.api(405, {
-			message: "Method not allowed!",
-		});
-	},
-};
-
-router.use("/sendMessage", methodCheck.post, isValidMessage, sendMessage);
-router.use("/bajoJajo", methodCheck.get, bajoJajo);
-
-export default router;
+router.use(["/sendMessage", "send_message"], sendMessageRouter);
+router.use(["/bajoJajo", "bajo_jajo"], bajoJajo);
+router.use("/spotify", spotifyRouter);
+router.use("/anilist", anilistRouter);

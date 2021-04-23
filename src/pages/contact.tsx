@@ -1,53 +1,47 @@
 import React from "react";
 import DefaultLayout from "../components/DefaultLayout";
-import Twemoji from "../components/Twemoji";
-import styles from "../styles/pages/Comment.module.css";
+import { StyledLink } from "../components/LinkText";
+import stylesComment from "../styles/pages/Comment.module.css";
+import styles from "../styles/pages/Contact.module.css";
 
 const Contact = (): JSX.Element => (
 	<DefaultLayout title={"Contact / Socials"}>
-		<p>Bellow are some socials you can find me on!</p>
-		<p>
-			<a className="link" href="mailto:contact.pxseu@gmail.com" target="_blank" rel="noreferrer">
-				<Twemoji emoji="📧" /> Email
-			</a>
-		</p>
-		<p>
-			<a className="link" href="https://github.com/pxseu" target="_blank" rel="noreferrer">
-				<Twemoji emoji="🌐" /> Github
-			</a>
-		</p>
-		<p>
-			<a className="link" href="https://twitter.com/pxseu" target="_blank" rel="noreferrer">
-				<Twemoji emoji="🐦" /> Twitter
-			</a>
-		</p>
-		<p>
-			<a className="link" href="https://discord.com/users/338718840873811979" target="_blank" rel="noreferrer">
-				<Twemoji emoji="📱" /> Discord
-			</a>
-		</p>
-		<p>
-			<a className="link" href="https://steamcommunity.com/id/pxseu/" target="_blank" rel="noreferrer">
-				<Twemoji emoji="🎮" /> Steam
-			</a>
-		</p>
-		<p>
-			<a className="link" href="https://anilist.co/user/pxseu/" target="_blank" rel="noreferrer">
-				<Twemoji emoji="📺" /> Anilist
-			</a>
-		</p>
-		<p>
-			<a
-				className="link"
-				href="https://open.spotify.com/user/1evum6fq9klvekqjbz4cu5v79"
-				target="_blank"
-				rel="noreferrer">
-				<Twemoji emoji="🎧" /> Spotify
-			</a>
-		</p>
-		<p className={styles.comment}>
-			<i>psst these are links!</i>
-		</p>
+		<div className="center">
+			<h3>Bellow are some places you can find me on!</h3>
+
+			<div className={styles.contactPlaces}>
+				<StyledLink emoji="📧" href="mailto:contact.pxseu@gmail.com">
+					Email
+				</StyledLink>
+				<StyledLink emoji="🌐" href="//github.com/pxseu">
+					Github
+				</StyledLink>
+				<StyledLink emoji="🐦" href="//twitter.com/pxseu">
+					Twitter
+				</StyledLink>
+				<StyledLink emoji="📱" href="//discord.com/users/338718840873811979">
+					Discord
+				</StyledLink>
+
+				<StyledLink emoji="🎮" href="//steamcommunity.com/id/pxseu">
+					Steam
+				</StyledLink>
+
+				<StyledLink emoji="📺" href="//anilist.co/user/pxseu">
+					Anilist
+				</StyledLink>
+				<StyledLink emoji="🎧" href="//open.spotify.com/user/1evum6fq9klvekqjbz4cu5v79">
+					Spotify
+				</StyledLink>
+				<StyledLink emoji="🟡" href="//osu.ppy.sh/users/10164002">
+					osu!
+				</StyledLink>
+			</div>
+
+			<p className={stylesComment.comment}>
+				<i>psst these are links!</i>
+			</p>
+		</div>
 	</DefaultLayout>
 );
 

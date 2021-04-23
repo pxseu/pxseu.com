@@ -1,13 +1,16 @@
+import "dotenv/config";
 import express, { Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import next from "next";
-import api from "./api";
-import redirects from "./utils/rewrites";
-import headersSet from "./utils/headersSet";
-import { connect } from "./db";
+import { router as apiRouter } from "./api";
+import { connect } from "./db/mongo";
 import { cspDirectives } from "./utils/config";
 import { useApiExtender } from "./utils/extenders";
+import headersSet from "./utils/headersSet";
+import redirects from "./utils/rewrites";
+
+const DISSABLE_NEXT = process.env.API_ONLY === "true";
 
 const server = express();
 
@@ -17,7 +20,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 (async () => {
-	await app.prepare();
+	if (!DISSABLE_NEXT) await app.prepare();
 	await connect();
 
 	server.set("trust proxy", 1);
@@ -27,11 +30,13 @@ const handle = app.getRequestHandler();
 	server.use(useApiExtender);
 
 	server.use(redirects);
-	server.use("/api", api);
+	server.use("/api", apiRouter);
 	server.use(headersSet);
-	server.all("*", (req: Request, res: Response) => {
-		return handle(req, res);
-	});
+
+	if (!DISSABLE_NEXT)
+		server.all("*", (req: Request, res: Response) => {
+			return handle(req, res);
+		});
 
 	const httpServer = server.listen(port);
 

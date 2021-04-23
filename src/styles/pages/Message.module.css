@@ -1,3 +1,11 @@
+.formWrapper {
+	border-radius: var(--border-radius);
+	display: inline-block;
+	padding: 20px;
+	background-color: var(--background-lighter);
+	box-shadow: var(--popup-shadow);
+}
+
 .messageInput {
 	position: relative;
 	background-color: var(--background);
@@ -11,6 +19,7 @@
 	resize: none;
 	transition-duration: 0.2s;
 	outline: none;
+	box-shadow: var(--popup-shadow);
 }
 
 .messageInput:focus {
@@ -30,11 +39,12 @@
 	margin-top: 20px;
 }
 
-.buttonWrapper {
+.buttonWrapper,
+.messageInput {
 	margin-top: 10px;
 }
 
 .labelStyle {
 	display: block;
-	padding: 1rem;
+	padding-top: 1rem;
 }

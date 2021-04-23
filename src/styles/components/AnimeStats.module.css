@@ -1,0 +1,32 @@
+.animeStatsWrapper {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.animeStats {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: var(--popup-shadow);
+	background-color: var(--background-lighter);
+	border-radius: var(--border-radius);
+	width: 350px;
+	transition-duration: 0.2s;
+	transition-property: transform;
+}
+
+.statsText {
+	width: 100%;
+	text-align: center;
+}
+
+.animeStats:hover {
+	transform: translateY(-3px);
+}

@@ -1,34 +1,45 @@
 :root {
-	--background: #000000;
-	--font-normal: #ffffff;
+	--background: hsl(0, 0%, 6%);
+	--background-secondary: hsl(0, 0%, 17%);
+	--background-lighter: hsl(0, 0%, 15%);
+	--background-secondary-lighter: hsl(0, 0%, 25%);
 
-	--background-hover: #ffffff;
-	--font-normal-hover: #000000;
+	--font-normal: hsl(0, 0%, 100%);
 
-	--logo: #f52f79;
-	--logo-grad: linear-gradient(to right, #ff2b2b 0%, #e337ff 100%);
+	--background-hover: hsl(0, 0%, 100%);
+	--font-normal-hover: hsl(0, 0%, 6%);
 
-	--scroll-track: #7c7c7c;
-	--scroll-thumb: #888888;
-	--scroll-thumb-hover: #555555;
+	--logo: hsl(338, 91%, 57%);
+	--logo-grad: linear-gradient(to right, hsl(0, 100%, 58%) 0%, hsl(292, 100%, 61%) 100%);
 
-	--slider-track: #cccccc;
+	--scroll-track: var(--background);
+	--scroll-thumb: hsl(0, 0%, 35%);
+	--scroll-thumb-hover: hsl(0, 0%, 33%);
 
-	--border: #ffffff;
-	--border-hover: #000000;
+	--slider-track: hsl(0, 0%, 80%);
 
-	--overlay: rgba(0, 0, 0, 0.7);
+	--border: hsl(0, 0%, 100%);
+	--border-hover: hsl(0, 0%, 6%);
 
-	--close: #fd4a4acc;
-	--close-hover: #ff4242;
+	--overlay: hsla(0, 0%, 0%, 0.902);
 
-	--navbar: rgba(0, 0, 0, 0.5);
+	--close: hsla(0, 98%, 64%, 0.8);
+	--close-hover: hsl(0, 100%, 63%);
 
-	--shadow: #ffffff;
+	--question: hsla(195, 38%, 57%, 0.8);
+	--question-hover: hsl(195, 38%, 57%);
 
-	--textboxes-background: #303030;
+	--navbar: #0d0d0d;
 
-	--clickable-hover-shadow: 0 4px 38px rgba(255, 255, 255, 0.3), 0 6px 19px rgba(255, 255, 255, 0.22);
+	--shadow: hsl(0, 0%, 100%);
+
+	--textboxes-background: hsl(0, 0%, 19%);
+
+	--clickable-hover-shadow: 0 4px 38px hsla(0, 0%, 100%, 0.3), 0 6px 19px hsla(0, 0%, 100%, 0.22);
 
 	--default-font-family: "Roboto", Arial, Helvetica, sans-serif;
+
+	--popup-shadow: 0px 5px 5px hsla(0, 0%, 0%, 0.251);
+
+	--border-radius: 10px;
 }
