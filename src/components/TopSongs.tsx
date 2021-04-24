@@ -5,9 +5,16 @@ import { fetcher } from "../lib/fetcher";
 import styles from "../styles/components/TopSongs.module.css";
 
 interface Song {
-	title: string;
-	artist: string;
-	songUrl: string;
+	song: {
+		name: string;
+		artists: string;
+		url: string;
+	};
+	album: {
+		name: string;
+		image: string;
+		url: string;
+	};
 }
 
 const TopSongs = (): JSX.Element => {
@@ -44,14 +51,27 @@ const TopSongs = (): JSX.Element => {
 	return (
 		<div className={styles.topSongsWrapper}>
 			{tracks.map((track, key) => {
+				console.log(track.album);
 				return (
 					<div className={styles.song} key={key}>
-						<div className={styles.number}>{key + 1}</div>
+						<div className={styles.songImage}>
+							<img src={track.album.image} className={styles.songImgTag} />
+						</div>
 						<div className={styles.songContent}>
 							<div className={styles.songTitle}>
-								<a href={track.songUrl}>{track.title}</a>
+								<a href={track.song.url} title={track.song.name}>
+									{track.song.name}
+								</a>
 							</div>
-							<div className={styles.songArtists}>by {track.artist}</div>
+							<div className={styles.artists}>
+								by <span title={track.song.artists}>{track.song.artists}</span>
+							</div>
+							<div className={styles.album}>
+								on{" "}
+								<a href={track.album.url} title={track.album.name}>
+									{track.album.name}
+								</a>
+							</div>
 						</div>
 					</div>
 				);

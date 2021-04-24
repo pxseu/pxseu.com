@@ -26,10 +26,12 @@ export const genres = async (_: Request, res: Response): Promise<unknown> => {
 	const cached = await redis.getAsync(CACHE_KEY);
 
 	if (cached) {
-		const data = JSON.parse(cached);
+		const ttl = await redis.ttlAsync(CACHE_KEY);
+
+		res.set("Cache-Control", `max-age=${Math.ceil(ttl / 1000)}`);
 
 		return res.api(200, {
-			data,
+			data: JSON.parse(cached),
 			cached: true,
 		});
 	}
@@ -54,6 +56,8 @@ export const genres = async (_: Request, res: Response): Promise<unknown> => {
 	const data = response.data.User.statistics.anime.genres;
 
 	await redis.setAsync(CACHE_KEY, CACHE_TIME, JSON.stringify(data));
+
+	res.set("Cache-Control", `max-age=${Math.ceil(CACHE_TIME / 1000)}`);
 
 	res.api(200, {
 		data,

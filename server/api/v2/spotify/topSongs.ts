@@ -10,6 +10,16 @@ interface Song {
 	artists: {
 		name: string;
 	}[];
+	album: {
+		name: string;
+		external_urls: {
+			spotify: string;
+		};
+
+		images: {
+			url: string;
+		}[];
+	};
 	external_urls: {
 		spotify: string;
 	};
@@ -19,14 +29,19 @@ interface Res {
 	items: Song[];
 }
 
-const TopTracks = async (_: unknown, res: Response): Promise<unknown> => {
+export const topTracks = async (_: unknown, res: Response): Promise<unknown> => {
 	const cached = await redis.getAsync(CACHE_KEY);
 
-	if (cached)
+	if (cached) {
+		const ttl = await redis.ttlAsync(CACHE_KEY);
+
+		res.set("Cache-Control", `max-age=${Math.ceil(ttl / 1000)}`);
+
 		return res.api(200, {
 			tracks: JSON.parse(cached),
 			cached: true,
 		});
+	}
 
 	const { access_token } = await getAccessToken();
 
@@ -49,13 +64,27 @@ const TopTracks = async (_: unknown, res: Response): Promise<unknown> => {
 		});
 	}
 
+	console.log(response.items[0]);
+
 	const tracks = response.items.slice(0, 10).map((track) => ({
+		// TODO: remove the 3 props bellow at a later date so stuff doesn't break
 		title: track.name,
-		artist: track.artists.map((_artist) => _artist.name).join(", "),
+		artist: track.artists.map((artist) => artist.name).join(", "),
 		songUrl: track.external_urls.spotify,
+
+		song: {
+			name: track.name,
+			artists: track.artists.map((artist) => artist.name).join(", "),
+			url: track.external_urls.spotify,
+		},
+		album: {
+			name: track.album.name,
+			image: track.album.images[0].url,
+			url: track.album.external_urls.spotify,
+		},
 	}));
 
-	res.set("Cache-Control", `max-age=${CACHE_TIME}`);
+	res.set("Cache-Control", `max-age=${Math.ceil(CACHE_TIME / 1000)}`);
 
 	await redis.setAsync(CACHE_KEY, CACHE_TIME, JSON.stringify(tracks));
 
@@ -64,5 +93,3 @@ const TopTracks = async (_: unknown, res: Response): Promise<unknown> => {
 		cached: false,
 	});
 };
-
-export default TopTracks;

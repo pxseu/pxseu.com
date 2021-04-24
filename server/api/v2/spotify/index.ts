@@ -2,13 +2,13 @@ import { Router } from "express";
 import fetch from "node-fetch";
 import querystring from "querystring";
 // import { redis } from "../../db/redis";
-import nowPlaying from "./nowPlaying";
-import topSongs from "./topSongs";
+import { nowPlaying } from "./nowPlaying";
+import { topTracks } from "./topSongs";
 
 export const router = Router();
 
 router.get(["/nowPlaying", "/now_playing"], nowPlaying);
-router.get(["/topSongs", "/top_songs"], topSongs);
+router.get(["/topSongs", "/top_songs"], topTracks);
 
 // const CACHE_KEY = "spotify:refresh_token";
 

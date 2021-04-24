@@ -1,7 +1,7 @@
 .app {
 	position: relative;
 	padding: 20px 0 20px 0;
-	width: 480px;
+	width: 500px;
 	animation: fadeIn ease 1.5s;
 	z-index: 2;
 	user-select: none;
@@ -14,22 +14,17 @@
 	position: relative;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 500px) {
 	.app {
 		transform: translate(-50%);
 		left: 50%;
-	}
-}
-
-@media screen and (min-width: 800px) {
-	.app {
-		width: 700px;
+		width: 85%;
 	}
 }
 
 @media screen and (min-width: 1400px) {
 	.app {
-		width: 1200px;
+		width: 1190px;
 	}
 }
 

@@ -13,7 +13,7 @@
 	box-shadow: var(--popup-shadow);
 	background-color: var(--background-lighter);
 	border-radius: var(--border-radius);
-	width: 400px;
+	width: 300px;
 	height: 150px;
 	transition-duration: 0.2s;
 	transition-property: transform;
@@ -41,31 +41,28 @@
 	flex-direction: column;
 	margin-left: 10px;
 	justify-content: center;
-	width: 80%;
+	width: 60%;
 	flex-wrap: wrap;
 }
 
-.animeTitle {
-	width: 300px;
-}
-
-.animeText > div > p > a {
+.animeText > div > a,
+.genra > a {
 	color: var(--body-normal);
 	text-decoration: underline var(--logo);
 	transition-duration: 0.2s;
 }
-.animeText > div > p > a:hover {
+.animeText > div > a:hover,
+.genra > a:hover {
 	color: var(--logo);
 	text-decoration: underline var(--font-normal);
 }
 
 .animeGenres {
-	margin-top: 10px;
 	display: inline-flex;
 	flex-direction: row;
 }
 
-.animeText > div > p {
+.animeText > div {
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -77,6 +74,8 @@
 
 .genra {
 	margin: 2px;
+	margin-top: 7px;
+	margin-bottom: 7px;
 	background-color: var(--background-secondary-lighter);
 	padding: 5px;
 	overflow: hidden;
@@ -86,10 +85,12 @@
 	box-shadow: var(--popup-shadow);
 	transition-duration: 0.2s;
 	transition-property: transform;
+	cursor: pointer;
+	font-size: 18px;
 }
 
 .genra:hover {
-	transform: translateY(-3px);
+	transform: translateY(-2px);
 }
 
 .imagetag {

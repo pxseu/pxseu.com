@@ -10,7 +10,7 @@ router.use((_, res, next) => {
 
 router.use((req, res, next) => {
 	if (req.method == "GET") {
-		res.set("Cache-control", `public, max-age=${7 * 24 * 60 * 60}`);
+		res.set("Cache-control", `public, max-age=${24 * 60 * 60}`);
 	} else {
 		res.set("Cache-control", `no-store`);
 	}
