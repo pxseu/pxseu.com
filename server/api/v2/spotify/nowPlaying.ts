@@ -29,10 +29,14 @@ interface Song {
 	};
 }
 
-const nowPlaying = async (_: unknown, res: Response): Promise<unknown> => {
+export const nowPlaying = async (_: unknown, res: Response): Promise<unknown> => {
 	const cached = await redis.getAsync(CACHE_KEY);
 
 	if (cached) {
+		const ttl = await redis.ttlAsync(CACHE_KEY);
+
+		res.set("Cache-Control", `max-age=${Math.ceil(ttl / 1000)}`);
+
 		const parsedCache = JSON.parse(cached);
 
 		if (!parsedCache.playing)
@@ -83,7 +87,7 @@ const nowPlaying = async (_: unknown, res: Response): Promise<unknown> => {
 
 	await redis.setAsync(CACHE_KEY, CACHE_TIME, JSON.stringify({ playing: true, data }));
 
-	res.set("Cache-Control", `max-age=${CACHE_TIME}`);
+	res.set("Cache-Control", `max-age=${Math.ceil(CACHE_TIME / 1000)}`);
 
 	res.api(200, {
 		playing: true,
@@ -91,5 +95,3 @@ const nowPlaying = async (_: unknown, res: Response): Promise<unknown> => {
 		cached: false,
 	});
 };
-
-export default nowPlaying;

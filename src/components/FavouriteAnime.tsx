@@ -14,7 +14,19 @@ interface Anime {
 }
 
 // eslint-disable-next-line react/prop-types
-const AnimeGenra: FC = ({ children }) => <div className={styles.genra}>{children}</div>;
+const AnimeGenra: FC = ({ children }) => (
+	<div
+		className={styles.genra}
+		onClick={() => {
+			window.open(
+				`https://anilist.co/search/anime?genres=${encodeURIComponent(children?.toString() ?? "")}`,
+				"_blank",
+				"noopener"
+			);
+		}}>
+		{children}
+	</div>
+);
 
 const FavouriteAnime = (): JSX.Element => {
 	const { data, error } = useSWR("/api/v2/anilist/favourites", fetcher);
@@ -67,14 +79,12 @@ const FavouriteAnime = (): JSX.Element => {
 						</div>
 						<div className={styles.animeText}>
 							<div className={styles.animeTitle}>
-								<p>
-									<a
-										className={styles.animeTitleLink}
-										href={Anime.siteUrl}
-										title={`${Anime.title} (${Anime.releaseYear})`}>
-										{Anime.title} ({Anime.releaseYear})
-									</a>
-								</p>
+								<a
+									className={styles.animeTitleLink}
+									href={Anime.siteUrl}
+									title={`${Anime.title} (${Anime.releaseYear})`}>
+									{Anime.title}
+								</a>
 							</div>
 							<div className={styles.animeGenres}>
 								{Anime.genres.slice(0, 2).map((genra, key) => (
