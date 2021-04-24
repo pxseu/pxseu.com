@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 export const bajoJajo = (req: Request, res: Response): void => {
 	const query = req.query.repeat as string;
 	const repeats = query ? parseInt(query) : getRandomInt(1, 2000);
-	console.log(repeats > 1);
+
 	if (isNaN(repeats)) {
 		res.status(400).json({
 			status: 400,

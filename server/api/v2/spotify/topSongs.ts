@@ -64,8 +64,6 @@ export const topTracks = async (_: unknown, res: Response): Promise<unknown> => 
 		});
 	}
 
-	console.log(response.items[0]);
-
 	const tracks = response.items.slice(0, 10).map((track) => ({
 		// TODO: remove the 3 props bellow at a later date so stuff doesn't break
 		title: track.name,

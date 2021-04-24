@@ -51,7 +51,7 @@ const TopSongs = (): JSX.Element => {
 	return (
 		<div className={styles.topSongsWrapper}>
 			{tracks.map((track, key) => {
-				console.log(track.album);
+				
 				return (
 					<div className={styles.song} key={key}>
 						<div className={styles.songImage}>
