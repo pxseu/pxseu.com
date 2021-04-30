@@ -105,7 +105,7 @@ const MessageIndex = (): JSX.Element => {
 							name="nameInput"
 							className={[styles.messageInput, styles.nameInput].join(" ")}
 							ref={nameInput}
-							placeholder='e.g. "dababy"'
+							placeholder='e.g. "CHOLO MINION"'
 						/>
 					</div>
 					<div className={styles.textAreaWrapper}>
