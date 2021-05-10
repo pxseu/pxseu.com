@@ -1,7 +1,7 @@
 .app {
 	position: relative;
 	padding: 20px 0 20px 0;
-	width: 500px;
+	width: var(--min-body);
 	animation: fadeIn ease 1.5s;
 	z-index: 2;
 	user-select: none;
@@ -10,7 +10,7 @@
 .pageWrapper {
 	box-sizing: border-box;
 	min-height: 100%;
-	padding: 0 0 40px;
+	padding: 0 0 20px;
 	position: relative;
 }
 

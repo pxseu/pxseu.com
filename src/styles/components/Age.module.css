@@ -1,6 +1,6 @@
 .age {
-	background: var(--logo-grad);
+	background: var(--logo-color-grad);
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
-	font-family: "Roboto Bold", Arial, Helvetica, sans-serif;
+	font-family: var(--default-font-family);
 }

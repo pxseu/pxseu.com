@@ -28,7 +28,7 @@
 	background-color: rgba(255, 255, 255, 0.1);
 	outline-style: solid;
 	outline-width: 2px;
-	outline-color: var(--logo);
+	outline-color: var(--logo-color);
 }
 
 .nameInput {

@@ -1,9 +1,7 @@
 html,
 body,
-div#__next {
-	min-width: 320px;
+#__next {
 	height: 100%;
-	width: 100%;
 }
 
 body {
@@ -31,7 +29,6 @@ hr {
 	border: none;
 	height: 1px;
 	margin: 20px 4px;
-	box-shadow: var(--popup-shadow);
 }
 
 .center {
@@ -51,46 +48,6 @@ h2 {
 	margin: 5px;
 }
 
-.link {
-	color: var(--font-normal);
-	transition: color 0.1s;
-}
-
-.link {
-	color: var(--font-normal);
-	text-decoration: none;
-	transition-duration: 0.2s;
-	cursor: pointer;
-	position: relative;
-	top: 0;
-	transition: top ease 0.2s, color 0.1s;
-	display: inline-block;
-	padding: 0px 20px;
-	position: relative;
-}
-
-.link:after {
-	background: none repeat scroll 0 0 var(--font-normal);
-	bottom: 0;
-	content: "";
-	display: block;
-	height: 2px;
-	left: 50%;
-	position: absolute;
-	transition: width 0.3s ease 0s, left 0.3s ease 0s;
-	width: 0;
-}
-
-.link:hover:after {
-	width: 100%;
-	left: 0;
-}
-
-.link:hover {
-	color: var(--logo);
-	transform: translateY(-2px);
-}
-
 .noselect {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -103,21 +60,6 @@ h2 {
 #nprogress .spinner {
 	top: 20px;
 	left: 0px;
-}
-
-.hidden {
-	display: none;
-}
-
-.visually_hidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
 }
 
 ::-webkit-scrollbar {
@@ -162,4 +104,8 @@ h2 {
 
 pre {
 	word-wrap: normal;
+}
+
+img {
+	pointer-events: none;
 }

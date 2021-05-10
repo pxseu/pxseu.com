@@ -1,5 +1,5 @@
 .me {
-	color: var(--logo);
+	color: var(--logo-color);
 }
 
 .bio > p {
@@ -13,12 +13,12 @@
 
 .link {
 	color: var(--body-normal);
-	text-decoration: underline var(--logo);
+	text-decoration: underline var(--logo-color);
 	transition-duration: 0.2s;
 }
 
 .link:hover {
-	color: var(--logo);
+	color: var(--logo-color);
 	text-decoration: underline var(--font-normal);
 }
 

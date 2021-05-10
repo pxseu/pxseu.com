@@ -1,6 +1,7 @@
 .footer {
+	font-size: 17px;
 	bottom: 0;
-	height: 40px;
+	height: 24px;
 	left: 0;
 	position: absolute;
 	width: 100%;
@@ -8,4 +9,5 @@
 	z-index: 3;
 	overflow: hidden;
 	user-select: none;
+	text-align: center;
 }
