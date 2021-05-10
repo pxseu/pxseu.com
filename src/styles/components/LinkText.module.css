@@ -22,11 +22,11 @@
 .content > a {
 	color: var(--body-normal);
 	text-decoration: none;
-	/*text-decoration: underline var(--logo);*/
+	/*text-decoration: underline var(--logo-color);*/
 	transition-duration: 0.2s;
 }
 
 .content > a:hover {
-	color: var(--logo);
+	color: var(--logo-color);
 	text-decoration: underline var(--font-normal);
 }

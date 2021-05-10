@@ -11,5 +11,5 @@
 	display: inline-block;
 }
 .codeBlock::selection {
-	color: var(--logo);
+	color: var(--logo-color);
 }

@@ -4,7 +4,7 @@ import { redis } from "../../../db/redis";
 import { getAccessToken } from ".";
 
 const CACHE_KEY = "spotify:now_playing";
-const CACHE_TIME = 10 * 1000;
+const CACHE_TIME = 300;
 
 interface Song {
 	is_playing: boolean;

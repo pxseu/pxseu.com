@@ -1,5 +1,5 @@
 .usernameColor {
-	background: var(--logo-grad);
+	background: var(--logo-color-grad);
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }

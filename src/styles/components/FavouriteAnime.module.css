@@ -48,12 +48,12 @@
 .animeText > div > a,
 .genra > a {
 	color: var(--body-normal);
-	text-decoration: underline var(--logo);
+	text-decoration: underline var(--logo-color);
 	transition-duration: 0.2s;
 }
 .animeText > div > a:hover,
 .genra > a:hover {
-	color: var(--logo);
+	color: var(--logo-color);
 	text-decoration: underline var(--font-normal);
 }
 

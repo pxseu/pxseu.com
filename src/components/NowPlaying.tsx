@@ -1,8 +1,11 @@
 import React from "react";
+import Head from "next/head";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import useSWR from "swr";
 import { fetcher } from "../lib/fetcher";
 import styles from "../styles/components/NowPlaying.module.css";
+
+const API_PATH = "/api/v2/spotify/nowPlaying";
 
 interface NowPlayingApi {
 	playing: boolean;
@@ -21,28 +24,34 @@ interface NowPlayingApi {
 }
 
 const NowPlaying = (): JSX.Element => {
-	const { data, error } = useSWR("/api/v2/spotify/nowPlaying", fetcher);
+	const { data, error } = useSWR(API_PATH, fetcher, { refreshInterval: 100 });
 
 	if (!data || error) {
 		return (
-			<SkeletonTheme color="#222" highlightColor="#444">
-				<div className={styles.spotifyBox}>
-					<div className={styles.spotifyThumbnail}>
-						<Skeleton height={100} className={styles.imagetag} />
+			<>
+				<Head>
+					<link rel="preload" href={API_PATH} as="fetch" crossOrigin="anonymous" />
+				</Head>
+
+				<SkeletonTheme color="#222" highlightColor="#444">
+					<div className={styles.spotifyBox}>
+						<div className={styles.spotifyThumbnail}>
+							<Skeleton height={100} className={styles.imagetag} />
+						</div>
+						<div className={styles.spotifyContent}>
+							<p className={styles.songTitle}>
+								<Skeleton />
+							</p>
+							<p className={styles.artists}>
+								<Skeleton />
+							</p>
+							<p className={styles.album}>
+								<Skeleton />
+							</p>
+						</div>
 					</div>
-					<div className={styles.spotifyContent}>
-						<p className={styles.songTitle}>
-							<Skeleton />
-						</p>
-						<p className={styles.artists}>
-							<Skeleton />
-						</p>
-						<p className={styles.album}>
-							<Skeleton />
-						</p>
-					</div>
-				</div>
-			</SkeletonTheme>
+				</SkeletonTheme>
+			</>
 		);
 	}
 
