@@ -1,32 +1,30 @@
 import Link from "next/link";
 import React, { memo, useEffect, useRef, useState } from "react";
-import LogoTxt from "../components/LogoTxt";
-import style from "../styles/components/Navbar.module.css";
+import styles from "../styles/components/Navbar.module.css";
+import { LogoSVG } from "./LogoSVG";
 
 interface NavElsProps {
 	className?: string;
 }
 
 const NavElements = ({ className }: NavElsProps) => (
-	<>
-		<nav className={className}>
-			<Link href="/projects">
-				<a className="link">Projects</a>
-			</Link>
-			<Link href="/about">
-				<a className="link">About</a>
-			</Link>
-			<Link href="/contact">
-				<a className="link">Contact</a>
-			</Link>
-			<Link href="/message">
-				<a className="link">Message</a>
-			</Link>
-			<a className="link" href="//discord.pxseu.com/">
-				Discord
-			</a>
-		</nav>
-	</>
+	<nav className={[className ?? "", styles.navElement].join(" ")}>
+		<Link href="/projects">
+			<a className={styles.link}>Projects</a>
+		</Link>
+		<Link href="/about">
+			<a className={styles.link}>About</a>
+		</Link>
+		<Link href="/contact">
+			<a className={styles.link}>Contact</a>
+		</Link>
+		<Link href="/message">
+			<a className={styles.link}>Message</a>
+		</Link>
+		<a className={styles.link} href="//discord.pxseu.com/">
+			Discord
+		</a>
+	</nav>
 );
 
 interface MenuProps {
@@ -35,19 +33,15 @@ interface MenuProps {
 }
 
 const MenuBorger = ({ canHandleClick, handleClick }: MenuProps) => (
-	<>
-		<nav
-			id="menuButton"
-			onClick={() => {
-				if (canHandleClick) handleClick();
-			}}>
-			<div className={`center ${style.menuContainer}`}>
-				<div className={style.bar1}></div>
-				<div className={style.bar2}></div>
-				<div className={style.bar3}></div>
-			</div>
-		</nav>
-	</>
+	<div
+		className={styles.menuContainer}
+		onClick={() => {
+			if (canHandleClick) handleClick();
+		}}>
+		<div className={styles.bar1}></div>
+		<div className={styles.bar2}></div>
+		<div className={styles.bar3}></div>
+	</div>
 );
 
 const Navbar = () => {
@@ -57,10 +51,10 @@ const Navbar = () => {
 	const navOverlayRef = useRef<HTMLDivElement | null>(null);
 
 	const resizeHandler = () => {
-		if (window.innerWidth < 900) setsmallScreen(true);
+		if (window.innerWidth < 850) setsmallScreen(true);
 		else {
 			setsmallScreen(false);
-			setNavToggle(false);
+			setNavOpen(false);
 		}
 	};
 
@@ -75,7 +69,7 @@ const Navbar = () => {
 
 	useEffect(() => {
 		if (!navOpen) {
-			if (navOverlayRef.current) navOverlayRef.current.classList.remove(style.showNav);
+			if (navOverlayRef.current) navOverlayRef.current.classList.remove(styles.showNav);
 			setTimeout(() => {
 				setNavToggle(navOpen);
 			}, 400);
@@ -84,20 +78,19 @@ const Navbar = () => {
 
 		setNavToggle(navOpen);
 		setTimeout(() => {
-			if (navOverlayRef.current) navOverlayRef.current.classList.add(style.showNav);
+			if (navOverlayRef.current) navOverlayRef.current.classList.add(styles.showNav);
 		}, 10);
 	}, [navOpen]);
 
 	return (
 		<>
-			<header className={`noselect ${style.navbar}`}>
-				<div className={style.logo}>
-					<Link href="/">
-						<a>
-							<LogoTxt />
-						</a>
-					</Link>
-				</div>
+			<header className={`noselect ${styles.navbar}`}>
+				<Link href="/">
+					<a className={styles.logo}>
+						<LogoSVG />
+					</a>
+				</Link>
+
 				{smallScreen ? (
 					<MenuBorger canHandleClick={!navOpen && !navToggle} handleClick={() => setNavOpen(true)} />
 				) : (
@@ -105,12 +98,12 @@ const Navbar = () => {
 				)}
 			</header>
 			{navToggle && (
-				<div className={`${style.navOverlay} noselect`} ref={navOverlayRef}>
-					<a className={`${style.closebtn}`} onClick={() => setNavOpen(false)}>
+				<div className={`${styles.navOverlay} noselect`} ref={navOverlayRef}>
+					<a className={`${styles.closebtn}`} onClick={() => setNavOpen(false)}>
 						&times;
 					</a>
 
-					<NavElements className={style.navOverlayContent} />
+					<NavElements className={styles.navOverlayContent} />
 				</div>
 			)}
 		</>

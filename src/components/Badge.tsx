@@ -6,14 +6,15 @@ type props = {
 };
 
 const BadgeComp = ({ badge }: props) => (
-	/* Not wrapped in a div because of better layout */
-	<img
-		className={`${styles.badge} noselect`}
-		draggable="false"
-		src={`/assets/svg/badges/${badge}.svg`}
-		alt={capitalizeFirstLetter(badge)}
-		onDragStart={() => false}
-	/>
+	<div className={styles.badgeWrapper}>
+		<img
+			className={`${styles.badge} noselect`}
+			draggable="false"
+			src={`/assets/svg/badges/${badge}.svg`}
+			alt={capitalizeFirstLetter(badge)}
+			onDragStart={() => false}
+		/>
+	</div>
 );
 
 export default memo(BadgeComp);
