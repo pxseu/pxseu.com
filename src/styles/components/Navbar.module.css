@@ -129,7 +129,7 @@
 	top: 0;
 	transition: top ease 0.2s, color 0.1s;
 	display: inline-block;
-	padding: 0px 5px;
+	padding: 0px 8px;
 	position: relative;
 }
 
