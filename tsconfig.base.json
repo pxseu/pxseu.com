@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "composite": true,
+        "declaration": true,
+        "declarationMap": true,
+        "esModuleInterop": true,
+        "lib": [
+            "ES6"
+        ],
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "strict": true,
+        "target": "ES6"
+    }
+}
