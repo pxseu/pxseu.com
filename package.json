@@ -20,7 +20,8 @@
 		"dev": "lerna run --parallel dev",
 		"format": "npx prettier --write \"./**/*.{ts,js,json,md}\"",
 		"lint": "npx eslint . --ext .ts,.tsx",
-		"test": "lerna run test"
+		"test": "lerna run test",
+		"compose-up": "docker-compose up -d"
 	},
 	"workspaces": [
 		"packages/*"
