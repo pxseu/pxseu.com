@@ -55,6 +55,6 @@ export const rateLimit = ({ amount, resetTime, rateLimitId, message }: RateLimit
 
 		res.setHeader("X-RateLimit-Remaining", userMaxAmount - limit - 1);
 		await updateRateLimit(req, rateLimitId);
-		return next();
+		next();
 	};
 };

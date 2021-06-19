@@ -5,3 +5,7 @@ export const ANILIST_ENDPOINT = "https://graphql.anilist.co";
 export const ANILIST_ID = parseInt(process.env.ANILIST_ID ?? "0", 10);
 export const REDIS_PORT = parseInt(process.env.REDIS_PORT ?? "6379", 10);
 export const REDIS_HOST = process.env.REDIS_HOST ?? "127.0.0.1";
+export const WEBHOOK_MESSAGE_ID = process.env.WEBHOOK_MESSAGE_ID ?? "";
+export const WEBHOOK_MESSAGE_TOKEN = process.env.WEBHOOK_MESSAGE_TOKEN ?? "";
+export const WEBHOOK_AVATAR = process.env.WEBHOOK_AVATAR ?? "";
+export const ALLOW_SEND_MESSAGE = JSON.parse(process.env.ALLOW_SEND_MESSAGE ?? "true");

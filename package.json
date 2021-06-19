@@ -20,7 +20,7 @@
 		"format": "npx prettier --write \"./**/*.{ts,js,json,md}\"",
 		"lint": "npx eslint . --ext .ts,.tsx",
 		"test": "lerna run test",
-		"compose-up": "docker-compose up -d --scale api=2"
+		"compose-up": "docker-compose up -d"
 	},
 	"workspaces": [
 		"packages/*"

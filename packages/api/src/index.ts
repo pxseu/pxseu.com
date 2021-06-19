@@ -7,6 +7,7 @@ import morgan from "morgan";
 import { DEV, PORT } from "./config";
 import { router } from "./routes";
 import { useApiExtender } from "./utils/extenders";
+import { parser } from "./utils/jsonparser";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(morgan(DEV ? "dev" : "common"));
 app.use(helmet());
 app.use(cors());
 app.use(useApiExtender);
+app.use(parser);
 app.use(router);
 
 const server = app.listen(PORT);

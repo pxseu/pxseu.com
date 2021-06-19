@@ -9,6 +9,7 @@
         ],
         "module": "CommonJS",
         "moduleResolution": "node",
+        "skipLibCheck": true,
         "sourceMap": true,
         "strict": true,
         "target": "ES6"

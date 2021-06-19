@@ -2,6 +2,7 @@
 interface User {
 	auth_key: string;
 	rate_limit: Record<string, RateLimitData>;
+	name: string;
 }
 
 interface RateLimitData {
