@@ -1,8 +1,8 @@
 import Redis from "ioredis";
-import { HOSTNAME, PORT, REDIS_HOST } from "../../config";
+import { HOSTNAME, REDIS_HOST, REDIS_PORT } from "../../config";
 
 export const redis = new Redis({
 	keyPrefix: `${HOSTNAME}:`,
 	host: REDIS_HOST,
-	port: PORT,
+	port: REDIS_PORT,
 });
