@@ -26,5 +26,5 @@ server.once("listening", () => {
 });
 
 server.on("error", (error: any) => {
-	console.error("Encoutnered an error: ", error);
+	console.error("SERVER:", error?.message);
 });

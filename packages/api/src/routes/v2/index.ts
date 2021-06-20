@@ -7,4 +7,4 @@ export const router = Router();
 
 router.use("/spotify", spotifyRouter);
 router.use("/anilist", anilistRouter);
-router.use(["/sendMessage", "send_message"], messageRouter);
+router.use(["/sendMessage", "send_message", "message"], messageRouter);
