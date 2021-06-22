@@ -13,6 +13,7 @@
     "moduleResolution": "node",
     "isolatedModules": true,
     "jsx": "preserve",
+    "allowJs": false
   },
   "include": [
     "next-env.d.ts",
