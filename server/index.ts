@@ -3,6 +3,7 @@ import express, { Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import next from "next";
+import cors from "cors";
 import { router as apiRouter } from "./api";
 import { connect } from "./db/mongo";
 import { cspDirectives } from "./utils/config";
@@ -25,6 +26,7 @@ const handle = app.getRequestHandler();
 
 	server.set("trust proxy", 1);
 	server.use(morgan(dev ? "dev" : "common"));
+	server.use(cors());
 	server.use(helmet());
 	server.use(helmet.contentSecurityPolicy(cspDirectives));
 	server.use(useApiExtender);
