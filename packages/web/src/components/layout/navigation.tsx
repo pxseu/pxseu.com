@@ -3,7 +3,16 @@ import React, { FC } from "react";
 import Link from "next/link";
 
 const Navigation: FC = (props: ButtonGroupProps) => (
-	<ButtonGroup as="nav" variant="outline" size="sm" color="gray.600" {...props}>
+	<ButtonGroup
+		as="nav"
+		variant="outline"
+		size="sm"
+		color="gray.600"
+		display="flex"
+		justify-content="center"
+		alignItems="center"
+		{...props}
+	>
 		<Link href="/about" passHref>
 			<Button as="a">About</Button>
 		</Link>

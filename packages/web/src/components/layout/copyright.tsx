@@ -3,7 +3,7 @@ import React, { FC } from "react";
 
 const Copyright: FC = (props: TextProps) => (
 	<Text fontSize="sm" {...props}>
-		&copy; {new Date().getFullYear()} pxseu. All rights reserved.
+		&copy; 2019-{new Date().getFullYear()} pxseu. All rights reserved.
 	</Text>
 );
 export default Copyright;
