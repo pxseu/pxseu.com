@@ -25,5 +25,8 @@
 	},
 	"workspaces": [
 		"packages/*"
-	]
+	],
+	"repository": {
+		"url": "https://github.com/pxseu/pxseu.com"
+	}
 }

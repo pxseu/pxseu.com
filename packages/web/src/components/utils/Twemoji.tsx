@@ -11,9 +11,9 @@ const Twemoji = ({ emoji }: Props) => (
 	<Box
 		as="span"
 		display="inline-block"
-		width="auto"
+		width="1em"
 		height="1em"
-		verticalAlign="-0.05em"
+		verticalAlign="-0.1em"
 		// eslint-disable-next-line react/no-danger
 		dangerouslySetInnerHTML={{
 			__html: twemoji.parse(emoji, {

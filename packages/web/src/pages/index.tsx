@@ -12,6 +12,8 @@ const Home: FC = () => (
 			</Heading>
 			<Text fontSize="xl">I&apos;m pxseu</Text>
 
+			<Box my={1} />
+
 			<NowPlaying />
 		</Box>
 	</Layout>

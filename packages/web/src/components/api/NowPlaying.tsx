@@ -8,16 +8,18 @@ import { fetcher } from "../../config/fetcher";
 import { API_ROUTE } from "../../config/globals";
 import { NowPlaying as INowPlaying } from "../../types/NowPlaying";
 
-interface Props {
+interface CardProps {
 	image: ReactNode;
 	title: ReactNode;
 	artists?: ReactNode;
 	album?: ReactNode;
+	imageTooltip?: string;
+	isNoData?: boolean;
 }
 
 const API_PATH = `${API_ROUTE}/v2/spotify/nowPlaying`;
 
-const NowPlayingCard: FC<Props> = ({ image, title, artists, album }) => (
+const NowPlayingCard: FC<CardProps> = ({ image, title, artists, album, imageTooltip, isNoData }) => (
 	<Flex
 		display="inline-flex"
 		backgroundColor="blackAlpha.500"
@@ -26,33 +28,62 @@ const NowPlayingCard: FC<Props> = ({ image, title, artists, album }) => (
 		boxShadow="xl"
 		alignItems="center"
 	>
-		<Flex
-			borderRadius={8}
-			overflow="hidden"
-			justifyContent="center"
-			alignItems="center"
-			boxShadow="md"
-			width={100}
-			height={100}
-		>
-			{image}
-		</Flex>
+		<Tooltip label={imageTooltip} aria-label="A tooltip" hasArrow placement="top">
+			<Flex
+				borderRadius={8}
+				overflow="hidden"
+				justifyContent="center"
+				alignItems="center"
+				boxShadow="md"
+				width={100}
+				height={100}
+			>
+				{image}
+			</Flex>
+		</Tooltip>
 		<Flex
 			flexDirection="column"
 			justifyContent="space-between"
-			py={4}
-			px={{ base: "4", md: "6" }}
+			py={2}
+			px={{ base: "2", md: "4" }}
 			overflow="hidden"
 			maxWidth={{ base: "200", md: "300", xl: "500" }}
 		>
-			<Text fontSize="2xl" isTruncated>
+			<Text fontSize={isNoData ? "xl" : "2xl"} isTruncated={!isNoData}>
 				{title}
 			</Text>
-			<Text isTruncated>{artists}</Text>
-			<Text isTruncated>{album}</Text>
+			{artists && <Text isTruncated>{artists}</Text>}
+			{album && <Text isTruncated>{album}</Text>}
 		</Flex>
 	</Flex>
 );
+
+interface LinkifyProps {
+	link?: string;
+}
+
+const Linkify: FC<LinkifyProps> = ({ children, link }) => {
+	if (!link) return <> {children}</>;
+
+	return (
+		<Link
+			as="a"
+			href={link}
+			variant="link"
+			target="_blank"
+			transitionProperty="text-decoration-color"
+			transitionDuration="200ms"
+			textDecoration="underline"
+			textDecorationColor="brand.100"
+			textDecorationThickness="2px"
+			_hover={{
+				textDecorationColor: "brand.900",
+			}}
+		>
+			{children}
+		</Link>
+	);
+};
 
 const NowPlaying: FC = () => {
 	const { data, error } = useSWR<INowPlaying>(API_PATH, fetcher, { refreshInterval: 100 });
@@ -60,7 +91,8 @@ const NowPlaying: FC = () => {
 
 	if (error) {
 		toast({
-			title: "Failed to fetch now playing song.",
+			title: "Failed to fetch the song.",
+			description: "Failed to fetch the currently playing song from the remote API",
 			position: "bottom-left",
 			duration: 1500,
 			status: "error",
@@ -95,72 +127,37 @@ const NowPlaying: FC = () => {
 			<NowPlayingCard
 				image={<Image src={coverImage} width={200} height={200} quality={75} alt="Album cover" />}
 				title="No song playing"
+				isNoData
 			/>
 		);
+
+	const songTitle = Spotify.song.title;
+	const songArtists = Spotify.song.artists;
+	const albumName = Spotify.album.name;
 
 	return (
 		<NowPlayingCard
 			image={<Image src={coverImage} width={200} height={200} quality={75} alt="Album cover" />}
+			imageTooltip={albumName}
 			title={
-				Spotify.song.url ? (
-					<Link
-						as="a"
-						href={Spotify.song.url}
-						variant="link"
-						target="_blank"
-						transitionProperty="text-decoration-color"
-						transitionDuration="200ms"
-						textDecoration="underline"
-						textDecorationColor="brand.100"
-						textDecorationThickness="2px"
-						_hover={{
-							textDecorationColor: "brand.900",
-						}}
-					>
-						<Tooltip label={Spotify.song.title} aria-label="A tooltip">
-							<b>{Spotify.song.title}</b>
-						</Tooltip>
-					</Link>
-				) : (
-					<Tooltip label={Spotify.song.title} aria-label="A tooltip">
-						<b>{Spotify.song.title}</b>
-					</Tooltip>
-				)
+				<Linkify link={Spotify.song.url}>
+					<b title={songTitle}>{songTitle}</b>
+				</Linkify>
 			}
 			artists={
-				<>
-					by{" "}
-					<Tooltip label={Spotify.song.artists ?? "Unknown artist"} aria-label="A tooltip">
-						<b>{Spotify.song.artists ?? "Unknown artist"}</b>
-					</Tooltip>
-				</>
+				songArtists && (
+					<>
+						by <b title={songArtists}>{songArtists}</b>
+					</>
+				)
 			}
 			album={
-				Spotify.album.name && (
+				albumName && (
 					<>
 						on{" "}
-						{Spotify.album.url ? (
-							<Link
-								as="a"
-								href={Spotify.album.url}
-								variant="link"
-								target="_blank"
-								textDecoration="underline"
-								textDecorationColor="brand.100"
-								textDecorationThickness="2px"
-								_hover={{
-									textDecorationColor: "brand.900",
-								}}
-							>
-								<Tooltip label={Spotify.album.name} aria-label="A tooltip">
-									<b>{Spotify.album.name}</b>
-								</Tooltip>
-							</Link>
-						) : (
-							<Tooltip label={Spotify.album.name} aria-label="A tooltip">
-								<b>{Spotify.album.name}</b>
-							</Tooltip>
-						)}
+						<Linkify link={Spotify.album.url}>
+							<b title={albumName}>{albumName}</b>
+						</Linkify>
 					</>
 				)
 			}
@@ -169,63 +166,3 @@ const NowPlaying: FC = () => {
 };
 
 export default NowPlaying;
-
-/*
-
-<Flex
-			display="inline-flex"
-			backgroundColor="gray.700"
-			p={4}
-			borderRadius={8}
-			boxShadow="xl"
-			alignItems="center"
-		>
-			<Flex
-				borderRadius={8}
-				overflow="hidden"
-				justifyContent="center"
-				alignItems="center"
-				boxShadow="md"
-				width={120}
-				height={120}
-			>
-				<Image src={coverImage} width={200} height={200} quality={75} alt="Album cover" />
-			</Flex>
-			<Flex
-				flexDirection="column"
-				justifyContent="space-between"
-				py={4}
-				px={{ base: "4", md: "6" }}
-				overflow="hidden"
-				maxW={{ base: "200", md: "300", xl: "500" }}
-			>
-				<Text fontSize="2xl" title={Spotify.song.title} isTruncated>
-					{Spotify.song.url ? (
-						<Link as="a" href={Spotify.song.url} variant="link" target="_blank">
-							<b>{Spotify.song.title}</b>
-						</Link>
-					) : (
-						<b>{Spotify.song.title}</b>
-					)}
-				</Text>
-
-				<Text title={Spotify.song.artists} isTruncated>
-					by <b>{Spotify.song.artists ?? "Unknown artist"}</b>
-				</Text>
-
-				{Spotify.album.name && (
-					<Text title={Spotify.album.name} isTruncated>
-						on{" "}
-						{Spotify.album.url ? (
-							<Link as="a" href={Spotify.album.url} variant="link" target="_blank">
-								<b>{Spotify.album.name}</b>
-							</Link>
-						) : (
-							<b>{Spotify.album.name}</b>
-						)}
-					</Text>
-				)}
-			</Flex>
-		</Flex>
-
-		*/
