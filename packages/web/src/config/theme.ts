@@ -1,6 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
+import { css } from "@emotion/react";
 
-const theme = extendTheme({
+export const theme = extendTheme({
 	config: {
 		initialColorMode: "dark",
 		useSystemColorMode: false,
@@ -12,5 +13,12 @@ const theme = extendTheme({
 		},
 	},
 });
+
+export const GlobalStyles = css`
+	.js-focus-visible :focus:not([data-focus-visible-added]) {
+		outline: none;
+		box-shadow: none;
+	}
+`;
 
 export default theme;
