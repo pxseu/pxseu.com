@@ -2,7 +2,7 @@ import { Button, ButtonGroup, ButtonGroupProps } from "@chakra-ui/react";
 import React, { FC } from "react";
 import Link from "next/link";
 
-const Navigation: FC = (props: ButtonGroupProps) => (
+const Navigation: FC<ButtonGroupProps> = (props) => (
 	<ButtonGroup
 		as="nav"
 		variant="outline"

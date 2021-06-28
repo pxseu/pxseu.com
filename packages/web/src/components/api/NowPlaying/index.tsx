@@ -1,4 +1,4 @@
-import { Link, useToast } from "@chakra-ui/react";
+import { FlexProps, Link, useToast } from "@chakra-ui/react";
 import React, { FC } from "react";
 import useSWR from "swr";
 import Image from "next/image";
@@ -38,7 +38,7 @@ const Linkify: FC<LinkifyProps> = ({ children, link }) => {
 	);
 };
 
-const NowPlaying: FC = () => {
+const NowPlaying: FC<FlexProps> = (props) => {
 	const { data, error } = useSWR<INowPlaying>(API_PATH, fetcher, { refreshInterval: 100 });
 	const toast = useToast();
 
@@ -61,6 +61,7 @@ const NowPlaying: FC = () => {
 
 				<SkeletonTheme color="#111" highlightColor="#222">
 					<NowPlayingCard
+						flexProps={props}
 						image={<Skeleton width={120} height={120} />}
 						title={<Skeleton width={180} />}
 						artists={<Skeleton width={180} />}
@@ -78,6 +79,7 @@ const NowPlaying: FC = () => {
 	if (!data.playing)
 		return (
 			<NowPlayingCard
+				flexProps={props}
 				image={<Image src={coverImage} width={200} height={200} quality={75} alt="Album cover" />}
 				title="No song playing"
 				isNoData
@@ -90,6 +92,7 @@ const NowPlaying: FC = () => {
 
 	return (
 		<NowPlayingCard
+			flexProps={props}
 			image={<Image src={coverImage} width={200} height={200} quality={75} alt="Album cover" />}
 			imageTooltip={albumName}
 			title={

@@ -1,7 +1,8 @@
-import { Flex, Text, Tooltip } from "@chakra-ui/react";
+import { FlexProps, Flex, Text, Tooltip } from "@chakra-ui/react";
 import React, { FC, ReactNode } from "react";
 
 interface CardProps {
+	flexProps: FlexProps;
 	image: ReactNode;
 	title: ReactNode;
 	artists?: ReactNode;
@@ -10,14 +11,15 @@ interface CardProps {
 	isNoData?: boolean;
 }
 
-const NowPlayingCard: FC<CardProps> = ({ image, title, artists, album, imageTooltip, isNoData }) => (
+const NowPlayingCard: FC<CardProps> = ({ image, title, artists, album, imageTooltip, isNoData, flexProps }) => (
 	<Flex
 		display="inline-flex"
 		backgroundColor="blackAlpha.500"
 		p={2.5}
 		borderRadius={10}
-		boxShadow="xl"
+		boxShadow="md"
 		alignItems="center"
+		{...flexProps}
 	>
 		<Tooltip label={imageTooltip} aria-label="A tooltip" hasArrow placement="top">
 			<Flex

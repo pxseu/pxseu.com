@@ -3,4 +3,7 @@ module.exports = {
 	images: {
 		domains: ["i.scdn.co", "s4.anilist.co"],
 	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
 };

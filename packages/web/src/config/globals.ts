@@ -1,1 +1,1 @@
-export const API_ROUTE = process.env.API_ROUTE ?? "https://www.pxseu.com/api";
+export const API_ROUTE = process.env.API_ROUTE ?? "http://localhost:3050";

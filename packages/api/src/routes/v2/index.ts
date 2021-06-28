@@ -1,7 +1,7 @@
 import { Router } from "express";
+import { router as anilistRouter } from "./anilist";
 import { router as messageRouter } from "./message";
 import { router as spotifyRouter } from "./spotify";
-import { router as anilistRouter } from "./anilist";
 
 export const router = Router();
 

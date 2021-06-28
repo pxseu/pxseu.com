@@ -1,12 +1,12 @@
 FROM node:16.3.0
 
-COPY ./packages/api/package.json .
+COPY ./packages/web/package.json .
 COPY ./yarn.lock .
 COPY tsconfig.base.json .
 
 RUN yarn install --ignore-scripts --frozen-lockfile --non-interactive
 
-COPY ./packages/api .
+COPY ./packages/web .
 
 ENV PORT 80
 
