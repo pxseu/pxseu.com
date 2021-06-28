@@ -6,13 +6,15 @@ export interface AnimeEdge {
 			english: string;
 		};
 		coverImage: {
-			medium: string;
+			extraLarge: string;
 			color: string;
 		};
 		genres: string[];
 		startDate: {
 			year: number;
 		};
+		bannerImage: string;
+		description: string;
 	};
 }
 

@@ -31,5 +31,3 @@ services:
         build:
             context: .
             dockerfile: ./packages/web/Dockerfile
-        depends_on:
-            - api

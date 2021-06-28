@@ -9,7 +9,10 @@ interface Anime {
 	title: string;
 	siteUrl: string;
 	image: string;
-	color?: string;
+	blurImage?: string;
+	color: string;
 	genres: string[];
 	releaseYear: number;
+	banner: string;
+	description: string;
 }

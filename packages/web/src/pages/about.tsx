@@ -1,10 +1,11 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Text, Heading } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { InferGetStaticPropsType } from "next";
 import Layout from "../components/layout";
 import { API_ROUTE } from "../config/globals";
 import { TopSongs } from "../types/TopSongs";
 import { FavouriteAnime } from "../types/FavouriteAnime";
+import FavouriteAnimeComp from "../components/content/FavouriteAnime";
 
 export const getStaticProps = async () => {
 	const topSongsRes = await fetch(`${API_ROUTE}/v2/spotify/topSongs`);
@@ -23,13 +24,14 @@ export const getStaticProps = async () => {
 	};
 };
 
-const About: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ favouriteAnime, topSongs }) => (
+const About: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ favouriteAnime }) => (
 	<Layout>
-		<Flex flexDirection="column" alignItems="center">
-			<Heading>yeah tooo!!!</Heading>
-		</Flex>
-		<pre>{JSON.stringify(favouriteAnime.data, undefined, 4)}</pre>
-		<pre>{JSON.stringify(topSongs.tracks, undefined, 4)}</pre>
+		<Heading textAlign="center">About me</Heading>
+		<Text py={2} fontSize="xl" textAlign="center">
+			My Favourite Anime so far:
+		</Text>
+		<FavouriteAnimeComp anime={favouriteAnime} />
+		{/* <pre>{JSON.stringify(topSongs.tracks, undefined, 4)}</pre> */}
 	</Layout>
 );
 

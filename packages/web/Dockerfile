@@ -9,6 +9,7 @@ RUN yarn install --ignore-scripts --frozen-lockfile --non-interactive
 COPY ./packages/web .
 
 ENV PORT 80
+ENV NEXT_PUBLIC_API_ROUTE https://www.pxseu.com/api
 
 RUN yarn build
 

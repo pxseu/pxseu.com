@@ -3,6 +3,7 @@ import { fetchGraphQL, gql } from "../../../utils/graphQL";
 import { redis } from "../../../db/redis";
 import { ANILIST_ENDPOINT, ANILIST_ID } from "../../../config";
 import { GraphQLResponse } from "./types";
+import { colorToBaseImage } from "../../../utils/colorToBaseImage";
 
 const CACHE_KEY = "anilist:favourites";
 const CACHE_TIME = 60 * 1000;
@@ -28,25 +29,23 @@ export const favourites = async (_: Request, res: Response): Promise<unknown> =>
 					anime {
 						edges {
 							favouriteOrder
+
 							node {
+								id
 								siteUrl
 								title {
 									english
 								}
 								coverImage {
-									medium
+									extraLarge
 									color
 								}
 								genres
 								startDate {
 									year
 								}
-								# studios {
-								# 	nodes {
-								# 		name
-								# 		isAnimationStudio
-								# 	}
-								# }
+								bannerImage
+								description(asHtml: false)
 							}
 						}
 					}
@@ -68,18 +67,23 @@ export const favourites = async (_: Request, res: Response): Promise<unknown> =>
 		});
 	}
 
-	const data = response.data.User.favourites.anime.edges
-		.sort((a, b) => a.favouriteOrder - b.favouriteOrder)
-		.slice(0, 12)
-		.map((edge) => ({
-			order: edge.favouriteOrder,
-			title: edge.node.title.english,
-			siteUrl: edge.node.siteUrl,
-			image: edge.node.coverImage.medium,
-			color: edge.node.coverImage.color,
-			genres: edge.node.genres,
-			releaseYear: edge.node.startDate.year,
-		}));
+	const data = await Promise.all(
+		response.data.User.favourites.anime.edges
+			.sort((a, b) => a.favouriteOrder - b.favouriteOrder)
+			.slice(0, 12)
+			.map(async (edge) => ({
+				order: edge.favouriteOrder,
+				title: edge.node.title.english,
+				siteUrl: edge.node.siteUrl,
+				image: edge.node.coverImage.extraLarge,
+				blurImage: await colorToBaseImage(edge.node.coverImage.color),
+				color: edge.node.coverImage.color,
+				genres: edge.node.genres,
+				releaseYear: edge.node.startDate.year,
+				banner: edge.node.bannerImage,
+				description: edge.node.description,
+			})),
+	);
 
 	await redis.psetex(CACHE_KEY, CACHE_TIME, JSON.stringify(data));
 

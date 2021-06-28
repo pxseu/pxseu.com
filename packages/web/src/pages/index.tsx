@@ -9,6 +9,7 @@ const Home: FC = () => (
 	<Layout>
 		<Flex flexDirection="column" alignItems="center">
 			<HomeComp />
+
 			<NowPlaying mt="4" />
 		</Flex>
 	</Layout>
