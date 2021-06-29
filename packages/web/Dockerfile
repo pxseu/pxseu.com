@@ -4,16 +4,16 @@ COPY ./packages/web/package.json .
 COPY ./yarn.lock .
 COPY tsconfig.base.json .
 
-RUN yarn install --ignore-scripts --frozen-lockfile --non-interactive
+RUN yarn install --frozen-lockfile --non-interactive
 
 COPY ./packages/web .
 
 ENV PORT 80
-ENV NEXT_PUBLIC_API_ROUTE https://www.pxseu.com/api
+ENV NEXT_PUBLIC_API_ROUTE https://api.pxseu.com
 
 RUN yarn build
 
-RUN yarn install --production --ignore-scripts --frozen-lockfile --non-interactive --prefer-offline
+RUN yarn install --production --frozen-lockfile --non-interactive --prefer-offline
 
 EXPOSE 80
 
