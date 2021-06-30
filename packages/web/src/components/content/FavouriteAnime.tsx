@@ -15,7 +15,7 @@ import {
 	Button,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import { FavouriteAnime as TFavouriteAnime } from "../../types/FavouriteAnime";
+import { FavouriteAnime as TFavouriteAnime } from "@pxseu-dot-com/web";
 
 const THUMB_WIDTH = 100;
 const THUMB_HEIGHT = 150;

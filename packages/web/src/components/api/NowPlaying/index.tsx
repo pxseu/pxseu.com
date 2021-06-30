@@ -4,10 +4,10 @@ import useSWR from "swr";
 import Image from "next/image";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import Head from "next/head";
-import { fetcher } from "../../../config/fetcher";
-import { API_ROUTE } from "../../../config/globals";
+import { fetcher } from "@/conf/fetcher";
+import { API_ROUTE } from "@/conf/globals";
+import { NowPlaying as INowPlaying } from "@pxseu-dot-com/web";
 import NowPlayingCard from "./NowPlayingCard";
-import { NowPlaying as INowPlaying } from "../../../types/NowPlaying";
 
 const API_PATH = `${API_ROUTE}/v2/spotify/nowPlaying`;
 

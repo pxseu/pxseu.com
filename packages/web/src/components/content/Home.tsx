@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { Flex, FlexProps, Heading, Text, chakra, Link } from "@chakra-ui/react";
 import NextLink from "next/link";
-import Twemoji from "../utils/Twemoji";
-import { useTimePassed } from "../../hooks/useTimePassed";
-import TimeTooltip from "../utils/TimeTooltip";
+import Twemoji from "@/comp/utils/Twemoji";
+import { useTimePassed } from "@/hooks/useTimePassed";
+import TimeTooltip from "@/comp/utils/TimeTooltip";
 
 const HomeComp: FC = (props: FlexProps) => {
 	const age = useTimePassed(1090022400000);

@@ -13,7 +13,25 @@
     "moduleResolution": "node",
     "isolatedModules": true,
     "jsx": "preserve",
-    "allowJs": false
+    "allowJs": false,
+    "typeRoots": [
+      "@types"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "@/comp/*": [
+        "components/*"
+      ],
+      "@/conf/*": [
+        "config/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",

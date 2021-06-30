@@ -1,9 +1,9 @@
 import { Flex } from "@chakra-ui/react";
 import React, { FC } from "react";
 
-import Layout from "../components/layout";
-import NowPlaying from "../components/api/NowPlaying";
-import HomeComp from "../components/content/Home";
+import Layout from "@/comp/layout";
+import NowPlaying from "@/comp/api/NowPlaying";
+import HomeComp from "@/comp/content/Home";
 
 const Home: FC = () => (
 	<Layout>

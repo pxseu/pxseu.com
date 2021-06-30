@@ -5,8 +5,8 @@ import Router from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import "focus-visible/dist/focus-visible";
-import "../styles/global.scss";
-import { theme } from "../config/theme";
+import "@/styles/global.scss";
+import { theme } from "@/conf/theme";
 
 NProgress.configure({
 	showSpinner: false,

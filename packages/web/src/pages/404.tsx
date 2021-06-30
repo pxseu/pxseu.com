@@ -1,7 +1,7 @@
 import { Box, Heading, Text, Code } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { useRouter } from "next/router";
-import Layout from "../components/layout";
+import Layout from "@/comp/layout";
 
 const FourOFour: FC = () => {
 	const router = useRouter();

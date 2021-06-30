@@ -1,11 +1,10 @@
 import { Text, Heading } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { InferGetStaticPropsType } from "next";
-import Layout from "../components/layout";
-import { API_ROUTE } from "../config/globals";
-import { TopSongs } from "../types/TopSongs";
-import { FavouriteAnime } from "../types/FavouriteAnime";
-import FavouriteAnimeComp from "../components/content/FavouriteAnime";
+import { FavouriteAnime, TopSongs } from "@pxseu-dot-com/web";
+import Layout from "@/comp/layout";
+import { API_ROUTE } from "@/conf/globals";
+import FavouriteAnimeComp from "@/comp/content/FavouriteAnime";
 
 export const getStaticProps = async () => {
 	const topSongsRes = await fetch(`${API_ROUTE}/v2/spotify/topSongs`);
