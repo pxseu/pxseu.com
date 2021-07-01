@@ -8,13 +8,12 @@ RUN yarn install --frozen-lockfile --non-interactive
 
 COPY ./packages/web .
 
-ARG PORT=3060
-ENV PORT=${PORT}
+ENV PORT=80
 ENV NEXT_PUBLIC_API_ROUTE https://api.pxseu.com
 RUN yarn build
 
 RUN yarn install --production --frozen-lockfile --non-interactive --prefer-offline
 
-EXPOSE ${PORT}
+EXPOSE 80
 
 CMD [ "yarn", "start" ]
