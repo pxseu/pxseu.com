@@ -5,7 +5,7 @@ import { getAccessToken } from "./refreshToken";
 import { NowPlaying } from "./types";
 
 const CACHE_KEY = "spotify:now_playing";
-const CACHE_TIME = 300;
+const CACHE_TIME = 2 * 60 * 1000;
 
 export const nowPlaying = async (_: unknown, res: Response): Promise<unknown> => {
 	const cached = await redis.get(CACHE_KEY);

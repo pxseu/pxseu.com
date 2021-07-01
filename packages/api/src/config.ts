@@ -8,4 +8,4 @@ export const REDIS_HOST = process.env.REDIS_HOST ?? "127.0.0.1";
 export const WEBHOOK_MESSAGE_ID = process.env.WEBHOOK_MESSAGE_ID ?? "";
 export const WEBHOOK_MESSAGE_TOKEN = process.env.WEBHOOK_MESSAGE_TOKEN ?? "";
 export const WEBHOOK_AVATAR = process.env.WEBHOOK_AVATAR ?? "";
-export const ALLOW_SEND_MESSAGE = JSON.parse(process.env.ALLOW_SEND_MESSAGE ?? "true");
+export const ALLOW_SEND_MESSAGE: boolean = JSON.parse(process.env.ALLOW_SEND_MESSAGE ?? "false");

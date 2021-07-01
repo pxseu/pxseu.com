@@ -6,7 +6,7 @@ import { GraphQLResponse } from "./types";
 import { colorToBaseImage } from "../../../utils/colorToBaseImage";
 
 const CACHE_KEY = "anilist:favourites";
-const CACHE_TIME = 60 * 1000;
+const CACHE_TIME = 20 * 60 * 1000;
 
 export const favourites = async (_: Request, res: Response): Promise<unknown> => {
 	const cached = await redis.get(CACHE_KEY);

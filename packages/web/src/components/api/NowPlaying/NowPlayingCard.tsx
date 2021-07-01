@@ -12,15 +12,7 @@ interface CardProps {
 }
 
 const NowPlayingCard: FC<CardProps> = ({ image, title, artists, album, imageTooltip, isNoData, flexProps }) => (
-	<Flex
-		display="inline-flex"
-		backgroundColor="blackAlpha.500"
-		p={2.5}
-		borderRadius={10}
-		boxShadow="md"
-		alignItems="center"
-		{...flexProps}
-	>
+	<Flex backgroundColor="blackAlpha.500" p={2.5} borderRadius={10} boxShadow="md" alignItems="center" {...flexProps}>
 		<Tooltip label={imageTooltip} aria-label="A tooltip" hasArrow placement="top">
 			<Flex
 				borderRadius={8}
@@ -35,12 +27,13 @@ const NowPlayingCard: FC<CardProps> = ({ image, title, artists, album, imageTool
 			</Flex>
 		</Tooltip>
 		<Flex
+			display="inline-flex"
 			flexDirection="column"
 			justifyContent="space-between"
 			py={2}
-			px={{ base: "2", md: "4" }}
+			px={4}
 			overflow="hidden"
-			maxWidth={{ base: "200", md: "300", xl: "500" }}
+			maxWidth={{ base: "220", md: "300", xl: "500" }}
 		>
 			<Text fontSize={isNoData ? "xl" : "2xl"} isTruncated={!isNoData}>
 				{title}

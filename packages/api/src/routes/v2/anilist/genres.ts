@@ -5,7 +5,7 @@ import { GraphQLResponse } from "./types";
 import { ANILIST_ENDPOINT, ANILIST_ID } from "../../../config";
 
 const CACHE_KEY = "anilist:genres";
-const CACHE_TIME = 60 * 1000;
+const CACHE_TIME = 20 * 60 * 1000;
 
 export const genres = async (_: Request, res: Response): Promise<unknown> => {
 	const cached = await redis.get(CACHE_KEY);

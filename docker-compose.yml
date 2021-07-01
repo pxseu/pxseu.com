@@ -14,8 +14,7 @@ services:
             - api
             - web
         ports:
-            - "3050:5050"
-            - "3060:5060"
+            - "3050:3050"
 
     api:
         build:
@@ -31,3 +30,5 @@ services:
         build:
             context: .
             dockerfile: ./packages/web/Dockerfile
+        environment:
+            - PORT=3060

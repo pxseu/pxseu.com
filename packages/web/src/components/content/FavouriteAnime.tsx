@@ -78,7 +78,7 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 					</Flex>
 					<Flex
 						py={2}
-						px={{ base: "2", md: "4" }}
+						px={4}
 						flexDirection="column"
 						justifyContent="center"
 						overflow="hidden"

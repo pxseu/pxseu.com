@@ -52,7 +52,7 @@ const NowPlaying: FC<FlexProps> = (props) => {
 		});
 	}
 
-	if (!data || error) {
+	if (!data) {
 		return (
 			<>
 				<Head>
