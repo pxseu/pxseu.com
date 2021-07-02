@@ -10,7 +10,7 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            - name: Deploy on VPS
+            - name: Deploy api on the VPS
               uses: appleboy/ssh-action@master
               with:
                   host: ${{ secrets.HOST }}

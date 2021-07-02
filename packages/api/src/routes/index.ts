@@ -6,6 +6,12 @@ export const router = Router();
 
 router.use("/v2", v2);
 
+router.get("/", (_, res) => {
+	res.api(200, {
+		message: "Welcome to the pxseu api!",
+	});
+});
+
 router.get("/health", (_, res) => {
 	res.api(200, {
 		message: "OK",

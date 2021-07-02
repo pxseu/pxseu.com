@@ -12,7 +12,7 @@ interface RateLimitData {
 
 declare namespace Express {
 	interface Response {
-		api: (status: number, body: Record<string, any>) => this;
+		api: (status: number, body?: Record<string, any>) => this;
 	}
 
 	interface Request {
