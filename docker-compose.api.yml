@@ -4,7 +4,7 @@ services:
     redis:
         image: redis:latest
         ports:
-            - 6379:6379
+            - target: 6379
         networks:
             - backend
 
@@ -17,13 +17,9 @@ services:
         ports:
             - target: 3000
               published: 3000
-              protocol: tcp
               mode: host
         networks:
             - backend
-        deploy:
-            placement:
-                constraints: [node.role == manager]
     api:
         image: pxseu/pxseu-dot-com_api
         build:
@@ -32,13 +28,12 @@ services:
         environment:
             - REDIS_HOST=redis
             - REDIS_PORT=6379
-        # env_file: ./packages/api/.env.local
+        ports:
+            - target: 80
         depends_on:
             - redis
         networks:
             - backend
-        ports:
-            - 80:80
         deploy:
             replicas: 4
             update_config:
@@ -54,9 +49,10 @@ services:
                 delay: 5s
                 max_attempts: 3
                 window: 120s
-        healthcheck:
-            test: ["CMD", "curl", "-f", "http://localhost/health || exit 1"]
+        # healthcheck:
+        #     test: ["CMD", "curl -f http://localhost/health || exit 1"]
 
 networks:
     backend:
         name: pxseu_api_swarm
+        driver: overlay
