@@ -8,7 +8,6 @@ import { DEV, PORT } from "./config";
 import { router } from "./routes";
 import { useApiExtender } from "./utils/extenders";
 import { parser } from "./utils/jsonparser";
-import { redis } from "./db/redis";
 
 const app = express();
 
@@ -20,14 +19,10 @@ app.use(useApiExtender);
 app.use(parser);
 app.use(router);
 
-(async () => {
-	await redis.connect();
+const server = app.listen(PORT, () => {
+	console.log("\x1b[36m%s\x1b[0m", `> Ready on http://localhost:${PORT}`, "\x1b[0m");
+});
 
-	const server = app.listen(PORT, () => {
-		console.log("\x1b[36m%s\x1b[0m", `> Ready on http://localhost:${PORT}`, "\x1b[0m");
-	});
-
-	server.on("error", (error: any) => {
-		console.error("SERVER:", error?.message);
-	});
-})();
+server.on("error", (error: any) => {
+	console.error("SERVER:", error?.message);
+});
