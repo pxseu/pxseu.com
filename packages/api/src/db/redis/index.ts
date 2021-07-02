@@ -5,7 +5,6 @@ export const redis = new Redis({
 	keyPrefix: `${API_HOSTNAME}:`,
 	host: REDIS_HOST,
 	port: REDIS_PORT,
-	
 });
 
 redis.on("error", (error) => {

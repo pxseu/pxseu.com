@@ -9,6 +9,7 @@ on:
 jobs:
     deploy:
         runs-on: ubuntu-latest
+        steps:
             - name: Deploy on VPS
               uses: appleboy/ssh-action@master
               with:
@@ -20,4 +21,3 @@ jobs:
                       cd ~/deploy/monorepo
                       git reset --hard
                       git pull
-                      
