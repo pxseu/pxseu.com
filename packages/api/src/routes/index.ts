@@ -11,7 +11,7 @@ router.get("/health", (_, res) => {
 		message: "OK",
 		hostname: HOSTNAME,
 		env: process.env.NODE_ENV,
-		uptime: process.uptime() * 1000,
+		uptime: Math.floor(process.uptime() * 1000),
 	});
 });
 

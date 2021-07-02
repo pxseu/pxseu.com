@@ -21,3 +21,4 @@ jobs:
                       cd ~/deploy/monorepo
                       git reset --hard
                       git pull
+                      docker stack deploy -c docker-compose.api.yml pxseu-dot-com_api

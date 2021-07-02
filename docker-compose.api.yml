@@ -21,7 +21,7 @@ services:
         networks:
             - backend
     api:
-        image: pxseu/pxseu-dot-com_api
+        image: pxseu/pxseu-dot-com_api:latest
         build:
             context: .
             dockerfile: ./packages/api/Dockerfile
