@@ -1,0 +1,23 @@
+name: CI Deploy
+
+on:
+    workflow_run:
+        workflows: ["CI Build"]
+        types:
+            - completed
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+            - name: Deploy on VPS
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  key: ${{ secrets.KEY }}
+                  port: ${{ secrets.PORT }}
+                  script: |
+                      cd ~/deploy/monorepo
+                      git reset --hard
+                      git pull
+                      
