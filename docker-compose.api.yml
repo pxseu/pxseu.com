@@ -32,7 +32,7 @@ services:
         environment:
             - REDIS_HOST=redis
             - REDIS_PORT=6379
-        env_file: ./packages/api/.env.local
+        # env_file: ./packages/api/.env.local
         depends_on:
             - redis
         networks:
