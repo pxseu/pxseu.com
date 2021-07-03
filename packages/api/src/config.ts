@@ -1,3 +1,4 @@
+export const { ENV_PATH } = process.env;
 export const HOSTNAME = process.env.HOSTNAME ?? "no_docker_hostname";
 export const API_HOSTNAME = process.env.API_HOSTNAME?.toLowerCase() ?? "api.pxseu.com";
 export const DEV = process.env.NODE_ENV !== "production";
