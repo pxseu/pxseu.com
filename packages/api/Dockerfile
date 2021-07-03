@@ -16,4 +16,6 @@ RUN yarn install --production --frozen-lockfile --non-interactive --prefer-offli
 
 EXPOSE 80
 
+# HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/health || exit 1
+
 CMD [ "yarn", "start" ]

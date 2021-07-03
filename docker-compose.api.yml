@@ -49,8 +49,12 @@ services:
                 delay: 5s
                 max_attempts: 3
                 window: 120s
-        # healthcheck:
-        #     test: ["CMD", "curl -f http://localhost/health || exit 1"]
+        healthcheck:
+            test: curl --fail http://localhost/health || exit 1
+            interval: 10s
+            retries: 5
+            start_period: 5s
+            timeout: 10s
 
 networks:
     backend:
