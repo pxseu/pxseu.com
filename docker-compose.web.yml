@@ -22,7 +22,7 @@ services:
             args:
                 API_ROUTE: https://api.pxseu.com
         volumes:
-            - ./packages/web/.next/cache/images:/.next/cache/images:ro
+            - nextimagecache:/.next/cache/images
         ports:
             - target: 80
         networks:
@@ -53,3 +53,6 @@ networks:
     backend:
         name: pxseu_web_swarm
         driver: overlay
+
+volumes:
+    nextimagecache:
