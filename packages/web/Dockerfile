@@ -8,14 +8,12 @@ RUN yarn install --frozen-lockfile --non-interactive
 
 COPY ./packages/web .
 
+ARG API_ROUTE=http://localhost:3000
+
+ENV NEXT_PUBLIC_API_ROUTE=${API_ROUTE}
 ENV PORT=80
-ENV NEXT_PUBLIC_API_ROUTE https://api.pxseu.com
 RUN yarn build
-
 RUN yarn install --production --frozen-lockfile --non-interactive --prefer-offline
-
-RUN mkdir -p /.next/cache/images && chown nextjs:nodejs /.next/cache/images
-VOLUME /.next/cache/images
 
 EXPOSE 80
 
