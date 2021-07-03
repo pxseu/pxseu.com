@@ -1,10 +1,10 @@
-name: CI Build Api
+name: CI Build Web
 
 on:
     push:
         paths:
-            - "packages/api/**"
-            - "docker-compose.api.yml"
+            - "packages/web/**"
+            - "docker-compose.web.yml"
             - ".env"
 
         branches:
@@ -27,8 +27,8 @@ jobs:
 
             - name: Build the Image
               run: |
-                  docker-compose -f docker-compose.api.yml build server
+                  docker-compose -f docker-compose.web.yml build server
 
             - name: Push Image to the registry
               run: |
-                  docker-compose -f docker-compose.api.yml push
+                  docker-compose -f docker-compose.web.yml push

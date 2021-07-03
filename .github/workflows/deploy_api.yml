@@ -1,8 +1,8 @@
-name: CI Deploy
+name: CI Deploy Api
 
 on:
     workflow_run:
-        workflows: ["CI Build"]
+        workflows: ["CI Build Api"]
         types:
             - completed
 
@@ -10,7 +10,7 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            - name: Deploy api on the VPS
+            - name: Deploy Web on the VPS
               uses: appleboy/ssh-action@master
               with:
                   host: ${{ secrets.HOST }}
@@ -21,4 +21,4 @@ jobs:
                       cd ~/deploy/monorepo
                       git reset --hard
                       git pull
-                      docker service update --image pxseu/pxseu-dot-com_api pxseu-dot-com_zero_api
+                      docker service update --image pxseu/pxseu-dot-com_api pxseu-dot-com_api_zero

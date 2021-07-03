@@ -1,13 +1,6 @@
 version: "3.8"
 
 services:
-    cache:
-        image: redis:latest
-        ports:
-            - target: 6379
-        networks:
-            - backend
-
     proxy:
         image: nginx:latest
         volumes:
@@ -16,23 +9,20 @@ services:
             - server
         ports:
             - target: 3000
-              published: 3000
+              published: 3030
               mode: host
         networks:
             - backend
+
     server:
-        image: pxseu/pxseu-dot-com_api:latest
+        image: pxseu/pxseu-dot-com_web:latest
         build:
             context: .
-            dockerfile: ./packages/api/Dockerfile
+            dockerfile: ./packages/web/Dockerfile
         environment:
-            - REDIS_HOST=cache
-            - REDIS_PORT=6379
-            - ENV_PATH=/run/secrets/PXSEU_API_ENV_FILE
+            - NEXT_PUBLIC_API_ROUTE=http://localhost:3000
         ports:
             - target: 80
-        depends_on:
-            - cache
         networks:
             - backend
         deploy:
@@ -51,7 +41,7 @@ services:
                 max_attempts: 3
                 window: 120s
         healthcheck:
-            test: curl --fail http://localhost/health || exit 1
+            test: curl --fail http://localhost/ || exit 1
             interval: 10s
             retries: 5
             start_period: 5s
@@ -59,5 +49,5 @@ services:
 
 networks:
     backend:
-        name: pxseu_api_swarm
+        name: pxseu_web_swarm
         driver: overlay

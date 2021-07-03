@@ -1,0 +1,24 @@
+name: CI Deploy Web
+
+on:
+    workflow_run:
+        workflows: ["CI Build Web"]
+        types:
+            - completed
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy Web on the VPS
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  key: ${{ secrets.KEY }}
+                  port: ${{ secrets.PORT }}
+                  script: |
+                      cd ~/deploy/monorepo
+                      git reset --hard
+                      git pull
+                      docker service update --image pxseu/pxseu-dot-com_web pxseu-dot-com_web_zero
