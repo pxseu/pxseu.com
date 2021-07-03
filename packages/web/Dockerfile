@@ -14,6 +14,9 @@ RUN yarn build
 
 RUN yarn install --production --frozen-lockfile --non-interactive --prefer-offline
 
+RUN mkdir -p /.next/cache/images && chown nextjs:nodejs /.next/cache/images
+VOLUME /.next/cache/images
+
 EXPOSE 80
 
 CMD [ "yarn", "start" ]

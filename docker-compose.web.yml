@@ -26,7 +26,7 @@ services:
         networks:
             - backend
         deploy:
-            replicas: 4
+            replicas: 2
             update_config:
                 parallelism: 2
                 order: start-first
