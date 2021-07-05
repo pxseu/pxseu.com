@@ -5,7 +5,7 @@ import { getAccessToken } from "./refreshToken";
 import { NowPlaying } from "./types";
 
 const CACHE_KEY = "spotify:now_playing";
-const CACHE_TIME = 2 * 60 * 1000;
+const CACHE_TIME = 10 * 1000;
 
 export const nowPlaying = async (_: unknown, res: Response): Promise<unknown> => {
 	const cached = await redis.get(CACHE_KEY);
@@ -13,7 +13,7 @@ export const nowPlaying = async (_: unknown, res: Response): Promise<unknown> =>
 	if (cached) {
 		const ttl = await redis.pttl(CACHE_KEY);
 
-		res.set("Cache-Control", `max-age=${Math.ceil(ttl / 1000)}`);
+		res.set("Cache-Control", `public, max-age=${Math.ceil(ttl / 1000)}`);
 
 		const parsedCache = JSON.parse(cached);
 
@@ -66,7 +66,7 @@ export const nowPlaying = async (_: unknown, res: Response): Promise<unknown> =>
 
 	await redis.psetex(CACHE_KEY, CACHE_TIME, JSON.stringify({ playing: true, data }));
 
-	res.set("Cache-Control", `max-age=${Math.ceil(CACHE_TIME / 1000)}`);
+	res.set("Cache-Control", `public, max-age=${Math.ceil(CACHE_TIME / 1000)}`);
 
 	res.api(200, {
 		playing: true,

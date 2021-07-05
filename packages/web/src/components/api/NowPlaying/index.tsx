@@ -16,7 +16,7 @@ interface LinkifyProps {
 }
 
 const Linkify: FC<LinkifyProps> = ({ children, link }) => {
-	if (!link) return <> {children}</>;
+	if (!link) return <>{children}</>;
 
 	return (
 		<Link
