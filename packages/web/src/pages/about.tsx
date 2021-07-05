@@ -1,10 +1,12 @@
-import { Text, Heading } from "@chakra-ui/react";
+import { Heading, Text } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { InferGetStaticPropsType } from "next";
 import { FavouriteAnime, TopSongs } from "@pxseu-dot-com/web";
 import Layout from "@/comp/layout";
 import { API_ROUTE } from "@/conf/globals";
 import FavouriteAnimeComp from "@/comp/content/FavouriteAnime";
+import AboutMe from "@/comp/content/AboutMe";
+import Twemoji from "@/comp/utils/Twemoji";
 
 export const getStaticProps = async () => {
 	const topSongsRes = await fetch(`${API_ROUTE}/v2/spotify/topSongs`);
@@ -24,8 +26,11 @@ export const getStaticProps = async () => {
 };
 
 const About: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ favouriteAnime }) => (
-	<Layout>
-		<Heading textAlign="center">About me</Heading>
+	<Layout display="flex" flexDirection="column" alignItems="center">
+		<Heading>
+			More stuff about me <Twemoji emoji="👋" />
+		</Heading>
+		<AboutMe />
 		<Text py={2} fontSize="xl" textAlign="center">
 			My Favourite Anime so far:
 		</Text>

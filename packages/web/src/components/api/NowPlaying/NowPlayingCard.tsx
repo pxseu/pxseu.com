@@ -12,14 +12,15 @@ interface CardProps {
 }
 
 const NowPlayingCard: FC<CardProps> = ({ image, title, artists, album, imageTooltip, isNoData, flexProps }) => (
-	<Flex backgroundColor="blackAlpha.500" p={2.5} borderRadius={10} boxShadow="md" alignItems="center" {...flexProps}>
-		<Tooltip label={imageTooltip} aria-label="A tooltip" hasArrow placement="top">
+	<Flex backgroundColor="blackAlpha.400" p={2.5} borderRadius={10} boxShadow="md" alignItems="center" {...flexProps}>
+		<Tooltip label={<Text textAlign="center">{imageTooltip}</Text>} aria-label="A tooltip" hasArrow placement="top">
 			<Flex
 				borderRadius={8}
 				overflow="hidden"
 				justifyContent="center"
 				alignItems="center"
 				boxShadow="md"
+				minWidth={100}
 				width={100}
 				height={100}
 			>

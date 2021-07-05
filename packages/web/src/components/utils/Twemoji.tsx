@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import React, { memo } from "react";
 import twemoji from "twemoji";
 import styles from "@/styles/components/Twemoji.module.scss";
@@ -8,13 +8,10 @@ interface Props {
 }
 
 const Twemoji = ({ emoji }: Props) => (
-	<Box
+	<Flex
+		className={styles.emoji}
+		display="inline"
 		as="span"
-		display="inline-block"
-		width="1em"
-		height="1em"
-		verticalAlign="-0.1em"
-		// eslint-disable-next-line react/no-danger
 		dangerouslySetInnerHTML={{
 			__html: twemoji.parse(emoji, {
 				folder: "svg",

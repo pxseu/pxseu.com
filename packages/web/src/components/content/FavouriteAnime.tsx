@@ -31,11 +31,11 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 
 	return (
 		<Flex justifyContent={{ base: "center", small: "flex-start" }} alignItems="center" flexWrap="wrap" {...props}>
-			{anime.data.map((data) => (
+			{anime.data.slice(0, 6).map((data) => (
 				<Flex
 					flex={1}
 					display="inline-flex"
-					backgroundColor="gray.700"
+					backgroundColor="blackAlpha.400"
 					p={2.5}
 					m={2}
 					width={THUMB_WIDTH * 4}
@@ -76,19 +76,24 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 							/>
 						)}
 					</Flex>
-					<Flex
-						py={2}
-						px={4}
-						flexDirection="column"
-						justifyContent="center"
-						overflow="hidden"
-					>
+					<Flex py={2} px={4} flexDirection="column" justifyContent="center" overflow="hidden">
 						<Text fontSize="xl" isTruncated title={`${data.title} (${data.releaseYear})`}>
 							<b>{data.title}</b>
 						</Text>
 						<Flex flexWrap="wrap">
 							{data.genres.slice(0, 3).map((genra) => (
-								<Text key={genra}>{genra}</Text>
+								<Button
+									as="a"
+									fontWeight="normaal"
+									variant="ghost"
+									size="sm"
+									borderRadius="5"
+									m={0.5}
+									href={`https://anilist.co/search/anime/${encodeURIComponent(genra)}`}
+									key={genra}
+								>
+									<Text>{genra}</Text>
+								</Button>
 							))}
 						</Flex>
 					</Flex>

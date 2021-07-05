@@ -1,20 +1,15 @@
 import React, { FC } from "react";
-import { Flex, FlexProps, Heading, Text, chakra, Link } from "@chakra-ui/react";
+import { Flex, FlexProps, Text, chakra, Link } from "@chakra-ui/react";
 import NextLink from "next/link";
-import Twemoji from "@/comp/utils/Twemoji";
 import { useTimePassed } from "@/hooks/useTimePassed";
 import TimeTooltip from "@/comp/utils/TimeTooltip";
 
-const AboutComp: FC = (props: FlexProps) => {
+const ShortSummary: FC = (props: FlexProps) => {
 	const age = useTimePassed(1090022400000);
 	const codingFor = useTimePassed(1535760000000);
 
 	return (
 		<Flex flexDirection="column" alignItems="center" textAlign="center" {...props}>
-			<Heading>
-				More stuff about me <Twemoji emoji="👋" />
-			</Heading>
-
 			<Text fontSize="xl">
 				My name is{" "}
 				<chakra.span bgGradient="linear(to-r, brand.100, brand.900)" backgroundClip="text">
@@ -52,4 +47,4 @@ const AboutComp: FC = (props: FlexProps) => {
 	);
 };
 
-export default AboutComp;
+export default ShortSummary;
