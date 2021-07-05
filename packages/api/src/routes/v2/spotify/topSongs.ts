@@ -39,12 +39,7 @@ export const topTracks = async (_: unknown, res: Response): Promise<unknown> => 
 
 	const json: TopSongs = await response.json();
 
-	const tracks = json.items.slice(0, 10).map((track) => ({
-		// TODO: remove the 3 props bellow at a later date so stuff doesn't break
-		title: track.name,
-		artist: track.artists.map((artist) => artist.name).join(", "),
-		songUrl: track.external_urls.spotify,
-
+	const tracks = json.items.slice(0, 6).map((track) => ({
 		song: {
 			name: track.name,
 			artists: track.artists.map((artist) => artist.name).join(", "),

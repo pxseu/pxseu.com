@@ -70,7 +70,7 @@ export const favourites = async (_: Request, res: Response): Promise<unknown> =>
 	const data = await Promise.all(
 		response.data.User.favourites.anime.edges
 			.sort((a, b) => a.favouriteOrder - b.favouriteOrder)
-			.slice(0, 12)
+			.slice(0, 6)
 			.map(async (edge) => ({
 				order: edge.favouriteOrder,
 				title: edge.node.title.english,
