@@ -29,6 +29,8 @@ services:
             - REDIS_HOST=cache
             - REDIS_PORT=6379
             - ENV_PATH=/run/secrets/PXSEU_API_ENV_FILE
+        secrets:
+            - PXSEU_API_ENV_FILE
         ports:
             - target: 80
         depends_on:
@@ -61,3 +63,7 @@ networks:
     backend:
         name: pxseu_api_swarm
         driver: overlay
+
+secrets: # top level secrets block
+    PXSEU_API_ENV_FILE:
+        external: true
