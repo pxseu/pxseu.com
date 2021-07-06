@@ -3,6 +3,10 @@
         {
             "directory": "./packages/web",
             "changeProcessCWD": true
+        },
+        {
+            "directory": "./packages/api",
+            "changeProcessCWD": true
         }
     ]
 }
