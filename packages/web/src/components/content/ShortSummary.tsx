@@ -15,12 +15,12 @@ const ShortSummary: FC = (props: FlexProps) => {
 				<chakra.span bgGradient="linear(to-r, brand.100, brand.900)" backgroundClip="text">
 					<b>pxseu</b>
 				</chakra.span>{" "}
-				and I am a software/web developer from Poland!
+				and I&apos;m a software/web developer from Poland!
 			</Text>
 
 			<Text fontSize="xl">
-				I am <TimeTooltip time={age} timeText="years old" /> and I have been coding for over{" "}
-				<TimeTooltip time={codingFor} timeText="years" />.
+				I&apos;m <TimeTooltip time={age} timeText="years old" whiteSpace="nowrap" /> and I&apos;ve been coding
+				for over <TimeTooltip time={codingFor} timeText="years" whiteSpace="nowrap" />.
 			</Text>
 
 			<Text fontSize="xl">
@@ -30,7 +30,7 @@ const ShortSummary: FC = (props: FlexProps) => {
 					<Link
 						variant="link"
 						transitionProperty="text-decoration-color"
-						transitionDuration="200ms"
+						transitionDuration="400ms"
 						textDecoration="underline"
 						textDecorationColor="brand.100"
 						textDecorationThickness="2px"
