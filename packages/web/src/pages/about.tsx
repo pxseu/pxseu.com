@@ -7,10 +7,13 @@ import { API_ROUTE } from "@/conf/globals";
 import FavouriteAnimeComp from "@/comp/content/FavouriteAnime";
 import AboutMe from "@/comp/content/AboutMe";
 import Twemoji from "@/comp/utils/Twemoji";
+import FavouriteSongsComp from "@/comp/content/FavouriteSongs";
 
 export const getStaticProps = async () => {
-	const topSongsRes = await fetch(`${API_ROUTE}/v2/spotify/topSongs`);
-	const topAnimeRes = await fetch(`${API_ROUTE}/v2/anilist/favourites`);
+	const [topSongsRes, topAnimeRes] = await Promise.all([
+		fetch(`${API_ROUTE}/v2/spotify/topSongs`),
+		fetch(`${API_ROUTE}/v2/anilist/favourites`),
+	]);
 
 	const [topSongs, favouriteAnime] = (await Promise.all([topSongsRes, topAnimeRes]).then((resArr) =>
 		Promise.all(resArr.map((res) => res.json())),
@@ -25,14 +28,22 @@ export const getStaticProps = async () => {
 	};
 };
 
-const About: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ favouriteAnime }) => (
+const About: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ favouriteAnime, topSongs }) => (
 	<Layout display="flex" flexDirection="column" alignItems="center">
 		<Heading>
-			More stuff about me <Twemoji emoji="👋" />
+			About me <Twemoji emoji="👋" />
 		</Heading>
+
 		<AboutMe />
+
 		<Text py={2} fontSize="xl" textAlign="center">
-			My Favourite Anime so far:
+			Here are some of my favourite songs:
+		</Text>
+
+		<FavouriteSongsComp songs={topSongs} />
+
+		<Text py={2} fontSize="xl" textAlign="center">
+			Here are some of my favourite anime:
 		</Text>
 		<FavouriteAnimeComp anime={favouriteAnime} />
 		{/* <pre>{JSON.stringify(topSongs.tracks, undefined, 4)}</pre> */}

@@ -9,7 +9,7 @@ const ShortSummary: FC = (props: FlexProps) => {
 	const codingFor = useTimePassed(1535760000000);
 
 	return (
-		<Flex flexDirection="column" alignItems="center" textAlign="center" {...props}>
+		<Flex flexDirection="column" justifyContent="center" textAlign="center" {...props}>
 			<Text fontSize="xl">
 				My name is{" "}
 				<chakra.span bgGradient="linear(to-r, brand.100, brand.900)" backgroundClip="text">
@@ -24,7 +24,7 @@ const ShortSummary: FC = (props: FlexProps) => {
 			</Text>
 
 			<Text fontSize="xl">
-				Fell free to read more about me{" "}
+				You can read more in{" "}
 				<NextLink href="/about" passHref>
 					{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
 					<Link
@@ -38,7 +38,7 @@ const ShortSummary: FC = (props: FlexProps) => {
 							textDecorationColor: "brand.900",
 						}}
 					>
-						here
+						/about
 					</Link>
 				</NextLink>
 				.

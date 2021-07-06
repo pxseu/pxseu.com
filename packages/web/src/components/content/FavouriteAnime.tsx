@@ -37,15 +37,21 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 					display="inline-flex"
 					backgroundColor="blackAlpha.400"
 					p={2.5}
-					m={2}
+					m="2"
 					width={THUMB_WIDTH * 4}
 					minWidth={THUMB_WIDTH * 3}
 					borderRadius={10}
 					boxShadow="md"
 					key={data.order}
+					transition="box-shadow, transform ease-in-out 100ms"
 					onClick={() => {
 						setModalContent(data);
 						onOpen();
+					}}
+					cursor="pointer"
+					_hover={{
+						boxShadow: "lg",
+						transform: "scale(1.02, 1.02)",
 					}}
 				>
 					<Flex

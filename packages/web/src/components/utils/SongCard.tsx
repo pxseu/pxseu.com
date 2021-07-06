@@ -11,9 +11,28 @@ interface CardProps {
 	isNoData?: boolean;
 }
 
-const NowPlayingCard: FC<CardProps> = ({ image, title, artists, album, imageTooltip, isNoData, flexProps }) => (
-	<Flex backgroundColor="blackAlpha.400" p={2.5} borderRadius={10} boxShadow="md" alignItems="center" {...flexProps}>
-		<Tooltip label={<Text textAlign="center">{imageTooltip}</Text>} aria-label="A tooltip" hasArrow placement="top">
+const SongCard: FC<CardProps> = ({ image, title, artists, album, imageTooltip, isNoData, flexProps }) => (
+	<Flex
+		display="inline-flex"
+		backgroundColor="blackAlpha.400"
+		p={2.5}
+		borderRadius={10}
+		boxShadow="md"
+		alignItems="center"
+		transition="box-shadow, transform ease-in-out 100ms"
+		cursor="pointer"
+		_hover={{
+			boxShadow: "md",
+			transform: "scale(1.02, 1.02)",
+		}}
+		{...flexProps}
+	>
+		<Tooltip
+			label={imageTooltip && <Text textAlign="center">{imageTooltip}</Text>}
+			aria-label="A tooltip"
+			hasArrow
+			placement="top"
+		>
 			<Flex
 				borderRadius={8}
 				overflow="hidden"
@@ -36,7 +55,7 @@ const NowPlayingCard: FC<CardProps> = ({ image, title, artists, album, imageTool
 			overflow="hidden"
 			maxWidth={{ base: "220", md: "300", xl: "500" }}
 		>
-			<Text fontSize={isNoData ? "xl" : "2xl"} isTruncated={!isNoData}>
+			<Text fontSize="xl" isTruncated={!isNoData}>
 				{title}
 			</Text>
 			{artists && <Text isTruncated>{artists}</Text>}
@@ -45,4 +64,4 @@ const NowPlayingCard: FC<CardProps> = ({ image, title, artists, album, imageTool
 	</Flex>
 );
 
-export default NowPlayingCard;
+export default SongCard;

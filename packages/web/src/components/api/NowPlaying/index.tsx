@@ -1,4 +1,4 @@
-import { FlexProps, Link, useToast } from "@chakra-ui/react";
+import { FlexProps, useToast } from "@chakra-ui/react";
 import React, { FC } from "react";
 import useSWR from "swr";
 import Image from "next/image";
@@ -7,36 +7,10 @@ import Head from "next/head";
 import { fetcher } from "@/conf/fetcher";
 import { API_ROUTE } from "@/conf/globals";
 import { NowPlaying as INowPlaying } from "@pxseu-dot-com/web";
-import NowPlayingCard from "./NowPlayingCard";
+import SongCard from "@/comp/utils/SongCard";
+import Linkify from "@/comp/utils/Linkify";
 
 const API_PATH = `${API_ROUTE}/v2/spotify/nowPlaying`;
-
-interface LinkifyProps {
-	link?: string;
-}
-
-const Linkify: FC<LinkifyProps> = ({ children, link }) => {
-	if (!link) return <>{children}</>;
-
-	return (
-		<Link
-			as="a"
-			href={link}
-			variant="link"
-			target="_blank"
-			transitionProperty="text-decoration-color"
-			transitionDuration="200ms"
-			textDecoration="underline"
-			textDecorationColor="brand.100"
-			textDecorationThickness="2px"
-			_hover={{
-				textDecorationColor: "brand.900",
-			}}
-		>
-			{children}
-		</Link>
-	);
-};
 
 const NowPlaying: FC<FlexProps> = (props) => {
 	const { data, error } = useSWR<INowPlaying>(API_PATH, fetcher, { refreshInterval: 100 });
@@ -60,7 +34,7 @@ const NowPlaying: FC<FlexProps> = (props) => {
 				</Head>
 
 				<SkeletonTheme color="#111" highlightColor="#222">
-					<NowPlayingCard
+					<SongCard
 						flexProps={props}
 						image={<Skeleton width={120} height={120} />}
 						title={<Skeleton width={180} />}
@@ -78,7 +52,7 @@ const NowPlaying: FC<FlexProps> = (props) => {
 
 	if (!data.playing)
 		return (
-			<NowPlayingCard
+			<SongCard
 				flexProps={props}
 				image={<Image src={coverImage} width={200} height={200} quality={75} alt="Album cover" />}
 				title="No song playing"
@@ -91,7 +65,7 @@ const NowPlaying: FC<FlexProps> = (props) => {
 	const albumName = Spotify.album.name;
 
 	return (
-		<NowPlayingCard
+		<SongCard
 			flexProps={props}
 			image={<Image src={coverImage} width={200} height={200} quality={75} alt="Album cover" />}
 			imageTooltip={albumName}
