@@ -1,9 +1,9 @@
-import React, { FC } from "react";
-import { Flex, FlexProps } from "@chakra-ui/react";
-import Image from "next/image";
-import { TopSongs } from "@pxseu-dot-com/web";
-import SongCard from "@/comp/utils/SongCard";
 import Linkify from "@/comp/utils/Linkify";
+import SongCard from "@/comp/utils/SongCard";
+import { Flex, FlexProps } from "@chakra-ui/react";
+import { TopSongs } from "@pxseu-dot-com/web";
+import Image from "next/image";
+import React, { FC } from "react";
 
 const THUMB_HEIGHT = 100;
 

@@ -1,9 +1,9 @@
-import { BoxProps, Flex, useBreakpointValue } from "@chakra-ui/react";
-import React, { FC, useState, useEffect } from "react";
-import { transparentize } from "@chakra-ui/theme-tools";
 import { theme } from "@/conf/theme";
-import Navigation from "./navigation";
+import { BoxProps, Flex, useBreakpointValue } from "@chakra-ui/react";
+import { transparentize } from "@chakra-ui/theme-tools";
+import React, { FC, useEffect, useState } from "react";
 import Logo from "./logo";
+import Navigation from "./navigation";
 import MenuToggle from "./navToggle";
 
 const Author: FC<BoxProps> = (props) => {

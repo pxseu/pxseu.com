@@ -1,5 +1,5 @@
+import { chakra, ChakraProps, Tooltip } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { Tooltip, chakra, ChakraProps } from "@chakra-ui/react";
 
 interface ITimeTooltip extends ChakraProps {
 	time: number;

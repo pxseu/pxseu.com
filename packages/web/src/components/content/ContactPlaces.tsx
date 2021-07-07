@@ -1,10 +1,10 @@
-import React, { FC } from "react";
-import { Box, BoxProps, Button, ButtonGroup, Text } from "@chakra-ui/react";
-import { Discord, GitHub, Spotify, Twitter, Mail, Steam, AniList, Osu } from "@/conf/links";
-import { FaDiscord, FaGithub, FaSpotify, FaSteam, FaTwitter } from "react-icons/fa";
-import { IoIosMail } from "react-icons/io";
 import AniListIcon from "@/comp/svg/anilist";
 import OsuIcon from "@/comp/svg/osu";
+import { AniList, Discord, GitHub, Mail, Osu, Spotify, Steam, Twitter } from "@/conf/links";
+import { Box, BoxProps, Button, ButtonGroup, Text } from "@chakra-ui/react";
+import React, { FC } from "react";
+import { FaDiscord, FaGithub, FaSpotify, FaSteam, FaTwitter } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
 
 const ContactPlaces: FC<BoxProps> = (props) => (
 	<Box {...props}>

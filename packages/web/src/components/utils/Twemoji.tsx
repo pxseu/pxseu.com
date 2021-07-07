@@ -1,7 +1,7 @@
+import styles from "@/styles/components/Twemoji.module.scss";
 import { Flex } from "@chakra-ui/react";
 import React, { memo } from "react";
 import twemoji from "twemoji";
-import styles from "@/styles/components/Twemoji.module.scss";
 
 interface Props {
 	emoji: string;

@@ -1,13 +1,13 @@
-import { Heading, Text } from "@chakra-ui/react";
-import React, { FC } from "react";
-import { InferGetStaticPropsType } from "next";
-import { FavouriteAnime, TopSongs } from "@pxseu-dot-com/web";
-import Layout from "@/comp/layout";
-import { API_ROUTE } from "@/conf/globals";
-import FavouriteAnimeComp from "@/comp/content/FavouriteAnime";
 import AboutMe from "@/comp/content/AboutMe";
-import Twemoji from "@/comp/utils/Twemoji";
+import FavouriteAnimeComp from "@/comp/content/FavouriteAnime";
 import FavouriteSongsComp from "@/comp/content/FavouriteSongs";
+import Layout from "@/comp/layout";
+import Twemoji from "@/comp/utils/Twemoji";
+import { API_ROUTE } from "@/conf/globals";
+import { Heading, Text } from "@chakra-ui/react";
+import { FavouriteAnime, TopSongs } from "@pxseu-dot-com/web";
+import { InferGetStaticPropsType } from "next";
+import React, { FC } from "react";
 
 export const getStaticProps = async () => {
 	const [topSongsRes, topAnimeRes] = await Promise.all([

@@ -1,6 +1,6 @@
-import React, { FC } from "react";
 import { Box, IconButton } from "@chakra-ui/react";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import React, { FC } from "react";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 interface IMenuToggle {
 	toggle: () => void;

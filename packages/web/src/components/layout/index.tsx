@@ -1,8 +1,8 @@
+import { Box, BoxProps, Fade, Flex, Text } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { Flex, Box, Fade, BoxProps, Text } from "@chakra-ui/react";
+import Twemoji from "../utils/Twemoji";
 import Footer from "./footer";
 import Header from "./header";
-import Twemoji from "../utils/Twemoji";
 
 const Layout: FC<BoxProps> = ({ children, ...props }) => (
 	<Flex flexDirection="column" minHeight="100vh">

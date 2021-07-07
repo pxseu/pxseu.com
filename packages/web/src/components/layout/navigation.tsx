@@ -1,6 +1,6 @@
 import { Box, Button, ButtonGroup, ButtonGroupProps, SlideFade, useBreakpointValue } from "@chakra-ui/react";
-import React, { FC } from "react";
 import Link from "next/link";
+import React, { FC } from "react";
 
 interface INavigation extends ButtonGroupProps {
 	isOpen: boolean;

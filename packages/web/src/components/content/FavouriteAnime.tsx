@@ -1,21 +1,10 @@
-import React, { FC, useState } from "react";
 import {
-	Box,
-	Text,
-	Flex,
-	Modal,
-	ModalOverlay,
-	ModalContent,
-	ModalHeader,
-	ModalBody,
-	ModalCloseButton,
-	ModalFooter,
-	FlexProps,
-	useDisclosure,
-	Button,
+    Box, Button, Flex, FlexProps, Modal, ModalBody,
+    ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure
 } from "@chakra-ui/react";
-import Image from "next/image";
 import { FavouriteAnime as TFavouriteAnime } from "@pxseu-dot-com/web";
+import Image from "next/image";
+import React, { FC, useState } from "react";
 
 const THUMB_WIDTH = 100;
 const THUMB_HEIGHT = 150;

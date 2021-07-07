@@ -1,12 +1,12 @@
+import { theme } from "@/conf/theme";
+import "@/styles/global.scss";
 import { ChakraProvider } from "@chakra-ui/react";
+import "focus-visible/dist/focus-visible";
 import type { AppProps } from "next/app";
-import React from "react";
 import Router from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import "focus-visible/dist/focus-visible";
-import "@/styles/global.scss";
-import { theme } from "@/conf/theme";
+import React from "react";
 
 NProgress.configure({
 	showSpinner: false,

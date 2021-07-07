@@ -1,14 +1,14 @@
-import { FlexProps, useToast } from "@chakra-ui/react";
-import React, { FC } from "react";
-import useSWR from "swr";
-import Image from "next/image";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import Head from "next/head";
+import Linkify from "@/comp/utils/Linkify";
+import SongCard from "@/comp/utils/SongCard";
 import { fetcher } from "@/conf/fetcher";
 import { API_ROUTE } from "@/conf/globals";
+import { FlexProps, useToast } from "@chakra-ui/react";
 import { NowPlaying as INowPlaying } from "@pxseu-dot-com/web";
-import SongCard from "@/comp/utils/SongCard";
-import Linkify from "@/comp/utils/Linkify";
+import Head from "next/head";
+import Image from "next/image";
+import React, { FC } from "react";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import useSWR from "swr";
 
 const API_PATH = `${API_ROUTE}/v2/spotify/nowPlaying`;
 

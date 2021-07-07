@@ -1,4 +1,4 @@
-import { FlexProps, Flex, Text, Tooltip } from "@chakra-ui/react";
+import { Flex, FlexProps, Text, Tooltip } from "@chakra-ui/react";
 import React, { FC, ReactNode } from "react";
 
 interface CardProps {

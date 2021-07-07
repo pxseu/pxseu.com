@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { Flex, FlexProps, Heading } from "@chakra-ui/react";
 import Twemoji from "@/comp/utils/Twemoji";
+import { Flex, FlexProps, Heading } from "@chakra-ui/react";
+import React, { FC } from "react";
 import ShortSummary from "./ShortSummary";
 
 const HomeComp: FC = (props: FlexProps) => (

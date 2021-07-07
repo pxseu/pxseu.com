@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import { Flex, FlexProps, Text, chakra, Link } from "@chakra-ui/react";
-import NextLink from "next/link";
-import { useTimePassed } from "@/hooks/useTimePassed";
 import TimeTooltip from "@/comp/utils/TimeTooltip";
+import { useTimePassed } from "@/hooks/useTimePassed";
+import { chakra, Flex, FlexProps, Link, Text } from "@chakra-ui/react";
+import NextLink from "next/link";
+import React, { FC } from "react";
 
 const ShortSummary: FC = (props: FlexProps) => {
 	const age = useTimePassed(1090022400000);
