@@ -49,12 +49,24 @@ const NowPlaying: FC<FlexProps> = (props) => {
 	const { data: Spotify } = data;
 
 	const coverImage = Spotify?.album.image ?? "/assets/placeholder/album.png";
+	const blurImage =
+		"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACXBIWXMAAAsTAAALEwEAmpwYAAAACklEQVQIHWNgAAAAAgABz8g15QAAAABJRU5ErkJggg==";
 
 	if (!data.playing)
 		return (
 			<SongCard
 				flexProps={props}
-				image={<Image src={coverImage} width={200} height={200} quality={75} alt="Album cover" />}
+				image={
+					<Image
+						placeholder="blur"
+						blurDataURL={blurImage}
+						src={coverImage}
+						width={200}
+						height={200}
+						quality={75}
+						alt="Album cover"
+					/>
+				}
 				title="No song playing"
 				isNoData
 			/>
@@ -67,7 +79,17 @@ const NowPlaying: FC<FlexProps> = (props) => {
 	return (
 		<SongCard
 			flexProps={props}
-			image={<Image src={coverImage} width={200} height={200} quality={75} alt="Album cover" />}
+			image={
+				<Image
+					placeholder="blur"
+					blurDataURL={blurImage}
+					src={coverImage}
+					width={200}
+					height={200}
+					quality={75}
+					alt="Album cover"
+				/>
+			}
 			imageTooltip={albumName}
 			title={
 				<Linkify link={Spotify.song.url}>

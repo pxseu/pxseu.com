@@ -31,10 +31,10 @@ export const getStaticProps = async () => {
 const About: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ favouriteAnime, topSongs }) => (
 	<Layout display="flex" flexDirection="column" alignItems="center">
 		<Heading>
-			About me <Twemoji emoji="👋" />
+			About me <Twemoji emoji="📝" />
 		</Heading>
 
-		<AboutMe />
+		<AboutMe mt={3} />
 
 		<Text py={2} fontSize="xl" textAlign="center">
 			Here are some of my favourite songs:
@@ -46,7 +46,6 @@ const About: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ favouriteAn
 			Here are some of my favourite anime:
 		</Text>
 		<FavouriteAnimeComp anime={favouriteAnime} />
-		{/* <pre>{JSON.stringify(topSongs.tracks, undefined, 4)}</pre> */}
 	</Layout>
 );
 

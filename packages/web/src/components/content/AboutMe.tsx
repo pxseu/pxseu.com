@@ -1,14 +1,22 @@
 import React, { FC } from "react";
-import { Flex, Link, Text } from "@chakra-ui/react";
+import { Flex, FlexProps, Link, Text } from "@chakra-ui/react";
 import { useTimePassed } from "@/hooks/useTimePassed";
 import NextLink from "next/link";
 
-const AboutComp: FC = () => {
+const AboutComp: FC<FlexProps> = (props) => {
 	const age = useTimePassed(1090022400000);
 	const codingFor = useTimePassed(1535760000000);
 
 	return (
-		<Flex backgroundColor="blackAlpha.400" p={4} mt={2} borderRadius={10} boxShadow="md" maxWidth="580px">
+		<Flex
+			backgroundColor="blackAlpha.400"
+			p={4}
+			mt={2}
+			borderRadius={10}
+			boxShadow="md"
+			maxWidth="580px"
+			{...props}
+		>
 			<Text fontSize="lg">
 				Since you&apos;re here allow me to introduce myself once again. My name is pxseu and I&apos;m a{" "}
 				{Math.floor(age)} year old software and web developer from Poland with over {Math.floor(codingFor)}{" "}

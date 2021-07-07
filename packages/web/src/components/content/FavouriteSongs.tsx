@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import { Flex, FlexProps } from "@chakra-ui/react";
 import Image from "next/image";
 import { TopSongs } from "@pxseu-dot-com/web";
-import SongCard from "../utils/SongCard";
-import Linkify from "../utils/Linkify";
+import SongCard from "@/comp/utils/SongCard";
+import Linkify from "@/comp/utils/Linkify";
 
 const THUMB_HEIGHT = 100;
 
@@ -13,7 +13,7 @@ interface IFavouriteAnime extends FlexProps {
 
 const FavouriteSongs: FC<IFavouriteAnime> = ({ songs, ...props }) => (
 	<Flex justifyContent={{ base: "center", small: "flex-start" }} alignItems="center" flexWrap="wrap" {...props}>
-		{songs.tracks.slice(0, 6).map((data) => (
+		{songs.tracks.map((data) => (
 			<SongCard
 				imageTooltip={data.song.name}
 				image={
