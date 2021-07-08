@@ -9,6 +9,7 @@ on:
 jobs:
     deploy:
         runs-on: ubuntu-latest
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         steps:
             - name: Deploy Web on the VPS
               uses: appleboy/ssh-action@master
