@@ -2,6 +2,7 @@ import Linkify from "@/comp/utils/Linkify";
 import SongCard from "@/comp/utils/SongCard";
 import { fetcher } from "@/conf/fetcher";
 import { API_ROUTE } from "@/conf/globals";
+import { blurImage } from "@/conf/static";
 import { FlexProps, useToast } from "@chakra-ui/react";
 import { NowPlaying as INowPlaying } from "@pxseu-dot-com/web";
 import Head from "next/head";
@@ -49,8 +50,6 @@ const NowPlaying: FC<FlexProps> = (props) => {
 	const { data: Spotify } = data;
 
 	const coverImage = Spotify?.album.image ?? "/assets/placeholder/album.png";
-	const blurImage =
-		"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACXBIWXMAAAsTAAALEwEAmpwYAAAACklEQVQIHWNgAAAAAgABz8g15QAAAABJRU5ErkJggg==";
 
 	if (!data.playing)
 		return (

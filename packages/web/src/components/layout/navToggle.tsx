@@ -17,12 +17,7 @@ const MenuToggle: FC<IMenuToggle> = ({ toggle, isOpen }) => (
 				isOpen ? (
 					<AiOutlineClose color="gray.600" fontSize="25px" />
 				) : (
-					<IconButton
-						variant="ghost"
-						as="button"
-						aria-label="Discord"
-						icon={<AiOutlineMenu color="gray.600" fontSize="25px" />}
-					/>
+					<AiOutlineMenu color="gray.600" fontSize="25px" />
 				)
 			}
 		/>

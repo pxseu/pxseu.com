@@ -36,16 +36,17 @@ const About: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ favouriteAn
 
 		<AboutMe mt={3} />
 
-		<Text py={2} fontSize="xl" textAlign="center">
+		<Text pt={4} fontSize="xl" textAlign="center">
 			Here are some of my favourite songs:
 		</Text>
 
-		<FavouriteSongsComp songs={topSongs} />
+		<FavouriteSongsComp pt={2} songs={topSongs} />
 
-		<Text py={2} fontSize="xl" textAlign="center">
+		<Text pt={4} fontSize="xl" textAlign="center">
 			Here are some of my favourite anime:
 		</Text>
-		<FavouriteAnimeComp anime={favouriteAnime} />
+
+		<FavouriteAnimeComp pt={2} anime={favouriteAnime} />
 	</Layout>
 );
 

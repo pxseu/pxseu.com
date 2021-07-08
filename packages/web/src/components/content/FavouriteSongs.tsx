@@ -1,5 +1,6 @@
 import Linkify from "@/comp/utils/Linkify";
 import SongCard from "@/comp/utils/SongCard";
+import { blurImage } from "@/conf/static";
 import { Flex, FlexProps } from "@chakra-ui/react";
 import { TopSongs } from "@pxseu-dot-com/web";
 import Image from "next/image";
@@ -18,6 +19,8 @@ const FavouriteSongs: FC<IFavouriteAnime> = ({ songs, ...props }) => (
 				imageTooltip={data.song.name}
 				image={
 					<Image
+						placeholder="blur"
+						blurDataURL={blurImage}
 						alt={`${data.song.name} album cover`}
 						src={data.album.image}
 						height={THUMB_HEIGHT}
