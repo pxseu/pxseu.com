@@ -19,7 +19,7 @@ const NowPlaying: FC<FlexProps> = (props) => {
 	if (error) {
 		toast({
 			title: "Failed to fetch the song.",
-			description: "Failed to fetch the currently playing song from the remote API",
+			description: "Failed to fetch the currently playing song from the remote API.",
 			position: "bottom-left",
 			duration: 1500,
 			status: "error",
