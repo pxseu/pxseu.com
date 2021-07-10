@@ -4,7 +4,7 @@ import Layout from "@/comp/layout";
 import React, { FC } from "react";
 
 const Home: FC = () => (
-	<Layout display="flex" flexDirection="column" alignItems="center">
+	<Layout display="flex" flexDirection="column" alignItems="center" justifyContent="center">
 		<HomeComp />
 
 		<NowPlaying mt="4" />

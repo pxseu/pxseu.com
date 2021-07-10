@@ -11,7 +11,14 @@ const ContactPlaces: FC<BoxProps> = (props) => (
 		<Text mt={4} mb={2} textAlign="center">
 			Reach out to me:
 		</Text>
-		<ButtonGroup size="md" spacing={0} variant="ghost" color="gray.600" flexDirection="column" alignItems="center">
+		<ButtonGroup
+			size="md"
+			spacing={0}
+			variant="ghost"
+			color="gray.600"
+			flexDirection="column"
+			alignItems="flex-start"
+		>
 			<Button as="a" href={Discord} aria-label="Discord" leftIcon={<FaDiscord fontSize="20px" />} target="_blank">
 				Discord
 			</Button>
@@ -30,7 +37,14 @@ const ContactPlaces: FC<BoxProps> = (props) => (
 			Misc:
 		</Text>
 
-		<ButtonGroup size="md" spacing={0} variant="ghost" color="gray.600" flexDirection="column" alignItems="center">
+		<ButtonGroup
+			size="md"
+			spacing={0}
+			variant="ghost"
+			color="gray.600"
+			flexDirection="column"
+			alignItems="flex-start"
+		>
 			<Button as="a" href={Spotify} aria-label="Spotify" leftIcon={<FaSpotify fontSize="20px" />} target="_blank">
 				Spotify
 			</Button>

@@ -44,9 +44,6 @@ const Author: FC<BoxProps> = (props) => {
 				background: transparentize("gray.900", 0.8)(theme),
 				backdropFilter: "blur(5px)",
 			}}
-			borderBottomStyle="solid"
-			borderBottomColor="gray.900"
-			borderBottomWidth="1px"
 			{...props}
 		>
 			<Logo />
