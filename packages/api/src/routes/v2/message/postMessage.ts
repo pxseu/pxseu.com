@@ -22,7 +22,8 @@ export const postMessage = async (req: Request, res: Response): Promise<void> =>
 
 	try {
 		await makeRequest({
-			username: "anon chat",
+	 	 	content: req.body.attachment ? `Attachment: ${req.body.attachment}`: undefined,
+	 	 	username: "anon chat",
 			avatar_url: WEBHOOK_AVATAR,
 			embeds: [embed],
 		});
