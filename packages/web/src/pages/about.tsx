@@ -34,19 +34,19 @@ const About: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ favouriteAn
 			About me <Twemoji emoji="📝" />
 		</Heading>
 
-		<AboutMe mt={3} />
+		<AboutMe maxWidth="880px" mt={3} />
 
 		<Text pt={4} fontSize="xl" textAlign="center">
 			Here are some of my favourite songs:
 		</Text>
 
-		<FavouriteSongsComp pt={2} songs={topSongs} />
+		<FavouriteSongsComp maxWidth="1000px" pt={2} songs={topSongs} />
 
 		<Text pt={4} fontSize="xl" textAlign="center">
 			Here are some of my favourite anime:
 		</Text>
 
-		<FavouriteAnimeComp pt={2} anime={favouriteAnime} />
+		<FavouriteAnimeComp maxWidth="1200px" pt={2} anime={favouriteAnime} />
 	</Layout>
 );
 
