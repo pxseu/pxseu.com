@@ -90,10 +90,12 @@ export const pinnedRepos = async (_: unknown, res: Response) => {
 			issues: issues.totalCount,
 			pullRequests: pullRequests.totalCount,
 			description,
-			commitCount: defaultBranchRef.target.history.totalCommits,
+			commitCount: defaultBranchRef.target.history.totalCount,
 			language: primaryLanguage,
 		}),
 	);
+
+	console.log(response.data.viewer.pinnedItems.nodes[0].defaultBranchRef, data);
 
 	await redis.psetex(CACHE_KEY, CACHE_TIME, JSON.stringify(data));
 

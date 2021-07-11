@@ -37,7 +37,7 @@ declare module "@pxseu-dot-com/web" {
 	interface GithubDefaultBranchRef {
 		target: {
 			history: {
-				totalCommits: number;
+				totalCount: number;
 			};
 		};
 	}
