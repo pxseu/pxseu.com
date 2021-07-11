@@ -1,8 +1,8 @@
 import { Response } from "express";
 import fetch from "node-fetch";
+import { TopSongs } from "@pxseu-dot-com/web";
 import { redis } from "../../../db/redis";
 import { getAccessToken } from "./refreshToken";
-import { TopSongs } from "./types";
 
 const CACHE_KEY = "spotify:top_songs";
 const CACHE_TIME = 20 * 60 * 1000;

@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
+import { GraphQLResponse } from "@pxseu-dot-com/web";
 import { fetchGraphQL, gql } from "../../../utils/graphQL";
 import { redis } from "../../../db/redis";
 import { ANILIST_ENDPOINT, ANILIST_ID } from "../../../config";
-import { GraphQLResponse } from "./types";
 import { colorToBaseImage } from "../../../utils/colorToBaseImage";
 
 const CACHE_KEY = "anilist:favourites";

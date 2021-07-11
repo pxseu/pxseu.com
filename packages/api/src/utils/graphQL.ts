@@ -6,12 +6,14 @@ export const fetchGraphQL = async <T extends unknown>(
 	url: string,
 	query: string,
 	variables: Record<string, unknown>,
+	headers: Record<string, unknown> = {},
 ): Promise<T> => {
 	const options = {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 			Accept: "application/json",
+			...headers,
 		},
 		body: JSON.stringify({
 			query,

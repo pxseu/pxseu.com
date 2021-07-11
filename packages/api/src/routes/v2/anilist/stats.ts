@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
+import { GraphQLResponse } from "@pxseu-dot-com/web";
 import { fetchGraphQL, gql } from "../../../utils/graphQL";
 import { redis } from "../../../db/redis";
-import { GraphQLResponse } from "./types";
 import { ANILIST_ENDPOINT, ANILIST_ID } from "../../../config";
 
 const CACHE_KEY = "anilist:stats";

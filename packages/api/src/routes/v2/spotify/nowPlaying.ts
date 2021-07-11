@@ -1,8 +1,8 @@
 import { Response } from "express";
 import fetch from "node-fetch";
+import { NowPlaying } from "@pxseu-dot-com/web";
 import { redis } from "../../../db/redis";
 import { getAccessToken } from "./refreshToken";
-import { NowPlaying } from "./types";
 
 const CACHE_KEY = "spotify:now_playing";
 const CACHE_TIME = 10 * 1000;
