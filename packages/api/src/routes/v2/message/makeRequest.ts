@@ -34,19 +34,12 @@ export const makeRequest = async (body: Record<string, any>) => {
 		throw new Error("Failed to make the request");
 	}
 
-	if (res && res.headers) {
-		console.log(res.headers);
+	if (res.ok && res.headers) {
 		const resRemaining = res.headers.get("x-ratelimit-remaining") as string;
 		const resResetAfter = res.headers.get("x-ratelimit-reset-after") as string;
-
 		const exp = parseInt(resResetAfter, 10);
-
 		redis.setex(`${REDIS_PREFIX}:left`, exp, resRemaining);
 	}
-
-	// console.log("what", left, delay);
-	// console.log("BUCKET", res.headers.get("x-ratelimit-bucket"));
-	// console.log("is ok: ", res.ok, res.status !== 204 && (await res.json()));
 
 	if (res.ok && res.status !== 204) return res.json();
 	if (!res.ok) throw new Error(res.statusText);

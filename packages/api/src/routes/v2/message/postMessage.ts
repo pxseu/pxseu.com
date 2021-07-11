@@ -1,29 +1,38 @@
-import { MessageEmbed } from "discord.js";
 import { Request, Response } from "express";
-import { WEBHOOK_AVATAR } from "../../../config";
+import { DEV, WEBHOOK_AVATAR } from "../../../config";
+import { Embed } from "./Embed";
 import { makeRequest } from "./makeRequest";
 
+const endpointUrl = (hostname: string, devMode: boolean) => `http${devMode ? "" : "s"}://${hostname}/message`;
+
 export const postMessage = async (req: Request, res: Response): Promise<void> => {
-	const embed = new MessageEmbed();
+	const url = endpointUrl(req.hostname, DEV);
+	const embed = new Embed();
 
-	if (req.body.attachment) {
-		embed.setImage(req.body.attachment);
-	}
+	if (req.body.attachment) embed.image.url = req.body.attachment;
+	if (req.body.message) embed.description = req.body.message;
 
-	if (req.body.message) embed.setDescription(req.body.message);
-	embed.setAuthor(req.body.name || "Anonymous", WEBHOOK_AVATAR, "https://pxseu.com/msg");
-	embed.setFooter(req.user ? `via ${req.user.name}` : "pls no api abjus, thank!", WEBHOOK_AVATAR);
-	embed.setTitle(req.body.message ? "New message!" : "New attachment!");
+	embed.author = {
+		name: req.body.name || "Anonymous",
+		icon_url: WEBHOOK_AVATAR,
+		url,
+	};
 
-	embed.setURL("https://pxseu.com/msg");
+	embed.footer = {
+		text: req.user ? `via ${req.user.name}` : "pls no api abjus, thank!",
+		icon_url: WEBHOOK_AVATAR,
+	};
 
-	embed.setColor("#3399ff");
-	embed.setTimestamp();
+	embed.title = req.body.message ? "New message!" : "New attachment!";
+	embed.url = url;
+
+	embed.color = 3381759;
+	embed.timestamp = new Date().toISOString();
 
 	try {
 		await makeRequest({
-	 	 	content: req.body.attachment ? `Attachment: ${req.body.attachment}`: undefined,
-	 	 	username: "anon chat",
+			content: req.body.attachment ? `Attachment: ${req.body.attachment}` : undefined,
+			username: "anon chat",
 			avatar_url: WEBHOOK_AVATAR,
 			embeds: [embed],
 		});
