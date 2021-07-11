@@ -43,6 +43,19 @@ export const pinnedRepos = async (_: unknown, res: Response) => {
 								totalCount
 							}
 							description
+							primaryLanguage {
+								color
+								name
+							}
+							defaultBranchRef {
+								target {
+									... on Commit {
+										history {
+											totalCount
+										}
+									}
+								}
+							}
 						}
 					}
 				}
@@ -69,7 +82,7 @@ export const pinnedRepos = async (_: unknown, res: Response) => {
 	}
 
 	const data = response.data.viewer.pinnedItems.nodes.map(
-		({ issues, name, owner, pullRequests, stargazers, url, description }) => ({
+		({ issues, name, owner, pullRequests, stargazers, url, description, defaultBranchRef, primaryLanguage }) => ({
 			name,
 			owner: owner.login,
 			url,
@@ -77,6 +90,8 @@ export const pinnedRepos = async (_: unknown, res: Response) => {
 			issues: issues.totalCount,
 			pullRequests: pullRequests.totalCount,
 			description,
+			commitCount: defaultBranchRef.target.history.totalCommits,
+			language: primaryLanguage,
 		}),
 	);
 

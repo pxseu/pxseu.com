@@ -29,6 +29,19 @@ declare module "@pxseu-dot-com/web" {
 		nodes: GithubNode[];
 	}
 
+	interface GithubPrimaryLanguage {
+		color: string;
+		name: string;
+	}
+
+	interface GithubDefaultBranchRef {
+		target: {
+			history: {
+				totalCommits: number;
+			};
+		};
+	}
+
 	interface GithubNode {
 		owner: GithubOwner;
 		name: string;
@@ -37,6 +50,8 @@ declare module "@pxseu-dot-com/web" {
 		issues: GithubIssues;
 		pullRequests: GithubPullRequests;
 		description: string;
+		primaryLanguage: GithubPrimaryLanguage;
+		defaultBranchRef: GithubDefaultBranchRef;
 	}
 
 	interface GithubOwner {

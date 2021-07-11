@@ -23,7 +23,7 @@ export const fetchGraphQL = async <T extends unknown>(
 
 	const res = await fetch(url, options);
 
-	if (res.status < 200 && res.status >= 300) throw new Error("Failed to make the Api Call");
+	if (!res.ok) throw new Error("Failed to make the Api Call");
 
 	return res.json();
 };
