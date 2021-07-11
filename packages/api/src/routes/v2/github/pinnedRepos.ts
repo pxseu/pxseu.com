@@ -42,6 +42,9 @@ export const pinnedRepos = async (_: unknown, res: Response) => {
 							pullRequests {
 								totalCount
 							}
+							forks {
+								totalCount
+							}
 							description
 							primaryLanguage {
 								color
@@ -81,19 +84,18 @@ export const pinnedRepos = async (_: unknown, res: Response) => {
 		});
 	}
 
-	const data = response.data.viewer.pinnedItems.nodes.map(
-		({ issues, name, owner, pullRequests, stargazers, url, description, defaultBranchRef, primaryLanguage }) => ({
-			name,
-			owner: owner.login,
-			url,
-			stargazers: stargazers.totalCount,
-			issues: issues.totalCount,
-			pullRequests: pullRequests.totalCount,
-			description,
-			commitCount: defaultBranchRef.target.history.totalCount,
-			language: primaryLanguage,
-		}),
-	);
+	const data = response.data.viewer.pinnedItems.nodes.map((props) => ({
+		name: props.name,
+		owner: props.owner.login,
+		url: props.url,
+		stargazers: props.stargazers.totalCount,
+		issues: props.issues.totalCount,
+		pullRequests: props.pullRequests.totalCount,
+		description: props.description,
+		commitCount: props.defaultBranchRef.target.history.totalCount,
+		forks: props.forks.totalCount,
+		language: props.primaryLanguage,
+	}));
 
 	console.log(response.data.viewer.pinnedItems.nodes[0].defaultBranchRef, data);
 

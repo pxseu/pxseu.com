@@ -52,6 +52,7 @@ declare module "@pxseu-dot-com/web" {
 		description: string;
 		primaryLanguage: GithubPrimaryLanguage;
 		defaultBranchRef: GithubDefaultBranchRef;
+		forks: GithubForks;
 	}
 
 	interface GithubOwner {
@@ -67,6 +68,10 @@ declare module "@pxseu-dot-com/web" {
 	}
 
 	interface GithubPullRequests {
+		totalCount: number;
+	}
+
+	interface GithubForks {
 		totalCount: number;
 	}
 
