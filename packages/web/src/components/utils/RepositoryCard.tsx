@@ -62,9 +62,7 @@ const RepositoryCard: FC<IRepositoryCard> = ({ repository, ...props }) => (
 		</Flex>
 		<Divider borderBottomColor="white" borderBottomWidth={2} my={2} />
 		<Text mt={1}>
-			{repository.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aliquam eius
-			fuga ullam ab totam perferendis atque! Eaque architecto veritatis voluptates, expedita, non neque libero
-			earum perferendis quam illum rerum?
+			{repository.description}
 		</Text>
 		{/* <pre key={key}>{JSON.stringify(repository, null, 2)}</pre> */}
 	</Flex>
