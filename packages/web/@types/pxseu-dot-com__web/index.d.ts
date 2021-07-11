@@ -71,10 +71,27 @@ declare module "@pxseu-dot-com/web" {
 		url: string;
 	}
 
-	export interface Project {
-		image: string;
+	export interface GithubResponse {
+		data: Repository[];
+		cached: boolean;
+		success: boolean;
+	}
+
+	export interface Repository {
 		name: string;
-		description;
-		href: string;
+		owner: string;
+		url: string;
+		stargazers: number;
+		issues: number;
+		pullRequests: number;
+		description: string;
+		commitCount: number;
+		forks: number;
+		language: Language;
+	}
+
+	interface Language {
+		color: string;
+		name: string;
 	}
 }

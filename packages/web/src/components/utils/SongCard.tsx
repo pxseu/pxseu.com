@@ -53,7 +53,7 @@ const SongCard: FC<CardProps> = ({ image, title, artists, album, imageTooltip, i
 			py={2}
 			px={4}
 			overflow="hidden"
-			maxWidth={{ base: "220", md: "300", xl: "500" }}
+			// maxWidth={{ base: "220", md: "300", xl: "500" }}
 		>
 			<Text fontSize="xl" isTruncated={!isNoData}>
 				{title}

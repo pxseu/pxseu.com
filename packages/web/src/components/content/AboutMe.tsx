@@ -4,6 +4,7 @@ import { Box, Flex, FlexProps, Link, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
 import React, { FC } from "react";
 import Image from "next/image";
+import { blurImage } from "@/conf/static";
 
 const IMAGE_SMALL = 150;
 const IMAGE_LARGE = 200;
@@ -42,6 +43,8 @@ const AboutComp: FC<FlexProps> = (props) => {
 					boxShadow="md"
 				>
 					<Image
+						placeholder="blur"
+						blurDataURL={blurImage}
 						src={`https://avatars.githubusercontent.com/u/${GITHUB_ID}`}
 						width={300}
 						height={300}

@@ -1,6 +1,17 @@
 import {
-    Box, Button, Flex, FlexProps, Modal, ModalBody,
-    ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure
+	Box,
+	Button,
+	Flex,
+	FlexProps,
+	Modal,
+	ModalBody,
+	ModalCloseButton,
+	ModalContent,
+	ModalFooter,
+	ModalHeader,
+	ModalOverlay,
+	Text,
+	useDisclosure,
 } from "@chakra-ui/react";
 import { FavouriteAnime as TFavouriteAnime } from "@pxseu-dot-com/web";
 import Image from "next/image";

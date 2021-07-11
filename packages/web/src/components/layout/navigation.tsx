@@ -29,6 +29,11 @@ const NavBase: FC<INavigation> = ({ isOpen, ...props }) => (
 				Contact
 			</Button>
 		</Link>
+		<Link href="/projects" passHref>
+			<Button as="a" mt={[2, 0]}>
+				Projects
+			</Button>
+		</Link>
 		<Link href="/message" passHref>
 			<Button as="a" mt={[2, 0]}>
 				Message
