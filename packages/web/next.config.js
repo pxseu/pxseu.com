@@ -1,7 +1,7 @@
 const withPWA = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
 
-module.exports = {
+module.exports = withPWA({
 	reactStrictMode: true,
 	compress: false,
 	poweredByHeader: false,
@@ -16,4 +16,4 @@ module.exports = {
 		runtimeCaching,
 		disable: process.env.NODE_ENV === "development",
 	},
-};
+});

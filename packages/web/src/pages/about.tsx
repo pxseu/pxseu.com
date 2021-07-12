@@ -1,6 +1,7 @@
 import AboutMe from "@/comp/content/AboutMe";
 import FavouriteAnimeComp from "@/comp/content/FavouriteAnime";
 import FavouriteSongsComp from "@/comp/content/FavouriteSongs";
+import SEO from "@/comp/content/SEO";
 import Layout from "@/comp/layout";
 import Twemoji from "@/comp/utils/Twemoji";
 import { API_ROUTE } from "@/conf/globals";
@@ -30,6 +31,7 @@ export const getStaticProps = async () => {
 
 const About: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ favouriteAnime, topSongs }) => (
 	<Layout display="flex" flexDirection="column" alignItems="center">
+		<SEO description="Curious about me? Read some stuff here!" />
 		<Heading>
 			About me <Twemoji emoji="📝" />
 		</Heading>
