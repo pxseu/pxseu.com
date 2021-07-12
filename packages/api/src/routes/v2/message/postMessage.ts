@@ -1,12 +1,10 @@
 import { Request, Response } from "express";
-import { DEV, WEBHOOK_AVATAR } from "../../../config";
+import { WEBHOOK_AVATAR } from "../../../config";
 import { Embed } from "./Embed";
 import { makeRequest } from "./makeRequest";
 
-const endpointUrl = (hostname: string, devMode: boolean) => `http${devMode ? "" : "s"}://${hostname}/message`;
-
 export const postMessage = async (req: Request, res: Response): Promise<void> => {
-	const url = endpointUrl(req.hostname, DEV);
+	const url = "https://pxseu.com/message";
 	const embed = new Embed();
 
 	if (req.body.attachment) embed.image.url = req.body.attachment;
