@@ -3,7 +3,6 @@ import React, { FC } from "react";
 
 const ASSET_VERSION = "2.0";
 const THEME_COLOR = "#8066F7";
-
 interface ISEO {
 	description?: string;
 }
@@ -36,12 +35,12 @@ const SEO: FC<ISEO> = ({ description = "Homepage of pxseu.com." }) => (
 		{/* End Colors */}
 
 		{/* Open Graph */}
-		<meta property="og:url" content="https://www.pxseu.com" />
+		<meta property="og:url" content="https://pxseu.com" />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:site_name" content="pxseu.com" />
 		<meta property="og:title" content="pxseu.com" />
-		<meta property="og:image" content={`https://www.pxseu.com/android-chrome-512x512.png?v=${ASSET_VERSION}`} />
+		<meta property="og:image" content={`https://pxseu.com/android-chrome-512x512.png?v=${ASSET_VERSION}`} />
 		{/* End Open Graph */}
 
 		{/* Twitter */}
@@ -49,7 +48,7 @@ const SEO: FC<ISEO> = ({ description = "Homepage of pxseu.com." }) => (
 		<meta name="twitter:site" content="@pxseu" />
 		<meta name="twitter:title" content="pxseu.com" />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={`https://www.pxseu.com/android-chrome-512x512.png?v=${ASSET_VERSION}`} />
+		<meta name="twitter:image" content={`https://pxseu.com/android-chrome-512x512.png?v=${ASSET_VERSION}`} />
 		{/* End Twitter */}
 
 		{/* Misc */}
