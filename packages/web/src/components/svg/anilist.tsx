@@ -11,7 +11,7 @@ const AniListIcon: FC<ChakraProps> = (props) => (
 		height="1em"
 		stroke="currentColor"
 		fill="currentColor"
-		stroke-width="0"
+		strokeWidth="0"
 		preserveAspectRatio="xMidYMid meet"
 		viewBox="0 0 24 24"
 		{...props}

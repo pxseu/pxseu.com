@@ -14,6 +14,7 @@ const Linkify: FC<LinkifyProps> = ({ children, link }) => {
 			href={link}
 			variant="link"
 			target="_blank"
+			rel="noopener"
 			transitionProperty="text-decoration-color"
 			transitionDuration="200ms"
 			textDecoration="underline"

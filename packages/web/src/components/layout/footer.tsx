@@ -10,7 +10,7 @@ const Footer: FC<BoxProps> = (props) => (
 		py="4"
 		px={{ base: "4", md: "8" }}
 		background="gray.900"
-		width="100%"
+		width="100wv"
 		{...props}
 	>
 		<Flex direction={{ base: "column-reverse", md: "row" }} justifyContent="space-between" alignItems="center">

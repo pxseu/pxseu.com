@@ -2,6 +2,8 @@ import NowPlaying from "@/comp/api/NowPlaying";
 import HomeComp from "@/comp/content/Home";
 import SEO from "@/comp/content/SEO";
 import Layout from "@/comp/layout";
+import { Flex } from "@chakra-ui/react";
+
 import React, { FC } from "react";
 
 const Home: FC = () => (
@@ -9,7 +11,9 @@ const Home: FC = () => (
 		<SEO />
 		<HomeComp />
 
-		<NowPlaying mt="4" />
+		<Flex justifyContent={["flex-start", "center"]} alignItems="center" flexWrap="wrap" width="100%">
+			<NowPlaying mt="4" minWidth="200px" />
+		</Flex>
 	</Layout>
 );
 
