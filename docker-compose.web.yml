@@ -34,7 +34,7 @@ services:
                 parallelism: 2
                 order: start-first
                 failure_action: rollback
-                delay: 20s
+                delay: 60s
             rollback_config:
                 parallelism: 0
                 order: stop-first
