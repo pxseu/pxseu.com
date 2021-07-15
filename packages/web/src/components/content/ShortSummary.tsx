@@ -1,12 +1,13 @@
 import TimeTooltip from "@/comp/utils/TimeTooltip";
+import { BIRTHDAY_TIMESTAMP, CODING_START_TIMESTAMP } from "@/conf/globals";
 import { useTimePassed } from "@/hooks/useTimePassed";
 import { chakra, Flex, FlexProps, Link, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
 import React, { FC } from "react";
 
 const ShortSummary: FC = (props: FlexProps) => {
-	const age = useTimePassed(1090022400000);
-	const codingFor = useTimePassed(1535760000000);
+	const age = useTimePassed(BIRTHDAY_TIMESTAMP);
+	const codingFor = useTimePassed(CODING_START_TIMESTAMP);
 
 	return (
 		<Flex flexDirection="column" justifyContent="center" textAlign="center" {...props}>

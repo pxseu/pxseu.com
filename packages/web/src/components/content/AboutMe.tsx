@@ -1,4 +1,4 @@
-import { GITHUB_ID } from "@/conf/globals";
+import { BIRTHDAY_TIMESTAMP, CODING_START_TIMESTAMP, GITHUB_ID } from "@/conf/globals";
 import { useTimePassed } from "@/hooks/useTimePassed";
 import { Box, Flex, FlexProps, Link, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
@@ -10,8 +10,8 @@ const IMAGE_SMALL = 150;
 const IMAGE_LARGE = 200;
 
 const AboutComp: FC<FlexProps> = (props) => {
-	const age = useTimePassed(1090022400000);
-	const codingFor = useTimePassed(1535760000000);
+	const age = useTimePassed(BIRTHDAY_TIMESTAMP);
+	const codingFor = useTimePassed(CODING_START_TIMESTAMP);
 
 	return (
 		<Flex
