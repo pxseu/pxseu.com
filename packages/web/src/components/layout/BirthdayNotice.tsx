@@ -44,7 +44,7 @@ const BirthdayNotice: FC = () => {
 			}}
 		>
 			<Text zIndex={21} textAlign="center">
-				Hey today is my Birthday! <Twemoji emoji="🎂" /> Send me some wishes in{" "}
+				Hey! Today is my Birthday <Twemoji emoji="🎂" />. Send me some wishes in{" "}
 				<NextLink href="/message" passHref>
 					{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
 					<Link
