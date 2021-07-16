@@ -33,7 +33,7 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 		<Flex justifyContent={{ base: "center", small: "flex-start" }} alignItems="center" flexWrap="wrap" {...props}>
 			{anime.data.map((data) => (
 				<Flex
-					flex={1}
+					flex={2}
 					display="inline-flex"
 					backgroundColor="blackAlpha.400"
 					p={2.5}

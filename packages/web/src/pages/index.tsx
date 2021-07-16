@@ -11,7 +11,7 @@ const Home: FC = () => (
 		<SEO />
 		<HomeComp />
 
-		<Flex justifyContent={["flex-start", "center"]} alignItems="center" flexWrap="wrap" width="100%">
+		<Flex justifyContent={["center"]} alignItems="center" flexWrap="wrap" width="100%">
 			<NowPlaying mt="4" minWidth="200px" />
 		</Flex>
 	</Layout>

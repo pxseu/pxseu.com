@@ -14,7 +14,6 @@ const RepositoryCard: FC<IRepositoryCard> = ({ repository, ...props }) => (
 		background="gray.900"
 		padding={3}
 		margin={2}
-		minWidth={300}
 		maxWidth={600}
 		flexGrow={1}
 		boxShadow="md"
@@ -61,9 +60,7 @@ const RepositoryCard: FC<IRepositoryCard> = ({ repository, ...props }) => (
 			</Flex>
 		</Flex>
 		<Divider borderBottomColor="white" borderBottomWidth={2} my={2} />
-		<Text mt={1}>
-			{repository.description}
-		</Text>
+		<Text mt={1}>{repository.description}</Text>
 		{/* <pre key={key}>{JSON.stringify(repository, null, 2)}</pre> */}
 	</Flex>
 );

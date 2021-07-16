@@ -8,11 +8,11 @@ import {
 	Textarea,
 	FormErrorMessage,
 	Heading,
-	Box,
 	chakra,
 	ChakraProps,
 	useToast,
 	Flex,
+	Box,
 } from "@chakra-ui/react";
 import Twemoji from "@/comp/utils/Twemoji";
 import { API_ROUTE } from "@/conf/globals";
@@ -85,15 +85,16 @@ const FormUI: FC<ChakraProps> = (props) => {
 			}}
 		>
 			{({ isValid, isSubmitting, errors, resetForm }) => (
-				<Box background="gray.900" padding={6} minWidth={300} width={400} borderRadius={10} boxShadow="md">
-					<ChakraForm
-						width="100%"
-						autoComplete="off"
-						display="flex"
-						flexDirection="column"
-						alignItems="center"
-						{...props}
-					>
+				<Box
+					background="gray.900"
+					padding={6}
+					borderRadius={10}
+					boxShadow="md"
+					maxWidth="450px"
+					minWidth="200px"
+					flexGrow={1}
+				>
+					<ChakraForm autoComplete="off" display="flex" flexDirection="column" alignItems="center" {...props}>
 						<Heading fontSize="3xl">
 							Message me! <Twemoji emoji="💬" />
 						</Heading>
