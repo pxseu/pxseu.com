@@ -75,7 +75,7 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 						outline: "none",
 						boxShadow: "var(--chakra-shadows-outline)",
 					}}
-					tabindex="0"
+					tabIndex={0}
 				>
 					<Flex
 						borderRadius={8}

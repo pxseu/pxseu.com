@@ -57,6 +57,7 @@ const FavouriteSongs: FC<IFavouriteAnime> = ({ songs, ...props }) => (
 					)
 				}
 				flexProps={{
+					minWidth: ["200px", "300px"],
 					flex: "2",
 					margin: "2",
 					transition: "box-shadow, transform ease-in-out 100ms",

@@ -1,9 +1,9 @@
-import { Box, Divider, Flex, Stack, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, FlexProps, Stack, Text } from "@chakra-ui/react";
 import { Repository } from "@pxseu-dot-com/web";
 import React, { FC } from "react";
 import { GoIssueOpened, GoGitPullRequest, GoGitCommit, GoStar, GoRepoForked } from "react-icons/go";
 
-interface IRepositoryCard {
+interface IRepositoryCard extends FlexProps {
 	repository: Repository;
 	key: string;
 }
@@ -16,7 +16,7 @@ const RepositoryCard: FC<IRepositoryCard> = ({ repository, ...props }) => (
 		padding={3}
 		margin={2}
 		maxWidth={600}
-		flexGrow={1}
+		flex={1}
 		boxShadow="md"
 		borderRadius={10}
 		_focus={{

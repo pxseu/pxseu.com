@@ -9,13 +9,15 @@ interface IProjects extends FlexProps {
 
 const Projects: FC<IProjects> = ({ githubData, ...props }) => (
 	<Flex
+		maxWidth="1000px"
 		justifyContent={["flex-start", "center"]}
-		flexDirection="column"
+		flexDirection={["column", "row"]}
+		flexWrap="wrap"
 		alignItems="stretch"
 		/* flexWrap="wrap" */ {...props}
 	>
 		{githubData.data.map((repo) => (
-			<RepositoryCard repository={repo} key={`${repo.owner}/${repo.name}`} />
+			<RepositoryCard repository={repo} key={`${repo.owner}/${repo.name}`} minWidth={["unset", "300px"]} />
 		))}
 	</Flex>
 );
