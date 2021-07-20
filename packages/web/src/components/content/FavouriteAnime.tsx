@@ -30,21 +30,37 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 	const [modalContent, setModalContent] = useState<TFavouriteAnime["data"][0] | null>(null);
 
 	return (
-		<Flex justifyContent={{ base: "center", small: "flex-start" }} alignItems="center" flexWrap="wrap" {...props}>
+		<Flex
+			justifyContent="center"
+			flexDirection={["column", "row"]}
+			alignItems="center"
+			flexWrap="wrap"
+			width="100%"
+			{...props}
+		>
 			{anime.data.map((data) => (
 				<Flex
-					flex={2}
-					display="inline-flex"
+					flex={1}
+					display="flex"
 					backgroundColor="blackAlpha.400"
 					p={2.5}
 					m="2"
-					width={THUMB_WIDTH * 4}
-					minWidth={THUMB_WIDTH * 3}
+					width="90%"
+					minWidth={[THUMB_WIDTH * 2, THUMB_WIDTH * 3]}
 					borderRadius={10}
 					boxShadow="md"
 					key={data.order}
 					transition="box-shadow, transform ease-in-out 100ms"
-					onClick={() => {
+					onClick={({ target, currentTarget }) => {
+						if (target !== currentTarget) return;
+
+						setModalContent(data);
+						onOpen();
+					}}
+					onKeyPress={({ key, target, currentTarget }) => {
+						if (target !== currentTarget) return;
+						if (key !== "Enter") return;
+
 						setModalContent(data);
 						onOpen();
 					}}
@@ -53,6 +69,13 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 						boxShadow: "lg",
 						transform: "scale(1.02, 1.02)",
 					}}
+					flexDirection={["column", "row"]}
+					alignItems="center"
+					_focus={{
+						outline: "none",
+						boxShadow: "var(--chakra-shadows-outline)",
+					}}
+					tabindex="0"
 				>
 					<Flex
 						borderRadius={8}
@@ -82,11 +105,16 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 							/>
 						)}
 					</Flex>
-					<Flex py={2} px={4} flexDirection="column" justifyContent="center" overflow="hidden">
-						<Text fontSize="xl" isTruncated title={`${data.title} (${data.releaseYear})`}>
+					<Flex py={2} px={4} width="100%" flexDirection="column" justifyContent="center" overflow="hidden">
+						<Text
+							fontSize="xl"
+							textAlign={["center", "left"]}
+							isTruncated
+							title={`${data.title} (${data.releaseYear})`}
+						>
 							<b>{data.title}</b>
 						</Text>
-						<Flex flexWrap="wrap">
+						<Flex flexWrap="wrap" justifyContent={["center", "flex-start"]}>
 							{data.genres.slice(0, 3).map((genra) => (
 								<Button
 									as="a"
@@ -94,6 +122,8 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 									variant="ghost"
 									size="sm"
 									borderRadius="5"
+									target="_blank"
+									rel="noreferrer"
 									m={0.5}
 									href={`https://anilist.co/search/anime/${encodeURIComponent(genra)}`}
 									key={genra}

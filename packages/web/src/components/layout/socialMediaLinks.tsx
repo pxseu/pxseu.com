@@ -11,7 +11,7 @@ const SocialMediaLinks: FC<ButtonGroupProps> = (props) => (
 			aria-label="Discord"
 			icon={<FaDiscord fontSize="20px" />}
 			target="_blank"
-			rel="noopener"
+			rel="noreferrer"
 		/>
 		<IconButton
 			as="a"
@@ -19,7 +19,7 @@ const SocialMediaLinks: FC<ButtonGroupProps> = (props) => (
 			aria-label="GitHub"
 			icon={<FaGithub fontSize="20px" />}
 			target="_blank"
-			rel="noopener"
+			rel="noreferrer"
 		/>
 		<IconButton
 			as="a"
@@ -27,7 +27,7 @@ const SocialMediaLinks: FC<ButtonGroupProps> = (props) => (
 			aria-label="Twitter"
 			icon={<FaTwitter fontSize="20px" />}
 			target="_blank"
-			rel="noopener"
+			rel="noreferrer"
 		/>
 	</ButtonGroup>
 );

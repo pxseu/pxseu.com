@@ -10,6 +10,7 @@ interface IRepositoryCard {
 
 const RepositoryCard: FC<IRepositoryCard> = ({ repository, ...props }) => (
 	<Flex
+		as="a"
 		flexDirection="column"
 		background="gray.900"
 		padding={3}
@@ -18,6 +19,13 @@ const RepositoryCard: FC<IRepositoryCard> = ({ repository, ...props }) => (
 		flexGrow={1}
 		boxShadow="md"
 		borderRadius={10}
+		_focus={{
+			outline: "none",
+			boxShadow: "var(--chakra-shadows-outline)",
+		}}
+		href={repository.url}
+		target="_blank"
+		rel="noreferrer"
 		{...props}
 	>
 		<Flex flexDirection="column">

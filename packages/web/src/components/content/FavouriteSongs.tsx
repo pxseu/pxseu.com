@@ -13,7 +13,14 @@ interface IFavouriteAnime extends FlexProps {
 }
 
 const FavouriteSongs: FC<IFavouriteAnime> = ({ songs, ...props }) => (
-	<Flex justifyContent={{ base: "center", small: "flex-start" }} alignItems="center" flexWrap="wrap" {...props}>
+	<Flex
+		justifyContent="center"
+		flexDirection={["column", "row"]}
+		alignItems="center"
+		flexWrap="wrap"
+		width="100%"
+		{...props}
+	>
 		{songs.tracks.map((data) => (
 			<SongCard
 				imageTooltip={data.song.name}
@@ -50,8 +57,7 @@ const FavouriteSongs: FC<IFavouriteAnime> = ({ songs, ...props }) => (
 					)
 				}
 				flexProps={{
-					width: "300px",
-					flex: "1",
+					flex: "2",
 					margin: "2",
 					transition: "box-shadow, transform ease-in-out 100ms",
 					cursor: "pointer",
