@@ -39,7 +39,7 @@ const Author: FC<BoxProps> = (props) => {
 			zIndex={20}
 			{...props}
 		>
-			{isBirthday && <BirthdayNotice />}
+			{isBirthday ?? <BirthdayNotice />}
 
 			<Flex
 				position="relative"
