@@ -12,20 +12,21 @@ const ShortSummary: FC = (props: FlexProps) => {
 	return (
 		<Flex flexDirection="column" justifyContent="center" textAlign="center" {...props}>
 			<Text fontSize="xl">
-				My name is{" "}
+				On the Internet, people call me{" "}
 				<chakra.span bgGradient="linear(to-r, brand.100, brand.900)" backgroundClip="text">
 					<b>pxseu</b>
-				</chakra.span>{" "}
-				and I&apos;m a software/web developer from Poland!
+				</chakra.span>
+				.
 			</Text>
 
 			<Text fontSize="xl">
-				I&apos;m <TimeTooltip time={age} timeText="years old" whiteSpace="nowrap" /> and I&apos;ve been coding
-				for over <TimeTooltip time={codingFor} timeText="years" whiteSpace="nowrap" />.
+				I&apos;m a software/web developer from Poland who&lsquo;s{" "}
+				<TimeTooltip time={age} timeText="years old" whiteSpace="nowrap" /> and has been coding for over{" "}
+				<TimeTooltip time={codingFor} timeText="years" whiteSpace="nowrap" />.
 			</Text>
 
 			<Text fontSize="xl">
-				You can read more in{" "}
+				You can find more info in{" "}
 				<NextLink href="/about" passHref>
 					{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
 					<Link
