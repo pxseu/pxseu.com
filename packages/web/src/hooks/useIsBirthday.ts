@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const isDayBirthday = (birthday: Date, now: Date) => {
-	if (birthday.getDay() === now.getDay() && birthday.getMonth() === now.getMonth()) return true;
+	if (birthday.getDate() === now.getDate() && birthday.getMonth() === now.getMonth()) return true;
 	return false;
 };
 
