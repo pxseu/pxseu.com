@@ -68,6 +68,7 @@ declare module "@pxseu-dot-com/web" {
 	interface Album {
 		name?: string;
 		image: string;
+		color?: string;
 		url: string;
 	}
 

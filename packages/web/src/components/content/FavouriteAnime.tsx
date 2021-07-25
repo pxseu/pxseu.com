@@ -51,14 +51,17 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 					boxShadow="md"
 					key={data.order}
 					transition="box-shadow, transform ease-in-out 100ms"
-					onClick={({ target, currentTarget }) => {
-						if (target !== currentTarget) return;
+					onClick={({ target }) => {
+						if (!(target instanceof HTMLElement)) return;
+						if (target.tagName.toLowerCase() === "a") return;
 
 						setModalContent(data);
 						onOpen();
 					}}
-					onKeyPress={({ key, target, currentTarget }) => {
-						if (target !== currentTarget) return;
+					onKeyPress={({ key, target }) => {
+						if (!(target instanceof HTMLElement)) return;
+						if (target.tagName.toLowerCase() === "a") return;
+
 						if (key !== "Enter") return;
 
 						setModalContent(data);
@@ -78,28 +81,33 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 					tabIndex={0}
 				>
 					<Flex
+						display="flex"
 						borderRadius={8}
 						overflow="hidden"
 						justifyContent="center"
 						alignItems="center"
 						boxShadow="md"
+						flex={1}
 						minWidth={THUMB_WIDTH}
-						width={THUMB_WIDTH}
+						width="100%"
+						backgroundColor={data.color}
+						// backdropFilter="blur(10px)"
+						// width={THUMB_WIDTH}
 						height={THUMB_HEIGHT}
 					>
 						{data.blurImage ? (
 							<Image
 								placeholder="blur"
 								blurDataURL={data.blurImage}
-								height={THUMB_HEIGHT * 2}
-								width={THUMB_WIDTH * 2}
+								height={THUMB_HEIGHT}
+								width={THUMB_WIDTH}
 								src={data.image}
 								alt={`${data.title} cover image`}
 							/>
 						) : (
 							<Image
-								height={THUMB_HEIGHT * 2}
-								width={THUMB_WIDTH * 2}
+								height={THUMB_HEIGHT}
+								width={THUMB_WIDTH}
 								src={data.image}
 								alt={`${data.title} cover image`}
 							/>
@@ -128,7 +136,7 @@ const FavouriteAnime: FC<IFavouriteAnime> = ({ anime, ...props }) => {
 									href={`https://anilist.co/search/anime/${encodeURIComponent(genra)}`}
 									key={genra}
 								>
-									<Text>{genra}</Text>
+									{genra}
 								</Button>
 							))}
 						</Flex>

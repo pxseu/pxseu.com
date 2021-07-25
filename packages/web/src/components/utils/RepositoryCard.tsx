@@ -19,6 +19,10 @@ const RepositoryCard: FC<IRepositoryCard> = ({ repository, ...props }) => (
 		flex={1}
 		boxShadow="md"
 		borderRadius={10}
+		transition="transform ease-in-out 100ms"
+		_hover={{
+			transform: "scale(1.02, 1.02)",
+		}}
 		_focus={{
 			outline: "none",
 			boxShadow: "var(--chakra-shadows-outline)",

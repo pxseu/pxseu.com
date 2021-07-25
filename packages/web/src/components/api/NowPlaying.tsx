@@ -60,8 +60,8 @@ const NowPlaying: FC<FlexProps> = (props) => {
 						placeholder="blur"
 						blurDataURL={blurImage}
 						src={coverImage}
-						width={200}
-						height={200}
+						width={100}
+						height={100}
 						quality={75}
 						alt="Album cover"
 					/>
@@ -83,8 +83,8 @@ const NowPlaying: FC<FlexProps> = (props) => {
 					placeholder="blur"
 					blurDataURL={blurImage}
 					src={coverImage}
-					width={200}
-					height={200}
+					width={100}
+					height={100}
 					quality={75}
 					alt="Album cover"
 				/>
@@ -112,6 +112,7 @@ const NowPlaying: FC<FlexProps> = (props) => {
 					</>
 				)
 			}
+			color={Spotify.album.color}
 		/>
 	);
 };

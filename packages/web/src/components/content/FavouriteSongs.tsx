@@ -68,6 +68,7 @@ const FavouriteSongs: FC<IFavouriteAnime> = ({ songs, ...props }) => (
 					},
 					...props,
 				}}
+				color={data.album.color}
 				key={data.song.name}
 			/>
 		))}

@@ -7,11 +7,12 @@ interface CardProps {
 	title: ReactNode;
 	artists?: ReactNode;
 	album?: ReactNode;
+	color?: string;
 	imageTooltip?: string;
 	isNoData?: boolean;
 }
 
-const SongCard: FC<CardProps> = ({ image, title, artists, album, imageTooltip, isNoData, flexProps }) => (
+const SongCard: FC<CardProps> = ({ color, image, title, artists, album, imageTooltip, isNoData, flexProps }) => (
 	<Flex
 		minWidth="200px"
 		flex={1}
@@ -25,7 +26,6 @@ const SongCard: FC<CardProps> = ({ image, title, artists, album, imageTooltip, i
 		transition="box-shadow, transform ease-in-out 100ms"
 		cursor="pointer"
 		_hover={{
-			boxShadow: "md",
 			transform: "scale(1.02, 1.02)",
 		}}
 		flexDirection={["column", "row"]}
@@ -44,7 +44,9 @@ const SongCard: FC<CardProps> = ({ image, title, artists, album, imageTooltip, i
 				alignItems="center"
 				boxShadow="md"
 				minWidth={100}
-				width={100}
+				width="100%"
+				flex={1}
+				backgroundColor={color ?? "gray.800"}
 				height={100}
 			>
 				{image}
