@@ -3,6 +3,7 @@ import fetch from "node-fetch";
 import { NowPlaying } from "@pxseu-dot-com/web";
 import { redis } from "../../../db/redis";
 import { getAccessToken } from "./refreshToken";
+import { dominantColor } from "../../../utils/dominantColor";
 
 const CACHE_KEY = "spotify:now_playing";
 const CACHE_TIME = 10 * 1000;
@@ -54,6 +55,7 @@ export const nowPlaying = async (_: unknown, res: Response): Promise<unknown> =>
 		album: {
 			name: song.item.album.name,
 			image: song.item.album.images[0]?.url,
+			color: await dominantColor(song.item.album.images[0]?.url),
 			url: song.item.album.external_urls.spotify,
 		},
 	};
