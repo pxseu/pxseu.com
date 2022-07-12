@@ -6,6 +6,7 @@ on:
             - "packages/api/**"
             - "docker-compose.api.yml"
             - ".env"
+            - "yarn.lock"
 
         branches:
             - senpai

@@ -6,6 +6,7 @@ on:
             - "packages/web/**"
             - "docker-compose.web.yml"
             - ".env"
+            - "yarn.lock"
 
         branches:
             - senpai
