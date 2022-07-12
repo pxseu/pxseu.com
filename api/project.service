@@ -1,0 +1,15 @@
+[Unit]
+Description=Elixir Systemd Service
+
+[Service]
+Type=simple
+Restart=on-failure
+Environment=MIX_ENV=prod
+Environment=LANG=en_US.UTF-8
+Environment=PORT=3001
+
+ExecStart=/opt/{PROJECT_NAME}/bin/{PROJECT_NAME start
+ExecStop=/opt/{PROJECT_NAME/bin/{PROJECT_NAME stop
+
+[Install]
+WantedBy=multi-user.target

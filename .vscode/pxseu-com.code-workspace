@@ -5,11 +5,19 @@
 			"path": ".."
 		},
 		{
-			"path": "../packages/web"
+			"path": "./web"
 		},
 		{
-			"path": "../packages/api"
+			"path": "../api"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"eslint.workingDirectories": [
+			{
+				"directory": "../web",
+				"changeProcessCWD": true
+			},
+		],
+		"elixirLS.projectDir": "../api",
+	}
 }
