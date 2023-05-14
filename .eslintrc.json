@@ -1,0 +1,9 @@
+{
+  "extends": "@pxseu/eslint-config/react",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/indent": "off"
+  }
+}

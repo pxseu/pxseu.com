@@ -1,0 +1,37 @@
+{
+	"name": "@pxseu/web",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"@pxseu/eslint-config": "^1.0.1",
+		"@pxseu/prettier-config": "^1.0.0",
+		"@stitches/react": "^1.2.8",
+		"@types/node": "^20.1.2",
+		"@types/react": "^18.0.28",
+		"@types/react-dom": "^18.0.11",
+		"@typescript-eslint/eslint-plugin": "^5.54.1",
+		"@typescript-eslint/parser": "^5.54.1",
+		"accept-language": "^3.0.18",
+		"eslint": "^8.35.0",
+		"eslint-config-prettier": "^8.7.0",
+		"eslint-plugin-react": "^7.32.2",
+		"framer-motion": "^10.2.3",
+		"i18next": "^22.4.15",
+		"i18next-browser-languagedetector": "^7.0.1",
+		"i18next-resources-to-backend": "^1.1.3",
+		"next": "^13.4.2",
+		"prettier": "^2.8.4",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-i18next": "^12.2.2",
+		"typescript": "^5.0.4",
+		"zod": "^3.21.4"
+	}
+}
