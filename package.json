@@ -33,5 +33,8 @@
 		"react-i18next": "^12.2.2",
 		"typescript": "^5.0.4",
 		"zod": "^3.21.4"
+	},
+	"engines": {
+		"node": ">=16.8.0"
 	}
 }
