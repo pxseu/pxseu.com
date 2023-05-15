@@ -71,13 +71,13 @@ export default async function Header({ lang }: { lang: string }) {
 	return (
 		<HeaderObserver>
 			<StyledHeader id={HEADER_ID}>
-				<StyledLogo href="/">
+				<StyledLogo href={`/${lang}`}>
 					<Logo height="100%" width="100%" />
 				</StyledLogo>
 
 				<LinksWrapper>
 					{HEADER_LINKS.map(({ href, text_id }) => (
-						<StyledLink key={href} href={href}>
+						<StyledLink key={href} href={`/${lang}/${href}`}>
 							{t(text_id)}
 						</StyledLink>
 					))}
