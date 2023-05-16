@@ -1,8 +1,9 @@
 import { dir } from "i18next";
-import { getCssText, globalStyles, styled } from "@/../stitches.config";
+import { styled } from "@/../stitches.config";
 import { languages } from "@/app/i18n/settings";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import StyleSheet from "@/components/StylesSheet";
 
 const Body = styled("body", {
 	display: "flex",
@@ -28,12 +29,11 @@ export default async function RootLayout({
 	children: React.ReactNode;
 	params: { lang: string };
 }) {
-	globalStyles();
-
 	return (
 		<html lang={lang} dir={dir(lang)}>
 			<head>
-				<style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+				{/* @ts-expect-error Async Server Component */}
+				<StyleSheet />
 			</head>
 
 			<Body>
