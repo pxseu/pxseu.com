@@ -5,6 +5,7 @@ import Logo from "./Logo";
 import HeaderObserver from "./HeaderObserver";
 
 export const HEADER_ID = "header";
+const TRANSITION_DURATION = 0.1;
 
 const StyledHeader = styled("header", {
 	position: "sticky",
@@ -13,7 +14,8 @@ const StyledHeader = styled("header", {
 	justifyContent: "space-between",
 	alignItems: "center",
 	padding: "1rem",
-	backgroundColor: "$SECONDARY_BACKGROUND",
+	backdropFilter: "blur(0.5rem)",
+	backgroundColor: "$SECONDARY_BACKGROUND_TRANSPARENT",
 	color: "$TEXT",
 	margin: "1.5rem",
 	marginTop: "1.5rem",
@@ -28,21 +30,21 @@ const StyledHeader = styled("header", {
 		marginLeft: "0",
 		marginRight: "0",
 		borderRadius: "0",
-		backdropFilter: "blur(0.5rem)",
-		backgroundColor: "$SECONDARY_BACKGROUND_TRANSPARENT",
 
 		// so it doesn't look weird when the header is pinned
 		borderBottom: "2px solid $SECONDARY_BACKGROUND",
 	},
 
-	transition: "all 0.1s ease-in-out",
+	// slashes make it a single line :-)
+	transition: `margin ${TRANSITION_DURATION}s ease-in-out, \
+	border-radius ${TRANSITION_DURATION}s ease-in-out`,
 });
 
 const StyledLogo = styled(NextLink, {
 	height: "2.5rem",
 });
 
-const LinksWrapper = styled("div", {
+const LinksWrapper = styled("nav", {
 	display: "flex",
 	alignItems: "center",
 	height: "100%",

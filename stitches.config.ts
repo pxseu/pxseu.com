@@ -17,6 +17,7 @@ const stitches = createStitches({
 	theme: {
 		colors: {
 			BACKGROUND: "#0A0B0B",
+			BACKGROUND_STRIPE: "#1B1B1C",
 			SECONDARY_BACKGROUND: "#1A1B1B",
 			SECONDARY_BACKGROUND_TRANSPARENT: "rgba(26, 27, 27, 0.8)",
 			TEXT: "#FFFFFF",
