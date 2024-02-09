@@ -1,5 +1,5 @@
 import { styled } from "@/../stitches.config";
-import { useTranslation } from "@/app/i18n";
+import { useTranslation } from "@/i18n";
 import NextLink from "next/link";
 import Logo from "./Logo";
 import HeaderObserver from "./HeaderObserver";
@@ -14,8 +14,8 @@ const StyledHeader = styled("header", {
 	justifyContent: "space-between",
 	alignItems: "center",
 	padding: "1rem",
-	backdropFilter: "blur(0.5rem)",
-	backgroundColor: "$SECONDARY_BACKGROUND_TRANSPARENT",
+	backgroundColor: "$SECONDARY_BACKGROUND",
+
 	color: "$TEXT",
 	margin: "1.5rem",
 	marginTop: "1.5rem",
@@ -27,6 +27,8 @@ const StyledHeader = styled("header", {
 
 	// for HeaderObserver :D
 	"&.is-pinned": {
+		backdropFilter: "blur(0.5rem)",
+		backgroundColor: "$SECONDARY_BACKGROUND_TRANSPARENT",
 		marginLeft: "0",
 		marginRight: "0",
 		borderRadius: "0",
@@ -58,12 +60,16 @@ const StyledLink = styled(NextLink, {
 
 const HEADER_LINKS = [
 	{
-		href: "/aaaa",
-		text_id: "header_aaaa",
+		href: "/about",
+		text_id: "header_about",
 	},
 	{
-		href: "/bbbb",
-		text_id: "header_bbbb",
+		href: "/projects",
+		text_id: "header_projects",
+	},
+	{
+		href: "/socials",
+		text_id: "header_socials",
 	},
 ];
 

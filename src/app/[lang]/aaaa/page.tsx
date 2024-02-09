@@ -1,5 +1,5 @@
 import { styled } from "@/../stitches.config";
-import { useTranslation } from "@/app/i18n";
+import { useTranslation } from "@/i18n";
 
 const StyledDiv = styled("div", {
 	justifySelf: "center",

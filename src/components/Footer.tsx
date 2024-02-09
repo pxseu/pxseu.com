@@ -1,19 +1,21 @@
 // tell the user that they can change the language
 
 import { styled } from "@/../stitches.config";
-import { useTranslation } from "@/app/i18n";
-import { languages } from "@/app/i18n/settings";
+import { useTranslation } from "@/i18n";
+import { languages } from "@/i18n/settings";
 import Link from "next/link";
 
 const StyledFooter = styled("footer", {
-	marginTop: "1.5rem",
 	display: "flex",
 	justifyContent: "space-between",
-	fontSize: "1rem",
-	lineHeight: "1rem",
 	backgroundColor: "$SECONDARY_BACKGROUND",
 	color: "$TEXT",
 	padding: "1rem",
+	margin: "1rem",
+	marginTop: "1.5rem",
+	borderRadius: "0.5rem",
+	fontSize: "1rem",
+	lineHeight: "1rem",
 });
 
 const Text = styled("p", {});

@@ -1,37 +1,49 @@
 import { dir } from "i18next";
-import { keyframes, styled } from "@/../stitches.config";
-import { languages } from "@/app/i18n/settings";
+import { languages } from "@/i18n/settings";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import StyleSheet from "@/components/StylesSheet";
+import { keyframes, styled } from "styled-components";
 
-const LoadAnimation = keyframes({
-	"0%": { backgroundPosition: "0%" },
-	"100%": { backgroundPosition: "100%" },
+const LoadAnimation = keyframes`
+	0% {
+		background-position: 0%;
+	}
+	100% {
+		background-position: 100%;
+	}
 
-	"@media (prefers-reduced-motion: reduce)": {
-		"0%": { backgroundPosition: "0%" },
-		"100%": { backgroundPosition: "0%" },
-	},
-});
+	@media (prefers-reduced-motion: reduce) {
+		0% {
+			background-position: 0%;
+		}
+		100% {
+			background-position: 0%;
+		}
+	}
+`;
 
-const Body = styled("body", {
-	display: "flex",
-	flexDirection: "column",
-	width: "100%",
-	minHeight: "100vh",
-	fontFamily: "$PRIMARY",
-	backgroundColor: "$BACKGROUND",
-	background:
-		"repeating-linear-gradient(35deg, $BACKGROUND, $BACKGROUND 10px, $BACKGROUND_STRIPE 10px, $BACKGROUND_STRIPE 20px)",
-	backgroundSize: "120% 120%",
-	backgroundPosition: "100%",
-	animation: `${LoadAnimation} 1s ease`,
-});
+const Body = styled("body")`
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 100vh;
+	font-family: var(--font-primary);
+	background-color: var(--color-background);
+	background: repeating-linear-gradient(
+		45deg,
+		var(--color-background),
+		var(--color-background) 10px,
+		var(--color-background-stripe) 10px,
+		var(--color-background-stripe) 20px
+	);
+	background-size: 120% 120%;
+	background-position: 100%;
+	animation: ${LoadAnimation} 1s ease;
+`;
 
-const Main = styled("main", {
-	flexGrow: 1,
-});
+const Main = styled("main")`
+	flex-grow: 1;
+`;
 
 export async function generateStaticParams() {
 	return languages.map((lang) => ({ lang }));

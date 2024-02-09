@@ -12,7 +12,6 @@
 	"dependencies": {
 		"@pxseu/eslint-config": "^1.0.1",
 		"@pxseu/prettier-config": "^1.0.0",
-		"@stitches/react": "^1.2.8",
 		"@types/node": "^20.1.2",
 		"@types/react": "^18.0.28",
 		"@types/react-dom": "^18.0.11",
@@ -31,6 +30,8 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-i18next": "^12.2.2",
+		"react-icons": "^4.8.0",
+		"styled-components": "^6.0.5",
 		"typescript": "^5.0.4",
 		"zod": "^3.21.4"
 	},
