@@ -1,10 +1,6 @@
+import Hero from "@/components/hero";
 import "../styles/globals.css";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-	title: "pxseu.com",
-	description: "Find out more about me",
-};
+import Footer from "@/components/footer";
 
 export default function RootLayout({
 	children,
@@ -13,7 +9,13 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className="flex justify-center items-center bg-zinc-800 text-zinc-100 h-screen">{children}</body>
+			<body className="flex justify-center bg-zinc-900 text-zinc-100 h-full p-6">
+				<div className="flex justify-center items-center max-w-[900px] w-full flex-col">
+					<Hero />
+					{children}
+					<Footer />
+				</div>
+			</body>
 		</html>
 	);
 }
