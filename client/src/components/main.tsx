@@ -4,13 +4,17 @@ import { Timed } from "@/components/timed";
 
 export default function Main() {
 	return (
-		<div className="flex flex-col w-full">
+		<main className="flex flex-col w-full">
 			<Container title="About Me" id="intro">
 				<p>
-					Hi there! I&apos;m Kuba, but online I go by <strong>pxseu</strong>. I&apos;m{" "}
-					<Timed timestamp={BIRTHDAY_TIMESTAMP} /> years old, and I&apos;ve been in software development for{" "}
-					<Timed timestamp={CODING_START_TIMESTAMP} /> years. My main focus is on creating systems that are{" "}
-					stable, maintainable, and thoughtfully designed, with a strong emphasis on long-term usability.
+					Hi there! I&apos;m Kuba, but online I go by{" "}
+					<strong className="bg-gradient-to-r from-brand-100 to-brand-900 bg-clip-text text-transparent">
+						pxseu
+					</strong>
+					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} /> years old, and I&apos;ve been in software
+					development for <Timed timestamp={CODING_START_TIMESTAMP} /> years. My main focus is on creating
+					systems that are stable, maintainable, and thoughtfully designed, with a strong emphasis on
+					long-term usability.
 				</p>
 
 				<p className="mt-4">
@@ -98,7 +102,7 @@ export default function Main() {
 				<ul className="list-none space-y-1 mt-4">
 					<li>
 						<strong>Website:</strong>{" "}
-						<a href="https://pxseu.com" className="text-primary underline">
+						<a href="https://pxseu.com/message" className="text-primary underline">
 							pxseu.com
 						</a>
 					</li>
@@ -122,6 +126,6 @@ export default function Main() {
 					</li>
 				</ul>
 			</Container>
-		</div>
+		</main>
 	);
 }

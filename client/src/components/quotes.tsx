@@ -1,7 +1,47 @@
 "use client";
+
 import { useState, useEffect } from "react";
 
 const quotes = [
+	// Franz Kafka
+	"“Many a book is like a key to unknown chambers within the castle of one’s own self.” — Franz Kafka",
+	"“Youth is happy because it has the capacity to see beauty. Anyone who keeps the ability to see beauty never grows old.” — Franz Kafka",
+	"“In the fight between you and the world, back the world.” — Franz Kafka",
+	"“I am a cage, in search of a bird.” — Franz Kafka",
+	"“Don’t bend; don’t water it down; don’t try to make it logical; don’t edit your own soul according to the fashion. Rather, follow your most intense obsessions mercilessly.” — Franz Kafka",
+	"“A book must be the axe for the frozen sea within us.” — Franz Kafka",
+
+	// Friedrich Nietzsche
+	"“When you stare into the abyss, the abyss stares back at you.” — Friedrich Nietzsche",
+	"“He who has a why to live can bear almost any how.” — Friedrich Nietzsche",
+	"“That which does not kill us makes us stronger.” — Friedrich Nietzsche",
+	"“Without music, life would be a mistake.” — Friedrich Nietzsche",
+	"“In heaven, all the interesting people are missing.” — Friedrich Nietzsche",
+
+	// Fyodor Dostoevsky
+	"“The cleverest of all, in my opinion, is the man who calls himself a fool at least once a month.” — Fyodor Dostoevsky",
+	"“To go wrong in one's own way is better than to go right in someone else's.” — Fyodor Dostoevsky",
+	"“The mystery of human existence lies not in just staying alive, but in finding something to live for.” — Fyodor Dostoevsky",
+	"“The soul is healed by being with children.” — Fyodor Dostoevsky",
+	"“If you want to overcome the whole world, overcome yourself.” — Fyodor Dostoevsky",
+
+	// Albert Camus
+	"“In the depth of winter, I finally learned that within me there lay an invincible summer.” — Albert Camus",
+
+	// Jean-Paul Sartre
+	"“Man is condemned to be free.” — Jean-Paul Sartre",
+
+	// Love
+	"“Love recognizes no barriers. It jumps hurdles, leaps fences, penetrates walls to arrive at its destination full of hope.” — Maya Angelou",
+	"“Love is composed of a single soul inhabiting two bodies.” — Aristotle",
+	"“You know you’re in love when you can’t fall asleep because reality is finally better than your dreams.” — Dr. Seuss",
+	"“Let us always meet each other with smile, for the smile is the beginning of love.” — Mother Teresa",
+
+	// Life
+	"“In three words I can sum up everything I’ve learned about life: it goes on.” — Robert Frost",
+	"“Life is what happens when you’re busy making other plans.” — John Lennon",
+
+	// Miscellaneous / existing quotes
 	"“I don’t have all the answers, but I’m always asking the right questions.”",
 	"“The only way to do great work is to love what you do.” — Steve Jobs",
 	"“Simplicity is the ultimate sophistication.” — Leonardo da Vinci",
@@ -43,7 +83,7 @@ export default function Quote() {
 	if (!quote) {
 		return (
 			<p className="mt-4 italic text-sm text-muted-foreground">
-				<span className="w-1/2 h-3 bg-gray-900 animate-pulse inline-block"></span>
+				<span className="w-1/2 h-3 bg-zinc-800 animate-pulse inline-block"></span>
 			</p>
 		);
 	}
