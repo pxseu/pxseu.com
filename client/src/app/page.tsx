@@ -5,6 +5,8 @@ export const metadata: Metadata = {
 	description: "Find out more about me",
 };
 
-export default function Home() {
-	return <Main />;
+// export const revalidate = 7200; // 2 hours
+
+export default async function Home() {
+	return <Main content={[]} />;
 }

@@ -2,7 +2,11 @@ import { BIRTHDAY_TIMESTAMP, CODING_START_TIMESTAMP } from "@/config";
 import Container from "@/components/container";
 import { Timed } from "@/components/timed";
 
-export default function Main() {
+interface Props {
+	content: string[];
+}
+
+export default function Main({}: Props) {
 	return (
 		<main className="flex flex-col w-full">
 			<Container title="About Me" id="intro">
@@ -61,9 +65,6 @@ export default function Main() {
 					</li>
 					<li>
 						<strong>DevOps:</strong> Docker, Linux, Git, CI/CD, system automation
-					</li>
-					<li>
-						<strong>Networking:</strong> TCP/IP, routing, tunneling, network security
 					</li>
 					<li>
 						<strong>Other:</strong> Python, C/C++, event-driven architectures, testing
