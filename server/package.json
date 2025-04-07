@@ -2,11 +2,25 @@
   "name": "@pxseu/server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=production node .",
+    "dev": "cross-env NODE_ENV=development node -r dotenv/config --import=tsx --watch src/index.ts",
+    "prebuild": "pnpm clean",
+    "build": "tsc",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^22.14.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@pxseu/prettier-config": "^1.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
+    "tsx": "^4.19.3"
+  }
 }

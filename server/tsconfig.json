@@ -1,0 +1,49 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "baseUrl": "src",
+        "rootDir": "src",
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "forceConsistentCasingInFileNames": true,
+        "declaration": false,
+        "sourceMap": true,
+        "sourceRoot": "./src",
+        "mapRoot": "./sourcemaps",
+        "typeRoots": [
+            "@types",
+            "node_modules/@types"
+        ],
+        "module": "NodeNext",
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "lib": [
+            "ES6",
+        ],
+        "moduleResolution": "NodeNext",
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "ESNext",
+        "experimentalDecorators": true,
+        "strictPropertyInitialization": false,
+    },
+    "include": [
+        "src",
+    ],
+    "exclude": [
+        "dist",
+        "node_modules",
+        "**/*.test.ts",
+    ],
+    "ts-node": {
+        "transpileOnly": true,
+    }
+}
