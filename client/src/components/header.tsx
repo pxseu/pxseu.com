@@ -7,7 +7,7 @@ import Logo from "./logo";
 export default function Header() {
 	return (
 		<header className="w-full mb-12">
-			<nav className="w-full flex items-center justify-between p-4 mb-3">
+			<nav className="w-full flex items-center justify-between p-4 mb-4">
 				<Link
 					href="/"
 					className="px-3 py-1 text-sm font-medium border border-zinc-700 
@@ -36,7 +36,7 @@ export default function Header() {
 
 			{/* Original header content */}
 			<div className="text-center">
-				<h1 className="flex justify-center items-center mb-2">
+				<h1 className="flex justify-center items-center mb-4">
 					<Logo />
 				</h1>
 				<p className="mt-2 text-muted-foreground text-lg sm:text-xl">
