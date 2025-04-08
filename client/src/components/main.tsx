@@ -3,6 +3,7 @@ import Container from "@/components/container";
 import { Timed } from "@/components/timed";
 import ProjectCard from "./project-card";
 import Skill from "./skill";
+import Contact from "./contact";
 
 interface Props {
 	content: string[];
@@ -104,33 +105,32 @@ export default function Main({}: Props) {
 
 			{/* CONTACT */}
 			<Container title="Contact" id="contact">
-				<p className="text-zinc-300">Feel free to reach out through any of the platforms below:</p>
-				<ul className="list-none space-y-1 mt-4 text-zinc-300">
-					<li>
-						<strong>Website:</strong>{" "}
-						<a href="https://pxseu.com/message" className="text-blue-400 underline">
-							pxseu.com
-						</a>
-					</li>
-					<li>
-						<strong>Email:</strong>{" "}
-						<a href="mailto:me@pxseu.com" className="text-blue-400 underline">
-							me@pxseu.com
-						</a>
-					</li>
-					<li>
-						<strong>GitHub:</strong>{" "}
-						<a href="https://github.com/pxseu" className="text-blue-400 underline">
-							github.com/pxseu
-						</a>
-					</li>
-					<li>
-						<strong>Twitter:</strong>{" "}
-						<a href="https://twitter.com/pxseu" className="text-blue-400 underline">
-							@pxseu
-						</a>
-					</li>
-				</ul>
+				<p className="text-zinc-300 mb-4">Feel free to reach out through any of the platforms below:</p>
+
+				<Contact
+					items={[
+						{
+							label: "Website",
+							link: "https://pxseu.com/message",
+							display: "pxseu.com",
+						},
+						{
+							label: "Email",
+							link: "mailto:me@pxseu.com",
+							display: "me@pxseu.com",
+						},
+						{
+							label: "GitHub",
+							link: "https://github.com/pxseu",
+							display: "github.com/pxseu",
+						},
+						{
+							label: "Twitter",
+							link: "https://twitter.com/pxseu",
+							display: "@pxseu",
+						},
+					]}
+				/>
 			</Container>
 		</main>
 	);
