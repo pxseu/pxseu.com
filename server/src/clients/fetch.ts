@@ -1,4 +1,8 @@
-export const fetch = async (url: string, options?: RequestInit) => {
+import { sleep } from "../utils/sleep.js";
+
+export const fetch = async (url: string, options?: RequestInit): Promise<Response> => {
+	console.log("Fetching", url, new Date());
+
 	const response = await globalThis.fetch(url, {
 		...options,
 		headers: {
@@ -8,6 +12,11 @@ export const fetch = async (url: string, options?: RequestInit) => {
 	});
 
 	if (!response.ok) {
+		if (response.status >= 500) {
+			await sleep(1500);
+			return fetch(url, options);
+		}
+
 		throw new Error(`HTTP error! status: ${response.status}`);
 	}
 

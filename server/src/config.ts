@@ -5,7 +5,7 @@ export const config = envsafe({
 	SPOTIFY_CLIENT_SECRET: str(),
 	SPOTIFY_REDIRECT_URI: str(),
 	SPOTIFY_AUTH_USER_ID: str({
-		default: "",
+		default: "1evum6fq9klvekqjbz4cu5v79",
 		allowEmpty: true,
 	}),
 	REDIS_URL: url(),
