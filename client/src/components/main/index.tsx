@@ -1,6 +1,6 @@
 import { BIRTHDAY_TIMESTAMP, CODING_START_TIMESTAMP } from "@/config";
 import Container from "@/components/container";
-import { Timed } from "@/components/timed";
+import { Timed } from "@/components/main/timed";
 import ProjectCard from "./project-card";
 import Skill from "./skill";
 import Contact from "./contact";
