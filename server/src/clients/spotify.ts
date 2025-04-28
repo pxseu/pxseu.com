@@ -96,20 +96,27 @@ export default class SpotifyClient {
 		this.basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
 	}
 
-	async formatTrack(track: Item) {
+	async formatTrack(playing: Awaited<ReturnType<typeof this.getMyCurrentPlayingTrack>>, now = new Date()) {
+		if (!playing) return null;
+
 		return {
-			id: track.id,
+			id: playing.item.id,
 			song: {
-				title: track.name,
-				artists: track.artists.map((artist) => artist.name).join(", "),
-				url: track.external_urls.spotify,
+				title: playing.item.name,
+				artists: playing.item.artists.map((artist) => artist.name).join(", "),
+				url: playing.item.external_urls.spotify,
 			},
 			album: {
-				name: track.album.name,
-				image: track.album.images[0]?.url,
-				color: await dominantColor(track.album.images[0]?.url!),
-				url: track.album.external_urls.spotify,
+				name: playing.item.album.name,
+				image: playing.item.album.images[0]?.url,
+				color: await dominantColor(playing.item.album.images[0]?.url!),
+				url: playing.item.album.external_urls.spotify,
 			},
+			progress: {
+				start: new Date(now.getTime() - playing.progress_ms),
+				end: new Date(now.getTime() + playing.item.duration_ms - playing.progress_ms),
+			},
+			timestamp: playing.timestamp,
 		};
 	}
 

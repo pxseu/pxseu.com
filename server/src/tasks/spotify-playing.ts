@@ -9,7 +9,7 @@ import { sleep } from "../utils/sleep.js";
 export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient) => {
 	console.log("Starting spotify tracker");
 
-	const interval = 1000;
+	const interval = 500;
 
 	do {
 		let accessToken = await redis.get(REDIS_SPOTIFY_ACCESS_TOKEN);
@@ -42,12 +42,20 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient) =
 
 		const nowPlaying = await spotify.getMyCurrentPlayingTrack(accessToken);
 
-		const formated = JSON.stringify(nowPlaying !== null ? await spotify.formatTrack(nowPlaying.item) : null);
+		const formated = JSON.stringify(await spotify.formatTrack(nowPlaying));
 
-		await Promise.all([
-			/* redis.publish(REDIS_SPOTIFY_PLAYING, formated), */
-			redis.set(REDIS_SPOTIFY_PLAYING, formated),
-		]);
+		const prev = await redis.get(REDIS_SPOTIFY_PLAYING);
+
+		if (prev && nowPlaying) {
+			const prevDate = JSON.parse(prev)?.timestamp ?? 0;
+			const nowDate = nowPlaying?.timestamp ?? Date.now();
+
+			if (prevDate < nowDate) {
+				await redis.set(REDIS_SPOTIFY_PLAYING, formated);
+			}
+		} else {
+			await redis.set(REDIS_SPOTIFY_PLAYING, formated);
+		}
 
 		await sleep(interval);
 	} while (true);

@@ -69,22 +69,29 @@ export const routes = router()
 		return sse({
 			start: async (controller) => {
 				const { redis } = ctx;
-				let prev;
+				let prevId;
+				let prevStartedt;
 				try {
 					do {
 						const data = JSON.parse((await redis.get(REDIS_SPOTIFY_PLAYING)) ?? "null");
 
-						const id = data?.id || null;
+						// remove timestamp from data
+						if (data) data.timestamp = undefined;
 
-						if (id !== prev)
+						const id = data?.id || null;
+						const startedt = data?.progress?.start || null;
+
+						if (id !== prevId || startedt !== prevStartedt) {
 							controller.enqueue({
 								event: "now-playing",
 								data,
 							});
+						}
 
-						prev = id;
+						prevId = id;
+						prevStartedt = startedt;
 
-						await sleep(500);
+						await sleep(100);
 					} while (true);
 				} catch (e) {
 					console.error(e);
