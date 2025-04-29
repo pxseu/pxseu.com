@@ -4,6 +4,8 @@ import { getContext } from "./context.js";
 import { root } from "./routes/index.js";
 import { config } from "./config.js";
 
+import "./node-manager.js";
+
 const ALLOWED_ORIGINS = ["http://localhost:3000", "https://app.example.com"];
 
 const handle = createKaitoHandler({

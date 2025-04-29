@@ -1,8 +1,6 @@
 import { sleep } from "../utils/sleep.js";
 
 export const fetch = async (url: string, options?: RequestInit): Promise<Response> => {
-	console.log("Fetching", url, new Date());
-
 	try {
 		const response = await globalThis.fetch(url, {
 			...options,
