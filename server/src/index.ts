@@ -6,8 +6,6 @@ import { config } from "./config.js";
 
 import "./node-manager.js";
 
-const ALLOWED_ORIGINS = ["http://localhost:3000", "https://app.example.com"];
-
 const handle = createKaitoHandler({
 	router: root,
 	getContext,
@@ -22,6 +20,8 @@ const handle = createKaitoHandler({
 	},
 
 	before: async (req) => {
+		console.log(req.method, new URL(req.url).pathname);
+
 		if (req.method === "OPTIONS") {
 			return new Response(null, { status: 204 });
 		}
@@ -29,17 +29,13 @@ const handle = createKaitoHandler({
 		return void undefined;
 	},
 
-	transform: async (request, response) => {
-		const origin = request.headers.get("origin");
-
-		// Include CORS headers if the origin is allowed
-		if (origin && ALLOWED_ORIGINS.includes(origin)) {
-			response.headers.set("Access-Control-Allow-Origin", origin);
-			response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-			response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
-			response.headers.set("Access-Control-Max-Age", "86400");
-			response.headers.set("Access-Control-Allow-Credentials", "true");
-		}
+	transform: async (_, response) => {
+		// Allow all origins
+		response.headers.set("Access-Control-Allow-Origin", "*");
+		response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+		response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+		response.headers.set("Access-Control-Max-Age", "86400");
+		response.headers.set("Access-Control-Allow-Credentials", "true");
 	},
 });
 
