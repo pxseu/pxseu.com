@@ -9,7 +9,7 @@ import { sleep } from "../utils/sleep.js";
 export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient) => {
 	console.log("Starting spotify tracker");
 
-	const interval = 500;
+	const interval = 1000;
 
 	do {
 		let accessToken = await redis.get(REDIS_SPOTIFY_ACCESS_TOKEN);
