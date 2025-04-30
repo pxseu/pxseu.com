@@ -16,6 +16,13 @@ export const fetch = async (url: string, options?: RequestInit): Promise<Respons
 				return fetch(url, options);
 			}
 
+			if (response.status === 429) {
+				const retryAfter = response.headers.get("Retry-After");
+
+				await sleep(retryAfter ? parseInt(retryAfter) * 1000 : 1500);
+				return fetch(url, options);
+			}
+
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
 
