@@ -1,5 +1,11 @@
 import { sleep } from "../utils/sleep.js";
 
+export class HttpError extends Error {
+	constructor(public status: number, public message: string) {
+		super(message);
+	}
+}
+
 export const fetch = async (url: string, options?: RequestInit): Promise<Response> => {
 	try {
 		const response = await globalThis.fetch(url, {
@@ -23,11 +29,15 @@ export const fetch = async (url: string, options?: RequestInit): Promise<Respons
 				return fetch(url, options);
 			}
 
-			throw new Error(`HTTP error! status: ${response.status}`);
+			throw new HttpError(response.status, response.statusText);
 		}
 
 		return response;
 	} catch (error) {
+		if (error instanceof HttpError) {
+			throw error;
+		}
+
 		console.error("Fetch error", error);
 		await sleep(1500);
 		return fetch(url, options);
