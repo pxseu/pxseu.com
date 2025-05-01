@@ -47,8 +47,8 @@ async function startNodeCheck() {
 			} else {
 				// Migration check for non-main nodes
 				const currentMain = await redis.get(MAIN_NODE_KEY);
-				if (!currentMain) {
-					// No main node exists, try to become one
+				if (!currentMain || currentMain === hostname()) {
+					// No main node exists or I am the main node (I was the main node before the check)
 					await tryBecomeMain();
 				}
 			}
