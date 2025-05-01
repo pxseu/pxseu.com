@@ -8,12 +8,23 @@ const NODE_CHECK_INTERVAL = 5000; // 5 seconds
 
 let is_main = false;
 let nodeCheckInterval: NodeJS.Timeout | null = null;
+let spotifyTaskAbortController: AbortController | null = null;
 
 async function tryBecomeMain() {
 	const result = await redis.set(MAIN_NODE_KEY, hostname(), "EX", MAIN_NODE_TTL, "NX");
 	if (result === "OK") {
 		is_main = true;
-		spotifyPlayingTask(redis, spotify);
+		spotifyTaskAbortController = new AbortController();
+		spotifyPlayingTask(redis, spotify, spotifyTaskAbortController.signal).catch((error) => {
+			console.error("Spotify task failed:", error);
+		});
+	}
+}
+
+async function stopSpotifyTask() {
+	if (spotifyTaskAbortController) {
+		spotifyTaskAbortController.abort();
+		spotifyTaskAbortController = null;
 	}
 }
 
@@ -27,6 +38,7 @@ async function startNodeCheck() {
 				const currentMain = await redis.get(MAIN_NODE_KEY);
 				if (currentMain !== hostname()) {
 					is_main = false;
+					await stopSpotifyTask();
 					return;
 				}
 				// Refresh the TTL
@@ -42,6 +54,7 @@ async function startNodeCheck() {
 		} catch (error) {
 			console.error("Node check failed:", error);
 			is_main = false;
+			await stopSpotifyTask();
 		}
 	}, NODE_CHECK_INTERVAL);
 }
@@ -53,6 +66,7 @@ process.on("SIGTERM", async () => {
 	if (is_main) {
 		await redis.del(MAIN_NODE_KEY);
 	}
+	await stopSpotifyTask();
 	if (nodeCheckInterval) clearInterval(nodeCheckInterval);
 	process.exit(0);
 });

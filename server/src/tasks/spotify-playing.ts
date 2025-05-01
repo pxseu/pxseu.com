@@ -6,12 +6,20 @@ import SpotifyClient, {
 } from "../clients/spotify.js";
 import { sleep } from "../utils/sleep.js";
 
-export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient) => {
+export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, signal?: AbortSignal) => {
 	console.log("Starting spotify tracker");
 
-	const interval = 1000;
+	const interval = 500;
+	const publisher = redis.duplicate();
+	let prevId: string | null = null;
+	let prevStartedt: number | null = null;
 
 	do {
+		if (signal?.aborted) {
+			console.log("Spotify tracker stopped");
+			break;
+		}
+
 		let accessToken = await redis.get(REDIS_SPOTIFY_ACCESS_TOKEN);
 
 		if (!accessToken) {
@@ -41,7 +49,6 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient) =
 		}
 
 		const nowPlaying = await spotify.getMyCurrentPlayingTrack(accessToken);
-
 		const formated = JSON.stringify(await spotify.formatTrack(nowPlaying));
 
 		const prev = await redis.get(REDIS_SPOTIFY_PLAYING);
@@ -51,10 +58,23 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient) =
 			const nowDate = nowPlaying?.timestamp ?? Date.now();
 
 			if (prevDate < nowDate) {
-				await redis.set(REDIS_SPOTIFY_PLAYING, formated);
+				const data = JSON.parse(formated);
+				const id = data?.id || null;
+				const startedt = data?.progress?.start || null;
+
+				if (id !== prevId || startedt !== prevStartedt) {
+					await redis.set(REDIS_SPOTIFY_PLAYING, formated);
+					await publisher.publish(REDIS_SPOTIFY_PLAYING, formated);
+					prevId = id;
+					prevStartedt = startedt;
+				}
 			}
 		} else {
 			await redis.set(REDIS_SPOTIFY_PLAYING, formated);
+			await publisher.publish(REDIS_SPOTIFY_PLAYING, formated);
+			const data = JSON.parse(formated);
+			prevId = data?.id || null;
+			prevStartedt = data?.progress?.start || null;
 		}
 
 		await sleep(interval);

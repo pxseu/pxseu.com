@@ -4,10 +4,9 @@ import { sse } from "@kaito-http/core/stream";
 import { router } from "../context.js";
 import { config } from "../config.js";
 import { REDIS_SPOTIFY_ACCESS_TOKEN, REDIS_SPOTIFY_PLAYING, REDIS_SPOTIFY_REFRESH_TOKEN } from "../clients/spotify.js";
-import { sleep } from "../utils/sleep.js";
 
 export const routes = router()
-	.get("/get-auth-url", async ({ ctx }) => {
+	.get("/auth-url", async ({ ctx }) => {
 		const { spotify } = ctx;
 
 		if (!spotify) {
@@ -19,6 +18,20 @@ export const routes = router()
 		return {
 			url,
 		};
+	})
+	.get("/auth-url-redirect", async ({ ctx }) => {
+		const { spotify } = ctx;
+
+		if (!spotify) {
+			throw new KaitoError(500, "Spotify client not initialized");
+		}
+
+		return new Response("Redirecting to Spotify...", {
+			status: 302,
+			headers: {
+				Location: spotify.getAuthorizationUrl(),
+			},
+		});
 	})
 	.get("/callback", {
 		query: {
@@ -69,33 +82,48 @@ export const routes = router()
 		return sse({
 			start: async (controller) => {
 				const { redis } = ctx;
-				let prevId;
-				let prevStartedt;
+				const subscriber = redis.duplicate();
+
+				const hello = await subscriber.hello();
+				// flat array of key,value pairs
+				const id = hello[hello.findIndex((v) => v === "id") + 1];
+
 				try {
-					do {
-						const data = JSON.parse((await redis.get(REDIS_SPOTIFY_PLAYING)) ?? "null");
+					// Subscribe to updates
+					await subscriber.subscribe(REDIS_SPOTIFY_PLAYING);
 
-						// remove timestamp from data
-						if (data) data.timestamp = undefined;
+					// Send initial state
+					const initialData = JSON.parse((await redis.get(REDIS_SPOTIFY_PLAYING)) ?? "null");
+					if (initialData) {
+						initialData.timestamp = undefined;
+						controller.enqueue({
+							event: "init",
+							data: {
+								now_playing: initialData,
+								connection_id: id,
+							},
+						});
+					}
 
-						const id = data?.id || null;
-						const startedt = data?.progress?.start || null;
-
-						if (id !== prevId || startedt !== prevStartedt) {
+					// Listen for updates
+					subscriber.on("message", (channel, message) => {
+						if (channel === REDIS_SPOTIFY_PLAYING) {
+							const data = JSON.parse(message);
+							if (data) data.timestamp = undefined;
 							controller.enqueue({
 								event: "now-playing",
 								data,
 							});
 						}
+					});
 
-						prevId = id;
-						prevStartedt = startedt;
-
-						await sleep(100);
-					} while (true);
+					// Keep the connection alive
+					await new Promise(() => {});
 				} catch (e) {
 					console.error(e);
 				} finally {
+					await subscriber.unsubscribe();
+					await subscriber.quit();
 					controller.close();
 				}
 			},
