@@ -93,23 +93,26 @@ export const routes = router()
 					await subscriber.subscribe(REDIS_SPOTIFY_PLAYING);
 
 					// Send initial state
-					const initialData = JSON.parse((await redis.get(REDIS_SPOTIFY_PLAYING)) ?? "null");
-					if (initialData) {
-						initialData.timestamp = undefined;
-						controller.enqueue({
-							event: "init",
-							data: {
-								now_playing: initialData,
-								connection_id: id,
-							},
-						});
-					}
+					const initialData = await redis.get(REDIS_SPOTIFY_PLAYING);
 
+					const parsedData = JSON.parse(initialData ?? "null");
+
+					if (parsedData) parsedData.timestamp = undefined;
+
+					controller.enqueue({
+						event: "init",
+						data: {
+							now_playing: parsedData,
+							connection_id: id,
+						},
+					});
 					// Listen for updates
 					subscriber.on("message", (channel, message) => {
 						if (channel === REDIS_SPOTIFY_PLAYING) {
-							const data = JSON.parse(message);
+							const data = JSON.parse(message ?? "null");
+
 							if (data) data.timestamp = undefined;
+
 							controller.enqueue({
 								event: "now-playing",
 								data,

@@ -36,6 +36,7 @@ async function startNodeCheck() {
 			if (is_main) {
 				// Health check for main node
 				const currentMain = await redis.get(MAIN_NODE_KEY);
+
 				if (currentMain !== hostname()) {
 					is_main = false;
 					await stopSpotifyTask();

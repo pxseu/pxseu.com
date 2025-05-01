@@ -9,7 +9,7 @@ import { sleep } from "../utils/sleep.js";
 export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, signal?: AbortSignal) => {
 	console.log("Starting spotify tracker");
 
-	const interval = 5e2;
+	const interval = 2e2;
 	const noPlayingInterval = 2e3; // Longer interval when nothing is playing
 	const publisher = redis.duplicate();
 	let prevId: string | null = null;
@@ -61,10 +61,9 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 			continue;
 		}
 
-		const formated = JSON.stringify(await spotify.formatTrack(nowPlaying));
-		const data = JSON.parse(formated);
+		const data = await spotify.formatTrack(nowPlaying);
 		const id = data?.id || null;
-		const startedt = data?.progress?.start || null;
+		const startedt = data?.timestamp || null;
 
 		// Skip if the same track is still playing
 		if (id === prevId && startedt === prevStartedt) {
@@ -72,7 +71,8 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 			continue;
 		}
 
-		// Update the playing state
+		const formated = JSON.stringify(data);
+
 		await Promise.all([
 			redis.set(REDIS_SPOTIFY_PLAYING, formated),
 			publisher.publish(REDIS_SPOTIFY_PLAYING, formated),
