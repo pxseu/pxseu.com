@@ -17,6 +17,8 @@ export const routes = router().get("/", async ({ ctx }) => {
 				});
 			};
 
+			let interval: NodeJS.Timeout | undefined;
+
 			try {
 				// Send initial state
 				controller.enqueue({
@@ -26,7 +28,7 @@ export const routes = router().get("/", async ({ ctx }) => {
 					},
 				});
 
-				setInterval(() => {
+				interval = setInterval(() => {
 					controller.enqueue({
 						event: "ping",
 						data: new Date().toISOString(),
@@ -44,6 +46,7 @@ export const routes = router().get("/", async ({ ctx }) => {
 			} finally {
 				console.log("Closing SSE connection");
 				ctx.spotifyListener.listener.off(REDIS_SPOTIFY_PLAYING, eventHandler);
+				clearInterval(interval);
 				controller.close();
 			}
 		},

@@ -51,7 +51,17 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 			}
 		}
 
-		const nowPlaying = await spotify.getMyCurrentPlayingTrack(accessToken);
+		let nowPlaying: Awaited<ReturnType<typeof spotify.getMyCurrentPlayingTrack>> | null = null;
+
+		try {
+			nowPlaying = await spotify.getMyCurrentPlayingTrack(accessToken);
+		} catch (error) {
+			console.error("Failed to get current playing track");
+			console.error(error);
+			await Promise.all([redis.del(REDIS_SPOTIFY_ACCESS_TOKEN), redis.del(REDIS_SPOTIFY_REFRESH_TOKEN)]);
+			await sleep(noPlayingInterval);
+			continue;
+		}
 
 		if (!nowPlaying || nowPlaying.currently_playing_type !== "track") {
 			// If nothing is playing and we previously had a track, clear the playing state
