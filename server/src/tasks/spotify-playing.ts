@@ -12,7 +12,10 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 	const interval = 2e2;
 	const noPlayingInterval = 2e3; // Longer interval when nothing is playing
 	const publisher = redis.duplicate();
-	let prevId: string | null = null;
+
+	const prev = await redis.get(REDIS_SPOTIFY_PLAYING).then((v) => JSON.parse(v || "null"));
+
+	let prevId: string | null = prev?.id || null;
 	let prevStartedt: number | null = null;
 
 	do {
@@ -50,7 +53,7 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 
 		const nowPlaying = await spotify.getMyCurrentPlayingTrack(accessToken);
 
-		if (!nowPlaying) {
+		if (!nowPlaying || nowPlaying.currently_playing_type !== "track") {
 			// If nothing is playing and we previously had a track, clear the playing state
 			if (prevId !== null) {
 				await Promise.all([redis.del(REDIS_SPOTIFY_PLAYING), publisher.publish(REDIS_SPOTIFY_PLAYING, "null")]);
@@ -61,17 +64,16 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 			continue;
 		}
 
-		const data = await spotify.formatTrack(nowPlaying);
-		const id = data?.id || null;
-		const startedt = data?.timestamp || null;
+		const id = nowPlaying.item.id || null;
+		const startedt = nowPlaying.timestamp || null;
 
 		// Skip if the same track is still playing
-		if (id === prevId && startedt === prevStartedt) {
+		if (id === prevId && startedt && prevStartedt && startedt <= prevStartedt) {
 			await sleep(interval);
 			continue;
 		}
 
-		const formated = JSON.stringify(data);
+		const formated = JSON.stringify(await spotify.formatTrack(nowPlaying));
 
 		await Promise.all([
 			redis.set(REDIS_SPOTIFY_PLAYING, formated),

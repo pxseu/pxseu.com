@@ -1,5 +1,4 @@
 import { createUtilities } from "@kaito-http/core";
-import { getRemoteAddress } from "@kaito-http/uws";
 import { Redis } from "ioredis";
 import SpotifyClient from "./clients/spotify.js";
 import { config } from "./config.js";
@@ -14,14 +13,14 @@ export const spotify = new SpotifyClient(
 
 const serverStarted = Date.now();
 
-export const { getContext, router } = createUtilities(async (req) => {
-	const ip = getRemoteAddress();
+const spotifyListener = await spotify.createListener(redis);
 
+export const { getContext, router } = createUtilities(async (req) => {
 	return {
 		req,
-		ip,
 		spotify,
 		redis,
 		uptime: Date.now() - serverStarted,
+		spotifyListener,
 	};
 });

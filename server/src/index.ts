@@ -1,5 +1,4 @@
 import { createKaitoHandler, KaitoError } from "@kaito-http/core";
-import { KaitoServer } from "@kaito-http/uws";
 import { getContext } from "./context.js";
 import { root } from "./routes/index.js";
 import { config } from "./config.js";
@@ -46,11 +45,12 @@ const handle = createKaitoHandler({
 	},
 });
 
-const server = await KaitoServer.serve({
+const server = Bun.serve({
 	port: config.PORT,
 	fetch: handle,
+	idleTimeout: 0,
 });
 
-console.log("Server listening at", server.url);
+console.log("Server listening at", server.url.href);
 
 export type App = typeof root;

@@ -1,3 +1,5 @@
+import { Redis } from "ioredis";
+import EventEmitter from "node:events";
 import { dominantColor } from "../utils/dominant.js";
 import { fetch } from "./fetch.js";
 
@@ -116,7 +118,6 @@ export default class SpotifyClient {
 				start: new Date(now.getTime() - playing.progress_ms),
 				end: new Date(now.getTime() + playing.item.duration_ms - playing.progress_ms),
 			},
-			timestamp: playing.timestamp,
 		};
 	}
 
@@ -226,5 +227,33 @@ export default class SpotifyClient {
 		if (!parsed.is_playing) return null;
 
 		return parsed;
+	}
+
+	async createListener(redis: Redis) {
+		type Song = Awaited<ReturnType<typeof SpotifyClient.prototype.formatTrack>> | null;
+
+		const listener = new EventEmitter<{
+			[REDIS_SPOTIFY_PLAYING]: [Song];
+		}>();
+
+		const publisher = redis.duplicate();
+
+		await publisher.subscribe(REDIS_SPOTIFY_PLAYING);
+
+		let currentPlaying: Song = await redis.get(REDIS_SPOTIFY_PLAYING).then((v) => JSON.parse(v || "null"));
+
+		publisher.on("message", async (channel, message) => {
+			if (channel === REDIS_SPOTIFY_PLAYING) {
+				const data = JSON.parse(message);
+
+				listener.emit(REDIS_SPOTIFY_PLAYING, data);
+				currentPlaying = data;
+			}
+		});
+
+		return {
+			listener,
+			currentPlaying,
+		};
 	}
 }
