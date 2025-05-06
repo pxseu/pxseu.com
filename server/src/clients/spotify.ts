@@ -253,7 +253,9 @@ export default class SpotifyClient {
 
 		return {
 			listener,
-			currentPlaying,
+			get currentPlaying() {
+				return currentPlaying;
+			},
 		};
 	}
 }
