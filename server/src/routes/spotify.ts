@@ -1,10 +1,9 @@
 import z from "zod";
 import { KaitoError } from "@kaito-http/core";
-import { sse } from "@kaito-http/core/stream";
 import { router } from "../context.js";
 import { config } from "../config.js";
-import { REDIS_SPOTIFY_ACCESS_TOKEN, REDIS_SPOTIFY_PLAYING, REDIS_SPOTIFY_REFRESH_TOKEN } from "../clients/spotify.js";
-import { once } from "node:events";
+import { REDIS_SPOTIFY_ACCESS_TOKEN, REDIS_SPOTIFY_REFRESH_TOKEN } from "../clients/spotify.js";
+
 // Routes
 export const routes = router()
 	.get("/auth-url", async ({ ctx }) => ({ url: ctx.spotify.getAuthorizationUrl() }))
@@ -41,40 +40,4 @@ export const routes = router()
 			}
 		},
 	})
-	.get("/now-playing", async ({ ctx }) => ctx.spotifyListener.currentPlaying)
-	.get("/now-playing-sse", async ({ ctx }) => {
-		return sse({
-			start: async (controller) => {
-				const { signal } = ctx.req.request;
-				const { spotify } = ctx;
-
-				const eventHandler = (data: Awaited<ReturnType<typeof spotify.formatTrack>>) => {
-					controller.enqueue({
-						event: "now-playing",
-						data,
-					});
-				};
-
-				try {
-					// Send initial state
-					controller.enqueue({
-						event: "init",
-						data: ctx.spotifyListener.currentPlaying,
-					});
-
-					// Listen for updates
-					ctx.spotifyListener.listener.on(REDIS_SPOTIFY_PLAYING, eventHandler);
-
-					// Keep connection alive until client disconnects
-					await once(signal, "abort");
-				} catch (error) {
-					console.error("SSE Error:", error);
-					throw new KaitoError(500, "Failed to establish SSE connection");
-				} finally {
-					console.log("Closing SSE connection");
-					ctx.spotifyListener.listener.off(REDIS_SPOTIFY_PLAYING, eventHandler);
-					controller.close();
-				}
-			},
-		});
-	});
+	.get("/now-playing", async ({ ctx }) => ctx.spotifyListener.currentPlaying);

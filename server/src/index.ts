@@ -4,6 +4,7 @@ import { root } from "./routes/index.js";
 import { config } from "./config.js";
 
 import "./node-manager.js";
+import { AsyncLocalStorage } from "async_hooks";
 
 const handle = createKaitoHandler({
 	router: root,
@@ -45,9 +46,15 @@ const handle = createKaitoHandler({
 	},
 });
 
+export const ipStore = new AsyncLocalStorage<string>();
+
 const server = Bun.serve({
 	port: config.PORT,
-	fetch: handle,
+	fetch: async (request, server) => {
+		const ip = server.requestIP(request)?.address ?? "0.0.0.0";
+
+		return ipStore.run(ip, () => handle(request));
+	},
 	idleTimeout: 0,
 });
 

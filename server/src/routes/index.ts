@@ -1,6 +1,6 @@
 import { router } from "../context.js";
 import { routes as spotifyRoutes } from "./spotify.js";
-
+import { routes as realtimeRoutes } from "./realtime.js";
 export const root = router()
 	.get("/", async ({ ctx }) => ctx.ip)
 	.get("/health", async ({ ctx }) => {
@@ -30,4 +30,5 @@ export const root = router()
 			};
 		}
 	})
+	.merge("/v2/realtime", realtimeRoutes)
 	.merge("/v2/spotify", spotifyRoutes);
