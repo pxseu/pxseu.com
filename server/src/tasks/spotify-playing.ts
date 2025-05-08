@@ -1,9 +1,10 @@
 import type { Redis } from "ioredis";
 import SpotifyClient, {
+	REDIS_LAST_UPDATE_ON,
 	REDIS_SPOTIFY_ACCESS_TOKEN,
-	REDIS_SPOTIFY_PLAYING,
 	REDIS_SPOTIFY_REFRESH_TOKEN,
 } from "../clients/spotify.js";
+import { REDIS_SPOTIFY_PLAYING } from "../realtime/spotify.js";
 import { sleep } from "../utils/sleep.js";
 
 export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, signal?: AbortSignal) => {
@@ -66,7 +67,11 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 		if (!nowPlaying || nowPlaying.currently_playing_type !== "track") {
 			// If nothing is playing and we previously had a track, clear the playing state
 			if (prevId !== null) {
-				await Promise.all([redis.del(REDIS_SPOTIFY_PLAYING), publisher.publish(REDIS_SPOTIFY_PLAYING, "null")]);
+				await Promise.all([
+					redis.del(REDIS_SPOTIFY_PLAYING),
+					publisher.publish(REDIS_SPOTIFY_PLAYING, "null"),
+					redis.del(REDIS_LAST_UPDATE_ON),
+				]);
 				prevId = null;
 				prevStartedt = null;
 			}
@@ -75,10 +80,10 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 		}
 
 		const id = nowPlaying.item.id || null;
-		const startedt = nowPlaying.timestamp || null;
+		const startedAt = nowPlaying.timestamp || null;
 
 		// Skip if the same track is still playing
-		if (id === prevId && startedt && prevStartedt && startedt <= prevStartedt) {
+		if (id === prevId && startedAt && prevStartedt && startedAt <= prevStartedt) {
 			await sleep(interval);
 			continue;
 		}
@@ -88,9 +93,10 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 		await Promise.all([
 			redis.set(REDIS_SPOTIFY_PLAYING, formated),
 			publisher.publish(REDIS_SPOTIFY_PLAYING, formated),
+			redis.set(REDIS_LAST_UPDATE_ON, startedAt ?? 0),
 		]);
 		prevId = id;
-		prevStartedt = startedt;
+		prevStartedt = startedAt;
 
 		await sleep(interval);
 	} while (true);

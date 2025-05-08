@@ -12,4 +12,7 @@ export const config = envsafe({
 	PORT: port({
 		default: 3000,
 	}),
+	LOCATION_SECRET: str({
+		default: "sigmaSigmaSigma",
+	}),
 });

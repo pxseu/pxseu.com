@@ -1,13 +1,15 @@
 import { router } from "../context.js";
 import { routes as spotifyRoutes } from "./spotify.js";
 import { routes as realtimeRoutes } from "./realtime.js";
+import { routes as locationRoutes } from "./location.js";
+
 export const root = router()
 	.get("/", async ({ ctx }) => ctx.ip)
 	.get("/health", async ({ ctx }) => {
 		try {
 			const start = performance.now();
 
-			await ctx.redis.ping();
+			await ctx.clients.redis.ping();
 
 			const latency = performance.now() - start;
 
@@ -31,4 +33,5 @@ export const root = router()
 		}
 	})
 	.merge("/v2/realtime", realtimeRoutes)
-	.merge("/v2/spotify", spotifyRoutes);
+	.merge("/v2/spotify", spotifyRoutes)
+	.merge("/v2/location", locationRoutes);

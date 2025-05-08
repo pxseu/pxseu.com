@@ -49,6 +49,7 @@ const handle = createKaitoHandler({
 export const ipStore = new AsyncLocalStorage<string>();
 
 const server = Bun.serve({
+	hostname: "0.0.0.0",
 	port: config.PORT,
 	fetch: async (request, server) => {
 		const ip = server.requestIP(request)?.address ?? "0.0.0.0";
