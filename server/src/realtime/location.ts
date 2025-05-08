@@ -40,6 +40,7 @@ export class LocationRealtimeClient extends RealtimeClient<Location> {
 				const data = parseLocation(message);
 
 				listener.emit(REDIS_LOCATION_UPDATE, data);
+				currentLocation = data;
 			}
 		});
 
