@@ -10,6 +10,9 @@ const getRetryWithJitter = (base = 1000, jitter = 100) => {
 	return base + Math.floor(Math.random() * (jitter * 2)) - jitter;
 };
 
+const PLAYING_KEY = "playing";
+const LOCATION_KEY = "location";
+
 export const routes = router().get("/", async ({ ctx }) => {
 	const last_event_id = ctx.req.headers.get("last-event-id");
 
@@ -25,8 +28,8 @@ export const routes = router().get("/", async ({ ctx }) => {
 				id: Date.now().toString(),
 				event: "init",
 				data: {
-					now_playing: ctx.realtime.spotify.state,
-					location: ctx.realtime.location.state,
+					[PLAYING_KEY]: ctx.realtime.spotify.state,
+					[LOCATION_KEY]: ctx.realtime.location.state,
 				},
 				retry: getRetryWithJitter(),
 			});
@@ -45,7 +48,7 @@ export const routes = router().get("/", async ({ ctx }) => {
 
 			const eventHandler = (data: Awaited<ReturnType<typeof ctx.clients.spotify.formatTrack>>) => {
 				controller.enqueue({
-					event: "playing",
+					event: PLAYING_KEY,
 					data,
 					id: Date.now().toString(),
 				});
@@ -53,7 +56,7 @@ export const routes = router().get("/", async ({ ctx }) => {
 
 			const locationEventHandler = (data: Location) => {
 				controller.enqueue({
-					event: "location",
+					event: LOCATION_KEY,
 					data,
 					id: Date.now().toString(),
 				});
