@@ -6,7 +6,7 @@ export const REDIS_SPOTIFY_PLAYING = "spotify:playing";
 
 type Song = Awaited<ReturnType<typeof SpotifyClient.prototype.formatTrack>> | null;
 
-export class SpotifyRealtimeClient extends RealtimeClient<Song> {
+export class SpotifyRealtimeClient extends RealtimeClient<typeof REDIS_SPOTIFY_PLAYING, Song> {
 	async initialize() {
 		const listener = new EventEmitter<{
 			[REDIS_SPOTIFY_PLAYING]: [Song, number];
@@ -38,11 +38,14 @@ export class SpotifyRealtimeClient extends RealtimeClient<Song> {
 		};
 
 		return {
-			listener,
+			addEventListener: listener.on.bind(listener),
+			removeEventListener: listener.off.bind(listener),
 			get state() {
 				return currentPlaying;
 			},
-			update,
+			get update() {
+				return update;
+			},
 		};
 	}
 }

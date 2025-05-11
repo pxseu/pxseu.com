@@ -1,12 +1,12 @@
 import { Redis } from "ioredis";
-import { EventEmitter } from "node:events";
 
-export abstract class RealtimeClient<T> {
+export abstract class RealtimeClient<E extends string, T> {
 	constructor(protected redis: Redis) {}
 
 	abstract initialize(): Promise<{
-		listener: EventEmitter;
-		state: T;
-		update: (state: T) => Promise<void>;
+		readonly state: T;
+		readonly update: (state: T) => Promise<void>;
+		readonly addEventListener: (event: E, listener: (state: T) => void) => void;
+		readonly removeEventListener: (event: E, listener: (state: T) => void) => void;
 	}>;
 }

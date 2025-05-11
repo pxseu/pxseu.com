@@ -1,6 +1,5 @@
 import { once } from "node:events";
 import { sse } from "@kaito-http/core/stream";
-import { KaitoError } from "@kaito-http/core";
 import { router } from "../context.js";
 import { REDIS_SPOTIFY_PLAYING } from "../realtime/spotify.js";
 import { REDIS_LOCATION_UPDATE, Location } from "../realtime/location.js";
@@ -62,23 +61,18 @@ export const routes = router().get("/", async ({ ctx }) => {
 				});
 			};
 
-			try {
-				// Listen for updates
-				spotify.listener.on(REDIS_SPOTIFY_PLAYING, eventHandler);
-				location.listener.on(REDIS_LOCATION_UPDATE, locationEventHandler);
+			// Listen for updates
+			spotify.addEventListener(REDIS_SPOTIFY_PLAYING, eventHandler);
+			location.addEventListener(REDIS_LOCATION_UPDATE, locationEventHandler);
 
-				// Keep connection alive until client disconnects
-				await once(signal, "abort");
-			} catch (error) {
-				console.error("SSE Error:", error);
-				throw new KaitoError(500, "Failed to establish SSE connection");
-			} finally {
-				console.log("Closing SSE connection");
-				spotify.listener.off(REDIS_SPOTIFY_PLAYING, eventHandler);
-				location.listener.off(REDIS_LOCATION_UPDATE, locationEventHandler);
-				clearInterval(interval);
-				controller.close();
-			}
+			// Keep connection alive until client disconnects
+			await once(signal, "abort");
+
+			location.removeEventListener(REDIS_LOCATION_UPDATE, locationEventHandler);
+			spotify.removeEventListener(REDIS_SPOTIFY_PLAYING, eventHandler);
+
+			clearInterval(interval);
+			console.log("Closing SSE connection");
 		},
 	});
 });
