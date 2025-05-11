@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { RealtimeContextType, RealtimeData } from "../types/realtime";
 import { API_ROUTE } from "@/config";
 
@@ -14,67 +14,81 @@ export const useRealtime = () => useContext(RealtimeContext);
 export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	const [data, setData] = useState<RealtimeData | null>(null);
 	const [isConnected, setIsConnected] = useState(false);
+	const retryCount = useRef(0);
+	const maxRetries = 5;
 
-	useEffect(() => {
+	const connect = useCallback(() => {
 		const eventSource = new EventSource(`${API_ROUTE}/v2/realtime`);
 
 		eventSource.onopen = () => {
 			setIsConnected(true);
+			retryCount.current = 0; // Reset retry count on successful connection
+		};
+
+		const handleEvent = (event: MessageEvent) => {
+			const parsedData = JSON.parse(event.data);
+
+			switch (event.type) {
+				case "init":
+					setData(parsedData);
+					break;
+				case "location":
+					setData((prevData) => {
+						if (!prevData) return null;
+
+						return {
+							...prevData,
+							location: parsedData,
+						};
+					});
+					break;
+				case "playing":
+					setData((prevData) => {
+						if (!prevData) return null;
+
+						return {
+							...prevData,
+							playing: parsedData,
+						};
+					});
+					break;
+			}
+		};
+
+		eventSource.addEventListener("init", handleEvent);
+		eventSource.addEventListener("location", handleEvent);
+		eventSource.addEventListener("playing", handleEvent);
+
+		const close = () => {
+			eventSource.close();
+			eventSource.removeEventListener("init", handleEvent);
+			eventSource.removeEventListener("location", handleEvent);
+			eventSource.removeEventListener("playing", handleEvent);
 		};
 
 		eventSource.onerror = (event) => {
 			console.error("EventSource error:", event);
 			setIsConnected(false);
+			close();
+
+			// Implement exponential backoff
+			if (retryCount.current < maxRetries) {
+				const timeout = Math.min(1000 * Math.pow(2, retryCount.current), 30000); // Max 30 seconds
+				setTimeout(() => {
+					retryCount.current++;
+					connect();
+				}, timeout);
+			}
 		};
-
-		eventSource.addEventListener("init", (event) => {
-			try {
-				const parsedData = JSON.parse(event.data) as RealtimeData;
-				setData(parsedData);
-			} catch (err) {
-				console.error("Error parsing init event:", err);
-			}
-		});
-
-		eventSource.addEventListener("location", (event) => {
-			try {
-				const parsedData = JSON.parse(event.data) as RealtimeData["location"];
-
-				setData((prevData) => {
-					if (!prevData) return null;
-
-					return {
-						...prevData,
-						location: parsedData,
-					};
-				});
-			} catch (err) {
-				console.error("Error parsing location event:", err);
-			}
-		});
-
-		eventSource.addEventListener("playing", (event) => {
-			try {
-				const parsedData = JSON.parse(event.data) as RealtimeData["playing"];
-
-				setData((prevData) => {
-					if (!prevData) return null;
-
-					return {
-						...prevData,
-						playing: parsedData,
-					};
-				});
-			} catch (err) {
-				console.error("Error parsing playing event:", err);
-			}
-		});
 
 		return () => {
-			eventSource.close();
+			close();
+
 			setIsConnected(false);
 		};
-	}, []);
+	}, [setData, setIsConnected]);
+
+	useEffect(connect, [connect]);
 
 	return <RealtimeContext.Provider value={{ data, isConnected }}>{children}</RealtimeContext.Provider>;
 };
