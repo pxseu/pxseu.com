@@ -4,6 +4,8 @@ import Link from "next/link";
 import Quote from "./quotes";
 import Logo from "./logo";
 import Location from "./location";
+import Playing from "./playing";
+
 export default function Header() {
 	return (
 		<header className="w-full mb-12">
@@ -35,7 +37,7 @@ export default function Header() {
 			</nav>
 
 			<div className="text-center">
-				<h1 className="flex justify-center items-center mb-4">
+				<h1 className="flex justify-center items-center mb-6">
 					<Logo />
 				</h1>
 				<p className="mt-2 text-muted-foreground text-lg sm:text-xl">
@@ -45,6 +47,7 @@ export default function Header() {
 				</p>
 				<Location />
 				<Quote />
+				<Playing />
 			</div>
 		</header>
 	);

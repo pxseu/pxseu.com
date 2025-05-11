@@ -18,6 +18,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<head>
+				<link rel="preconnect" href="https://api.pxseu.com" />
+			</head>
 			<body className="flex justify-center bg-zinc-950 text-zinc-400 h-full p-6">
 				<div className="flex justify-center items-center max-w-[900px] w-full flex-col">
 					<RealtimeProvider>
