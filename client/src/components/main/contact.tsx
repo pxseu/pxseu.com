@@ -17,11 +17,11 @@ export default function Contact({ items }: ContactsProps): JSX.Element {
 				<a
 					key={item.label}
 					href={item.link}
-					className="flex flex-col items-start border border-zinc-700 p-4 shadow-sm text-zinc-100 hover:shadow-md transition"
+					className="flex flex-col items-start border border-zinc-700 p-4 shadow-sm text-zinc-300 hover:shadow-md transition"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<strong className="text-zinc-50">{item.label}</strong>
+					<strong>{item.label}</strong>
 					<span className="text-blue-400 underline">{item.display}</span>
 				</a>
 			))}

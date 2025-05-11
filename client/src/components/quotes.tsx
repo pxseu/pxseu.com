@@ -8,7 +8,8 @@ const quotes = [
 	"“Youth is happy because it has the capacity to see beauty. Anyone who keeps the ability to see beauty never grows old.” — Franz Kafka",
 	"“In the fight between you and the world, back the world.” — Franz Kafka",
 	"“I am a cage, in search of a bird.” — Franz Kafka",
-	"“Don’t bend; don’t water it down; don’t try to make it logical; don’t edit your own soul according to the fashion. Rather, follow your most intense obsessions mercilessly.” — Franz Kafka",
+	// temp remove as too long
+	// "“Don’t bend; don’t water it down; don’t try to make it logical; don’t edit your own soul according to the fashion. Rather, follow your most intense obsessions mercilessly.” — Franz Kafka",
 	"“A book must be the axe for the frozen sea within us.” — Franz Kafka",
 
 	// Friedrich Nietzsche
@@ -73,20 +74,30 @@ function getSecureRandomIndex(max: number): number {
 }
 
 export default function Quote() {
-	const [quote, setQuote] = useState<string>("");
+	const [quote, setQuote] = useState<string>("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+	const [visible, setVisible] = useState(false);
 
 	useEffect(() => {
+		let mounted = true;
+
 		const index = getSecureRandomIndex(quotes.length);
 		setQuote(quotes[index]);
+		setTimeout(() => mounted && setVisible(true), 10);
+
+		return () => {
+			mounted = false;
+		};
 	}, []);
 
-	if (!quote) {
-		return (
-			<p className="mt-4 italic text-sm text-muted-foreground">
-				<span className="w-1/2 h-3 bg-zinc-800 animate-pulse inline-block"></span>
+	return (
+		<div className="min-h-[1.5rem]">
+			<p
+				className={`mt-2 italic text-sm text-muted-foreground transition-all duration-500 ease-out ${
+					visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+				}`}
+			>
+				{quote}
 			</p>
-		);
-	}
-
-	return <p className="mt-4 italic text-sm text-muted-foreground">{quote}</p>;
+		</div>
+	);
 }

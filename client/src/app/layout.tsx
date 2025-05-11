@@ -2,6 +2,8 @@ import Header from "@/components/header";
 import "../styles/globals.css";
 import Footer from "@/components/footer";
 import { Metadata } from "next";
+import { RealtimeProvider } from "@/contexts/RealtimeContext";
+import ReactLenis from "lenis/react";
 
 export const metadata: Metadata = {
 	title: "pxseu.com",
@@ -16,11 +18,15 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className="flex justify-center bg-zinc-900 text-zinc-100 h-full p-6">
+			<body className="flex justify-center bg-zinc-950 text-zinc-400 h-full p-6">
 				<div className="flex justify-center items-center max-w-[900px] w-full flex-col">
-					<Header />
-					{children}
-					<Footer />
+					<RealtimeProvider>
+						<ReactLenis root options={{ smoothWheel: true, lerp: 0.2 }}>
+							<Header />
+							{children}
+							<Footer />
+						</ReactLenis>
+					</RealtimeProvider>
 				</div>
 			</body>
 		</html>

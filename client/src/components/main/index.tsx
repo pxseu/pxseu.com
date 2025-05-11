@@ -15,47 +15,44 @@ export default function Main({}: Props) {
 			{/* ABOUT ME */}
 			<Container title="About Me" id="intro">
 				<p>
-					Hi there! I&apos;m Kuba, but online I go by <strong className="text-zinc-50">pxseu</strong>.
-					I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} /> years old, and I&apos;ve been in software
-					development for <Timed timestamp={CODING_START_TIMESTAMP} /> years. My main focus is on creating
-					systems that are stable, maintainable, and thoughtfully designed, with a strong emphasis on
-					long-term usability.
+					Hey, I’m Kuba — online I go by <strong className="text-zinc-50">pxseu</strong>. I’m{" "}
+					<Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" /> and have been writing code for{" "}
+					<Timed timestamp={CODING_START_TIMESTAMP} label="years" />. I care about building systems that don’t
+					fall apart: clean, maintainable, and structured in a way that actually makes sense.
 				</p>
 
-				<p className="mt-4 text-zinc-300">
-					I specialize in <strong>backend systems</strong> and internal tools that aim to be structured and
-					robust. For me, clean code, clarity in structure, and ensuring the system is easy to maintain for
-					years to come are non-negotiable.
+				<p className="mt-4">
+					My thing is backend systems and internal tools — the kind of work that’s rarely flashy, but
+					absolutely essential. I like clarity, reliability, and the feeling of leaving something better than
+					I found it. If it can last years without turning into a mess, I’ve done my job right.
 				</p>
 
-				<p className="mt-4 text-zinc-300">
-					When I&apos;m not coding, you&apos;ll often find me immersed in tech videos, exploring new trends
-					online, or going down interesting rabbit holes just because something piqued my curiosity. I&apos;ve
-					always been drawn to things that are well-crafted — whether that&apos;s software, design, or ideas.
+				<p className="mt-4">
+					I’m naturally curious — sometimes annoyingly so. I end up in weird internet corners, digging into
+					obscure protocols, vintage tech, or whatever random detail catches my brain that week. I don’t chase
+					trends much; I just follow the “wait, that’s interesting” moments wherever they go.
 				</p>
 
-				<p className="mt-4 text-zinc-300">
-					I value reliability and consistency, and I strive to be someone others can count on. It&apos;s not
-					about the praise — it&apos;s just that following through feels right to me, especially with the
-					little things that can make a big difference.
+				<p className="mt-4">
+					Outside of code, I’m into cars and overly specific gadgets that serve one purpose perfectly. I like
+					things that are well-built, well-designed, and a little bit unnecessary — but in a good way.
 				</p>
 
-				<p className="mt-4 text-zinc-300">
-					Outside of tech, I have a few quirky hobbies — LEGO, anime figures, and oddly specific gadgets that
-					just feel fun to have. Little things that often don&apos;t make sense to buy, but bring me joy in
-					their simplicity and craftsmanship.
+				<p className="mt-4">
+					Every now and then, I also dabble in content creation — making videos, sharing projects, or
+					documenting random experiments. It’s a fun creative outlet and a good way to stay inspired outside
+					of the usual routine.
 				</p>
 
-				<p className="mt-4 text-zinc-300">
-					I&apos;m still figuring things out, and I&apos;m okay with that. I like to experiment, learn from
-					mistakes, and keep iterating until things click. It&apos;s all part of the process, and I&apos;m
-					always moving forward.
+				<p className="mt-4">
+					I don’t pretend to have it all figured out. I build, I break things, I adjust. That process — of
+					iterating until something feels right — is where I do my best work.
 				</p>
 			</Container>
 
 			{/* SKILLS */}
 			<Container title="Skills" id="skills">
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-zinc-300">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<Skill
 						category="Back-end"
 						skills={["Node.js", "Fastify", "PostgreSQL", "Redis", "REST", "WebSocket"]}
@@ -105,7 +102,7 @@ export default function Main({}: Props) {
 
 			{/* CONTACT */}
 			<Container title="Contact" id="contact">
-				<p className="text-zinc-300 mb-4">Feel free to reach out through any of the platforms below:</p>
+				<p className="mb-4">Feel free to reach out through any of the platforms below:</p>
 
 				<Contact
 					items={[
@@ -115,9 +112,9 @@ export default function Main({}: Props) {
 							display: "pxseu.com",
 						},
 						{
-							label: "Email",
-							link: "mailto:me@pxseu.com",
-							display: "me@pxseu.com",
+							label: "TikTok",
+							link: "https://tiktok.com/@pxseu",
+							display: "@pxseu",
 						},
 						{
 							label: "GitHub",
