@@ -18,7 +18,15 @@ export default function Location() {
 					isConnected && data?.location ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
 				}`}
 			>
-				Currently in {location}
+				Currently in{" "}
+				<a
+					className="text-brand-500 underline"
+					href={`https://maps.apple.com/?q=${location}`}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					{location}
+				</a>
 			</p>
 		</div>
 	);

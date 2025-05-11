@@ -4,6 +4,7 @@ import Footer from "@/components/footer";
 import { Metadata } from "next";
 import { RealtimeProvider } from "@/contexts/RealtimeContext";
 import ReactLenis from "lenis/react";
+import { API_ROUTE } from "@/config";
 
 export const metadata: Metadata = {
 	title: "pxseu.com",
@@ -19,7 +20,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
-				<link rel="preconnect" href="https://api.pxseu.com" />
+				<link rel="preconnect" href={API_ROUTE} />
+				<link rel="preconnect" href="https://i.scdn.co" />
 			</head>
 			<body className="flex justify-center bg-zinc-950 text-zinc-400 h-full p-6">
 				<div className="flex justify-center items-center max-w-[900px] w-full flex-col">

@@ -38,7 +38,9 @@ export default function Playing() {
 						<img
 							src={data.playing.album.image}
 							alt={data.playing.album.name}
-							className="h-16 rounded-md flex-shrink-0 aspect-square"
+							className="rounded-md flex-shrink-0 aspect-square"
+							width={64}
+							height={64}
 						/>
 
 						<div className="w-0 group-hover:w-[400px] flex-1 min-w-0 transition-[width] duration-300 ease-in-out">

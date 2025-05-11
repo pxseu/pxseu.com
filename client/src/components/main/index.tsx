@@ -15,38 +15,41 @@ export default function Main({}: Props) {
 			{/* ABOUT ME */}
 			<Container title="About Me" id="intro">
 				<p>
-					Hey, I’m Kuba — online I go by <strong className="text-zinc-50">pxseu</strong>. I’m{" "}
-					<Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" /> and have been writing code for{" "}
-					<Timed timestamp={CODING_START_TIMESTAMP} label="years" />. I care about building systems that don’t
-					fall apart: clean, maintainable, and structured in a way that actually makes sense.
+					Hey, I&apos;m Kuba — online I go by{" "}
+					<strong className="bg-gradient-to-r from-brand-100 to-brand-900 bg-clip-text text-transparent">
+						pxseu
+					</strong>
+					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" /> and have been writing code for{" "}
+					<Timed timestamp={CODING_START_TIMESTAMP} label="years" />. I care about building systems that
+					don&apos;t fall apart: clean, maintainable, and structured in a way that actually makes sense.
 				</p>
-
 				<p className="mt-4">
-					My thing is backend systems and internal tools — the kind of work that’s rarely flashy, but
+					My thing is backend systems and internal tools — the kind of work that&apos;s rarely flashy, but
 					absolutely essential. I like clarity, reliability, and the feeling of leaving something better than
-					I found it. If it can last years without turning into a mess, I’ve done my job right.
+					I found it. If it can last years without turning into a mess, I&apos;ve done my job right.
 				</p>
 
 				<p className="mt-4">
-					I’m naturally curious — sometimes annoyingly so. I end up in weird internet corners, digging into
-					obscure protocols, vintage tech, or whatever random detail catches my brain that week. I don’t chase
-					trends much; I just follow the “wait, that’s interesting” moments wherever they go.
+					I&apos;m naturally curious — sometimes annoyingly so. I end up in weird internet corners, digging
+					into obscure protocols, vintage tech, or whatever random detail catches my brain that week. I
+					don&apos;t chase trends much; I just follow the &quot;wait, that&apos;s interesting&quot; moments
+					wherever they go.
 				</p>
 
 				<p className="mt-4">
-					Outside of code, I’m into cars and overly specific gadgets that serve one purpose perfectly. I like
-					things that are well-built, well-designed, and a little bit unnecessary — but in a good way.
+					Outside of code, I&apos;m into cars and overly specific gadgets that serve one purpose perfectly. I
+					like things that are well-built, well-designed, and a little bit unnecessary — but in a good way.
 				</p>
 
 				<p className="mt-4">
 					Every now and then, I also dabble in content creation — making videos, sharing projects, or
-					documenting random experiments. It’s a fun creative outlet and a good way to stay inspired outside
-					of the usual routine.
+					documenting random experiments. It&apos;s a fun creative outlet and a good way to stay inspired
+					outside of the usual routine.
 				</p>
 
 				<p className="mt-4">
-					I don’t pretend to have it all figured out. I build, I break things, I adjust. That process — of
-					iterating until something feels right — is where I do my best work.
+					I don&apos;t pretend to have it all figured out. I build, I break things, I adjust. That process —
+					of iterating until something feels right — is where I do my best work.
 				</p>
 			</Container>
 
