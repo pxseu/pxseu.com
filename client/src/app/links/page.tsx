@@ -1,6 +1,6 @@
 import LinkItem from "@/components/link";
 import type { Metadata } from "next";
-import { FaEnvelope, FaGithub, FaSpotify, FaTiktok, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaDiscord, FaEnvelope, FaGithub, FaSpotify, FaTiktok, FaTwitch, FaTwitter, FaYoutube } from "react-icons/fa";
 
 export const metadata: Metadata = {
 	description: "A collection of my links",
@@ -22,7 +22,13 @@ export default function Links() {
 						icon={<FaGithub />}
 						displayName="GitHub"
 						link="https://github.com/pxseu"
-						color="text-purple-400"
+						color="text-gray-400"
+					/>
+					<LinkItem
+						icon={<FaDiscord />}
+						displayName="Discord"
+						link="https://discord.com/users/338718840873811979"
+						color="text-blue-400"
 					/>
 				</div>
 			</div>
@@ -53,6 +59,12 @@ export default function Links() {
 						displayName="Spotify"
 						link="https://open.spotify.com/user/1evum6fq9klvekqjbz4cu5v79"
 						color="text-green-400"
+					/>
+					<LinkItem
+						icon={<FaTwitch />}
+						displayName="Twitch"
+						link="https://twitch.tv/pxseu"
+						color="text-purple-400"
 					/>
 				</div>
 			</div>
