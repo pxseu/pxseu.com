@@ -15,4 +15,9 @@ export const config = envsafe({
 	LOCATION_SECRET: str({
 		default: "sigmaSigmaSigma",
 	}),
+	WEBHOOK_MESSAGE_ID: str(),
+	WEBHOOK_MESSAGE_TOKEN: str(),
+	WEBHOOK_AVATAR: url({
+		default: "https://cdn.pxseu.com/Nc4z2WvoV.png",
+	}),
 });
