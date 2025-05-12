@@ -66,8 +66,7 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 			eventSource.removeEventListener("playing", handleEvent);
 		};
 
-		eventSource.onerror = (event) => {
-			console.error("EventSource error:", event);
+		eventSource.onerror = () => {
 			setIsConnected(false);
 			close();
 

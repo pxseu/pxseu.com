@@ -73,7 +73,7 @@ export default function Main({}: Props) {
 								"Led the consolidation of two separate services into a unified platform, focusing on open banking and e-commerce integrations. Created common schemas and improved the overall developer experience. Worked on integrating various services including Stripe, Google, and other payment providers.",
 						},
 						{
-							title: "Backend Developer",
+							title: "Product Engineer",
 							company: "Hop",
 							period: "2022 - 2024",
 							description:
