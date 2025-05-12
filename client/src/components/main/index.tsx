@@ -67,14 +67,14 @@ export default function Main({}: Props) {
 						},
 						{
 							title: "Backend Developer",
-							company: "Incard",
+							company: "Incard Ltd.",
 							period: "2024 - 2025",
 							description:
 								"Led the consolidation of two separate services into a unified platform, focusing on open banking and e-commerce integrations. Created common schemas and improved the overall developer experience. Worked on integrating various services including Stripe, Google, and other payment providers.",
 						},
 						{
 							title: "Product Engineer",
-							company: "Hop",
+							company: "Hop Inc.",
 							period: "2022 - 2024",
 							description:
 								"Led the development of Hop's CLI tool, creating a seamless deployment experience with `hop deploy`. Built the first tool that automated the entire deployment process, making it effortless for users. Managed and reviewed internal services while serving as the primary developer for the CLI, which served as a replacement for the web frontend.",
@@ -152,9 +152,9 @@ export default function Main({}: Props) {
 							display: "pxseu.com",
 						},
 						{
-							label: "TikTok",
-							link: "https://tiktok.com/@pxseu",
-							display: "@pxseu",
+							label: "Email",
+							link: "mailto:kuba@pxseu.com",
+							display: "kuba@pxseu.com",
 						},
 						{
 							label: "GitHub",
