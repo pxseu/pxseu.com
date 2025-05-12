@@ -1,0 +1,45 @@
+import { KaitoError } from "@kaito-http/core";
+import { Redis } from "ioredis";
+
+interface RateLimitOptions {
+	windowMs: number;
+	max: number;
+	keyPrefix?: string;
+}
+
+export const createRateLimiter = (options: RateLimitOptions) => {
+	const keyPrefix = options.keyPrefix || "rate-limit:";
+
+	return async (redis: Redis, ip: string, resource: string = "default") => {
+		const key = `${keyPrefix}${resource}:${ip}`;
+
+		const current = await redis.get(key);
+		const count = current ? parseInt(current, 10) : 0;
+
+		if (count >= options.max) {
+			// // Calculate remaining time
+			// const ttl = await redis.ttl(key);
+			// const resetTime = new Date(Date.now() + (ttl > 0 ? ttl * 1000 : 0));
+
+			// const headers = {
+			// 	"Retry-After": Math.ceil(ttl > 0 ? ttl : options.windowMs / 1000).toString(),
+			// 	"X-RateLimit-Limit": options.max.toString(),
+			// 	"X-RateLimit-Remaining": "0",
+			// 	"X-RateLimit-Reset": Math.ceil(resetTime.getTime() / 1000).toString(),
+			// };
+
+			throw new KaitoError(429, "Too Many Requests");
+		}
+
+		if (!current) {
+			await redis.set(key, 1, "EX", Math.ceil(options.windowMs / 1000));
+		} else {
+			await redis.incr(key);
+		}
+
+		// Set expiry if it's a new key
+		if (count === 0) {
+			await redis.expire(key, Math.ceil(options.windowMs / 1000));
+		}
+	};
+};
