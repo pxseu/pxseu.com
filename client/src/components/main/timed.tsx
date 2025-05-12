@@ -1,7 +1,7 @@
 "use client";
 
 import { useFloating, offset, useHover, useInteractions } from "@floating-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTimePassed } from "@/hooks/useTimePassed";
 
 type TimedProps = {
@@ -23,7 +23,7 @@ function Tooltip({ children, content }: { children: React.ReactNode; content: st
 	const hover = useHover(context);
 	const { getReferenceProps, getFloatingProps } = useInteractions([hover]);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (open) {
 			setShouldRender(true);
 		} else {
