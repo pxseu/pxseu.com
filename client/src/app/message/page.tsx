@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import MessageForm from "@/components/MessageForm";
 
 export const metadata: Metadata = {
 	title: "pxseu.com",
@@ -6,6 +7,10 @@ export const metadata: Metadata = {
 	keywords: ["pxseu", "message", "contact"],
 };
 
-export default function Links() {
-	return <p>message test lol </p>;
+export default function MessagePage() {
+	return (
+		<div className="flex flex-col items-center w-full px-4 py-8">
+			<MessageForm />
+		</div>
+	);
 }

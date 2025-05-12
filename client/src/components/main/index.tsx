@@ -1,6 +1,7 @@
 import { BIRTHDAY_TIMESTAMP, CODING_START_TIMESTAMP } from "@/config";
 import Container from "@/components/container";
 import { Timed } from "@/components/main/timed";
+import Link from "next/link";
 import ProjectCard from "./project-card";
 import Skill from "./skill";
 import Contact from "./contact";
@@ -168,6 +169,17 @@ export default function Main({}: Props) {
 						},
 					]}
 				/>
+
+				<div className="mt-4 text-center text-zinc-400">- or simply -</div>
+
+				<div className="mt-4 w-full">
+					<Link
+						href="/message"
+						className="flex flex-col items-center border border-zinc-700 px-6 py-4 shadow-sm text-zinc-300 hover:shadow-md transition hover:bg-zinc-800/40"
+					>
+						<strong>Message Me</strong>
+					</Link>
+				</div>
 			</Container>
 		</main>
 	);
