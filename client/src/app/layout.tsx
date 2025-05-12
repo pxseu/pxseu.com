@@ -1,7 +1,7 @@
 import Header from "@/components/header";
 import "../styles/globals.css";
 import Footer from "@/components/footer";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { RealtimeProvider } from "@/contexts/RealtimeContext";
 import ReactLenis from "lenis/react";
 import { API_ROUTE } from "@/config";
@@ -9,6 +9,10 @@ import { API_ROUTE } from "@/config";
 const THEME_COLOR = "#8066F7";
 const ASSET_VERSION = "3.0";
 const description = "pxseu's personal website";
+
+export const viewport: Viewport = {
+	themeColor: THEME_COLOR,
+};
 
 export const metadata: Metadata = {
 	title: "pxseu.com",
@@ -30,7 +34,6 @@ export const metadata: Metadata = {
 		apple: { url: `/apple-touch-icon.png?v=${ASSET_VERSION}`, sizes: "180x180", type: "image/png" },
 		other: [{ url: `/safari-pinned-tab.svg?v=${ASSET_VERSION}`, rel: "mask-icon", color: THEME_COLOR }],
 	},
-	themeColor: THEME_COLOR,
 	openGraph: {
 		url: "https://pxseu.com",
 		type: "website",
