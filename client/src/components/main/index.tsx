@@ -4,6 +4,7 @@ import { Timed } from "@/components/main/timed";
 import ProjectCard from "./project-card";
 import Skill from "./skill";
 import Contact from "./contact";
+import Experience from "./experience";
 
 interface Props {
 	content: string[];
@@ -51,6 +52,42 @@ export default function Main({}: Props) {
 					I don&apos;t pretend to have it all figured out. I build, I break things, I adjust. That process —
 					of iterating until something feels right — is where I do my best work.
 				</p>
+			</Container>
+
+			{/* EXPERIENCE */}
+			<Container title="Experience" id="experience">
+				<Experience
+					items={[
+						{
+							title: "Full Stack Developer",
+							company: "Freelance",
+							period: "2025 - Present",
+							description:
+								"Developing a Linktree-like service focused on physical NFC cards, allowing users to share their digital presence through physical cards. Maintaining and improving open source projects, including a Redis clone written in Rust. Ensuring stability and security across all projects while contributing to the OSS ecosystem. Mentoring university students by providing guidance, tips, and advice on their programming projects.",
+						},
+						{
+							title: "Backend Developer",
+							company: "Incard",
+							period: "2024 - 2025",
+							description:
+								"Led the consolidation of two separate services into a unified platform, focusing on open banking and e-commerce integrations. Created common schemas and improved the overall developer experience. Worked on integrating various services including Stripe, Google, and other payment providers.",
+						},
+						{
+							title: "Backend Developer",
+							company: "Hop",
+							period: "2022 - 2024",
+							description:
+								"Led the development of Hop's CLI tool, creating a seamless deployment experience with `hop deploy`. Built the first tool that automated the entire deployment process, making it effortless for users. Managed and reviewed internal services while serving as the primary developer for the CLI, which served as a replacement for the web frontend.",
+						},
+						{
+							title: "Full Stack Developer",
+							company: "Freelance",
+							period: "2020 - 2022",
+							description:
+								"Contributed to various open source projects, with a focus on PreMiD. Worked on localizations, improvements, and features for projects I used and enjoyed. Maintained a strong presence in the open source community through meaningful contributions.",
+						},
+					]}
+				/>
 			</Container>
 
 			{/* SKILLS */}
