@@ -46,7 +46,7 @@ function Tooltip({ children, content }: { children: React.ReactNode; content: st
 					ref={refs.setFloating}
 					style={floatingStyles}
 					{...getFloatingProps()}
-					className={`z-50 bg-zinc-900 text-white text-xs px-2 py-1 rounded font-mono shadow-lg transition-opacity duration-350 ${
+					className={`z-50 bg-zinc-900 text-white text-sm px-2 py-1 rounded font-mono shadow-lg transition-opacity duration-350 ${
 						open ? "opacity-100" : "opacity-0"
 					}`}
 				>
