@@ -1,48 +1,69 @@
 "use client";
 
+import { useFloating, offset, useHover, useInteractions } from "@floating-ui/react";
+import React, { useState } from "react";
 import { useTimePassed } from "@/hooks/useTimePassed";
-import React, { JSX, useEffect, useRef, useState } from "react";
 
-type TitleProps = {
+type TimedProps = {
 	timestamp: number;
 	label?: string;
 };
 
-export function Timed({ timestamp, label }: TitleProps): JSX.Element {
-	const [mounted, setMounted] = useState(false);
-	const [hovered, setHovered] = useState(false);
-	const ref = useRef<HTMLSpanElement>(null);
-	const time = useTimePassed(timestamp);
+function Tooltip({ children, content }: { children: React.ReactNode; content: string }) {
+	const [open, setOpen] = useState(false);
+	const [shouldRender, setShouldRender] = useState(false);
 
-	useEffect(() => {
-		setMounted(true);
+	const { refs, floatingStyles, context } = useFloating({
+		open,
+		onOpenChange: setOpen,
+		middleware: [offset(8)],
+		placement: "top",
+	});
 
-		const handleMouseEnter = () => setHovered(true);
-		const handleMouseLeave = () => setHovered(false);
+	const hover = useHover(context);
+	const { getReferenceProps, getFloatingProps } = useInteractions([hover]);
 
-		const node = ref.current;
-
-		if (node) {
-			node.addEventListener("mouseenter", handleMouseEnter);
-			node.addEventListener("mouseleave", handleMouseLeave);
+	React.useEffect(() => {
+		if (open) {
+			setShouldRender(true);
+		} else {
+			const timeout = setTimeout(() => setShouldRender(false), 350); // match transition duration
+			return () => clearTimeout(timeout);
 		}
-
-		return () => {
-			if (node) {
-				node.removeEventListener("mouseenter", handleMouseEnter);
-				node.removeEventListener("mouseleave", handleMouseLeave);
-			}
-		};
-	}, []);
+	}, [open]);
 
 	return (
-		<span className="relative inline-block group underline decoration-dotted" ref={ref}>
-			{Math.floor(time)} {label}
-			{mounted && hovered && (
-				<span className="absolute bottom-full left-1/2 -translate-x-1/2 px-3 py-2 bg-zinc-900 text-zinc-300 text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap font-mono">
-					{time.toPrecision(20)}
-				</span>
+		<>
+			<span
+				ref={refs.setReference}
+				{...getReferenceProps()}
+				className="relative inline-block group underline decoration-dotted"
+			>
+				{children}
+			</span>
+			{shouldRender && (
+				<div
+					ref={refs.setFloating}
+					style={floatingStyles}
+					{...getFloatingProps()}
+					className={`z-50 bg-zinc-900 text-white text-xs px-2 py-1 rounded font-mono shadow-lg transition-opacity duration-350 ${
+						open ? "opacity-100" : "opacity-0"
+					}`}
+				>
+					{content}
+					<div className="absolute left-1/2 -bottom-1.5 transform -translate-x-1/2 w-2 h-2 bg-zinc-900 rotate-45" />
+				</div>
 			)}
-		</span>
+		</>
+	);
+}
+
+export function Timed({ timestamp, label }: TimedProps) {
+	const time = useTimePassed(timestamp);
+
+	return (
+		<Tooltip content={time.toPrecision(20)}>
+			{Math.floor(time)} {label}
+		</Tooltip>
 	);
 }

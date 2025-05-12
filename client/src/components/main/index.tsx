@@ -15,7 +15,7 @@ export default function Main({}: Props) {
 		<main className="flex flex-col w-full">
 			{/* ABOUT ME */}
 			<Container title="About Me" id="intro">
-				<p>
+				<div>
 					Hey, I&apos;m Kuba — online I go by{" "}
 					<strong className="bg-gradient-to-r from-brand-100 to-brand-900 bg-clip-text text-transparent">
 						pxseu
@@ -23,35 +23,35 @@ export default function Main({}: Props) {
 					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" /> and have been writing code for{" "}
 					<Timed timestamp={CODING_START_TIMESTAMP} label="years" />. I care about building systems that
 					don&apos;t fall apart: clean, maintainable, and structured in a way that actually makes sense.
-				</p>
-				<p className="mt-4">
+				</div>
+				<div className="mt-4">
 					My thing is backend systems and internal tools — the kind of work that&apos;s rarely flashy, but
 					absolutely essential. I like clarity, reliability, and the feeling of leaving something better than
 					I found it. If it can last years without turning into a mess, I&apos;ve done my job right.
-				</p>
+				</div>
 
-				<p className="mt-4">
+				<div className="mt-4">
 					I&apos;m naturally curious — sometimes annoyingly so. I end up in weird internet corners, digging
 					into obscure protocols, vintage tech, or whatever random detail catches my brain that week. I
 					don&apos;t chase trends much; I just follow the &quot;wait, that&apos;s interesting&quot; moments
 					wherever they go.
-				</p>
+				</div>
 
-				<p className="mt-4">
+				<div className="mt-4">
 					Outside of code, I&apos;m into cars and overly specific gadgets that serve one purpose perfectly. I
 					like things that are well-built, well-designed, and a little bit unnecessary — but in a good way.
-				</p>
+				</div>
 
-				<p className="mt-4">
+				<div className="mt-4">
 					Every now and then, I also dabble in content creation — making videos, sharing projects, or
 					documenting random experiments. It&apos;s a fun creative outlet and a good way to stay inspired
 					outside of the usual routine.
-				</p>
+				</div>
 
-				<p className="mt-4">
+				<div className="mt-4">
 					I don&apos;t pretend to have it all figured out. I build, I break things, I adjust. That process —
 					of iterating until something feels right — is where I do my best work.
-				</p>
+				</div>
 			</Container>
 
 			{/* EXPERIENCE */}
