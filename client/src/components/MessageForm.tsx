@@ -144,7 +144,7 @@ export default function MessageForm() {
 						type="text"
 						value={name}
 						onChange={(e) => dispatch({ type: "SET_NAME", payload: e.target.value })}
-						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-none"
+						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-hidden"
 						placeholder="Anonymous"
 					/>
 				</div>
@@ -157,7 +157,7 @@ export default function MessageForm() {
 						id="content"
 						value={content}
 						onChange={(e) => dispatch({ type: "SET_CONTENT", payload: e.target.value })}
-						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-none"
+						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-hidden"
 						rows={4}
 						required
 					/>
@@ -172,7 +172,7 @@ export default function MessageForm() {
 						type="url"
 						value={attachment}
 						onChange={(e) => dispatch({ type: "SET_ATTACHMENT", payload: e.target.value })}
-						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-none"
+						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-hidden"
 						placeholder="https://example.com/image.png"
 					/>
 				</div>

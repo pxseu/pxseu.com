@@ -6,7 +6,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ url, name, description }: ProjectCardProps) {
 	return (
-		<div className="border border-zinc-700 p-4 shadow-sm">
+		<div className="border border-zinc-700 p-4 shadow-xs">
 			<h3 className="text-lg font-semibold text-zinc-300">{name}</h3>
 			<p className="text-sm mt-2">{description}</p>
 			<a

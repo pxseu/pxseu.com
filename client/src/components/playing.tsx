@@ -38,7 +38,7 @@ export default function Playing() {
 						<img
 							src={data.playing.album.image}
 							alt={data.playing.album.name}
-							className="rounded-md flex-shrink-0 aspect-square"
+							className="rounded-md shrink-0 aspect-square"
 							width={64}
 							height={64}
 						/>

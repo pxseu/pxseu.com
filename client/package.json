@@ -19,14 +19,14 @@
 	"devDependencies": {
 		"@eslint/eslintrc": "^3",
 		"@pxseu/prettier-config": "^1.0.0",
+		"@tailwindcss/postcss": "^4.1.6",
 		"@types/node": "^20",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
-		"autoprefixer": "^10.4.20",
 		"eslint": "^9",
 		"eslint-config-next": "15.1.4",
 		"postcss": "^8.5.1",
-		"tailwindcss": "^3.4.17",
+		"tailwindcss": "^4.1.6",
 		"typescript": "^5"
 	}
 }

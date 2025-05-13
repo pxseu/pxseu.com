@@ -18,7 +18,7 @@ export default function Main({}: Props) {
 			<Container title="About Me" id="intro">
 				<div>
 					Hey, I&apos;m Kuba — online I go by{" "}
-					<strong className="bg-gradient-to-r from-brand-100 to-brand-900 bg-clip-text text-transparent">
+					<strong className="bg-linear-to-r from-brand-100 to-brand-900 bg-clip-text text-transparent">
 						pxseu
 					</strong>
 					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" /> and have been writing code for{" "}
@@ -175,7 +175,7 @@ export default function Main({}: Props) {
 				<div className="mt-4 w-full">
 					<Link
 						href="/message"
-						className="flex flex-col items-center border border-zinc-700 px-6 py-4 shadow-sm text-zinc-300 hover:shadow-md transition hover:bg-zinc-800/40"
+						className="flex flex-col items-center border border-zinc-700 px-6 py-4 shadow-xs text-zinc-300 hover:shadow-md transition hover:bg-zinc-800/40"
 					>
 						<strong>Message Me</strong>
 					</Link>

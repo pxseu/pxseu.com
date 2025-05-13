@@ -17,7 +17,7 @@ export default function Contact({ items }: ContactsProps): JSX.Element {
 				<a
 					key={item.label}
 					href={item.link}
-					className="flex flex-col items-start border border-zinc-700 p-4 shadow-sm text-zinc-300 hover:shadow-md transition hover:bg-zinc-800/40"
+					className="flex flex-col items-start border border-zinc-700 p-4 shadow-xs text-zinc-300 hover:shadow-md transition hover:bg-zinc-800/40"
 					target="_blank"
 					rel="noopener noreferrer"
 				>

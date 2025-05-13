@@ -1,3 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+	--color-brand-100: #00ccff;
+	--color-brand-500: #8066f7;
+	--color-brand-900: #ff00ee;
+
+	--color-border-100: rgb(47, 51, 54);
+}
