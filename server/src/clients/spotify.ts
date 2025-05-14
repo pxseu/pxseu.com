@@ -4,6 +4,7 @@ import { fetch } from "./fetch.js";
 export const REDIS_SPOTIFY_REFRESH_TOKEN = "spotify:refresh_token";
 export const REDIS_SPOTIFY_ACCESS_TOKEN = "spotify:access_token";
 export const REDIS_LAST_UPDATE_ON = "spotify:last_update_on";
+export const REDIS_SPOTIFY_TOP_ARTISTS = "spotify:top_artists";
 
 export interface ExternalIds {
 	isrc: string;
@@ -89,6 +90,15 @@ export interface Disallows {
 	pausing: boolean;
 }
 
+export interface TopArtist extends Artist {
+	followers: Followers;
+	genres: string[];
+	images: Image[];
+	popularity: number;
+}
+
+export type TimeRange = "short_term" | "medium_term" | "long_term";
+
 export default class SpotifyClient {
 	private basicAuth: string;
 
@@ -129,6 +139,7 @@ export default class SpotifyClient {
 				"user-read-email",
 				"user-read-playback-state",
 				"user-modify-playback-state",
+				"user-top-read",
 			].join(" "),
 		});
 
@@ -225,5 +236,40 @@ export default class SpotifyClient {
 		if (!parsed.is_playing) return null;
 
 		return parsed;
+	}
+
+	async getMyTopArtists(accessToken: string, timeRange: TimeRange = "medium_term", limit: number = 10) {
+		const response = await fetch(
+			`https://api.spotify.com/v1/me/top/artists?time_range=${timeRange}&limit=${limit}`,
+			{
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			},
+		);
+
+		if (!response.ok) {
+			throw new Error(`Failed to fetch top artists: ${response.statusText}`);
+		}
+
+		const data = (await response.json()) as {
+			items: TopArtist[];
+			total: number;
+			limit: number;
+			offset: number;
+			href: string;
+			next: string | null;
+			previous: string | null;
+		};
+
+		return data;
+	}
+
+	async formatTopArtists(artists: TopArtist[]) {
+		return artists.map((artist) => ({
+			id: artist.id,
+			name: artist.name,
+			image: artist.images[0]?.url,
+		}));
 	}
 }
