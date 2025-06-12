@@ -14,6 +14,7 @@ import {
 	FaNpm,
 	FaDocker,
 	FaGitlab,
+	FaPatreon,
 } from "react-icons/fa";
 
 export const metadata: Metadata = {
@@ -24,7 +25,29 @@ export default function Links() {
 	return (
 		<div className="mx-auto px-4 py-8 space-y-10 text-center max-w-lg w-full">
 			<div className="space-y-5">
-				<h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">Business & Work</h2>
+				<h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">
+					Support Me!
+				</h2>
+				<div className="space-y-3">
+					<LinkItem
+						icon={<FaPatreon />}
+						displayName="Patreon"
+						link="https://patreon.com/pxseu"
+						color="text-pink-400"
+					/>
+					<LinkItem
+						icon={<FaGithub />}
+						displayName="GitHub Sponsors"
+						link="https://github.com/sponsors/pxseu"
+						color="text-red-400"
+					/>
+				</div>
+			</div>
+
+			<div className="space-y-5">
+				<h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">
+					Business & Work
+				</h2>
 				<div className="space-y-3">
 					<LinkItem
 						icon={<FaEnvelope />}
@@ -54,7 +77,9 @@ export default function Links() {
 			</div>
 
 			<div className="space-y-5">
-				<h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">Social Media</h2>
+				<h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">
+					Social Media
+				</h2>
 				<div className="space-y-3">
 					<LinkItem
 						icon={<FaTiktok />}
@@ -91,7 +116,9 @@ export default function Links() {
 			</div>
 
 			<div className="space-y-5">
-				<h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">OSS / Community</h2>
+				<h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">
+					OSS / Community
+				</h2>
 				<div className="space-y-3">
 					<LinkItem
 						icon={<FaNpm />}
