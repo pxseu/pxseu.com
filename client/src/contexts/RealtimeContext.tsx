@@ -1,7 +1,15 @@
 "use client";
 
-import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
-import { RealtimeContextType, RealtimeData } from "../types/realtime";
+import type React from "react";
+import {
+	createContext,
+	useCallback,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
+import type { RealtimeContextType, RealtimeData } from "../types/realtime";
 import { API_ROUTE } from "@/config";
 
 const RealtimeContext = createContext<RealtimeContextType>({
@@ -11,7 +19,9 @@ const RealtimeContext = createContext<RealtimeContextType>({
 
 export const useRealtime = () => useContext(RealtimeContext);
 
-export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
+	children,
+}) => {
 	const [data, setData] = useState<RealtimeData | null>(null);
 	const [isConnected, setIsConnected] = useState(false);
 	const retryCount = useRef(0);
@@ -72,7 +82,7 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
 			// Implement exponential backoff
 			if (retryCount.current < maxRetries) {
-				const timeout = Math.min(1000 * Math.pow(2, retryCount.current), 30000); // Max 30 seconds
+				const timeout = Math.min(1000 * 2 ** retryCount.current, 30000); // Max 30 seconds
 				setTimeout(() => {
 					retryCount.current++;
 					connect();
@@ -85,9 +95,14 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
 			setIsConnected(false);
 		};
-	}, [setData, setIsConnected]);
+	}, []);
 
-	useEffect(connect, [connect]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	useEffect(connect, []);
 
-	return <RealtimeContext.Provider value={{ data, isConnected }}>{children}</RealtimeContext.Provider>;
+	return (
+		<RealtimeContext.Provider value={{ data, isConnected }}>
+			{children}
+		</RealtimeContext.Provider>
+	);
 };

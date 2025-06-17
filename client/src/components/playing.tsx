@@ -1,33 +1,50 @@
 "use client";
 
 import { useRealtime } from "@/contexts/RealtimeContext";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useCallback } from "react";
 
 /* eslint-disable @next/next/no-img-element */
 export default function Playing() {
 	const { data, isConnected } = useRealtime();
 	const ref = useRef<HTMLDivElement>(null);
-	const [progress, setProgress] = useState(0);
+	const progressBarRef = useRef<HTMLDivElement>(null);
+	const animationFrameRef = useRef<number>(null);
+
+	const animateProgress = useCallback(() => {
+		if (!data?.playing || !progressBarRef.current) return;
+
+		const start = new Date(data.playing.progress.start).getTime();
+		const end = new Date(data.playing.progress.end).getTime();
+		const now = new Date().getTime();
+		const currentProgress = ((now - start) / (end - start)) * 100;
+		const clampedProgress = Math.min(Math.max(currentProgress, 0), 100);
+
+		// Direct DOM update - no React re-render!
+		progressBarRef.current.style.width = `${clampedProgress}%`;
+
+		// Continue animation if song is still playing
+		if (clampedProgress < 100) {
+			animationFrameRef.current = requestAnimationFrame(animateProgress);
+		}
+	}, [data?.playing]);
 
 	useEffect(() => {
-		if (!isConnected || !data?.playing) return;
+		if (!isConnected || !data?.playing) {
+			if (animationFrameRef.current) {
+				cancelAnimationFrame(animationFrameRef.current);
+			}
+			return;
+		}
 
-		const updateProgress = () => {
-			const start = new Date(data.playing.progress.start).getTime();
-			const end = new Date(data.playing.progress.end).getTime();
-			const now = new Date().getTime();
-			const newProgress = ((now - start) / (end - start)) * 100;
-			setProgress(Math.min(Math.max(newProgress, 0), 100));
+		// Start the animation loop
+		animateProgress();
+
+		return () => {
+			if (animationFrameRef.current) {
+				cancelAnimationFrame(animationFrameRef.current);
+			}
 		};
-
-		// Update immediately
-		updateProgress();
-
-		// Then update every second
-		const interval = setInterval(updateProgress, 10);
-
-		return () => clearInterval(interval);
-	}, [isConnected, data?.playing]);
+	}, [isConnected, data?.playing, animateProgress]);
 
 	return (
 		<>
@@ -55,7 +72,9 @@ export default function Playing() {
 								>
 									{data.playing.song.title}
 								</a>
-								<span className="text-zinc-300 truncate">{data.playing.song.artists}</span>
+								<span className="text-zinc-300 truncate">
+									{data.playing.song.artists}
+								</span>
 								<a
 									href={data.playing.album.url}
 									target="_blank"
@@ -69,9 +88,10 @@ export default function Playing() {
 					</div>
 					<div className="h-1 bg-zinc-700 rounded-full mt-3 w-full transition-all duration-300">
 						<div
-							className="h-full bg-white rounded-full"
+							ref={progressBarRef}
+							className="h-full bg-white rounded-full transition-[width] duration-75 ease-linear"
 							style={{
-								width: `${progress}%`,
+								width: "0%",
 							}}
 						/>
 					</div>

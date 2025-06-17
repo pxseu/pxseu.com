@@ -42,6 +42,15 @@ const quotes = [
 	"“In three words I can sum up everything I’ve learned about life: it goes on.” — Robert Frost",
 	"“Life is what happens when you’re busy making other plans.” — John Lennon",
 
+	// Anime goy slop
+	"“In our society, letting others find out that you’re a nice person is a very risky move.” — Hitagi Senjougahara",
+	"“No matter how much or how often people hurt each other, loving someone is never a waste.” — Nana Osaki",
+	"“No letter that could be sent deserves to go undelivered.” — Violet Evergarden",
+	"“I hope one day, that you’ll be reunited with the one you cherish.” — Isla",
+	"“Sometimes, kindness leads to even greater tragedy.” — Homura Akemi",
+	"“There’s no curse more twisted than love.” — Gojo Satoru",
+	"“A man dies when he is forgotten.” — Dr. Hiluluk",
+
 	// Miscellaneous / existing quotes
 	"“I don’t have all the answers, but I’m always asking the right questions.”",
 	"“The only way to do great work is to love what you do.” — Steve Jobs",
@@ -57,24 +66,36 @@ const quotes = [
 ];
 
 function getSecureRandomIndex(max: number): number {
-	const maxUint32 = 0xffffffff; // 2^32 - 1
+	// Check if WebCrypto API is available
+	if (
+		typeof window !== "undefined" &&
+		window.crypto &&
+		window.crypto.getRandomValues
+	) {
+		const maxUint32 = 0xffffffff; // 2^32 - 1
 
-	while (true) {
-		// Get one 32-bit random number
-		const randomArray = new Uint32Array(1);
-		window.crypto.getRandomValues(randomArray);
+		while (true) {
+			// Get one 32-bit random number
+			const randomArray = new Uint32Array(1);
+			window.crypto.getRandomValues(randomArray);
 
-		const randomValue = randomArray[0];
-		// If randomValue is within a multiple of 'max', use it. Otherwise retry.
-		// This ensures each index has exactly the same chance (no remainder/bias).
-		if (randomValue <= maxUint32 - (maxUint32 % max)) {
-			return randomValue % max;
+			const randomValue = randomArray[0];
+			// If randomValue is within a multiple of 'max', use it. Otherwise retry.
+			// This ensures each index has exactly the same chance (no remainder/bias).
+			if (randomValue <= maxUint32 - (maxUint32 % max)) {
+				return randomValue % max;
+			}
 		}
 	}
+
+	// Fallback to Math.random() if WebCrypto is not available
+	return Math.floor(Math.random() * max);
 }
 
 export default function Quote() {
-	const [quote, setQuote] = useState<string>("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+	const [quote, setQuote] = useState<string>(
+		"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+	);
 	const [visible, setVisible] = useState(false);
 
 	useEffect(() => {
