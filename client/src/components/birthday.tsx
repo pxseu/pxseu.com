@@ -1,13 +1,12 @@
 "use client";
 
 import NextLink from "next/link";
-import React, { type FC } from "react";
 
-const BirthdayNotice: FC = () => {
+export default function BirthdayNotice() {
 	return (
-		<div className="relative w-full py-3 px-4 flex justify-center mb-4">
+		<div className="sticky top-4 z-[213769420] w-full py-3 px-4 flex justify-center mb-4 border-[0.5px] border-border-100">
 			{/* Animated background */}
-			<div className="absolute inset-0 bg-gradient-to-r from-brand-100 to-brand-900 motion-safe:animate-gradient-bg motion-reduce:bg-[length:100%_100%] bg-[length:400%_400%]" />
+			<div className="absolute inset-0 bg-gradient-to-r from-brand-100/70 to-brand-900/70 motion-safe:animate-gradient-bg motion-reduce:bg-[length:100%_100%] bg-[length:400%_400%] backdrop-blur-sm" />
 
 			{/* Content with black text */}
 			<p className="relative z-20 text-center text-lg font-medium text-zinc-950">
@@ -22,6 +21,4 @@ const BirthdayNotice: FC = () => {
 			</p>
 		</div>
 	);
-};
-
-export default BirthdayNotice;
+}
