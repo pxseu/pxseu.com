@@ -6,4 +6,18 @@
 	--color-brand-900: #ff00ee;
 
 	--color-border-100: rgb(47, 51, 54);
+
+	--animate-gradient-bg: gradient-bg 5s ease infinite;
+}
+
+@keyframes gradient-bg {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }

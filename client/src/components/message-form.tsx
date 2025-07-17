@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useReducer } from "react";
+import { type FormEvent, useReducer } from "react";
 import { API_ROUTE } from "@/config";
 
 type FormState = {
@@ -90,7 +90,8 @@ export default function MessageForm() {
 		} catch (error) {
 			dispatch({
 				type: "SUBMIT_ERROR",
-				payload: error instanceof Error ? error.message : "Something went wrong",
+				payload:
+					error instanceof Error ? error.message : "Something went wrong",
 			});
 		}
 	};
@@ -108,7 +109,12 @@ export default function MessageForm() {
 						viewBox="0 0 24 24"
 						xmlns="http://www.w3.org/2000/svg"
 					>
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth={2}
+							d="M5 13l4 4L19 7"
+						/>
 					</svg>
 					Message sent successfully!
 				</div>
@@ -143,7 +149,9 @@ export default function MessageForm() {
 						id="name"
 						type="text"
 						value={name}
-						onChange={(e) => dispatch({ type: "SET_NAME", payload: e.target.value })}
+						onChange={(e) =>
+							dispatch({ type: "SET_NAME", payload: e.target.value })
+						}
 						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-hidden"
 						placeholder="Anonymous"
 					/>
@@ -156,7 +164,9 @@ export default function MessageForm() {
 					<textarea
 						id="content"
 						value={content}
-						onChange={(e) => dispatch({ type: "SET_CONTENT", payload: e.target.value })}
+						onChange={(e) =>
+							dispatch({ type: "SET_CONTENT", payload: e.target.value })
+						}
 						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-hidden"
 						rows={4}
 						required
@@ -171,7 +181,9 @@ export default function MessageForm() {
 						id="attachment"
 						type="url"
 						value={attachment}
-						onChange={(e) => dispatch({ type: "SET_ATTACHMENT", payload: e.target.value })}
+						onChange={(e) =>
+							dispatch({ type: "SET_ATTACHMENT", payload: e.target.value })
+						}
 						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-hidden"
 						placeholder="https://example.com/image.png"
 					/>

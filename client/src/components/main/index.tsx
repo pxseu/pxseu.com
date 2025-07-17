@@ -61,6 +61,13 @@ export default function Main({}: Props) {
 					items={[
 						{
 							title: "Full Stack Developer",
+							company: "c/side",
+							period: "2025 - Present",
+							description:
+								"Working on all aspects of c/side, from backend to frontend and everything in between. Creating simple and intuitive tools interfaces to make the web ever so slightly better, one step at a time. Writing complex and over the top React Componenets and fancy Database Queries to make everything fast, responsive and secure.",
+						},
+						{
+							title: "Full Stack Developer",
 							company: "Freelance",
 							period: "2025 - Present",
 							description:

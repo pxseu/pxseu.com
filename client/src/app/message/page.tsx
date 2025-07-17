@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import MessageForm from "@/components/MessageForm";
+import MessageForm from "@/components/message-form";
 
 export const metadata: Metadata = {
 	title: "pxseu.com",

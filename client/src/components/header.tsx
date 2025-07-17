@@ -5,10 +5,16 @@ import Quote from "./quotes";
 import Logo from "./logo";
 import Location from "./location";
 import Playing from "./playing";
+import BirthdayNotice from "./birthday";
+import { useIsBirthday } from "@/hooks/useIsBirthday";
+import { BIRTHDAY_TIMESTAMP } from "@/config";
 
 export default function Header() {
+	const isBirthday = useIsBirthday(BIRTHDAY_TIMESTAMP);
+
 	return (
 		<header className="w-full mb-12">
+			{isBirthday && <BirthdayNotice />}
 			<nav className="w-full flex items-center justify-between p-4 mb-8 text-zinc-300">
 				<Link
 					href="/"
