@@ -88,8 +88,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<CSideScript />
 			<head>
+				<CSideScript />
 				<link rel="preconnect" href={API_ROUTE} />
 				<link rel="preconnect" href="https://i.scdn.co" />
 			</head>
