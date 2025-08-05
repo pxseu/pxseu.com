@@ -5,7 +5,7 @@ import type { Metadata, Viewport } from "next";
 import { RealtimeProvider } from "@/contexts/RealtimeContext";
 import ReactLenis from "lenis/react";
 import { API_ROUTE } from "@/config";
-import { CSideScript } from "@cside.dev/next";
+import Script from "next/script";
 
 const THEME_COLOR = "#8066F7";
 const ASSET_VERSION = "3.0";
@@ -89,7 +89,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
-				<CSideScript />
+				<Script
+					strategy="beforeInteractive"
+					src="https://proxy.csidetm.com/script.js"
+				/>
 				<link rel="preconnect" href={API_ROUTE} />
 				<link rel="preconnect" href="https://i.scdn.co" />
 			</head>
