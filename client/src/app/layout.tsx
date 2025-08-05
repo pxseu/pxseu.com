@@ -1,10 +1,11 @@
 import Header from "@/components/header";
 import "../styles/globals.css";
 import Footer from "@/components/footer";
-import { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { RealtimeProvider } from "@/contexts/RealtimeContext";
 import ReactLenis from "lenis/react";
 import { API_ROUTE } from "@/config";
+import { CSideScript } from "@cside.dev/next";
 
 const THEME_COLOR = "#8066F7";
 const ASSET_VERSION = "3.0";
@@ -27,12 +28,30 @@ export const metadata: Metadata = {
 	},
 	icons: {
 		icon: [
-			{ url: `/favicon-16x16.png?v=${ASSET_VERSION}`, sizes: "16x16", type: "image/png" },
-			{ url: `/favicon-32x32.png?v=${ASSET_VERSION}`, sizes: "32x32", type: "image/png" },
+			{
+				url: `/favicon-16x16.png?v=${ASSET_VERSION}`,
+				sizes: "16x16",
+				type: "image/png",
+			},
+			{
+				url: `/favicon-32x32.png?v=${ASSET_VERSION}`,
+				sizes: "32x32",
+				type: "image/png",
+			},
 		],
 		shortcut: `/favicon.ico?v=${ASSET_VERSION}`,
-		apple: { url: `/apple-touch-icon.png?v=${ASSET_VERSION}`, sizes: "180x180", type: "image/png" },
-		other: [{ url: `/safari-pinned-tab.svg?v=${ASSET_VERSION}`, rel: "mask-icon", color: THEME_COLOR }],
+		apple: {
+			url: `/apple-touch-icon.png?v=${ASSET_VERSION}`,
+			sizes: "180x180",
+			type: "image/png",
+		},
+		other: [
+			{
+				url: `/safari-pinned-tab.svg?v=${ASSET_VERSION}`,
+				rel: "mask-icon",
+				color: THEME_COLOR,
+			},
+		],
 	},
 	openGraph: {
 		url: "https://pxseu.com",
@@ -70,6 +89,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
+				<CSideScript />
 				<link rel="preconnect" href={API_ROUTE} />
 				<link rel="preconnect" href="https://i.scdn.co" />
 			</head>
