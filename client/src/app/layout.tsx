@@ -89,9 +89,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
-				<Script
-					strategy="beforeInteractive"
+				{/* eslint-disable-next-line @next/next/no-sync-scripts */}
+				<script
 					src="https://proxy.csidetm.com/script.js"
+					data-options="{}"
+					referrerPolicy="origin"
 				/>
 				<link rel="preconnect" href={API_ROUTE} />
 				<link rel="preconnect" href="https://i.scdn.co" />
