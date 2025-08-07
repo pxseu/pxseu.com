@@ -6,6 +6,7 @@ import { RealtimeProvider } from "@/contexts/RealtimeContext";
 import ReactLenis from "lenis/react";
 import { API_ROUTE } from "@/config";
 import { CSideScript } from "@cside.dev/next";
+import Script from "next/script";
 
 const THEME_COLOR = "#8066F7";
 const ASSET_VERSION = "3.0";
@@ -90,6 +91,7 @@ export default function RootLayout({
 		<html lang="en">
 			<head>
 				<CSideScript />
+				<Script src="https://content.sakurajima.cloud/ee2244/analytics.js" />
 				<link rel="preconnect" href={API_ROUTE} />
 				<link rel="preconnect" href="https://i.scdn.co" />
 			</head>
