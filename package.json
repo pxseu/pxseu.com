@@ -11,5 +11,8 @@
 	},
 	"devDependencies": {
 		"@pxseu/prettier-config": "^1.0.0"
+	},
+	"engines": {
+		"bun": "v1.3.12w"
 	}
 }
