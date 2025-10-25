@@ -1,8 +1,8 @@
 import { once } from "node:events";
 import { sse } from "@kaito-http/core/stream";
 import { router } from "../context.js";
+import { type Location, REDIS_LOCATION_UPDATE } from "../realtime/location.js";
 import { REDIS_SPOTIFY_PLAYING } from "../realtime/spotify.js";
-import { REDIS_LOCATION_UPDATE, Location } from "../realtime/location.js";
 
 // Base retry of 1000ms with ±100ms jitter
 const getRetryWithJitter = (base = 1000, jitter = 100) => {
@@ -38,14 +38,16 @@ export const routes = router().get("/", async ({ ctx }) => {
 			const { signal } = ctx.req.request;
 			const { spotify, location } = ctx.realtime;
 
-			let interval = setInterval(() => {
+			const interval = setInterval(() => {
 				controller.enqueue({
 					event: "ping",
 					data: new Date().toISOString(),
 				});
 			}, 3e4);
 
-			const eventHandler = (data: Awaited<ReturnType<typeof ctx.clients.spotify.formatTrack>>) => {
+			const eventHandler = (
+				data: Awaited<ReturnType<typeof ctx.clients.spotify.formatTrack>>,
+			) => {
 				controller.enqueue({
 					event: PLAYING_KEY,
 					data,

@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface LinkProps {
 	icon: ReactNode;
@@ -7,7 +7,12 @@ interface LinkProps {
 	color?: string;
 }
 
-export default function LinkItem({ icon, displayName, link, color = "text-blue-400" }: LinkProps) {
+export default function LinkItem({
+	icon,
+	displayName,
+	link,
+	color = "text-blue-400",
+}: LinkProps) {
 	return (
 		<a
 			href={link}
@@ -42,6 +47,8 @@ export default function LinkItem({ icon, displayName, link, color = "text-blue-4
 				className="h-5 w-5 text-zinc-400 absolute right-5"
 				viewBox="0 0 20 20"
 				fill="currentColor"
+				role="img"
+				aria-label="External link icon"
 			>
 				<path
 					fillRule="evenodd"

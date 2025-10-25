@@ -1,5 +1,5 @@
 import { KaitoError } from "@kaito-http/core";
-import { Redis } from "ioredis";
+import type { Redis } from "ioredis";
 
 interface RateLimitOptions {
 	windowMs: number;

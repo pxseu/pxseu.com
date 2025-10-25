@@ -1,4 +1,4 @@
-import { envsafe, str, url, port } from "envsafe";
+import { envsafe, port, str, url } from "envsafe";
 
 export const config = envsafe({
 	SPOTIFY_CLIENT_ID: str(),

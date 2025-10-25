@@ -1,6 +1,6 @@
-import { router } from "../context.js";
-import { z } from "zod";
 import { KaitoError } from "@kaito-http/core";
+import { z } from "zod";
+import { router } from "../context.js";
 import { createRateLimiter } from "../utils/ratelimit.js";
 
 const rateLimiter = createRateLimiter({
@@ -32,7 +32,7 @@ export const routes = router()
 				return {
 					message: "Message sent",
 				};
-			} catch (error) {
+			} catch (_error) {
 				throw new KaitoError(500, "Failed to send message");
 			}
 		},

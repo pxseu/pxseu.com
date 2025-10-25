@@ -1,10 +1,10 @@
 import { createKaitoHandler, KaitoError } from "@kaito-http/core";
+import { config } from "./config.js";
 import { getContext } from "./context.js";
 import { root } from "./routes/index.js";
-import { config } from "./config.js";
 
 import "./node-manager.js";
-import { AsyncLocalStorage } from "async_hooks";
+import { AsyncLocalStorage } from "node:async_hooks";
 
 const handle = createKaitoHandler({
 	router: root,
@@ -15,7 +15,8 @@ const handle = createKaitoHandler({
 
 		return {
 			status: 500,
-			message: error instanceof KaitoError ? error.message : "Internal Server Error",
+			message:
+				error instanceof KaitoError ? error.message : "Internal Server Error",
 		};
 	},
 
@@ -35,7 +36,10 @@ const handle = createKaitoHandler({
 		// Include CORS headers if the origin is allowed
 		if (origin) {
 			response.headers.set("Access-Control-Allow-Origin", origin);
-			response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+			response.headers.set(
+				"Access-Control-Allow-Methods",
+				"GET, POST, PUT, DELETE, OPTIONS",
+			);
 			response.headers.set(
 				"Access-Control-Allow-Headers",
 				"Content-Type, Authorization, Cache-Control, X-Requested-With, Accept, Origin",

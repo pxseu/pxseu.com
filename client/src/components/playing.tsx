@@ -1,7 +1,7 @@
 "use client";
 
+import { useCallback, useEffect, useRef } from "react";
 import { useRealtime } from "@/contexts/RealtimeContext";
-import { useRef, useEffect, useCallback } from "react";
 
 /* eslint-disable @next/next/no-img-element */
 export default function Playing() {
@@ -15,7 +15,7 @@ export default function Playing() {
 
 		const start = new Date(data.playing.progress.start).getTime();
 		const end = new Date(data.playing.progress.end).getTime();
-		const now = new Date().getTime();
+		const now = Date.now();
 		const currentProgress = ((now - start) / (end - start)) * 100;
 		const clampedProgress = Math.min(Math.max(currentProgress, 0), 100);
 
@@ -54,6 +54,7 @@ export default function Playing() {
 					className="group fixed bottom-4 left-4 bg-zinc-900/40 backdrop-blur-md text-sm text-white p-3 rounded-xl shadow-lg z-50 w-[104px] hover:w-[400px] transition-[width] duration-300 ease-in-out hover:max-w- full"
 				>
 					<div className="flex items-start gap-4 px-2 overflow-hidden">
+						{/* biome-ignore lint/performance/noImgElement: this is a static site, no need for next/image */}
 						<img
 							src={data.playing.album.image}
 							alt={data.playing.album.name}

@@ -1,12 +1,18 @@
 import { sleep } from "../utils/sleep.js";
 
 export class HttpError extends Error {
-	constructor(public status: number, public message: string) {
+	constructor(
+		public status: number,
+		public message: string,
+	) {
 		super(message);
 	}
 }
 
-export const fetch = async (url: string, options?: RequestInit): Promise<Response> => {
+export const fetch = async (
+	url: string,
+	options?: RequestInit,
+): Promise<Response> => {
 	try {
 		const response = await globalThis.fetch(url, {
 			...options,
@@ -25,7 +31,7 @@ export const fetch = async (url: string, options?: RequestInit): Promise<Respons
 			if (response.status === 429) {
 				const retryAfter = response.headers.get("Retry-After");
 
-				await sleep(retryAfter ? parseInt(retryAfter) * 1000 : 1500);
+				await sleep(retryAfter ? parseInt(retryAfter, 10) * 1000 : 1500);
 				return fetch(url, options);
 			}
 

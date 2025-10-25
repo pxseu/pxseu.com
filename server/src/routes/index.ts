@@ -1,12 +1,16 @@
 import { KaitoError } from "@kaito-http/core";
 import { router } from "../context.js";
-import { routes as spotifyRoutes } from "./spotify.js";
-import { routes as realtimeRoutes } from "./realtime.js";
 import { routes as locationRoutes } from "./location.js";
 import { routes as messageRoutes } from "./message.js";
+import { routes as realtimeRoutes } from "./realtime.js";
+import { routes as spotifyRoutes } from "./spotify.js";
+
 // Function to return a deprecation response
 const deprecatedV1Response = () => {
-	throw new KaitoError(410, "The v1 API is deprecated. Please use v2 endpoints instead.");
+	throw new KaitoError(
+		410,
+		"The v1 API is deprecated. Please use v2 endpoints instead.",
+	);
 };
 
 export const root = router()

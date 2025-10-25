@@ -1,6 +1,14 @@
+/** biome-ignore-all lint/correctness/useUniqueElementIds: logo does not need unique element ids as they are not globally */
 export default function Logo() {
 	return (
-		<svg height="6rem" viewBox="0 0 400 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg
+			role="img"
+			height="6rem"
+			viewBox="0 0 400 124"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			aria-label="pxseu logo"
+		>
 			<g filter="url(#filter0_i)">
 				<path
 					d="M11.9483 55.7168C11.9483 65.9462 13.0383 75.3372 15.2184 83.8896C17.3984 92.4421 20.0815 100.366 23.2677 107.66L16.6018 111.434C11.3194 102.127 7.2109 92.9871 4.27623 84.0154C1.42541 74.9599 0 65.527 0 55.7168C0 45.3197 1.46733 35.6353 4.402 26.6636C7.33667 17.6919 11.4033 8.80401 16.6018 0L23.2677 3.77314C20.0815 10.9002 17.3984 18.7819 15.2184 27.4182C13.0383 36.0545 11.9483 45.4874 11.9483 55.7168Z"
@@ -42,7 +50,12 @@ export default function Logo() {
 					colorInterpolationFilters="sRGB"
 				>
 					<feFlood floodOpacity="0" result="BackgroundImageFix" />
-					<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+					<feBlend
+						mode="normal"
+						in="SourceGraphic"
+						in2="BackgroundImageFix"
+						result="shape"
+					/>
 					<feColorMatrix
 						in="SourceAlpha"
 						type="matrix"
@@ -52,34 +65,86 @@ export default function Logo() {
 					<feOffset dy="4" />
 					<feGaussianBlur stdDeviation="2" />
 					<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-					<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+					<feColorMatrix
+						type="matrix"
+						values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+					/>
 					<feBlend mode="normal" in2="shape" result="effect1_innerShadow" />
 				</filter>
-				<linearGradient id="paint0_linear" x1="-75" y1="62" x2="475" y2="62" gradientUnits="userSpaceOnUse">
+				<linearGradient
+					id="paint0_linear"
+					x1="-75"
+					y1="62"
+					x2="475"
+					y2="62"
+					gradientUnits="userSpaceOnUse"
+				>
 					<stop stopColor="#00CCFF" />
 					<stop offset="1" stopColor="#FF00EE" />
 				</linearGradient>
-				<linearGradient id="paint1_linear" x1="-75" y1="62" x2="475" y2="62" gradientUnits="userSpaceOnUse">
+				<linearGradient
+					id="paint1_linear"
+					x1="-75"
+					y1="62"
+					x2="475"
+					y2="62"
+					gradientUnits="userSpaceOnUse"
+				>
 					<stop stopColor="#00CCFF" />
 					<stop offset="1" stopColor="#FF00EE" />
 				</linearGradient>
-				<linearGradient id="paint2_linear" x1="-75" y1="62" x2="475" y2="62" gradientUnits="userSpaceOnUse">
+				<linearGradient
+					id="paint2_linear"
+					x1="-75"
+					y1="62"
+					x2="475"
+					y2="62"
+					gradientUnits="userSpaceOnUse"
+				>
 					<stop stopColor="#00CCFF" />
 					<stop offset="1" stopColor="#FF00EE" />
 				</linearGradient>
-				<linearGradient id="paint3_linear" x1="-75" y1="62" x2="475" y2="62" gradientUnits="userSpaceOnUse">
+				<linearGradient
+					id="paint3_linear"
+					x1="-75"
+					y1="62"
+					x2="475"
+					y2="62"
+					gradientUnits="userSpaceOnUse"
+				>
 					<stop stopColor="#00CCFF" />
 					<stop offset="1" stopColor="#FF00EE" />
 				</linearGradient>
-				<linearGradient id="paint4_linear" x1="-75" y1="62" x2="475" y2="62" gradientUnits="userSpaceOnUse">
+				<linearGradient
+					id="paint4_linear"
+					x1="-75"
+					y1="62"
+					x2="475"
+					y2="62"
+					gradientUnits="userSpaceOnUse"
+				>
 					<stop stopColor="#00CCFF" />
 					<stop offset="1" stopColor="#FF00EE" />
 				</linearGradient>
-				<linearGradient id="paint5_linear" x1="-75" y1="62" x2="475" y2="62" gradientUnits="userSpaceOnUse">
+				<linearGradient
+					id="paint5_linear"
+					x1="-75"
+					y1="62"
+					x2="475"
+					y2="62"
+					gradientUnits="userSpaceOnUse"
+				>
 					<stop stopColor="#00CCFF" />
 					<stop offset="1" stopColor="#FF00EE" />
 				</linearGradient>
-				<linearGradient id="paint6_linear" x1="-75" y1="62" x2="475" y2="62" gradientUnits="userSpaceOnUse">
+				<linearGradient
+					id="paint6_linear"
+					x1="-75"
+					y1="62"
+					x2="475"
+					y2="62"
+					gradientUnits="userSpaceOnUse"
+				>
 					<stop stopColor="#00CCFF" />
 					<stop offset="1" stopColor="#FF00EE" />
 				</linearGradient>

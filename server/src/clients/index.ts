@@ -1,7 +1,7 @@
 import { Redis } from "ioredis";
-import SpotifyClient from "./spotify.js";
 import { config } from "../config.js";
 import { DiscordClient } from "./discord.js";
+import SpotifyClient from "./spotify.js";
 
 export const createClients = () => {
 	const spotify = new SpotifyClient(

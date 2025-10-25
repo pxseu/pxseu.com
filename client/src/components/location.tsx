@@ -15,7 +15,9 @@ export default function Location() {
 		<div className="min-h-6">
 			<p
 				className={`mt-2 text-sm text-muted-foreground transition-all duration-500 ease-out ${
-					isConnected && data?.location ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+					isConnected && data?.location
+						? "opacity-100 translate-y-0"
+						: "opacity-0 translate-y-1"
 				}`}
 			>
 				Currently in{" "}

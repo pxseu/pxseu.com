@@ -1,4 +1,4 @@
-import { Redis } from "ioredis";
+import type { Redis } from "ioredis";
 
 export abstract class RealtimeClient<E extends string, T> {
 	constructor(protected redis: Redis) {}
@@ -7,6 +7,9 @@ export abstract class RealtimeClient<E extends string, T> {
 		readonly state: T;
 		readonly update: (state: T) => Promise<void>;
 		readonly addEventListener: (event: E, listener: (state: T) => void) => void;
-		readonly removeEventListener: (event: E, listener: (state: T) => void) => void;
+		readonly removeEventListener: (
+			event: E,
+			listener: (state: T) => void,
+		) => void;
 	}>;
 }

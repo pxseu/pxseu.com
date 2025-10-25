@@ -1,7 +1,13 @@
 "use client";
 
-import { useFloating, offset, useHover, useInteractions } from "@floating-ui/react";
-import React, { useEffect, useState } from "react";
+import {
+	offset,
+	useFloating,
+	useHover,
+	useInteractions,
+} from "@floating-ui/react";
+import type React from "react";
+import { useEffect, useState } from "react";
 import { useTimePassed } from "@/hooks/useTimePassed";
 
 type TimedProps = {
@@ -9,7 +15,13 @@ type TimedProps = {
 	label?: string;
 };
 
-function Tooltip({ children, content }: { children: React.ReactNode; content: string }) {
+function Tooltip({
+	children,
+	content,
+}: {
+	children: React.ReactNode;
+	content: string;
+}) {
 	const [open, setOpen] = useState(false);
 	const [shouldRender, setShouldRender] = useState(false);
 

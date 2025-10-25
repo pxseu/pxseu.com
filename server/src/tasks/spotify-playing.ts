@@ -1,5 +1,6 @@
 import type { Redis } from "ioredis";
-import SpotifyClient, {
+import type SpotifyClient from "../clients/spotify.js";
+import {
 	REDIS_LAST_UPDATE_ON,
 	REDIS_SPOTIFY_ACCESS_TOKEN,
 	REDIS_SPOTIFY_REFRESH_TOKEN,
@@ -7,14 +8,20 @@ import SpotifyClient, {
 import { REDIS_SPOTIFY_PLAYING } from "../realtime/spotify.js";
 import { sleep } from "../utils/sleep.js";
 
-export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, signal?: AbortSignal) => {
+export const spotifyPlayingTask = async (
+	redis: Redis,
+	spotify: SpotifyClient,
+	signal?: AbortSignal,
+) => {
 	console.log("Starting spotify tracker");
 
 	const interval = 2e2;
 	const noPlayingInterval = 2e3; // Longer interval when nothing is playing
 	const publisher = redis.duplicate();
 
-	const prev = await redis.get(REDIS_SPOTIFY_PLAYING).then((v) => JSON.parse(v || "null"));
+	const prev = await redis
+		.get(REDIS_SPOTIFY_PLAYING)
+		.then((v) => JSON.parse(v || "null"));
 
 	let prevId: string | null = prev?.id || null;
 	let prevStartedt: number | null = null;
@@ -41,25 +48,40 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 
 				accessToken = data.access_token;
 				await Promise.all([
-					redis.set(REDIS_SPOTIFY_ACCESS_TOKEN, data.access_token, "EX", data.expires_in - 60),
-					data.refresh_token ? redis.set(REDIS_SPOTIFY_REFRESH_TOKEN, data.refresh_token) : Promise.resolve(),
+					redis.set(
+						REDIS_SPOTIFY_ACCESS_TOKEN,
+						data.access_token,
+						"EX",
+						data.expires_in - 60,
+					),
+					data.refresh_token
+						? redis.set(REDIS_SPOTIFY_REFRESH_TOKEN, data.refresh_token)
+						: Promise.resolve(),
 				]);
 			} catch (error) {
 				console.error("Failed to refresh access token", error);
-				await Promise.all([redis.del(REDIS_SPOTIFY_ACCESS_TOKEN), redis.del(REDIS_SPOTIFY_REFRESH_TOKEN)]);
+				await Promise.all([
+					redis.del(REDIS_SPOTIFY_ACCESS_TOKEN),
+					redis.del(REDIS_SPOTIFY_REFRESH_TOKEN),
+				]);
 				await sleep(noPlayingInterval);
 				continue;
 			}
 		}
 
-		let nowPlaying: Awaited<ReturnType<typeof spotify.getMyCurrentPlayingTrack>> | null = null;
+		let nowPlaying: Awaited<
+			ReturnType<typeof spotify.getMyCurrentPlayingTrack>
+		> | null = null;
 
 		try {
 			nowPlaying = await spotify.getMyCurrentPlayingTrack(accessToken);
 		} catch (error) {
 			console.error("Failed to get current playing track");
 			console.error(error);
-			await Promise.all([redis.del(REDIS_SPOTIFY_ACCESS_TOKEN), redis.del(REDIS_SPOTIFY_REFRESH_TOKEN)]);
+			await Promise.all([
+				redis.del(REDIS_SPOTIFY_ACCESS_TOKEN),
+				redis.del(REDIS_SPOTIFY_REFRESH_TOKEN),
+			]);
 			await sleep(noPlayingInterval);
 			continue;
 		}
@@ -83,7 +105,12 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 		const startedAt = nowPlaying.timestamp || null;
 
 		// Skip if the same track is still playing
-		if (id === prevId && startedAt && prevStartedt && startedAt <= prevStartedt) {
+		if (
+			id === prevId &&
+			startedAt &&
+			prevStartedt &&
+			startedAt <= prevStartedt
+		) {
 			await sleep(interval);
 			continue;
 		}
@@ -99,5 +126,6 @@ export const spotifyPlayingTask = async (redis: Redis, spotify: SpotifyClient, s
 		prevStartedt = startedAt;
 
 		await sleep(interval);
+		// biome-ignore lint/correctness/noConstantCondition: intentional infinite loop for background task
 	} while (true);
 };

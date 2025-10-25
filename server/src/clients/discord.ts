@@ -1,5 +1,5 @@
+import type { Redis } from "ioredis";
 import { fetch } from "./fetch.js";
-import { Redis } from "ioredis";
 
 const ENDPOINT = "https://canary.discord.com/api/webhooks";
 const REDIS_PREFIX = "discord_webhook_ratelimit";
@@ -17,8 +17,12 @@ export class DiscordClient {
 		private avatar: string,
 	) {}
 
-	async sendMessage(body: { content?: string | null; name?: string | null; attachment?: string | null }) {
-		const embed: Record<string, any> = {
+	async sendMessage(body: {
+		content?: string | null;
+		name?: string | null;
+		attachment?: string | null;
+	}) {
+		const embed: Record<string, unknown> = {
 			description: body.content || undefined,
 			image: body.attachment ? { url: body.attachment } : undefined,
 			author: {
@@ -41,22 +45,29 @@ export class DiscordClient {
 
 		if (left && delay > 0) Bun.sleep((delay + 0.1 * 1000) / parseInt(left, 10));
 
-		const res = await fetch(`${ENDPOINT}/${this.webhookId}/${this.webhookToken}`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
+		const res = await fetch(
+			`${ENDPOINT}/${this.webhookId}/${this.webhookToken}`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					content: body.attachment
+						? `Attachment: ${body.attachment}`
+						: undefined,
+					username: "anon chat",
+					avatar_url: this.avatar,
+					embeds: [embed],
+				}),
 			},
-			body: JSON.stringify({
-				content: body.attachment ? `Attachment: ${body.attachment}` : undefined,
-				username: "anon chat",
-				avatar_url: this.avatar,
-				embeds: [embed],
-			}),
-		});
+		);
 
 		if (res.ok && res.headers) {
 			const resRemaining = res.headers.get("x-ratelimit-remaining") as string;
-			const resResetAfter = res.headers.get("x-ratelimit-reset-after") as string;
+			const resResetAfter = res.headers.get(
+				"x-ratelimit-reset-after",
+			) as string;
 			const exp = parseInt(resResetAfter, 10);
 			this.redis.setex(`${REDIS_PREFIX}:left`, exp, resRemaining);
 		}

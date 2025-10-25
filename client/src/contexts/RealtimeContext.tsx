@@ -9,8 +9,8 @@ import {
 	useRef,
 	useState,
 } from "react";
-import type { RealtimeContextType, RealtimeData } from "../types/realtime";
 import { API_ROUTE } from "@/config";
+import type { RealtimeContextType, RealtimeData } from "../types/realtime";
 
 const RealtimeContext = createContext<RealtimeContextType>({
 	data: null,

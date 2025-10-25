@@ -1,7 +1,7 @@
-import { z } from "zod";
-import { router } from "../context.js";
 import { KaitoError } from "@kaito-http/core";
+import { z } from "zod";
 import { config } from "../config.js";
+import { router } from "../context.js";
 export const routes = router()
 	.get("/", async ({ ctx }) => {
 		const { location } = ctx.realtime;
@@ -26,7 +26,12 @@ export const routes = router()
 				throw new KaitoError(401, "Unauthorized");
 			}
 
-			if (!crypto.timingSafeEqual(Buffer.from(auth), Buffer.from(config.LOCATION_SECRET))) {
+			if (
+				!crypto.timingSafeEqual(
+					Buffer.from(auth),
+					Buffer.from(config.LOCATION_SECRET),
+				)
+			) {
 				throw new KaitoError(401, "Unauthorized");
 			}
 

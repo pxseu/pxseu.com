@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const getDate = (timestamp: number): number => {
-	let time = new Date().getTime() - new Date(timestamp).getTime();
+	let time = Date.now() - new Date(timestamp).getTime();
 	time /= 1000 * 60 * 60 * 24 * 365.25;
 
 	return time;

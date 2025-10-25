@@ -1,21 +1,21 @@
-import LinkItem from "@/components/link";
 import type { Metadata } from "next";
 import {
-	FaRust,
 	FaDiscord,
+	FaDocker,
 	FaEnvelope,
 	FaGithub,
+	FaGitlab,
 	FaLinkedin,
+	FaNpm,
+	FaPatreon,
+	FaRust,
 	FaSpotify,
 	FaTiktok,
 	FaTwitch,
 	FaTwitter,
 	FaYoutube,
-	FaNpm,
-	FaDocker,
-	FaGitlab,
-	FaPatreon,
 } from "react-icons/fa";
+import LinkItem from "@/components/link";
 
 export const metadata: Metadata = {
 	description: "A collection of my links",

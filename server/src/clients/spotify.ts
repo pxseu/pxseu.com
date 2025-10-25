@@ -24,7 +24,7 @@ export interface Item {
 	is_local: boolean;
 	name: string;
 	popularity: number;
-	preview_url: any;
+	preview_url: string | null;
 	track_number: number;
 	type: string;
 	uri: string;
@@ -102,12 +102,23 @@ export type TimeRange = "short_term" | "medium_term" | "long_term";
 export default class SpotifyClient {
 	private basicAuth: string;
 
-	constructor(private clientId: string, clientSecret: string, private redirectUri: string) {
-		this.basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
+	constructor(
+		private clientId: string,
+		clientSecret: string,
+		private redirectUri: string,
+	) {
+		this.basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString(
+			"base64",
+		);
 	}
 
-	async formatTrack(playing: Awaited<ReturnType<typeof this.getMyCurrentPlayingTrack>>, now = new Date()) {
+	async formatTrack(
+		playing: Awaited<ReturnType<typeof this.getMyCurrentPlayingTrack>>,
+		now = new Date(),
+	) {
 		if (!playing) return null;
+
+		const albumImage = playing.item.album.images[0]?.url ?? "";
 
 		return {
 			id: playing.item.id,
@@ -118,13 +129,15 @@ export default class SpotifyClient {
 			},
 			album: {
 				name: playing.item.album.name,
-				image: playing.item.album.images[0]?.url,
-				color: await dominantColor(playing.item.album.images[0]?.url!),
+				image: albumImage,
+				color: await dominantColor(albumImage),
 				url: playing.item.album.external_urls.spotify,
 			},
 			progress: {
 				start: new Date(now.getTime() - playing.progress_ms),
-				end: new Date(now.getTime() + playing.item.duration_ms - playing.progress_ms),
+				end: new Date(
+					now.getTime() + playing.item.duration_ms - playing.progress_ms,
+				),
 			},
 		};
 	}
@@ -215,11 +228,14 @@ export default class SpotifyClient {
 	}
 
 	async getMyCurrentPlayingTrack(accessToken: string) {
-		const response = await fetch("https://api.spotify.com/v1/me/player/currently-playing", {
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
+		const response = await fetch(
+			"https://api.spotify.com/v1/me/player/currently-playing",
+			{
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
 			},
-		});
+		);
 
 		if (response.status === 204) return null;
 
@@ -238,7 +254,11 @@ export default class SpotifyClient {
 		return parsed;
 	}
 
-	async getMyTopArtists(accessToken: string, timeRange: TimeRange = "medium_term", limit: number = 10) {
+	async getMyTopArtists(
+		accessToken: string,
+		timeRange: TimeRange = "medium_term",
+		limit: number = 10,
+	) {
 		const response = await fetch(
 			`https://api.spotify.com/v1/me/top/artists?time_range=${timeRange}&limit=${limit}`,
 			{

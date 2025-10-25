@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useReducer } from "react";
+import { type FormEvent, useId, useReducer } from "react";
 import { API_ROUTE } from "@/config";
 
 type FormState = {
@@ -56,6 +56,9 @@ function formReducer(state: FormState, action: FormAction): FormState {
 }
 
 export default function MessageForm() {
+	const nameInputId = useId();
+	const contentInputId = useId();
+	const attachmentInputId = useId();
 	const [state, dispatch] = useReducer(formReducer, initialState);
 	const { content, attachment, name, status, errorMessage } = state;
 
@@ -103,6 +106,8 @@ export default function MessageForm() {
 			{status === "success" && (
 				<div className="mb-6 p-3 bg-green-800/20 border border-zinc-700 text-green-300 flex items-center">
 					<svg
+						role="img"
+						aria-label="Check"
 						className="w-5 h-5 mr-2"
 						fill="none"
 						stroke="currentColor"
@@ -123,6 +128,8 @@ export default function MessageForm() {
 			{status === "error" && (
 				<div className="mb-6 p-3 bg-red-800/20 border border-zinc-700 text-red-300 flex items-center">
 					<svg
+						role="img"
+						aria-label="Error"
 						className="w-5 h-5 mr-2"
 						fill="none"
 						stroke="currentColor"
@@ -142,11 +149,11 @@ export default function MessageForm() {
 
 			<form onSubmit={handleSubmit} className="space-y-5">
 				<div className="space-y-2">
-					<label htmlFor="name" className="block text-zinc-300">
+					<label htmlFor={nameInputId} className="block text-zinc-300">
 						Name:
 					</label>
 					<input
-						id="name"
+						id={nameInputId}
 						type="text"
 						value={name}
 						onChange={(e) =>
@@ -158,11 +165,11 @@ export default function MessageForm() {
 				</div>
 
 				<div className="space-y-2">
-					<label htmlFor="content" className="block text-zinc-300">
+					<label htmlFor={contentInputId} className="block text-zinc-300">
 						Content:
 					</label>
 					<textarea
-						id="content"
+						id={contentInputId}
 						value={content}
 						onChange={(e) =>
 							dispatch({ type: "SET_CONTENT", payload: e.target.value })
@@ -174,11 +181,11 @@ export default function MessageForm() {
 				</div>
 
 				<div className="space-y-2">
-					<label htmlFor="attachment" className="block text-zinc-300">
+					<label htmlFor={attachmentInputId} className="block text-zinc-300">
 						Attachment url:
 					</label>
 					<input
-						id="attachment"
+						id={attachmentInputId}
 						type="url"
 						value={attachment}
 						onChange={(e) =>
@@ -198,6 +205,8 @@ export default function MessageForm() {
 						{status === "loading" ? (
 							<span className="flex items-center justify-center">
 								<svg
+									role="img"
+									aria-label="Loading"
 									className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"

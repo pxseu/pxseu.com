@@ -10,7 +10,10 @@ export type Location = {
 	timestamp: Date;
 } | null;
 
-export class LocationRealtimeClient extends RealtimeClient<typeof REDIS_LOCATION_UPDATE, Location> {
+export class LocationRealtimeClient extends RealtimeClient<
+	typeof REDIS_LOCATION_UPDATE,
+	Location
+> {
 	async initialize() {
 		const listener = new EventEmitter<{
 			[REDIS_LOCATION_UPDATE]: [Location];

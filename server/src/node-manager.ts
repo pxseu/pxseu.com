@@ -1,6 +1,6 @@
 import { hostname } from "node:os";
-import { spotifyPlayingTask } from "./tasks/spotify-playing.js";
 import { clients } from "./context.js";
+import { spotifyPlayingTask } from "./tasks/spotify-playing.js";
 
 const MAIN_NODE_KEY = "main-node";
 const MAIN_NODE_TTL = 30; // seconds
@@ -11,11 +11,21 @@ let nodeCheckInterval: NodeJS.Timeout | null = null;
 let spotifyTaskAbortController: AbortController | null = null;
 
 async function tryBecomeMain() {
-	const result = await clients.redis.set(MAIN_NODE_KEY, hostname(), "EX", MAIN_NODE_TTL, "NX");
+	const result = await clients.redis.set(
+		MAIN_NODE_KEY,
+		hostname(),
+		"EX",
+		MAIN_NODE_TTL,
+		"NX",
+	);
 	if (result === "OK") {
 		is_main = true;
 		spotifyTaskAbortController = new AbortController();
-		spotifyPlayingTask(clients.redis, clients.spotify, spotifyTaskAbortController.signal).catch((error) => {
+		spotifyPlayingTask(
+			clients.redis,
+			clients.spotify,
+			spotifyTaskAbortController.signal,
+		).catch((error) => {
 			console.error("Spotify task failed:", error);
 		});
 	}

@@ -9,7 +9,9 @@ export const rgbToHex = ({ r, g, b }: { r: number; g: number; b: number }) =>
 		})
 		.join("")}`;
 
-export const dominantColor = async (imageUrl: string): Promise<string | undefined> => {
+export const dominantColor = async (
+	imageUrl: string,
+): Promise<string | undefined> => {
 	if (!imageUrl) return;
 
 	// fetch the image
@@ -17,7 +19,9 @@ export const dominantColor = async (imageUrl: string): Promise<string | undefine
 	const buffer = await response.arrayBuffer();
 
 	// get the dominant color
-	const { dominant } = await sharp(buffer).resize({ position: sharp.strategy.attention }).stats();
+	const { dominant } = await sharp(buffer)
+		.resize({ position: sharp.strategy.attention })
+		.stats();
 
 	return rgbToHex(dominant);
 };

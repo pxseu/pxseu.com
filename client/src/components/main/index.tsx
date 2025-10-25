@@ -1,61 +1,67 @@
-import { BIRTHDAY_TIMESTAMP, CODING_START_TIMESTAMP } from "@/config";
+import Link from "next/link";
 import Container from "@/components/container";
 import { Timed } from "@/components/main/timed";
-import Link from "next/link";
-import ProjectCard from "./project-card";
-import Skill from "./skill";
+import { BIRTHDAY_TIMESTAMP, CODING_START_TIMESTAMP } from "@/config";
 import Contact from "./contact";
 import Experience from "./experience";
+import ProjectCard from "./project-card";
+import Skill from "./skill";
 
-interface Props {
-	content: string[];
-}
-
-export default function Main({}: Props) {
+export default function Main() {
 	return (
 		<main className="flex flex-col w-full">
 			{/* ABOUT ME */}
+			{/* biome-ignore lint/correctness/useUniqueElementIds: section IDs are intentionally static for navigation */}
 			<Container title="About Me" id="intro">
 				<div>
 					Hey, I&apos;m Kuba — online I go by{" "}
 					<strong className="bg-linear-to-r from-brand-100 to-brand-900 bg-clip-text text-transparent">
 						pxseu
 					</strong>
-					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" /> and have been writing code for{" "}
-					<Timed timestamp={CODING_START_TIMESTAMP} label="years" />. I care about building systems that
-					don&apos;t fall apart: clean, maintainable, and structured in a way that actually makes sense.
+					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" />{" "}
+					and have been writing code for{" "}
+					<Timed timestamp={CODING_START_TIMESTAMP} label="years" />. I care
+					about building systems that don&apos;t fall apart: clean,
+					maintainable, and structured in a way that actually makes sense.
 				</div>
 				<div className="mt-4">
-					My thing is backend systems and internal tools — the kind of work that&apos;s rarely flashy, but
-					absolutely essential. I like clarity, reliability, and the feeling of leaving something better than
-					I found it. If it can last years without turning into a mess, I&apos;ve done my job right.
-				</div>
-
-				<div className="mt-4">
-					I&apos;m naturally curious — sometimes annoyingly so. I end up in weird internet corners, digging
-					into obscure protocols, vintage tech, or whatever random detail catches my brain that week. I
-					don&apos;t chase trends much; I just follow the &quot;wait, that&apos;s interesting&quot; moments
-					wherever they go.
+					My thing is backend systems and internal tools — the kind of work
+					that&apos;s rarely flashy, but absolutely essential. I like clarity,
+					reliability, and the feeling of leaving something better than I found
+					it. If it can last years without turning into a mess, I&apos;ve done
+					my job right.
 				</div>
 
 				<div className="mt-4">
-					Outside of code, I&apos;m into cars and overly specific gadgets that serve one purpose perfectly. I
-					like things that are well-built, well-designed, and a little bit unnecessary — but in a good way.
+					I&apos;m naturally curious — sometimes annoyingly so. I end up in
+					weird internet corners, digging into obscure protocols, vintage tech,
+					or whatever random detail catches my brain that week. I don&apos;t
+					chase trends much; I just follow the &quot;wait, that&apos;s
+					interesting&quot; moments wherever they go.
 				</div>
 
 				<div className="mt-4">
-					Every now and then, I also dabble in content creation — making videos, sharing projects, or
-					documenting random experiments. It&apos;s a fun creative outlet and a good way to stay inspired
-					outside of the usual routine.
+					Outside of code, I&apos;m into cars and overly specific gadgets that
+					serve one purpose perfectly. I like things that are well-built,
+					well-designed, and a little bit unnecessary — but in a good way.
 				</div>
 
 				<div className="mt-4">
-					I don&apos;t pretend to have it all figured out. I build, I break things, I adjust. That process —
-					of iterating until something feels right — is where I do my best work.
+					Every now and then, I also dabble in content creation — making videos,
+					sharing projects, or documenting random experiments. It&apos;s a fun
+					creative outlet and a good way to stay inspired outside of the usual
+					routine.
+				</div>
+
+				<div className="mt-4">
+					I don&apos;t pretend to have it all figured out. I build, I break
+					things, I adjust. That process — of iterating until something feels
+					right — is where I do my best work.
 				</div>
 			</Container>
 
 			{/* EXPERIENCE */}
+			{/* biome-ignore lint/correctness/useUniqueElementIds: section IDs are intentionally static for navigation */}
 			<Container title="Experience" id="experience">
 				<Experience
 					items={[
@@ -99,20 +105,46 @@ export default function Main({}: Props) {
 			</Container>
 
 			{/* SKILLS */}
+			{/* biome-ignore lint/correctness/useUniqueElementIds: section IDs are intentionally static for navigation */}
 			<Container title="Skills" id="skills">
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<Skill
 						category="Back-end"
-						skills={["Node.js", "Fastify", "PostgreSQL", "Redis", "REST", "WebSocket"]}
+						skills={[
+							"Node.js",
+							"Fastify",
+							"PostgreSQL",
+							"Redis",
+							"REST",
+							"WebSocket",
+						]}
 					/>
-					<Skill category="Frontend" skills={["React / Next.js", "TailwindCSS", "Vite"]} />
-					<Skill category="CLI / Tools" skills={["Rust", "TypeScript", "Automation", "Terminal UX"]} />
-					<Skill category="DevOps" skills={["Docker", "Linux", "Git", "CI/CD", "System Automation"]} />
-					<Skill category="Other" skills={["Python", "C/C++", "Event-Driven Architectures", "Testing"]} />
+					<Skill
+						category="Frontend"
+						skills={["React / Next.js", "TailwindCSS", "Vite"]}
+					/>
+					<Skill
+						category="CLI / Tools"
+						skills={["Rust", "TypeScript", "Automation", "Terminal UX"]}
+					/>
+					<Skill
+						category="DevOps"
+						skills={["Docker", "Linux", "Git", "CI/CD", "System Automation"]}
+					/>
+					<Skill
+						category="Other"
+						skills={[
+							"Python",
+							"C/C++",
+							"Event-Driven Architectures",
+							"Testing",
+						]}
+					/>
 				</div>
 			</Container>
 
 			{/* PROJECTS */}
+			{/* biome-ignore lint/correctness/useUniqueElementIds: section IDs are intentionally static for navigation */}
 			<Container title="Projects" id="projects">
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 					<ProjectCard
@@ -149,8 +181,11 @@ export default function Main({}: Props) {
 			</Container>
 
 			{/* CONTACT */}
+			{/* biome-ignore lint/correctness/useUniqueElementIds: section IDs are intentionally static for navigation */}
 			<Container title="Contact" id="contact">
-				<p className="mb-4">Feel free to reach out through any of the platforms below:</p>
+				<p className="mb-4">
+					Feel free to reach out through any of the platforms below:
+				</p>
 
 				<Contact
 					items={[

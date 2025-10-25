@@ -1,17 +1,19 @@
-import z from "zod";
 import { KaitoError } from "@kaito-http/core";
-import { router } from "../context.js";
-import { config } from "../config.js";
+import z from "zod";
 import {
 	REDIS_SPOTIFY_ACCESS_TOKEN,
 	REDIS_SPOTIFY_REFRESH_TOKEN,
 	REDIS_SPOTIFY_TOP_ARTISTS,
-	TimeRange,
+	type TimeRange,
 } from "../clients/spotify.js";
+import { config } from "../config.js";
+import { router } from "../context.js";
 
 // Routes
 export const routes = router()
-	.get("/auth-url", async ({ ctx }) => ({ url: ctx.clients.spotify.getAuthorizationUrl() }))
+	.get("/auth-url", async ({ ctx }) => ({
+		url: ctx.clients.spotify.getAuthorizationUrl(),
+	}))
 	.get(
 		"/auth-url-redirect",
 		async ({ ctx }) =>
@@ -32,16 +34,30 @@ export const routes = router()
 				const data = await clients.spotify.getAccessToken(code);
 				const me = await clients.spotify.getUserProfile(data.access_token);
 
-				if (config.SPOTIFY_AUTH_USER_ID && me.id !== config.SPOTIFY_AUTH_USER_ID) {
+				if (
+					config.SPOTIFY_AUTH_USER_ID &&
+					me.id !== config.SPOTIFY_AUTH_USER_ID
+				) {
 					throw new KaitoError(403, "Unauthorized user");
 				}
 
-				await clients.redis.set(REDIS_SPOTIFY_ACCESS_TOKEN, data.access_token, "EX", data.expires_in - 60);
-				await clients.redis.set(REDIS_SPOTIFY_REFRESH_TOKEN, data.refresh_token);
+				await clients.redis.set(
+					REDIS_SPOTIFY_ACCESS_TOKEN,
+					data.access_token,
+					"EX",
+					data.expires_in - 60,
+				);
+				await clients.redis.set(
+					REDIS_SPOTIFY_REFRESH_TOKEN,
+					data.refresh_token,
+				);
 
 				return { me };
-			} catch (error) {
-				throw new KaitoError(500, "Failed to get access token, token may be expired or invalid");
+			} catch (_error) {
+				throw new KaitoError(
+					500,
+					"Failed to get access token, token may be expired or invalid",
+				);
 			}
 		},
 	})
@@ -77,7 +93,9 @@ export const routes = router()
 
 			// If no access token is found, try to refresh it
 			if (!accessToken) {
-				const refreshToken = await clients.redis.get(REDIS_SPOTIFY_REFRESH_TOKEN);
+				const refreshToken = await clients.redis.get(
+					REDIS_SPOTIFY_REFRESH_TOKEN,
+				);
 				if (!refreshToken) {
 					throw new KaitoError(401, "Not authenticated with Spotify");
 				}
@@ -86,22 +104,39 @@ export const routes = router()
 					const data = await clients.spotify.refreshAccessToken(refreshToken);
 					accessToken = data.access_token;
 
-					await clients.redis.set(REDIS_SPOTIFY_ACCESS_TOKEN, data.access_token, "EX", data.expires_in - 60);
+					await clients.redis.set(
+						REDIS_SPOTIFY_ACCESS_TOKEN,
+						data.access_token,
+						"EX",
+						data.expires_in - 60,
+					);
 
 					if (data.refresh_token) {
-						await clients.redis.set(REDIS_SPOTIFY_REFRESH_TOKEN, data.refresh_token);
+						await clients.redis.set(
+							REDIS_SPOTIFY_REFRESH_TOKEN,
+							data.refresh_token,
+						);
 					}
-				} catch (refreshError) {
+				} catch (_refreshError) {
 					throw new KaitoError(401, "Failed to refresh access token");
 				}
 			}
 
 			try {
 				// Fetch top artists from Spotify
-				const topArtists = await clients.spotify.getMyTopArtists(accessToken, range as TimeRange, limit);
+				const topArtists = await clients.spotify.getMyTopArtists(
+					accessToken,
+					range as TimeRange,
+					limit,
+				);
 
 				// Cache the result for 24 hours (86400 seconds)
-				await clients.redis.set(cacheKey, JSON.stringify(topArtists), "EX", 86400);
+				await clients.redis.set(
+					cacheKey,
+					JSON.stringify(topArtists),
+					"EX",
+					86400,
+				);
 
 				return clients.spotify.formatTopArtists(topArtists.items);
 			} catch (error) {

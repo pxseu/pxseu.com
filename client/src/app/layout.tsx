@@ -1,12 +1,12 @@
 import Header from "@/components/header";
 import "../styles/globals.css";
-import Footer from "@/components/footer";
-import type { Metadata, Viewport } from "next";
-import { RealtimeProvider } from "@/contexts/RealtimeContext";
-import ReactLenis from "lenis/react";
-import { API_ROUTE } from "@/config";
 import { CSideScript } from "@cside.dev/next";
+import ReactLenis from "lenis/react";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import Footer from "@/components/footer";
+import { API_ROUTE } from "@/config";
+import { RealtimeProvider } from "@/contexts/RealtimeContext";
 
 const THEME_COLOR = "#8066F7";
 const ASSET_VERSION = "3.0";

@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import Quote from "./quotes";
-import Logo from "./logo";
-import Location from "./location";
-import Playing from "./playing";
-import BirthdayNotice from "./birthday";
-import { useIsBirthday } from "@/hooks/useIsBirthday";
 import { BIRTHDAY_TIMESTAMP } from "@/config";
+import { useIsBirthday } from "@/hooks/useIsBirthday";
+import BirthdayNotice from "./birthday";
+import Location from "./location";
+import Logo from "./logo";
+import Playing from "./playing";
+import Quote from "./quotes";
 
 export default function Header() {
 	const isBirthday = useIsBirthday(BIRTHDAY_TIMESTAMP);

@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 
 const isDayBirthday = (birthday: Date, now: Date) => {
 	// https://github.com/pxseu/pxseu.com/pull/218
-	if (birthday.getDate() === now.getDate() && birthday.getMonth() === now.getMonth()) return true;
+	if (
+		birthday.getDate() === now.getDate() &&
+		birthday.getMonth() === now.getMonth()
+	)
+		return true;
 	return false;
 };
 
 export const useIsBirthday = (timestamp: number) => {
-	const [isBirthday, setIsBirthday] = useState(isDayBirthday(new Date(timestamp), new Date()));
+	const [isBirthday, setIsBirthday] = useState(
+		isDayBirthday(new Date(timestamp), new Date()),
+	);
 
 	useEffect(() => {
 		const isBirthdayCheck = setInterval(() => {
