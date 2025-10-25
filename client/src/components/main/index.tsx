@@ -15,7 +15,7 @@ export default function Main() {
 			<Container title="About Me" id="intro">
 				<div>
 					Hey, I&apos;m Kuba — online I go by{" "}
-					<strong className="bg-linear-to-r from-brand-100 to-brand-900 bg-clip-text text-transparent">
+					<strong className="bg-linear-to-r/srgb from-brand-100 to-brand-900 bg-clip-text text-transparent">
 						pxseu
 					</strong>
 					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" />{" "}
