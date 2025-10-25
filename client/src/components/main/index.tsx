@@ -66,18 +66,19 @@ export default function Main() {
 				<Experience
 					items={[
 						{
-							title: "Full Stack Developer",
-							company: "c/side",
-							period: "2025 - Present",
+							title: "Full Stack & Systems Developer",
+							company: "Independent",
+							// since start of my career
+							period: "2020 - Present",
 							description:
-								"Working on all aspects of c/side, from backend to frontend and everything in between. Creating simple and intuitive tools interfaces to make the web ever so slightly better, one step at a time. Writing complex and over the top React Componenets and fancy Database Queries to make everything fast, responsive and secure.",
+								"Contributing to various open source projects, notably Bun and Kaito HTTP and DefinetlyTyped. Worked on a lot of open source projects inclduing profile Readmes, Discord Rich Presence and last but not least a Redis clone written in Rust. Crabdis is a tiny Redis clone written in Rust that is a fun and educational project to learn the basics of Rust and Redis internals.",
 						},
 						{
 							title: "Full Stack Developer",
-							company: "Freelance",
-							period: "2025 - Present",
+							company: "c/side",
+							period: " 2025",
 							description:
-								"Developing a Linktree-like service focused on physical NFC cards, allowing users to share their digital presence through physical cards. Maintaining and improving open source projects, including a Redis clone written in Rust. Ensuring stability and security across all projects while contributing to the OSS ecosystem. Mentoring university students by providing guidance, tips, and advice on their programming projects.",
+								"Worked on all aspects of c/side, from backend to frontend and everything in between. Created simple and intuitive tools interfaces to make the web ever so slightly better, one step at a time. Wrote complex and over the top React Componenets and fancy Database Queries to make everything fast, responsive and secure.",
 						},
 						{
 							title: "Backend Developer",
@@ -95,7 +96,7 @@ export default function Main() {
 						},
 						{
 							title: "Full Stack Developer",
-							company: "Freelance",
+							company: "PreMiD & Freelance",
 							period: "2020 - 2022",
 							description:
 								"Contributed to various open source projects, with a focus on PreMiD. Worked on localizations, improvements, and features for projects I used and enjoyed. Maintained a strong presence in the open source community through meaningful contributions.",
