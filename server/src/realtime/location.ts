@@ -1,8 +1,9 @@
 import EventEmitter from "node:events";
 import { RealtimeClient } from "./abstract.js";
+import { config } from "config.js";
 
-export const REDIS_LOCATION = "location";
-export const REDIS_LOCATION_UPDATE = "location:update";
+export const REDIS_LOCATION = `${config.REDIS_PREFIX}location`;
+export const REDIS_LOCATION_UPDATE = `${config.REDIS_PREFIX}location:update`;
 
 export type Location = {
 	city: string;
@@ -19,9 +20,7 @@ export class LocationRealtimeClient extends RealtimeClient<
 			[REDIS_LOCATION_UPDATE]: [Location];
 		}>();
 
-		const publisher = this.redis.duplicate();
-
-		await publisher.subscribe(REDIS_LOCATION_UPDATE);
+		const publisher = await this.redis.duplicate();
 
 		const parseLocation = (location: string) => {
 			const parsed = JSON.parse(location);
@@ -38,14 +37,17 @@ export class LocationRealtimeClient extends RealtimeClient<
 			.get(REDIS_LOCATION)
 			.then((v) => parseLocation(v || "null"));
 
-		publisher.on("message", async (channel, message) => {
-			if (channel === REDIS_LOCATION_UPDATE) {
-				const data = parseLocation(message);
+		await publisher.subscribe(
+			REDIS_LOCATION_UPDATE,
+			async (message, channel) => {
+				if (channel === REDIS_LOCATION_UPDATE) {
+					const data = parseLocation(message);
 
-				listener.emit(REDIS_LOCATION_UPDATE, data);
-				currentLocation = data;
-			}
-		});
+					listener.emit(REDIS_LOCATION_UPDATE, data);
+					currentLocation = data;
+				}
+			},
+		);
 
 		const update = async (state: Location) => {
 			await Promise.all([

@@ -1,4 +1,4 @@
-import { Redis } from "ioredis";
+import { RedisClient } from "bun";
 import { config } from "../config.js";
 import { DiscordClient } from "./discord.js";
 import SpotifyClient from "./spotify.js";
@@ -10,9 +10,7 @@ export const createClients = () => {
 		config.SPOTIFY_REDIRECT_URI,
 	);
 
-	const redis = new Redis(config.REDIS_URL, {
-		keyPrefix: "pxseu:2:",
-	});
+	const redis = new RedisClient(config.REDIS_URL);
 
 	const discord = new DiscordClient(
 		redis,

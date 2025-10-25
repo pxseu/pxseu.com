@@ -10,7 +10,7 @@ export const config = envsafe({
 	}),
 	REDIS_URL: url(),
 	PORT: port({
-		default: 3000,
+		default: 3001,
 	}),
 	LOCATION_SECRET: str({
 		default: "sigmaSigmaSigma",
@@ -20,4 +20,11 @@ export const config = envsafe({
 	WEBHOOK_AVATAR: url({
 		default: "https://cdn.pxseu.com/Nc4z2WvoV.png",
 	}),
+	REDIS_PREFIX: str({
+		default: "pxseu:2:",
+	}),
 });
+
+if (config.LOCATION_SECRET.length < 10) {
+	throw new TypeError("LOCATION_SECRET must be at least 10 character long");
+}

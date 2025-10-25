@@ -4,8 +4,9 @@ import {
 	type default as SpotifyClient,
 } from "../clients/spotify.js";
 import { RealtimeClient } from "./abstract.js";
+import { config } from "config.js";
 
-export const REDIS_SPOTIFY_PLAYING = "spotify:playing";
+export const REDIS_SPOTIFY_PLAYING = `${config.REDIS_PREFIX}spotify:playing`;
 
 type Song = Awaited<
 	ReturnType<typeof SpotifyClient.prototype.formatTrack>
@@ -20,9 +21,7 @@ export class SpotifyRealtimeClient extends RealtimeClient<
 			[REDIS_SPOTIFY_PLAYING]: [Song, number];
 		}>();
 
-		const publisher = this.redis.duplicate();
-
-		await publisher.subscribe(REDIS_SPOTIFY_PLAYING);
+		const publisher = await this.redis.duplicate();
 
 		let currentPlaying: Song = await this.redis
 			.get(REDIS_SPOTIFY_PLAYING)
@@ -31,20 +30,23 @@ export class SpotifyRealtimeClient extends RealtimeClient<
 			.get(REDIS_LAST_UPDATE_ON)
 			.then((v) => parseInt(v || "0", 10));
 
-		publisher.on("message", async (channel, message) => {
-			if (channel === REDIS_SPOTIFY_PLAYING) {
-				const data = JSON.parse(message);
+		await publisher.subscribe(
+			REDIS_SPOTIFY_PLAYING,
+			async (message, channel) => {
+				if (channel === REDIS_SPOTIFY_PLAYING) {
+					const data = JSON.parse(message);
 
-				listener.emit(REDIS_SPOTIFY_PLAYING, data, lastUpdateOn);
-				currentPlaying = data;
-				lastUpdateOn = Date.now();
-			}
-		});
+					listener.emit(REDIS_SPOTIFY_PLAYING, data, lastUpdateOn);
+					currentPlaying = data;
+					lastUpdateOn = Date.now();
+				}
+			},
+		);
 
 		const update = async (state: Song) => {
 			await Promise.all([
 				this.redis.set(REDIS_SPOTIFY_PLAYING, JSON.stringify(state)),
-				this.redis.set(REDIS_LAST_UPDATE_ON, Date.now()),
+				this.redis.set(REDIS_LAST_UPDATE_ON, Date.now().toString()),
 				this.redis.publish(REDIS_SPOTIFY_PLAYING, JSON.stringify(state)),
 			]);
 		};

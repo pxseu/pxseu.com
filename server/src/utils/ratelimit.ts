@@ -1,5 +1,6 @@
 import { KaitoError } from "@kaito-http/core";
-import type { Redis } from "ioredis";
+import type { RedisClient } from "bun";
+import { config } from "config.js";
 
 interface RateLimitOptions {
 	windowMs: number;
@@ -8,9 +9,13 @@ interface RateLimitOptions {
 }
 
 export const createRateLimiter = (options: RateLimitOptions) => {
-	const keyPrefix = options.keyPrefix || "rate-limit:";
+	const keyPrefix = `${config.REDIS_PREFIX}${options.keyPrefix || "rate-limit:"}`;
 
-	return async (redis: Redis, ip: string, resource: string = "default") => {
+	return async (
+		redis: RedisClient,
+		ip: string,
+		resource: string = "default",
+	) => {
 		const key = `${keyPrefix}${resource}:${ip}`;
 
 		const current = await redis.get(key);
@@ -32,7 +37,12 @@ export const createRateLimiter = (options: RateLimitOptions) => {
 		}
 
 		if (!current) {
-			await redis.set(key, 1, "EX", Math.ceil(options.windowMs / 1000));
+			await redis.set(
+				key,
+				(1).toString(),
+				"EX",
+				Math.ceil(options.windowMs / 1000),
+			);
 		} else {
 			await redis.incr(key);
 		}

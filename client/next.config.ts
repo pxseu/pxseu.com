@@ -1,13 +1,6 @@
 import type { NextConfig } from "next";
-import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
 
-const nextConfig = (phase: string): NextConfig => ({
-	experimental: {
-		reactCompiler: phase === PHASE_DEVELOPMENT_SERVER ? false : true,
-	},
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
+const nextConfig: NextConfig = ({
 	typescript: {
 		ignoreBuildErrors: true,
 	},

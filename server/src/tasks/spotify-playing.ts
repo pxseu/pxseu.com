@@ -1,4 +1,4 @@
-import type { Redis } from "ioredis";
+import type { RedisClient } from "bun";
 import type SpotifyClient from "../clients/spotify.js";
 import {
 	REDIS_LAST_UPDATE_ON,
@@ -9,7 +9,7 @@ import { REDIS_SPOTIFY_PLAYING } from "../realtime/spotify.js";
 import { sleep } from "../utils/sleep.js";
 
 export const spotifyPlayingTask = async (
-	redis: Redis,
+	redis: RedisClient,
 	spotify: SpotifyClient,
 	signal?: AbortSignal,
 ) => {
@@ -17,7 +17,6 @@ export const spotifyPlayingTask = async (
 
 	const interval = 2e2;
 	const noPlayingInterval = 2e3; // Longer interval when nothing is playing
-	const publisher = redis.duplicate();
 
 	const prev = await redis
 		.get(REDIS_SPOTIFY_PLAYING)
@@ -91,7 +90,7 @@ export const spotifyPlayingTask = async (
 			if (prevId !== null) {
 				await Promise.all([
 					redis.del(REDIS_SPOTIFY_PLAYING),
-					publisher.publish(REDIS_SPOTIFY_PLAYING, "null"),
+					redis.publish(REDIS_SPOTIFY_PLAYING, "null"),
 					redis.del(REDIS_LAST_UPDATE_ON),
 				]);
 				prevId = null;
@@ -119,8 +118,8 @@ export const spotifyPlayingTask = async (
 
 		await Promise.all([
 			redis.set(REDIS_SPOTIFY_PLAYING, formated),
-			publisher.publish(REDIS_SPOTIFY_PLAYING, formated),
-			redis.set(REDIS_LAST_UPDATE_ON, startedAt ?? 0),
+			redis.publish(REDIS_SPOTIFY_PLAYING, formated),
+			redis.set(REDIS_LAST_UPDATE_ON, (startedAt ?? 0).toString()),
 		]);
 		prevId = id;
 		prevStartedt = startedAt;

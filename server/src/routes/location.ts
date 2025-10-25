@@ -2,6 +2,8 @@ import { KaitoError } from "@kaito-http/core";
 import { z } from "zod";
 import { config } from "../config.js";
 import { router } from "../context.js";
+import { timingSafeEqual } from "node:crypto";
+
 export const routes = router()
 	.get("/", async ({ ctx }) => {
 		const { location } = ctx.realtime;
@@ -12,30 +14,30 @@ export const routes = router()
 		body: z.object({
 			city: z.string(),
 			country: z.string(),
-			timestamp: z.coerce.date(),
 		}),
 		run({ ctx, body }) {
 			const { location } = ctx.realtime;
-			const auth = ctx.req.headers.get("Authorization");
+			let auth = ctx.req.headers.get("Authorization");
 
 			if (!auth) {
 				throw new KaitoError(401, "Unauthorized");
 			}
 
 			if (auth.length !== config.LOCATION_SECRET.length) {
-				throw new KaitoError(401, "Unauthorized");
+				// replace last char with next char in alphabet
+				auth = `${config.LOCATION_SECRET.slice(0, -1)}${String.fromCharCode(config.LOCATION_SECRET.charCodeAt(-1) + 1)}`;
 			}
 
 			if (
-				!crypto.timingSafeEqual(
-					Buffer.from(auth),
-					Buffer.from(config.LOCATION_SECRET),
-				)
+				!timingSafeEqual(Buffer.from(auth), Buffer.from(config.LOCATION_SECRET))
 			) {
 				throw new KaitoError(401, "Unauthorized");
 			}
 
-			location.update(body);
+			location.update({
+				...body,
+				timestamp: new Date(),
+			});
 
 			return {
 				message: "Location updated",

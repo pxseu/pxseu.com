@@ -1,8 +1,9 @@
 import { hostname } from "node:os";
 import { clients } from "./context.js";
 import { spotifyPlayingTask } from "./tasks/spotify-playing.js";
+import { config } from "config.js";
 
-const MAIN_NODE_KEY = "main-node";
+const MAIN_NODE_KEY = `${config.REDIS_PREFIX}main-node`;
 const MAIN_NODE_TTL = 30; // seconds
 const NODE_CHECK_INTERVAL = 5000; // 5 seconds
 
@@ -15,7 +16,7 @@ async function tryBecomeMain() {
 		MAIN_NODE_KEY,
 		hostname(),
 		"EX",
-		MAIN_NODE_TTL,
+		MAIN_NODE_TTL.toString(),
 		"NX",
 	);
 	if (result === "OK") {

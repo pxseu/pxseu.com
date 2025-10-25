@@ -1,8 +1,9 @@
-import type { Redis } from "ioredis";
+import type { RedisClient } from "bun";
 import { fetch } from "./fetch.js";
+import { config } from "config.js";
 
 const ENDPOINT = "https://canary.discord.com/api/webhooks";
-const REDIS_PREFIX = "discord_webhook_ratelimit";
+const REDIS_PREFIX = `${config.REDIS_PREFIX}discord_webhook_ratelimit`;
 
 // @TODO: Make useage of the rate limit bellow too
 
@@ -11,7 +12,7 @@ const REDIS_PREFIX = "discord_webhook_ratelimit";
 
 export class DiscordClient {
 	constructor(
-		private redis: Redis,
+		private redis: RedisClient,
 		private webhookId: string,
 		private webhookToken: string,
 		private avatar: string,

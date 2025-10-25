@@ -1,10 +1,11 @@
+import { config } from "config.js";
 import { dominantColor } from "../utils/dominant.js";
 import { fetch } from "./fetch.js";
 
-export const REDIS_SPOTIFY_REFRESH_TOKEN = "spotify:refresh_token";
-export const REDIS_SPOTIFY_ACCESS_TOKEN = "spotify:access_token";
-export const REDIS_LAST_UPDATE_ON = "spotify:last_update_on";
-export const REDIS_SPOTIFY_TOP_ARTISTS = "spotify:top_artists";
+export const REDIS_SPOTIFY_REFRESH_TOKEN = `${config.REDIS_PREFIX}spotify:refresh_token`;
+export const REDIS_SPOTIFY_ACCESS_TOKEN = `${config.REDIS_PREFIX}spotify:access_token`;
+export const REDIS_LAST_UPDATE_ON = `${config.REDIS_PREFIX}spotify:last_update_on`;
+export const REDIS_SPOTIFY_TOP_ARTISTS = `${config.REDIS_PREFIX}spotify:top_artists`;
 
 export interface ExternalIds {
 	isrc: string;

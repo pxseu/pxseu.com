@@ -1,8 +1,8 @@
-import type { Redis } from "ioredis";
+import type { RedisClient } from "bun";
 import { LocationRealtimeClient } from "./location.js";
 import { SpotifyRealtimeClient } from "./spotify.js";
 
-export const realtimeManager = async (redis: Redis) => {
+export const realtimeManager = async (redis: RedisClient) => {
 	const spotify = new SpotifyRealtimeClient(redis);
 	const location = new LocationRealtimeClient(redis);
 

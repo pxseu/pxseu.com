@@ -1,7 +1,7 @@
-import type { Redis } from "ioredis";
+import type { RedisClient } from "bun";
 
 export abstract class RealtimeClient<E extends string, T> {
-	constructor(protected redis: Redis) {}
+	constructor(protected redis: RedisClient) {}
 
 	abstract initialize(): Promise<{
 		readonly state: T;

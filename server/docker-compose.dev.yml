@@ -1,5 +1,3 @@
-version: "3.7"
-
 services:
   crabdis:
     image: pxseu/crabdis:latest
