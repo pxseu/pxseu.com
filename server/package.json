@@ -16,7 +16,6 @@
 	"dependencies": {
 		"@kaito-http/client": "^3.0.3",
 		"@kaito-http/core": "^3.0.3",
-		"envsafe": "^2.0.3",
 		"sharp": "^0.34.1",
 		"zod": "^3.24.2"
 	},

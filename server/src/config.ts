@@ -1,30 +1,23 @@
-import { envsafe, port, str, url } from "envsafe";
+import z from "zod";
 
-export const config = envsafe({
-	SPOTIFY_CLIENT_ID: str(),
-	SPOTIFY_CLIENT_SECRET: str(),
-	SPOTIFY_REDIRECT_URI: str(),
-	SPOTIFY_AUTH_USER_ID: str({
-		default: "1evum6fq9klvekqjbz4cu5v79",
-		allowEmpty: true,
-	}),
-	REDIS_URL: url(),
-	PORT: port({
-		default: 3001,
-	}),
-	LOCATION_SECRET: str({
-		default: "sigmaSigmaSigma",
-	}),
-	WEBHOOK_MESSAGE_ID: str(),
-	WEBHOOK_MESSAGE_TOKEN: str(),
-	WEBHOOK_AVATAR: url({
-		default: "https://cdn.pxseu.com/Nc4z2WvoV.png",
-	}),
-	REDIS_PREFIX: str({
-		default: "pxseu:2:",
-	}),
+export const configSchema = z.object({
+	SPOTIFY_CLIENT_ID: z.string(),
+	SPOTIFY_CLIENT_SECRET: z.string(),
+	SPOTIFY_REDIRECT_URI: z.string().url(),
+	SPOTIFY_AUTH_USER_ID: z
+		.string()
+		.optional()
+		.default("1evum6fq9klvekqjbz4cu5v79"),
+	REDIS_URL: z.string().url(),
+	PORT: z.coerce.number().default(3001),
+	LOCATION_SECRET: z.string().min(10).default("sigmaSigmaSigma"),
+	WEBHOOK_MESSAGE_ID: z.string(),
+	WEBHOOK_MESSAGE_TOKEN: z.string(),
+	WEBHOOK_AVATAR: z
+		.string()
+		.url()
+		.default("https://cdn.pxseu.com/Nc4z2WvoV.png"),
+	REDIS_PREFIX: z.string().default("pxseu:2:"),
 });
 
-if (config.LOCATION_SECRET.length < 10) {
-	throw new TypeError("LOCATION_SECRET must be at least 10 character long");
-}
+export const config = configSchema.parse(process.env);
