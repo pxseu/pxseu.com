@@ -5,8 +5,17 @@ import {
 } from "../clients/spotify.js";
 import { RealtimeClient } from "./abstract.js";
 import { config } from "config.js";
+import { hostname } from "node:os";
+import type { RedisClient } from "bun";
 
 export const REDIS_SPOTIFY_PLAYING = `${config.REDIS_PREFIX}spotify:playing`;
+
+const cb = async function (this: RedisClient) {
+	await this.send("CLIENT", [
+		"SETNAME",
+		`spotify-realtime-client-${hostname()}`,
+	]);
+};
 
 type Song = Awaited<
 	ReturnType<typeof SpotifyClient.prototype.formatTrack>
@@ -22,6 +31,8 @@ export class SpotifyRealtimeClient extends RealtimeClient<
 		}>();
 
 		const publisher = await this.redis.duplicate();
+		publisher.onconnect = cb.bind(publisher);
+		await cb.call(publisher);
 
 		let currentPlaying: Song = await this.redis
 			.get(REDIS_SPOTIFY_PLAYING)

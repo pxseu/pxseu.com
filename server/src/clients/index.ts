@@ -2,8 +2,13 @@ import { RedisClient } from "bun";
 import { config } from "../config.js";
 import { DiscordClient } from "./discord.js";
 import SpotifyClient from "./spotify.js";
+import { hostname } from "node:os";
 
-export const createClients = () => {
+const cb = async function (this: RedisClient) {
+	await this.send("CLIENT", ["SETNAME", `master-client-${hostname()}`]);
+};
+
+export const createClients = async () => {
 	const spotify = new SpotifyClient(
 		config.SPOTIFY_CLIENT_ID,
 		config.SPOTIFY_CLIENT_SECRET,
@@ -11,6 +16,8 @@ export const createClients = () => {
 	);
 
 	const redis = new RedisClient(config.REDIS_URL);
+	redis.onconnect = cb.bind(redis);
+	await cb.call(redis);
 
 	const discord = new DiscordClient(
 		redis,

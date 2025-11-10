@@ -3,7 +3,7 @@ import { createClients } from "./clients/index.js";
 import { ipStore } from "./index.js";
 import { realtimeManager } from "./realtime/index.js";
 
-export const clients = createClients();
+export const clients = await createClients();
 
 const serverStarted = Date.now();
 

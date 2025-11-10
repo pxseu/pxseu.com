@@ -1,6 +1,8 @@
 import EventEmitter from "node:events";
 import { RealtimeClient } from "./abstract.js";
 import { config } from "config.js";
+import { hostname } from "node:os";
+import type { RedisClient } from "bun";
 
 export const REDIS_LOCATION = `${config.REDIS_PREFIX}location`;
 export const REDIS_LOCATION_UPDATE = `${config.REDIS_PREFIX}location:update`;
@@ -10,6 +12,13 @@ export type Location = {
 	country: string;
 	timestamp: Date;
 } | null;
+
+const cb = async function (this: RedisClient) {
+	await this.send("CLIENT", [
+		"SETNAME",
+		`location-realtime-client-${hostname()}`,
+	]);
+};
 
 export class LocationRealtimeClient extends RealtimeClient<
 	typeof REDIS_LOCATION_UPDATE,
@@ -21,6 +30,8 @@ export class LocationRealtimeClient extends RealtimeClient<
 		}>();
 
 		const publisher = await this.redis.duplicate();
+		publisher.onconnect = cb.bind(publisher);
+		await cb.call(publisher);
 
 		const parseLocation = (location: string) => {
 			const parsed = JSON.parse(location);
