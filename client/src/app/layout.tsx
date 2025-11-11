@@ -5,12 +5,53 @@ import ReactLenis from "lenis/react";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import Footer from "@/components/footer";
+import JsonLd from "@/components/json-ld";
 import { API_ROUTE } from "@/config";
 import { RealtimeProvider } from "@/contexts/RealtimeContext";
 
 const THEME_COLOR = "#8066F7";
 const ASSET_VERSION = "3.0";
 const description = "pxseu's personal website";
+
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	name: "pxseu.com",
+	url: "https://pxseu.com",
+	description,
+	author: {
+		"@type": "Person",
+		name: "pxseu",
+		url: "https://pxseu.com",
+	},
+};
+
+const personSchema = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "pxseu",
+	alternateName: "Kuba Ellwart",
+	url: "https://pxseu.com",
+	description,
+	sameAs: [
+		"https://github.com/pxseu",
+		"https://twitter.com/pxseu",
+		"https://www.linkedin.com/in/kubaellwart/",
+		"https://discord.com/users/338718840873811979",
+		"https://tiktok.com/@pxseu",
+		"https://twitch.tv/pxseu",
+		"https://open.spotify.com/user/1evum6fq9klvekqjbz4cu5v79",
+		"https://www.youtube.com/channel/UC5_T1P4TJ4lJUt3XaM3Y_8Q",
+		"https://www.npmjs.com/~pxseu",
+		"https://gitlab.com/pxseu",
+		"https://crates.io/users/pxseu",
+		"https://hub.docker.com/u/pxseu",
+	],
+	email: "kuba@pxseu.com",
+};
+
+const websiteSchemaJson = JSON.stringify(websiteSchema);
+const personSchemaJson = JSON.stringify(personSchema);
 
 export const viewport: Viewport = {
 	themeColor: THEME_COLOR,
@@ -92,6 +133,8 @@ export default function RootLayout({
 			<head>
 				<CSideScript />
 				<Script src="https://content.sakurajima.cloud/ee2244/analytics.js" />
+				<JsonLd id="website-schema" json={websiteSchemaJson} />
+				<JsonLd id="person-schema" json={personSchemaJson} />
 				<link rel="preconnect" href={API_ROUTE} />
 				<link rel="preconnect" href="https://i.scdn.co" />
 			</head>

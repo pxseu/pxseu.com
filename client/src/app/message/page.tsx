@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/json-ld";
 import MessageForm from "@/components/message-form";
 
 export const metadata: Metadata = {
@@ -7,10 +8,29 @@ export const metadata: Metadata = {
 	keywords: ["pxseu", "message", "contact"],
 };
 
+const contactPageSchema = {
+	"@context": "https://schema.org",
+	"@type": "ContactPage",
+	name: "Message - pxseu.com",
+	url: "https://pxseu.com/message",
+	description: "Send me a message",
+	mainEntity: {
+		"@type": "Person",
+		name: "pxseu",
+		url: "https://pxseu.com",
+		email: "kuba@pxseu.com",
+	},
+};
+
+const contactPageSchemaJson = JSON.stringify(contactPageSchema);
+
 export default function MessagePage() {
 	return (
-		<div className="flex flex-col items-center w-full px-4 py-8">
-			<MessageForm />
-		</div>
+		<>
+			<JsonLd id="contact-page-schema" json={contactPageSchemaJson} />
+			<div className="flex flex-col items-center w-full px-4 py-8">
+				<MessageForm />
+			</div>
+		</>
 	);
 }
