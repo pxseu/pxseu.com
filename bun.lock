@@ -37,7 +37,7 @@
       "name": "@pxseu/server",
       "version": "1.0.0",
       "dependencies": {
-        "@kaito-http/core": "3.0.3",
+        "@kaito-http/core": "^3.0.3",
         "sharp": "^0.34.5",
         "zod": "^3.25.76",
       },
