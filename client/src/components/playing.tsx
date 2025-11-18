@@ -56,7 +56,7 @@ export default function Playing() {
 					<div className="flex items-start gap-4 px-2 overflow-hidden">
 						{/* biome-ignore lint/performance/noImgElement: this is a static site, no need for next/image */}
 						<img
-							src={data.playing.album.image}
+							src={data.playing.album.image || "/assets/placeholder/album.png"}
 							alt={data.playing.album.name}
 							className="rounded-md shrink-0 aspect-square"
 							width={64}

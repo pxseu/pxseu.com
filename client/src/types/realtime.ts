@@ -6,8 +6,8 @@ export interface Song {
 
 export interface Album {
 	name: string;
-	image: string;
-	color: string;
+	image?: string;
+	color?: string;
 	url: string;
 }
 
