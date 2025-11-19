@@ -93,9 +93,7 @@ function getSecureRandomIndex(max: number): number {
 }
 
 export default function Quote() {
-	const [quote, setQuote] = useState<string>(
-		"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-	);
+	const [quote, setQuote] = useState<string>("Not possible to see this.");
 	const [visible, setVisible] = useState(false);
 
 	useEffect(() => {
