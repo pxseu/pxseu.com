@@ -15,12 +15,12 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@kaito-http/core": "^3.0.3",
+		"@kaito-http/core": "^3.2.1",
 		"sharp": "^0.34.5",
-		"zod": "^3.25.76"
+		"zod": "^4.1.13"
 	},
 	"devDependencies": {
-		"@types/bun": "^1.3.2",
-		"cross-env": "^7.0.3"
+		"@types/bun": "^1.3.3",
+		"cross-env": "^10.1.0"
 	}
 }
