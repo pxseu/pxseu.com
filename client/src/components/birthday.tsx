@@ -4,9 +4,9 @@ import NextLink from "next/link";
 
 export default function BirthdayNotice() {
 	return (
-		<div className="sticky top-4 z-[213769420] w-full py-3 px-4 flex justify-center mb-4 border-[0.5px] border-border-100">
+		<div className="sticky top-4 z-213769420 w-full py-3 px-4 flex justify-center mb-4 border-[0.5px] border-border-100">
 			{/* Animated background */}
-			<div className="absolute inset-0 bg-gradient-to-r from-brand-100/70 to-brand-900/70 motion-safe:animate-gradient-bg motion-reduce:bg-[length:100%_100%] bg-[length:400%_400%] backdrop-blur-sm" />
+			<div className="absolute inset-0 bg-linear-to-r from-brand-100/70 to-brand-900/70 motion-safe:animate-gradient-bg motion-reduce:bg-size-[100%_100%] bg-size-[400%_400%] backdrop-blur-sm" />
 
 			{/* Content with black text */}
 			<p className="relative z-20 text-center text-lg font-medium text-zinc-950">

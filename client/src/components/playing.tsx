@@ -11,7 +11,8 @@ export default function Playing() {
 	const animationFrameRef = useRef<number>(null);
 
 	const animateProgress = useCallback(() => {
-		if (!data?.playing || !progressBarRef.current) return;
+		if (!progressBarRef.current) return;
+		if (!data?.playing) return;
 
 		const start = new Date(data.playing.progress.start).getTime();
 		const end = new Date(data.playing.progress.end).getTime();
@@ -32,6 +33,10 @@ export default function Playing() {
 		if (!isConnected || !data?.playing) {
 			if (animationFrameRef.current) {
 				cancelAnimationFrame(animationFrameRef.current);
+			}
+
+			if (progressBarRef.current) {
+				progressBarRef.current.style.width = "0%";
 			}
 			return;
 		}
@@ -70,10 +75,14 @@ export default function Playing() {
 									target="_blank"
 									rel="noopener noreferrer"
 									className="font-semibold truncate text-base hover:underline"
+									title={data.playing.song.title}
 								>
 									{data.playing.song.title}
 								</a>
-								<span className="text-zinc-300 truncate">
+								<span
+									className="text-zinc-300 truncate"
+									title={data.playing.song.artists}
+								>
 									{data.playing.song.artists}
 								</span>
 								<a
@@ -81,6 +90,7 @@ export default function Playing() {
 									target="_blank"
 									rel="noopener noreferrer"
 									className="text-zinc-300 truncate hover:underline"
+									title={data.playing.album.name}
 								>
 									{data.playing.album.name}
 								</a>
