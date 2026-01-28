@@ -1,12 +1,12 @@
 import EventEmitter from "node:events";
+import { hostname } from "node:os";
+import type { RedisClient } from "bun";
+import { config } from "config.js";
 import {
 	REDIS_LAST_UPDATE_ON,
 	type default as SpotifyClient,
 } from "../clients/spotify.js";
 import { RealtimeClient } from "./abstract.js";
-import { config } from "config.js";
-import { hostname } from "node:os";
-import type { RedisClient } from "bun";
 
 export const REDIS_SPOTIFY_PLAYING = `${config.REDIS_PREFIX}spotify:playing`;
 

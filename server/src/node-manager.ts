@@ -1,7 +1,7 @@
 import { hostname } from "node:os";
+import { config } from "config.js";
 import { clients } from "./context.js";
 import { spotifyPlayingTask } from "./tasks/spotify-playing.js";
-import { config } from "config.js";
 
 const MAIN_NODE_KEY = `${config.REDIS_PREFIX}main-node`;
 const MAIN_NODE_TTL = 30; // seconds

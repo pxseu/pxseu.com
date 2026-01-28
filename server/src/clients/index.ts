@@ -1,8 +1,8 @@
+import { hostname } from "node:os";
 import { RedisClient } from "bun";
 import { config } from "../config.js";
 import { DiscordClient } from "./discord.js";
 import SpotifyClient from "./spotify.js";
-import { hostname } from "node:os";
 
 const cb = async function (this: RedisClient) {
 	await this.send("CLIENT", ["SETNAME", `master-client-${hostname()}`]);

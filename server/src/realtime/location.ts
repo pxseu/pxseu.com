@@ -1,8 +1,8 @@
 import EventEmitter from "node:events";
-import { RealtimeClient } from "./abstract.js";
-import { config } from "config.js";
 import { hostname } from "node:os";
 import type { RedisClient } from "bun";
+import { config } from "config.js";
+import { RealtimeClient } from "./abstract.js";
 
 export const REDIS_LOCATION = `${config.REDIS_PREFIX}location`;
 export const REDIS_LOCATION_UPDATE = `${config.REDIS_PREFIX}location:update`;

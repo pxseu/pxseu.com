@@ -1,8 +1,8 @@
+import { timingSafeEqual } from "node:crypto";
 import { KaitoError } from "@kaito-http/core";
 import { z } from "zod";
 import { config } from "../config.js";
 import { router } from "../context.js";
-import { timingSafeEqual } from "node:crypto";
 
 export const routes = router()
 	.get("/", async ({ ctx }) => {

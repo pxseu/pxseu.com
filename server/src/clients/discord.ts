@@ -1,6 +1,6 @@
 import type { RedisClient } from "bun";
-import { fetch } from "./fetch.js";
 import { config } from "config.js";
+import { fetch } from "./fetch.js";
 
 const ENDPOINT = "https://canary.discord.com/api/webhooks";
 const REDIS_PREFIX = `${config.REDIS_PREFIX}discord_webhook_ratelimit`;
@@ -41,8 +41,10 @@ export class DiscordClient {
 			timestamp: new Date().toISOString(),
 		};
 
-		const left = await this.redis.get(`${REDIS_PREFIX}:left`);
-		const delay = await this.redis.ttl(`${REDIS_PREFIX}:left`);
+		const [left, delay] = await Promise.all([
+			this.redis.get(`${REDIS_PREFIX}:left`),
+			this.redis.ttl(`${REDIS_PREFIX}:left`),
+		]);
 
 		if (left && delay > 0) Bun.sleep((delay + 0.1 * 1000) / parseInt(left, 10));
 
