@@ -75,12 +75,8 @@ export const spotifyPlayingTask = async (
 		try {
 			nowPlaying = await spotify.getMyCurrentPlayingTrack(accessToken);
 		} catch (error) {
-			console.error("Failed to get current playing track");
-			console.error(error);
-			await Promise.all([
-				redis.del(REDIS_SPOTIFY_ACCESS_TOKEN),
-				redis.del(REDIS_SPOTIFY_REFRESH_TOKEN),
-			]);
+			console.error("Failed to get current playing track", error);
+			await redis.del(REDIS_SPOTIFY_ACCESS_TOKEN);
 			await sleep(noPlayingInterval);
 			continue;
 		}
