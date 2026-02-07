@@ -5,3 +5,9 @@ services:
     container_name: crabdis
     ports:
       - "6379:6379/tcp"
+    volumes:
+      - crabdis_data:/data
+    command: ["--dir", "/data", "--save", "60 1"]
+
+volumes:
+  crabdis_data:
