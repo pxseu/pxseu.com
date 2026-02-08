@@ -20,18 +20,17 @@ export default function Main() {
 					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" />{" "}
 					and have been writing code for{" "}
 					<Timed timestamp={CODING_START_TIMESTAMP} label="years" suffix="." />{" "}
-					I mostly work on backend services and internal tools, and I also enjoy
-					frontend when it helps people use things more easily.
+					I mostly work on backend services and internal tooling. I also enjoy
+					frontend when it makes things easier to understand and use.
 				</p>
 				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
-					I like building things that are simple, reliable, and easy for other
-					people to work with later. I care about clear code, good naming, and
-					systems that are still understandable after a long day.
+					I like building systems that stay simple under load and readable
+					months later. Clear naming and predictable behavior matter to me.
 				</p>
 
 				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
-					I like working with thoughtful people. Most of the best results come
-					from small, honest conversations and steady progress.
+					I work best with thoughtful people and direct feedback. Most good
+					results come from small, honest conversations and steady progress.
 				</p>
 
 				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
@@ -41,7 +40,7 @@ export default function Main() {
 				</p>
 
 				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
-					Outside of code, I&apos;m into cars, very specific gadgets, and
+					Outside of code, I&apos;m into cars, oddly specific gadgets, and
 					sometimes making videos about what I&apos;m working on. I like things
 					that are practical, a little nerdy, and built with care.
 				</p>
@@ -58,7 +57,6 @@ export default function Main() {
 						{
 							title: "Full Stack & Systems Developer",
 							company: "Independent",
-							// since start of my career
 							period: "2020 - Present",
 							description:
 								"Open source and freelance work across backend and tooling. Contributed to projects including Bun, Kaito HTTP, and DefinitelyTyped. Built smaller side projects too, like Crabdis, a Redis-style clone in Rust.",
@@ -68,14 +66,14 @@ export default function Main() {
 							company: "c/side",
 							period: "2025",
 							description:
-								"Worked across the stack on product features and internal tooling. Shipped frontend and backend changes, improved reliability, and handled the glue code that keeps everything usable.",
+								"Worked across the stack on product features and internal tooling. Shipped frontend and backend changes, improved reliability, and owned a lot of cross-service glue work.",
 						},
 						{
 							title: "Backend Developer",
 							company: "Incard Ltd.",
 							period: "2024 - 2025",
 							description:
-								"Helped merge two services into one platform focused on open banking and e-commerce. Standardized shared schemas, improved developer workflows, and integrated payment providers including Stripe and Google.",
+								"Helped merge two services into one platform focused on open banking and e-commerce. Standardized shared schemas, improved developer workflows, and integrated payment providers including Stripe and Google Pay.",
 						},
 						{
 							title: "Product Engineer",
@@ -172,7 +170,7 @@ export default function Main() {
 			{/* CONTACT */}
 			<Container title="Contact" id="contact">
 				<p className="mb-4 text-sm uppercase tracking-widest text-zinc-500">
-					Best ways to reach me:
+					Best ways to reach me
 				</p>
 
 				<Contact
@@ -201,7 +199,7 @@ export default function Main() {
 				/>
 
 				<div className="mt-5 text-center text-[11px] uppercase tracking-[0.2em] text-zinc-500">
-					Or send a direct message
+					Or send me a direct message
 				</div>
 
 				<div className="mt-4 w-full">

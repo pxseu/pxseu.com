@@ -6,8 +6,7 @@
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"postbuild": "next-sitemap",
-		"start": "next start",
-		"lint": "next lint"
+		"start": "next start"
 	},
 	"dependencies": {
 		"@cside.dev/next": "^1.1.4",

@@ -20,7 +20,7 @@ import LinkItem from "@/components/link";
 
 export const metadata: Metadata = {
 	title: "Links - pxseu.com",
-	description: "A collection of my links",
+	description: "Find me around the web",
 };
 
 const collectionPageSchema = {
@@ -28,7 +28,7 @@ const collectionPageSchema = {
 	"@type": "CollectionPage",
 	name: "Links - pxseu.com",
 	url: "https://pxseu.com/links",
-	description: "A collection of my links",
+	description: "Find me around the web",
 	mainEntity: {
 		"@type": "Person",
 		name: "pxseu",
@@ -45,7 +45,7 @@ export default function Links() {
 			<div className="mx-auto w-full max-w-2xl border border-border-100 bg-zinc-950/50">
 				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
 					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
-						Support Me!
+						Support
 					</h2>
 					<div className="space-y-3">
 						<LinkItem
@@ -65,7 +65,7 @@ export default function Links() {
 
 				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
 					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
-						Business & Work
+						Work
 					</h2>
 					<div className="space-y-3">
 						<LinkItem
@@ -136,7 +136,7 @@ export default function Links() {
 
 				<div className="space-y-4 px-5 py-5 sm:px-6">
 					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
-						OSS / Community
+						Open Source / Community
 					</h2>
 					<div className="space-y-3">
 						<LinkItem

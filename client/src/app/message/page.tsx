@@ -4,7 +4,7 @@ import MessageForm from "@/components/message-form";
 
 export const metadata: Metadata = {
 	title: "Message - pxseu.com",
-	description: "Send me a message",
+	description: "Send me a direct message",
 	keywords: ["pxseu", "message", "contact"],
 };
 
@@ -13,7 +13,7 @@ const contactPageSchema = {
 	"@type": "ContactPage",
 	name: "Message - pxseu.com",
 	url: "https://pxseu.com/message",
-	description: "Send me a message",
+	description: "Send me a direct message",
 	mainEntity: {
 		"@type": "Person",
 		name: "pxseu",

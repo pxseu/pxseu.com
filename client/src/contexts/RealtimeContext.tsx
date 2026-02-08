@@ -24,23 +24,47 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
 	const [data, setData] = useState<RealtimeData | null>(null);
 	const [isConnected, setIsConnected] = useState(false);
+	const eventSourceRef = useRef<EventSource | null>(null);
+	const reconnectTimeoutRef = useRef<number | null>(null);
 	const retryCount = useRef(0);
 	const maxRetries = 5;
 
+	const clearReconnectTimeout = useCallback(() => {
+		if (reconnectTimeoutRef.current !== null) {
+			window.clearTimeout(reconnectTimeoutRef.current);
+			reconnectTimeoutRef.current = null;
+		}
+	}, []);
+
+	const closeEventSource = useCallback(() => {
+		if (!eventSourceRef.current) return;
+		eventSourceRef.current.close();
+		eventSourceRef.current = null;
+	}, []);
+
 	const connect = useCallback(() => {
+		clearReconnectTimeout();
+		closeEventSource();
+
 		const eventSource = new EventSource(`${API_ROUTE}/v2/realtime`);
+		eventSourceRef.current = eventSource;
 
 		eventSource.onopen = () => {
 			setIsConnected(true);
-			retryCount.current = 0; // Reset retry count on successful connection
+			retryCount.current = 0;
 		};
 
 		const handleEvent = (event: MessageEvent) => {
-			const parsedData = JSON.parse(event.data);
+			let parsedData: unknown;
+			try {
+				parsedData = JSON.parse(event.data);
+			} catch {
+				return;
+			}
 
 			switch (event.type) {
 				case "init":
-					setData(parsedData);
+					setData(parsedData as RealtimeData);
 					break;
 				case "location":
 					setData((prevData) => {
@@ -48,7 +72,7 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 
 						return {
 							...prevData,
-							location: parsedData,
+							location: parsedData as RealtimeData["location"],
 						};
 					});
 					break;
@@ -58,7 +82,7 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 
 						return {
 							...prevData,
-							playing: parsedData,
+							playing: parsedData as RealtimeData["playing"],
 						};
 					});
 					break;
@@ -69,35 +93,36 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 		eventSource.addEventListener("location", handleEvent);
 		eventSource.addEventListener("playing", handleEvent);
 
-		const close = () => {
-			eventSource.close();
+		eventSource.onerror = () => {
+			setIsConnected(false);
 			eventSource.removeEventListener("init", handleEvent);
 			eventSource.removeEventListener("location", handleEvent);
 			eventSource.removeEventListener("playing", handleEvent);
-		};
+			eventSource.close();
 
-		eventSource.onerror = () => {
-			setIsConnected(false);
-			close();
+			if (eventSourceRef.current === eventSource) {
+				eventSourceRef.current = null;
+			}
 
-			// Implement exponential backoff
 			if (retryCount.current < maxRetries) {
-				const timeout = Math.min(1000 * 2 ** retryCount.current, 30000); // Max 30 seconds
-				setTimeout(() => {
+				const timeout = Math.min(1000 * 2 ** retryCount.current, 30000);
+				reconnectTimeoutRef.current = window.setTimeout(() => {
 					retryCount.current++;
 					connect();
 				}, timeout);
 			}
 		};
+	}, [clearReconnectTimeout, closeEventSource]);
+
+	useEffect(() => {
+		connect();
 
 		return () => {
-			close();
-
+			clearReconnectTimeout();
+			closeEventSource();
 			setIsConnected(false);
 		};
-	}, []);
-
-	useEffect(connect, [connect]);
+	}, [clearReconnectTimeout, closeEventSource, connect]);
 
 	return (
 		<RealtimeContext.Provider value={{ data, isConnected }}>

@@ -33,9 +33,10 @@ const quotes = [
 	"“Man is condemned to be free.” — Jean-Paul Sartre",
 
 	// Love
-	"“Love recognizes no barriers. It jumps hurdles, leaps fences, penetrates walls to arrive at its destination full of hope.” — Maya Angelou",
+	// temp remove as too long
+	// "“Love recognizes no barriers. It jumps hurdles, leaps fences, penetrates walls to arrive at its destination full of hope.” — Maya Angelou",
 	"“Love is composed of a single soul inhabiting two bodies.” — Aristotle",
-	"“You know you’re in love when you can’t fall asleep because reality is finally better than your dreams.” — Dr. Seuss",
+	"“Where there is love there is life.” — Mahatma Gandhi",
 	"“Let us always meet each other with smile, for the smile is the beginning of love.” — Mother Teresa",
 
 	// Life
@@ -52,32 +53,55 @@ const quotes = [
 	"“A man dies when he is forgotten.” — Dr. Hiluluk",
 
 	// Miscellaneous / existing quotes
-	"“I don’t have all the answers, but I’m always asking the right questions.”",
+	"“I don’t have all the answers, but I’m always asking the right questions.” — Unknown",
 	"“The only way to do great work is to love what you do.” — Steve Jobs",
-	"“Simplicity is the ultimate sophistication.” — Leonardo da Vinci",
+	"“The impediment to action advances action. What stands in the way becomes the way.” — Marcus Aurelius",
 	"“It does not matter how slowly you go as long as you do not stop.” — Confucius",
 	"“The future belongs to those who believe in the beauty of their dreams.” — Eleanor Roosevelt",
 	"“Do not go where the path may lead, go instead where there is no path and leave a trail.” — Ralph Waldo Emerson",
 	"“Success is not the key to happiness. Happiness is the key to success.” — Albert Schweitzer",
 	"“The secret of getting ahead is getting started.” — Mark Twain",
-	"“You must be the change you wish to see in the world.” — Mahatma Gandhi",
 	"“A person who never made a mistake never tried anything new.” — Albert Einstein",
 	"“Life is 10% what happens to us and 90% how we react to it.” — Charles R. Swindoll",
 ];
+
+function getSecureRandomIndex(max: number): number {
+	// Check if WebCrypto API is available
+	if (
+		typeof window !== "undefined" &&
+		window.crypto &&
+		window.crypto.getRandomValues
+	) {
+		const maxUint32 = 0xffffffff; // 2^32 - 1
+
+		while (true) {
+			// Get one 32-bit random number
+			const randomArray = new Uint32Array(1);
+			window.crypto.getRandomValues(randomArray);
+
+			const randomValue = randomArray[0];
+			// If randomValue is within a multiple of 'max', use it. Otherwise retry.
+			// This ensures each index has exactly the same chance (no remainder/bias).
+			if (randomValue <= maxUint32 - (maxUint32 % max)) {
+				return randomValue % max;
+			}
+		}
+	}
+
+	// Fallback to Math.random() if WebCrypto is not available
+	return Math.floor(Math.random() * max);
+}
 
 export default function Quote() {
 	const [quote, setQuote] = useState("");
 	const [visible, setVisible] = useState(false);
 
 	useEffect(() => {
-		let mounted = true;
-
-		const index = Math.floor(Math.random() * quotes.length);
-		setQuote(quotes[index]);
-		setTimeout(() => mounted && setVisible(true), 10);
+		setQuote(quotes[getSecureRandomIndex(quotes.length)]);
+		const animationTimeout = window.setTimeout(() => setVisible(true), 10);
 
 		return () => {
-			mounted = false;
+			window.clearTimeout(animationTimeout);
 		};
 	}, []);
 

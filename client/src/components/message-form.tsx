@@ -100,10 +100,10 @@ export default function MessageForm() {
 		<div className="w-full max-w-2xl border border-border-100 bg-zinc-950/50">
 			<div className="border-b border-border-100 px-5 py-4 sm:px-6">
 				<p className="mb-2 text-[11px] tracking-[0.2em] uppercase text-zinc-500">
-					Direct Contact
+					Direct Message
 				</p>
 				<h2 className="text-2xl font-semibold uppercase tracking-[0.04em] text-zinc-200 sm:text-3xl">
-					Message Me
+					Send a Message
 				</h2>
 			</div>
 
@@ -125,7 +125,7 @@ export default function MessageForm() {
 							d="M5 13l4 4L19 7"
 						/>
 					</svg>
-					Message sent successfully!
+					Message sent.
 				</div>
 			)}
 
@@ -160,7 +160,7 @@ export default function MessageForm() {
 						htmlFor={nameInputId}
 						className="block text-xs uppercase tracking-[0.18em] text-zinc-500"
 					>
-						Name:
+						Name
 					</label>
 					<input
 						id={nameInputId}
@@ -179,7 +179,7 @@ export default function MessageForm() {
 						htmlFor={contentInputId}
 						className="block text-xs uppercase tracking-[0.18em] text-zinc-500"
 					>
-						Content:
+						Message
 					</label>
 					<textarea
 						id={contentInputId}
@@ -199,7 +199,7 @@ export default function MessageForm() {
 						htmlFor={attachmentInputId}
 						className="block text-xs uppercase tracking-[0.18em] text-zinc-500"
 					>
-						Attachment url:
+						Attachment URL
 					</label>
 					<input
 						id={attachmentInputId}
@@ -246,7 +246,7 @@ export default function MessageForm() {
 								Sending...
 							</span>
 						) : (
-							"Submit"
+							"Send"
 						)}
 					</button>
 

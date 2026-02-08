@@ -7,8 +7,8 @@ export default function Playing() {
 	const { data, isConnected } = useRealtime();
 	const [isExpanded, setIsExpanded] = useState(false);
 	const progressBarRef = useRef<HTMLDivElement>(null);
-	const animationFrameRef = useRef<number>(null);
-	const collapseTimeoutRef = useRef<number>(null);
+	const animationFrameRef = useRef<number | null>(null);
+	const collapseTimeoutRef = useRef<number | null>(null);
 
 	const animateProgress = useCallback(() => {
 		if (!progressBarRef.current) return;
@@ -20,10 +20,8 @@ export default function Playing() {
 		const currentProgress = ((now - start) / (end - start)) * 100;
 		const clampedProgress = Math.min(Math.max(currentProgress, 0), 100);
 
-		// Direct DOM update - no React re-render!
 		progressBarRef.current.style.width = `${clampedProgress}%`;
 
-		// Continue animation if song is still playing
 		if (clampedProgress < 100) {
 			animationFrameRef.current = requestAnimationFrame(animateProgress);
 		}
@@ -46,7 +44,6 @@ export default function Playing() {
 			return;
 		}
 
-		// Start the animation loop
 		animateProgress();
 
 		return () => {

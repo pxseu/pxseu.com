@@ -2,19 +2,15 @@
 
 import { useEffect, useState } from "react";
 
-const getDate = (timestamp: number): number => {
-	let time = Date.now() - new Date(timestamp).getTime();
-	time /= 1000 * 60 * 60 * 24 * 365.25;
-
-	return time;
-};
+const getYearsPassed = (timestamp: number): number =>
+	(Date.now() - new Date(timestamp).getTime()) / (1000 * 60 * 60 * 24 * 365.25);
 
 export const useTimePassed = (timestamp: number) => {
-	const [age, setAge] = useState(getDate(timestamp));
+	const [age, setAge] = useState(getYearsPassed(timestamp));
 
 	useEffect(() => {
 		const ageChange = setInterval(() => {
-			setAge(getDate(timestamp));
+			setAge(getYearsPassed(timestamp));
 		}, 50);
 
 		return () => {

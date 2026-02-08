@@ -12,27 +12,27 @@ export default function Location() {
 	}
 
 	const hasLocation = isConnected && data?.location;
+	const locationStatus = isConnected
+		? "Location unavailable"
+		: "Location offline";
+	const mapUrl = `https://maps.apple.com/?q=${encodeURIComponent(location)}`;
 
 	return (
 		<div className="min-h-6">
-			<p
-				className={`mt-2 text-xs uppercase tracking-[0.12em] text-zinc-500 transition-all duration-500 ease-out ${
-					hasLocation ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
-				}`}
-			>
+			<p className="mt-2 text-xs uppercase tracking-[0.12em] text-zinc-500 transition-all duration-500 ease-out opacity-100 translate-y-0">
 				Currently in{" "}
-				<a
-					className="text-brand-500 underline decoration-dotted underline-offset-4"
-					href={`https://maps.apple.com/?q=${location}`}
-					target="_blank"
-					rel="noopener noreferrer"
-					{...(!hasLocation && {
-						"aria-hidden": true,
-						tabIndex: -1,
-					})}
-				>
-					{location}
-				</a>
+				{hasLocation ? (
+					<a
+						className="text-brand-500 underline decoration-dotted underline-offset-4"
+						href={mapUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						{location}
+					</a>
+				) : (
+					<span>{locationStatus}</span>
+				)}
 			</p>
 		</div>
 	);
