@@ -63,7 +63,7 @@ function Tooltip({
 					}`}
 				>
 					{content}
-					<div className="absolute bottom-[-5px] left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 border-r border-b border-border-100 bg-zinc-950" />
+					<div className="absolute -bottom-1.25 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 border-r border-b border-border-100 bg-zinc-950" />
 				</div>
 			)}
 		</>

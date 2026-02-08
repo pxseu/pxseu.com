@@ -114,7 +114,7 @@ export default function Playing() {
 							<div
 								className={`min-w-0 flex-1 transition-[max-width,opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
 									isExpanded
-										? "max-w-[280px] translate-x-0 opacity-100"
+										? "max-w-70 translate-x-0 opacity-100"
 										: "max-w-0 -translate-x-1 opacity-0"
 								}`}
 							>

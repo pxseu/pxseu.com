@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useId, useReducer } from "react";
+import { type SubmitEvent, useId, useReducer } from "react";
 import { API_ROUTE } from "@/config";
 
 type FormState = {
@@ -62,7 +62,7 @@ export default function MessageForm() {
 	const [state, dispatch] = useReducer(formReducer, initialState);
 	const { content, attachment, name, status, errorMessage } = state;
 
-	const handleSubmit = async (e: FormEvent) => {
+	const handleSubmit = async (e: SubmitEvent) => {
 		e.preventDefault();
 
 		if (!content.trim()) {
