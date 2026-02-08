@@ -109,9 +109,9 @@ export default function Quote() {
 	}, []);
 
 	return (
-		<div className="transition-all duration-500 ease-out">
+		<div className="min-h-16 transition-all duration-500 ease-out">
 			<p
-				className={`mt-2 italic text-sm text-muted-foreground transition-all duration-500 ease-out ${
+				className={`mt-2 border-l border-border-100 pl-3 text-xs leading-relaxed text-zinc-500 transition-all duration-500 ease-out sm:text-sm ${
 					visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
 				}`}
 			>

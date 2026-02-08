@@ -10,14 +10,25 @@ export default function ProjectCard({
 	description,
 }: ProjectCardProps) {
 	return (
-		<div className="border border-zinc-700 p-4 shadow-xs">
-			<h3 className="text-lg font-semibold text-zinc-300">{name}</h3>
-			<p className="text-sm mt-2">{description}</p>
+		<div className="flex h-full flex-col border border-border-100">
+			<div className="border-b border-border-100 px-4 py-2">
+				<p className="text-[11px] tracking-[0.18em] uppercase text-zinc-500">
+					Repository
+				</p>
+			</div>
+			<div className="flex h-full flex-col p-4">
+				<h3 className="text-base font-semibold lowercase tracking-[0.05em] text-zinc-200">
+					{name}
+				</h3>
+				<p className="mt-3 text-sm leading-relaxed text-zinc-400">
+					{description}
+				</p>
+			</div>
 			<a
 				href={url}
 				target="_blank"
 				rel="noopener noreferrer"
-				className="inline-block mt-4 text-blue-400 underline"
+				className="mt-auto border-t border-border-100 px-4 py-3 text-xs uppercase tracking-[0.2em] text-brand-500 transition-colors duration-150 ease-linear hover:bg-zinc-900/90"
 			>
 				View on GitHub
 			</a>

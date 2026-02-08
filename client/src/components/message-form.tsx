@@ -100,15 +100,22 @@ export default function MessageForm() {
 	};
 
 	return (
-		<div className="w-full max-w-md border-[0.5px] border-solid border-border-100 p-8">
-			<h2 className="text-3xl font-bold mb-6 text-zinc-300">Message me</h2>
+		<div className="w-full max-w-2xl border border-border-100 bg-zinc-950/50">
+			<div className="border-b border-border-100 px-5 py-4 sm:px-6">
+				<p className="mb-2 text-[11px] tracking-[0.2em] uppercase text-zinc-500">
+					Direct Contact
+				</p>
+				<h2 className="text-2xl font-semibold uppercase tracking-[0.04em] text-zinc-200 sm:text-3xl">
+					Message Me
+				</h2>
+			</div>
 
 			{status === "success" && (
-				<div className="mb-6 p-3 bg-green-800/20 border border-zinc-700 text-green-300 flex items-center">
+				<div className="mx-5 mt-5 flex items-center border border-border-100 bg-green-900/20 p-3 text-green-300 sm:mx-6">
 					<svg
 						role="img"
 						aria-label="Check"
-						className="w-5 h-5 mr-2"
+						className="mr-2 h-5 w-5"
 						fill="none"
 						stroke="currentColor"
 						viewBox="0 0 24 24"
@@ -126,11 +133,11 @@ export default function MessageForm() {
 			)}
 
 			{status === "error" && (
-				<div className="mb-6 p-3 bg-red-800/20 border border-zinc-700 text-red-300 flex items-center">
+				<div className="mx-5 mt-5 flex items-center border border-border-100 bg-red-900/20 p-3 text-red-300 sm:mx-6">
 					<svg
 						role="img"
 						aria-label="Error"
-						className="w-5 h-5 mr-2"
+						className="mr-2 h-5 w-5"
 						fill="none"
 						stroke="currentColor"
 						viewBox="0 0 24 24"
@@ -147,9 +154,15 @@ export default function MessageForm() {
 				</div>
 			)}
 
-			<form onSubmit={handleSubmit} className="space-y-5">
+			<form
+				onSubmit={handleSubmit}
+				className="space-y-5 px-5 py-5 sm:px-6 sm:py-6"
+			>
 				<div className="space-y-2">
-					<label htmlFor={nameInputId} className="block text-zinc-300">
+					<label
+						htmlFor={nameInputId}
+						className="block text-xs uppercase tracking-[0.18em] text-zinc-500"
+					>
 						Name:
 					</label>
 					<input
@@ -159,13 +172,16 @@ export default function MessageForm() {
 						onChange={(e) =>
 							dispatch({ type: "SET_NAME", payload: e.target.value })
 						}
-						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-hidden"
+						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 placeholder:text-zinc-600 focus:border-zinc-400 focus:outline-none"
 						placeholder="Anonymous"
 					/>
 				</div>
 
 				<div className="space-y-2">
-					<label htmlFor={contentInputId} className="block text-zinc-300">
+					<label
+						htmlFor={contentInputId}
+						className="block text-xs uppercase tracking-[0.18em] text-zinc-500"
+					>
 						Content:
 					</label>
 					<textarea
@@ -174,14 +190,17 @@ export default function MessageForm() {
 						onChange={(e) =>
 							dispatch({ type: "SET_CONTENT", payload: e.target.value })
 						}
-						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-hidden"
+						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 focus:border-zinc-400 focus:outline-none"
 						rows={4}
 						required
 					/>
 				</div>
 
 				<div className="space-y-2">
-					<label htmlFor={attachmentInputId} className="block text-zinc-300">
+					<label
+						htmlFor={attachmentInputId}
+						className="block text-xs uppercase tracking-[0.18em] text-zinc-500"
+					>
 						Attachment url:
 					</label>
 					<input
@@ -191,16 +210,16 @@ export default function MessageForm() {
 						onChange={(e) =>
 							dispatch({ type: "SET_ATTACHMENT", payload: e.target.value })
 						}
-						className="w-full p-3 bg-transparent border border-zinc-700 focus:border-zinc-500 focus:outline-hidden"
+						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 placeholder:text-zinc-600 focus:border-zinc-400 focus:outline-none"
 						placeholder="https://example.com/image.png"
 					/>
 				</div>
 
-				<div className="flex justify-between gap-4 pt-2">
+				<div className="grid gap-3 pt-2 sm:grid-cols-2">
 					<button
 						type="submit"
 						disabled={status === "loading"}
-						className="py-2 px-4 bg-brand-500 hover:bg-brand-400 text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed w-1/2"
+						className="border border-border-100 bg-brand-500 px-4 py-3 text-xs uppercase tracking-[0.2em] text-zinc-950 transition-colors duration-150 ease-linear hover:bg-brand-400 disabled:cursor-not-allowed disabled:opacity-50"
 					>
 						{status === "loading" ? (
 							<span className="flex items-center justify-center">
@@ -236,7 +255,7 @@ export default function MessageForm() {
 					<button
 						type="button"
 						onClick={() => dispatch({ type: "RESET_FORM" })}
-						className="py-2 px-4 bg-zinc-700 hover:bg-zinc-600 text-white transition-all duration-200 w-1/2"
+						className="border border-border-100 bg-zinc-900 px-4 py-3 text-xs uppercase tracking-[0.2em] text-zinc-300 transition-colors duration-150 ease-linear hover:bg-zinc-800"
 					>
 						Reset
 					</button>

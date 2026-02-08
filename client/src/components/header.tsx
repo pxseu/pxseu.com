@@ -15,48 +15,54 @@ export default function Header() {
 	return (
 		<>
 			{isBirthday && <BirthdayNotice />}
-			<header className="w-full mb-12">
-				<nav className="w-full flex items-center justify-between p-4 mb-8 text-zinc-300">
+			<header className="w-full border border-border-100 bg-zinc-950/50">
+				<nav className="grid w-full grid-cols-1 items-center border-b border-border-100 text-zinc-300 sm:grid-cols-[1fr_auto]">
 					<Link
 						href="/"
-						className="px-3 py-1 text-sm font-medium border border-zinc-700 
-                               hover:bg-zinc-800 transition-colors duration-300"
+						className="border-b border-border-100 px-4 py-3 text-xs tracking-[0.2em] uppercase transition-colors duration-150 ease-linear hover:bg-zinc-900/80 sm:border-b-0 sm:border-r"
 					>
-						Home
+						Index / Home
 					</Link>
 
-					<div className="flex items-center space-x-2">
+					<div className="grid grid-cols-2 sm:flex">
 						<Link
 							href="/links"
-							className="px-3 py-1 text-sm font-medium border border-zinc-700
-                               hover:bg-zinc-800 transition-colors duration-300"
+							className="border-r border-border-100 px-4 py-3 text-xs tracking-[0.2em] uppercase transition-colors duration-150 ease-linear hover:bg-zinc-900/80 sm:border-r"
 						>
 							Links
 						</Link>
 						<Link
 							href="/message"
-							className="px-3 py-1 text-sm font-medium border border-zinc-700
-                               hover:bg-zinc-800 transition-colors duration-300"
+							className="px-4 py-3 text-xs tracking-[0.2em] uppercase transition-colors duration-150 ease-linear hover:bg-zinc-900/80"
 						>
 							Message
 						</Link>
 					</div>
 				</nav>
 
-				<div className="text-center">
-					<h1 className="flex justify-center items-center mb-4">
-						<Logo />
-					</h1>
-					<p className="mt-2 text-muted-foreground text-lg sm:text-xl">
-						<span className="whitespace-nowrap">backend engineer</span> ·{" "}
-						<span className="whitespace-nowrap">
-							real-world systems thinker
-						</span>
-					</p>
-					<Location />
-					<Quote />
-					<Playing />
+				<div className="grid gap-5 p-5 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] md:p-6">
+					<div>
+						<p className="mb-4 text-[11px] tracking-[0.26em] uppercase text-zinc-500">
+							Kuba Ellwart / pxseu / backend
+						</p>
+						<h1 className="mb-4 flex items-center">
+							<Logo />
+						</h1>
+						<p className="max-w-2xl text-base leading-snug text-zinc-300 sm:text-lg">
+							<span className="whitespace-nowrap">backend engineer</span> ·{" "}
+							<span className="whitespace-nowrap">builds reliable systems</span>
+						</p>
+					</div>
+
+					<div className="border-t border-border-100 pt-4 md:border-t-0 md:border-l md:pl-6 md:pt-0">
+						<p className="mb-2 text-[11px] tracking-[0.22em] uppercase text-zinc-500">
+							Live Feed
+						</p>
+						<Location />
+						<Quote />
+					</div>
 				</div>
+				<Playing />
 			</header>
 		</>
 	);

@@ -41,9 +41,9 @@ export default function Links() {
 	return (
 		<>
 			<JsonLd id="collection-page-schema" json={collectionPageSchemaJson} />
-			<div className="mx-auto px-4 py-8 space-y-10 text-center max-w-lg w-full">
-				<div className="space-y-5">
-					<h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">
+			<div className="mx-auto w-full max-w-2xl border border-border-100 bg-zinc-950/50">
+				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
+					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
 						Support Me!
 					</h2>
 					<div className="space-y-3">
@@ -62,8 +62,8 @@ export default function Links() {
 					</div>
 				</div>
 
-				<div className="space-y-5">
-					<h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">
+				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
+					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
 						Business & Work
 					</h2>
 					<div className="space-y-3">
@@ -83,7 +83,7 @@ export default function Links() {
 							icon={<FaDiscord />}
 							displayName="Discord"
 							link="https://discord.com/users/338718840873811979"
-							color="text-blue-400"
+							color="text-indigo-400"
 						/>
 						<LinkItem
 							icon={<FaLinkedin />}
@@ -94,8 +94,8 @@ export default function Links() {
 					</div>
 				</div>
 
-				<div className="space-y-5">
-					<h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">
+				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
+					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
 						Social Media
 					</h2>
 					<div className="space-y-3">
@@ -115,7 +115,7 @@ export default function Links() {
 							icon={<FaTwitter />}
 							displayName="Twitter"
 							link="https://twitter.com/pxseu"
-							color="text-blue-400"
+							color="text-sky-400"
 						/>
 
 						<LinkItem
@@ -133,8 +133,8 @@ export default function Links() {
 					</div>
 				</div>
 
-				<div className="space-y-5">
-					<h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">
+				<div className="space-y-4 px-5 py-5 sm:px-6">
+					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
 						OSS / Community
 					</h2>
 					<div className="space-y-3">

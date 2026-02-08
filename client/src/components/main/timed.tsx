@@ -49,7 +49,7 @@ function Tooltip({
 			<span
 				ref={refs.setReference}
 				{...getReferenceProps()}
-				className="relative inline-block group underline decoration-dotted"
+				className="relative inline-block underline decoration-dotted underline-offset-4"
 			>
 				{children}
 			</span>
@@ -58,12 +58,12 @@ function Tooltip({
 					ref={refs.setFloating}
 					style={floatingStyles}
 					{...getFloatingProps()}
-					className={`z-50 bg-zinc-900 text-white text-sm px-2 py-1 rounded font-mono shadow-lg transition-opacity duration-350 ${
+					className={`z-50 border border-border-100 bg-zinc-950 px-2 py-1 font-mono text-sm text-zinc-200 transition-opacity duration-350 ${
 						open ? "opacity-100" : "opacity-0"
 					}`}
 				>
 					{content}
-					<div className="absolute left-1/2 -bottom-1.5 transform -translate-x-1/2 w-2 h-2 bg-zinc-900 rotate-45" />
+					<div className="absolute bottom-[-5px] left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 border-r border-b border-border-100 bg-zinc-950" />
 				</div>
 			)}
 		</>

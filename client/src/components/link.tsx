@@ -11,40 +11,27 @@ export default function LinkItem({
 	icon,
 	displayName,
 	link,
-	color = "text-blue-400",
+	color = "text-brand-500",
 }: LinkProps) {
 	return (
 		<a
 			href={link}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="
-        flex
-        items-center
-        justify-between
-        w-full
-        px-5
-        py-4
-        rounded-none
-		bg-zinc-800/10
-        hover:bg-zinc-800/40
-        border-[0.5px]
-        border-solid
-        border-border-100
-        transition-all
-        duration-200
-        text-zinc-100
-        relative
-      "
+			className="relative flex w-full items-center justify-between border border-border-100 px-4 py-3 text-zinc-100 transition-colors duration-150 ease-linear hover:bg-zinc-900/80"
 		>
-			<div className="flex items-center gap-3 mx-auto">
-				<span className={`text-2xl ${color}`}>{icon}</span>
-				<span className={`font-semibold text-xl ${color}`}>{displayName}</span>
+			<div className="flex items-center gap-3">
+				<span className={`text-xl ${color}`}>{icon}</span>
+				<span
+					className={`text-sm font-semibold uppercase tracking-[0.08em] ${color}`}
+				>
+					{displayName}
+				</span>
 			</div>
 
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				className="h-5 w-5 text-zinc-400 absolute right-5"
+				className="h-5 w-5 text-zinc-500"
 				viewBox="0 0 20 20"
 				fill="currentColor"
 				role="img"

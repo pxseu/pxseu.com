@@ -97,8 +97,7 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 		};
 	}, []);
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	useEffect(connect, []);
+	useEffect(connect, [connect]);
 
 	return (
 		<RealtimeContext.Provider value={{ data, isConnected }}>

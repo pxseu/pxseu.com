@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* biome-ignore lint/suspicious/noUnknownAtRules: @theme is a valid Tailwind v4 at-rule */
 @theme {
 	--color-brand-100: #00ccff;
 	--color-brand-500: #8066f7;

@@ -9,59 +9,49 @@ import Skill from "./skill";
 
 export default function Main() {
 	return (
-		<main className="flex flex-col w-full">
+		<main className="flex w-full flex-col gap-8">
 			{/* ABOUT ME */}
-			{/* biome-ignore lint/correctness/useUniqueElementIds: section IDs are intentionally static for navigation */}
 			<Container title="About Me" id="intro">
-				<div>
+				<div className="text-sm leading-relaxed text-zinc-400 sm:text-base">
 					Hey, I&apos;m Kuba — online I go by{" "}
 					<strong className="bg-linear-to-r/srgb from-brand-100 to-brand-900 bg-clip-text text-transparent">
 						pxseu
 					</strong>
 					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" />{" "}
 					and have been writing code for{" "}
-					<Timed timestamp={CODING_START_TIMESTAMP} label="years" />. I care
-					about building systems that don&apos;t fall apart: clean,
-					maintainable, and structured in a way that actually makes sense.
+					<Timed timestamp={CODING_START_TIMESTAMP} label="years" />. I mostly
+					work on backend services and internal tools, and I also enjoy frontend
+					when it helps people use things more easily.
 				</div>
-				<div className="mt-4">
-					My thing is backend systems and internal tools — the kind of work
-					that&apos;s rarely flashy, but absolutely essential. I like clarity,
-					reliability, and the feeling of leaving something better than I found
-					it. If it can last years without turning into a mess, I&apos;ve done
-					my job right.
+				<div className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+					I like building things that are simple, reliable, and easy for other
+					people to work with later. I care about clear code, good naming, and
+					systems that are still understandable after a long day.
 				</div>
 
-				<div className="mt-4">
-					I&apos;m naturally curious — sometimes annoyingly so. I end up in
-					weird internet corners, digging into obscure protocols, vintage tech,
-					or whatever random detail catches my brain that week. I don&apos;t
-					chase trends much; I just follow the &quot;wait, that&apos;s
-					interesting&quot; moments wherever they go.
+				<div className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+					I like working with thoughtful people. Most of the best results come
+					from small, honest conversations and steady progress.
 				</div>
 
-				<div className="mt-4">
-					Outside of code, I&apos;m into cars and overly specific gadgets that
-					serve one purpose perfectly. I like things that are well-built,
-					well-designed, and a little bit unnecessary — but in a good way.
+				<div className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+					I&apos;m curious by default, so I spend a lot of time learning,
+					tinkering, and following ideas until they finally click. That&apos;s
+					probably my favorite part of this work.
 				</div>
 
-				<div className="mt-4">
-					Every now and then, I also dabble in content creation — making videos,
-					sharing projects, or documenting random experiments. It&apos;s a fun
-					creative outlet and a good way to stay inspired outside of the usual
-					routine.
+				<div className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+					Outside of code, I&apos;m into cars, very specific gadgets, and
+					sometimes making videos about what I&apos;m working on. I like things
+					that are practical, a little nerdy, and built with care.
 				</div>
 
-				<div className="mt-4">
-					I don&apos;t pretend to have it all figured out. I build, I break
-					things, I adjust. That process — of iterating until something feels
-					right — is where I do my best work.
+				<div className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+					If you want to chat, collaborate, or just say hi, my inbox is open. =]
 				</div>
 			</Container>
 
 			{/* EXPERIENCE */}
-			{/* biome-ignore lint/correctness/useUniqueElementIds: section IDs are intentionally static for navigation */}
 			<Container title="Experience" id="experience">
 				<Experience
 					items={[
@@ -71,44 +61,43 @@ export default function Main() {
 							// since start of my career
 							period: "2020 - Present",
 							description:
-								"Contributing to various open source projects, notably Bun and Kaito HTTP and DefinetlyTyped. Worked on a lot of open source projects inclduing profile Readmes, Discord Rich Presence and last but not least a Redis clone written in Rust. Crabdis is a tiny Redis clone written in Rust that is a fun and educational project to learn the basics of Rust and Redis internals.",
+								"Open source and freelance work across backend and tooling. Contributed to projects including Bun, Kaito HTTP, and DefinitelyTyped. Built smaller side projects too, like Crabdis, a Redis-style clone in Rust.",
 						},
 						{
 							title: "Full Stack Developer",
 							company: "c/side",
-							period: " 2025",
+							period: "2025",
 							description:
-								"Worked on all aspects of c/side, from backend to frontend and everything in between. Created simple and intuitive tools interfaces to make the web ever so slightly better, one step at a time. Wrote complex and over the top React Componenets and fancy Database Queries to make everything fast, responsive and secure.",
+								"Worked across the stack on product features and internal tooling. Shipped frontend and backend changes, improved reliability, and handled the glue code that keeps everything usable.",
 						},
 						{
 							title: "Backend Developer",
 							company: "Incard Ltd.",
 							period: "2024 - 2025",
 							description:
-								"Led the consolidation of two separate services into a unified platform, focusing on open banking and e-commerce integrations. Created common schemas and improved the overall developer experience. Worked on integrating various services including Stripe, Google, and other payment providers.",
+								"Helped merge two services into one platform focused on open banking and e-commerce. Standardized shared schemas, improved developer workflows, and integrated payment providers including Stripe and Google.",
 						},
 						{
 							title: "Product Engineer",
 							company: "Hop Inc.",
 							period: "2022 - 2024",
 							description:
-								"Led the development of Hop's CLI tool, creating a seamless deployment experience with `hop deploy`. Built the first tool that automated the entire deployment process, making it effortless for users. Managed and reviewed internal services while serving as the primary developer for the CLI, which served as a replacement for the web frontend.",
+								"Built and maintained Hop&apos;s CLI, including the `hop deploy` workflow. Automated deployment paths, owned core CLI features, and reviewed related internal services.",
 						},
 						{
 							title: "Full Stack Developer",
 							company: "PreMiD & Freelance",
 							period: "2020 - 2022",
 							description:
-								"Contributed to various open source projects, with a focus on PreMiD. Worked on localizations, improvements, and features for projects I used and enjoyed. Maintained a strong presence in the open source community through meaningful contributions.",
+								"Contributed features, fixes, and localization work for PreMiD plus other open source projects I actively used.",
 						},
 					]}
 				/>
 			</Container>
 
 			{/* SKILLS */}
-			{/* biome-ignore lint/correctness/useUniqueElementIds: section IDs are intentionally static for navigation */}
 			<Container title="Skills" id="skills">
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+				<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 					<Skill
 						category="Back-end"
 						skills={[
@@ -145,9 +134,8 @@ export default function Main() {
 			</Container>
 
 			{/* PROJECTS */}
-			{/* biome-ignore lint/correctness/useUniqueElementIds: section IDs are intentionally static for navigation */}
 			<Container title="Projects" id="projects">
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					<ProjectCard
 						url="https://github.com/hopinc/cli"
 						name="hopinc/cli"
@@ -182,10 +170,9 @@ export default function Main() {
 			</Container>
 
 			{/* CONTACT */}
-			{/* biome-ignore lint/correctness/useUniqueElementIds: section IDs are intentionally static for navigation */}
 			<Container title="Contact" id="contact">
-				<p className="mb-4">
-					Feel free to reach out through any of the platforms below:
+				<p className="mb-4 text-sm uppercase tracking-widest text-zinc-500">
+					Best ways to reach me:
 				</p>
 
 				<Contact
@@ -213,14 +200,18 @@ export default function Main() {
 					]}
 				/>
 
-				<div className="mt-4 text-center text-zinc-400">- or simply -</div>
+				<div className="mt-5 text-center text-[11px] uppercase tracking-[0.2em] text-zinc-500">
+					Or send a direct message
+				</div>
 
 				<div className="mt-4 w-full">
 					<Link
 						href="/message"
-						className="flex flex-col items-center border border-zinc-700 px-6 py-4 shadow-xs text-zinc-300 hover:shadow-md transition hover:bg-zinc-800/40"
+						className="flex flex-col items-center border border-border-100 px-6 py-4 text-zinc-300 transition-colors duration-150 ease-linear hover:bg-zinc-900/90"
 					>
-						<strong>Message Me</strong>
+						<strong className="text-xs uppercase tracking-[0.2em]">
+							Message Me
+						</strong>
 					</Link>
 				</div>
 			</Container>

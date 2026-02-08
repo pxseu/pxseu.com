@@ -28,7 +28,7 @@ export default function MessagePage() {
 	return (
 		<>
 			<JsonLd id="contact-page-schema" json={contactPageSchemaJson} />
-			<div className="flex flex-col items-center w-full px-4 py-8">
+			<div className="flex w-full flex-col items-center">
 				<MessageForm />
 			</div>
 		</>

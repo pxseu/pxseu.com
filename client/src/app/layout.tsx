@@ -4,6 +4,7 @@ import { CSideScript } from "@cside.dev/next";
 import ReactLenis from "lenis/react";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import BackgroundParallax from "@/components/background-parallax";
 import Footer from "@/components/footer";
 import JsonLd from "@/components/json-ld";
 import { API_ROUTE } from "@/config";
@@ -138,10 +139,11 @@ export default function RootLayout({
 				<link rel="preconnect" href={API_ROUTE} />
 				<link rel="preconnect" href="https://i.scdn.co" />
 			</head>
-			<body className="flex justify-center bg-zinc-950 text-zinc-400 h-full p-6">
-				<div className="flex justify-center items-center max-w-[900px] w-full flex-col">
+			<body className="relative min-h-screen overflow-x-hidden bg-zinc-950 text-zinc-400 antialiased font-[Iosevka,Azeret_Mono,IBM_Plex_Mono,JetBrains_Mono,Fira_Code,Consolas,Monaco,monospace] leading-relaxed tracking-[-0.01em] selection:bg-brand-500/40 selection:text-zinc-100">
+				<div className="relative z-10 mx-auto flex w-full max-w-245 flex-col px-4 py-4 sm:px-6 sm:py-6 gap-8">
 					<RealtimeProvider>
 						<ReactLenis root options={{ smoothWheel: true, lerp: 0.2 }}>
+							<BackgroundParallax />
 							<Header />
 							{children}
 							<Footer />

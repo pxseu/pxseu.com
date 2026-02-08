@@ -12,17 +12,21 @@ interface ContactsProps {
 
 export default function Contact({ items }: ContactsProps): JSX.Element {
 	return (
-		<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+		<div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
 			{items.map((item) => (
 				<a
 					key={item.label}
 					href={item.link}
-					className="flex flex-col items-start border border-zinc-700 p-4 shadow-xs text-zinc-300 hover:shadow-md transition hover:bg-zinc-800/40"
+					className="flex flex-col items-start border border-border-100 p-4 text-zinc-300 transition-colors duration-150 ease-linear hover:bg-zinc-900/90"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<strong>{item.label}</strong>
-					<span className="text-blue-400 underline">{item.display}</span>
+					<strong className="text-xs uppercase tracking-[0.18em] text-zinc-500">
+						{item.label}
+					</strong>
+					<span className="mt-2 text-sm lowercase tracking-[0.06em] text-brand-500">
+						{item.display}
+					</span>
 				</a>
 			))}
 		</div>

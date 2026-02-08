@@ -14,7 +14,7 @@ export default function Location() {
 	return (
 		<div className="min-h-6">
 			<p
-				className={`mt-2 text-sm text-muted-foreground transition-all duration-500 ease-out ${
+				className={`mt-2 text-xs uppercase tracking-[0.12em] text-zinc-500 transition-all duration-500 ease-out ${
 					isConnected && data?.location
 						? "opacity-100 translate-y-0"
 						: "opacity-0 translate-y-1"
@@ -22,7 +22,7 @@ export default function Location() {
 			>
 				Currently in{" "}
 				<a
-					className="text-brand-500 underline"
+					className="text-brand-500 underline decoration-dotted underline-offset-4"
 					href={`https://maps.apple.com/?q=${location}`}
 					target="_blank"
 					rel="noopener noreferrer"
