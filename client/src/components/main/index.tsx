@@ -19,9 +19,9 @@ export default function Main() {
 					</strong>
 					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" />{" "}
 					and have been writing code for{" "}
-					<Timed timestamp={CODING_START_TIMESTAMP} label="years" />. I mostly
-					work on backend services and internal tools, and I also enjoy frontend
-					when it helps people use things more easily.
+					<Timed timestamp={CODING_START_TIMESTAMP} label="years" suffix="." />{" "}
+					I mostly work on backend services and internal tools, and I also enjoy
+					frontend when it helps people use things more easily.
 				</p>
 				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
 					I like building things that are simple, reliable, and easy for other
