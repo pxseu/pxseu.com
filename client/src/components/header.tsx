@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BIRTHDAY_TIMESTAMP } from "@/config";
 import { useIsBirthday } from "@/hooks/useIsBirthday";
 import BirthdayNotice from "./birthday";
@@ -9,8 +10,18 @@ import Logo from "./logo";
 import Playing from "./playing";
 import Quote from "./quotes";
 
+const navBase =
+	"px-4 py-3 text-xs tracking-[0.2em] uppercase transition-all duration-150 ease-linear hover:bg-zinc-900/80 hover:text-zinc-100";
+
+const activeClass =
+	"text-zinc-100 shadow-[inset_0_-1px_0_0_rgba(128,102,247,0.6)]";
+
 export default function Header() {
 	const isBirthday = useIsBirthday(BIRTHDAY_TIMESTAMP);
+	const pathname = usePathname();
+
+	const isActive = (href: string) =>
+		href === "/" ? pathname === "/" : pathname.startsWith(href);
 
 	return (
 		<>
@@ -19,7 +30,9 @@ export default function Header() {
 				<nav className="grid w-full grid-cols-1 items-center border-b border-border-100 text-zinc-300 sm:grid-cols-[1fr_auto]">
 					<Link
 						href="/"
-						className="border-b border-border-100 px-4 py-3 text-xs tracking-[0.2em] uppercase transition-colors duration-150 ease-linear hover:bg-zinc-900/80 sm:border-b-0 sm:border-r"
+						className={`border-b border-border-100 sm:border-b-0 sm:border-r ${navBase} ${
+							isActive("/") ? activeClass : ""
+						}`}
 					>
 						Index / Home
 					</Link>
@@ -27,13 +40,17 @@ export default function Header() {
 					<div className="grid grid-cols-2 sm:flex">
 						<Link
 							href="/links"
-							className="border-r border-border-100 px-4 py-3 text-xs tracking-[0.2em] uppercase transition-colors duration-150 ease-linear hover:bg-zinc-900/80 sm:border-r"
+							className={`border-r border-border-100 ${navBase} ${
+								isActive("/links") ? activeClass : ""
+							}`}
 						>
 							Links
 						</Link>
 						<Link
 							href="/message"
-							className="px-4 py-3 text-xs tracking-[0.2em] uppercase transition-colors duration-150 ease-linear hover:bg-zinc-900/80"
+							className={`${navBase} ${
+								isActive("/message") ? activeClass : ""
+							}`}
 						>
 							Message
 						</Link>

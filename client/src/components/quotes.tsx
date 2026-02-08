@@ -42,7 +42,7 @@ const quotes = [
 	"“In three words I can sum up everything I’ve learned about life: it goes on.” — Robert Frost",
 	"“Life is what happens when you’re busy making other plans.” — John Lennon",
 
-	// Anime goy slop
+	// Anime
 	"“In our society, letting others find out that you’re a nice person is a very risky move.” — Hitagi Senjougahara",
 	"“No matter how much or how often people hurt each other, loving someone is never a waste.” — Nana Osaki",
 	"“No letter that could be sent deserves to go undelivered.” — Violet Evergarden",
@@ -65,41 +65,14 @@ const quotes = [
 	"“Life is 10% what happens to us and 90% how we react to it.” — Charles R. Swindoll",
 ];
 
-function getSecureRandomIndex(max: number): number {
-	// Check if WebCrypto API is available
-	if (
-		typeof window !== "undefined" &&
-		window.crypto &&
-		window.crypto.getRandomValues
-	) {
-		const maxUint32 = 0xffffffff; // 2^32 - 1
-
-		while (true) {
-			// Get one 32-bit random number
-			const randomArray = new Uint32Array(1);
-			window.crypto.getRandomValues(randomArray);
-
-			const randomValue = randomArray[0];
-			// If randomValue is within a multiple of 'max', use it. Otherwise retry.
-			// This ensures each index has exactly the same chance (no remainder/bias).
-			if (randomValue <= maxUint32 - (maxUint32 % max)) {
-				return randomValue % max;
-			}
-		}
-	}
-
-	// Fallback to Math.random() if WebCrypto is not available
-	return Math.floor(Math.random() * max);
-}
-
 export default function Quote() {
-	const [quote, setQuote] = useState<string>("Not possible to see this.");
+	const [quote, setQuote] = useState("");
 	const [visible, setVisible] = useState(false);
 
 	useEffect(() => {
 		let mounted = true;
 
-		const index = getSecureRandomIndex(quotes.length);
+		const index = Math.floor(Math.random() * quotes.length);
 		setQuote(quotes[index]);
 		setTimeout(() => mounted && setVisible(true), 10);
 

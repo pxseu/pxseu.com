@@ -12,7 +12,7 @@ export default function Main() {
 		<main className="flex w-full flex-col gap-8">
 			{/* ABOUT ME */}
 			<Container title="About Me" id="intro">
-				<div className="text-sm leading-relaxed text-zinc-400 sm:text-base">
+				<p className="text-sm leading-relaxed text-zinc-400 sm:text-base">
 					Hey, I&apos;m Kuba — online I go by{" "}
 					<strong className="bg-linear-to-r/srgb from-brand-100 to-brand-900 bg-clip-text text-transparent">
 						pxseu
@@ -22,33 +22,33 @@ export default function Main() {
 					<Timed timestamp={CODING_START_TIMESTAMP} label="years" />. I mostly
 					work on backend services and internal tools, and I also enjoy frontend
 					when it helps people use things more easily.
-				</div>
-				<div className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+				</p>
+				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
 					I like building things that are simple, reliable, and easy for other
 					people to work with later. I care about clear code, good naming, and
 					systems that are still understandable after a long day.
-				</div>
+				</p>
 
-				<div className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
 					I like working with thoughtful people. Most of the best results come
 					from small, honest conversations and steady progress.
-				</div>
+				</p>
 
-				<div className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
 					I&apos;m curious by default, so I spend a lot of time learning,
 					tinkering, and following ideas until they finally click. That&apos;s
 					probably my favorite part of this work.
-				</div>
+				</p>
 
-				<div className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
 					Outside of code, I&apos;m into cars, very specific gadgets, and
 					sometimes making videos about what I&apos;m working on. I like things
 					that are practical, a little nerdy, and built with care.
-				</div>
+				</p>
 
-				<div className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
 					If you want to chat, collaborate, or just say hi, my inbox is open. =]
-				</div>
+				</p>
 			</Container>
 
 			{/* EXPERIENCE */}
@@ -207,7 +207,7 @@ export default function Main() {
 				<div className="mt-4 w-full">
 					<Link
 						href="/message"
-						className="flex flex-col items-center border border-border-100 px-6 py-4 text-zinc-300 transition-colors duration-150 ease-linear hover:bg-zinc-900/90"
+						className="flex flex-col items-center border border-brand-500/30 px-6 py-4 text-zinc-300 transition-all duration-150 ease-linear hover:border-brand-500/60 hover:bg-zinc-900/30"
 					>
 						<strong className="text-xs uppercase tracking-[0.2em]">
 							Message Me

@@ -1,6 +1,6 @@
 "use client";
 
-import NextLink from "next/link";
+import Link from "next/link";
 
 export default function BirthdayNotice() {
 	return (
@@ -11,12 +11,12 @@ export default function BirthdayNotice() {
 			{/* Content with black text */}
 			<p className="relative z-20 text-center text-sm font-semibold uppercase tracking-[0.12em] text-zinc-950 sm:text-base">
 				Hey! Today is my Birthday 🎂. Send me some wishes in{" "}
-				<NextLink
+				<Link
 					href="/message"
 					className="underline decoration-brand-500 decoration-2 transition-colors duration-300 hover:decoration-brand-900"
 				>
 					/message
-				</NextLink>
+				</Link>
 				!
 			</p>
 		</div>

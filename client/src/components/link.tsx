@@ -1,29 +1,29 @@
 import type { ReactNode } from "react";
 
-interface LinkProps {
+interface LinkItemProps {
 	icon: ReactNode;
 	displayName: string;
 	link: string;
-	color?: string;
+	colorClass?: string;
 }
 
 export default function LinkItem({
 	icon,
 	displayName,
 	link,
-	color = "text-brand-500",
-}: LinkProps) {
+	colorClass = "text-brand-500",
+}: LinkItemProps) {
 	return (
 		<a
 			href={link}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="relative flex w-full items-center justify-between border border-border-100 px-4 py-3 text-zinc-100 transition-colors duration-150 ease-linear hover:bg-zinc-900/80"
+			className="relative flex w-full items-center justify-between border border-border-100 px-4 py-3 text-zinc-100 transition-all duration-150 ease-linear hover:border-brand-500/40 hover:bg-zinc-900/80"
 		>
 			<div className="flex items-center gap-3">
-				<span className={`text-xl ${color}`}>{icon}</span>
+				<span className={`text-xl ${colorClass}`}>{icon}</span>
 				<span
-					className={`text-sm font-semibold uppercase tracking-[0.08em] ${color}`}
+					className={`text-sm font-semibold uppercase tracking-[0.08em] ${colorClass}`}
 				>
 					{displayName}
 				</span>

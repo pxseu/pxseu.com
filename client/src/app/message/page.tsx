@@ -3,7 +3,7 @@ import JsonLd from "@/components/json-ld";
 import MessageForm from "@/components/message-form";
 
 export const metadata: Metadata = {
-	title: "pxseu.com",
+	title: "Message - pxseu.com",
 	description: "Send me a message",
 	keywords: ["pxseu", "message", "contact"],
 };

@@ -3,7 +3,6 @@ import "../styles/globals.css";
 import { CSideScript } from "@cside.dev/next";
 import ReactLenis from "lenis/react";
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import BackgroundParallax from "@/components/background-parallax";
 import Footer from "@/components/footer";
 import JsonLd from "@/components/json-ld";
@@ -133,7 +132,6 @@ export default function RootLayout({
 		<html lang="en">
 			<head>
 				<CSideScript />
-				<Script src="https://content.sakurajima.cloud/ee2244/analytics.js" />
 				<JsonLd id="website-schema" json={websiteSchemaJson} />
 				<JsonLd id="person-schema" json={personSchemaJson} />
 				<link rel="preconnect" href={API_ROUTE} />

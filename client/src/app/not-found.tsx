@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
 	return (
-		<div className="w-full border border-border-100 px-5 py-12 text-center sm:px-6">
+		<div className="w-full border border-border-100 bg-zinc-950/50 px-5 py-12 text-center sm:px-6">
 			<h1 className="mb-4 text-6xl font-bold tracking-tight text-zinc-200">
 				404
 			</h1>
@@ -14,7 +14,7 @@ export default function NotFound() {
 			</p>
 			<Link
 				href="/"
-				className="inline-flex border border-border-100 px-6 py-3 text-xs uppercase tracking-[0.2em] text-zinc-300 transition-colors duration-150 ease-linear hover:bg-zinc-900/80"
+				className="inline-flex border border-border-100 px-6 py-3 text-xs uppercase tracking-[0.2em] text-zinc-300 transition-all duration-150 ease-linear hover:border-brand-500/40 hover:bg-zinc-900/80"
 			>
 				Go Back Home
 			</Link>

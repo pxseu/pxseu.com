@@ -1,17 +1,12 @@
-import type React from "react";
-import type { JSX } from "react";
+import type { ReactNode } from "react";
 
-type TitleProps = {
-	children: React.ReactNode;
+interface ContainerProps {
+	children: ReactNode;
 	title: string;
 	id?: string;
-};
+}
 
-export default function Container({
-	children,
-	title,
-	id,
-}: TitleProps): JSX.Element {
+export default function Container({ children, title, id }: ContainerProps) {
 	return (
 		<div id={id} className="w-full border border-border-100 bg-zinc-950/50">
 			<div className="border-b border-border-100 px-5 py-4 md:px-6">

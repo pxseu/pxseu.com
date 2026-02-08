@@ -13,7 +13,7 @@ export default function Skill({ category, skills }: SkillProps) {
 				{skills.map((skill) => (
 					<span
 						key={skill}
-						className="border border-border-100 px-2 py-1 text-xs uppercase tracking-[0.06em] text-zinc-400"
+						className="border border-border-100 px-2 py-1 text-xs uppercase tracking-[0.06em] text-zinc-400 transition-colors duration-150 ease-linear hover:border-brand-500/30 hover:text-zinc-300"
 					>
 						{skill}
 					</span>

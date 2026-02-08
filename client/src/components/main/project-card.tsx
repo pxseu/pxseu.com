@@ -10,7 +10,7 @@ export default function ProjectCard({
 	description,
 }: ProjectCardProps) {
 	return (
-		<div className="flex h-full flex-col border border-border-100">
+		<div className="flex h-full flex-col border border-border-100 transition-colors duration-150 ease-linear hover:border-brand-500/40 hover:bg-zinc-900/30">
 			<div className="border-b border-border-100 px-4 py-2">
 				<p className="text-[11px] tracking-[0.18em] uppercase text-zinc-500">
 					Repository

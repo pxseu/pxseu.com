@@ -11,13 +11,13 @@ export default function Location() {
 		location = `${data.location.city}, ${data.location.country}`;
 	}
 
+	const hasLocation = isConnected && data?.location;
+
 	return (
 		<div className="min-h-6">
 			<p
 				className={`mt-2 text-xs uppercase tracking-[0.12em] text-zinc-500 transition-all duration-500 ease-out ${
-					isConnected && data?.location
-						? "opacity-100 translate-y-0"
-						: "opacity-0 translate-y-1"
+					hasLocation ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
 				}`}
 			>
 				Currently in{" "}
@@ -26,6 +26,10 @@ export default function Location() {
 					href={`https://maps.apple.com/?q=${location}`}
 					target="_blank"
 					rel="noopener noreferrer"
+					{...(!hasLocation && {
+						"aria-hidden": true,
+						tabIndex: -1,
+					})}
 				>
 					{location}
 				</a>

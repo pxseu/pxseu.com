@@ -6,7 +6,7 @@ import {
 	useHover,
 	useInteractions,
 } from "@floating-ui/react";
-import type React from "react";
+import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { useTimePassed } from "@/hooks/useTimePassed";
 
@@ -19,7 +19,7 @@ function Tooltip({
 	children,
 	content,
 }: {
-	children: React.ReactNode;
+	children: ReactNode;
 	content: string;
 }) {
 	const [open, setOpen] = useState(false);

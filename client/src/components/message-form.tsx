@@ -15,7 +15,6 @@ type FormAction =
 	| { type: "SET_CONTENT"; payload: string }
 	| { type: "SET_ATTACHMENT"; payload: string }
 	| { type: "SET_NAME"; payload: string }
-	| { type: "SET_STATUS"; payload: FormState["status"] }
 	| { type: "SET_ERROR"; payload: string }
 	| { type: "RESET_FORM" }
 	| { type: "SUBMIT_START" }
@@ -38,8 +37,6 @@ function formReducer(state: FormState, action: FormAction): FormState {
 			return { ...state, attachment: action.payload };
 		case "SET_NAME":
 			return { ...state, name: action.payload };
-		case "SET_STATUS":
-			return { ...state, status: action.payload };
 		case "SET_ERROR":
 			return { ...state, errorMessage: action.payload, status: "error" };
 		case "RESET_FORM":
@@ -172,7 +169,7 @@ export default function MessageForm() {
 						onChange={(e) =>
 							dispatch({ type: "SET_NAME", payload: e.target.value })
 						}
-						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 placeholder:text-zinc-600 focus:border-zinc-400 focus:outline-none"
+						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 placeholder:text-zinc-600 transition-colors duration-150 ease-linear focus:border-brand-500/50 focus:outline-none"
 						placeholder="Anonymous"
 					/>
 				</div>
@@ -190,9 +187,10 @@ export default function MessageForm() {
 						onChange={(e) =>
 							dispatch({ type: "SET_CONTENT", payload: e.target.value })
 						}
-						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 focus:border-zinc-400 focus:outline-none"
+						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 placeholder:text-zinc-600 transition-colors duration-150 ease-linear focus:border-brand-500/50 focus:outline-none"
 						rows={4}
 						required
+						placeholder="Your message..."
 					/>
 				</div>
 
@@ -210,7 +208,7 @@ export default function MessageForm() {
 						onChange={(e) =>
 							dispatch({ type: "SET_ATTACHMENT", payload: e.target.value })
 						}
-						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 placeholder:text-zinc-600 focus:border-zinc-400 focus:outline-none"
+						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 placeholder:text-zinc-600 transition-colors duration-150 ease-linear focus:border-brand-500/50 focus:outline-none"
 						placeholder="https://example.com/image.png"
 					/>
 				</div>
@@ -219,14 +217,14 @@ export default function MessageForm() {
 					<button
 						type="submit"
 						disabled={status === "loading"}
-						className="border border-border-100 bg-brand-500 px-4 py-3 text-xs uppercase tracking-[0.2em] text-zinc-950 transition-colors duration-150 ease-linear hover:bg-brand-400 disabled:cursor-not-allowed disabled:opacity-50"
+						className="border border-brand-500 bg-brand-500 px-4 py-3 text-xs uppercase tracking-[0.2em] text-zinc-950 transition-all duration-150 ease-linear hover:bg-brand-500/80 disabled:cursor-not-allowed disabled:opacity-50"
 					>
 						{status === "loading" ? (
 							<span className="flex items-center justify-center">
 								<svg
 									role="img"
 									aria-label="Loading"
-									className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+									className="-ml-1 mr-2 h-4 w-4 animate-spin"
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
 									viewBox="0 0 24 24"
@@ -238,12 +236,12 @@ export default function MessageForm() {
 										r="10"
 										stroke="currentColor"
 										strokeWidth="4"
-									></circle>
+									/>
 									<path
 										className="opacity-75"
 										fill="currentColor"
 										d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-									></path>
+									/>
 								</svg>
 								Sending...
 							</span>
@@ -255,7 +253,7 @@ export default function MessageForm() {
 					<button
 						type="button"
 						onClick={() => dispatch({ type: "RESET_FORM" })}
-						className="border border-border-100 bg-zinc-900 px-4 py-3 text-xs uppercase tracking-[0.2em] text-zinc-300 transition-colors duration-150 ease-linear hover:bg-zinc-800"
+						className="border border-border-100 bg-zinc-900 px-4 py-3 text-xs uppercase tracking-[0.2em] text-zinc-300 transition-all duration-150 ease-linear hover:border-zinc-600 hover:bg-zinc-800"
 					>
 						Reset
 					</button>
