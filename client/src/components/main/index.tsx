@@ -12,7 +12,7 @@ export default function Main() {
 		<main className="flex w-full flex-col gap-8">
 			{/* ABOUT ME */}
 			<Container title="About Me" id="intro">
-				<p className="text-sm leading-relaxed text-zinc-400 sm:text-base">
+				<p className="text-sm leading-relaxed text-zinc-300 sm:text-base">
 					Hey, I&apos;m Kuba — online I go by{" "}
 					<strong className="bg-linear-to-r/srgb from-brand-100 to-brand-900 bg-clip-text text-transparent">
 						pxseu
@@ -23,29 +23,29 @@ export default function Main() {
 					I mostly work on backend services and internal tooling. I also enjoy
 					frontend when it makes things easier to understand and use.
 				</p>
-				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+				<p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
 					I like building systems that stay simple under load and readable
 					months later. Clear naming and predictable behavior matter to me.
 				</p>
 
-				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+				<p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
 					I work best with thoughtful people and direct feedback. Most good
 					results come from small, honest conversations and steady progress.
 				</p>
 
-				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+				<p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
 					I&apos;m curious by default, so I spend a lot of time learning,
 					tinkering, and following ideas until they finally click. That&apos;s
 					probably my favorite part of this work.
 				</p>
 
-				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+				<p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
 					Outside of code, I&apos;m into cars, oddly specific gadgets, and
 					sometimes making videos about what I&apos;m working on. I like things
 					that are practical, a little nerdy, and built with care.
 				</p>
 
-				<p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+				<p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
 					If you want to chat, collaborate, or just say hi, my inbox is open. =]
 				</p>
 			</Container>

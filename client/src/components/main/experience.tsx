@@ -27,7 +27,7 @@ export default function Experience({ items }: ExperienceProps) {
 						<p className="mt-1 text-sm uppercase tracking-widest text-zinc-400">
 							{item.company}
 						</p>
-						<p className="mt-3 text-sm leading-relaxed text-zinc-400">
+						<p className="mt-3 text-sm leading-relaxed text-zinc-300">
 							{item.description}
 						</p>
 					</div>

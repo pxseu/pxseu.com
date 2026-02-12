@@ -138,7 +138,7 @@ export default function RootLayout({
 				<link rel="preconnect" href={API_ROUTE} />
 				<link rel="preconnect" href="https://i.scdn.co" />
 			</head>
-			<body className="relative min-h-screen overflow-x-hidden bg-zinc-950 font-mono text-zinc-400 antialiased leading-relaxed tracking-[-0.01em] selection:bg-brand-500/40 selection:text-zinc-100">
+			<body className="relative min-h-screen overflow-x-hidden bg-zinc-950 font-mono text-zinc-350 antialiased leading-relaxed tracking-[-0.01em] selection:bg-brand-500/40 selection:text-zinc-100">
 				<div className="relative z-10 mx-auto flex w-full max-w-245 flex-col px-4 py-4 sm:px-6 sm:py-6 gap-8">
 					<RealtimeProvider>
 						<ReactLenis root options={{ smoothWheel: true, lerp: 0.2 }}>

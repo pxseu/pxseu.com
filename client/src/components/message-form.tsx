@@ -217,7 +217,7 @@ export default function MessageForm() {
 					<button
 						type="submit"
 						disabled={status === "loading"}
-						className="border border-brand-500 bg-brand-500 px-4 py-3 text-xs uppercase tracking-[0.2em] text-zinc-950 transition-all duration-150 ease-linear hover:bg-brand-500/80 disabled:cursor-not-allowed disabled:opacity-50"
+						className="border border-brand-500 bg-brand-500/80 px-4 py-3 text-xs uppercase tracking-[0.2em] text-zinc-950 transition-all duration-150 ease-linear hover:bg-brand-500 hover:text-zinc-900 disabled:cursor-not-allowed disabled:opacity-50"
 					>
 						{status === "loading" ? (
 							<span className="flex items-center justify-center">

@@ -19,7 +19,7 @@ export default function Contact({ items }: ContactProps) {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<strong className="text-xs uppercase tracking-[0.18em] text-zinc-500">
+					<strong className="text-xs uppercase tracking-[0.18em] text-zinc-300">
 						{item.label}
 					</strong>
 					<span className="mt-2 text-sm lowercase tracking-[0.06em] text-brand-500">

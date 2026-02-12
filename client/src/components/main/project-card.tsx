@@ -20,7 +20,7 @@ export default function ProjectCard({
 				<h3 className="text-base font-semibold lowercase tracking-[0.05em] text-zinc-200">
 					{name}
 				</h3>
-				<p className="mt-3 text-sm leading-relaxed text-zinc-400">
+				<p className="mt-3 text-sm leading-relaxed text-zinc-300">
 					{description}
 				</p>
 			</div>

@@ -125,7 +125,7 @@ export default function Playing() {
 								{data.playing.song.title}
 							</a>
 							<span
-								className="truncate text-xs uppercase tracking-[0.08em] text-zinc-400"
+								className="truncate text-xs uppercase tracking-[0.08em] text-zinc-350"
 								title={data.playing.song.artists}
 							>
 								{data.playing.song.artists}
