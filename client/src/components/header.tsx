@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BIRTHDAY_TIMESTAMP } from "@/config";
 import { useIsBirthday } from "@/hooks/useIsBirthday";
+import { cn } from "@/utils/cn";
 import BirthdayNotice from "./birthday";
 import Location from "./location";
 import Logo from "./logo";
@@ -30,9 +31,11 @@ export default function Header() {
 				<nav className="grid w-full grid-cols-1 items-center border-b border-border-100 text-zinc-300 sm:grid-cols-[1fr_auto]">
 					<Link
 						href="/"
-						className={`border-b border-border-100 sm:border-b-0 sm:border-r ${navBase} ${
-							isActive("/") ? activeClass : ""
-						}`}
+						className={cn(
+							"border-b border-border-100 sm:border-b-0 sm:border-r",
+							navBase,
+							isActive("/") && activeClass,
+						)}
 					>
 						Index / Home
 					</Link>
@@ -40,17 +43,17 @@ export default function Header() {
 					<div className="grid grid-cols-2 sm:flex">
 						<Link
 							href="/links"
-							className={`border-r border-border-100 ${navBase} ${
-								isActive("/links") ? activeClass : ""
-							}`}
+							className={cn(
+								"border-r border-border-100",
+								navBase,
+								isActive("/links") && activeClass,
+							)}
 						>
 							Links
 						</Link>
 						<Link
 							href="/message"
-							className={`${navBase} ${
-								isActive("/message") ? activeClass : ""
-							}`}
+							className={cn(navBase, isActive("/message") && activeClass)}
 						>
 							Message
 						</Link>

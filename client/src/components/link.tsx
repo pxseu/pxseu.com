@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { cn } from "@/utils/cn";
 
 interface LinkItemProps {
 	icon: ReactNode;
@@ -21,9 +22,12 @@ export default function LinkItem({
 			className="relative flex w-full items-center justify-between border border-border-100 px-4 py-3 text-zinc-100 transition-all duration-150 ease-linear hover:border-brand-500/40 hover:bg-zinc-900/80"
 		>
 			<div className="flex items-center gap-3">
-				<span className={`text-xl ${colorClass}`}>{icon}</span>
+				<span className={cn("text-xl", colorClass)}>{icon}</span>
 				<span
-					className={`text-sm font-semibold uppercase tracking-[0.08em] ${colorClass}`}
+					className={cn(
+						"text-sm font-semibold uppercase tracking-[0.08em]",
+						colorClass,
+					)}
 				>
 					{displayName}
 				</span>

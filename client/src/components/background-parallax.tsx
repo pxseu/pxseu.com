@@ -14,6 +14,10 @@ export default function BackgroundParallax() {
 		reducedMotionRef.current = window.matchMedia(
 			"(prefers-reduced-motion: reduce)",
 		).matches;
+
+		if (layerRef.current) {
+			layerRef.current.style.display = "block";
+		}
 	}, []);
 
 	const setOffset = useCallback((offset: number) => {
@@ -38,7 +42,10 @@ export default function BackgroundParallax() {
 	return (
 		<div
 			aria-hidden
-			className="pointer-events-none fixed inset-[-25vh] -z-10 overflow-hidden"
+			className={
+				"pointer-events-none fixed inset-[-25vh] -z-10 overflow-hidden animate-fade-in"
+			}
+			style={{ display: "hidden" }}
 		>
 			<div
 				ref={layerRef}

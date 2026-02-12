@@ -10,6 +10,7 @@
 	--color-border-100: rgb(47, 51, 54);
 
 	--animate-gradient-bg: gradient-bg 5s ease infinite;
+	--animate-fade-in: fadeIn 500ms ease;
 }
 
 @keyframes gradient-bg {
@@ -21,5 +22,14 @@
 	}
 	100% {
 		background-position: 0% 50%;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }

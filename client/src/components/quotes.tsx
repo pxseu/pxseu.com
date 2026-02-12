@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { cn } from "@/utils/cn";
 
 const quotes = [
 	// Franz Kafka
@@ -109,9 +110,10 @@ export default function Quote() {
 	return (
 		<div className="min-h-16 transition-all duration-500 ease-out">
 			<p
-				className={`mt-2 border-l border-border-100 pl-3 text-xs leading-relaxed text-zinc-500 transition-all duration-500 ease-out sm:text-sm ${
-					visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-				}`}
+				className={cn(
+					"mt-2 border-l border-border-100 pl-3 text-xs leading-relaxed text-zinc-500 transition-all duration-500 ease-out sm:text-sm",
+					visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2",
+				)}
 			>
 				{quote}
 			</p>

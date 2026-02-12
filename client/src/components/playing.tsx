@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRealtime } from "@/contexts/RealtimeContext";
+import { cn } from "@/utils/cn";
 
 export default function Playing() {
 	const { data, isConnected } = useRealtime();
@@ -80,37 +81,40 @@ export default function Playing() {
 
 	return (
 		<div
-			className="fixed right-2 bottom-2 z-50 w-[min(23rem,calc(100vw-0.75rem))] p-2"
+			className="fixed right-2 bottom-2 z-50 w-[min(23rem,calc(100vw-0.75rem))] p-2 animate-fade-in"
 			onPointerEnter={handleExpand}
 			onPointerLeave={handleCollapse}
 			onFocusCapture={handleExpand}
 			onBlurCapture={handleCollapse}
 		>
 			<div
-				className={`ml-auto overflow-hidden border border-border-100 bg-zinc-950/80 p-2 text-sm text-zinc-200 transition-[width,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+				className={cn(
+					"ml-auto overflow-hidden border border-border-100 bg-zinc-950/80 p-2 text-sm text-zinc-200 transition-[width,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
 					isExpanded
 						? "w-full shadow-[0_0_0_1px_rgba(128,102,247,0.15)]"
-						: "w-23"
-				}`}
+						: "w-23",
+				)}
 			>
 				<div className="flex items-start gap-3 overflow-hidden px-1">
 					{/* biome-ignore lint/performance/noImgElement: this is a static site, no need for next/image */}
 					<img
 						src={data.playing.album.image || "/assets/placeholder/album.png"}
 						alt={data.playing.album.name}
-						className={`aspect-square shrink-0 border border-border-100 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-							isExpanded ? "scale-100" : "scale-95"
-						}`}
+						className={cn(
+							"aspect-square shrink-0 border border-border-100 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+							isExpanded ? "scale-100" : "scale-95",
+						)}
 						width={64}
 						height={64}
 					/>
 
 					<div
-						className={`min-w-0 flex-1 transition-[max-width,opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+						className={cn(
+							"min-w-0 flex-1 transition-[max-width,opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
 							isExpanded
 								? "max-w-70 translate-x-0 opacity-100"
-								: "max-w-0 -translate-x-1 opacity-0"
-						}`}
+								: "max-w-0 -translate-x-1 opacity-0",
+						)}
 					>
 						<div className="flex flex-col justify-between">
 							<a

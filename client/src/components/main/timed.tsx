@@ -9,6 +9,7 @@ import {
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { useTimePassed } from "@/hooks/useTimePassed";
+import { cn } from "@/utils/cn";
 
 type TimedProps = {
 	timestamp: number;
@@ -64,9 +65,10 @@ function Tooltip({
 					ref={refs.setFloating}
 					style={floatingStyles}
 					{...getFloatingProps()}
-					className={`z-50 border border-border-100 bg-zinc-950 px-2 py-1 text-sm text-zinc-200 transition-opacity duration-350 ${
-						open ? "opacity-100" : "opacity-0"
-					}`}
+					className={cn(
+						"z-50 border border-border-100 bg-zinc-950 px-2 py-1 text-sm text-zinc-200 transition-opacity duration-350",
+						open ? "opacity-100" : "opacity-0",
+					)}
 				>
 					{content}
 					<span className="absolute -bottom-1.25 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 border-r border-b border-border-100 bg-zinc-950" />
