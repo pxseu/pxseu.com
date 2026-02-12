@@ -110,7 +110,7 @@ export default function MessageForm() {
 
 			{status === "success" && (
 				<div className="mx-5 mt-5 flex items-center border border-border-100 bg-green-900/20 p-3 text-green-300 sm:mx-6">
-					<FaCheck role="img" aria-label="Check" className="mr-2 h-5 w-5" />
+					<FaCheck role="img" aria-label="Check" className="mr-2 h-4 w-4" />
 					Message sent.
 				</div>
 			)}
@@ -120,7 +120,7 @@ export default function MessageForm() {
 					<FaTriangleExclamation
 						role="img"
 						aria-label="Error"
-						className="mr-2 h-5 w-5"
+						className="mr-2 h-4 w-4"
 					/>
 					{errorMessage || "Failed to send message"}
 				</div>
