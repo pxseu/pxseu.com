@@ -1,6 +1,7 @@
 "use client";
 
 import { type SubmitEvent, useId, useReducer } from "react";
+import { FaCheck, FaCircleNotch, FaTriangleExclamation } from "react-icons/fa6";
 import { API_ROUTE } from "@/config";
 
 type FormState = {
@@ -109,44 +110,18 @@ export default function MessageForm() {
 
 			{status === "success" && (
 				<div className="mx-5 mt-5 flex items-center border border-border-100 bg-green-900/20 p-3 text-green-300 sm:mx-6">
-					<svg
-						role="img"
-						aria-label="Check"
-						className="mr-2 h-5 w-5"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth={2}
-							d="M5 13l4 4L19 7"
-						/>
-					</svg>
+					<FaCheck role="img" aria-label="Check" className="mr-2 h-5 w-5" />
 					Message sent.
 				</div>
 			)}
 
 			{status === "error" && (
 				<div className="mx-5 mt-5 flex items-center border border-border-100 bg-red-900/20 p-3 text-red-300 sm:mx-6">
-					<svg
+					<FaTriangleExclamation
 						role="img"
 						aria-label="Error"
 						className="mr-2 h-5 w-5"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth={2}
-							d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-						/>
-					</svg>
+					/>
 					{errorMessage || "Failed to send message"}
 				</div>
 			)}
@@ -221,28 +196,11 @@ export default function MessageForm() {
 					>
 						{status === "loading" ? (
 							<span className="flex items-center justify-center">
-								<svg
+								<FaCircleNotch
 									role="img"
 									aria-label="Loading"
 									className="-ml-1 mr-2 h-4 w-4 animate-spin"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-								>
-									<circle
-										className="opacity-25"
-										cx="12"
-										cy="12"
-										r="10"
-										stroke="currentColor"
-										strokeWidth="4"
-									/>
-									<path
-										className="opacity-75"
-										fill="currentColor"
-										d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-									/>
-								</svg>
+								/>
 								Sending...
 							</span>
 						) : (
