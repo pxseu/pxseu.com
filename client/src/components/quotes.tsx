@@ -46,6 +46,7 @@ const quotes = [
 	// Anime
 	"“In our society, letting others find out that you’re a nice person is a very risky move.” — Hitagi Senjougahara",
 	"“No matter how much or how often people hurt each other, loving someone is never a waste.” — Nana Osaki",
+	"“Fear is freedom! Subjugation is liberation! Contradiction is truth!” — Satsuki Kiryuin",
 	"“No letter that could be sent deserves to go undelivered.” — Violet Evergarden",
 	"“I hope one day, that you’ll be reunited with the one you cherish.” — Isla",
 	"“Sometimes, kindness leads to even greater tragedy.” — Homura Akemi",
