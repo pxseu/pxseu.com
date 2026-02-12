@@ -81,7 +81,7 @@ export default function Playing() {
 
 	return (
 		<div
-			className="fixed right-2 bottom-2 z-50 w-[min(23rem,calc(100vw-0.75rem))] p-2 animate-fade-in"
+			className="fixed right-2 bottom-2 z-50 p-2 animate-fade-in"
 			onPointerEnter={handleExpand}
 			onPointerLeave={handleCollapse}
 			onFocusCapture={handleExpand}
@@ -89,14 +89,12 @@ export default function Playing() {
 		>
 			<div
 				className={cn(
-					"ml-auto overflow-hidden border border-border-100 bg-zinc-950/80 p-2 text-sm text-zinc-200 transition-[width,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-					isExpanded
-						? "w-full shadow-[0_0_0_1px_rgba(128,102,247,0.15)]"
-						: "w-23",
+					"ml-auto overflow-hidden border border-border-100 p-2 text-sm text-zinc-200 transition-[width,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] backdrop-blur-md",
+					isExpanded ? "w-[min(23rem,calc(100vw-0.75rem))]" : "w-23",
 				)}
 			>
 				<div className="flex items-start gap-3 overflow-hidden px-1">
-					{/* biome-ignore lint/performance/noImgElement: this is a static site, no need for next/image */}
+					{/*biome-ignore lint/performance/noImgElement: this is a static site, no need for next/image */}
 					<img
 						src={data.playing.album.image || "/assets/placeholder/album.png"}
 						alt={data.playing.album.name}
@@ -148,9 +146,6 @@ export default function Playing() {
 					<div
 						ref={progressBarRef}
 						className="h-full bg-zinc-300 transition-[width] duration-75 ease-linear"
-						style={{
-							width: "0%",
-						}}
 					/>
 				</div>
 			</div>
