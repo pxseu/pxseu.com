@@ -1,5 +1,3 @@
-"use client";
-
 import {
 	offset,
 	useFloating,
@@ -8,22 +6,15 @@ import {
 } from "@floating-ui/react";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
-import { useTimePassed } from "@/hooks/useTimePassed";
 import { cn } from "@/utils/cn";
 
-type TimedProps = {
-	timestamp: number;
-	label?: string;
-	suffix?: string;
-};
-
-function Tooltip({
+export function Tooltip({
 	children,
 	content,
 	suffix,
 }: {
 	children: ReactNode;
-	content: string;
+	content: ReactNode;
 	suffix?: string;
 }) {
 	const [open, setOpen] = useState(false);
@@ -75,15 +66,5 @@ function Tooltip({
 				</span>
 			)}
 		</>
-	);
-}
-
-export function Timed({ timestamp, label, suffix }: TimedProps) {
-	const time = useTimePassed(timestamp);
-
-	return (
-		<Tooltip content={time.toPrecision(20)} suffix={suffix}>
-			{Math.floor(time)} {label}
-		</Tooltip>
 	);
 }

@@ -100,10 +100,10 @@ export default function Quote() {
 
 	useEffect(() => {
 		setQuote(quotes[getSecureRandomIndex(quotes.length)]);
-		const animationTimeout = window.setTimeout(() => setVisible(true), 10);
+		const animationTimeout = setTimeout(() => setVisible(true), 10);
 
 		return () => {
-			window.clearTimeout(animationTimeout);
+			clearTimeout(animationTimeout);
 		};
 	}, []);
 

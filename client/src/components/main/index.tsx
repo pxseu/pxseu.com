@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/container";
-import { Timed } from "@/components/main/timed";
+import { Timed } from "@/components/timed";
 import { BIRTHDAY_TIMESTAMP, CODING_START_TIMESTAMP } from "@/config";
 import Contact from "./contact";
 import Experience from "./experience";
