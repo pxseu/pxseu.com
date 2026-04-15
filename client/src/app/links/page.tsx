@@ -42,7 +42,7 @@ export default function Links() {
 	return (
 		<>
 			<JsonLd id="collection-page-schema" json={collectionPageSchemaJson} />
-			<div className="mx-auto w-full max-w-2xl border border-border-100 bg-zinc-950/50">
+			<main className="mx-auto w-full max-w-2xl border border-border-100 bg-zinc-950/50">
 				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
 					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
 						Support
@@ -165,7 +165,7 @@ export default function Links() {
 						/>
 					</div>
 				</div>
-			</div>
+			</main>
 		</>
 	);
 }

@@ -134,7 +134,7 @@ export default function Playing() {
 								href={data.playing.album.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="truncate text-xs text-zinc-500 hover:underline"
+								className="truncate text-xs text-zinc-400 hover:underline"
 								title={data.playing.album.name}
 							>
 								{data.playing.album.name}

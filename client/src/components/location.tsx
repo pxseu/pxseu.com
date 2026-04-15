@@ -21,7 +21,7 @@ export default function Location() {
 
 	return (
 		<div className="min-h-6">
-			<p className="mt-2 text-xs uppercase tracking-[0.12em] text-zinc-500 transition-all duration-500 ease-out opacity-100 translate-y-0">
+			<p className="mt-2 text-xs uppercase tracking-[0.12em] text-zinc-400 transition-all duration-500 ease-out opacity-100 translate-y-0">
 				Currently in{" "}
 				{hasLocation ? (
 					<Tooltip content={<RelativeTime date={data.location.timestamp} />}>

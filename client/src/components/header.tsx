@@ -40,29 +40,39 @@ export default function Header() {
 						Index / Home
 					</Link>
 
-					<div className="grid grid-cols-2 sm:flex">
-						<Link
-							href="/links"
-							className={cn(
-								"border-r border-border-100",
-								navBase,
-								isActive("/links") && activeClass,
-							)}
-						>
-							Links
-						</Link>
-						<Link
-							href="/message"
-							className={cn(navBase, isActive("/message") && activeClass)}
-						>
-							Message
-						</Link>
-					</div>
+				<div className="grid grid-cols-3 sm:flex">
+					<Link
+						href="/blog"
+						className={cn(
+							"border-r border-border-100",
+							navBase,
+							isActive("/blog") && activeClass,
+						)}
+					>
+						Blog
+					</Link>
+					<Link
+						href="/links"
+						className={cn(
+							"border-r border-border-100",
+							navBase,
+							isActive("/links") && activeClass,
+						)}
+					>
+						Links
+					</Link>
+					<Link
+						href="/message"
+						className={cn(navBase, isActive("/message") && activeClass)}
+					>
+						Message
+					</Link>
+				</div>
 				</nav>
 
 				<div className="grid gap-5 p-5 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] md:p-6">
 					<div>
-						<p className="mb-4 text-[11px] tracking-[0.26em] uppercase text-zinc-500">
+						<p className="mb-4 text-[11px] tracking-[0.26em] uppercase text-zinc-400">
 							Kuba Ellwart / pxseu / backend
 						</p>
 						<h1 className="mb-4 flex items-center">
@@ -75,7 +85,7 @@ export default function Header() {
 					</div>
 
 					<div className="border-t border-border-100 pt-4 md:border-t-0 md:border-l md:pl-6 md:pt-0">
-						<p className="mb-2 text-[11px] tracking-[0.22em] uppercase text-zinc-500">
+						<p className="mb-2 text-[11px] tracking-[0.22em] uppercase text-zinc-400">
 							Live Feed
 						</p>
 						<Location />

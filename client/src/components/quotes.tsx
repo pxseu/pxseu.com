@@ -111,7 +111,7 @@ export default function Quote() {
 		<div className="min-h-16 transition-all duration-500 ease-out">
 			<p
 				className={cn(
-					"mt-2 border-l border-border-100 pl-3 text-xs leading-relaxed text-zinc-500 transition-all duration-500 ease-out sm:text-sm",
+					"mt-2 border-l border-border-100 pl-3 text-xs leading-relaxed text-zinc-400 transition-all duration-500 ease-out sm:text-sm",
 					visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2",
 				)}
 			>

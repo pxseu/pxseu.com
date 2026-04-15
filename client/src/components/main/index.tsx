@@ -169,7 +169,7 @@ export default function Main() {
 
 			{/* CONTACT */}
 			<Container title="Contact" id="contact">
-				<p className="mb-4 text-sm uppercase tracking-widest text-zinc-500">
+				<p className="mb-4 text-sm uppercase tracking-widest text-zinc-400">
 					Best ways to reach me
 				</p>
 
@@ -198,7 +198,7 @@ export default function Main() {
 					]}
 				/>
 
-				<div className="mt-5 text-center text-[11px] uppercase tracking-[0.2em] text-zinc-500">
+				<div className="mt-5 text-center text-[11px] uppercase tracking-[0.2em] text-zinc-400">
 					Or send me a direct message
 				</div>
 

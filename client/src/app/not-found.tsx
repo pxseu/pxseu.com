@@ -9,7 +9,7 @@ export default function NotFound() {
 			<h2 className="mb-3 text-xl font-semibold uppercase tracking-[0.08em] text-zinc-300 sm:text-2xl">
 				Page Not Found
 			</h2>
-			<p className="mx-auto mb-8 max-w-md text-sm leading-relaxed text-zinc-500 sm:text-base">
+			<p className="mx-auto mb-8 max-w-md text-sm leading-relaxed text-zinc-400 sm:text-base">
 				The page you&apos;re looking for doesn&apos;t exist or has been moved.
 			</p>
 			<Link

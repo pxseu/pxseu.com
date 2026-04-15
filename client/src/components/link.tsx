@@ -35,7 +35,7 @@ export default function LinkItem({
 			</div>
 
 			<FaChevronRight
-				className="h-3 w-3 text-zinc-500"
+				className="h-3 w-3 text-zinc-400"
 				role="img"
 				aria-label="External link icon"
 			/>

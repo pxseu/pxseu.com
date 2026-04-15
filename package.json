@@ -1,22 +1,18 @@
 {
 	"name": "@pxseu/pxseu.com",
 	"version": "1.0.0",
-	"private": true,
-	"workspaces": [
-		"client",
-		"server"
-	],
-	"scripts": {
-		"dev": "bun --filter '*' dev"
-	},
 	"devDependencies": {
 		"@pxseu/prettier-config": "^1.0.0"
 	},
 	"engines": {
 		"bun": "v1.3.12"
 	},
-	"dependencies": {
-		"clsx": "^2.1.1",
-		"tailwind-merge": "^3.4.0"
-	}
+	"private": true,
+	"scripts": {
+		"dev": "bun --filter '*' dev"
+	},
+	"workspaces": [
+		"client",
+		"server"
+	]
 }

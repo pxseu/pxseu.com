@@ -17,7 +17,7 @@ export default function Experience({ items }: ExperienceProps) {
 					key={`${item.company}-${item.period}`}
 					className="border border-border-100 border-l-2 border-l-brand-500/20 p-4 transition-colors duration-150 ease-linear hover:border-l-brand-500/60 hover:bg-zinc-900/30 sm:grid sm:grid-cols-[6rem_1fr] sm:gap-6"
 				>
-					<div className="mb-2 text-[11px] tracking-[0.18em] uppercase text-zinc-500 sm:mb-0">
+					<div className="mb-2 text-[11px] tracking-[0.18em] uppercase text-zinc-400 sm:mb-0">
 						{item.period}
 					</div>
 					<div className="border-t border-border-100 pt-3 sm:border-t-0 sm:pt-0">
