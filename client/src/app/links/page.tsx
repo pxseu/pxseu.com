@@ -15,8 +15,8 @@ import {
 	FaTwitter,
 	FaYoutube,
 } from "react-icons/fa";
-import JsonLd from "@/components/json-ld";
-import LinkItem from "@/components/link";
+import JsonLd from "@/components/ui/json-ld";
+import LinkItem from "./link-item";
 
 export const metadata: Metadata = {
 	title: "Links - pxseu.com",

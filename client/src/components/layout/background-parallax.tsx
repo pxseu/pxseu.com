@@ -42,13 +42,11 @@ export default function BackgroundParallax() {
 	return (
 		<div
 			aria-hidden
-			className={
-				"pointer-events-none fixed inset-[-25vh] -z-10 overflow-hidden animate-fade-in"
-			}
-			style={{ display: "hidden" }}
+			className="pointer-events-none fixed inset-[-25vh] -z-10 overflow-hidden animate-fade-in"
 		>
 			<div
 				ref={layerRef}
+				style={{ display: "none" }}
 				className="absolute inset-0 opacity-40 will-change-transform bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-size-[32px_32px]"
 			/>
 		</div>

@@ -5,11 +5,11 @@ import { usePathname } from "next/navigation";
 import { BIRTHDAY_TIMESTAMP } from "@/config";
 import { useIsBirthday } from "@/hooks/useIsBirthday";
 import { cn } from "@/utils/cn";
-import BirthdayNotice from "./birthday";
+import BirthdayNotice from "./birthday-notice";
 import Location from "./location";
 import Logo from "./logo";
-import Playing from "./playing";
-import Quote from "./quotes";
+import Playing from "./now-playing";
+import Quote from "./quote";
 
 const navBase =
 	"px-4 py-3 text-xs tracking-[0.2em] uppercase transition-all duration-150 ease-linear hover:bg-zinc-900/80 hover:text-zinc-100";

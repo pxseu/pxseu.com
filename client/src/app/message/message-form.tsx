@@ -53,6 +53,9 @@ function formReducer(state: FormState, action: FormAction): FormState {
 	}
 }
 
+const inputClass =
+	"w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 placeholder:text-zinc-600 transition-colors duration-150 ease-linear focus:border-brand-500/50 focus:outline-none";
+
 export default function MessageForm() {
 	const nameInputId = useId();
 	const contentInputId = useId();
@@ -144,7 +147,7 @@ export default function MessageForm() {
 						onChange={(e) =>
 							dispatch({ type: "SET_NAME", payload: e.target.value })
 						}
-						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 placeholder:text-zinc-600 transition-colors duration-150 ease-linear focus:border-brand-500/50 focus:outline-none"
+						className={inputClass}
 						placeholder="Anonymous"
 					/>
 				</div>
@@ -162,7 +165,7 @@ export default function MessageForm() {
 						onChange={(e) =>
 							dispatch({ type: "SET_CONTENT", payload: e.target.value })
 						}
-						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 placeholder:text-zinc-600 transition-colors duration-150 ease-linear focus:border-brand-500/50 focus:outline-none"
+						className={inputClass}
 						rows={4}
 						required
 						placeholder="Your message..."
@@ -183,7 +186,7 @@ export default function MessageForm() {
 						onChange={(e) =>
 							dispatch({ type: "SET_ATTACHMENT", payload: e.target.value })
 						}
-						className="w-full border border-border-100 bg-zinc-950 p-3 text-sm text-zinc-300 placeholder:text-zinc-600 transition-colors duration-150 ease-linear focus:border-brand-500/50 focus:outline-none"
+						className={inputClass}
 						placeholder="https://example.com/image.png"
 					/>
 				</div>

@@ -12,6 +12,7 @@
 		"dev": "bun --filter '*' dev"
 	},
 	"workspaces": [
+		"shared",
 		"client",
 		"server"
 	]

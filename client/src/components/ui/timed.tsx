@@ -3,15 +3,13 @@
 import { useTimePassed } from "@/hooks/useTimePassed";
 import { Tooltip } from "./tooltip";
 
-export function Timed({
-	timestamp,
-	label,
-	suffix,
-}: {
+interface TimedProps {
 	timestamp: number;
 	label?: string;
 	suffix?: string;
-}) {
+}
+
+export function Timed({ timestamp, label, suffix }: TimedProps) {
 	const time = useTimePassed(timestamp);
 
 	return (

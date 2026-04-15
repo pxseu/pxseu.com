@@ -45,7 +45,6 @@ async function startNodeCheck() {
 	nodeCheckInterval = setInterval(async () => {
 		try {
 			if (is_main) {
-				// Health check for main node
 				const currentMain = await clients.redis.get(MAIN_NODE_KEY);
 
 				if (currentMain !== hostname()) {
@@ -53,13 +52,11 @@ async function startNodeCheck() {
 					await stopSpotifyTask();
 					return;
 				}
-				// Refresh the TTL
+
 				await clients.redis.expire(MAIN_NODE_KEY, MAIN_NODE_TTL);
 			} else {
-				// Migration check for non-main nodes
 				const currentMain = await clients.redis.get(MAIN_NODE_KEY);
 				if (!currentMain || currentMain === hostname()) {
-					// No main node exists or I am the main node (I was the main node before the check)
 					await tryBecomeMain();
 				}
 			}
@@ -83,4 +80,3 @@ process.on("SIGTERM", async () => {
 	process.exit(0);
 });
 
-export { clients };

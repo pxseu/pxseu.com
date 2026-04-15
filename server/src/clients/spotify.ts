@@ -1,3 +1,4 @@
+import type { RedisClient } from "bun";
 import { config } from "config.js";
 import { dominantColor } from "../utils/dominant.js";
 import { fetch } from "./fetch.js";
@@ -7,11 +8,42 @@ export const REDIS_SPOTIFY_ACCESS_TOKEN = `${config.REDIS_PREFIX}spotify:access_
 export const REDIS_LAST_UPDATE_ON = `${config.REDIS_PREFIX}spotify:last_update_on`;
 export const REDIS_SPOTIFY_TOP_ARTISTS = `${config.REDIS_PREFIX}spotify:top_artists`;
 
-export interface ExternalIds {
+/**
+ * Returns a valid access token by checking Redis first, then attempting a
+ * refresh if needed. Returns null when no refresh token exists. Throws on
+ * refresh failure so callers can apply their own error-handling strategy.
+ */
+export async function ensureAccessToken(
+	redis: RedisClient,
+	spotify: SpotifyClient,
+): Promise<string | null> {
+	const existing = await redis.get(REDIS_SPOTIFY_ACCESS_TOKEN);
+	if (existing) return existing;
+
+	const refreshToken = await redis.get(REDIS_SPOTIFY_REFRESH_TOKEN);
+	if (!refreshToken) return null;
+
+	const data = await spotify.refreshAccessToken(refreshToken);
+
+	await redis.set(
+		REDIS_SPOTIFY_ACCESS_TOKEN,
+		data.access_token,
+		"EX",
+		data.expires_in - 60,
+	);
+
+	if (data.refresh_token) {
+		await redis.set(REDIS_SPOTIFY_REFRESH_TOKEN, data.refresh_token);
+	}
+
+	return data.access_token;
+}
+
+interface ExternalIds {
 	isrc: string;
 }
 
-export interface Item {
+interface Item {
 	album: Album;
 	artists: Artist[];
 	available_markets: string[];
@@ -31,7 +63,7 @@ export interface Item {
 	uri: string;
 }
 
-export interface Album {
+interface Album {
 	album_type: string;
 	artists: Artist[];
 	available_markets: string[];
@@ -47,7 +79,7 @@ export interface Album {
 	uri: string;
 }
 
-export interface Artist {
+interface Artist {
 	external_urls: ExternalUrls;
 	href: string;
 	id: string;
@@ -56,42 +88,42 @@ export interface Artist {
 	uri: string;
 }
 
-export interface Context {
+interface Context {
 	external_urls: ExternalUrls;
 	href: string;
 	type: string;
 	uri: string;
 }
 
-export interface ExplicitContent {
+interface ExplicitContent {
 	filter_enabled: boolean;
 	filter_locked: boolean;
 }
 
-export interface ExternalUrls {
+interface ExternalUrls {
 	spotify: string;
 }
 
-export interface Followers {
+interface Followers {
 	href: string;
 	total: number;
 }
 
-export interface Image {
+interface Image {
 	url: string;
 	height: number;
 	width: number;
 }
 
-export interface Actions {
+interface Actions {
 	disallows: Disallows;
 }
 
-export interface Disallows {
+interface Disallows {
 	pausing: boolean;
 }
 
-export interface TopArtist extends Artist {
+interface TopArtist extends Artist {
 	followers: Followers;
 	genres: string[];
 	images: Image[];
@@ -99,6 +131,66 @@ export interface TopArtist extends Artist {
 }
 
 export type TimeRange = "short_term" | "medium_term" | "long_term";
+
+interface AccessTokenResponse {
+	access_token: string;
+	refresh_token: string;
+	expires_in: number;
+	token_type: string;
+	scope: string;
+}
+
+interface RefreshTokenResponse {
+	access_token: string;
+	expires_in: number;
+	token_type: string;
+	scope: string;
+	refresh_token?: string;
+}
+
+interface UserProfileResponse {
+	country: string;
+	display_name: string;
+	email: string;
+	explicit_content: ExplicitContent;
+	external_urls: ExternalUrls;
+	followers: Followers;
+	href: string;
+	id: string;
+	images: Image[];
+	product: string;
+	type: string;
+	uri: string;
+}
+
+interface CurrentlyPlayingResponse {
+	timestamp: number;
+	context: Context;
+	progress_ms: number;
+	item: Item;
+	currently_playing_type: string;
+	actions: Actions;
+	is_playing: boolean;
+}
+
+interface TopArtistsResponse {
+	items: TopArtist[];
+	total: number;
+	limit: number;
+	offset: number;
+	href: string;
+	next: string | null;
+	previous: string | null;
+}
+
+/**
+ * Typed JSON parser for API responses. Response.json() returns
+ * Promise<unknown>; this centralizes the single unavoidable
+ * narrowing so call-sites stay assertion-free.
+ */
+function parseJson<T>(response: Response): Promise<T> {
+	return response.json() as Promise<T>;
+}
 
 export default class SpotifyClient {
 	private basicAuth: string;
@@ -174,13 +266,7 @@ export default class SpotifyClient {
 			}),
 		});
 
-		return response.json() as Promise<{
-			access_token: string;
-			refresh_token: string;
-			expires_in: number;
-			token_type: string;
-			scope: string;
-		}>;
+		return parseJson<AccessTokenResponse>(response);
 	}
 
 	async refreshAccessToken(refreshToken: string) {
@@ -196,13 +282,7 @@ export default class SpotifyClient {
 			}),
 		});
 
-		return response.json() as Promise<{
-			access_token: string;
-			expires_in: number;
-			token_type: string;
-			scope: string;
-			refresh_token?: string;
-		}>;
+		return parseJson<RefreshTokenResponse>(response);
 	}
 
 	async getUserProfile(accessToken: string) {
@@ -212,20 +292,7 @@ export default class SpotifyClient {
 			},
 		});
 
-		return response.json() as Promise<{
-			country: string;
-			display_name: string;
-			email: string;
-			explicit_content: ExplicitContent;
-			external_urls: ExternalUrls;
-			followers: Followers;
-			href: string;
-			id: string;
-			images: Image[];
-			product: string;
-			type: string;
-			uri: string;
-		}>;
+		return parseJson<UserProfileResponse>(response);
 	}
 
 	async getMyCurrentPlayingTrack(accessToken: string) {
@@ -240,15 +307,7 @@ export default class SpotifyClient {
 
 		if (response.status === 204) return null;
 
-		const parsed = (await response.json()) as {
-			timestamp: number;
-			context: Context;
-			progress_ms: number;
-			item: Item;
-			currently_playing_type: string;
-			actions: Actions;
-			is_playing: boolean;
-		};
+		const parsed = await parseJson<CurrentlyPlayingResponse>(response);
 
 		if (!parsed.is_playing) return null;
 
@@ -269,21 +328,7 @@ export default class SpotifyClient {
 			},
 		);
 
-		if (!response.ok) {
-			throw new Error(`Failed to fetch top artists: ${response.statusText}`);
-		}
-
-		const data = (await response.json()) as {
-			items: TopArtist[];
-			total: number;
-			limit: number;
-			offset: number;
-			href: string;
-			next: string | null;
-			previous: string | null;
-		};
-
-		return data;
+		return parseJson<TopArtistsResponse>(response);
 	}
 
 	async formatTopArtists(artists: TopArtist[]) {

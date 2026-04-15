@@ -1,10 +1,10 @@
 import { createKaitoHandler, KaitoError } from "@kaito-http/core";
 import { config } from "./config.js";
 import { getContext } from "./context.js";
+import { ipStore } from "./utils/ip-store.js";
 import { root } from "./routes/index.js";
 
 import "./node-manager.js";
-import { AsyncLocalStorage } from "node:async_hooks";
 
 const handle = createKaitoHandler({
 	router: root,
@@ -27,13 +27,12 @@ const handle = createKaitoHandler({
 			return new Response(null, { status: 204 });
 		}
 
-		return void undefined;
+		return;
 	},
 
 	transform: async (request, response) => {
 		const origin = request.headers.get("origin");
 
-		// Include CORS headers if the origin is allowed
 		if (origin) {
 			response.headers.set("Access-Control-Allow-Origin", origin);
 			response.headers.set(
@@ -50,8 +49,6 @@ const handle = createKaitoHandler({
 	},
 });
 
-export const ipStore = new AsyncLocalStorage<string>();
-
 const server = Bun.serve({
 	hostname: "0.0.0.0",
 	port: config.PORT,
@@ -64,5 +61,3 @@ const server = Bun.serve({
 });
 
 console.log("Server listening at", server.url.href);
-
-export type App = typeof root;

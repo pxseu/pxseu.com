@@ -5,7 +5,6 @@ import { routes as messageRoutes } from "./message.js";
 import { routes as realtimeRoutes } from "./realtime.js";
 import { routes as spotifyRoutes } from "./spotify.js";
 
-// Function to return a deprecation response
 const deprecatedV1Response = () => {
 	throw new KaitoError(
 		410,

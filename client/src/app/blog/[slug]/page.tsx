@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeMdxCodeProps from "rehype-mdx-code-props";
 import rehypeUnwrapImages from "rehype-unwrap-images";
-import { getAllBlogSlugs, getBlogPost } from "@/blog/posts";
 import { MDX_COMPONENTS } from "@/components/mdx";
+import { getAllBlogSlugs, getBlogPost } from "@/utils/blog";
 import { formatDate } from "@/utils/date";
 
 interface BlogPostPageProps {
@@ -52,13 +52,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
 	return (
 		<article className="w-full border border-border-100 bg-zinc-950/50">
-			<div className="border-b border-border-100 px-5 py-5 md:px-6 md:py-6">
-				<Link
-					href="/blog"
-					className="mb-4 inline-block text-xs tracking-[0.2em] uppercase text-zinc-400 transition-colors hover:text-brand-500"
-				>
-					&larr; Back to Blog
-				</Link>
+			<div className="border-b border-border-100 px-5 py-4 md:px-6">
+				<p className="mb-2 text-[11px] tracking-[0.22em] uppercase text-zinc-400">
+					<Link href="/blog" className="transition-colors hover:text-brand-500">
+						../{post.slug}
+					</Link>
+				</p>
 				<h1 className="text-2xl font-semibold tracking-tight text-zinc-100 md:text-3xl">
 					{post.frontmatter.title}
 				</h1>

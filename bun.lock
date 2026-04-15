@@ -14,6 +14,7 @@
       "dependencies": {
         "@cside.dev/next": "^1.1.4",
         "@floating-ui/react": "^0.27.19",
+        "@pxseu/shared": "workspace:*",
         "clsx": "^2.1.1",
         "dayjs": "^1.11.20",
         "geist": "^1.7.0",
@@ -47,6 +48,7 @@
       "version": "1.0.0",
       "dependencies": {
         "@kaito-http/core": "^3.2.1",
+        "@pxseu/shared": "workspace:*",
         "sharp": "^0.34.5",
         "zod": "^4.3.6",
       },
@@ -54,6 +56,10 @@
         "@types/bun": "^1.3.7",
         "cross-env": "^10.1.0",
       },
+    },
+    "shared": {
+      "name": "@pxseu/shared",
+      "version": "1.0.0",
     },
   },
   "packages": {
@@ -180,6 +186,8 @@
     "@pxseu/prettier-config": ["@pxseu/prettier-config@1.0.0", "", {}, "sha512-kdjgxsPz25Db+S7FVK+lHJqcSK7nRkvzR5pic8hmXX5BYs/E6QZtI6HmvMTuCs5KiUMB+/yHXZaGm364y0Ak0Q=="],
 
     "@pxseu/server": ["@pxseu/server@workspace:server"],
+
+    "@pxseu/shared": ["@pxseu/shared@workspace:shared"],
 
     "@shikijs/core": ["@shikijs/core@4.0.2", "", { "dependencies": { "@shikijs/primitive": "4.0.2", "@shikijs/types": "4.0.2", "@shikijs/vscode-textmate": "^10.0.2", "@types/hast": "^3.0.4", "hast-util-to-html": "^9.0.5" } }, "sha512-hxT0YF4ExEqB8G/qFdtJvpmHXBYJ2lWW7qTHDarVkIudPFE6iCIrqdgWxGn5s+ppkGXI0aEGlibI0PAyzP3zlw=="],
 

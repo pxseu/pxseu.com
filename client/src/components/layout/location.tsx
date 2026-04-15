@@ -1,8 +1,8 @@
 "use client";
 
 import { useRealtime } from "@/contexts/RealtimeContext";
-import { RelativeTime } from "./relative-time";
-import { Tooltip } from "./tooltip";
+import { RelativeTime } from "@/components/ui/relative-time";
+import { Tooltip } from "@/components/ui/tooltip";
 
 export default function Location() {
 	const { data, isConnected } = useRealtime();
@@ -13,7 +13,6 @@ export default function Location() {
 		location = `${data.location.city}, ${data.location.country}`;
 	}
 
-	const hasLocation = isConnected && data?.location;
 	const locationStatus = isConnected
 		? "Location unavailable"
 		: "Location offline";
@@ -23,7 +22,7 @@ export default function Location() {
 		<div className="min-h-6">
 			<p className="mt-2 text-xs uppercase tracking-[0.12em] text-zinc-400 transition-all duration-500 ease-out opacity-100 translate-y-0">
 				Currently in{" "}
-				{hasLocation ? (
+				{isConnected && data?.location ? (
 					<Tooltip content={<RelativeTime date={data.location.timestamp} />}>
 						<a
 							className="text-brand-500 underline decoration-dotted underline-offset-4"

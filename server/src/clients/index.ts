@@ -1,12 +1,8 @@
-import { hostname } from "node:os";
 import { RedisClient } from "bun";
 import { config } from "../config.js";
+import { createRedisClientNamer } from "../utils/redis.js";
 import { DiscordClient } from "./discord.js";
 import SpotifyClient from "./spotify.js";
-
-const cb = async function (this: RedisClient) {
-	await this.send("CLIENT", ["SETNAME", `master-client-${hostname()}`]);
-};
 
 export const createClients = async () => {
 	const spotify = new SpotifyClient(
@@ -15,9 +11,10 @@ export const createClients = async () => {
 		config.SPOTIFY_REDIRECT_URI,
 	);
 
+	const namer = createRedisClientNamer("master-client");
 	const redis = new RedisClient(config.REDIS_URL);
-	redis.onconnect = cb.bind(redis);
-	await cb.call(redis);
+	redis.onconnect = namer.bind(redis);
+	await namer.call(redis);
 
 	const discord = new DiscordClient(
 		redis,

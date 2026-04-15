@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const configSchema = z.object({
+const configSchema = z.object({
 	SPOTIFY_CLIENT_ID: z.string(),
 	SPOTIFY_CLIENT_SECRET: z.string(),
 	SPOTIFY_REDIRECT_URI: z.url(),

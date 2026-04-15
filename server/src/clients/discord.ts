@@ -5,10 +5,27 @@ import { fetch } from "./fetch.js";
 const ENDPOINT = "https://canary.discord.com/api/webhooks";
 const REDIS_PREFIX = `${config.REDIS_PREFIX}discord_webhook_ratelimit`;
 
-// @TODO: Make useage of the rate limit bellow too
+interface DiscordEmbedAuthor {
+	name: string;
+	icon_url: string;
+	url: string;
+}
 
-// const AMMOUNT = 30;
-// const TIME = 60; // seconds
+interface DiscordEmbedFooter {
+	text: string;
+	icon_url: string;
+}
+
+interface DiscordEmbed {
+	description?: string;
+	image?: { url: string };
+	author: DiscordEmbedAuthor;
+	footer: DiscordEmbedFooter;
+	title: string;
+	url: string;
+	color: number;
+	timestamp: string;
+}
 
 export class DiscordClient {
 	constructor(
@@ -23,7 +40,7 @@ export class DiscordClient {
 		name?: string | null;
 		attachment?: string | null;
 	}) {
-		const embed: Record<string, unknown> = {
+		const embed: DiscordEmbed = {
 			description: body.content || undefined,
 			image: body.attachment ? { url: body.attachment } : undefined,
 			author: {
@@ -67,12 +84,13 @@ export class DiscordClient {
 		);
 
 		if (res.ok && res.headers) {
-			const resRemaining = res.headers.get("x-ratelimit-remaining") as string;
-			const resResetAfter = res.headers.get(
-				"x-ratelimit-reset-after",
-			) as string;
-			const exp = parseInt(resResetAfter, 10);
-			this.redis.setex(`${REDIS_PREFIX}:left`, exp, resRemaining);
+			const resRemaining = res.headers.get("x-ratelimit-remaining");
+			const resResetAfter = res.headers.get("x-ratelimit-reset-after");
+
+			if (resRemaining && resResetAfter) {
+				const exp = parseInt(resResetAfter, 10);
+				this.redis.setex(`${REDIS_PREFIX}:left`, exp, resRemaining);
+			}
 		}
 
 		if (res.ok && res.status !== 204) return res.json();

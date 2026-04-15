@@ -2,40 +2,44 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
 
-export interface BlogFrontmatter {
+interface BlogFrontmatter {
 	title: string;
 	description: string;
 	date: Date;
 	tags?: string[];
 }
 
-export interface BlogPost {
+interface BlogPost {
 	slug: string;
 	frontmatter: BlogFrontmatter;
 	content: string;
 }
 
-const BLOG_DIR = path.dirname(new URL(import.meta.url).pathname);
+const BLOG_DIR = path.join(
+	path.dirname(new URL(import.meta.url).pathname),
+	"..",
+	"blog",
+);
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
-	try {
-		const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
-		const raw = await fs.readFile(filePath, "utf-8");
-		const { data, content } = matter(raw);
+	const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
 
-		return {
-			slug,
-			frontmatter: {
-				title: data.title,
-				description: data.description,
-				date: new Date(data.date),
-				tags: data.tags,
-			},
-			content,
-		};
-	} catch (_) {
-		return null;
-	}
+	const stat = await fs.stat(filePath).catch(() => null);
+	if (!stat) return null;
+
+	const raw = await fs.readFile(filePath, "utf-8");
+	const { data, content } = matter(raw);
+
+	return {
+		slug,
+		frontmatter: {
+			title: data.title,
+			description: data.description,
+			date: new Date(data.date),
+			tags: data.tags,
+		},
+		content,
+	};
 }
 
 export async function getAllBlogSlugs(): Promise<string[]> {

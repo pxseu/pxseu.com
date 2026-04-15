@@ -9,8 +9,6 @@ const quotes = [
 	"“Youth is happy because it has the capacity to see beauty. Anyone who keeps the ability to see beauty never grows old.” — Franz Kafka",
 	"“In the fight between you and the world, back the world.” — Franz Kafka",
 	"“I am a cage, in search of a bird.” — Franz Kafka",
-	// temp remove as too long
-	// "“Don’t bend; don’t water it down; don’t try to make it logical; don’t edit your own soul according to the fashion. Rather, follow your most intense obsessions mercilessly.” — Franz Kafka",
 	"“A book must be the axe for the frozen sea within us.” — Franz Kafka",
 
 	// Friedrich Nietzsche
@@ -34,8 +32,6 @@ const quotes = [
 	"“Man is condemned to be free.” — Jean-Paul Sartre",
 
 	// Love
-	// temp remove as too long
-	// "“Love recognizes no barriers. It jumps hurdles, leaps fences, penetrates walls to arrive at its destination full of hope.” — Maya Angelou",
 	"“Love is composed of a single soul inhabiting two bodies.” — Aristotle",
 	"“Where there is love there is life.” — Mahatma Gandhi",
 	"“Let us always meet each other with smile, for the smile is the beginning of love.” — Mother Teresa",
@@ -54,7 +50,6 @@ const quotes = [
 	"“There’s no curse more twisted than love.” — Gojo Satoru",
 	"“A man dies when he is forgotten.” — Dr. Hiluluk",
 
-	// Miscellaneous / existing quotes
 	"“I don’t have all the answers, but I’m always asking the right questions.” — Unknown",
 	"“The only way to do great work is to love what you do.” — Steve Jobs",
 	"“The impediment to action advances action. What stands in the way becomes the way.” — Marcus Aurelius",
@@ -67,30 +62,7 @@ const quotes = [
 	"“Life is 10% what happens to us and 90% how we react to it.” — Charles R. Swindoll",
 ];
 
-function getSecureRandomIndex(max: number): number {
-	// Check if WebCrypto API is available
-	if (
-		typeof window !== "undefined" &&
-		window.crypto &&
-		window.crypto.getRandomValues
-	) {
-		const maxUint32 = 0xffffffff; // 2^32 - 1
-
-		while (true) {
-			// Get one 32-bit random number
-			const randomArray = new Uint32Array(1);
-			window.crypto.getRandomValues(randomArray);
-
-			const randomValue = randomArray[0];
-			// If randomValue is within a multiple of 'max', use it. Otherwise retry.
-			// This ensures each index has exactly the same chance (no remainder/bias).
-			if (randomValue <= maxUint32 - (maxUint32 % max)) {
-				return randomValue % max;
-			}
-		}
-	}
-
-	// Fallback to Math.random() if WebCrypto is not available
+function getRandomIndex(max: number): number {
 	return Math.floor(Math.random() * max);
 }
 
@@ -99,7 +71,7 @@ export default function Quote() {
 	const [visible, setVisible] = useState(false);
 
 	useEffect(() => {
-		setQuote(quotes[getSecureRandomIndex(quotes.length)]);
+		setQuote(quotes[getRandomIndex(quotes.length)]);
 		const animationTimeout = setTimeout(() => setVisible(true), 10);
 
 		return () => {

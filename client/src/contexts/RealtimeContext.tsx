@@ -12,6 +12,30 @@ import {
 import { API_ROUTE } from "@/config";
 import type { RealtimeContextType, RealtimeData } from "../types/realtime";
 
+function isRealtimeData(data: unknown): data is RealtimeData {
+	return (
+		data != null &&
+		typeof data === "object" &&
+		"playing" in data &&
+		"location" in data
+	);
+}
+
+function isLocation(data: unknown): data is RealtimeData["location"] {
+	return (
+		data != null &&
+		typeof data === "object" &&
+		"city" in data &&
+		"country" in data
+	);
+}
+
+function isPlaying(data: unknown): data is RealtimeData["playing"] {
+	return (
+		data != null && typeof data === "object" && "id" in data && "song" in data
+	);
+}
+
 const RealtimeContext = createContext<RealtimeContextType>({
 	data: null,
 	isConnected: false,
@@ -54,37 +78,34 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 			retryCount.current = 0;
 		};
 
-		const handleEvent = (event: MessageEvent) => {
+		const handleEvent = (event: MessageEvent<string>) => {
 			let parsedData: unknown;
 			try {
 				parsedData = JSON.parse(event.data);
-			} catch {
+			} catch (e) {
+				console.warn("Failed to parse SSE event data:", e);
 				return;
 			}
 
 			switch (event.type) {
 				case "init":
-					setData(parsedData as RealtimeData);
+					if (isRealtimeData(parsedData)) setData(parsedData);
 					break;
 				case "location":
-					setData((prevData) => {
-						if (!prevData) return null;
-
-						return {
-							...prevData,
-							location: parsedData as RealtimeData["location"],
-						};
-					});
+					if (isLocation(parsedData)) {
+						setData((prevData) => {
+							if (!prevData) return null;
+							return { ...prevData, location: parsedData };
+						});
+					}
 					break;
 				case "playing":
-					setData((prevData) => {
-						if (!prevData) return null;
-
-						return {
-							...prevData,
-							playing: parsedData as RealtimeData["playing"],
-						};
-					});
+					if (isPlaying(parsedData)) {
+						setData((prevData) => {
+							if (!prevData) return null;
+							return { ...prevData, playing: parsedData };
+						});
+					}
 					break;
 			}
 		};

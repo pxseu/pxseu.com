@@ -1,12 +1,12 @@
-import Header from "@/components/header";
+import Header from "@/components/layout/header";
 import "../styles/globals.css";
 import { CSideScript } from "@cside.dev/next";
 import { GeistMono } from "geist/font/mono";
 import ReactLenis from "lenis/react";
 import type { Metadata, Viewport } from "next";
-import BackgroundParallax from "@/components/background-parallax";
-import Footer from "@/components/footer";
-import JsonLd from "@/components/json-ld";
+import BackgroundParallax from "@/components/layout/background-parallax";
+import Footer from "@/components/layout/footer";
+import JsonLd from "@/components/ui/json-ld";
 import { API_ROUTE } from "@/config";
 import { RealtimeProvider } from "@/contexts/RealtimeContext";
 

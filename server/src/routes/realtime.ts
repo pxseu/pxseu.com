@@ -4,7 +4,6 @@ import { router } from "../context.js";
 import { type Location, REDIS_LOCATION_UPDATE } from "../realtime/location.js";
 import { REDIS_SPOTIFY_PLAYING } from "../realtime/spotify.js";
 
-// Base retry of 1000ms with ±100ms jitter
 const getRetryWithJitter = (base = 1000, jitter = 100) => {
 	return base + Math.floor(Math.random() * (jitter * 2)) - jitter;
 };
@@ -13,16 +12,8 @@ const PLAYING_KEY = "playing";
 const LOCATION_KEY = "location";
 
 export const routes = router().get("/", async ({ ctx }) => {
-	const last_event_id = ctx.req.headers.get("last-event-id");
-
-	console.log(last_event_id);
-
 	return sse({
 		start: async (controller) => {
-			console.log("Starting SSE connection");
-
-			// Send initial state
-			// if (ctx.spotifyListener.requiresInitialUpdate(last_event_id ?? "0"))
 			controller.enqueue({
 				id: Date.now().toString(),
 				event: "init",
@@ -63,18 +54,15 @@ export const routes = router().get("/", async ({ ctx }) => {
 				});
 			};
 
-			// Listen for updates
 			spotify.addEventListener(REDIS_SPOTIFY_PLAYING, eventHandler);
 			location.addEventListener(REDIS_LOCATION_UPDATE, locationEventHandler);
 
-			// Keep connection alive until client disconnects
 			await once(signal, "abort");
 
 			location.removeEventListener(REDIS_LOCATION_UPDATE, locationEventHandler);
 			spotify.removeEventListener(REDIS_SPOTIFY_PLAYING, eventHandler);
 
 			clearInterval(interval);
-			console.log("Closing SSE connection");
 		},
 	});
 });

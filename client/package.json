@@ -9,6 +9,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
+		"@pxseu/shared": "workspace:*",
 		"@cside.dev/next": "^1.1.4",
 		"@floating-ui/react": "^0.27.19",
 		"clsx": "^2.1.1",

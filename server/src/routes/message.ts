@@ -19,21 +19,17 @@ export const routes = router()
 		body: z.object({
 			content: z.string().max(2000).optional().nullable(),
 			name: z.string().max(128).optional().nullable(),
-			attachment: z.string().url().max(200).optional().nullable(),
+			attachment: z.url().max(200).optional().nullable(),
 		}),
 		run: async ({ ctx, body }) => {
 			if (!body.content && !body.attachment) {
 				throw new KaitoError(400, "Content or attachment is required");
 			}
 
-			try {
-				await ctx.clients.discord.sendMessage(body);
+			await ctx.clients.discord.sendMessage(body);
 
-				return {
-					message: "Message sent",
-				};
-			} catch (_error) {
-				throw new KaitoError(500, "Failed to send message");
-			}
+			return {
+				message: "Message sent",
+			};
 		},
 	});

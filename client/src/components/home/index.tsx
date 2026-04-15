@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Container from "@/components/container";
-import { Timed } from "@/components/timed";
+import Container from "@/components/ui/container";
+import { Timed } from "@/components/ui/timed";
 import { BIRTHDAY_TIMESTAMP, CODING_START_TIMESTAMP } from "@/config";
 import Contact from "./contact";
 import Experience from "./experience";
@@ -10,7 +10,6 @@ import Skill from "./skill";
 export default function Main() {
 	return (
 		<main className="flex w-full flex-col gap-8">
-			{/* ABOUT ME */}
 			<Container title="About Me" id="intro">
 				<p className="text-sm leading-relaxed text-zinc-300 sm:text-base">
 					Hey, I&apos;m Kuba — online I go by{" "}
@@ -50,7 +49,6 @@ export default function Main() {
 				</p>
 			</Container>
 
-			{/* EXPERIENCE */}
 			<Container title="Experience" id="experience">
 				<Experience
 					items={[
@@ -93,7 +91,6 @@ export default function Main() {
 				/>
 			</Container>
 
-			{/* SKILLS */}
 			<Container title="Skills" id="skills">
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 					<Skill
@@ -131,7 +128,6 @@ export default function Main() {
 				</div>
 			</Container>
 
-			{/* PROJECTS */}
 			<Container title="Projects" id="projects">
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					<ProjectCard
@@ -167,7 +163,6 @@ export default function Main() {
 				</div>
 			</Container>
 
-			{/* CONTACT */}
 			<Container title="Contact" id="contact">
 				<p className="mb-4 text-sm uppercase tracking-widest text-zinc-400">
 					Best ways to reach me

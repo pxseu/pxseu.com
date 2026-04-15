@@ -1,13 +1,13 @@
 import { createUtilities } from "@kaito-http/core";
 import { createClients } from "./clients/index.js";
-import { ipStore } from "./index.js";
 import { realtimeManager } from "./realtime/index.js";
+import { ipStore } from "./utils/ip-store.js";
 
 export const clients = await createClients();
 
 const serverStarted = Date.now();
 
-export const realtime = await realtimeManager(clients.redis);
+const realtime = await realtimeManager(clients.redis);
 
 export const { getContext, router } = createUtilities(async (req) => {
 	const ip =

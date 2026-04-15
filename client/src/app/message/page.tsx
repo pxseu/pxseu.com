@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import JsonLd from "@/components/json-ld";
-import MessageForm from "@/components/message-form";
+import JsonLd from "@/components/ui/json-ld";
+import MessageForm from "./message-form";
 
 export const metadata: Metadata = {
 	title: "Message - pxseu.com",

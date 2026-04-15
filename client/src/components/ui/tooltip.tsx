@@ -8,15 +8,13 @@ import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
 
-export function Tooltip({
-	children,
-	content,
-	suffix,
-}: {
+interface TooltipProps {
 	children: ReactNode;
 	content: ReactNode;
 	suffix?: string;
-}) {
+}
+
+export function Tooltip({ children, content, suffix }: TooltipProps) {
 	const [open, setOpen] = useState(false);
 	const [shouldRender, setShouldRender] = useState(false);
 

@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { useEffect, useState } from "react";
 import "dayjs/locale/en-gb";
+import { usePolledValue } from "./usePolledValue";
 
 dayjs.extend(relativeTime);
 dayjs.locale("en-gb");
@@ -17,15 +17,5 @@ function getRelativeTime(targetDate: Date | string | number) {
 }
 
 export function useRelative(targetDate: Date | string | number) {
-	const [relative, setRelative] = useState(() => getRelativeTime(targetDate));
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setRelative(getRelativeTime(targetDate));
-		}, 1_000);
-
-		return () => clearInterval(interval);
-	}, [targetDate]);
-
-	return relative;
+	return usePolledValue(() => getRelativeTime(targetDate), 1_000);
 }

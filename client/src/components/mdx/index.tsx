@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { type ComponentPropsWithoutRef, isValidElement } from "react";
+import {
+	type ComponentPropsWithoutRef,
+	isValidElement,
+	type ReactNode,
+} from "react";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { cn } from "@/utils/cn";
 import { CodeBlock } from "./code-block";
@@ -11,7 +15,7 @@ interface CodeElementProps {
 	"data-filename"?: string;
 }
 
-function extractCodeProps(children: unknown) {
+function extractCodeProps(children: ReactNode) {
 	if (!isValidElement<CodeElementProps>(children)) return null;
 
 	const { className = "", children: code = "", filename } = children.props;

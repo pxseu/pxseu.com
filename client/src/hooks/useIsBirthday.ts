@@ -1,29 +1,11 @@
-import { useEffect, useState } from "react";
+import { usePolledValue } from "./usePolledValue";
 
-const isDayBirthday = (birthday: Date, now: Date) => {
-	// https://github.com/pxseu/pxseu.com/pull/218
-	if (
-		birthday.getDate() === now.getDate() &&
-		birthday.getMonth() === now.getMonth()
-	)
-		return true;
-	return false;
-};
+const isDayBirthday = (birthday: Date, now: Date) =>
+	birthday.getDate() === now.getDate() &&
+	birthday.getMonth() === now.getMonth();
 
-export const useIsBirthday = (timestamp: number) => {
-	const [isBirthday, setIsBirthday] = useState(
-		isDayBirthday(new Date(timestamp), new Date()),
+export const useIsBirthday = (timestamp: number) =>
+	usePolledValue(
+		() => isDayBirthday(new Date(timestamp), new Date()),
+		2e4,
 	);
-
-	useEffect(() => {
-		const isBirthdayCheck = setInterval(() => {
-			setIsBirthday(isDayBirthday(new Date(timestamp), new Date()));
-		}, 2e4);
-
-		return () => {
-			clearInterval(isBirthdayCheck);
-		};
-	}, [timestamp]);
-
-	return isBirthday;
-};
