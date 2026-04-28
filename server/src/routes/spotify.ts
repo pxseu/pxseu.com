@@ -12,13 +12,8 @@ export const routes = kaito
 	.get("/auth-url", async ({ ctx }) => ({
 		url: ctx.clients.spotify.getAuthorizationUrl(),
 	}))
-	.get(
-		"/auth-url-redirect",
-		async ({ ctx }) =>
-			new Response("Redirecting to Spotify...", {
-				status: 302,
-				headers: { Location: ctx.clients.spotify.getAuthorizationUrl() },
-			}),
+	.get("/auth-url-redirect", ({ ctx }) =>
+		Response.redirect(ctx.clients.spotify.getAuthorizationUrl(), 302),
 	)
 	.get("/callback", {
 		query: { code: k.string() },
@@ -31,6 +26,7 @@ export const routes = kaito
 
 			if (
 				config.SPOTIFY_AUTH_USER_ID &&
+				// not auth check
 				me.id !== config.SPOTIFY_AUTH_USER_ID
 			) {
 				throw new KaitoError(403, "Unauthorized user");
@@ -47,7 +43,7 @@ export const routes = kaito
 			return { me };
 		},
 	})
-	.get("/now-playing", async ({ ctx }) => ctx.realtime.spotify.state)
+	.get("/now-playing", ({ ctx }) => ctx.realtime.spotify.state)
 	.get("/top-artists", {
 		query: {
 			range: k
