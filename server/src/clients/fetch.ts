@@ -18,7 +18,7 @@ export const fetch = async (
 		...options,
 		headers: {
 			...options?.headers,
-			"User-Agent": `pxseu/2.0 (+https://pxseu.com) Bun/${Bun.version}`,
+			"User-Agent": `pxseu/2.0 (+https://api.pxseu.com) Bun/${Bun.version}`,
 		},
 	});
 

@@ -1,27 +1,19 @@
 import { create, KaitoError, SchemaError } from "@kaito-http/core";
 import { createClients } from "./clients/index.js";
 import { realtimeManager } from "./realtime/index.js";
-import { ipStore } from "./utils/ip-store.js";
-
-export const clients = await createClients();
 
 const serverStarted = Date.now();
-
+export const clients = await createClients();
 const realtime = await realtimeManager(clients.redis);
 
 export const kaito = create({
-	getContext: (req) => {
-		const ip =
-			req.headers.get("x-forwarded-for") ?? ipStore.getStore() ?? "unknown";
-
-		return {
-			req,
-			ip,
-			uptime: Date.now() - serverStarted,
-			clients,
-			realtime,
-		};
-	},
+	getContext: (req) => ({
+		req,
+		ip: req.headers.get("x-forwarded-for") ?? "::1",
+		uptime: Date.now() - serverStarted,
+		clients,
+		realtime,
+	}),
 
 	onError: async (error) => {
 		console.error(error);
