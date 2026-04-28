@@ -63,7 +63,10 @@ export class DiscordClient {
 			this.redis.ttl(`${REDIS_PREFIX}:left`),
 		]);
 
-		if (left && delay > 0) Bun.sleep((delay + 0.1 * 1000) / parseInt(left, 10));
+		const remaining = left ? Number.parseInt(left, 10) : 0;
+		if (remaining > 0 && delay > 0) {
+			await Bun.sleep((delay * 1000 + 100) / remaining);
+		}
 
 		const res = await fetch(
 			`${ENDPOINT}/${this.webhookId}/${this.webhookToken}`,
@@ -88,8 +91,8 @@ export class DiscordClient {
 			const resResetAfter = res.headers.get("x-ratelimit-reset-after");
 
 			if (resRemaining && resResetAfter) {
-				const exp = parseInt(resResetAfter, 10);
-				this.redis.setex(`${REDIS_PREFIX}:left`, exp, resRemaining);
+				const exp = Math.max(1, Math.ceil(Number.parseFloat(resResetAfter)));
+				await this.redis.setex(`${REDIS_PREFIX}:left`, exp, resRemaining);
 			}
 		}
 

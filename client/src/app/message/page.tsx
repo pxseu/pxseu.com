@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Container from "@/components/ui/container";
 import JsonLd from "@/components/ui/json-ld";
 import MessageForm from "./message-form";
 
@@ -28,9 +29,14 @@ export default function MessagePage() {
 	return (
 		<>
 			<JsonLd id="contact-page-schema" json={contactPageSchemaJson} />
-			<main className="flex w-full flex-col items-center">
+			<Container
+				label="Direct Message"
+				title="Send a Message"
+				as="main"
+				contentClassName="flex justify-center"
+			>
 				<MessageForm />
-			</main>
+			</Container>
 		</>
 	);
 }

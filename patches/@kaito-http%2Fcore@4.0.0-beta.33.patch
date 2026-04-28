@@ -1,0 +1,644 @@
+diff --git a/dist/chunk-DRJX3OJG.js b/dist/chunk-DRJX3OJG.js
+index 6e5aedb..ce4bdb4 100644
+--- a/dist/chunk-DRJX3OJG.js
++++ b/dist/chunk-DRJX3OJG.js
+@@ -86,6 +86,18 @@ var BaseSchema = class {
+   or(other) {
+     return k.union([this, other]);
+   }
++  optional() {
++    return new KOptional(this);
++  }
++  nullable() {
++    return this.or(k.null());
++  }
++  nullish() {
++    return this.nullable().optional();
++  }
++  default(defaultValue) {
++    return new KDefault(this, defaultValue);
++  }
+   example(example) {
+     if (example === void 0) {
+       return this.def.example;
+@@ -99,6 +111,74 @@ var BaseSchema = class {
+     return this.clone({ description });
+   }
+ };
++var KOptional = class extends BaseSchema {
++  schema;
++  constructor(schema) {
++    super({});
++    this.schema = schema;
++  }
++  serialize(value) {
++    if (value === void 0) {
++      return void 0;
++    }
++    return this.schema.serialize(value);
++  }
++  toOpenAPI() {
++    return this.schema.toOpenAPI();
++  }
++  parseSafe(json) {
++    if (json === void 0) {
++      return { success: true, result: void 0 };
++    }
++    return this.schema.parseSafe(json);
++  }
++  parse(json) {
++    const result = this.parseSafe(json);
++    if (!result.success) {
++      throw new SchemaError(result.issues);
++    }
++    return result.result;
++  }
++  visit(visitor) {
++    visitor(this.schema);
++    this.schema.visit(visitor);
++  }
++};
++var KDefault = class extends BaseSchema {
++  schema;
++  defaultValue;
++  constructor(schema, defaultValue) {
++    super({});
++    this.schema = schema;
++    this.defaultValue = defaultValue;
++  }
++  serialize(value) {
++    return this.schema.serialize(value === void 0 ? this.defaultValue : value);
++  }
++  toOpenAPI() {
++    return {
++      ...this.schema.toOpenAPI(),
++      default: this.schema.serialize(this.defaultValue)
++    };
++  }
++  parseSafe(json) {
++    if (json === void 0) {
++      return { success: true, result: this.defaultValue };
++    }
++    return this.schema.parseSafe(json);
++  }
++  parse(json) {
++    const result = this.parseSafe(json);
++    if (!result.success) {
++      throw new SchemaError(result.issues);
++    }
++    return result.result;
++  }
++  visit(visitor) {
++    visitor(this.schema);
++    this.schema.visit(visitor);
++  }
++};
+ var STRING_FORMAT_REGEXES = {
+   uuid: /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/i,
+   email: /^(?!\.)(?!.*\.\.)([A-Z0-9_'+\-\.]*)[A-Z0-9_+-]@([A-Z0-9][A-Z0-9\-]*\.)+[A-Z]{2,}$/i,
+@@ -406,6 +486,22 @@ var KNumber = class _KNumber extends BaseSchema {
+   visit() {
+   }
+ };
++var KCoercedNumber = class extends KNumber {
++  static create = () => new KCoercedNumber({});
++  parseSafe(json) {
++    if (typeof json === "string") {
++      if (json.trim() === "") {
++        return { success: false, issues: /* @__PURE__ */ new Set([{ message: "Expected number", path: [] }]) };
++      }
++      const coerced = Number(json);
++      if (!Number.isFinite(coerced)) {
++        return { success: false, issues: /* @__PURE__ */ new Set([{ message: "Expected number", path: [] }]) };
++      }
++      return super.parseSafe(coerced);
++    }
++    return super.parseSafe(json);
++  }
++};
+ var KBoolean = class _KBoolean extends BaseSchema {
+   static create = () => new _KBoolean({});
+   serialize(value) {
+@@ -545,6 +641,9 @@ var KObject = class _KObject extends BaseSchema {
+       if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+         const fieldValue = value[key];
+         if (fieldValue === void 0) {
++          if (this.def.shape[key] instanceof KOptional) {
++            continue;
++          }
+           throw new Error(`Missing required property: ${key}`);
+         }
+         result[key] = this.def.shape[key].serialize(fieldValue);
+@@ -563,7 +662,7 @@ var KObject = class _KObject extends BaseSchema {
+           return [key, value.toOpenAPI()];
+         })
+       ),
+-      required: Object.keys(this.def.shape)
++      required: Object.entries(this.def.shape).filter(([, value]) => !(value instanceof KOptional) && !(value instanceof KDefault)).map(([key]) => key)
+     };
+   }
+   parseSafe(json) {
+@@ -574,11 +673,7 @@ var KObject = class _KObject extends BaseSchema {
+       const result = {};
+       for (const key in this.def.shape) {
+         if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+-          const value = json[key];
+-          if (value === void 0) {
+-            return ctx.addIssue(`Missing required property: ${key}`, [key]);
+-          }
+-          const parseResult = this.def.shape[key].parseSafe(value);
++          const parseResult = this.def.shape[key].parseSafe(json[key]);
+           if (!parseResult.success) {
+             return ctx.addIssues(parseResult.issues, [key]);
+           }
+@@ -621,10 +716,7 @@ var KObjectFromURLSearchParams = class _KObjectFromURLSearchParams extends KObje
+       const result = {};
+       for (const key in this.def.shape) {
+         if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+-          const value = json.get(key);
+-          if (value === null) {
+-            return ctx.addIssue(`Missing required property: ${key}`, [key]);
+-          }
++          const value = json.get(key) ?? void 0;
+           const parseResult = this.def.shape[key].parseSafe(value);
+           if (!parseResult.success) {
+             return ctx.addIssues(parseResult.issues, [key]);
+@@ -644,6 +736,9 @@ var KRef = class _KRef extends BaseSchema {
+       if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+         const fieldValue = value[key];
+         if (fieldValue === void 0) {
++          if (this.def.shape[key] instanceof KOptional) {
++            continue;
++          }
+           throw new Error(`Missing required property: ${key}`);
+         }
+         result[key] = this.def.shape[key].serialize(fieldValue);
+@@ -675,11 +770,7 @@ var KRef = class _KRef extends BaseSchema {
+       const result = {};
+       for (const key in this.def.shape) {
+         if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+-          const value = json[key];
+-          if (value === void 0) {
+-            return ctx.addIssue(`Missing required property: ${key}`, [key]);
+-          }
+-          const parseResult = this.def.shape[key].parseSafe(value);
++          const parseResult = this.def.shape[key].parseSafe(json[key]);
+           if (!parseResult.success) {
+             return ctx.addIssues(parseResult.issues, [key]);
+           }
+@@ -951,6 +1042,9 @@ var KLazy = class _KLazy extends BaseSchema {
+ var k = {
+   string: KString.create,
+   number: KNumber.create,
++  coerce: {
++    number: KCoercedNumber.create
++  },
+   boolean: KBoolean.create,
+   array: KArray.create,
+   null: KNull.create,
+diff --git a/dist/index.cjs b/dist/index.cjs
+index 98f0764..47390b8 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -247,6 +247,18 @@ var BaseSchema = class {
+   or(other) {
+     return k.union([this, other]);
+   }
++  optional() {
++    return new KOptional(this);
++  }
++  nullable() {
++    return this.or(k.null());
++  }
++  nullish() {
++    return this.nullable().optional();
++  }
++  default(defaultValue) {
++    return new KDefault(this, defaultValue);
++  }
+   example(example) {
+     if (example === void 0) {
+       return this.def.example;
+@@ -260,6 +272,74 @@ var BaseSchema = class {
+     return this.clone({ description });
+   }
+ };
++var KOptional = class extends BaseSchema {
++  schema;
++  constructor(schema) {
++    super({});
++    this.schema = schema;
++  }
++  serialize(value) {
++    if (value === void 0) {
++      return void 0;
++    }
++    return this.schema.serialize(value);
++  }
++  toOpenAPI() {
++    return this.schema.toOpenAPI();
++  }
++  parseSafe(json) {
++    if (json === void 0) {
++      return { success: true, result: void 0 };
++    }
++    return this.schema.parseSafe(json);
++  }
++  parse(json) {
++    const result = this.parseSafe(json);
++    if (!result.success) {
++      throw new SchemaError(result.issues);
++    }
++    return result.result;
++  }
++  visit(visitor) {
++    visitor(this.schema);
++    this.schema.visit(visitor);
++  }
++};
++var KDefault = class extends BaseSchema {
++  schema;
++  defaultValue;
++  constructor(schema, defaultValue) {
++    super({});
++    this.schema = schema;
++    this.defaultValue = defaultValue;
++  }
++  serialize(value) {
++    return this.schema.serialize(value === void 0 ? this.defaultValue : value);
++  }
++  toOpenAPI() {
++    return {
++      ...this.schema.toOpenAPI(),
++      default: this.schema.serialize(this.defaultValue)
++    };
++  }
++  parseSafe(json) {
++    if (json === void 0) {
++      return { success: true, result: this.defaultValue };
++    }
++    return this.schema.parseSafe(json);
++  }
++  parse(json) {
++    const result = this.parseSafe(json);
++    if (!result.success) {
++      throw new SchemaError(result.issues);
++    }
++    return result.result;
++  }
++  visit(visitor) {
++    visitor(this.schema);
++    this.schema.visit(visitor);
++  }
++};
+ var STRING_FORMAT_REGEXES = {
+   uuid: /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/i,
+   email: /^(?!\.)(?!.*\.\.)([A-Z0-9_'+\-\.]*)[A-Z0-9_+-]@([A-Z0-9][A-Z0-9\-]*\.)+[A-Z]{2,}$/i,
+@@ -567,6 +647,22 @@ var KNumber = class _KNumber extends BaseSchema {
+   visit() {
+   }
+ };
++var KCoercedNumber = class extends KNumber {
++  static create = () => new KCoercedNumber({});
++  parseSafe(json) {
++    if (typeof json === "string") {
++      if (json.trim() === "") {
++        return { success: false, issues: /* @__PURE__ */ new Set([{ message: "Expected number", path: [] }]) };
++      }
++      const coerced = Number(json);
++      if (!Number.isFinite(coerced)) {
++        return { success: false, issues: /* @__PURE__ */ new Set([{ message: "Expected number", path: [] }]) };
++      }
++      return super.parseSafe(coerced);
++    }
++    return super.parseSafe(json);
++  }
++};
+ var KBoolean = class _KBoolean extends BaseSchema {
+   static create = () => new _KBoolean({});
+   serialize(value) {
+@@ -706,6 +802,9 @@ var KObject = class _KObject extends BaseSchema {
+       if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+         const fieldValue = value[key];
+         if (fieldValue === void 0) {
++          if (this.def.shape[key] instanceof KOptional) {
++            continue;
++          }
+           throw new Error(`Missing required property: ${key}`);
+         }
+         result[key] = this.def.shape[key].serialize(fieldValue);
+@@ -724,7 +823,7 @@ var KObject = class _KObject extends BaseSchema {
+           return [key, value.toOpenAPI()];
+         })
+       ),
+-      required: Object.keys(this.def.shape)
++      required: Object.entries(this.def.shape).filter(([, value]) => !(value instanceof KOptional) && !(value instanceof KDefault)).map(([key]) => key)
+     };
+   }
+   parseSafe(json) {
+@@ -735,11 +834,7 @@ var KObject = class _KObject extends BaseSchema {
+       const result = {};
+       for (const key in this.def.shape) {
+         if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+-          const value = json[key];
+-          if (value === void 0) {
+-            return ctx.addIssue(`Missing required property: ${key}`, [key]);
+-          }
+-          const parseResult = this.def.shape[key].parseSafe(value);
++          const parseResult = this.def.shape[key].parseSafe(json[key]);
+           if (!parseResult.success) {
+             return ctx.addIssues(parseResult.issues, [key]);
+           }
+@@ -782,10 +877,7 @@ var KObjectFromURLSearchParams = class _KObjectFromURLSearchParams extends KObje
+       const result = {};
+       for (const key in this.def.shape) {
+         if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+-          const value = json.get(key);
+-          if (value === null) {
+-            return ctx.addIssue(`Missing required property: ${key}`, [key]);
+-          }
++          const value = json.get(key) ?? void 0;
+           const parseResult = this.def.shape[key].parseSafe(value);
+           if (!parseResult.success) {
+             return ctx.addIssues(parseResult.issues, [key]);
+@@ -805,6 +897,9 @@ var KRef = class _KRef extends BaseSchema {
+       if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+         const fieldValue = value[key];
+         if (fieldValue === void 0) {
++          if (this.def.shape[key] instanceof KOptional) {
++            continue;
++          }
+           throw new Error(`Missing required property: ${key}`);
+         }
+         result[key] = this.def.shape[key].serialize(fieldValue);
+@@ -836,11 +931,7 @@ var KRef = class _KRef extends BaseSchema {
+       const result = {};
+       for (const key in this.def.shape) {
+         if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+-          const value = json[key];
+-          if (value === void 0) {
+-            return ctx.addIssue(`Missing required property: ${key}`, [key]);
+-          }
+-          const parseResult = this.def.shape[key].parseSafe(value);
++          const parseResult = this.def.shape[key].parseSafe(json[key]);
+           if (!parseResult.success) {
+             return ctx.addIssues(parseResult.issues, [key]);
+           }
+@@ -1112,6 +1203,9 @@ var KLazy = class _KLazy extends BaseSchema {
+ var k = {
+   string: KString.create,
+   number: KNumber.create,
++  coerce: {
++    number: KCoercedNumber.create
++  },
+   boolean: KBoolean.create,
+   array: KArray.create,
+   null: KNull.create,
+diff --git a/dist/schema/schema.cjs b/dist/schema/schema.cjs
+index 26cebbd..5568fe9 100644
+--- a/dist/schema/schema.cjs
++++ b/dist/schema/schema.cjs
+@@ -129,6 +129,18 @@ var BaseSchema = class {
+   or(other) {
+     return k.union([this, other]);
+   }
++  optional() {
++    return new KOptional(this);
++  }
++  nullable() {
++    return this.or(k.null());
++  }
++  nullish() {
++    return this.nullable().optional();
++  }
++  default(defaultValue) {
++    return new KDefault(this, defaultValue);
++  }
+   example(example) {
+     if (example === void 0) {
+       return this.def.example;
+@@ -142,6 +154,74 @@ var BaseSchema = class {
+     return this.clone({ description });
+   }
+ };
++var KOptional = class extends BaseSchema {
++  schema;
++  constructor(schema) {
++    super({});
++    this.schema = schema;
++  }
++  serialize(value) {
++    if (value === void 0) {
++      return void 0;
++    }
++    return this.schema.serialize(value);
++  }
++  toOpenAPI() {
++    return this.schema.toOpenAPI();
++  }
++  parseSafe(json) {
++    if (json === void 0) {
++      return { success: true, result: void 0 };
++    }
++    return this.schema.parseSafe(json);
++  }
++  parse(json) {
++    const result = this.parseSafe(json);
++    if (!result.success) {
++      throw new SchemaError(result.issues);
++    }
++    return result.result;
++  }
++  visit(visitor) {
++    visitor(this.schema);
++    this.schema.visit(visitor);
++  }
++};
++var KDefault = class extends BaseSchema {
++  schema;
++  defaultValue;
++  constructor(schema, defaultValue) {
++    super({});
++    this.schema = schema;
++    this.defaultValue = defaultValue;
++  }
++  serialize(value) {
++    return this.schema.serialize(value === void 0 ? this.defaultValue : value);
++  }
++  toOpenAPI() {
++    return {
++      ...this.schema.toOpenAPI(),
++      default: this.schema.serialize(this.defaultValue)
++    };
++  }
++  parseSafe(json) {
++    if (json === void 0) {
++      return { success: true, result: this.defaultValue };
++    }
++    return this.schema.parseSafe(json);
++  }
++  parse(json) {
++    const result = this.parseSafe(json);
++    if (!result.success) {
++      throw new SchemaError(result.issues);
++    }
++    return result.result;
++  }
++  visit(visitor) {
++    visitor(this.schema);
++    this.schema.visit(visitor);
++  }
++};
+ var STRING_FORMAT_REGEXES = {
+   uuid: /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/i,
+   email: /^(?!\.)(?!.*\.\.)([A-Z0-9_'+\-\.]*)[A-Z0-9_+-]@([A-Z0-9][A-Z0-9\-]*\.)+[A-Z]{2,}$/i,
+@@ -449,6 +529,22 @@ var KNumber = class _KNumber extends BaseSchema {
+   visit() {
+   }
+ };
++var KCoercedNumber = class extends KNumber {
++  static create = () => new KCoercedNumber({});
++  parseSafe(json) {
++    if (typeof json === "string") {
++      if (json.trim() === "") {
++        return { success: false, issues: /* @__PURE__ */ new Set([{ message: "Expected number", path: [] }]) };
++      }
++      const coerced = Number(json);
++      if (!Number.isFinite(coerced)) {
++        return { success: false, issues: /* @__PURE__ */ new Set([{ message: "Expected number", path: [] }]) };
++      }
++      return super.parseSafe(coerced);
++    }
++    return super.parseSafe(json);
++  }
++};
+ var KBoolean = class _KBoolean extends BaseSchema {
+   static create = () => new _KBoolean({});
+   serialize(value) {
+@@ -588,6 +684,9 @@ var KObject = class _KObject extends BaseSchema {
+       if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+         const fieldValue = value[key];
+         if (fieldValue === void 0) {
++          if (this.def.shape[key] instanceof KOptional) {
++            continue;
++          }
+           throw new Error(`Missing required property: ${key}`);
+         }
+         result[key] = this.def.shape[key].serialize(fieldValue);
+@@ -606,7 +705,7 @@ var KObject = class _KObject extends BaseSchema {
+           return [key, value.toOpenAPI()];
+         })
+       ),
+-      required: Object.keys(this.def.shape)
++      required: Object.entries(this.def.shape).filter(([, value]) => !(value instanceof KOptional) && !(value instanceof KDefault)).map(([key]) => key)
+     };
+   }
+   parseSafe(json) {
+@@ -617,11 +716,7 @@ var KObject = class _KObject extends BaseSchema {
+       const result = {};
+       for (const key in this.def.shape) {
+         if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+-          const value = json[key];
+-          if (value === void 0) {
+-            return ctx.addIssue(`Missing required property: ${key}`, [key]);
+-          }
+-          const parseResult = this.def.shape[key].parseSafe(value);
++          const parseResult = this.def.shape[key].parseSafe(json[key]);
+           if (!parseResult.success) {
+             return ctx.addIssues(parseResult.issues, [key]);
+           }
+@@ -664,10 +759,7 @@ var KObjectFromURLSearchParams = class _KObjectFromURLSearchParams extends KObje
+       const result = {};
+       for (const key in this.def.shape) {
+         if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+-          const value = json.get(key);
+-          if (value === null) {
+-            return ctx.addIssue(`Missing required property: ${key}`, [key]);
+-          }
++          const value = json.get(key) ?? void 0;
+           const parseResult = this.def.shape[key].parseSafe(value);
+           if (!parseResult.success) {
+             return ctx.addIssues(parseResult.issues, [key]);
+@@ -687,6 +779,9 @@ var KRef = class _KRef extends BaseSchema {
+       if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+         const fieldValue = value[key];
+         if (fieldValue === void 0) {
++          if (this.def.shape[key] instanceof KOptional) {
++            continue;
++          }
+           throw new Error(`Missing required property: ${key}`);
+         }
+         result[key] = this.def.shape[key].serialize(fieldValue);
+@@ -718,11 +813,7 @@ var KRef = class _KRef extends BaseSchema {
+       const result = {};
+       for (const key in this.def.shape) {
+         if (Object.prototype.hasOwnProperty.call(this.def.shape, key)) {
+-          const value = json[key];
+-          if (value === void 0) {
+-            return ctx.addIssue(`Missing required property: ${key}`, [key]);
+-          }
+-          const parseResult = this.def.shape[key].parseSafe(value);
++          const parseResult = this.def.shape[key].parseSafe(json[key]);
+           if (!parseResult.success) {
+             return ctx.addIssues(parseResult.issues, [key]);
+           }
+@@ -994,6 +1085,9 @@ var KLazy = class _KLazy extends BaseSchema {
+ var k = {
+   string: KString.create,
+   number: KNumber.create,
++  coerce: {
++    number: KCoercedNumber.create
++  },
+   boolean: KBoolean.create,
+   array: KArray.create,
+   null: KNull.create,
+diff --git a/dist/schema/schema.d.cts b/dist/schema/schema.d.cts
+index a174a17..ed9d9da 100644
+--- a/dist/schema/schema.d.cts
++++ b/dist/schema/schema.d.cts
+@@ -60,6 +60,10 @@ declare abstract class BaseSchema<Input extends JSONValue, Output, Def extends B
+     protected clone(def: Partial<Def>): this;
+     protected constructor(def: Def);
+     or<OtherInput extends JSONValue, OtherOutput, Def extends BaseSchemaDef<OtherInput>>(other: BaseSchema<OtherInput, OtherOutput, Def>): KUnion<(this | BaseSchema<OtherInput, OtherOutput, Def>)["_input"], (this | BaseSchema<OtherInput, OtherOutput, Def>)["_output"]>;
++    optional(): BaseSchema<Input, Output | undefined, BaseSchemaDef<Input>>;
++    nullable(): BaseSchema<Input | null, Output | null, BaseSchemaDef<Input | null>>;
++    nullish(): BaseSchema<Input | null, Output | null | undefined, BaseSchemaDef<Input | null>>;
++    default(defaultValue: Output): BaseSchema<Input, Exclude<Output, undefined>, BaseSchemaDef<Input>>;
+     example(example: Input): this;
+     example(): Input | undefined;
+     description(description: string): this;
+@@ -365,6 +369,9 @@ declare class KLazy<Input extends JSONValue, Output> extends BaseSchema<Input, O
+ declare const k: {
+     string: () => KString;
+     number: () => KNumber;
++    coerce: {
++        number: () => KNumber;
++    };
+     boolean: () => KBoolean;
+     array: <ItemsInput extends JSONValue, ItemsOutput, Def extends BaseSchemaDef<ItemsInput>>(items: BaseSchema<ItemsInput, ItemsOutput, Def>) => KArray<ItemsInput, ItemsOutput>;
+     null: () => KNull;
+diff --git a/dist/schema/schema.d.ts b/dist/schema/schema.d.ts
+index a174a17..ed9d9da 100644
+--- a/dist/schema/schema.d.ts
++++ b/dist/schema/schema.d.ts
+@@ -60,6 +60,10 @@ declare abstract class BaseSchema<Input extends JSONValue, Output, Def extends B
+     protected clone(def: Partial<Def>): this;
+     protected constructor(def: Def);
+     or<OtherInput extends JSONValue, OtherOutput, Def extends BaseSchemaDef<OtherInput>>(other: BaseSchema<OtherInput, OtherOutput, Def>): KUnion<(this | BaseSchema<OtherInput, OtherOutput, Def>)["_input"], (this | BaseSchema<OtherInput, OtherOutput, Def>)["_output"]>;
++    optional(): BaseSchema<Input, Output | undefined, BaseSchemaDef<Input>>;
++    nullable(): BaseSchema<Input | null, Output | null, BaseSchemaDef<Input | null>>;
++    nullish(): BaseSchema<Input | null, Output | null | undefined, BaseSchemaDef<Input | null>>;
++    default(defaultValue: Output): BaseSchema<Input, Exclude<Output, undefined>, BaseSchemaDef<Input>>;
+     example(example: Input): this;
+     example(): Input | undefined;
+     description(description: string): this;
+@@ -365,6 +369,9 @@ declare class KLazy<Input extends JSONValue, Output> extends BaseSchema<Input, O
+ declare const k: {
+     string: () => KString;
+     number: () => KNumber;
++    coerce: {
++        number: () => KNumber;
++    };
+     boolean: () => KBoolean;
+     array: <ItemsInput extends JSONValue, ItemsOutput, Def extends BaseSchemaDef<ItemsInput>>(items: BaseSchema<ItemsInput, ItemsOutput, Def>) => KArray<ItemsInput, ItemsOutput>;
+     null: () => KNull;

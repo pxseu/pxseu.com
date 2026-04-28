@@ -15,11 +15,7 @@ interface BlogPost {
 	content: string;
 }
 
-const BLOG_DIR = path.join(
-	path.dirname(new URL(import.meta.url).pathname),
-	"..",
-	"blog",
-);
+const BLOG_DIR = path.join(process.cwd(), "src", "blog");
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 	const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
@@ -28,15 +24,18 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 	if (!stat) return null;
 
 	const raw = await fs.readFile(filePath, "utf-8");
-	const { data, content } = matter(raw);
+	const {
+		data: { title, description, date, tags },
+		content,
+	} = matter(raw);
 
 	return {
 		slug,
 		frontmatter: {
-			title: data.title,
-			description: data.description,
-			date: new Date(data.date),
-			tags: data.tags,
+			title,
+			description,
+			date: new Date(date),
+			tags,
 		},
 		content,
 	};

@@ -1,6 +1,5 @@
-import { KaitoError } from "@kaito-http/core";
-import { z } from "zod";
-import { router } from "../context.js";
+import { KaitoError, k } from "@kaito-http/core";
+import { kaito } from "../context.js";
 import { createRateLimiter } from "../utils/ratelimit.js";
 
 const rateLimiter = createRateLimiter({
@@ -9,17 +8,17 @@ const rateLimiter = createRateLimiter({
 	keyPrefix: "rate-limit:message:",
 });
 
-export const routes = router()
-	.through(async (ctx) => {
+export const routes = kaito
+	.pipe(async (ctx) => {
 		await rateLimiter(ctx.clients.redis, ctx.ip);
 
 		return ctx;
 	})
 	.post("/", {
-		body: z.object({
-			content: z.string().max(2000).optional().nullable(),
-			name: z.string().max(128).optional().nullable(),
-			attachment: z.url().max(200).optional().nullable(),
+		body: k.object({
+			content: k.string().max(2000).nullish(),
+			name: k.string().max(128).nullish(),
+			attachment: k.string().uri().max(200).nullish(),
 		}),
 		run: async ({ ctx, body }) => {
 			if (!body.content && !body.attachment) {

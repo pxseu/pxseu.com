@@ -15,6 +15,7 @@ import {
 	FaTwitter,
 	FaYoutube,
 } from "react-icons/fa";
+import Container from "@/components/ui/container";
 import JsonLd from "@/components/ui/json-ld";
 import LinkItem from "./link-item";
 
@@ -42,11 +43,11 @@ export default function Links() {
 	return (
 		<>
 			<JsonLd id="collection-page-schema" json={collectionPageSchemaJson} />
-			<main className="mx-auto w-full max-w-2xl border border-border-100 bg-zinc-950/50">
+			<Container title="Links" label="Directory" as="main">
 				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
-					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
+					<h3 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
 						Support
-					</h2>
+					</h3>
 					<div className="space-y-3">
 						<LinkItem
 							icon={<FaPatreon />}
@@ -64,9 +65,9 @@ export default function Links() {
 				</div>
 
 				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
-					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
+					<h3 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
 						Work
-					</h2>
+					</h3>
 					<div className="space-y-3">
 						<LinkItem
 							icon={<FaEnvelope />}
@@ -96,9 +97,9 @@ export default function Links() {
 				</div>
 
 				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
-					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
+					<h3 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
 						Social Media
-					</h2>
+					</h3>
 					<div className="space-y-3">
 						<LinkItem
 							icon={<FaTiktok />}
@@ -135,9 +136,9 @@ export default function Links() {
 				</div>
 
 				<div className="space-y-4 px-5 py-5 sm:px-6">
-					<h2 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
+					<h3 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
 						Open Source / Community
-					</h2>
+					</h3>
 					<div className="space-y-3">
 						<LinkItem
 							icon={<FaNpm />}
@@ -165,7 +166,7 @@ export default function Links() {
 						/>
 					</div>
 				</div>
-			</main>
+			</Container>
 		</>
 	);
 }

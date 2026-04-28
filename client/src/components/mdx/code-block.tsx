@@ -25,7 +25,7 @@ export async function CodeBlock({
 			)}
 			<div
 				className="overflow-x-auto bg-zinc-950/80 p-4 text-sm leading-relaxed [&_pre]:bg-transparent! [&_code]:bg-transparent!"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: Pre-compilled so its fine
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: pre-compiled shiki output, safe
 				dangerouslySetInnerHTML={{ __html: html }}
 			/>
 		</div>

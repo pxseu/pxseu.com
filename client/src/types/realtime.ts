@@ -1,12 +1,12 @@
 import type { RealtimeData } from "@pxseu/shared";
 
 export type {
-	Song,
 	Album,
-	Progress,
-	Playing,
 	Location,
+	Playing,
+	Progress,
 	RealtimeData,
+	Song,
 } from "@pxseu/shared";
 
 export interface RealtimeContextType {

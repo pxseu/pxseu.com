@@ -55,35 +55,35 @@ export default function Main() {
 						{
 							title: "Full Stack & Systems Developer",
 							company: "Independent",
-							period: "2020 - Present",
+							period: { from: "2020", to: "Present" },
 							description:
 								"Open source and freelance work across backend and tooling. Contributed to projects including Bun, Kaito HTTP, and DefinitelyTyped. Built smaller side projects too, like Crabdis, a Redis-style clone in Rust.",
 						},
 						{
 							title: "Full Stack Developer",
 							company: "c/side",
-							period: "2025",
+							period: { from: "2025", to: "2025" },
 							description:
 								"Worked across the stack on product features and internal tooling. Shipped frontend and backend changes, improved reliability, and owned a lot of cross-service glue work.",
 						},
 						{
 							title: "Backend Developer",
 							company: "Incard Ltd.",
-							period: "2024 - 2025",
+							period: { from: "2024", to: "2025" },
 							description:
 								"Helped merge two services into one platform focused on open banking and e-commerce. Standardized shared schemas, improved developer workflows, and integrated payment providers including Stripe and Google Pay.",
 						},
 						{
 							title: "Product Engineer",
 							company: "Hop Inc.",
-							period: "2022 - 2024",
+							period: { from: "2022", to: "2024" },
 							description:
-								"Built and maintained Hop&apos;s CLI, including the `hop deploy` workflow. Automated deployment paths, owned core CLI features, and reviewed related internal services.",
+								"Built and maintained Hop's CLI, including the `hop deploy` workflow. Automated deployment paths, owned core CLI features, and reviewed related internal services.",
 						},
 						{
 							title: "Full Stack Developer",
 							company: "PreMiD & Freelance",
-							period: "2020 - 2022",
+							period: { from: "2020", to: "2022" },
 							description:
 								"Contributed features, fixes, and localization work for PreMiD plus other open source projects I actively used.",
 						},
@@ -171,14 +171,14 @@ export default function Main() {
 				<Contact
 					items={[
 						{
-							label: "Website",
-							link: "https://pxseu.com/message",
-							display: "pxseu.com",
-						},
-						{
 							label: "Email",
 							link: "mailto:kuba@pxseu.com",
 							display: "kuba@pxseu.com",
+						},
+						{
+							label: "Discord",
+							link: "https://discord.com/users/338718840873811979",
+							display: "@pxseu",
 						},
 						{
 							label: "GitHub",
@@ -200,7 +200,7 @@ export default function Main() {
 				<div className="mt-4 w-full">
 					<Link
 						href="/message"
-						className="flex flex-col items-center border border-brand-500/30 px-6 py-4 text-zinc-300 transition-all duration-150 ease-linear hover:border-brand-500/60 hover:bg-zinc-900/30"
+						className="flex flex-col items-center border border-brand-500/30 px-6 py-4 text-zinc-300 transition-[border-color,background-color,color] duration-150 ease-linear hover:border-brand-500/60 hover:bg-zinc-900/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50"
 					>
 						<strong className="text-xs uppercase tracking-[0.2em]">
 							Message Me

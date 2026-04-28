@@ -1,19 +1,18 @@
 import { timingSafeEqual } from "node:crypto";
-import { KaitoError } from "@kaito-http/core";
-import { z } from "zod";
+import { KaitoError, k } from "@kaito-http/core";
 import { config } from "../config.js";
-import { router } from "../context.js";
+import { kaito } from "../context.js";
 
-export const routes = router()
+export const routes = kaito
 	.get("/", async ({ ctx }) => {
 		const { location } = ctx.realtime;
 
 		return location.state;
 	})
 	.post("/update", {
-		body: z.object({
-			city: z.string(),
-			country: z.string(),
+		body: k.object({
+			city: k.string(),
+			country: k.string(),
 		}),
 		run({ ctx, body }) {
 			const { location } = ctx.realtime;

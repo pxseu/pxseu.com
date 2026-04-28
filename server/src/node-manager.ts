@@ -79,4 +79,3 @@ process.on("SIGTERM", async () => {
 	if (nodeCheckInterval) clearInterval(nodeCheckInterval);
 	process.exit(0);
 });
-

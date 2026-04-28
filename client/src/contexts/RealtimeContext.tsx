@@ -12,36 +12,15 @@ import {
 import { API_ROUTE } from "@/config";
 import type { RealtimeContextType, RealtimeData } from "../types/realtime";
 
-function isRealtimeData(data: unknown): data is RealtimeData {
-	return (
-		data != null &&
-		typeof data === "object" &&
-		"playing" in data &&
-		"location" in data
-	);
-}
-
-function isLocation(data: unknown): data is RealtimeData["location"] {
-	return (
-		data != null &&
-		typeof data === "object" &&
-		"city" in data &&
-		"country" in data
-	);
-}
-
-function isPlaying(data: unknown): data is RealtimeData["playing"] {
-	return (
-		data != null && typeof data === "object" && "id" in data && "song" in data
-	);
-}
-
 const RealtimeContext = createContext<RealtimeContextType>({
 	data: null,
 	isConnected: false,
 });
 
 export const useRealtime = () => useContext(RealtimeContext);
+
+const MAX_BACKOFF_MS = 30_000;
+const BASE_BACKOFF_MS = 1_000;
 
 export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 	children,
@@ -51,7 +30,6 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 	const eventSourceRef = useRef<EventSource | null>(null);
 	const reconnectTimeoutRef = useRef<number | null>(null);
 	const retryCount = useRef(0);
-	const maxRetries = 5;
 
 	const clearReconnectTimeout = useCallback(() => {
 		if (reconnectTimeoutRef.current !== null) {
@@ -69,6 +47,11 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 	const connect = useCallback(() => {
 		clearReconnectTimeout();
 		closeEventSource();
+
+		if (typeof navigator !== "undefined" && navigator.onLine === false) {
+			// Skip while offline; the `online` listener will kick a reconnect.
+			return;
+		}
 
 		const eventSource = new EventSource(`${API_ROUTE}/v2/realtime`);
 		eventSourceRef.current = eventSource;
@@ -89,23 +72,25 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 
 			switch (event.type) {
 				case "init":
-					if (isRealtimeData(parsedData)) setData(parsedData);
+					setData(parsedData as RealtimeData);
 					break;
 				case "location":
-					if (isLocation(parsedData)) {
-						setData((prevData) => {
-							if (!prevData) return null;
-							return { ...prevData, location: parsedData };
-						});
-					}
+					setData((prevData) => {
+						if (!prevData) return null;
+						return {
+							...prevData,
+							location: parsedData as RealtimeData["location"],
+						};
+					});
 					break;
 				case "playing":
-					if (isPlaying(parsedData)) {
-						setData((prevData) => {
-							if (!prevData) return null;
-							return { ...prevData, playing: parsedData };
-						});
-					}
+					setData((prevData) => {
+						if (!prevData) return null;
+						return {
+							...prevData,
+							playing: parsedData as RealtimeData["playing"],
+						};
+					});
 					break;
 			}
 		};
@@ -125,20 +110,42 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 				eventSourceRef.current = null;
 			}
 
-			if (retryCount.current < maxRetries) {
-				const timeout = Math.min(1000 * 2 ** retryCount.current, 30000);
-				reconnectTimeoutRef.current = window.setTimeout(() => {
-					retryCount.current++;
-					connect();
-				}, timeout);
+			// Don't schedule while offline — the `online` listener will retry.
+			if (typeof navigator !== "undefined" && navigator.onLine === false) {
+				return;
 			}
+
+			const timeout = Math.min(
+				BASE_BACKOFF_MS * 2 ** retryCount.current,
+				MAX_BACKOFF_MS,
+			);
+			reconnectTimeoutRef.current = window.setTimeout(() => {
+				retryCount.current++;
+				connect();
+			}, timeout);
 		};
 	}, [clearReconnectTimeout, closeEventSource]);
 
 	useEffect(() => {
 		connect();
 
+		const handleOnline = () => {
+			retryCount.current = 0;
+			connect();
+		};
+
+		const handleOffline = () => {
+			clearReconnectTimeout();
+			closeEventSource();
+			setIsConnected(false);
+		};
+
+		window.addEventListener("online", handleOnline);
+		window.addEventListener("offline", handleOffline);
+
 		return () => {
+			window.removeEventListener("online", handleOnline);
+			window.removeEventListener("offline", handleOffline);
 			clearReconnectTimeout();
 			closeEventSource();
 			setIsConnected(false);

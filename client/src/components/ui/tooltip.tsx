@@ -1,8 +1,10 @@
 import {
 	offset,
 	useFloating,
+	useFocus,
 	useHover,
 	useInteractions,
+	useRole,
 } from "@floating-ui/react";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
@@ -11,10 +13,16 @@ import { cn } from "@/utils/cn";
 interface TooltipProps {
 	children: ReactNode;
 	content: ReactNode;
+	focus?: boolean;
 	suffix?: string;
 }
 
-export function Tooltip({ children, content, suffix }: TooltipProps) {
+export function Tooltip({
+	children,
+	content,
+	suffix,
+	focus: canFocus,
+}: TooltipProps) {
 	const [open, setOpen] = useState(false);
 	const [shouldRender, setShouldRender] = useState(false);
 
@@ -26,7 +34,13 @@ export function Tooltip({ children, content, suffix }: TooltipProps) {
 	});
 
 	const hover = useHover(context);
-	const { getReferenceProps, getFloatingProps } = useInteractions([hover]);
+	const focus = useFocus(context);
+	const role = useRole(context, { role: "tooltip" });
+	const { getReferenceProps, getFloatingProps } = useInteractions([
+		hover,
+		focus,
+		role,
+	]);
 
 	useEffect(() => {
 		if (open) {
@@ -43,6 +57,7 @@ export function Tooltip({ children, content, suffix }: TooltipProps) {
 				ref={refs.setReference}
 				{...getReferenceProps()}
 				className="relative inline-block"
+				tabIndex={canFocus ? 0 : -1}
 			>
 				<span className="underline decoration-dotted underline-offset-4">
 					{children}

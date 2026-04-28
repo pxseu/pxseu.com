@@ -33,3 +33,8 @@
 		opacity: 1;
 	}
 }
+
+/* twv4 removed cursor pointer? */
+button {
+	cursor: pointer;
+}

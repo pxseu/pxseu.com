@@ -1,18 +1,10 @@
-import { KaitoError } from "@kaito-http/core";
-import { router } from "../context.js";
+import { kaito } from "../context.js";
 import { routes as locationRoutes } from "./location.js";
 import { routes as messageRoutes } from "./message.js";
 import { routes as realtimeRoutes } from "./realtime.js";
 import { routes as spotifyRoutes } from "./spotify.js";
 
-const deprecatedV1Response = () => {
-	throw new KaitoError(
-		410,
-		"The v1 API is deprecated. Please use v2 endpoints instead.",
-	);
-};
-
-export const root = router()
+export const root = kaito
 	.get("/", async ({ ctx }) => ctx.ip)
 	.get("/health", async ({ ctx }) => {
 		try {
@@ -41,11 +33,6 @@ export const root = router()
 			};
 		}
 	})
-	.get("/v1/*", deprecatedV1Response)
-	.post("/v1/*", deprecatedV1Response)
-	.put("/v1/*", deprecatedV1Response)
-	.delete("/v1/*", deprecatedV1Response)
-	.patch("/v1/*", deprecatedV1Response)
 	.merge("/v2/realtime", realtimeRoutes)
 	.merge("/v2/spotify", spotifyRoutes)
 	.merge("/v2/location", locationRoutes)

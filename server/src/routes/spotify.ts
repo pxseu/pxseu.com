@@ -1,5 +1,4 @@
-import { KaitoError } from "@kaito-http/core";
-import z from "zod";
+import { KaitoError, k } from "@kaito-http/core";
 import {
 	ensureAccessToken,
 	REDIS_SPOTIFY_ACCESS_TOKEN,
@@ -7,9 +6,9 @@ import {
 	REDIS_SPOTIFY_TOP_ARTISTS,
 } from "../clients/spotify.js";
 import { config } from "../config.js";
-import { router } from "../context.js";
+import { kaito } from "../context.js";
 
-export const routes = router()
+export const routes = kaito
 	.get("/auth-url", async ({ ctx }) => ({
 		url: ctx.clients.spotify.getAuthorizationUrl(),
 	}))
@@ -22,9 +21,7 @@ export const routes = router()
 			}),
 	)
 	.get("/callback", {
-		query: {
-			code: z.string(),
-		},
+		query: { code: k.string() },
 		async run({ ctx, query }) {
 			const { code } = query;
 			const { clients } = ctx;
@@ -53,18 +50,10 @@ export const routes = router()
 	.get("/now-playing", async ({ ctx }) => ctx.realtime.spotify.state)
 	.get("/top-artists", {
 		query: {
-			// @ts-expect-error kaito dumb types
-			range: z
+			range: k
 				.enum(["short_term", "medium_term", "long_term"])
-				.nullish()
-				.transform((v) => v ?? "medium_term"),
-			// @ts-expect-error kaito dumb types
-			limit: z.coerce
-				.number()
-				.min(1)
-				.max(50)
-				.nullish()
-				.transform((v) => v ?? 10),
+				.default("medium_term"),
+			limit: k.coerce.number().min(1).max(50).default(10),
 		},
 		async run({ ctx, query }) {
 			const { range, limit } = query;

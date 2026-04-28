@@ -29,7 +29,12 @@ export default function Container({
 				</h2>
 			</div>
 
-			<div className={cn("px-5 py-5 text-zinc-400 md:px-6 md:py-6", contentClassName)}>
+			<div
+				className={cn(
+					"px-5 py-5 text-zinc-400 md:px-6 md:py-6",
+					contentClassName,
+				)}
+			>
 				{children}
 			</div>
 		</Tag>

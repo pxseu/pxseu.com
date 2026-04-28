@@ -1,6 +1,6 @@
 import { once } from "node:events";
 import { sse } from "@kaito-http/core/stream";
-import { router } from "../context.js";
+import { kaito } from "../context.js";
 import { type Location, REDIS_LOCATION_UPDATE } from "../realtime/location.js";
 import { REDIS_SPOTIFY_PLAYING } from "../realtime/spotify.js";
 
@@ -11,7 +11,7 @@ const getRetryWithJitter = (base = 1000, jitter = 100) => {
 const PLAYING_KEY = "playing";
 const LOCATION_KEY = "location";
 
-export const routes = router().get("/", async ({ ctx }) => {
+export const routes = kaito.get("/", async ({ ctx }) => {
 	return sse({
 		start: async (controller) => {
 			controller.enqueue({

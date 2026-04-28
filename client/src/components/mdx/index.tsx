@@ -16,15 +16,11 @@ interface CodeElementProps {
 }
 
 function extractCodeProps(children: ReactNode) {
-	if (!isValidElement<CodeElementProps>(children)) return null;
+	if (!isValidElement<CodeElementProps>(children)) {
+		return null;
+	}
 
 	const { className = "", children: code = "", filename } = children.props;
-	if (
-		!className.startsWith("language-") &&
-		typeof children.type === "string" &&
-		children.type !== "code"
-	)
-		return null;
 
 	return {
 		code,
@@ -69,7 +65,10 @@ export const MDX_COMPONENTS = {
 					{...props}
 				>
 					{children}
-					<FaArrowUpRightFromSquare className="size-3.5 ml-1 inline-block" />
+					<FaArrowUpRightFromSquare
+						className="size-3.5 ml-1 inline-block"
+						aria-hidden="true"
+					/>
 				</a>
 			);
 		}

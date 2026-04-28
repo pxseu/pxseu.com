@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 				</h1>
 				<div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-zinc-400">
 					<time>{formatDate(post.frontmatter.date)}</time>
-					{post.frontmatter.tags && (
+					{post.frontmatter.tags && post.frontmatter.tags.length > 0 ? (
 						<>
 							<span className="text-zinc-700">·</span>
 							<div className="flex flex-wrap gap-2">
@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 								))}
 							</div>
 						</>
-					)}
+					) : null}
 				</div>
 			</div>
 

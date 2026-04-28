@@ -9,9 +9,9 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@pxseu/shared": "workspace:*",
 		"@cside.dev/next": "^1.1.4",
 		"@floating-ui/react": "^0.27.19",
+		"@pxseu/shared": "workspace:*",
 		"clsx": "^2.1.1",
 		"dayjs": "^1.11.20",
 		"geist": "^1.7.0",

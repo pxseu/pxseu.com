@@ -20,10 +20,12 @@ export default function LinkItem({
 			href={link}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="relative flex w-full items-center justify-between border border-border-100 px-4 py-3 text-zinc-100 transition-all duration-150 ease-linear hover:border-brand-500/40 hover:bg-zinc-900/80"
+			className="relative flex w-full items-center justify-between border border-border-100 px-4 py-3 text-zinc-100 transition-[border-color,background-color,color] duration-150 ease-linear hover:border-brand-500/40 hover:bg-zinc-900/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50"
 		>
 			<div className="flex items-center gap-3">
-				<span className={cn("text-xl", colorClass)}>{icon}</span>
+				<span aria-hidden="true" className={cn("text-xl", colorClass)}>
+					{icon}
+				</span>
 				<span
 					className={cn(
 						"text-sm font-semibold uppercase tracking-[0.08em]",
@@ -34,11 +36,7 @@ export default function LinkItem({
 				</span>
 			</div>
 
-			<FaChevronRight
-				className="h-3 w-3 text-zinc-400"
-				role="img"
-				aria-label="External link icon"
-			/>
+			<FaChevronRight className="h-3 w-3 text-zinc-400" aria-hidden="true" />
 		</a>
 	);
 }

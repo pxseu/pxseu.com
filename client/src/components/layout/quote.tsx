@@ -63,9 +63,27 @@ const quotes = [
 ];
 
 function getRandomIndex(max: number): number {
+	// Check if WebCrypto API is available
+	if (window?.crypto?.getRandomValues) {
+		const maxUint32 = 0xffffffff; // 2^32 - 1
+
+		while (true) {
+			// Get one 32-bit random number
+			const randomArray = new Uint32Array(1);
+			window.crypto.getRandomValues(randomArray);
+
+			const randomValue = randomArray[0];
+			// If randomValue is within a multiple of 'max', use it. Otherwise retry.
+			// This ensures each index has exactly the same chance (no remainder/bias).
+			if (randomValue <= maxUint32 - (maxUint32 % max)) {
+				return randomValue % max;
+			}
+		}
+	}
+
+	// Fallback to Math.random() if WebCrypto is not available
 	return Math.floor(Math.random() * max);
 }
-
 export default function Quote() {
 	const [quote, setQuote] = useState("");
 	const [visible, setVisible] = useState(false);
