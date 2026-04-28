@@ -15,10 +15,9 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@pxseu/shared": "workspace:*",
 		"@kaito-http/core": "^4.0.0-beta.33",
-		"sharp": "^0.34.5",
-		"zod": "^4.3.6"
+		"@pxseu/shared": "workspace:*",
+		"sharp": "^0.34.5"
 	},
 	"devDependencies": {
 		"@types/bun": "^1.3.7",
