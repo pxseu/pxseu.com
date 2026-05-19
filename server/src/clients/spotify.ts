@@ -167,7 +167,8 @@ interface CurrentlyPlayingResponse {
 	timestamp: number;
 	context: Context;
 	progress_ms: number;
-	item: Item;
+	// spotify dj makes this somehow nulalble but ofc, is_playing is true
+	item: Item | null;
 	currently_playing_type: string;
 	actions: Actions;
 	is_playing: boolean;
@@ -209,7 +210,7 @@ export default class SpotifyClient {
 		playing: Awaited<ReturnType<typeof this.getMyCurrentPlayingTrack>>,
 		now = new Date(),
 	) {
-		if (!playing) return null;
+		if (!playing?.item) return null;
 
 		const albumImage = playing.item.album.images[0]?.url ?? "";
 

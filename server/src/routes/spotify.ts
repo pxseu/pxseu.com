@@ -9,7 +9,7 @@ import { config } from "../config.js";
 import { kaito } from "../context.js";
 
 export const routes = kaito
-	.get("/auth-url", async ({ ctx }) => ({
+	.get("/auth-url", ({ ctx }) => ({
 		url: ctx.clients.spotify.getAuthorizationUrl(),
 	}))
 	.get("/auth-url-redirect", ({ ctx }) =>

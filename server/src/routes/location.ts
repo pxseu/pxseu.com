@@ -4,11 +4,7 @@ import { config } from "../config.js";
 import { kaito } from "../context.js";
 
 export const routes = kaito
-	.get("/", async ({ ctx }) => {
-		const { location } = ctx.realtime;
-
-		return location.state;
-	})
+	.get("/", ({ ctx }) => ctx.realtime.location.state)
 	.post("/update", {
 		body: k.object({
 			city: k.string(),

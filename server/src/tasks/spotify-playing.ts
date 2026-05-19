@@ -77,7 +77,7 @@ export const spotifyPlayingTask = async (
 			continue;
 		}
 
-		const id = nowPlaying.item.id || null;
+		const id = nowPlaying?.item?.id || null;
 		const startedAt = nowPlaying.timestamp || null;
 
 		if (
