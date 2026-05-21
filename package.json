@@ -18,5 +18,9 @@
 	],
 	"patchedDependencies": {
 		"@kaito-http/core@4.0.0-beta.33": "patches/@kaito-http%2Fcore@4.0.0-beta.33.patch"
+	},
+	"overrides": {
+		"picomatch": "2.3.2",
+		"postcss": "8.5.15"
 	}
 }

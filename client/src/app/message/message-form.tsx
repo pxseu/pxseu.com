@@ -132,14 +132,13 @@ export default function MessageForm() {
 	return (
 		<div className="w-full">
 			{status === "success" ? (
-				<div
+				<output
 					className="mx-5 mt-5 flex items-center border border-border-100 bg-green-900/20 p-3 text-green-300 sm:mx-6"
-					role="status"
 					aria-live="polite"
 				>
 					<FaCheck aria-hidden="true" className="mr-2 h-4 w-4" />
 					Message sent.
-				</div>
+				</output>
 			) : status === "error" && !hasContentError && !hasAttachmentError ? (
 				<div
 					className="mx-5 mt-5 flex items-center border border-border-100 bg-red-900/20 p-3 text-red-300 sm:mx-6"
