@@ -55,6 +55,15 @@ export const kaito = create({
 	transform: async (request, response) => {
 		const origin = request.headers.get("origin");
 
+		response.headers.set(
+			"Content-Security-Policy",
+			"default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+		);
+		response.headers.set("Cross-Origin-Resource-Policy", "same-site");
+		response.headers.set("Referrer-Policy", "no-referrer");
+		response.headers.set("X-Content-Type-Options", "nosniff");
+		response.headers.set("X-Frame-Options", "DENY");
+
 		if (origin) {
 			response.headers.set("Access-Control-Allow-Origin", origin);
 			response.headers.set(
