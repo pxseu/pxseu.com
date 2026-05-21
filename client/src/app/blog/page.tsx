@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/ui/container";
 import JsonLd from "@/components/ui/json-ld";
+import Link from "@/components/ui/link";
 import { getAllBlogPosts } from "@/utils/blog";
 import { formatDate } from "@/utils/date";
 

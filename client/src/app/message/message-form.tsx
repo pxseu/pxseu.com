@@ -76,6 +76,7 @@ export default function MessageForm() {
 	const attachmentInputId = useId();
 	const attachmentErrorId = useId();
 	const contentInputRef = useRef<HTMLTextAreaElement>(null);
+	const attachmentInputRef = useRef<HTMLInputElement>(null);
 	const [state, dispatch] = useReducer(formReducer, initialState);
 	const { content, attachment, name, status, errorMessage } = state;
 	const hasContentError = errorMessage === CONTENT_REQUIRED_ERROR;
@@ -95,6 +96,7 @@ export default function MessageForm() {
 
 		if (trimmedAttachment && !isValidUrl(trimmedAttachment)) {
 			dispatch({ type: "SET_ERROR", payload: ATTACHMENT_URL_ERROR });
+			attachmentInputRef.current?.focus();
 			return;
 		}
 
@@ -109,7 +111,7 @@ export default function MessageForm() {
 				body: JSON.stringify({
 					content: trimmedContent || undefined,
 					attachment: trimmedAttachment || undefined,
-					name: name || undefined,
+					name: name.trim() || undefined,
 				}),
 			});
 
@@ -214,6 +216,7 @@ export default function MessageForm() {
 						Attachment URL
 					</label>
 					<input
+						ref={attachmentInputRef}
 						id={attachmentInputId}
 						name="attachment"
 						type="url"
@@ -259,7 +262,8 @@ export default function MessageForm() {
 					<button
 						type="button"
 						onClick={() => dispatch({ type: "RESET_FORM" })}
-						className="border border-border-100 bg-zinc-900 px-4 py-3 text-xs uppercase tracking-[0.2em] text-zinc-300 transition-[border-color,background-color,color] duration-150 ease-linear hover:border-zinc-600 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50"
+						disabled={status === "loading"}
+						className="border border-border-100 bg-zinc-900 px-4 py-3 text-xs uppercase tracking-[0.2em] text-zinc-300 transition-[border-color,background-color,color,opacity] duration-150 ease-linear hover:border-zinc-600 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50 disabled:cursor-not-allowed disabled:opacity-50"
 					>
 						Reset
 					</button>

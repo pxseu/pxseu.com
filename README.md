@@ -8,7 +8,7 @@
 
 This is the monorepo for my personal website.
 
-### Tech Stack
+### "Stack"
 
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -24,7 +24,7 @@ Like it works? Looks okay? Then you can use it too!
 
 This project's code is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-All images, text content, and other creative assets are © 2025 pxseu. All rights reserved.
+All images, text content, audio and other creative assets are © 2025 pxseu. All rights reserved.
 
 - No distribution or reproduction of any content is allowed without explicit written permission
 - For any usage inquiries, please contact the author

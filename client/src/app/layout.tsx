@@ -8,6 +8,7 @@ import BackgroundParallax from "@/components/layout/background-parallax";
 import Footer from "@/components/layout/footer";
 import JsonLd from "@/components/ui/json-ld";
 import { API_ROUTE } from "@/config";
+import { AudioProvider } from "@/contexts/AudioProvider";
 import { RealtimeProvider } from "@/contexts/RealtimeContext";
 
 const THEME_COLOR = "#8066F7";
@@ -141,12 +142,14 @@ export default function RootLayout({
 			<body className="relative min-h-screen overflow-x-hidden bg-zinc-950 font-mono text-zinc-350 antialiased leading-relaxed tracking-[-0.01em] selection:bg-brand-500/40 selection:text-zinc-100">
 				<div className="relative z-10 mx-auto flex w-full max-w-245 flex-col px-4 py-4 sm:px-6 sm:py-6 gap-8">
 					<RealtimeProvider>
-						<ReactLenis root options={{ smoothWheel: true, lerp: 0.2 }}>
-							<BackgroundParallax />
-							<Header />
-							{children}
-							<Footer />
-						</ReactLenis>
+						<AudioProvider>
+							<ReactLenis root options={{ smoothWheel: true, lerp: 0.2 }}>
+								<BackgroundParallax />
+								<Header />
+								{children}
+								<Footer />
+							</ReactLenis>
+						</AudioProvider>
 					</RealtimeProvider>
 				</div>
 			</body>

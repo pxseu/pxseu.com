@@ -1,3 +1,5 @@
+import Link from "@/components/ui/link";
+
 interface ProjectCardProps {
 	url: string;
 	name: string;
@@ -10,7 +12,7 @@ export default function ProjectCard({
 	description,
 }: ProjectCardProps) {
 	return (
-		<a
+		<Link
 			href={url}
 			target="_blank"
 			rel="noopener noreferrer"
@@ -32,6 +34,6 @@ export default function ProjectCard({
 			<div className="mt-auto border-t border-border-100 px-4 py-3 text-xs uppercase tracking-[0.2em] text-brand-500 transition-colors duration-150 ease-linear group-hover:bg-zinc-900/90">
 				View on GitHub
 			</div>
-		</a>
+		</Link>
 	);
 }

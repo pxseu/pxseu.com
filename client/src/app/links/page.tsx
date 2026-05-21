@@ -43,7 +43,12 @@ export default function Links() {
 	return (
 		<>
 			<JsonLd id="collection-page-schema" json={collectionPageSchemaJson} />
-			<Container title="Links" label="Directory" as="main">
+			<Container
+				title="Links"
+				label="Directory"
+				as="main"
+				contentClassName="p-0"
+			>
 				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
 					<h3 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
 						Support

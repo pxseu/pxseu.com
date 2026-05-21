@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "@/components/ui/link";
 import { RelativeTime } from "@/components/ui/relative-time";
 import { Tooltip } from "@/components/ui/tooltip";
 import { useRealtime } from "@/contexts/RealtimeContext";
@@ -23,14 +24,14 @@ export default function Location() {
 						{" "}
 						Currently in{" "}
 						<Tooltip content={<RelativeTime date={data.location.timestamp} />}>
-							<a
+							<Link
 								className="text-brand-500 underline decoration-dotted underline-offset-4"
 								href={mapUrl}
 								target="_blank"
 								rel="noopener noreferrer"
 							>
 								{location}
-							</a>
+							</Link>
 						</Tooltip>
 					</>
 				) : (

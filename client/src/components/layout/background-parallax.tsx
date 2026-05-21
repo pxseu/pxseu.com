@@ -2,19 +2,16 @@
 
 import { useLenis } from "lenis/react";
 import { useCallback, useEffect, useRef } from "react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const PARALLAX_SPEED = 0.2;
 const GRID_SIZE = 32;
 
 export default function BackgroundParallax() {
 	const layerRef = useRef<HTMLDivElement>(null);
-	const reducedMotionRef = useRef(false);
+	const prefersReducedMotion = usePrefersReducedMotion();
 
 	useEffect(() => {
-		reducedMotionRef.current = window.matchMedia(
-			"(prefers-reduced-motion: reduce)",
-		).matches;
-
 		if (layerRef.current) {
 			layerRef.current.style.display = "block";
 		}
@@ -28,14 +25,14 @@ export default function BackgroundParallax() {
 
 	useLenis(
 		(lenis) => {
-			if (reducedMotionRef.current) {
+			if (prefersReducedMotion) {
 				setOffset(0);
 				return;
 			}
 			const loopedOffset = (lenis.scroll * PARALLAX_SPEED) % GRID_SIZE;
 			setOffset(loopedOffset);
 		},
-		[setOffset],
+		[prefersReducedMotion, setOffset],
 		1,
 	);
 

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { FaChevronRight } from "react-icons/fa6";
+import Link from "@/components/ui/link";
 import { cn } from "@/utils/cn";
 
 interface LinkItemProps {
@@ -16,7 +17,7 @@ export default function LinkItem({
 	colorClass = "text-brand-500",
 }: LinkItemProps) {
 	return (
-		<a
+		<Link
 			href={link}
 			target="_blank"
 			rel="noopener noreferrer"
@@ -37,6 +38,6 @@ export default function LinkItem({
 			</div>
 
 			<FaChevronRight className="h-3 w-3 text-zinc-400" aria-hidden="true" />
-		</a>
+		</Link>
 	);
 }

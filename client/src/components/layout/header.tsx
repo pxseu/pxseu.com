@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
+import Link from "@/components/ui/link";
 import { BIRTHDAY_TIMESTAMP } from "@/config";
 import { useIsBirthday } from "@/hooks/useIsBirthday";
 import { cn } from "@/utils/cn";
@@ -10,8 +10,6 @@ import BirthdayNotice from "./birthday-notice";
 import Location from "./location";
 import Logo from "./logo";
 import Playing from "./now-playing";
-
-// import Quote from "./quote";
 
 interface NavLinkProps {
 	href: string;
@@ -75,9 +73,6 @@ export default function Header() {
 						<h1 className="flex items-center">
 							<Logo />
 						</h1>
-						{/*<p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300 sm:text-base">
-							software, open source
-						</p>*/}
 					</div>
 
 					<div className="border-t border-border-100 pt-4 md:border-t-0 md:border-l md:pl-6 md:pt-0 flex flex-col gap-1">

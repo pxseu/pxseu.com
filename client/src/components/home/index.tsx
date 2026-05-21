@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Container from "@/components/ui/container";
+import Link from "@/components/ui/link";
 import { Timed } from "@/components/ui/timed";
 import { BIRTHDAY_TIMESTAMP, CODING_START_TIMESTAMP } from "@/config";
 import Contact from "./contact";
@@ -19,29 +19,24 @@ export default function Main() {
 					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" />{" "}
 					and have been writing code for{" "}
 					<Timed timestamp={CODING_START_TIMESTAMP} label="years" suffix="." />{" "}
-					I mostly work on backend services and internal tooling. I also enjoy
-					frontend when it makes things easier to understand and use.
+					I mostly work on backend services, internal tooling, and small
+					interfaces that make technical systems easier to use.
 				</p>
 				<p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
-					I like building systems that stay simple under load and readable
-					months later. Clear naming and predictable behavior matter to me.
-				</p>
-
-				<p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
-					I work best with thoughtful people and direct feedback. Most good
-					results come from small, honest conversations and steady progress.
+					I care about code that survives contact with real usage: clear names,
+					predictable behavior, boring failure modes, and enough taste that the
+					result does not feel disposable.
 				</p>
 
 				<p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
-					I&apos;m curious by default, so I spend a lot of time learning,
-					tinkering, and following ideas until they finally click. That&apos;s
-					probably my favorite part of this work.
+					I spend a lot of time pulling systems apart, learning where the edges
+					are, and putting the useful pieces back together. That is the part of
+					programming I keep coming back for.
 				</p>
 
 				<p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
 					Outside of code, I&apos;m into cars, oddly specific gadgets, and
-					sometimes making videos about what I&apos;m working on. I like things
-					that are practical, a little nerdy, and built with care.
+					occasionally making videos about what I&apos;m working on.
 				</p>
 
 				<p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">

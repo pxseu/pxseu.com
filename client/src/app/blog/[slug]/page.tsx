@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeMdxCodeProps from "rehype-mdx-code-props";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import { MDX_COMPONENTS } from "@/components/mdx";
+import Link from "@/components/ui/link";
 import { getAllBlogSlugs, getBlogPost } from "@/utils/blog";
 import { formatDate } from "@/utils/date";
 

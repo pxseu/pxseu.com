@@ -1,10 +1,10 @@
-import Link from "next/link";
 import {
 	type ComponentPropsWithoutRef,
 	isValidElement,
 	type ReactNode,
 } from "react";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import Link, { isExternalHref } from "@/components/ui/link";
 import { cn } from "@/utils/cn";
 import { CodeBlock } from "./code-block";
 
@@ -53,12 +53,10 @@ export const MDX_COMPONENTS = {
 		</p>
 	),
 	a: ({ href, children, ...props }: ComponentPropsWithoutRef<"a">) => {
-		const isExternal = href?.startsWith("http");
-
-		if (isExternal) {
+		if (isExternalHref(href ?? "")) {
 			return (
-				<a
-					href={href}
+				<Link
+					href={href ?? "#"}
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-brand-500 underline decoration-brand-500/30 underline-offset-2 transition-colors hover:text-brand-100 hover:decoration-brand-100/50"
@@ -69,7 +67,7 @@ export const MDX_COMPONENTS = {
 						className="size-3.5 ml-1 inline-block"
 						aria-hidden="true"
 					/>
-				</a>
+				</Link>
 			);
 		}
 
