@@ -4,8 +4,9 @@ import {
 	type ReactNode,
 } from "react";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
-import Link, { isExternalHref } from "@/components/ui/link";
+import Link from "@/components/ui/link";
 import { cn } from "@/utils/cn";
+import { isExternalHref } from "@/utils/href";
 import { CodeBlock } from "./code-block";
 
 interface CodeElementProps {

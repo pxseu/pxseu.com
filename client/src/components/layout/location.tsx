@@ -17,7 +17,7 @@ export default function Location() {
 	const mapUrl = `https://maps.apple.com/?q=${encodeURIComponent(location)}`;
 
 	return (
-		<p className="text-xs uppercase tracking-[0.12em] text-zinc-400 transition-all duration-500 ease-out opacity-100 translate-y-0">
+		<p className="text-xs uppercase tracking-[0.12em] text-zinc-400">
 			{isConnected ? (
 				data?.location ? (
 					<>

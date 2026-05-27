@@ -4,17 +4,10 @@ import NextLink from "next/link";
 import type { ComponentPropsWithoutRef, MouseEvent } from "react";
 import { useCallback } from "react";
 import { type AudioSource, useAudio } from "@/contexts/AudioProvider";
+import { isExternalHref } from "@/utils/href";
 
 export type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
 	sound?: AudioSource | false;
-};
-
-export const isExternalHref = (href: LinkProps["href"]): href is string => {
-	if (typeof href !== "string") {
-		return false;
-	}
-
-	return /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(href);
 };
 
 export default function Link({

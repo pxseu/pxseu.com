@@ -4,19 +4,22 @@ import { type SubmitEvent, useId, useReducer, useRef } from "react";
 import { FaCheck, FaCircleNotch, FaTriangleExclamation } from "react-icons/fa6";
 import { API_ROUTE } from "@/config";
 
+type ErrorField = "content" | "attachment";
+
 type FormState = {
 	content: string;
 	attachment: string;
 	name: string;
 	status: "idle" | "loading" | "success" | "error";
 	errorMessage: string;
+	errorField: ErrorField | null;
 };
 
 type FormAction =
 	| { type: "SET_CONTENT"; payload: string }
 	| { type: "SET_ATTACHMENT"; payload: string }
 	| { type: "SET_NAME"; payload: string }
-	| { type: "SET_ERROR"; payload: string }
+	| { type: "FIELD_ERROR"; field: ErrorField; message: string }
 	| { type: "RESET_FORM" }
 	| { type: "SUBMIT_START" }
 	| { type: "SUBMIT_SUCCESS" }
@@ -28,6 +31,7 @@ const initialState: FormState = {
 	name: "",
 	status: "idle",
 	errorMessage: "",
+	errorField: null,
 };
 
 const CONTENT_REQUIRED_ERROR =
@@ -43,24 +47,47 @@ function isValidUrl(value: string) {
 	}
 }
 
+const clearFieldError = (state: FormState, field: ErrorField): FormState =>
+	state.errorField === field
+		? { ...state, status: "idle", errorField: null, errorMessage: "" }
+		: state;
+
 function formReducer(state: FormState, action: FormAction): FormState {
 	switch (action.type) {
 		case "SET_CONTENT":
-			return { ...state, content: action.payload };
+			return clearFieldError({ ...state, content: action.payload }, "content");
 		case "SET_ATTACHMENT":
-			return { ...state, attachment: action.payload };
+			return clearFieldError(
+				{ ...state, attachment: action.payload },
+				"attachment",
+			);
 		case "SET_NAME":
 			return { ...state, name: action.payload };
-		case "SET_ERROR":
-			return { ...state, errorMessage: action.payload, status: "error" };
+		case "FIELD_ERROR":
+			return {
+				...state,
+				status: "error",
+				errorField: action.field,
+				errorMessage: action.message,
+			};
 		case "RESET_FORM":
 			return initialState;
 		case "SUBMIT_START":
-			return { ...state, status: "loading", errorMessage: "" };
+			return {
+				...state,
+				status: "loading",
+				errorMessage: "",
+				errorField: null,
+			};
 		case "SUBMIT_SUCCESS":
 			return { ...initialState, status: "success" };
 		case "SUBMIT_ERROR":
-			return { ...state, status: "error", errorMessage: action.payload };
+			return {
+				...state,
+				status: "error",
+				errorMessage: action.payload,
+				errorField: null,
+			};
 		default:
 			return state;
 	}
@@ -78,9 +105,8 @@ export default function MessageForm() {
 	const contentInputRef = useRef<HTMLTextAreaElement>(null);
 	const attachmentInputRef = useRef<HTMLInputElement>(null);
 	const [state, dispatch] = useReducer(formReducer, initialState);
-	const { content, attachment, name, status, errorMessage } = state;
-	const hasContentError = errorMessage === CONTENT_REQUIRED_ERROR;
-	const hasAttachmentError = errorMessage === ATTACHMENT_URL_ERROR;
+	const { content, attachment, name, status, errorMessage, errorField } = state;
+	const showSubmitError = status === "error" && errorField === null;
 
 	const handleSubmit = async (e: SubmitEvent) => {
 		e.preventDefault();
@@ -89,13 +115,21 @@ export default function MessageForm() {
 		const trimmedAttachment = attachment.trim();
 
 		if (!trimmedContent && !trimmedAttachment) {
-			dispatch({ type: "SET_ERROR", payload: CONTENT_REQUIRED_ERROR });
+			dispatch({
+				type: "FIELD_ERROR",
+				field: "content",
+				message: CONTENT_REQUIRED_ERROR,
+			});
 			contentInputRef.current?.focus();
 			return;
 		}
 
 		if (trimmedAttachment && !isValidUrl(trimmedAttachment)) {
-			dispatch({ type: "SET_ERROR", payload: ATTACHMENT_URL_ERROR });
+			dispatch({
+				type: "FIELD_ERROR",
+				field: "attachment",
+				message: ATTACHMENT_URL_ERROR,
+			});
 			attachmentInputRef.current?.focus();
 			return;
 		}
@@ -133,15 +167,15 @@ export default function MessageForm() {
 		<div className="w-full">
 			{status === "success" ? (
 				<output
-					className="mx-5 mt-5 flex items-center border border-border-100 bg-green-900/20 p-3 text-green-300 sm:mx-6"
+					className="mb-5 flex items-center border border-border-100 bg-green-900/20 p-3 text-green-300"
 					aria-live="polite"
 				>
 					<FaCheck aria-hidden="true" className="mr-2 h-4 w-4" />
 					Message sent.
 				</output>
-			) : status === "error" && !hasContentError && !hasAttachmentError ? (
+			) : showSubmitError ? (
 				<div
-					className="mx-5 mt-5 flex items-center border border-border-100 bg-red-900/20 p-3 text-red-300 sm:mx-6"
+					className="mb-5 flex items-center border border-border-100 bg-red-900/20 p-3 text-red-300"
 					role="alert"
 					aria-live="polite"
 				>
@@ -150,11 +184,7 @@ export default function MessageForm() {
 				</div>
 			) : null}
 
-			<form
-				onSubmit={handleSubmit}
-				noValidate
-				className="space-y-5 px-5 py-5 sm:px-6 sm:py-6"
-			>
+			<form onSubmit={handleSubmit} noValidate className="space-y-5">
 				<div className="space-y-2">
 					<label
 						htmlFor={nameInputId}
@@ -195,14 +225,16 @@ export default function MessageForm() {
 						}
 						className={inputClass}
 						rows={4}
-						aria-invalid={hasContentError || undefined}
-						aria-describedby={hasContentError ? contentErrorId : undefined}
+						aria-invalid={errorField === "content" || undefined}
+						aria-describedby={
+							errorField === "content" ? contentErrorId : undefined
+						}
 						placeholder="Your message…"
 						disabled={status === "loading"}
 					/>
-					{hasContentError ? (
+					{errorField === "content" ? (
 						<p id={contentErrorId} className="text-xs text-red-300">
-							{CONTENT_REQUIRED_ERROR}
+							{errorMessage}
 						</p>
 					) : null}
 				</div>
@@ -225,16 +257,16 @@ export default function MessageForm() {
 							dispatch({ type: "SET_ATTACHMENT", payload: e.target.value })
 						}
 						className={inputClass}
-						aria-invalid={hasAttachmentError || undefined}
+						aria-invalid={errorField === "attachment" || undefined}
 						aria-describedby={
-							hasAttachmentError ? attachmentErrorId : undefined
+							errorField === "attachment" ? attachmentErrorId : undefined
 						}
 						placeholder="https://example.com/image.png"
 						disabled={status === "loading"}
 					/>
-					{hasAttachmentError ? (
+					{errorField === "attachment" ? (
 						<p id={attachmentErrorId} className="text-xs text-red-300">
-							{ATTACHMENT_URL_ERROR}
+							{errorMessage}
 						</p>
 					) : null}
 				</div>

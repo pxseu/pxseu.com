@@ -19,7 +19,7 @@ const csp = [
 		"https://proxy.csidetm.com",
 	],
 	["style-src", "'self'", "'unsafe-inline'"],
-	["img-src", "'self'", "https://i.scdn.co"],
+	["img-src", "'self'", "https://i.scdn.co", "https://*.pxseu.com"],
 	["font-src", "'self'"],
 	["media-src", "'self'"],
 	[

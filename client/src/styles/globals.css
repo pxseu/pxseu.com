@@ -7,6 +7,9 @@
 	--color-brand-500: #8066f7;
 	--color-brand-900: #ff00ee;
 
+	/* between zinc-300 (#d4d4d8) and zinc-400 (#a1a1aa) */
+	--color-zinc-350: #bbbbc0;
+
 	--color-border-100: rgb(47, 51, 54);
 
 	--animate-gradient-bg: gradient-bg 5s ease infinite;

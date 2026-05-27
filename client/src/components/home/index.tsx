@@ -13,7 +13,7 @@ export default function Main() {
 			<Container title="About Me" id="intro">
 				<p className="text-sm leading-relaxed text-zinc-300 sm:text-base">
 					Hey, I&apos;m Kuba — online I go by{" "}
-					<strong className="bg-linear-to-r/srgb from-brand-100 to-brand-900 bg-clip-text text-transparent">
+					<strong className="bg-[linear-gradient(to_right,var(--color-brand-100),var(--color-brand-500),var(--color-brand-900))] bg-clip-text text-transparent [-webkit-text-fill-color:transparent]">
 						pxseu
 					</strong>
 					. I&apos;m <Timed timestamp={BIRTHDAY_TIMESTAMP} label="years old" />{" "}

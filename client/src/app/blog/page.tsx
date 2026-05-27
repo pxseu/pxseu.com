@@ -73,11 +73,11 @@ export default async function BlogIndex() {
 								{post.frontmatter.description}
 							</p>
 							{post.frontmatter.tags ? (
-								<div className="mt-2 flex flex-wrap gap-2">
+								<div className="mt-3 flex flex-wrap gap-2">
 									{post.frontmatter.tags.map((tag) => (
 										<span
 											key={tag}
-											className="text-[10px] tracking-[0.15em] uppercase text-zinc-400"
+											className="border border-border-100 px-2 py-0.5 text-[10px] tracking-[0.15em] uppercase text-zinc-400"
 										>
 											{tag}
 										</span>

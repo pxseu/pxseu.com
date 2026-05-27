@@ -65,12 +65,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 					<time>{formatDate(post.frontmatter.date)}</time>
 					{post.frontmatter.tags && post.frontmatter.tags.length > 0 ? (
 						<>
-							<span className="text-zinc-700">·</span>
+							<span aria-hidden="true" className="text-zinc-700">
+								·
+							</span>
 							<div className="flex flex-wrap gap-2">
 								{post.frontmatter.tags.map((tag) => (
 									<span
 										key={tag}
-										className="tracking-[0.15em] uppercase text-zinc-400"
+										className="border border-border-100 px-2 py-0.5 text-[10px] tracking-[0.15em] uppercase text-zinc-400"
 									>
 										{tag}
 									</span>

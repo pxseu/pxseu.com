@@ -29,12 +29,7 @@ export default function MessagePage() {
 	return (
 		<>
 			<JsonLd id="contact-page-schema" json={contactPageSchemaJson} />
-			<Container
-				label="Direct Message"
-				title="Send a Message"
-				as="main"
-				contentClassName="flex justify-center"
-			>
+			<Container label="Direct Message" title="Send a Message" as="main">
 				<MessageForm />
 			</Container>
 		</>
