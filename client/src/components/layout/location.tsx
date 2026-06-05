@@ -11,7 +11,11 @@ export default function Location() {
 	let location = "Unknown";
 
 	if (isConnected && data?.location) {
-		location = `${data.location.city}, ${data.location.country}`;
+		// city can sometimes go missing but country usually stays
+		// idk how releveant this is but yeh
+		const city = data.location.city ? `${data.location.city}, ` : "";
+
+		location = `${city}${data.location.country}`;
 	}
 
 	const mapUrl = `https://maps.apple.com/?q=${encodeURIComponent(location)}`;
