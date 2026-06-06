@@ -394,6 +394,28 @@ index 98f0764..47390b8 100644
    boolean: KBoolean.create,
    array: KArray.create,
    null: KNull.create,
+@@ -1312,7 +1406,7 @@ var KaitoRouter = class _KaitoRouter {
+             })
+           );
+           const sseHeaders = new Headers(head.touched ? head.headers : void 0);
+-          sseHeaders.set("Content-Type", "text/event-stream");
++          sseHeaders.set("Content-Type", "text/event-stream; charset=utf-8");
+           sseHeaders.set("Cache-Control", "no-cache");
+           sseHeaders.set("Connection", "keep-alive");
+           return new Response(stringStream, {
+diff --git a/dist/index.js b/dist/index.js
+index 7e4c4ff..f74b9c5 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -245,7 +245,7 @@ var KaitoRouter = class _KaitoRouter {
+             })
+           );
+           const sseHeaders = new Headers(head.touched ? head.headers : void 0);
+-          sseHeaders.set("Content-Type", "text/event-stream");
++          sseHeaders.set("Content-Type", "text/event-stream; charset=utf-8");
+           sseHeaders.set("Cache-Control", "no-cache");
+           sseHeaders.set("Connection", "keep-alive");
+           return new Response(stringStream, {
 diff --git a/dist/schema/schema.cjs b/dist/schema/schema.cjs
 index 26cebbd..5568fe9 100644
 --- a/dist/schema/schema.cjs
