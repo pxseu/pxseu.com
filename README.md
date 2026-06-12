@@ -24,12 +24,4 @@ Like it works? Looks okay? Then you can use it too!
 
 This project's code is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-All images, text content, audio and other creative assets are © 2025 pxseu. All rights reserved.
-
-- No distribution or reproduction of any content is allowed without explicit written permission
-- For any usage inquiries, please contact the author
-- Personal viewing and reference use is permitted
-- You may create derivative works based on the concepts and ideas, but:
-  - Direct copying of text content is prohibited
-  - Using or reproducing any images is strictly prohibited
-  - Any derivative work must be significantly different from the original
+All images, audio, written content, and other creative assets are proprietary. See the [LICENSE-CONTENT](LICENSE-CONTENT) file for details.

@@ -1,0 +1,49 @@
+CONTENT LICENSE
+
+Copyright © 2019-2026 Kuba "pxseu" Ellwart. All rights reserved.
+
+This license applies to all creative and written content in this repository,
+including but not limited to:
+
+  Media assets
+  ============
+  client/public/assets/          (images, audio, and other media)
+  client/public/*.png
+  client/public/*.ico
+  client/public/*.svg
+
+  Written content embedded in source files
+  =========================================
+  The following files contain proprietary written content (biographical copy,
+  experience descriptions, project descriptions, curated quotes, and other
+  original prose). The surrounding code structure in these files remains
+  covered by the MIT License; only the text strings themselves are subject
+  to this license.
+
+  client/src/components/home/index.tsx
+  client/src/components/layout/quote.tsx
+  client/src/app/
+  client/src/blog/
+
+These assets and written works are NOT covered by the MIT License that governs
+the source code of this project.
+
+PERMISSIONS
+  - Personal viewing and reference use is permitted.
+  - You may create derivative works inspired by the concepts and ideas presented
+    here, provided the derivative work is significantly different from the
+    original and does not reproduce protected material directly.
+  - Forking this repository on GitHub, as permitted by GitHub's Terms of
+    Service, does not constitute redistribution under this license; any use of
+    the content beyond that remains subject to the restrictions below.
+
+RESTRICTIONS
+  - Redistribution, reproduction, or publication of any asset — in original or
+    modified form — is prohibited without explicit written permission from the
+    copyright holder.
+  - Direct copying of text content is prohibited.
+  - Using or reproducing any image or audio asset is prohibited.
+  - Commercial use of any asset is prohibited.
+
+CONTACT
+  For licensing inquiries or permission requests, please contact me via my website: https://pxseu.com
