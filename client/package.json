@@ -3,10 +3,10 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev --turbopack",
-		"build": "next build",
-		"postbuild": "next-sitemap",
-		"start": "next start"
+		"dev": "bun --bun x next dev --turbopack",
+		"build": "bun --bun x next build",
+		"postbuild": "bun --bun x next-sitemap",
+		"start": "bun --bun x next start"
 	},
 	"dependencies": {
 		"@cside.dev/next": "^1.1.4",
