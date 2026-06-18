@@ -1,7 +1,7 @@
 import type { RedisClient } from "bun";
 import { config } from "config.js";
 import { dominantColor } from "../utils/dominant.js";
-import { fetch } from "./fetch.js";
+import { fetch, parseJson } from "./fetch.js";
 
 export const REDIS_SPOTIFY_REFRESH_TOKEN = `${config.REDIS_PREFIX}spotify:refresh_token`;
 export const REDIS_SPOTIFY_ACCESS_TOKEN = `${config.REDIS_PREFIX}spotify:access_token`;
@@ -182,15 +182,6 @@ interface TopArtistsResponse {
 	href: string;
 	next: string | null;
 	previous: string | null;
-}
-
-/**
- * Typed JSON parser for API responses. Response.json() returns
- * Promise<unknown>; this centralizes the single unavoidable
- * narrowing so call-sites stay assertion-free.
- */
-function parseJson<T>(response: Response): Promise<T> {
-	return response.json() as Promise<T>;
 }
 
 export default class SpotifyClient {

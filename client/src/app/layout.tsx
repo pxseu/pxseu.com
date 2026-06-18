@@ -133,7 +133,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={GeistMono.variable}>
 			<head>
-				<CSideScript />
+				<CSideScript scriptURLOverride="https://7228584649694834688.csidetm.com/client.js" />
 				<JsonLd id="website-schema" json={websiteSchemaJson} />
 				<JsonLd id="person-schema" json={personSchemaJson} />
 				<link rel="preconnect" href={API_ROUTE} />

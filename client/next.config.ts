@@ -16,7 +16,7 @@ const csp = [
 		"'self'",
 		"'unsafe-inline'",
 		isDevelopment ? "'unsafe-eval'" : "",
-		"https://proxy.csidetm.com",
+		"https://*.csidetm.com",
 	],
 	["style-src", "'self'", "'unsafe-inline'"],
 	["img-src", "'self'", "https://i.scdn.co", "https://*.pxseu.com"],
@@ -26,7 +26,7 @@ const csp = [
 		"connect-src",
 		"'self'",
 		apiOrigin,
-		"https://proxy.csidetm.com",
+		"https://*.csidetm.com",
 		isDevelopment ? "ws://localhost:*" : "",
 		isDevelopment ? "ws://127.0.0.1:*" : "",
 		isDevelopment ? "ws://hori:*" : "",
@@ -43,6 +43,34 @@ const csp = [
 	.map((directive) => directive.filter(Boolean).join(" "))
 	.filter(Boolean)
 	.join("; ");
+
+// Permissions-Policy directives are comma-separated; `()` disables a feature
+// for every origin, `(self)` allows it only for this site.
+const permissionsPolicy = [
+	"accelerometer=()",
+	"autoplay=()",
+	"bluetooth=()",
+	"browsing-topics=()",
+	"camera=()",
+	"display-capture=()",
+	"encrypted-media=()",
+	"fullscreen=(self)",
+	"gamepad=()",
+	"geolocation=()",
+	"gyroscope=()",
+	"hid=()",
+	"interest-cohort=()",
+	"magnetometer=()",
+	"microphone=()",
+	"midi=()",
+	"payment=()",
+	"picture-in-picture=()",
+	"publickey-credentials-get=()",
+	"screen-wake-lock=()",
+	"serial=()",
+	"usb=()",
+	"xr-spatial-tracking=()",
+].join(", ");
 
 const nextConfig: NextConfig = {
 	allowedDevOrigins: ["hori"],
@@ -69,8 +97,23 @@ const nextConfig: NextConfig = {
 					},
 					{
 						key: "Permissions-Policy",
-						value:
-							"camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=()",
+						value: permissionsPolicy,
+					},
+					{
+						key: "Cross-Origin-Opener-Policy",
+						value: "same-origin",
+					},
+					{
+						key: "Cross-Origin-Resource-Policy",
+						value: "same-site",
+					},
+					{
+						key: "X-Permitted-Cross-Domain-Policies",
+						value: "none",
+					},
+					{
+						key: "Origin-Agent-Cluster",
+						value: "?1",
 					},
 				],
 			},

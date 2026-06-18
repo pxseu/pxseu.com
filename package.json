@@ -5,7 +5,7 @@
 		"@pxseu/prettier-config": "^1.0.0"
 	},
 	"engines": {
-		"bun": "v1.3.12"
+		"bun": "v1.3.14"
 	},
 	"private": true,
 	"scripts": {
