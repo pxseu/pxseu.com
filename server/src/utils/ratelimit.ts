@@ -4,12 +4,13 @@ import { config } from "config.js";
 
 interface RateLimitOptions {
 	windowMs: number;
-	max: number;
+	max: 1;
 	keyPrefix?: string;
 }
 
 export const createRateLimiter = (options: RateLimitOptions) => {
 	const keyPrefix = `${config.REDIS_PREFIX}${options.keyPrefix || "rate-limit:"}`;
+	const windowSeconds = Math.ceil(options.windowMs / 1000);
 
 	return async (
 		redis: RedisClient,
@@ -17,27 +18,16 @@ export const createRateLimiter = (options: RateLimitOptions) => {
 		resource: string = "default",
 	) => {
 		const key = `${keyPrefix}${resource}:${ip}`;
+		const result = await redis.set(
+			key,
+			"1",
+			"EX",
+			windowSeconds.toString(),
+			"NX",
+		);
 
-		const current = await redis.get(key);
-		const count = current ? parseInt(current, 10) : 0;
-
-		if (count >= options.max) {
+		if (result !== "OK") {
 			throw new KaitoError(429, "Too Many Requests");
-		}
-
-		if (!current) {
-			await redis.set(
-				key,
-				(1).toString(),
-				"EX",
-				Math.ceil(options.windowMs / 1000),
-			);
-		} else {
-			await redis.incr(key);
-		}
-
-		if (count === 0) {
-			await redis.expire(key, Math.ceil(options.windowMs / 1000));
 		}
 	};
 };

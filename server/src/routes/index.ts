@@ -4,13 +4,20 @@ import { routes as messageRoutes } from "./message.js";
 import { routes as realtimeRoutes } from "./realtime.js";
 import { routes as spotifyRoutes } from "./spotify.js";
 
+const HEALTHCHECK_TIMEOUT_MS = 2000;
+
 export const root = kaito
 	.get("/", async ({ ctx }) => ctx.ip)
 	.get("/health", async ({ ctx }) => {
 		try {
 			const start = performance.now();
 
-			await ctx.clients.redis.ping();
+			await Promise.race([
+				ctx.clients.redis.ping(),
+				Bun.sleep(HEALTHCHECK_TIMEOUT_MS).then(() => {
+					throw new Error("Redis health check timed out");
+				}),
+			]);
 
 			const latency = performance.now() - start;
 
@@ -23,14 +30,17 @@ export const root = kaito
 				},
 			};
 		} catch (error) {
-			return {
-				status: "error",
-				timestamp: new Date().toISOString(),
-				redis: {
-					status: "disconnected",
-					error: error instanceof Error ? error.message : "Unknown error",
+			return Response.json(
+				{
+					status: "error",
+					timestamp: new Date().toISOString(),
+					redis: {
+						status: "disconnected",
+						error: error instanceof Error ? error.message : "Unknown error",
+					},
 				},
-			};
+				{ status: 503 },
+			);
 		}
 	})
 	.merge("/v2/realtime", realtimeRoutes)

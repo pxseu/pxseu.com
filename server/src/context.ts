@@ -9,7 +9,7 @@ const realtime = await realtimeManager(clients.redis);
 export const kaito = create({
 	getContext: (req) => ({
 		req,
-		ip: req.headers.get("x-forwarded-for") ?? "::1",
+		ip: req.headers.get("x-real-ip") ?? "::1",
 		uptime: Date.now() - serverStarted,
 		clients,
 		realtime,

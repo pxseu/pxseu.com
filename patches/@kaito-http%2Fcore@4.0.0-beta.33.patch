@@ -1,5 +1,5 @@
 diff --git a/dist/chunk-DRJX3OJG.js b/dist/chunk-DRJX3OJG.js
-index 6e5aedb..ce4bdb4 100644
+index 6e5aedbfe492a3219e913f592cb43512f6fe9156..de77a1ba4a1cd5e1fa396f606467b25d0b79356a 100644
 --- a/dist/chunk-DRJX3OJG.js
 +++ b/dist/chunk-DRJX3OJG.js
 @@ -86,6 +86,18 @@ var BaseSchema = class {
@@ -186,18 +186,28 @@ index 6e5aedb..ce4bdb4 100644
            if (!parseResult.success) {
              return ctx.addIssues(parseResult.issues, [key]);
            }
-@@ -951,6 +1042,9 @@ var KLazy = class _KLazy extends BaseSchema {
+@@ -948,9 +1039,19 @@ var KLazy = class _KLazy extends BaseSchema {
+     schema.visit(visitor);
+   }
+ };
++var KCoercedBoolean = class extends KBoolean {
++  static create = () => new KCoercedBoolean({});
++  parseSafe(json) {
++    return super.parseSafe(Boolean(json));
++  }
++};
  var k = {
    string: KString.create,
    number: KNumber.create,
 +  coerce: {
-+    number: KCoercedNumber.create
++    number: KCoercedNumber.create,
++    boolean: KCoercedBoolean.create
 +  },
    boolean: KBoolean.create,
    array: KArray.create,
    null: KNull.create,
 diff --git a/dist/index.cjs b/dist/index.cjs
-index 98f0764..47390b8 100644
+index 98f0764243d55c61bc260dbcb3d03c9bf60bc8d0..7a09c7f46ce0071113a7583b76102242d19998b9 100644
 --- a/dist/index.cjs
 +++ b/dist/index.cjs
 @@ -247,6 +247,18 @@ var BaseSchema = class {
@@ -384,17 +394,28 @@ index 98f0764..47390b8 100644
            if (!parseResult.success) {
              return ctx.addIssues(parseResult.issues, [key]);
            }
-@@ -1112,6 +1203,9 @@ var KLazy = class _KLazy extends BaseSchema {
+@@ -1109,9 +1200,19 @@ var KLazy = class _KLazy extends BaseSchema {
+     schema.visit(visitor);
+   }
+ };
++var KCoercedBoolean = class extends KBoolean {
++  static create = () => new KCoercedBoolean({});
++  parseSafe(json) {
++    return super.parseSafe(Boolean(json));
++  }
++};
  var k = {
    string: KString.create,
    number: KNumber.create,
 +  coerce: {
-+    number: KCoercedNumber.create
++    number: KCoercedNumber.create,
++    boolean: KCoercedBoolean.create
 +  },
    boolean: KBoolean.create,
    array: KArray.create,
    null: KNull.create,
-@@ -1312,7 +1406,7 @@ var KaitoRouter = class _KaitoRouter {
+@@ -1274,8 +1375,8 @@ var Router = class _Router {
+               }
              })
            );
            const sseHeaders = new Headers(head.touched ? head.headers : void 0);
@@ -404,10 +425,10 @@ index 98f0764..47390b8 100644
            sseHeaders.set("Connection", "keep-alive");
            return new Response(stringStream, {
 diff --git a/dist/index.js b/dist/index.js
-index 7e4c4ff..f74b9c5 100644
+index e64b63ce3674a799ee74bc304ca74a8ef021cb15..af0262617a769c9e1d4adb249d5e2e39e66feb7f 100644
 --- a/dist/index.js
 +++ b/dist/index.js
-@@ -245,7 +245,7 @@ var KaitoRouter = class _KaitoRouter {
+@@ -245,7 +245,7 @@ var Router = class _Router {
              })
            );
            const sseHeaders = new Headers(head.touched ? head.headers : void 0);
@@ -417,7 +438,7 @@ index 7e4c4ff..f74b9c5 100644
            sseHeaders.set("Connection", "keep-alive");
            return new Response(stringStream, {
 diff --git a/dist/schema/schema.cjs b/dist/schema/schema.cjs
-index 26cebbd..5568fe9 100644
+index 26cebbdb25ac52c9b0b2e8552399ae6838af1477..6085b932305bd1c7b240a5ce016ecd6aaa8f336b 100644
 --- a/dist/schema/schema.cjs
 +++ b/dist/schema/schema.cjs
 @@ -129,6 +129,18 @@ var BaseSchema = class {
@@ -604,18 +625,28 @@ index 26cebbd..5568fe9 100644
            if (!parseResult.success) {
              return ctx.addIssues(parseResult.issues, [key]);
            }
-@@ -994,6 +1085,9 @@ var KLazy = class _KLazy extends BaseSchema {
+@@ -991,9 +1082,19 @@ var KLazy = class _KLazy extends BaseSchema {
+     schema.visit(visitor);
+   }
+ };
++var KCoercedBoolean = class extends KBoolean {
++  static create = () => new KCoercedBoolean({});
++  parseSafe(json) {
++    return super.parseSafe(Boolean(json));
++  }
++};
  var k = {
    string: KString.create,
    number: KNumber.create,
 +  coerce: {
-+    number: KCoercedNumber.create
++    number: KCoercedNumber.create,
++    boolean: KCoercedBoolean.create
 +  },
    boolean: KBoolean.create,
    array: KArray.create,
    null: KNull.create,
 diff --git a/dist/schema/schema.d.cts b/dist/schema/schema.d.cts
-index a174a17..ed9d9da 100644
+index a174a17ac9e2b694883850f2cee3e3ff6cd50587..865b798c1f7f6adb8200cb574122371cbf9168bd 100644
 --- a/dist/schema/schema.d.cts
 +++ b/dist/schema/schema.d.cts
 @@ -60,6 +60,10 @@ declare abstract class BaseSchema<Input extends JSONValue, Output, Def extends B
@@ -629,18 +660,19 @@ index a174a17..ed9d9da 100644
      example(example: Input): this;
      example(): Input | undefined;
      description(description: string): this;
-@@ -365,6 +369,9 @@ declare class KLazy<Input extends JSONValue, Output> extends BaseSchema<Input, O
+@@ -365,6 +369,10 @@ declare class KLazy<Input extends JSONValue, Output> extends BaseSchema<Input, O
  declare const k: {
      string: () => KString;
      number: () => KNumber;
 +    coerce: {
 +        number: () => KNumber;
++        boolean: () => KBoolean;
 +    };
      boolean: () => KBoolean;
      array: <ItemsInput extends JSONValue, ItemsOutput, Def extends BaseSchemaDef<ItemsInput>>(items: BaseSchema<ItemsInput, ItemsOutput, Def>) => KArray<ItemsInput, ItemsOutput>;
      null: () => KNull;
 diff --git a/dist/schema/schema.d.ts b/dist/schema/schema.d.ts
-index a174a17..ed9d9da 100644
+index a174a17ac9e2b694883850f2cee3e3ff6cd50587..865b798c1f7f6adb8200cb574122371cbf9168bd 100644
 --- a/dist/schema/schema.d.ts
 +++ b/dist/schema/schema.d.ts
 @@ -60,6 +60,10 @@ declare abstract class BaseSchema<Input extends JSONValue, Output, Def extends B
@@ -654,12 +686,13 @@ index a174a17..ed9d9da 100644
      example(example: Input): this;
      example(): Input | undefined;
      description(description: string): this;
-@@ -365,6 +369,9 @@ declare class KLazy<Input extends JSONValue, Output> extends BaseSchema<Input, O
+@@ -365,6 +369,10 @@ declare class KLazy<Input extends JSONValue, Output> extends BaseSchema<Input, O
  declare const k: {
      string: () => KString;
      number: () => KNumber;
 +    coerce: {
 +        number: () => KNumber;
++        boolean: () => KBoolean;
 +    };
      boolean: () => KBoolean;
      array: <ItemsInput extends JSONValue, ItemsOutput, Def extends BaseSchemaDef<ItemsInput>>(items: BaseSchema<ItemsInput, ItemsOutput, Def>) => KArray<ItemsInput, ItemsOutput>;

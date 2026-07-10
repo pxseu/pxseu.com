@@ -6,10 +6,25 @@ import { spotifyPlayingTask } from "./tasks/spotify-playing.js";
 const MAIN_NODE_KEY = `${config.REDIS_PREFIX}main-node`;
 const MAIN_NODE_TTL = 30; // seconds
 const NODE_CHECK_INTERVAL = 5000; // 5 seconds
+const SPOTIFY_TASK_RESTART_DELAY = 2000;
 
 let is_main = false;
 let nodeCheckInterval: NodeJS.Timeout | null = null;
 let spotifyTaskAbortController: AbortController | null = null;
+
+async function superviseSpotifyTask(signal: AbortSignal) {
+	while (!signal.aborted) {
+		try {
+			await spotifyPlayingTask(clients.redis, clients.spotify, signal);
+		} catch (error) {
+			console.error("Spotify task failed:", error);
+		}
+
+		if (!signal.aborted) {
+			await Bun.sleep(SPOTIFY_TASK_RESTART_DELAY);
+		}
+	}
+}
 
 async function tryBecomeMain() {
 	const result = await clients.redis.set(
@@ -22,13 +37,7 @@ async function tryBecomeMain() {
 	if (result === "OK") {
 		is_main = true;
 		spotifyTaskAbortController = new AbortController();
-		spotifyPlayingTask(
-			clients.redis,
-			clients.spotify,
-			spotifyTaskAbortController.signal,
-		).catch((error) => {
-			console.error("Spotify task failed:", error);
-		});
+		void superviseSpotifyTask(spotifyTaskAbortController.signal);
 	}
 }
 

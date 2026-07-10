@@ -10,7 +10,7 @@ export const routes = kaito
 			city: k.string(),
 			country: k.string(),
 		}),
-		run({ ctx, body }) {
+		async run({ ctx, body }) {
 			const { location } = ctx.realtime;
 			let auth = ctx.req.headers.get("Authorization");
 
@@ -29,7 +29,7 @@ export const routes = kaito
 				throw new KaitoError(401, "Unauthorized");
 			}
 
-			location.update({
+			await location.update({
 				...body,
 				timestamp: new Date(),
 			});

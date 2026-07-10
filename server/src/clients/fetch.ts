@@ -8,12 +8,26 @@ class HttpError extends Error {
 }
 
 const MAX_RETRIES = 5;
+const RETRYABLE_METHODS = new Set(["GET", "HEAD"]);
+
+const getRetryDelay = (response: Response) => {
+	const retryAfter = response.headers.get("Retry-After");
+	if (!retryAfter) return 1500;
+
+	const seconds = Number(retryAfter);
+	if (Number.isFinite(seconds)) return Math.max(0, seconds * 1000);
+
+	const date = Date.parse(retryAfter);
+	return Number.isNaN(date) ? 1500 : Math.max(0, date - Date.now());
+};
 
 export const fetch = async (
 	url: string,
 	options?: RequestInit,
 	_retries = 0,
 ): Promise<Response> => {
+	const method = (options?.method ?? "GET").toUpperCase();
+	const canRetry = RETRYABLE_METHODS.has(method) && _retries < MAX_RETRIES;
 	const response = await globalThis.fetch(url, {
 		...options,
 		headers: {
@@ -23,14 +37,13 @@ export const fetch = async (
 	});
 
 	if (!response.ok) {
-		if (response.status >= 500 && _retries < MAX_RETRIES) {
+		if (response.status >= 500 && canRetry) {
 			await Bun.sleep(1500);
 			return fetch(url, options, _retries + 1);
 		}
 
-		if (response.status === 429 && _retries < MAX_RETRIES) {
-			const retryAfter = response.headers.get("Retry-After");
-			await Bun.sleep(retryAfter ? parseInt(retryAfter, 10) * 1000 : 1500);
+		if (response.status === 429 && canRetry) {
+			await Bun.sleep(getRetryDelay(response));
 			return fetch(url, options, _retries + 1);
 		}
 

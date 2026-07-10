@@ -1,8 +1,10 @@
 {
 	"compilerOptions": {
 		"outDir": "dist",
-		"baseUrl": "src",
 		"rootDir": "src",
+		"paths": {
+			"*": ["./src/*"]
+		},
 		"allowUnusedLabels": false,
 		"allowUnreachableCode": false,
 		"noFallthroughCasesInSwitch": true,

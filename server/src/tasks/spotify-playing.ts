@@ -4,7 +4,6 @@ import {
 	ensureAccessToken,
 	REDIS_LAST_UPDATE_ON,
 	REDIS_SPOTIFY_ACCESS_TOKEN,
-	REDIS_SPOTIFY_REFRESH_TOKEN,
 } from "../clients/spotify.js";
 import { REDIS_SPOTIFY_PLAYING } from "../realtime/spotify.js";
 
@@ -36,10 +35,7 @@ export const spotifyPlayingTask = async (
 			accessToken = await ensureAccessToken(redis, spotify);
 		} catch (error) {
 			console.error("Failed to refresh access token", error);
-			await Promise.all([
-				redis.del(REDIS_SPOTIFY_ACCESS_TOKEN),
-				redis.del(REDIS_SPOTIFY_REFRESH_TOKEN),
-			]);
+			await redis.del(REDIS_SPOTIFY_ACCESS_TOKEN);
 			await Bun.sleep(noPlayingInterval);
 			continue;
 		}
@@ -90,13 +86,19 @@ export const spotifyPlayingTask = async (
 			continue;
 		}
 
-		const formated = JSON.stringify(await spotify.formatTrack(nowPlaying));
+		try {
+			const formatted = JSON.stringify(await spotify.formatTrack(nowPlaying));
 
-		await Promise.all([
-			redis.set(REDIS_SPOTIFY_PLAYING, formated),
-			redis.publish(REDIS_SPOTIFY_PLAYING, formated),
-			redis.set(REDIS_LAST_UPDATE_ON, (startedAt ?? 0).toString()),
-		]);
+			await Promise.all([
+				redis.set(REDIS_SPOTIFY_PLAYING, formatted),
+				redis.publish(REDIS_SPOTIFY_PLAYING, formatted),
+				redis.set(REDIS_LAST_UPDATE_ON, (startedAt ?? 0).toString()),
+			]);
+		} catch (error) {
+			console.error("Failed to format or publish current track", error);
+			await Bun.sleep(noPlayingInterval);
+			continue;
+		}
 		prevId = id;
 		prevStartedt = startedAt;
 
