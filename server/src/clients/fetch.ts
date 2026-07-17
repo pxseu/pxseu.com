@@ -21,11 +21,7 @@ const getRetryDelay = (response: Response) => {
 	return Number.isNaN(date) ? 1500 : Math.max(0, date - Date.now());
 };
 
-export const fetch = async (
-	url: string,
-	options?: RequestInit,
-	_retries = 0,
-): Promise<Response> => {
+export const fetch = async (url: string, options?: RequestInit, _retries = 0): Promise<Response> => {
 	const method = (options?.method ?? "GET").toUpperCase();
 	const canRetry = RETRYABLE_METHODS.has(method) && _retries < MAX_RETRIES;
 	const response = await globalThis.fetch(url, {

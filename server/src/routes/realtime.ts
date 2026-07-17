@@ -36,9 +36,7 @@ export const routes = kaito.get("/", async ({ ctx }) => {
 				});
 			}, 3e4);
 
-			const eventHandler = (
-				data: Awaited<ReturnType<typeof ctx.clients.spotify.formatTrack>>,
-			) => {
+			const eventHandler = (data: Awaited<ReturnType<typeof ctx.clients.spotify.formatTrack>>) => {
 				controller.enqueue({
 					event: PLAYING_KEY,
 					data,

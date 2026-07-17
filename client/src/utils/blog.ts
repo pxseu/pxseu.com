@@ -43,9 +43,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 
 export async function getAllBlogSlugs(): Promise<string[]> {
 	const files = await fs.readdir(BLOG_DIR);
-	return files
-		.filter((f) => f.endsWith(".mdx"))
-		.map((f) => f.substring(0, f.length - 4));
+	return files.filter((f) => f.endsWith(".mdx")).map((f) => f.substring(0, f.length - 4));
 }
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
@@ -54,9 +52,5 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
 
 	return posts
 		.filter((p) => p !== null)
-		.sort(
-			(a, b) =>
-				new Date(b.frontmatter.date).getTime() -
-				new Date(a.frontmatter.date).getTime(),
-		);
+		.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 }

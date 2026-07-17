@@ -13,10 +13,7 @@ export const REDIS_SPOTIFY_TOP_ARTISTS = `${config.REDIS_PREFIX}spotify:top_arti
  * refresh if needed. Returns null when no refresh token exists. Throws on
  * refresh failure so callers can apply their own error-handling strategy.
  */
-export async function ensureAccessToken(
-	redis: RedisClient,
-	spotify: SpotifyClient,
-): Promise<string | null> {
+export async function ensureAccessToken(redis: RedisClient, spotify: SpotifyClient): Promise<string | null> {
 	const existing = await redis.get(REDIS_SPOTIFY_ACCESS_TOKEN);
 	if (existing) return existing;
 
@@ -25,12 +22,7 @@ export async function ensureAccessToken(
 
 	const data = await spotify.refreshAccessToken(refreshToken);
 
-	await redis.set(
-		REDIS_SPOTIFY_ACCESS_TOKEN,
-		data.access_token,
-		"EX",
-		data.expires_in - 60,
-	);
+	await redis.set(REDIS_SPOTIFY_ACCESS_TOKEN, data.access_token, "EX", data.expires_in - 60);
 
 	if (data.refresh_token) {
 		await redis.set(REDIS_SPOTIFY_REFRESH_TOKEN, data.refresh_token);
@@ -192,15 +184,10 @@ export default class SpotifyClient {
 		clientSecret: string,
 		private redirectUri: string,
 	) {
-		this.basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString(
-			"base64",
-		);
+		this.basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
 	}
 
-	async formatTrack(
-		playing: Awaited<ReturnType<typeof this.getMyCurrentPlayingTrack>>,
-		now = new Date(),
-	) {
+	async formatTrack(playing: Awaited<ReturnType<typeof this.getMyCurrentPlayingTrack>>, now = new Date()) {
 		if (!playing?.item) return null;
 
 		const albumImage = playing.item.album.images[0]?.url ?? "";
@@ -220,9 +207,7 @@ export default class SpotifyClient {
 			},
 			progress: {
 				start: new Date(now.getTime() - playing.progress_ms),
-				end: new Date(
-					now.getTime() + playing.item.duration_ms - playing.progress_ms,
-				),
+				end: new Date(now.getTime() + playing.item.duration_ms - playing.progress_ms),
 			},
 		};
 	}
@@ -288,14 +273,11 @@ export default class SpotifyClient {
 	}
 
 	async getMyCurrentPlayingTrack(accessToken: string) {
-		const response = await fetch(
-			"https://api.spotify.com/v1/me/player/currently-playing",
-			{
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
+		const response = await fetch("https://api.spotify.com/v1/me/player/currently-playing", {
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
 			},
-		);
+		});
 
 		if (response.status === 204) return null;
 
@@ -306,11 +288,7 @@ export default class SpotifyClient {
 		return parsed;
 	}
 
-	async getMyTopArtists(
-		accessToken: string,
-		timeRange: TimeRange = "medium_term",
-		limit: number = 10,
-	) {
+	async getMyTopArtists(accessToken: string, timeRange: TimeRange = "medium_term", limit: number = 10) {
 		const response = await fetch(
 			`https://api.spotify.com/v1/me/top/artists?time_range=${timeRange}&limit=${limit}`,
 			{

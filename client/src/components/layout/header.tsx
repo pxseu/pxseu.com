@@ -18,12 +18,7 @@ interface NavLinkProps {
 	children: ReactNode;
 }
 
-function NavLink({
-	href,
-	extended = false,
-	children,
-	className,
-}: NavLinkProps) {
+function NavLink({ href, extended = false, children, className }: NavLinkProps) {
 	const pathname = usePathname();
 
 	return (
@@ -53,7 +48,7 @@ export default function Header() {
 			<header className="w-full border border-border-100 bg-zinc-950/50">
 				<nav className="grid w-full grid-cols-1 items-center border-b border-border-100 text-zinc-300 sm:grid-cols-[1fr_auto]">
 					<NavLink href="/" extended>
-						Index / Home
+						Home
 					</NavLink>
 
 					<div className="grid grid-cols-3 sm:flex">
@@ -76,9 +71,7 @@ export default function Header() {
 					</div>
 
 					<div className="border-t border-border-100 pt-4 md:border-t-0 md:border-l md:pl-6 md:pt-0 flex flex-col gap-1">
-						<p className="text-[11px] tracking-[0.22em] uppercase text-zinc-400">
-							Live Feed
-						</p>
+						<p className="text-[11px] tracking-[0.22em] uppercase text-zinc-400">Live Feed</p>
 						<Location />
 						<Playing />
 						{/*<Quote />*/}

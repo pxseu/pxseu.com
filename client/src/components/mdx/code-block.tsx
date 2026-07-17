@@ -6,11 +6,7 @@ interface CodeBlockProps {
 	filename?: string;
 }
 
-export async function CodeBlock({
-	children,
-	language = "text",
-	filename,
-}: CodeBlockProps) {
+export async function CodeBlock({ children, language = "text", filename }: CodeBlockProps) {
 	const html = await codeToHtml(children.trim(), {
 		lang: language,
 		theme: "github-dark-dimmed",

@@ -12,9 +12,7 @@ export const routes = kaito
 	.get("/auth-url", ({ ctx }) => ({
 		url: ctx.clients.spotify.getAuthorizationUrl(),
 	}))
-	.get("/auth-url-redirect", ({ ctx }) =>
-		Response.redirect(ctx.clients.spotify.getAuthorizationUrl(), 302),
-	)
+	.get("/auth-url-redirect", ({ ctx }) => Response.redirect(ctx.clients.spotify.getAuthorizationUrl(), 302))
 	.get("/callback", {
 		query: { code: k.string() },
 		async run({ ctx, query }) {
@@ -32,12 +30,7 @@ export const routes = kaito
 				throw new KaitoError(403, "Unauthorized user");
 			}
 
-			await clients.redis.set(
-				REDIS_SPOTIFY_ACCESS_TOKEN,
-				data.access_token,
-				"EX",
-				data.expires_in - 60,
-			);
+			await clients.redis.set(REDIS_SPOTIFY_ACCESS_TOKEN, data.access_token, "EX", data.expires_in - 60);
 			await clients.redis.set(REDIS_SPOTIFY_REFRESH_TOKEN, data.refresh_token);
 
 			return { me };
@@ -46,9 +39,7 @@ export const routes = kaito
 	.get("/now-playing", ({ ctx }) => ctx.realtime.spotify.state)
 	.get("/top-artists", {
 		query: {
-			range: k
-				.enum(["short_term", "medium_term", "long_term"])
-				.default("medium_term"),
+			range: k.enum(["short_term", "medium_term", "long_term"]).default("medium_term"),
 			limit: k.coerce.number().min(1).max(50).default(10),
 		},
 		async run({ ctx, query }) {
@@ -72,18 +63,9 @@ export const routes = kaito
 				throw new KaitoError(401, "Not authenticated with Spotify");
 			}
 
-			const topArtists = await clients.spotify.getMyTopArtists(
-				accessToken,
-				range,
-				limit,
-			);
+			const topArtists = await clients.spotify.getMyTopArtists(accessToken, range, limit);
 
-			await clients.redis.set(
-				cacheKey,
-				JSON.stringify(topArtists),
-				"EX",
-				86400,
-			);
+			await clients.redis.set(cacheKey, JSON.stringify(topArtists), "EX", 86400);
 
 			return clients.spotify.formatTopArtists(topArtists.items);
 		},

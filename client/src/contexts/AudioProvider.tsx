@@ -1,13 +1,7 @@
 "use client";
 
 import type React from "react";
-import {
-	createContext,
-	useCallback,
-	useContext,
-	useEffect,
-	useRef,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useRef } from "react";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 export const AUDIO_SOURCES = {
@@ -47,9 +41,7 @@ export const useAudio = () => {
 	return context;
 };
 
-export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({
-	children,
-}) => {
+export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	const audioElementsRef = useRef(new Map<string, HTMLAudioElement>());
 	const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -92,9 +84,5 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({
 		}
 	}, [getAudioElement, prefersReducedMotion]);
 
-	return (
-		<AudioContext.Provider value={{ playAudio }}>
-			{children}
-		</AudioContext.Provider>
-	);
+	return <AudioContext.Provider value={{ playAudio }}>{children}</AudioContext.Provider>;
 };

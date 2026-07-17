@@ -46,9 +46,7 @@ const rgbToHsl = (r: number, g: number, b: number) => {
 	};
 };
 
-export const dominantColor = async (
-	imageUrl: string,
-): Promise<string | undefined> => {
+export const dominantColor = async (imageUrl: string): Promise<string | undefined> => {
 	if (!imageUrl) return;
 
 	const response = await fetch(imageUrl);
@@ -60,10 +58,7 @@ export const dominantColor = async (
 		.raw()
 		.toBuffer({ resolveWithObject: true });
 
-	const buckets = new Map<
-		number,
-		{ r: number; g: number; b: number; count: number }
-	>();
+	const buckets = new Map<number, { r: number; g: number; b: number; count: number }>();
 
 	for (let i = 0; i < data.length; i += info.channels) {
 		const r = data[i] ?? 0;
@@ -95,8 +90,7 @@ export const dominantColor = async (
 		const lum = (0.299 * ar + 0.587 * ag + 0.114 * ab) / 255;
 
 		// reward vibrancy + decent coverage, but zero out near-black/near-white
-		const score =
-			sat * Math.sqrt(count) * Math.max(0, 1 - Math.abs(lum - 0.5) * 2);
+		const score = sat * Math.sqrt(count) * Math.max(0, 1 - Math.abs(lum - 0.5) * 2);
 
 		if (score > bestScore) {
 			bestScore = score;

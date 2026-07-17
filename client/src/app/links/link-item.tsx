@@ -10,12 +10,7 @@ interface LinkItemProps {
 	colorClass?: string;
 }
 
-export default function LinkItem({
-	icon,
-	displayName,
-	link,
-	colorClass = "text-brand-500",
-}: LinkItemProps) {
+export default function LinkItem({ icon, displayName, link, colorClass = "text-brand-500" }: LinkItemProps) {
 	return (
 		<Link
 			href={link}
@@ -27,12 +22,7 @@ export default function LinkItem({
 				<span aria-hidden="true" className={cn("text-xl", colorClass)}>
 					{icon}
 				</span>
-				<span
-					className={cn(
-						"text-sm font-semibold uppercase tracking-[0.08em]",
-						colorClass,
-					)}
-				>
+				<span className={cn("text-sm font-semibold uppercase tracking-[0.08em]", colorClass)}>
 					{displayName}
 				</span>
 			</div>

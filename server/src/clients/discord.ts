@@ -35,11 +35,7 @@ export class DiscordClient {
 		private avatar: string,
 	) {}
 
-	async sendMessage(body: {
-		content?: string | null;
-		name?: string | null;
-		attachment?: string | null;
-	}) {
+	async sendMessage(body: { content?: string | null; name?: string | null; attachment?: string | null }) {
 		const embed: DiscordEmbed = {
 			description: body.content || undefined,
 			image: body.attachment ? { url: body.attachment } : undefined,
@@ -68,23 +64,18 @@ export class DiscordClient {
 			await Bun.sleep((delay * 1000 + 100) / remaining);
 		}
 
-		const res = await fetch(
-			`${ENDPOINT}/${this.webhookId}/${this.webhookToken}`,
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					content: body.attachment
-						? `Attachment: ${body.attachment}`
-						: undefined,
-					username: "anon chat",
-					avatar_url: this.avatar,
-					embeds: [embed],
-				}),
+		const res = await fetch(`${ENDPOINT}/${this.webhookId}/${this.webhookToken}`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
 			},
-		);
+			body: JSON.stringify({
+				content: body.attachment ? `Attachment: ${body.attachment}` : undefined,
+				username: "anon chat",
+				avatar_url: this.avatar,
+				embeds: [embed],
+			}),
+		});
 
 		if (res.ok && res.headers) {
 			const resRemaining = res.headers.get("x-ratelimit-remaining");

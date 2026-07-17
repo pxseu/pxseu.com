@@ -1,14 +1,7 @@
 "use client";
 
 import type React from "react";
-import {
-	createContext,
-	useCallback,
-	useContext,
-	useEffect,
-	useRef,
-	useState,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { API_ROUTE } from "@/config";
 import type { RealtimeContextType, RealtimeData } from "../types/realtime";
 
@@ -22,9 +15,7 @@ export const useRealtime = () => useContext(RealtimeContext);
 const MAX_BACKOFF_MS = 30_000;
 const BASE_BACKOFF_MS = 1_000;
 
-export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
-	children,
-}) => {
+export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	const [data, setData] = useState<RealtimeData | null>(null);
 	const [isConnected, setIsConnected] = useState(false);
 	const eventSourceRef = useRef<EventSource | null>(null);
@@ -115,10 +106,7 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 				return;
 			}
 
-			const timeout = Math.min(
-				BASE_BACKOFF_MS * 2 ** retryCount.current,
-				MAX_BACKOFF_MS,
-			);
+			const timeout = Math.min(BASE_BACKOFF_MS * 2 ** retryCount.current, MAX_BACKOFF_MS);
 			reconnectTimeoutRef.current = window.setTimeout(() => {
 				retryCount.current++;
 				connect();
@@ -152,9 +140,5 @@ export const RealtimeProvider: React.FC<{ children: React.ReactNode }> = ({
 		};
 	}, [clearReconnectTimeout, closeEventSource, connect]);
 
-	return (
-		<RealtimeContext.Provider value={{ data, isConnected }}>
-			{children}
-		</RealtimeContext.Provider>
-	);
+	return <RealtimeContext.Provider value={{ data, isConnected }}>{children}</RealtimeContext.Provider>;
 };

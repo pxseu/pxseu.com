@@ -37,10 +37,7 @@ export default function BackgroundParallax() {
 	);
 
 	return (
-		<div
-			aria-hidden
-			className="pointer-events-none fixed inset-[-25vh] -z-10 overflow-hidden animate-fade-in"
-		>
+		<div aria-hidden className="pointer-events-none fixed inset-[-25vh] -z-10 overflow-hidden animate-fade-in">
 			<div
 				ref={layerRef}
 				style={{ display: "none" }}

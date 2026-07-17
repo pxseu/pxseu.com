@@ -27,8 +27,7 @@ export const kaito = create({
 
 		return {
 			status: error instanceof KaitoError ? error.status : 500,
-			message:
-				error instanceof KaitoError ? error.message : "Internal Server Error",
+			message: error instanceof KaitoError ? error.message : "Internal Server Error",
 		};
 	},
 
@@ -55,10 +54,7 @@ export const kaito = create({
 	transform: async (request, response) => {
 		const origin = request.headers.get("origin");
 
-		response.headers.set(
-			"Content-Security-Policy",
-			"default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
-		);
+		response.headers.set("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'; base-uri 'none'");
 		response.headers.set("Cross-Origin-Resource-Policy", "same-site");
 		response.headers.set("Referrer-Policy", "no-referrer");
 		response.headers.set("X-Content-Type-Options", "nosniff");
@@ -66,10 +62,7 @@ export const kaito = create({
 
 		if (origin) {
 			response.headers.set("Access-Control-Allow-Origin", origin);
-			response.headers.set(
-				"Access-Control-Allow-Methods",
-				"GET, POST, PUT, DELETE, OPTIONS",
-			);
+			response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
 			response.headers.set(
 				"Access-Control-Allow-Headers",
 				"Content-Type, Authorization, Cache-Control, X-Requested-With, Accept, Origin",

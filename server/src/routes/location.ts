@@ -23,9 +23,7 @@ export const routes = kaito
 				auth = `${config.LOCATION_SECRET.slice(0, -1)}${String.fromCharCode(config.LOCATION_SECRET.charCodeAt(-1) + 1)}`;
 			}
 
-			if (
-				!timingSafeEqual(Buffer.from(auth), Buffer.from(config.LOCATION_SECRET))
-			) {
+			if (!timingSafeEqual(Buffer.from(auth), Buffer.from(config.LOCATION_SECRET))) {
 				throw new KaitoError(401, "Unauthorized");
 			}
 

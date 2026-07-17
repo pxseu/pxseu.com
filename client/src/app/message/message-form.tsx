@@ -34,9 +34,8 @@ const initialState: FormState = {
 	errorField: null,
 };
 
-const CONTENT_REQUIRED_ERROR =
-	"Enter a message or attachment URL before sending.";
-const ATTACHMENT_URL_ERROR = "Enter a valid attachment URL.";
+const CONTENT_REQUIRED_ERROR = "Add a message or attachment before sending.";
+const ATTACHMENT_URL_ERROR = "That attachment URL doesn't look valid.";
 
 function isValidUrl(value: string) {
 	try {
@@ -48,19 +47,14 @@ function isValidUrl(value: string) {
 }
 
 const clearFieldError = (state: FormState, field: ErrorField): FormState =>
-	state.errorField === field
-		? { ...state, status: "idle", errorField: null, errorMessage: "" }
-		: state;
+	state.errorField === field ? { ...state, status: "idle", errorField: null, errorMessage: "" } : state;
 
 function formReducer(state: FormState, action: FormAction): FormState {
 	switch (action.type) {
 		case "SET_CONTENT":
 			return clearFieldError({ ...state, content: action.payload }, "content");
 		case "SET_ATTACHMENT":
-			return clearFieldError(
-				{ ...state, attachment: action.payload },
-				"attachment",
-			);
+			return clearFieldError({ ...state, attachment: action.payload }, "attachment");
 		case "SET_NAME":
 			return { ...state, name: action.payload };
 		case "FIELD_ERROR":
@@ -150,15 +144,14 @@ export default function MessageForm() {
 			});
 
 			if (!response.ok) {
-				throw new Error("Message couldn't be sent. Try again in a moment.");
+				throw new Error("Couldn't send that message. Try again in a moment.");
 			}
 
 			dispatch({ type: "SUBMIT_SUCCESS" });
 		} catch (error) {
 			dispatch({
 				type: "SUBMIT_ERROR",
-				payload:
-					error instanceof Error ? error.message : "Something went wrong",
+				payload: error instanceof Error ? error.message : "Something went wrong.",
 			});
 		}
 	};
@@ -171,7 +164,7 @@ export default function MessageForm() {
 					aria-live="polite"
 				>
 					<FaCheck aria-hidden="true" className="mr-2 h-4 w-4" />
-					Message sent.
+					Sent. Thanks =]
 				</output>
 			) : showSubmitError ? (
 				<div
@@ -180,16 +173,13 @@ export default function MessageForm() {
 					aria-live="polite"
 				>
 					<FaTriangleExclamation aria-hidden="true" className="mr-2 h-4 w-4" />
-					{errorMessage || "Failed to send message"}
+					{errorMessage || "Something went wrong."}
 				</div>
 			) : null}
 
 			<form onSubmit={handleSubmit} noValidate className="space-y-5">
 				<div className="space-y-2">
-					<label
-						htmlFor={nameInputId}
-						className="block text-xs uppercase tracking-[0.18em] text-zinc-400"
-					>
+					<label htmlFor={nameInputId} className="block text-xs uppercase tracking-[0.18em] text-zinc-400">
 						Name
 					</label>
 					<input
@@ -198,9 +188,7 @@ export default function MessageForm() {
 						type="text"
 						autoComplete="name"
 						value={name}
-						onChange={(e) =>
-							dispatch({ type: "SET_NAME", payload: e.target.value })
-						}
+						onChange={(e) => dispatch({ type: "SET_NAME", payload: e.target.value })}
 						className={inputClass}
 						placeholder="Anonymous"
 						disabled={status === "loading"}
@@ -208,10 +196,7 @@ export default function MessageForm() {
 				</div>
 
 				<div className="space-y-2">
-					<label
-						htmlFor={contentInputId}
-						className="block text-xs uppercase tracking-[0.18em] text-zinc-400"
-					>
+					<label htmlFor={contentInputId} className="block text-xs uppercase tracking-[0.18em] text-zinc-400">
 						Message
 					</label>
 					<textarea
@@ -220,16 +205,12 @@ export default function MessageForm() {
 						name="content"
 						autoComplete="off"
 						value={content}
-						onChange={(e) =>
-							dispatch({ type: "SET_CONTENT", payload: e.target.value })
-						}
+						onChange={(e) => dispatch({ type: "SET_CONTENT", payload: e.target.value })}
 						className={inputClass}
 						rows={4}
 						aria-invalid={errorField === "content" || undefined}
-						aria-describedby={
-							errorField === "content" ? contentErrorId : undefined
-						}
-						placeholder="Your message…"
+						aria-describedby={errorField === "content" ? contentErrorId : undefined}
+						placeholder="Write something…"
 						disabled={status === "loading"}
 					/>
 					{errorField === "content" ? (
@@ -253,14 +234,10 @@ export default function MessageForm() {
 						type="url"
 						autoComplete="off"
 						value={attachment}
-						onChange={(e) =>
-							dispatch({ type: "SET_ATTACHMENT", payload: e.target.value })
-						}
+						onChange={(e) => dispatch({ type: "SET_ATTACHMENT", payload: e.target.value })}
 						className={inputClass}
 						aria-invalid={errorField === "attachment" || undefined}
-						aria-describedby={
-							errorField === "attachment" ? attachmentErrorId : undefined
-						}
+						aria-describedby={errorField === "attachment" ? attachmentErrorId : undefined}
 						placeholder="https://example.com/image.png"
 						disabled={status === "loading"}
 					/>
@@ -279,10 +256,7 @@ export default function MessageForm() {
 					>
 						{status === "loading" ? (
 							<span className="flex items-center justify-center">
-								<FaCircleNotch
-									aria-hidden="true"
-									className="-ml-1 mr-2 h-4 w-4 animate-spin"
-								/>
+								<FaCircleNotch aria-hidden="true" className="-ml-1 mr-2 h-4 w-4 animate-spin" />
 								Sending…
 							</span>
 						) : (
@@ -296,7 +270,7 @@ export default function MessageForm() {
 						disabled={status === "loading"}
 						className="border border-border-100 bg-zinc-900 px-4 py-3 text-xs uppercase tracking-[0.2em] text-zinc-300 transition-[border-color,background-color,color,opacity] duration-150 ease-linear hover:border-zinc-600 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50 disabled:cursor-not-allowed disabled:opacity-50"
 					>
-						Reset
+						Clear
 					</button>
 				</div>
 			</form>

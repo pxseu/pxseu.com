@@ -27,13 +27,7 @@ async function superviseSpotifyTask(signal: AbortSignal) {
 }
 
 async function tryBecomeMain() {
-	const result = await clients.redis.set(
-		MAIN_NODE_KEY,
-		hostname(),
-		"EX",
-		MAIN_NODE_TTL.toString(),
-		"NX",
-	);
+	const result = await clients.redis.set(MAIN_NODE_KEY, hostname(), "EX", MAIN_NODE_TTL.toString(), "NX");
 	if (result === "OK") {
 		is_main = true;
 		spotifyTaskAbortController = new AbortController();

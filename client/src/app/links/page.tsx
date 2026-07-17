@@ -21,7 +21,7 @@ import LinkItem from "./link-item";
 
 export const metadata: Metadata = {
 	title: "Links - pxseu.com",
-	description: "Find me around the web",
+	description: "Places you can find me elsewhere on the internet.",
 };
 
 const collectionPageSchema = {
@@ -29,7 +29,7 @@ const collectionPageSchema = {
 	"@type": "CollectionPage",
 	name: "Links - pxseu.com",
 	url: "https://pxseu.com/links",
-	description: "Find me around the web",
+	description: "Places you can find me elsewhere on the internet.",
 	mainEntity: {
 		"@type": "Person",
 		name: "pxseu",
@@ -43,16 +43,9 @@ export default function Links() {
 	return (
 		<>
 			<JsonLd id="collection-page-schema" json={collectionPageSchemaJson} />
-			<Container
-				title="Links"
-				label="Directory"
-				as="main"
-				contentClassName="p-0"
-			>
+			<Container title="Links" as="main" contentClassName="p-0">
 				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
-					<h3 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
-						Support
-					</h3>
+					<h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">Support</h3>
 					<div className="space-y-3">
 						<LinkItem
 							icon={<FaPatreon />}
@@ -70,9 +63,7 @@ export default function Links() {
 				</div>
 
 				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
-					<h3 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
-						Work
-					</h3>
+					<h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">Work & Contact</h3>
 					<div className="space-y-3">
 						<LinkItem
 							icon={<FaEnvelope />}
@@ -102,9 +93,7 @@ export default function Links() {
 				</div>
 
 				<div className="space-y-4 border-b border-border-100 px-5 py-5 sm:px-6">
-					<h3 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
-						Social Media
-					</h3>
+					<h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">Social</h3>
 					<div className="space-y-3">
 						<LinkItem
 							icon={<FaTiktok />}
@@ -141,9 +130,7 @@ export default function Links() {
 				</div>
 
 				<div className="space-y-4 px-5 py-5 sm:px-6">
-					<h3 className="text-xl font-semibold uppercase tracking-widest text-zinc-200 sm:text-2xl">
-						Open Source / Community
-					</h3>
+					<h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">Code</h3>
 					<div className="space-y-3">
 						<LinkItem
 							icon={<FaNpm />}

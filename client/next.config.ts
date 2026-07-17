@@ -5,19 +5,11 @@ import type { NextConfig } from "next";
 const repoRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const isDevelopment = process.env.NODE_ENV !== "production";
 const getEnv = (key: string) => process.env[key];
-const apiOrigin = new URL(
-	getEnv("NEXT_PUBLIC_API_ROUTE") || "https://api.pxseu.com",
-).origin;
+const apiOrigin = new URL(getEnv("NEXT_PUBLIC_API_ROUTE") || "https://api.pxseu.com").origin;
 
 const csp = [
 	["default-src", "'self'"],
-	[
-		"script-src",
-		"'self'",
-		"'unsafe-inline'",
-		isDevelopment ? "'unsafe-eval'" : "",
-		"https://*.csidetm.com",
-	],
+	["script-src", "'self'", "'unsafe-inline'", isDevelopment ? "'unsafe-eval'" : "", "https://*.csidetm.com"],
 	["style-src", "'self'", "'unsafe-inline'"],
 	["img-src", "'self'", "https://i.scdn.co", "https://*.pxseu.com"],
 	["font-src", "'self'"],

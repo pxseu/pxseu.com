@@ -38,9 +38,6 @@ module.exports = {
 # Thank you.
 # - Human
 
-${t.replace(
-	"Disallow: /message",
-	"Disallow: /message\nContent-Signal: search=yes, ai-input=no, ai-train=no",
-)}`,
+${t.replace("Disallow: /message", "Disallow: /message\nContent-Signal: search=yes, ai-input=no, ai-train=no")}`,
 	},
 };

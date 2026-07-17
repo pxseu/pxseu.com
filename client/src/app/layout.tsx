@@ -13,7 +13,7 @@ import { RealtimeProvider } from "@/contexts/RealtimeContext";
 
 const THEME_COLOR = "#8066F7";
 const ASSET_VERSION = "3.0";
-const description = "pxseu's personal website";
+const description = "Kuba Ellwart's personal site — code, projects and occasional notes.";
 
 const websiteSchema = {
 	"@context": "https://schema.org",

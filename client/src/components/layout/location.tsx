@@ -39,7 +39,7 @@ export default function Location() {
 						</Tooltip>
 					</>
 				) : (
-					<span>Unknown location</span>
+					<span>Location unavailable</span>
 				)
 			) : (
 				<span>Triangulating…</span>

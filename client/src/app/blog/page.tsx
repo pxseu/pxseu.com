@@ -7,7 +7,7 @@ import { formatDate } from "@/utils/date";
 
 export const metadata: Metadata = {
 	title: "Blog - pxseu.com",
-	description: "Thoughts, engineering and the web",
+	description: "Notes on code and whatever else I felt like writing down.",
 };
 
 export default async function BlogIndex() {
@@ -44,15 +44,10 @@ export default async function BlogIndex() {
 	return (
 		<>
 			<JsonLd id="blog-schema" json={blogSchemaJson} />
-			<Container
-				as="main"
-				label="Listing"
-				title="Blog"
-				contentClassName="!p-0 divide-y divide-border-100"
-			>
+			<Container as="main" title="Blog" contentClassName="!p-0 divide-y divide-border-100">
 				{posts.length === 0 ? (
 					<div className="px-5 py-12 text-center text-zinc-400 md:px-6">
-						No posts yet. Check back soon.
+						I haven&apos;t written anything here yet. Eventually&trade;.
 					</div>
 				) : (
 					posts.map((post) => (
@@ -69,9 +64,7 @@ export default async function BlogIndex() {
 									{formatDate(post.frontmatter.date)}
 								</time>
 							</div>
-							<p className="mt-1 text-sm leading-relaxed text-zinc-400">
-								{post.frontmatter.description}
-							</p>
+							<p className="mt-1 text-sm leading-relaxed text-zinc-400">{post.frontmatter.description}</p>
 							{post.frontmatter.tags ? (
 								<div className="mt-3 flex flex-wrap gap-2">
 									{post.frontmatter.tags.map((tag) => (

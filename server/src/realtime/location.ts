@@ -12,10 +12,7 @@ export type Location = {
 	timestamp: Date;
 } | null;
 
-export class LocationRealtimeClient extends RealtimeClient<
-	typeof REDIS_LOCATION_UPDATE,
-	Location
-> {
+export class LocationRealtimeClient extends RealtimeClient<typeof REDIS_LOCATION_UPDATE, Location> {
 	async initialize() {
 		const listener = new EventEmitter<{
 			[REDIS_LOCATION_UPDATE]: [Location];
@@ -41,17 +38,14 @@ export class LocationRealtimeClient extends RealtimeClient<
 			.get(REDIS_LOCATION)
 			.then((v) => parseLocation(v || "null"));
 
-		await publisher.subscribe(
-			REDIS_LOCATION_UPDATE,
-			async (message, channel) => {
-				if (channel === REDIS_LOCATION_UPDATE) {
-					const data = parseLocation(message);
+		await publisher.subscribe(REDIS_LOCATION_UPDATE, async (message, channel) => {
+			if (channel === REDIS_LOCATION_UPDATE) {
+				const data = parseLocation(message);
 
-					listener.emit(REDIS_LOCATION_UPDATE, data);
-					currentLocation = data;
-				}
-			},
-		);
+				listener.emit(REDIS_LOCATION_UPDATE, data);
+				currentLocation = data;
+			}
+		});
 
 		const update = async (state: Location) => {
 			await Promise.all([

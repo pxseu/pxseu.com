@@ -20,11 +20,7 @@ export function Timed({ timestamp, label, suffix }: TimedProps) {
 	const time = useTimePassed(timestamp);
 
 	return (
-		<Tooltip
-			content={<PreciseTimePassed timestamp={timestamp} />}
-			suffix={suffix}
-			focus
-		>
+		<Tooltip content={<PreciseTimePassed timestamp={timestamp} />} suffix={suffix} focus>
 			{Math.floor(time)} {label}
 		</Tooltip>
 	);
