@@ -1,0 +1,32 @@
+! Title: Personal blocklist
+! Description: Custom telemetry and UI filters
+! Homepage: https://pxseu.com
+! Expires: 1 day
+! Last modified: 19 Jul 2026
+
+! --- Network filters ---
+
+! Most of railway tracking
+||luminaire.railway.com^
+||backboard.railway.com/graphql/internal?*q=eventBatchTrack^
+||railway.com/googletag/
+
+! Part of railway tacking but many services use this too
+||osano.com^
+
+! Personal websites tracking
+||palantir.estrogen.delivery^
+||analytics.lanyard.cafe^
+||kie.ac/api/foundry^
+||lab.alistair.cloud^
+
+! Generic nekoweb stuff
+/.nekoweb-api/countview
+
+! --- Cosmetic filters ---
+
+! Google Workspace upsells
+mail.google.com##.s1rbBe
+docs.google.com##.docsRecommendationsPepPersistentEntryPointContainer
+drive.google.com##.Iu19ad-OkO9ve-yp5uJf-j
+calendar.google.com##.nn5oJc
