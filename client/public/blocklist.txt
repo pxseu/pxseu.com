@@ -19,6 +19,7 @@
 ||analytics.lanyard.cafe^
 ||kie.ac/api/foundry^
 ||lab.alistair.cloud^
+||a.phin.jp^
 
 ! Generic nekoweb stuff
 /.nekoweb-api/countview
@@ -30,3 +31,5 @@ mail.google.com##.s1rbBe
 docs.google.com##.docsRecommendationsPepPersistentEntryPointContainer
 drive.google.com##.Iu19ad-OkO9ve-yp5uJf-j
 calendar.google.com##.nn5oJc
+admin.google.com##.tMXgSc
+admin.google.com##.uUJuub.dJIfFb
