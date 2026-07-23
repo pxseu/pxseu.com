@@ -18,6 +18,7 @@
 ||palantir.estrogen.delivery^
 ||analytics.lanyard.cafe^
 ||kie.ac/api/foundry^
+||pltr.kie.ac^
 ||lab.alistair.cloud^
 ||a.phin.jp^
 
