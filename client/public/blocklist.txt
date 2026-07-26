@@ -21,6 +21,7 @@
 ||pltr.kie.ac^
 ||lab.alistair.cloud^
 ||a.phin.jp^
+||a.kie.ac^
 
 ! Generic nekoweb stuff
 /.nekoweb-api/countview
