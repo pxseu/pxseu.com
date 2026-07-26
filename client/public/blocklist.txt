@@ -17,6 +17,7 @@
 ! Personal websites tracking
 ||palantir.estrogen.delivery^
 ||analytics.lanyard.cafe^
+||assumi.ng/api/send^
 ||lab.alistair.cloud^
 ||a.phin.jp^
 ||a.kie.ac^
