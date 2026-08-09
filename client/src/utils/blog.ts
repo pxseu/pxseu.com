@@ -4,8 +4,8 @@ import matter from "gray-matter";
 
 interface BlogFrontmatter {
 	title: string;
-	description: string;
 	date: Date;
+	description?: string;
 	tags?: string[];
 }
 

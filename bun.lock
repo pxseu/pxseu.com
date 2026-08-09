@@ -31,7 +31,6 @@
         "tailwind-merge": "^3.6.0",
       },
       "devDependencies": {
-        "@pxseu/prettier-config": "^1.0.0",
         "@tailwindcss/postcss": "^4.3.2",
         "@types/node": "25.9.4",
         "@types/react": "^19.2.17",
