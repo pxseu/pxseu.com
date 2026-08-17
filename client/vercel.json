@@ -1,0 +1,5 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"installCommand": "curl -fsSL https://bun.com/install | BUN_INSTALL=\"$PWD/.bun-canary\" bash -s canary && ./.bun-canary/bin/bun install --frozen-lockfile",
+	"buildCommand": "./.bun-canary/bin/bun --bun x next build && ./.bun-canary/bin/bun --bun x next-sitemap"
+}
