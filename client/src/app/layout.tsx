@@ -1,19 +1,17 @@
-import Header from "@/components/layout/header";
 import "../styles/globals.css";
 import { CSideScript } from "@cside.dev/next";
-import { GeistMono } from "geist/font/mono";
 import ReactLenis from "lenis/react";
 import type { Metadata, Viewport } from "next";
-import BackgroundParallax from "@/components/layout/background-parallax";
+import { Karla } from "next/font/google";
+import JsonLd from "@/components/json-ld";
 import Footer from "@/components/layout/footer";
-import JsonLd from "@/components/ui/json-ld";
+import { Header } from "@/components/layout/header";
 import { API_ROUTE } from "@/config";
-import { AudioProvider } from "@/contexts/AudioProvider";
 import { RealtimeProvider } from "@/contexts/RealtimeContext";
 
 const THEME_COLOR = "#8066F7";
 const ASSET_VERSION = "3.0";
-const description = "Kuba Ellwart's personal site — code, projects and occasional notes.";
+const description = "Software engineer and open source enthusiast.";
 
 const websiteSchema = {
 	"@context": "https://schema.org",
@@ -52,11 +50,11 @@ const personSchema = {
 	email: "kuba@pxseu.com",
 };
 
-const websiteSchemaJson = JSON.stringify(websiteSchema);
-const personSchemaJson = JSON.stringify(personSchema);
-
 export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
 	themeColor: THEME_COLOR,
+	colorScheme: "dark",
 };
 
 export const metadata: Metadata = {
@@ -117,13 +115,16 @@ export const metadata: Metadata = {
 		description,
 		images: [`https://pxseu.com/android-chrome-512x512.png?v=${ASSET_VERSION}`],
 	},
-	verification: {
-		google: "azPHAHBpTuJ-8stcPE_LX6-GNwVGjzp5_V7E3KCcmMk",
-	},
 	other: {
 		"msapplication-TileColor": THEME_COLOR,
 	},
 };
+
+const font = Karla({
+	subsets: ["latin"],
+	weight: ["500", "600", "700"],
+	fallback: ["system-ui", "sans-serif"],
+});
 
 export default function RootLayout({
 	children,
@@ -131,25 +132,24 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className={GeistMono.variable}>
+		<html lang="en" className={font.className}>
 			<head>
 				<CSideScript scriptURLOverride="https://7228584649694834688.csidetm.com/client.js" />
-				<JsonLd id="website-schema" json={websiteSchemaJson} />
-				<JsonLd id="person-schema" json={personSchemaJson} />
+				<JsonLd id="website-schema" json={websiteSchema} />
+				<JsonLd id="person-schema" json={personSchema} />
 				<link rel="preconnect" href={API_ROUTE} />
 				<link rel="preconnect" href="https://i.scdn.co" />
 			</head>
-			<body className="relative min-h-screen overflow-x-hidden bg-zinc-950 font-mono text-zinc-350 antialiased leading-relaxed tracking-[-0.01em] selection:bg-brand-500/40 selection:text-zinc-100">
-				<div className="relative z-10 mx-auto flex w-full max-w-245 flex-col px-4 py-4 sm:px-6 sm:py-6 gap-8">
+			<body className="min-h-screen bg-zinc-950 text-zinc-300 antialiased leading-relaxed tracking-tight selection:bg-brand-500/40 selection:text-zinc-100">
+				<div className="mx-auto flex min-h-screen max-w-195 flex-col gap-8 p-4 sm:p-6">
 					<RealtimeProvider>
-						<AudioProvider>
-							<ReactLenis root options={{ smoothWheel: true, lerp: 0.2 }}>
-								<BackgroundParallax />
-								<Header />
+						<ReactLenis root options={{ smoothWheel: true, lerp: 0.2 }}>
+							<Header />
+							<main className="flex-1" data-stagger="page">
 								{children}
-								<Footer />
-							</ReactLenis>
-						</AudioProvider>
+							</main>
+							<Footer />
+						</ReactLenis>
 					</RealtimeProvider>
 				</div>
 			</body>

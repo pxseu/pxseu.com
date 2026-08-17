@@ -11,7 +11,7 @@ const csp = [
 	["default-src", "'self'"],
 	["script-src", "'self'", "'unsafe-inline'", isDevelopment ? "'unsafe-eval'" : "", "https://*.csidetm.com"],
 	["style-src", "'self'", "'unsafe-inline'"],
-	["img-src", "'self'", "https://i.scdn.co", "https://*.pxseu.com"],
+	["img-src", "'self'", "data:", "https://i.scdn.co", "https://*.pxseu.com"],
 	["font-src", "'self'"],
 	["media-src", "'self'"],
 	[
@@ -113,6 +113,9 @@ const nextConfig: NextConfig = {
 	},
 	turbopack: {
 		root: repoRoot,
+	},
+	images: {
+		unoptimized: true,
 	},
 };
 

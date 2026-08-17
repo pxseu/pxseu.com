@@ -7,7 +7,10 @@ import { routes as spotifyRoutes } from "./spotify.js";
 const HEALTHCHECK_TIMEOUT_MS = 2000;
 
 export const root = kaito
-	.get("/", async ({ ctx }) => ctx.ip)
+	.get("/", () => ({
+		message: "umm hi!!",
+	}))
+	.get("/ip", ({ ctx }) => ctx.ip)
 	.get("/health", async ({ ctx }) => {
 		try {
 			const start = performance.now();

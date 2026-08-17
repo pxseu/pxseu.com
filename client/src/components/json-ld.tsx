@@ -1,6 +1,6 @@
 interface JsonLdProps {
 	id: string;
-	json: string;
+	json: Record<string, unknown>;
 }
 
 export default function JsonLd({ id, json }: JsonLdProps) {
@@ -9,7 +9,7 @@ export default function JsonLd({ id, json }: JsonLdProps) {
 			id={id}
 			type="application/ld+json"
 			// biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD requires dangerouslySetInnerHTML
-			dangerouslySetInnerHTML={{ __html: json }}
+			dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
 		/>
 	);
 }

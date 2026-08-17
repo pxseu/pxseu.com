@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Container from "@/components/ui/container";
-import JsonLd from "@/components/ui/json-ld";
-import MessageForm from "./message-form";
+import JsonLd from "@/components/json-ld";
+import { MessageForm } from "@/components/message/message-form";
+
+const description = "Send me a message!";
 
 export const metadata: Metadata = {
 	title: "Message - pxseu.com",
-	description: "Send Kuba a message directly through pxseu.com.",
+	description,
 	keywords: ["pxseu", "message", "contact"],
 };
 
@@ -14,7 +15,7 @@ const contactPageSchema = {
 	"@type": "ContactPage",
 	name: "Message - pxseu.com",
 	url: "https://pxseu.com/message",
-	description: "Send Kuba a message directly through pxseu.com.",
+	description,
 	mainEntity: {
 		"@type": "Person",
 		name: "pxseu",
@@ -23,18 +24,16 @@ const contactPageSchema = {
 	},
 };
 
-const contactPageSchemaJson = JSON.stringify(contactPageSchema);
-
 export default function MessagePage() {
 	return (
-		<>
-			<JsonLd id="contact-page-schema" json={contactPageSchemaJson} />
-			<Container title="Send a message" as="main">
-				<p className="mb-5 text-sm leading-relaxed text-zinc-400">
-					You can leave your name or stay anonymous. A message or attachment is enough.
-				</p>
-				<MessageForm />
-			</Container>
-		</>
+		<article className="flex max-w-2xl flex-col gap-6" data-stagger>
+			<JsonLd id="contact-page-schema" json={contactPageSchema} />
+
+			<section className="flex flex-col gap-2" data-stagger>
+				<h1 className="text-lg font-semibold text-zinc-100">Send a message</h1>
+				<p>You can leave your name or stay anonymous. A message or attachment is enough.</p>
+			</section>
+			<MessageForm />
+		</article>
 	);
 }

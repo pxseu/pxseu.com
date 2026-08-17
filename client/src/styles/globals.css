@@ -1,43 +1,262 @@
 @import "tailwindcss";
 
 @theme {
-	--font-mono: var(--font-geist-mono), ui-monospace, monospace;
-
 	--color-brand-100: #00ccff;
 	--color-brand-500: #8066f7;
 	--color-brand-900: #ff00ee;
-
-	/* between zinc-300 (#d4d4d8) and zinc-400 (#a1a1aa) */
-	--color-zinc-350: #bbbbc0;
-
-	--color-border-100: rgb(47, 51, 54);
-
-	--animate-gradient-bg: gradient-bg 5s ease infinite;
-	--animate-fade-in: fadeIn 500ms ease;
 }
 
-@keyframes gradient-bg {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
-@keyframes fadeIn {
-	0% {
+@keyframes stagger-in {
+	from {
 		opacity: 0;
-	}
-	100% {
-		opacity: 1;
+		filter: blur(3px);
+		transform: translateY(0.625rem);
 	}
 }
 
-/* twv4 removed cursor pointer? */
-button {
-	cursor: pointer;
+@keyframes location-in {
+	from {
+		opacity: 0;
+		filter: blur(2px);
+		transform: translateY(0.35rem);
+	}
+}
+
+@keyframes location-out {
+	to {
+		opacity: 0;
+		filter: blur(2px);
+		transform: translateY(-0.35rem);
+	}
+}
+
+[data-location-text] {
+	display: inline-grid;
+	overflow: hidden;
+	vertical-align: bottom;
+}
+
+[data-location-text] > * {
+	grid-area: 1 / 1;
+}
+
+[data-location-out] {
+	display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	[data-stagger] {
+		--stagger-base: 75ms;
+	}
+
+	[data-location-in] {
+		animation: location-in 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+	}
+
+	[data-location-out] {
+		display: block;
+		animation: location-out 200ms ease-in both;
+	}
+
+	[data-stagger] > :where(:not([data-stagger], script, style)) {
+		animation: stagger-in 500ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+		animation-delay: calc(80ms + var(--stagger-offset, 0ms));
+
+		/*
+		in the future once it's stable we can replace this slop stuff
+		https://caniuse.com/?search=sibling-index but caniuse says bad =[
+		*/
+		/*animation-delay: calc(80ms + (sibling-index() - 1) * var(--stagger-base));*/
+	}
+
+	/* start slop to caniuse */
+	[data-stagger] > :where(:not([data-stagger], script, style)):nth-child(2) {
+		--stagger-offset: var(--stagger-base);
+	}
+
+	[data-stagger] > :where(:not([data-stagger], script, style)):nth-child(3) {
+		--stagger-offset: calc(var(--stagger-base) * 2);
+	}
+
+	[data-stagger] > :where(:not([data-stagger], script, style)):nth-child(4) {
+		--stagger-offset: calc(var(--stagger-base) * 3);
+	}
+
+	[data-stagger] > :where(:not([data-stagger], script, style)):nth-child(5) {
+		--stagger-offset: calc(var(--stagger-base) * 4);
+	}
+
+	[data-stagger] > :where(:not([data-stagger], script, style)):nth-child(6) {
+		--stagger-offset: calc(var(--stagger-base) * 5);
+	}
+
+	[data-stagger] > :where(:not([data-stagger], script, style)):nth-child(7) {
+		--stagger-offset: calc(var(--stagger-base) * 6);
+	}
+
+	[data-stagger] > :where(:not([data-stagger], script, style)):nth-child(8) {
+		--stagger-offset: calc(var(--stagger-base) * 7);
+	}
+
+	[data-stagger] > :where(:not([data-stagger], script, style)):nth-child(n + 9) {
+		--stagger-offset: calc(var(--stagger-base) * 8);
+	}
+	/* end slop to caniuse */
+}
+
+@utility hit-area {
+	position: relative;
+
+	&::before {
+		position: absolute;
+		top: var(--hit-area-t, 0px);
+		right: var(--hit-area-r, 0px);
+		bottom: var(--hit-area-b, 0px);
+		left: var(--hit-area-l, 0px);
+		pointer-events: inherit;
+		content: "";
+	}
+}
+
+@utility hit-area-* {
+	position: relative;
+	--hit-area-t: --spacing(--value(number) * -1);
+	--hit-area-t: calc(--value([*]) * -1);
+	--hit-area-r: --spacing(--value(number) * -1);
+	--hit-area-r: calc(--value([*]) * -1);
+	--hit-area-b: --spacing(--value(number) * -1);
+	--hit-area-b: calc(--value([*]) * -1);
+	--hit-area-l: --spacing(--value(number) * -1);
+	--hit-area-l: calc(--value([*]) * -1);
+
+	&::before {
+		position: absolute;
+		top: var(--hit-area-t, 0px);
+		right: var(--hit-area-r, 0px);
+		bottom: var(--hit-area-b, 0px);
+		left: var(--hit-area-l, 0px);
+		pointer-events: inherit;
+		content: "";
+	}
+}
+
+@utility hit-area-l-* {
+	position: relative;
+	--hit-area-l: --spacing(--value(number) * -1);
+	--hit-area-l: calc(--value([*]) * -1);
+
+	&::before {
+		position: absolute;
+		top: var(--hit-area-t, 0px);
+		right: var(--hit-area-r, 0px);
+		bottom: var(--hit-area-b, 0px);
+		left: var(--hit-area-l, 0px);
+		pointer-events: inherit;
+		content: "";
+	}
+}
+
+@utility hit-area-r-* {
+	position: relative;
+	--hit-area-r: --spacing(--value(number) * -1);
+	--hit-area-r: calc(--value([*]) * -1);
+
+	&::before {
+		position: absolute;
+		top: var(--hit-area-t, 0px);
+		right: var(--hit-area-r, 0px);
+		bottom: var(--hit-area-b, 0px);
+		left: var(--hit-area-l, 0px);
+		pointer-events: inherit;
+		content: "";
+	}
+}
+
+@utility hit-area-t-* {
+	position: relative;
+	--hit-area-t: --spacing(--value(number) * -1);
+	--hit-area-t: calc(--value([*]) * -1);
+
+	&::before {
+		position: absolute;
+		top: var(--hit-area-t, 0px);
+		right: var(--hit-area-r, 0px);
+		bottom: var(--hit-area-b, 0px);
+		left: var(--hit-area-l, 0px);
+		pointer-events: inherit;
+		content: "";
+	}
+}
+
+@utility hit-area-b-* {
+	position: relative;
+	--hit-area-b: --spacing(--value(number) * -1);
+	--hit-area-b: calc(--value([*]) * -1);
+
+	&::before {
+		position: absolute;
+		top: var(--hit-area-t, 0px);
+		right: var(--hit-area-r, 0px);
+		bottom: var(--hit-area-b, 0px);
+		left: var(--hit-area-l, 0px);
+		pointer-events: inherit;
+		content: "";
+	}
+}
+
+@utility hit-area-x-* {
+	position: relative;
+	--hit-area-r: --spacing(--value(number) * -1);
+	--hit-area-r: calc(--value([*]) * -1);
+	--hit-area-l: --spacing(--value(number) * -1);
+	--hit-area-l: calc(--value([*]) * -1);
+
+	&::before {
+		position: absolute;
+		top: var(--hit-area-t, 0px);
+		right: var(--hit-area-r, 0px);
+		bottom: var(--hit-area-b, 0px);
+		left: var(--hit-area-l, 0px);
+		pointer-events: inherit;
+		content: "";
+	}
+}
+
+@utility hit-area-y-* {
+	position: relative;
+	--hit-area-t: --spacing(--value(number) * -1);
+	--hit-area-t: calc(--value([*]) * -1);
+	--hit-area-b: --spacing(--value(number) * -1);
+	--hit-area-b: calc(--value([*]) * -1);
+
+	&::before {
+		position: absolute;
+		top: var(--hit-area-t, 0px);
+		right: var(--hit-area-r, 0px);
+		bottom: var(--hit-area-b, 0px);
+		left: var(--hit-area-l, 0px);
+		pointer-events: inherit;
+		content: "";
+	}
+}
+
+@utility hit-area-debug {
+	position: relative;
+
+	&::before {
+		position: absolute;
+		top: var(--hit-area-t, 0px);
+		right: var(--hit-area-r, 0px);
+		bottom: var(--hit-area-b, 0px);
+		left: var(--hit-area-l, 0px);
+		pointer-events: inherit;
+		content: "";
+		@apply border border-dashed border-blue-500;
+		@apply bg-blue-500/10;
+	}
+
+	&:hover::before {
+		@apply border border-dashed border-green-500;
+		@apply bg-green-500/10;
+	}
 }
