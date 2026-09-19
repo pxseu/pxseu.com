@@ -47,7 +47,7 @@ export const spotifyPlayingTask = async (redis: RedisClient, spotify: SpotifyCli
 			continue;
 		}
 
-		if (!nowPlaying || nowPlaying.currently_playing_type !== "track") {
+		if (nowPlaying?.currently_playing_type !== "track") {
 			if (prevId !== null) {
 				await Promise.all([
 					redis.del(REDIS_SPOTIFY_PLAYING),

@@ -3,31 +3,33 @@ import { CSideScript } from "@cside.dev/next";
 import ReactLenis from "lenis/react";
 import type { Metadata, Viewport } from "next";
 import { Karla } from "next/font/google";
-import JsonLd from "@/components/json-ld";
 import Footer from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { PageHead } from "@/components/page-head";
 import { API_ROUTE } from "@/config";
 import { RealtimeProvider } from "@/contexts/RealtimeContext";
+import { ASSET_VERSION, PERSON_ID, resolvePage, SITE_DESCRIPTION, THEME_COLOR } from "@/utils/page-metadata";
 
-const THEME_COLOR = "#8066F7";
-const ASSET_VERSION = "3.0";
-const description = "Software engineer and open source enthusiast.";
+// Render every page at build time. Unknown dynamic params must never trigger SSR.
+export const dynamic = "force-static";
+export const dynamicParams = false;
+export const revalidate = false;
 
-const websiteSchema = {
-	"@context": "https://schema.org",
-	"@type": "WebSite",
-	name: "pxseu.com",
-	url: "https://pxseu.com",
+const description = SITE_DESCRIPTION;
+
+const site = resolvePage({
+	path: "/",
 	description,
-	author: {
-		"@type": "Person",
-		name: "pxseu",
-		url: "https://pxseu.com",
+	discord: false,
+	jsonLd: {
+		"@type": "WebSite",
+		author: { "@id": PERSON_ID },
 	},
-};
+});
 
 const personSchema = {
 	"@context": "https://schema.org",
+	"@id": PERSON_ID,
 	"@type": "Person",
 	name: "pxseu",
 	alternateName: "Kuba Ellwart",
@@ -58,8 +60,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-	title: "pxseu.com",
-	description,
+	...site.metadata,
 	keywords: ["pxseu", "poseuxck"],
 	authors: [{ name: "pxseu", url: "https://pxseu.com" }],
 	robots: "index, follow",
@@ -95,26 +96,6 @@ export const metadata: Metadata = {
 			},
 		],
 	},
-	openGraph: {
-		url: "https://pxseu.com",
-		type: "website",
-		locale: "en_US",
-		siteName: "pxseu.com",
-		title: "pxseu.com",
-		images: [
-			{
-				url: `https://pxseu.com/android-chrome-512x512.png?v=${ASSET_VERSION}`,
-			},
-		],
-		description,
-	},
-	twitter: {
-		card: "summary_large_image",
-		site: "@pxseu",
-		title: "pxseu.com",
-		description,
-		images: [`https://pxseu.com/android-chrome-512x512.png?v=${ASSET_VERSION}`],
-	},
 	other: {
 		"msapplication-TileColor": THEME_COLOR,
 	},
@@ -135,8 +116,8 @@ export default function RootLayout({
 		<html lang="en" className={font.className}>
 			<head>
 				<CSideScript scriptURLOverride="https://7228584649694834688.csidetm.com/client.js" />
-				<JsonLd id="website-schema" json={websiteSchema} />
-				<JsonLd id="person-schema" json={personSchema} />
+				{site.jsonLd ? <PageHead id="website-schema" json={site.jsonLd} /> : null}
+				<PageHead id="person-schema" json={personSchema} />
 				<link rel="preconnect" href={API_ROUTE} />
 				<link rel="preconnect" href="https://i.scdn.co" />
 			</head>

@@ -4,6 +4,7 @@ module.exports = {
 	generateRobotsTxt: true,
 	robotsTxtOptions: {
 		policies: [
+			{ userAgent: "Discordbot", allow: "/" },
 			{
 				userAgent: "*",
 				allow: "/",

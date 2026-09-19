@@ -1,5 +1,5 @@
 # Use `bun`
 
 ```sh
-$ bun dev
+bun dev
 ```

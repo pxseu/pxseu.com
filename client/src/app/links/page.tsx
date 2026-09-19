@@ -1,30 +1,29 @@
-import type { Metadata } from "next";
-import JsonLd from "@/components/json-ld";
 import { Links } from "@/components/links/links";
+import { definePage } from "@/utils/define-page";
+import { PERSON_ID } from "@/utils/page-metadata";
 
-export const metadata: Metadata = {
-	title: "Links - pxseu.com",
+const page = definePage({
+	path: "/links",
+	title: "Links",
 	description: "Places you can find me elsewhere on the internet.",
-};
-
-const collectionPageSchema = {
-	"@context": "https://schema.org",
-	"@type": "CollectionPage",
-	name: "Links - pxseu.com",
-	url: "https://pxseu.com/links",
-	description: "Places you can find me elsewhere on the internet.",
-	mainEntity: {
-		"@type": "Person",
-		name: "pxseu",
-		url: "https://pxseu.com",
+	discord: {
+		links: [
+			{ label: "All links", url: "/links" },
+			{ label: "GitHub", url: "https://github.com/pxseu" },
+			{ label: "Twitter", url: "https://twitter.com/pxseu" },
+		],
 	},
-};
+	jsonLd: {
+		"@type": "CollectionPage",
+		mainEntity: { "@id": PERSON_ID },
+	},
+});
 
-export default function LinksPage() {
+export const generateMetadata = page.generateMetadata;
+
+export default page.wrap(function LinksPage() {
 	return (
 		<article className="flex flex-col gap-8" data-stagger>
-			<JsonLd id="collection-page-schema" json={collectionPageSchema} />
-
 			<section className="flex flex-col gap-2" data-stagger>
 				<h1 className="text-lg font-semibold text-zinc-100">Links</h1>
 				<p>Places you can find me elsewhere on the internet.</p>
@@ -32,4 +31,4 @@ export default function LinksPage() {
 			<Links />
 		</article>
 	);
-}
+});
