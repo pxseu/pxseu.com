@@ -103,7 +103,9 @@ export function resolvePage({
 			components: [
 				{
 					type: 9,
-					components: [{ type: 10, content: `## ${pageTitle}\n${options?.content ?? description}` }],
+					components: [
+						{ type: 10, content: `## [${pageTitle}](${url})\n${options?.content ?? description}` },
+					],
 					accessory: { type: 11, media: { url: imageUrl } },
 				},
 				...(links.length
