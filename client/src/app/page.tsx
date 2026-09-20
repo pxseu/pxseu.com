@@ -7,6 +7,7 @@ const page = definePage({
 	path: "/",
 	description: SITE_DESCRIPTION,
 	discord: {
+		content: `${SITE_DESCRIPTION}\n\nI now work at [<:palantir:1551259180176773150> Palantir](https://palantir.com).`,
 		links: [
 			{ label: "Website", url: "/" },
 			{ label: "Links", url: "/links" },
