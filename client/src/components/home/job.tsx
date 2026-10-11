@@ -16,7 +16,7 @@ export function Job({ company, position, positionTitle, start, end, url, image }
 	return (
 		<div className="group flex hit-area-y-1.5">
 			<p className="w-25 group-hover:text-zinc-300 text-zinc-600 transition-colors tabular-nums">
-				{start} — {end}
+				{start} – {end}
 			</p>
 			<div className="flex items-center gap-1">
 				<Link href={url} className="flex items-center gap-1">
