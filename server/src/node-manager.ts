@@ -1,5 +1,5 @@
 import { hostname } from "node:os";
-import { config } from "config.js";
+import { config } from "./config.js";
 import { clients } from "./context.js";
 import { spotifyPlayingTask } from "./tasks/spotify-playing.js";
 

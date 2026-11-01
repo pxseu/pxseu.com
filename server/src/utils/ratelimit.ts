@@ -1,6 +1,6 @@
 import { KaitoError } from "@kaito-http/core";
 import type { RedisClient } from "bun";
-import { config } from "config.js";
+import { config } from "../config.js";
 
 interface RateLimitOptions {
 	windowMs: number;

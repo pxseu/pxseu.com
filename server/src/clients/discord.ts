@@ -1,5 +1,5 @@
 import type { RedisClient } from "bun";
-import { config } from "config.js";
+import { config } from "../config.js";
 import { fetch } from "./fetch.js";
 
 const ENDPOINT = "https://canary.discord.com/api/webhooks";

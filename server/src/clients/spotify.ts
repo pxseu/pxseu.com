@@ -1,5 +1,5 @@
 import type { RedisClient } from "bun";
-import { config } from "config.js";
+import { config } from "../config.js";
 import { dominantColor } from "../utils/dominant.js";
 import { fetch, parseJson } from "./fetch.js";
 

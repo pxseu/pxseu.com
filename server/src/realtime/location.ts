@@ -1,5 +1,5 @@
 import EventEmitter from "node:events";
-import { config } from "config.js";
+import { config } from "../config.js";
 import { createRedisClientNamer } from "../utils/redis.js";
 import { RealtimeClient } from "./abstract.js";
 
